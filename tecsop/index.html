@@ -612,9 +612,172 @@
   }
   .back-to-top.visible { opacity: 1; pointer-events: auto; }
   .back-to-top:hover { background: var(--primary-dark); }
+
+  /* ========== 阅读进度条 ========== */
+  .reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary-light), var(--primary-dark));
+    z-index: 200;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+  }
+
+  /* ========== 折叠控制条（浮动） ========== */
+  .collapse-controls {
+    position: fixed;
+    right: 24px;
+    bottom: 96px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 100;
+  }
+  .collapse-controls button {
+    background: white;
+    color: var(--primary-dark);
+    border: 1px solid var(--border-strong);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .collapse-controls button:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .collapse-controls button .label {
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  /* ========== 可折叠标题 ========== */
+  .collapsible {
+    position: relative;
+  }
+  .collapsible-trigger {
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+    position: relative;
+  }
+  .collapsible-trigger:hover {
+    background: linear-gradient(90deg, var(--accent-blue), transparent 70%);
+  }
+  /* 折叠箭头 */
+  .collapsible-trigger::after {
+    content: '▾';
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 0.7em;
+    color: var(--primary);
+    transition: transform 0.25s ease;
+    vertical-align: middle;
+    opacity: 0.7;
+  }
+  .collapsible-trigger.collapsed::after {
+    transform: rotate(-90deg);
+    opacity: 1;
+  }
+  /* 折叠内容容器 */
+  .collapsible-content {
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+    max-height: 50000px; /* 给个足够大的值，配合 JS 动画 */
+    opacity: 1;
+  }
+  .collapsible-content.collapsed {
+    max-height: 0 !important;
+    opacity: 0;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    pointer-events: none;
+  }
+
+  /* h1 折叠时给个浅色背景，让一级章节更突出 */
+  h1.section-title.collapsible-trigger {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border-radius: 8px 8px 0 0;
+  }
+  h1.section-title.collapsible-trigger.collapsed {
+    border-bottom-color: var(--border-strong);
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  h2.collapsible-trigger {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 0 6px 6px 0;
+  }
+  h3.collapsible-trigger {
+    padding: 4px 6px;
+    border-radius: 6px;
+    margin-left: -6px;
+  }
+
+  /* "已折叠"提示小标签 */
+  .collapsed-hint {
+    display: none;
+    margin-left: 12px;
+    padding: 2px 10px;
+    background: var(--bg-soft);
+    color: var(--text-muted);
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    vertical-align: middle;
+  }
+  .collapsible-trigger.collapsed .collapsed-hint {
+    display: inline-block;
+  }
+
+  /* 移动端调整 */
+  @media (max-width: 768px) {
+    .collapse-controls {
+      right: 12px;
+      bottom: 80px;
+    }
+    .collapse-controls button {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  /* 打印时全部展开 */
+  @media print {
+    .collapsible-content { max-height: none !important; opacity: 1 !important; }
+    .collapsible-trigger::after { display: none; }
+    .collapse-controls, .back-to-top, .reading-progress { display: none !important; }
+  }
 </style>
 </head>
 <body>
+
+<!-- 阅读进度条 -->
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- 折叠控制按钮 -->
+<div class="collapse-controls" aria-label="折叠控制">
+  <button id="collapseAllBtn" title="全部折叠（只看目录大纲）" aria-label="全部折叠">
+    <span class="label">全折</span>
+  </button>
+  <button id="expandAllBtn" title="全部展开" aria-label="全部展开">
+    <span class="label">全展</span>
+  </button>
+</div>
 
 <!-- ========== HERO ========== -->
 <header class="hero">
@@ -2015,21 +2178,217 @@ API Key  = 钥匙（证明你有资格进这扇门）</code></pre>
 <button class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="返回顶部">↑</button>
 
 <script>
-  // 返回顶部按钮显隐
-  const btn = document.querySelector('.back-to-top');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) btn.classList.add('visible');
-    else btn.classList.remove('visible');
-  });
+  /* ============================================================
+     1. 把 main 内的 h1.section-title / h2 / h3 改造成可折叠
+     ============================================================ */
+  (function setupCollapsible() {
+    const main = document.querySelector('main');
+    if (!main) return;
 
-  // 平滑滚动 + 高亮当前章节（可选增强）
-  const tocLinks = document.querySelectorAll('.sidebar a[href^="#"]');
-  tocLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      // 视觉反馈
-      tocLinks.forEach(l => l.style.background = '');
-      this.style.background = 'var(--accent-blue)';
+    // 收集所有标题节点（按出现顺序）。
+    // 注意：h1 只处理 .section-title 这种"真章节"，跳过那些 inline-style 的 h1（它们本质是 h2 内的展示标题）
+    const allHeadings = Array.from(main.querySelectorAll('h1, h2, h3'));
+    const headings = allHeadings.filter(h => {
+      if (h.tagName === 'H1') return h.classList.contains('section-title');
+      return true;
     });
+
+    // 给每个标题：
+    //   1) 收集到下一个"同级或更高级"标题之间的所有兄弟节点
+    //   2) 把它们包裹进一个 .collapsible-content 容器
+    //   3) 把标题本身标记为 .collapsible-trigger
+    function levelOf(h) {
+      if (h.tagName === 'H1') return 1;
+      if (h.tagName === 'H2') return 2;
+      return 3;
+    }
+
+    // 从后向前处理，避免节点位置变化干扰
+    for (let i = headings.length - 1; i >= 0; i--) {
+      const heading = headings[i];
+      const myLevel = levelOf(heading);
+
+      // 找到下一个"同级或更高级"标题（即 level <= myLevel）
+      let stopNode = null;
+      for (let j = i + 1; j < headings.length; j++) {
+        if (levelOf(headings[j]) <= myLevel) {
+          stopNode = headings[j];
+          break;
+        }
+      }
+
+      // 创建折叠容器
+      const wrapper = document.createElement('div');
+      wrapper.className = 'collapsible-content';
+
+      // 把 heading 之后到 stopNode 之前的所有兄弟节点搬进 wrapper
+      let cur = heading.nextSibling;
+      const toMove = [];
+      while (cur && cur !== stopNode) {
+        toMove.push(cur);
+        cur = cur.nextSibling;
+      }
+      toMove.forEach(n => wrapper.appendChild(n));
+
+      // 插入 wrapper 到 heading 后面
+      heading.parentNode.insertBefore(wrapper, stopNode);
+
+      // 标记 heading 为可触发
+      heading.classList.add('collapsible-trigger');
+      heading.setAttribute('role', 'button');
+      heading.setAttribute('tabindex', '0');
+      heading.setAttribute('aria-expanded', 'true');
+
+      // 加一个"已折叠"提示小标签
+      const hint = document.createElement('span');
+      hint.className = 'collapsed-hint';
+      hint.textContent = '已折叠';
+      heading.appendChild(hint);
+
+      // 关联 trigger 与 content
+      heading._collapseContent = wrapper;
+      wrapper._trigger = heading;
+    }
+
+    // 切换折叠
+    function toggle(heading, forceState) {
+      const content = heading._collapseContent;
+      if (!content) return;
+      const willCollapse = forceState === undefined
+        ? !heading.classList.contains('collapsed')
+        : forceState === 'collapse';
+      if (willCollapse) {
+        heading.classList.add('collapsed');
+        content.classList.add('collapsed');
+        heading.setAttribute('aria-expanded', 'false');
+      } else {
+        heading.classList.remove('collapsed');
+        content.classList.remove('collapsed');
+        heading.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // 给所有 trigger 绑定点击/键盘
+    document.querySelectorAll('.collapsible-trigger').forEach(h => {
+      h.addEventListener('click', (e) => {
+        // 标题里若有 <a> 链接，点击链接时不要折叠
+        if (e.target.closest('a')) return;
+        toggle(h);
+      });
+      h.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle(h);
+        }
+      });
+    });
+
+    // 全部折叠 / 展开
+    document.getElementById('collapseAllBtn').addEventListener('click', () => {
+      document.querySelectorAll('.collapsible-trigger').forEach(h => toggle(h, 'collapse'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    document.getElementById('expandAllBtn').addEventListener('click', () => {
+      document.querySelectorAll('.collapsible-trigger').forEach(h => toggle(h, 'expand'));
+    });
+
+    // 暴露给目录跳转用：确保某锚点对应的元素及其所有祖先 collapsible 都展开
+    window.__expandToTarget = function(targetEl) {
+      if (!targetEl) return;
+      // 1) 如果 target 自身是 trigger，先展开它
+      if (targetEl.classList && targetEl.classList.contains('collapsible-trigger')) {
+        toggle(targetEl, 'expand');
+      }
+      // 2) 一路向上，遇到 collapsible-content 就展开它对应的 trigger
+      let p = targetEl.parentElement;
+      while (p && p !== document.body) {
+        if (p.classList && p.classList.contains('collapsible-content') && p._trigger) {
+          toggle(p._trigger, 'expand');
+        }
+        p = p.parentElement;
+      }
+    };
+  })();
+
+  /* ============================================================
+     2. 目录链接点击：自动展开目标 + 父级，再平滑滚过去
+     ============================================================ */
+  (function setupTocJump() {
+    const tocLinks = document.querySelectorAll('.sidebar a[href^="#"]');
+    tocLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const id = this.getAttribute('href').slice(1);
+        const target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        if (window.__expandToTarget) window.__expandToTarget(target);
+
+        // 视觉反馈
+        tocLinks.forEach(l => l.style.background = '');
+        this.style.background = 'var(--accent-blue)';
+
+        // 等折叠展开动画结束后再滚动
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // 更新 URL hash 但不再次触发滚动
+          history.replaceState(null, '', '#' + id);
+        }, 60);
+      });
+    });
+
+    // 页面初次加载时若带 hash，也确保目标展开
+    if (location.hash) {
+      const t = document.getElementById(location.hash.slice(1));
+      if (t && window.__expandToTarget) {
+        window.__expandToTarget(t);
+        setTimeout(() => t.scrollIntoView({ behavior: 'auto', block: 'start' }), 80);
+      }
+    }
+  })();
+
+  /* ============================================================
+     3. 返回顶部
+     ============================================================ */
+  (function setupBackToTop() {
+    const btn = document.querySelector('.back-to-top');
+    if (!btn) return;
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) btn.classList.add('visible');
+      else btn.classList.remove('visible');
+    });
+  })();
+
+  /* ============================================================
+     4. 阅读进度条
+     ============================================================ */
+  (function setupReadingProgress() {
+    const bar = document.getElementById('readingProgress');
+    if (!bar) return;
+    function update() {
+      const h = document.documentElement;
+      const total = h.scrollHeight - h.clientHeight;
+      const p = total > 0 ? (h.scrollTop / total) * 100 : 0;
+      bar.style.width = Math.min(100, Math.max(0, p)) + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  /* ============================================================
+     5. 键盘快捷键：
+        - "[" 全部折叠
+        - "]" 全部展开
+     ============================================================ */
+  document.addEventListener('keydown', (e) => {
+    // 输入框中不响应
+    const tag = (e.target && e.target.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable) return;
+    if (e.key === '[') {
+      document.getElementById('collapseAllBtn')?.click();
+    } else if (e.key === ']') {
+      document.getElementById('expandAllBtn')?.click();
+    }
   });
 </script>
 
