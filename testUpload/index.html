@@ -64,9 +64,7 @@
       box-shadow: 8px 8px 0 var(--line);
     }
 
-    .field {
-      margin-bottom: 28px;
-    }
+    .field { margin-bottom: 28px; }
 
     label {
       display: block;
@@ -78,16 +76,10 @@
       color: var(--muted);
     }
 
-    label .required {
-      color: var(--accent);
-      margin-left: 4px;
-    }
+    label .required { color: var(--accent); margin-left: 4px; }
 
-    input[type="text"],
-    input[type="date"],
-    input[type="datetime-local"],
-    input[type="url"],
-    textarea {
+    input[type="text"], input[type="date"], input[type="datetime-local"],
+    input[type="url"], textarea {
       width: 100%;
       padding: 12px 14px;
       border: 1.5px solid var(--ink);
@@ -104,11 +96,7 @@
       background: rgba(212, 66, 47, 0.03);
     }
 
-    textarea {
-      resize: vertical;
-      min-height: 100px;
-      line-height: 1.5;
-    }
+    textarea { resize: vertical; min-height: 100px; line-height: 1.5; }
 
     input[type="file"] {
       font-family: 'JetBrains Mono', monospace;
@@ -116,11 +104,7 @@
       padding: 8px 0;
     }
 
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
     button {
       width: 100%;
@@ -143,10 +127,7 @@
       box-shadow: 4px 4px 0 var(--ink);
     }
 
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .status {
       margin-top: 20px;
@@ -155,34 +136,240 @@
       font-size: 13px;
       display: none;
     }
+    .status.success { display: block; background: #e8f5e9; border-left: 4px solid #2e7d32; color: #2e7d32; }
+    .status.error { display: block; background: #ffebee; border-left: 4px solid var(--accent); color: var(--accent); }
 
-    .status.success {
-      display: block;
-      background: #e8f5e9;
-      border-left: 4px solid #2e7d32;
-      color: #2e7d32;
-    }
-
-    .status.error {
-      display: block;
-      background: #ffebee;
-      border-left: 4px solid var(--accent);
-      color: var(--accent);
-    }
-
-    .preview {
-      margin-top: 12px;
-      max-width: 200px;
-      border: 1px solid var(--line);
-      display: none;
-    }
-
+    .preview { margin-top: 12px; max-width: 200px; border: 1px solid var(--line); display: none; }
     .preview.show { display: block; }
+
+    /* ========== 时间线样式 ========== */
+    .timeline-section {
+      margin-top: 80px;
+      border-top: 2px solid var(--line);
+      padding-top: 40px;
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 40px;
+    }
+
+    .timeline-title {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .timeline-count {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .refresh-btn {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+      width: auto;
+      padding: 8px 16px;
+      margin: 0;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+    .refresh-btn:hover:not(:disabled) {
+      background: var(--ink);
+      color: var(--bg);
+      transform: none;
+      box-shadow: none;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--ink);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 36px;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -32px;
+      top: 8px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 3px solid var(--ink);
+    }
+
+    .timeline-item:hover::before {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .timeline-card {
+      background: var(--paper);
+      border: 1.5px solid var(--line);
+      padding: 24px;
+      transition: all 0.2s;
+    }
+
+    .timeline-card:hover {
+      box-shadow: 4px 4px 0 var(--line);
+      transform: translate(-2px, -2px);
+    }
+
+    .timeline-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .timeline-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.5px;
+    }
+
+    .timeline-owner {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 3px 10px;
+    }
+
+    .timeline-description {
+      font-size: 17px;
+      line-height: 1.55;
+      margin-bottom: 16px;
+      white-space: pre-wrap;
+    }
+
+    .timeline-image {
+      margin: 16px 0;
+      border: 1px solid var(--line);
+      cursor: zoom-in;
+      max-width: 100%;
+      max-height: 320px;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .timeline-image:hover { opacity: 0.85; }
+
+    .timeline-link {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      margin-bottom: 8px;
+      word-break: break-all;
+    }
+    .timeline-link:hover { color: var(--ink); border-color: var(--ink); }
+
+    .timeline-next {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--muted);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .timeline-next strong {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .timeline-completed {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .empty-state, .loading-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ========== 图片放大查看 ========== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.92);
+      z-index: 1000;
+      cursor: zoom-out;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      animation: fadeInLightbox 0.2s ease-out;
+    }
+    .lightbox.show { display: flex; }
+    @keyframes fadeInLightbox { from { opacity: 0; } to { opacity: 1; } }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 100%;
+      border: 2px solid var(--bg);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      color: var(--bg);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
 
     @media (max-width: 600px) {
       h1 { font-size: 40px; }
+      .timeline-title { font-size: 32px; }
       .row { grid-template-columns: 1fr; }
       .form-card { padding: 24px; }
+      .timeline-card { padding: 18px; }
     }
   </style>
 </head>
@@ -193,6 +380,7 @@
       <div class="date-stamp" id="todayStamp"></div>
     </header>
 
+    <!-- ========== 表单区 ========== -->
     <div class="form-card">
       <form id="reportForm">
         <div class="row">
@@ -236,19 +424,38 @@
         <div class="status" id="status"></div>
       </form>
     </div>
+
+    <!-- ========== 时间线区 ========== -->
+    <section class="timeline-section">
+      <div class="timeline-header">
+        <div>
+          <div class="timeline-title">Archive.</div>
+          <div class="timeline-count" id="timelineCount">— records</div>
+        </div>
+        <button class="refresh-btn" id="refreshBtn" type="button">↻ 刷新</button>
+      </div>
+      <div id="timelineContainer">
+        <div class="loading-state">正在加载历史汇报...</div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ========== 图片放大遮罩 ========== -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-close">[ ESC / 点击关闭 ]</div>
+    <img id="lightboxImg" />
   </div>
 
   <script type="module">
-    // ===== 1. 引入 Supabase 客户端（CDN 方式，不用 npm）=====
     import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
-        // ===== 2. 配置：换成你自己的 =====
+    // ===== 配置：换成你自己的 =====
     const SUPABASE_URL = 'https://foyokflqyojoyzuvtsbe.supabase.co'
     const SUPABASE_ANON_KEY = 'sb_publishable_NQcPR-u4KwecKeHgxS9rfA_3uZEUjhe'
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
-    // ===== 3. 初始化页面 =====
+    // ===== 初始化 =====
     const today = new Date()
     document.getElementById('reportDate').value = today.toISOString().split('T')[0]
     document.getElementById('todayStamp').textContent =
@@ -267,7 +474,7 @@
       }
     })
 
-    // ===== 4. 表单提交 =====
+    // ===== 表单提交 =====
     const form = document.getElementById('reportForm')
     const submitBtn = document.getElementById('submitBtn')
     const statusEl = document.getElementById('status')
@@ -279,21 +486,20 @@
       statusEl.className = 'status'
 
       try {
-        // 4.1 如果有图片，先上传到 Storage
         let imageUrl = null
         const file = imageFile.files[0]
-      if (file) {
-        // 文件名用时间戳+随机串，避免中文/空格等非法字符
-        const fileExt = file.name.split('.').pop()
-        const fileName = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${fileExt}`
-        const { data: uploadData, error: uploadError } = await supabase
+        if (file) {
+          const ext = file.name.includes('.') ? file.name.split('.').pop().toLowerCase() : 'png'
+          const safeExt = ext.replace(/[^a-z0-9]/g, '') || 'png'
+          const fileName = `report_${Date.now()}_${Math.floor(Math.random() * 100000)}.${safeExt}`
+
+          const { error: uploadError } = await supabase
             .storage
             .from('report-images')
-            .upload(fileName, file)
+            .upload(fileName, file, { cacheControl: '3600', upsert: false })
 
           if (uploadError) throw uploadError
 
-          // 拿到公开访问 URL
           const { data: urlData } = supabase
             .storage
             .from('report-images')
@@ -302,7 +508,6 @@
           imageUrl = urlData.publicUrl
         }
 
-        // 4.2 组装数据
         const completedAtVal = document.getElementById('completedAt').value
         const payload = {
           report_date: document.getElementById('reportDate').value,
@@ -314,7 +519,6 @@
           next_plan: document.getElementById('nextPlan').value || null
         }
 
-        // 4.3 插入数据库
         const { data, error } = await supabase
           .from('work_reports')
           .insert([payload])
@@ -322,12 +526,14 @@
 
         if (error) throw error
 
-        // 成功提示
         statusEl.className = 'status success'
         statusEl.textContent = `✓ 提交成功！记录 ID: ${data[0].id.slice(0, 8)}...`
         form.reset()
         imagePreview.classList.remove('show')
         document.getElementById('reportDate').value = today.toISOString().split('T')[0]
+
+        // 提交成功后自动刷新时间线
+        loadTimeline()
 
       } catch (err) {
         console.error(err)
@@ -338,6 +544,135 @@
         submitBtn.textContent = '提交汇报 →'
       }
     })
+
+    // ===== 时间线加载 =====
+    const timelineContainer = document.getElementById('timelineContainer')
+    const timelineCount = document.getElementById('timelineCount')
+    const refreshBtn = document.getElementById('refreshBtn')
+
+    // 工具函数：HTML 转义防 XSS
+    function escapeHtml(str) {
+      if (str == null) return ''
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;')
+    }
+
+    // 工具函数:格式化日期
+    function formatDate(dateStr) {
+      if (!dateStr) return ''
+      const d = new Date(dateStr)
+      const yyyy = d.getFullYear()
+      const mm = String(d.getMonth() + 1).padStart(2, '0')
+      const dd = String(d.getDate()).padStart(2, '0')
+      return `${yyyy}.${mm}.${dd}`
+    }
+
+    function formatDateTime(dateStr) {
+      if (!dateStr) return ''
+      const d = new Date(dateStr)
+      const yyyy = d.getFullYear()
+      const mm = String(d.getMonth() + 1).padStart(2, '0')
+      const dd = String(d.getDate()).padStart(2, '0')
+      const hh = String(d.getHours()).padStart(2, '0')
+      const min = String(d.getMinutes()).padStart(2, '0')
+      return `${yyyy}.${mm}.${dd} ${hh}:${min}`
+    }
+
+    async function loadTimeline() {
+      timelineContainer.innerHTML = '<div class="loading-state">正在加载历史汇报...</div>'
+      refreshBtn.disabled = true
+
+      try {
+        // 按 created_at 倒序排列，最多取 50 条
+        const { data, error } = await supabase
+          .from('work_reports')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(50)
+
+        if (error) throw error
+
+        timelineCount.textContent = `${data.length} record${data.length === 1 ? '' : 's'}`
+
+        if (data.length === 0) {
+          timelineContainer.innerHTML = '<div class="empty-state">还没有汇报记录,提交第一条吧 ↑</div>'
+          return
+        }
+
+        // 渲染时间线
+        timelineContainer.innerHTML = `<div class="timeline">${
+          data.map(item => `
+            <div class="timeline-item">
+              <div class="timeline-card">
+                <div class="timeline-meta">
+                  <div class="timeline-date">${formatDate(item.report_date)}</div>
+                  <div class="timeline-owner">${escapeHtml(item.owner)}</div>
+                </div>
+                <div class="timeline-description">${escapeHtml(item.description)}</div>
+                ${item.image_url ? `
+                  <img class="timeline-image"
+                       src="${escapeHtml(item.image_url)}"
+                       alt="成果图片"
+                       data-full="${escapeHtml(item.image_url)}"
+                       loading="lazy" />
+                ` : ''}
+                ${item.result_link ? `
+                  <a class="timeline-link" href="${escapeHtml(item.result_link)}" target="_blank" rel="noopener">
+                    → ${escapeHtml(item.result_link)}
+                  </a>
+                ` : ''}
+                ${item.next_plan ? `
+                  <div class="timeline-next">
+                    <strong>下一步</strong>${escapeHtml(item.next_plan)}
+                  </div>
+                ` : ''}
+                ${item.completed_at ? `
+                  <div class="timeline-completed">完成于 ${formatDateTime(item.completed_at)}</div>
+                ` : ''}
+              </div>
+            </div>
+          `).join('')
+        }</div>`
+
+        // 给图片绑定点击放大事件
+        timelineContainer.querySelectorAll('.timeline-image').forEach(img => {
+          img.addEventListener('click', () => {
+            lightboxImg.src = img.dataset.full
+            lightbox.classList.add('show')
+          })
+        })
+
+      } catch (err) {
+        console.error(err)
+        timelineContainer.innerHTML =
+          `<div class="empty-state" style="color: var(--accent)">加载失败: ${escapeHtml(err.message)}</div>`
+      } finally {
+        refreshBtn.disabled = false
+      }
+    }
+
+    refreshBtn.addEventListener('click', loadTimeline)
+
+    // ===== 图片放大查看 =====
+    const lightbox = document.getElementById('lightbox')
+    const lightboxImg = document.getElementById('lightboxImg')
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('show')
+    })
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('show')) {
+        lightbox.classList.remove('show')
+      }
+    })
+
+    // ===== 页面加载时自动加载时间线 =====
+    loadTimeline()
   </script>
 </body>
 </html>
