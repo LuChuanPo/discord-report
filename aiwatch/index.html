@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>登录 · AIWATCH / KNOWLEDGE_OS</title>
+<link rel="stylesheet" href="shared/tokens.css">
+<style>
+  body { display: grid; place-items: center; min-height: 100vh; }
+  .login-stage { width: min(420px, calc(100vw - 32px)); display: flex; flex-direction: column; align-items: center; gap: 28px; padding: 48px 0; }
+  .login-brand { display: flex; align-items: center; gap: 12px; }
+  .login-brand__mark { width: 44px; height: 44px; background: var(--cyan); color: var(--bg); border-radius: 8px; display: grid; place-items: center; font-family: var(--font-mono); font-weight: 700; font-size: 18px; box-shadow: 0 0 28px rgba(0,229,255,0.45); }
+  .login-brand__name { font-family: var(--font-mono); font-size: 18px; font-weight: 600; letter-spacing: 0.02em; }
+  .login-brand__name small { display: block; font-size: 10px; color: var(--ink-3); letter-spacing: 0.2em; font-weight: 400; }
+
+  .login-card { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px; box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,229,255,0.05); }
+  .login-card h1 { font-family: var(--font-mono); font-size: 18px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .login-card p.sub { margin: 0 0 24px; font-size: 12px; color: var(--ink-3); font-family: var(--font-mono); }
+
+  .field { margin-bottom: 14px; }
+  .row-between { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 11px; }
+  .row-between a { color: var(--cyan); }
+  .row-between label { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-3); cursor: pointer; }
+
+  .role-quick { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 12px; }
+  .role-chip { padding: 6px 8px; border: 1px solid var(--border); background: var(--bg-elev); border-radius: 6px; font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); text-align: center; cursor: pointer; transition: all 0.12s; text-decoration: none; }
+  .role-chip:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  .login-foot { font-family: var(--font-mono); font-size: 11px; color: var(--ink-4); text-align: center; line-height: 1.7; }
+  .login-foot a { color: var(--ink-3); border-bottom: 1px dotted var(--ink-4); }
+  .login-foot a:hover { color: var(--cyan); border-color: var(--cyan); }
+
+  .system-status { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 10px; color: var(--ink-3); padding: 4px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--bg-elev); }
+  .system-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--success); box-shadow: 0 0 6px var(--success); }
+</style>
+</head>
+<body>
+  <div class="login-stage">
+    <div class="login-brand">
+      <div class="login-brand__mark">AW</div>
+      <div class="login-brand__name">
+        AIWATCH
+        <small>KNOWLEDGE_OS</small>
+      </div>
+    </div>
+
+    <div class="login-card">
+      <h1>登录工作台</h1>
+      <p class="sub">/ 客户进度追踪与团队协作系统</p>
+
+      <form onsubmit="event.preventDefault(); window.location='admin-dashboard.html';">
+        <div class="field">
+          <label class="field__label">邮箱</label>
+          <input class="input" type="email" value="jiang.zhu@aiwatch.io" autocomplete="email">
+        </div>
+        <div class="field">
+          <label class="field__label">密码</label>
+          <input class="input" type="password" value="••••••••••" autocomplete="current-password">
+        </div>
+
+        <div class="row-between" style="margin-bottom: 20px;">
+          <label><input type="checkbox" checked style="accent-color: var(--cyan);"> 7 天内保持登录</label>
+          <a href="#">忘记密码?</a>
+        </div>
+
+        <button class="btn btn--primary btn--block btn--lg" type="submit">
+          登录 →
+        </button>
+
+        <div class="role-quick">
+          <a class="role-chip" href="admin-dashboard.html">以管理者进入</a>
+          <a class="role-chip" href="data-entry.html">以员工进入</a>
+          <a class="role-chip" href="customer-board.html">客户视角(预览)</a>
+        </div>
+      </form>
+    </div>
+
+    <div class="login-foot">
+      客户访问请使用我方发送的邀请链接,无需账号 · <a href="customer-board.html">查看示例 ↗</a><br>
+      <span class="system-status" style="margin-top: 12px;">系统运行正常 · 最近更新 2026-05-04</span>
+    </div>
+  </div>
+</body>
+</html>

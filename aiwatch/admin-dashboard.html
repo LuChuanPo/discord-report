@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>总看板 · AIWATCH</title>
+<link rel="stylesheet" href="shared/tokens.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="shared/data.js"></script>
+<script type="text/babel" src="shared/icons.js"></script>
+<script type="text/babel" src="shared/components.jsx"></script>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useMemo } = React;
+const { customers, employees } = window.AIWATCH_DATA;
+
+function App() {
+  const toasts = useToasts();
+  const [tab, setTab] = useState('all');     // segmented filter on customer table
+  const [view, setView] = useState('home');  // home | customers | employees
+
+  // detect anchor for tab nav
+  React.useEffect(() => {
+    const sync = () => {
+      const h = window.location.hash.replace('#','');
+      if (h === 'customers' || h === 'employees') setView(h);
+      else setView('home');
+    };
+    sync();
+    window.addEventListener('hashchange', sync);
+    return () => window.removeEventListener('hashchange', sync);
+  }, []);
+
+  return (
+    <div className="app">
+      <Sidebar role="admin" active={view === 'home' ? 'dashboard' : view} />
+      <div className="main">
+        <Topbar crumbs={['工作台', view === 'customers' ? '客户列表' : view === 'employees' ? '员工管理' : '总看板']} />
+        <div className="content">
+          {view === 'home' && <HomeView push={toasts.push} go={setView} />}
+          {view === 'customers' && <CustomersView push={toasts.push} />}
+          {view === 'employees' && <EmployeesView push={toasts.push} />}
+        </div>
+      </div>
+      {toasts.node}
+    </div>
+  );
+}
+
+/* ============== HOME / OVERVIEW ============== */
+function HomeView({ push, go }) {
+  const totalActive = customers.length;
+  const blockers = customers.reduce((s, c) => s + c.blockers, 0);
+  const newTasksThisWeek = 18;
+  const deliveriesThisWeek = 23;
+
+  return (
+    <>
+      <div className="section-head">
+        <div>
+          <div className="h1">总看板</div>
+          <div className="muted mono" style={{ fontSize: 12, marginTop: 4 }}>2026-05-04 · 周一 · 第 W18 周 · 最后同步 2 分钟前</div>
+        </div>
+        <div className="row gap-8">
+          <button className="btn"><Icon name="refresh" size={12}/> 同步</button>
+          <button className="btn"><Icon name="download" size={12}/> 导出周报</button>
+          <button className="btn btn--primary" onClick={() => go('customers')}><Icon name="plus" size={12}/> 新增客户</button>
+        </div>
+      </div>
+
+      {/* KPI row */}
+      <div className="grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 24 }}>
+        <KpiCard label="活跃客户数" value={totalActive} kind="cyan" delta={1} icon="folder" hint="本月 +1" />
+        <KpiCard label="本周新增任务" value={newTasksThisWeek} kind="purple" delta={3} icon="plus" hint="较上周" />
+        <KpiCard label="阻塞项" value={blockers} kind="danger" delta={-1} icon="flag" hint="需处理" />
+        <KpiCard label="本周交付物" value={deliveriesThisWeek} kind="cyan" delta={4} icon="box" hint="较上周" />
+      </div>
+
+      {/* Customer status table */}
+      <div className="card mb-24">
+        <div className="card__head">
+          <div className="row gap-12">
+            <span className="h2">客户状态速查</span>
+            <span className="badge">{customers.length}</span>
+          </div>
+          <div className="row gap-8">
+            <Segmented value={'all'} options={[{v:'all',l:'全部'},{v:'normal',l:'正常'},{v:'warn',l:'告警'},{v:'block',l:'阻塞'}]} onChange={()=>{}}/>
+            <button className="btn btn--sm"><Icon name="filter" size={11}/> 赛道</button>
+            <button className="btn btn--sm"><Icon name="user" size={11}/> 负责人</button>
+          </div>
+        </div>
+        <div className="card__body--flat">
+          <table className="table">
+            <thead>
+              <tr>
+                <th style={{width: 28}}>#</th>
+                <th>客户</th>
+                <th>赛道</th>
+                <th>周期</th>
+                <th>节奏</th>
+                <th>最紧急任务</th>
+                <th>负责人</th>
+                <th style={{textAlign:'center'}}>阻塞</th>
+                <th>下次会议</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {customers.map((c, i) => (
+                <tr key={c.id} onClick={() => window.location='customer-detail.html?id='+c.id}>
+                  <td className="muted-2 num">{String(i+1).padStart(2,'0')}</td>
+                  <td>
+                    <div className="row gap-8">
+                      <div className="avatar avatar--sm" style={{ background: 'var(--bg-elev)', color: 'var(--cyan)', border: '1px solid var(--border-cyan)' }}>{c.logo}</div>
+                      <div>
+                        <div style={{fontWeight: 500, color: 'var(--ink)'}}>{c.name}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td><span className="chip">{c.track}</span></td>
+                  <td className="num"><WeekBar week={c.week}/></td>
+                  <td><StatusPill status={c.status}/></td>
+                  <td style={{maxWidth: 280, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap'}}>{c.urgentTask}</td>
+                  <td className="mono" style={{fontSize: 12}}>{c.owner}</td>
+                  <td style={{textAlign: 'center'}} className="num">
+                    {c.blockers === 0 ? <span className="muted-2">—</span>
+                      : <span className="pri pri-p0">{c.blockers}</span>}
+                  </td>
+                  <td className="mono num" style={{fontSize: 12}}>{c.nextMeeting}</td>
+                  <td style={{color:'var(--ink-4)'}}><Icon name="chevron" size={12}/></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Bottom row */}
+      <div className="grid" style={{ gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+        <div className="card">
+          <div className="card__head">
+            <span className="h2">团队任务分布</span>
+            <span className="muted mono" style={{fontSize: 11}}>P0 / P1 / P2 当前持有量</span>
+          </div>
+          <div className="card__body">
+            <div className="col gap-12">
+              {employees.map(e => {
+                const total = e.p0 + e.p1 + e.p2;
+                const max = 16;
+                return (
+                  <div key={e.name} className="row gap-12" style={{alignItems: 'center'}}>
+                    <div className="avatar avatar--sm">{e.avatar}</div>
+                    <div style={{flex: 1, minWidth: 0}}>
+                      <div className="row" style={{justifyContent: 'space-between', marginBottom: 5}}>
+                        <span className="mono" style={{fontSize: 12}}>{e.name}</span>
+                        <span className="mono muted" style={{fontSize: 11}}>{e.customers} 客户 · {total} 任务</span>
+                      </div>
+                      <div className="row gap-4" style={{height: 6}}>
+                        <div style={{flex: e.p0, background: 'var(--danger)', borderRadius: 2, boxShadow: '0 0 6px rgba(255,77,79,0.4)'}}/>
+                        <div style={{flex: e.p1, background: 'var(--warning)', borderRadius: 2}}/>
+                        <div style={{flex: e.p2, background: 'var(--cyan)', borderRadius: 2}}/>
+                        <div style={{flex: Math.max(max-total,0), background: 'var(--bg-elev)', borderRadius: 2}}/>
+                      </div>
+                      <div className="row gap-12 mono" style={{fontSize: 10, color: 'var(--ink-3)', marginTop: 5}}>
+                        <span><span className="pri pri-p0" style={{padding:'0 4px'}}>P0</span> {e.p0}</span>
+                        <span><span className="pri pri-p1" style={{padding:'0 4px'}}>P1</span> {e.p1}</span>
+                        <span><span className="pri pri-p2" style={{padding:'0 4px'}}>P2</span> {e.p2}</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className="card">
+          <div className="card__head">
+            <span className="h2">本周交付物完成率</span>
+            <span className="muted mono" style={{fontSize: 11}}>截止周五 18:00</span>
+          </div>
+          <div className="card__body">
+            <div className="col gap-16">
+              {[
+                {name:'QVeris', planned: 8, done: 7, owner:'李逸航'},
+                {name:'IOSG', planned: 6, done: 6, owner:'林笙'},
+                {name:'天际资本', planned: 5, done: 3, owner:'陈默'},
+                {name:'InfiniSynapse', planned: 4, done: 1, owner:'李逸航'},
+                {name:'SkillBoss', planned: 5, done: 4, owner:'苏彦'},
+                {name:'Helio Labs', planned: 4, done: 4, owner:'陈默'},
+                {name:'Arclet AI', planned: 6, done: 3, owner:'李逸航'},
+              ].map(d => {
+                const pct = (d.done / d.planned) * 100;
+                const color = pct >= 90 ? 'var(--success)' : pct >= 60 ? 'var(--cyan)' : pct >= 40 ? 'var(--warning)' : 'var(--danger)';
+                return (
+                  <div key={d.name}>
+                    <div className="row" style={{justifyContent: 'space-between', marginBottom: 6}}>
+                      <span className="mono" style={{fontSize: 12}}>{d.name}</span>
+                      <span className="mono num" style={{fontSize: 11, color}}>{d.done}/{d.planned} · {Math.round(pct)}%</span>
+                    </div>
+                    <div className="bar"><div className="bar__fill" style={{width: pct+'%', background: color, boxShadow: `0 0 8px ${color}`}}/></div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function Segmented({ value, options, onChange }) {
+  return (
+    <div className="row" style={{ background: 'var(--bg-elev)', border: '1px solid var(--border)', borderRadius: 6, padding: 2 }}>
+      {options.map(o => (
+        <button key={o.v}
+          onClick={() => onChange(o.v)}
+          className="mono"
+          style={{
+            padding: '4px 10px',
+            border: 'none',
+            background: value === o.v ? 'var(--surface-2)' : 'transparent',
+            color: value === o.v ? 'var(--cyan)' : 'var(--ink-3)',
+            borderRadius: 4,
+            fontSize: 11,
+            cursor: 'pointer',
+          }}
+        >{o.l}</button>
+      ))}
+    </div>
+  );
+}
+
+function WeekBar({ week }) {
+  return (
+    <div className="row gap-4" style={{ alignItems: 'center' }}>
+      <div style={{ width: 64, height: 4, background: 'var(--bg-elev)', borderRadius: 2, overflow: 'hidden' }}>
+        <div style={{ width: (week/12)*100+'%', height: '100%', background: 'var(--cyan)', boxShadow: '0 0 6px var(--cyan)' }}/>
+      </div>
+      <span className="mono" style={{ fontSize: 11, color: 'var(--ink-2)', minWidth: 48 }}>W{week}/12</span>
+    </div>
+  );
+}
+
+/* ============== CUSTOMERS LIST ============== */
+function CustomersView({ push }) {
+  const [filter, setFilter] = useState('all');
+  const [trackFilter, setTrackFilter] = useState('all');
+  const tracks = ['all', ...Array.from(new Set(customers.map(c => c.track)))];
+
+  const filtered = customers.filter(c => {
+    if (filter !== 'all' && c.status !== filter) return false;
+    if (trackFilter !== 'all' && c.track !== trackFilter) return false;
+    return true;
+  });
+
+  return (
+    <>
+      <div className="section-head">
+        <div>
+          <div className="h1">客户列表</div>
+          <div className="muted mono" style={{ fontSize: 12, marginTop: 4 }}>共 {customers.length} 个客户 · 当前显示 {filtered.length}</div>
+        </div>
+        <div className="row gap-8">
+          <button className="btn"><Icon name="download" size={12}/> 导出</button>
+          <button className="btn btn--primary" onClick={() => push('已打开新增客户表单')}><Icon name="plus" size={12}/> 新增客户</button>
+        </div>
+      </div>
+
+      {/* Filter bar */}
+      <div className="card mb-16">
+        <div className="card__body--tight row gap-12" style={{flexWrap: 'wrap'}}>
+          <span className="label">状态</span>
+          <Segmented value={filter} options={[{v:'all',l:'全部'},{v:'normal',l:'正常'},{v:'warn',l:'告警'},{v:'block',l:'阻塞'}]} onChange={setFilter}/>
+          <div style={{width: 1, height: 16, background: 'var(--border)'}}/>
+          <span className="label">赛道</span>
+          <div className="row gap-4" style={{flexWrap:'wrap'}}>
+            {tracks.map(t => (
+              <span key={t}
+                onClick={() => setTrackFilter(t)}
+                className={`chip ${trackFilter === t ? 'chip--active' : ''}`}
+                style={{cursor:'pointer'}}>
+                {t === 'all' ? '全部赛道' : t}
+              </span>
+            ))}
+          </div>
+          <div style={{flex: 1}}/>
+          <span className="label">负责人</span>
+          <select className="select" style={{width: 120, padding: '4px 28px 4px 10px', fontSize: 11}}>
+            <option>全部</option>
+            {employees.map(e => <option key={e.name}>{e.name}</option>)}
+          </select>
+        </div>
+      </div>
+
+      {/* Customer cards */}
+      <div className="grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
+        {filtered.map(c => (
+          <a key={c.id} href={`customer-detail.html?id=${c.id}`} className="card card--clickable" style={{padding: 18, textDecoration: 'none', display: 'flex', flexDirection: 'column', gap: 14, color: 'inherit'}}>
+            <div className="row" style={{justifyContent: 'space-between'}}>
+              <div className="row gap-12">
+                <div style={{ width: 40, height: 40, background: 'var(--bg-elev)', border: '1px solid var(--border-cyan)', color: 'var(--cyan)', borderRadius: 8, display: 'grid', placeItems: 'center', fontFamily: 'var(--font-mono)', fontWeight: 600, fontSize: 14 }}>{c.logo}</div>
+                <div>
+                  <div className="mono" style={{fontWeight: 600, fontSize: 14, marginBottom: 2}}>{c.name}</div>
+                  <div className="muted mono" style={{fontSize: 11}}>{c.track}</div>
+                </div>
+              </div>
+              <StatusPill status={c.status}/>
+            </div>
+
+            <div className="muted" style={{fontSize: 12, lineHeight: 1.6, minHeight: 38, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden'}}>{c.summary}</div>
+
+            <WeekBar week={c.week}/>
+
+            <div className="row" style={{justifyContent: 'space-between', paddingTop: 12, borderTop: '1px solid var(--border)'}}>
+              <div className="row gap-8">
+                <div className="avatar avatar--sm">{c.owner.slice(0,1)}</div>
+                <span className="mono muted" style={{fontSize: 11}}>{c.owner}</span>
+              </div>
+              <div className="row gap-8 mono" style={{fontSize: 11, color: 'var(--ink-3)'}}>
+                {c.blockers > 0 && <span style={{color: 'var(--danger)'}}>● {c.blockers} 阻塞</span>}
+                <span>下次 {c.nextMeeting.slice(5)}</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </>
+  );
+}
+
+/* ============== EMPLOYEES ============== */
+function EmployeesView({ push }) {
+  return (
+    <>
+      <div className="section-head">
+        <div>
+          <div className="h1">员工管理</div>
+          <div className="muted mono" style={{ fontSize: 12, marginTop: 4 }}>{employees.length} 名团队成员</div>
+        </div>
+        <button className="btn btn--primary" onClick={() => push('已发送邀请邮件')}><Icon name="plus" size={12}/> 邀请员工</button>
+      </div>
+
+      <div className="card">
+        <div className="card__body--flat">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>姓名</th><th>邮箱</th><th>负责客户数</th><th>本周任务</th>
+                <th>P0/P1/P2</th><th>加入日期</th><th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {employees.map(e => (
+                <tr key={e.name}>
+                  <td>
+                    <div className="row gap-8">
+                      <div className="avatar avatar--sm">{e.avatar}</div>
+                      <span style={{color: 'var(--ink)', fontWeight: 500}}>{e.name}</span>
+                    </div>
+                  </td>
+                  <td className="mono" style={{fontSize: 12, color: 'var(--ink-3)'}}>{e.email}</td>
+                  <td className="num">{e.customers}</td>
+                  <td className="num">{e.p0 + e.p1 + e.p2}</td>
+                  <td>
+                    <div className="row gap-4 mono" style={{fontSize: 11}}>
+                      <span style={{color:'var(--danger)'}}>{e.p0}</span><span className="muted-2">/</span>
+                      <span style={{color:'var(--warning)'}}>{e.p1}</span><span className="muted-2">/</span>
+                      <span style={{color:'var(--cyan)'}}>{e.p2}</span>
+                    </div>
+                  </td>
+                  <td className="mono num" style={{fontSize: 12}}>{e.joined}</td>
+                  <td>
+                    <div className="row gap-4">
+                      <button className="btn btn--sm btn--ghost"><Icon name="edit" size={11}/></button>
+                      <button className="btn btn--sm btn--ghost"><Icon name="settings" size={11}/></button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

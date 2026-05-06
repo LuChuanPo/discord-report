@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>客户详情 · AIWATCH</title>
+<link rel="stylesheet" href="shared/tokens.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="shared/data.js"></script>
+<script type="text/babel" src="shared/icons.js"></script>
+<script type="text/babel" src="shared/components.jsx"></script>
+<style>
+  .detail-hero {
+    background: linear-gradient(180deg, rgba(0,229,255,0.04), transparent 80%);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 24px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .detail-hero::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    opacity: 0.4;
+  }
+  .meeting-row {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 14px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .meeting-row:last-child { border-bottom: none; }
+  .meeting-row:hover { background: var(--bg-elev); }
+  .meeting-no {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--cyan);
+    border: 1px solid var(--border-cyan);
+    background: var(--cyan-glow);
+    padding: 3px 6px;
+    border-radius: 4px;
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+  .todo-row {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    background: var(--bg-elev);
+    margin-bottom: 8px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .todo-row:hover { border-color: var(--border-strong); }
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+  }
+  .profile-left {
+    border-right: 1px solid var(--border);
+    padding: 18px;
+  }
+  .profile-left .field-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border);
+    align-items: center;
+  }
+  .profile-left .field-row:last-child { border-bottom: none; }
+  .profile-left .field-row .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.06em; text-transform: uppercase; }
+  .profile-left .field-row .val { font-size: 12px; color: var(--ink); }
+
+  .profile-right { padding: 18px; }
+  .reach-line { display: grid; grid-template-columns: 100px 1fr 60px; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--border); }
+  .reach-line:last-child { border-bottom: none; }
+  .reach-line .name { font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); }
+  .reach-line .pct { font-family: var(--font-mono); font-size: 11px; text-align: right; color: var(--cyan); }
+
+  .needs-card { background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--r-sm); padding: 14px 16px; margin-bottom: 10px; }
+  .needs-card:hover { border-color: var(--border-strong); }
+
+  .ai-stream-bubble {
+    background: linear-gradient(180deg, var(--purple-glow) 0%, transparent 60%);
+    border: 1px solid var(--border-purple);
+    border-radius: var(--r);
+    padding: 16px 18px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .ai-stream-bubble strong { color: var(--purple); font-weight: 600; }
+
+  .quote {
+    border-left: 2px solid var(--cyan);
+    padding: 6px 12px;
+    margin: 8px 0;
+    font-style: italic;
+    color: var(--ink-2);
+    font-size: 12px;
+    background: rgba(0,229,255,0.03);
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+const { customers, meetings, todos, valueDeliveries, customerNeeds } = window.AIWATCH_DATA;
+
+function App() {
+  const toasts = useToasts();
+  const id = new URLSearchParams(location.search).get('id') || 'qveris';
+  const c = customers.find(x => x.id === id) || customers[0];
+  const [tab, setTab] = useState('overview');
+  const [aiOpen, setAiOpen] = useState(null); // 'meeting' | 'profile' | null
+  const [shareOpen, setShareOpen] = useState(false);
+
+  return (
+    <div className="app">
+      <Sidebar role="admin" active="customers" />
+      <div className="main">
+        <Topbar crumbs={['工作台', '客户列表', c.name]}/>
+        <div className="content">
+
+          {/* Hero */}
+          <div className="detail-hero">
+            <div className="row" style={{justifyContent:'space-between', flexWrap:'wrap', gap: 16}}>
+              <div className="row gap-16">
+                <div style={{width:56, height: 56, background:'var(--bg-elev)', border:'1px solid var(--border-cyan)', color:'var(--cyan)', borderRadius: 10, display:'grid', placeItems:'center', fontFamily:'var(--font-mono)', fontWeight: 700, fontSize: 20, boxShadow: '0 0 16px rgba(0,229,255,0.2)'}}>{c.logo}</div>
+                <div>
+                  <div className="row gap-12" style={{alignItems:'center', marginBottom: 6}}>
+                    <span className="h1" style={{fontSize: 22}}>{c.name}</span>
+                    <span className="chip">{c.track}</span>
+                    <StatusPill status={c.status}/>
+                  </div>
+                  <div className="muted" style={{fontSize: 13, maxWidth: 720}}>{c.summary}</div>
+                  <div className="row gap-16 mono mt-8" style={{fontSize: 11, color: 'var(--ink-3)'}}>
+                    <span>负责人 · {c.owner}</span>
+                    <span>·</span>
+                    <span>微信 {c.wechat}</span>
+                    <span>·</span>
+                    <span>客户 ID · CUST_{c.id.toUpperCase()}</span>
+                  </div>
+                </div>
+              </div>
+              <div className="row gap-8" style={{alignSelf: 'flex-start'}}>
+                <button className="btn btn--purple" onClick={() => setAiOpen('meeting')}>
+                  <Icon name="sparkles" size={12}/> AI 会议分析
+                </button>
+                <button className="btn btn--purple" onClick={() => setAiOpen('profile')}>
+                  <Icon name="sparkles" size={12}/> AI 客户画像
+                </button>
+                <button className="btn" onClick={() => setShareOpen(true)}>
+                  <Icon name="link" size={12}/> 生成对外链接
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* KPI */}
+          <div className="grid" style={{gridTemplateColumns: 'repeat(4, 1fr)', gap: 12, marginBottom: 16}}>
+            <KpiCard label="当前周期" value={`W${c.week}`} kind="cyan" hint={`/ 12 周`} icon="clock"/>
+            <KpiCard label="待办任务" value={todos.length} kind="warn" delta={-2} icon="check"/>
+            <KpiCard label="上次会议" value={meetings[0].date.slice(5)} kind="purple" icon="calendar" hint={`${meetings.length} 次累计`}/>
+            <KpiCard label="新增洞察" value="14" kind="cyan" delta={5} icon="sparkles" hint="本月"/>
+          </div>
+
+          {/* Tabs */}
+          <div className="tabs">
+            {[
+              {v:'overview', l:'总览'},
+              {v:'comm',     l:'沟通策略'},
+              {v:'analysis', l:'深度分析'},
+              {v:'history',  l:'历史记录'},
+            ].map(t => (
+              <div key={t.v} className={`tab ${tab===t.v?'tab--active':''}`} onClick={()=>setTab(t.v)}>{t.l}</div>
+            ))}
+            <div style={{flex:1}}/>
+            <div className="row gap-8" style={{paddingBottom: 6}}>
+              <button className="btn btn--sm"><Icon name="edit" size={11}/> 编辑客户信息</button>
+            </div>
+          </div>
+
+          {tab === 'overview' && <OverviewTab c={c} push={toasts.push}/>}
+          {tab === 'comm'     && <CommTab/>}
+          {tab === 'analysis' && <AnalysisTab/>}
+          {tab === 'history'  && <HistoryTab/>}
+
+        </div>
+      </div>
+
+      {/* AI modals */}
+      <AIModal kind={aiOpen} customer={c} onClose={() => setAiOpen(null)} />
+      <ShareModal open={shareOpen} customer={c} onClose={() => setShareOpen(false)} push={toasts.push}/>
+      {toasts.node}
+    </div>
+  );
+}
+
+/* === Overview tab === */
+function OverviewTab({ c, push }) {
+  return (
+    <>
+      <div className="card mb-16">
+        <div className="card__head">
+          <span className="h2">12 周 SOP 进度</span>
+          <span className="muted mono" style={{fontSize: 11}}>开始 2026-03-22 · 预计交付 2026-06-14</span>
+        </div>
+        <div className="card__body">
+          <SOPProgress week={c.week}/>
+          <div className="muted mono mt-16" style={{fontSize: 11}}>
+            当前位于「质量提升」阶段 W{c.week} · 下一节点 W{c.week+1} · 重点:Webinar 选题方案 + Pitch Deck V3
+          </div>
+        </div>
+      </div>
+
+      <div className="grid" style={{gridTemplateColumns: '1fr 380px', gap: 12, marginBottom: 16}}>
+        {/* Meetings */}
+        <div className="card">
+          <div className="card__head">
+            <div className="row gap-12"><span className="h2">会议记录</span><span className="badge">{meetings.length}</span></div>
+            <button className="btn btn--sm btn--ghost"><Icon name="plus" size={11}/> 新增会议</button>
+          </div>
+          <div className="card__body--flat">
+            {meetings.slice(0, 5).map(m => (
+              <div key={m.no} className="meeting-row">
+                <div className="meeting-no">{m.no}</div>
+                <div>
+                  <div className="row gap-8" style={{marginBottom: 4}}>
+                    <span style={{fontSize: 13, fontWeight: 500, color: 'var(--ink)'}}>{m.title}</span>
+                  </div>
+                  <div className="muted" style={{fontSize: 12, lineHeight: 1.5}}>{m.summary}</div>
+                </div>
+                <div style={{textAlign: 'right'}}>
+                  <div className="mono num" style={{fontSize: 12}}>{m.date.slice(5)}</div>
+                  <div className="muted-2 mono" style={{fontSize: 10, marginTop: 2}}>{m.duration}min</div>
+                </div>
+              </div>
+            ))}
+            <div style={{padding: '12px 16px', borderTop: '1px solid var(--border)', textAlign: 'center'}}>
+              <button className="btn btn--ghost btn--sm">展开全部 {meetings.length} 次会议 →</button>
+            </div>
+          </div>
+        </div>
+
+        {/* Todos */}
+        <div className="card">
+          <div className="card__head">
+            <span className="h2">下次待办</span>
+            <span className="muted mono" style={{fontSize: 11}}>{todos.length} 项</span>
+          </div>
+          <div className="card__body">
+            {todos.map((t, i) => (
+              <div key={i} className="todo-row">
+                <span className={`pri pri-${t.pri.toLowerCase()}`}>{t.pri}</span>
+                <div style={{flex: 1, minWidth: 0}}>
+                  <div style={{fontSize: 12.5, color: 'var(--ink)', marginBottom: 4}}>{t.task}</div>
+                  <div className="row gap-8 mono" style={{fontSize: 10, color: 'var(--ink-3)'}}>
+                    <span><Icon name="user" size={10} style={{verticalAlign:'middle'}}/> {t.owner}</span>
+                    <span>·</span>
+                    <span>{t.due}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <button className="btn btn--ghost btn--sm btn--block mt-8" onClick={() => push('已添加待办,已分配李逸航')}><Icon name="plus" size={11}/> 添加待办</button>
+          </div>
+        </div>
+      </div>
+
+      {/* Customer profile */}
+      <div className="card mb-16">
+        <div className="card__head">
+          <span className="h2">客户画像</span>
+          <span className="muted mono" style={{fontSize: 11}}>来源 M·09 + M·07 + 客户问卷 · 最后更新 2026-04-26</span>
+        </div>
+        <div className="profile-grid">
+          <div className="profile-left">
+            <div className="field-row"><div className="lbl">团队</div><div className="val">{c.team}</div></div>
+            <div className="field-row"><div className="lbl">融资</div><div className="val">{c.funding}</div></div>
+            <div className="field-row"><div className="lbl">合同</div><div className="val mono" style={{fontSize: 11}}>12 周 · ¥288,000 · 2026-03-22 起</div></div>
+            <div className="field-row"><div className="lbl">营收</div><div className="val">{c.revenue}</div></div>
+            <div className="field-row"><div className="lbl">三大差距</div><div className="val" style={{fontSize: 12}}>北美渠道 / 内容产能 / 融资材料</div></div>
+            <div className="field-row"><div className="lbl">开始</div><div className="val mono" style={{fontSize: 11}}>2026-03-22</div></div>
+          </div>
+          <div className="profile-right">
+            <div className="row mb-8" style={{justifyContent: 'space-between'}}>
+              <span className="label" style={{color: 'var(--purple)'}}>目标用户</span>
+              <span className="badge badge--purple">3 类 · 已验证 2</span>
+            </div>
+            <div className="muted" style={{fontSize: 12, lineHeight: 1.6, marginBottom: 16}}>
+              北美 mid-market SaaS 公司,200—800 人规模,有专门的 Knowledge Manager 或 Ops 角色。已验证两类:① B2B SaaS · 已签 2 单 ② Vertical AI · 进行中
+            </div>
+
+            <div className="row mb-8" style={{justifyContent: 'space-between'}}>
+              <span className="label" style={{color: 'var(--purple)'}}>触达计划</span>
+              <span className="muted mono" style={{fontSize: 11}}>三条线并行</span>
+            </div>
+            <div className="reach-line">
+              <span className="name">A · LinkedIn</span>
+              <div className="bar"><div className="bar__fill" style={{width: '78%'}}/></div>
+              <span className="pct">78%</span>
+            </div>
+            <div className="reach-line">
+              <span className="name">B · 冷邮件</span>
+              <div className="bar"><div className="bar__fill bar__fill--purple" style={{width: '54%'}}/></div>
+              <span className="pct" style={{color:'var(--purple)'}}>54%</span>
+            </div>
+            <div className="reach-line">
+              <span className="name">C · Webinar</span>
+              <div className="bar"><div className="bar__fill bar__fill--warn" style={{width: '23%'}}/></div>
+              <span className="pct" style={{color:'var(--warning)'}}>23%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Customer needs */}
+      <div className="card">
+        <div className="card__head">
+          <div className="row gap-12">
+            <span className="h2">核心需求</span>
+            <span className="muted mono" style={{fontSize: 11}}>近 3 次会议提炼</span>
+          </div>
+          <button className="btn btn--sm btn--ghost"><Icon name="filter" size={11}/> 筛选</button>
+        </div>
+        <div className="card__body">
+          {customerNeeds.map((n, i) => (
+            <div key={i} className="needs-card">
+              <div className="row" style={{justifyContent: 'space-between', marginBottom: 6}}>
+                <div className="row gap-8">
+                  <span className={`badge ${n.time === '本周' ? 'badge--danger' : n.time === '本月' ? 'badge--warn' : 'badge--cyan'}`}>{n.time}</span>
+                  <span style={{fontWeight: 500, color: 'var(--ink)'}}>{n.title}</span>
+                </div>
+                <span className="mono muted-2" style={{fontSize: 10}}>来源 {n.source}</span>
+              </div>
+              <div className="muted" style={{fontSize: 12, lineHeight: 1.6, paddingLeft: 4}}>{n.detail}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+function CommTab() {
+  return (
+    <div className="card">
+      <div className="card__body">
+        <div className="h2 mb-16">沟通策略</div>
+        <div className="muted" style={{lineHeight: 1.7}}>
+          <p>· <strong style={{color:'var(--cyan)'}}>定调:</strong>客户为强经验型创始人,沟通需要高密度信息 + 数据论证,避免空泛建议。</p>
+          <p>· <strong style={{color:'var(--cyan)'}}>节奏:</strong>每周一次例会(60min),周中可异步 Slack。重大决策必须落到会议纪要。</p>
+          <p>· <strong style={{color:'var(--cyan)'}}>禁区:</strong>不在公开渠道讨论 Series A 进展;客户原话引用前必须取得授权。</p>
+          <p>· <strong style={{color:'var(--cyan)'}}>触发点:</strong>每月 1 号 LP 月报后客户情绪敏感,该周避免提出新议题。</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+function AnalysisTab() {
+  return <div className="empty"><div className="empty__icon">▦</div>深度分析模块将在 W6 周末解锁<br/><span className="muted-2">需累计 ≥ 8 次会议数据</span></div>;
+}
+function HistoryTab() {
+  return <div className="empty"><div className="empty__icon">⏱</div>完整历史记录(全 12 次会议、48 个交付物、126 条画像更新)<br/><button className="btn btn--sm mt-8">展开历史 →</button></div>;
+}
+
+/* === AI streaming modal === */
+function AIModal({ kind, customer, onClose }) {
+  const [text, setText] = useState('');
+  const [done, setDone] = useState(false);
+
+  const fullText = kind === 'meeting' ? (
+    `已分析 ${customer.name} 累计 ${meetings.length} 次会议、${meetings.reduce((s,m)=>s+m.duration,0)} 分钟会议时长。
+
+【近期主题密度】
+最近 3 次会议高频出现:Pitch Deck V3、Webinar 选题、冷邮件版本 B、ICP mid-market 路径。客户对融资节奏的关注度从 W4 的 12% 上升到 W6 的 38%。
+
+【决策风险信号】
+M·11 与 M·12 之间出现一次决策反复:Webinar 选题方向 4/22 定为「行业趋势」,5/2 改为「客户案例驱动」。建议在 V3 评审前与客户对齐主线,避免再次反复。
+
+【推荐动作】
+1. 5/9 前完成 Pitch Deck V3,重点修复 TAM/SAM 数据来源问题
+2. 启动 Webinar 选题第一稿,在 5/12 例会前发送
+3. 冷邮件版本 B 引入主题轮换,避免 4 周后衰减
+4. 安排一次 30min 跨部门同步,处理 LP 月报后的情绪窗口
+
+置信度 0.84 · 基于 12 次会议 + 48 条行动项 + 126 条画像更新`
+  ) : (
+    `已为 ${customer.name} 重建客户画像 v3.2,共更新 14 个字段。
+
+【角色定位】
+${customer.team} · ${customer.funding}。创始人为强经验型,对内容质量敏感度高,对节奏稳定性敏感度低。决策链条短(创始人 + 1 位合伙人)。
+
+【核心动机栈】
+1. 短期(0—3 个月):完成 Series A 融资,需要可验证的市场牵引数据
+2. 中期(3—9 个月):建立北美 mid-market 客户漏斗,目标 ARR ¥800w
+3. 长期:在「企业知识资产化」这一品类建立认知份额
+
+【内容偏好】
+长文 > Thread > 视频。客户原话:「我希望我们的内容是可以被引用的,而不是消费完就走的。」
+
+【当前阻力】
+冷邮件回复率虽达 4.8%,但 mid-market 客户线索质量参差;Webinar 产能不足。建议把 ICP 二次访谈成果直接转化为 Webinar 案例库。
+
+置信度 0.91 · 基于近 30 天会议 + 47 条客户原话引用`
+  );
+
+  // Stream typing
+  useEffect(() => {
+    if (!kind) { setText(''); setDone(false); return; }
+    setText('');
+    setDone(false);
+    let i = 0;
+    const tick = () => {
+      i += Math.floor(Math.random() * 4) + 2;
+      if (i >= fullText.length) {
+        setText(fullText);
+        setDone(true);
+        return;
+      }
+      setText(fullText.slice(0, i));
+      timer = setTimeout(tick, 18 + Math.random() * 24);
+    };
+    let timer = setTimeout(tick, 200);
+    return () => clearTimeout(timer);
+  }, [kind]);
+
+  if (!kind) return null;
+
+  return (
+    <Modal open onClose={onClose} title={
+      <span className="row gap-8" style={{color: 'var(--purple)'}}>
+        <Icon name="sparkles" size={14}/>
+        {kind === 'meeting' ? 'AI 会议分析' : 'AI 客户画像'}
+      </span>
+    } footer={
+      <>
+        <button className="btn btn--ghost" onClick={onClose}>关闭</button>
+        <button className="btn btn--purple" disabled={!done}><Icon name="download" size={12}/> 保存到客户文档</button>
+        <button className="btn btn--primary" disabled={!done}>生成行动项</button>
+      </>
+    }>
+      <div className="row gap-8 mb-16" style={{fontSize: 11, color: 'var(--ink-3)'}}>
+        <span className="badge badge--purple badge--dot">claude-haiku-4.5 · streaming</span>
+        <span className="mono">已分析 {meetings.length} 次会议 · {Object.keys(customerNeeds).length} 条需求</span>
+      </div>
+      <div className="ai-stream-bubble">
+        <div style={{whiteSpace: 'pre-wrap'}} className={done ? '' : 'cursor-blink'}>{text}</div>
+      </div>
+    </Modal>
+  );
+}
+
+/* === Share link modal === */
+function ShareModal({ open, customer, onClose, push }) {
+  const token = 'cb' + customer.id + '_x9k2m4p7';
+  const url = `https://aiwatch.io/c/${token}`;
+  const copy = () => {
+    navigator.clipboard?.writeText(url);
+    push('已复制对外链接到剪贴板');
+  };
+  return (
+    <Modal open={open} onClose={onClose} title={
+      <span className="row gap-8"><Icon name="link" size={14} style={{color:'var(--cyan)'}}/> 客户对外链接</span>
+    } footer={
+      <>
+        <button className="btn btn--ghost" onClick={onClose}>关闭</button>
+        <button className="btn btn--primary" onClick={copy}><Icon name="link" size={12}/> 复制链接</button>
+      </>
+    }>
+      <p className="muted mb-16" style={{fontSize: 13}}>
+        生成后客户通过此链接访问对外白板,无需注册。链接含私密 token,可随时撤销并重新生成。
+      </p>
+      <div className="row gap-8 mb-16" style={{padding: 12, background: 'var(--bg-elev)', border: '1px solid var(--border-cyan)', borderRadius: 6}}>
+        <code className="mono" style={{flex: 1, fontSize: 12, color: 'var(--cyan)', overflow: 'auto'}}>{url}</code>
+        <a href="customer-board.html" target="_blank" className="btn btn--sm"><Icon name="eye" size={11}/> 预览</a>
+      </div>
+      <div className="row gap-12 mb-8" style={{fontSize: 12}}>
+        <label className="row gap-6"><input type="checkbox" defaultChecked style={{accentColor:'var(--cyan)'}}/> 显示 12 周 SOP</label>
+        <label className="row gap-6"><input type="checkbox" defaultChecked style={{accentColor:'var(--cyan)'}}/> 显示交付物时间线</label>
+        <label className="row gap-6"><input type="checkbox" defaultChecked style={{accentColor:'var(--cyan)'}}/> 显示会议摘要</label>
+        <label className="row gap-6"><input type="checkbox" style={{accentColor:'var(--cyan)'}}/> 允许客户下载交付物</label>
+      </div>
+      <div className="row gap-12" style={{fontSize: 12, marginTop: 16}}>
+        <span className="muted">链接有效期</span>
+        <select className="select" style={{width: 160, padding: '4px 28px 4px 10px', fontSize: 11}}>
+          <option>合作期内有效(默认)</option>
+          <option>30 天</option>
+          <option>7 天</option>
+          <option>永久</option>
+        </select>
+      </div>
+    </Modal>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

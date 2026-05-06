@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数据录入 · AIWATCH</title>
+<link rel="stylesheet" href="shared/tokens.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="shared/data.js"></script>
+<script type="text/babel" src="shared/icons.js"></script>
+<script type="text/babel" src="shared/components.jsx"></script>
+<style>
+  .entry-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .type-list { display: flex; flex-direction: column; gap: 4px; }
+  .type-item {
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    background: var(--bg-elev);
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    transition: all 0.12s;
+  }
+  .type-item:hover { border-color: var(--border-strong); background: var(--surface-2); }
+  .type-item--active {
+    border-color: var(--cyan);
+    background: var(--cyan-glow);
+    box-shadow: 0 0 0 1px var(--cyan-glow), 0 0 16px rgba(0,229,255,0.06);
+  }
+  .type-item--active .type-item__num { color: var(--cyan); }
+  .type-item__num { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); width: 20px; }
+  .type-item__label { font-family: var(--font-mono); font-size: 12px; color: var(--ink); }
+  .type-item__hint { font-size: 10px; color: var(--ink-3); margin-top: 2px; }
+  .type-item--active .type-item__label { color: var(--cyan); }
+
+  .form-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r); }
+  .form-card__head { padding: 18px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .form-card__body { padding: 20px; display: grid; gap: 16px; }
+  .form-card__foot { padding: 14px 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+
+  .multi-row {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    display: grid;
+    grid-template-columns: 1fr 140px 110px 70px 30px;
+    gap: 8px;
+    align-items: center;
+  }
+  .multi-row .input, .multi-row .select { padding: 6px 10px; font-size: 12px; }
+  .multi-row__remove {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--ink-3);
+    width: 28px; height: 28px;
+    border-radius: 4px;
+    display: grid; place-items: center;
+    cursor: pointer;
+  }
+  .multi-row__remove:hover { color: var(--danger); border-color: var(--danger); }
+
+  .upload-zone {
+    border: 1.5px dashed var(--border-strong);
+    border-radius: var(--r);
+    padding: 24px;
+    text-align: center;
+    color: var(--ink-3);
+    background: var(--bg-elev);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: var(--font-mono);
+  }
+  .upload-zone:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-glow); }
+  .upload-zone__icon { font-size: 26px; margin-bottom: 6px; }
+
+  .image-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+  .image-tile {
+    aspect-ratio: 4/3;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    color: var(--ink-3);
+    font-family: var(--font-mono);
+    font-size: 10px;
+  }
+  .image-tile__rm {
+    position: absolute; top: 4px; right: 4px;
+    background: rgba(0,0,0,0.7);
+    border: 1px solid var(--border);
+    width: 22px; height: 22px; border-radius: 4px;
+    display: grid; place-items: center;
+    color: var(--ink-2);
+    cursor: pointer;
+  }
+  .image-tile__rm:hover { color: var(--danger); }
+  .image-tile__caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 4px 6px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    color: var(--ink);
+    font-size: 10px;
+    text-align: left;
+  }
+
+  .preview-side {
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 14px 16px;
+    height: fit-content;
+    position: sticky;
+    top: 70px;
+  }
+  .preview-side h4 { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 10px; }
+
+  .recent-row {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 11px;
+  }
+  .recent-row:last-child { border-bottom: none; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useRef } = React;
+const { customers, employees } = window.AIWATCH_DATA;
+
+const ENTRY_TYPES = [
+  { v: 'meeting',  label: '会议记录',     hint: '/ Meeting Note', icon: 'note' },
+  { v: 'task',     label: '待办任务',     hint: '/ Task',          icon: 'check' },
+  { v: 'progress', label: '客户进度更新', hint: '/ SOP Progress',  icon: 'chart' },
+  { v: 'value',    label: '客户价值产出', hint: '/ Value Output',  icon: 'box' },
+  { v: 'profile',  label: '客户画像更新', hint: '/ Profile Patch', icon: 'user' },
+];
+
+function App() {
+  const toasts = useToasts();
+  const [type, setType] = useState('value'); // value 是用户重点关注的:这周为客户做了什么
+
+  return (
+    <div className="app">
+      <Sidebar role="employee" active="entry"/>
+      <div className="main">
+        <Topbar crumbs={['工作台', '数据录入', ENTRY_TYPES.find(t=>t.v===type).label]}/>
+        <div className="content">
+          <div className="section-head">
+            <div>
+              <div className="h1">数据录入</div>
+              <div className="muted mono" style={{fontSize: 12, marginTop: 4}}>
+                录入的所有数据会自动同步到客户对外白板 · 你今天已录入 <span style={{color:'var(--cyan)'}}>3</span> 条
+              </div>
+            </div>
+            <div className="row gap-8">
+              <button className="btn"><Icon name="clock" size={12}/> 历史录入</button>
+              <button className="btn"><Icon name="book" size={12}/> 录入规范</button>
+            </div>
+          </div>
+
+          <div className="entry-grid">
+            <div className="type-list">
+              <div className="label" style={{padding: '0 6px 8px'}}>录入类型</div>
+              {ENTRY_TYPES.map((t, i) => (
+                <div key={t.v} className={`type-item ${type === t.v ? 'type-item--active' : ''}`} onClick={() => setType(t.v)}>
+                  <span className="type-item__num">{String(i+1).padStart(2,'0')}</span>
+                  <div style={{flex: 1}}>
+                    <div className="type-item__label">{t.label}</div>
+                    <div className="type-item__hint">{t.hint}</div>
+                  </div>
+                  {type === t.v && <Icon name="chevron" size={12} style={{color: 'var(--cyan)'}}/>}
+                </div>
+              ))}
+
+              <div className="preview-side mt-16">
+                <h4>本周录入概览</h4>
+                <div className="recent-row"><span className="muted">会议记录</span><span className="mono num" style={{color:'var(--cyan)'}}>4</span></div>
+                <div className="recent-row"><span className="muted">待办任务</span><span className="mono num" style={{color:'var(--cyan)'}}>9</span></div>
+                <div className="recent-row"><span className="muted">价值产出</span><span className="mono num" style={{color:'var(--purple)'}}>6</span></div>
+                <div className="recent-row"><span className="muted">画像更新</span><span className="mono num">3</span></div>
+                <div className="recent-row"><span className="muted">进度更新</span><span className="mono num">2</span></div>
+              </div>
+            </div>
+
+            <div>
+              {type === 'meeting'  && <MeetingForm push={toasts.push}/>}
+              {type === 'task'     && <TaskForm push={toasts.push}/>}
+              {type === 'progress' && <ProgressForm push={toasts.push}/>}
+              {type === 'value'    && <ValueForm push={toasts.push}/>}
+              {type === 'profile'  && <ProfileForm push={toasts.push}/>}
+            </div>
+          </div>
+        </div>
+      </div>
+      {toasts.node}
+    </div>
+  );
+}
+
+/* ============ Forms ============ */
+
+function FormShell({ title, badge, onSave, onSubmit, children, lastSaved }) {
+  return (
+    <div className="form-card">
+      <div className="form-card__head">
+        <div>
+          <div className="row gap-8" style={{marginBottom: 4}}>
+            <span className="h2">{title}</span>
+            {badge && <span className="badge badge--cyan">{badge}</span>}
+          </div>
+          <div className="muted mono" style={{fontSize: 11}}>{lastSaved || '尚未保存草稿'}</div>
+        </div>
+        <div className="row gap-8">
+          <span className="badge"><span style={{width:5,height:5,borderRadius:'50%',background:'var(--success)',display:'inline-block'}}/>自动校验已开启</span>
+        </div>
+      </div>
+      <div className="form-card__body">{children}</div>
+      <div className="form-card__foot">
+        <span className="muted mono" style={{fontSize: 11}}>提交后自动同步到 客户对外白板 + 客户详情页</span>
+        <div className="row gap-8">
+          <button className="btn" onClick={onSave}>保存草稿</button>
+          <button className="btn btn--primary" onClick={onSubmit}>提交 →</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function CustomerSelect({ value, onChange }) {
+  return (
+    <div className="field">
+      <label className="field__label">客户 <span className="req">*</span></label>
+      <select className="select" value={value} onChange={(e) => onChange(e.target.value)}>
+        {customers.map(c => <option key={c.id} value={c.id}>{c.name} · {c.track}</option>)}
+      </select>
+    </div>
+  );
+}
+
+function MeetingForm({ push }) {
+  const [customer, setCustomer] = useState('qveris');
+  const [actions, setActions] = useState([
+    { task: '完成 Pitch Deck V3 修订',         owner: '李逸航', due: '2026-05-09', pri: 'P0' },
+    { task: '准备 5 月 Webinar 选题第一稿',   owner: '陈默',   due: '2026-05-08', pri: 'P0' },
+  ]);
+  const [decisions, setDecisions] = useState(['Webinar 选题改为客户案例驱动', 'LinkedIn 减频但加深度']);
+  const addAction = () => setActions(a => [...a, { task: '', owner: '李逸航', due: '', pri: 'P1' }]);
+  const updateAction = (i, k, v) => setActions(a => a.map((x, idx) => idx === i ? {...x, [k]: v} : x));
+  const removeAction = (i) => setActions(a => a.filter((_, idx) => idx !== i));
+
+  return (
+    <FormShell title="会议记录" badge="MEETING" lastSaved="草稿自动保存于 14:32"
+      onSave={() => push('已保存草稿', 'success')}
+      onSubmit={() => push('会议记录已提交 · M·13', 'success')}>
+      <div className="grid-2">
+        <CustomerSelect value={customer} onChange={setCustomer}/>
+        <div className="field">
+          <label className="field__label">会议日期 <span className="req">*</span></label>
+          <input className="input" type="date" defaultValue="2026-05-04"/>
+        </div>
+      </div>
+      <div className="grid-2">
+        <div className="field">
+          <label className="field__label">会议时长 (分钟) <span className="req">*</span></label>
+          <input className="input" type="number" defaultValue="60"/>
+        </div>
+        <div className="field">
+          <label className="field__label">会议主题 <span className="req">*</span></label>
+          <input className="input" defaultValue="W6 例会:Pitch Deck V3 评审 + Webinar 节奏"/>
+        </div>
+      </div>
+
+      <div className="field">
+        <label className="field__label">参会人(支持外部)</label>
+        <div className="row gap-4" style={{flexWrap: 'wrap', padding: '8px 10px', border: '1px solid var(--border)', background: 'var(--bg-elev)', borderRadius: 6, minHeight: 40}}>
+          {['曲东奇 (客户)', 'Lily Chen (客户)', '李逸航', '陈默'].map(p => (
+            <span key={p} className="chip" style={{background: 'var(--surface-2)'}}>
+              {p}
+              <span style={{marginLeft: 4, color: 'var(--ink-3)', cursor: 'pointer'}}>×</span>
+            </span>
+          ))}
+          <input style={{flex: 1, minWidth: 120, background: 'transparent', border: 'none', outline: 'none', color: 'var(--ink)', fontSize: 12}} placeholder="+ 添加参会人"/>
+        </div>
+      </div>
+
+      <div className="field">
+        <label className="field__label">会议摘要 <span className="req">*</span> <span className="field__hint" style={{marginLeft: 8}}>限 200 字</span></label>
+        <textarea className="textarea" rows="3" defaultValue="评审 Pitch Deck V2,客户重点反馈 TAM/SAM 数据来源问题,需要重做。Webinar 选题方向从「行业趋势」调整为「客户案例驱动」,5 月先做 3 场试点。"/>
+      </div>
+
+      <div className="field">
+        <label className="field__label">关键决策(可加多条)</label>
+        {decisions.map((d, i) => (
+          <div key={i} className="row gap-8 mb-8">
+            <span className="badge badge--cyan" style={{minWidth: 28, justifyContent:'center'}}>D{i+1}</span>
+            <input className="input" value={d} onChange={(e) => setDecisions(s => s.map((x, idx) => idx === i ? e.target.value : x))} style={{flex: 1}}/>
+            <button className="btn btn--icon btn--ghost" onClick={() => setDecisions(s => s.filter((_, idx) => idx !== i))}><Icon name="x" size={12}/></button>
+          </div>
+        ))}
+        <button className="btn btn--sm btn--ghost" onClick={() => setDecisions(s => [...s, ''])}><Icon name="plus" size={11}/> 添加决策</button>
+      </div>
+
+      <div className="field">
+        <label className="field__label">行动项(每条:任务 + 负责人 + 截止日 + 优先级)</label>
+        <div>
+          {actions.map((a, i) => (
+            <div key={i} className="multi-row">
+              <input className="input" placeholder="任务描述" value={a.task} onChange={(e) => updateAction(i, 'task', e.target.value)}/>
+              <select className="select" value={a.owner} onChange={(e) => updateAction(i, 'owner', e.target.value)}>
+                {employees.map(e => <option key={e.name}>{e.name}</option>)}
+              </select>
+              <input className="input" type="date" value={a.due} onChange={(e) => updateAction(i, 'due', e.target.value)}/>
+              <select className="select" value={a.pri} onChange={(e) => updateAction(i, 'pri', e.target.value)}>
+                <option>P0</option><option>P1</option><option>P2</option>
+              </select>
+              <button className="multi-row__remove" onClick={() => removeAction(i)}><Icon name="x" size={11}/></button>
+            </div>
+          ))}
+          <button className="btn btn--sm btn--ghost" onClick={addAction}><Icon name="plus" size={11}/> 添加行动项</button>
+        </div>
+      </div>
+
+      <div className="field">
+        <label className="field__label">客户原话引用 <span className="field__hint" style={{marginLeft: 8}}>可选 · 关键决策原话留证</span></label>
+        <textarea className="textarea" rows="2" placeholder='例:「我希望我们的内容是可以被引用的,而不是消费完就走的」 — 曲东奇'/>
+      </div>
+    </FormShell>
+  );
+}
+
+function TaskForm({ push }) {
+  return (
+    <FormShell title="待办任务" badge="TASK"
+      onSave={() => push('已保存草稿')} onSubmit={() => push('任务已创建并分配 · TASK_2401')}>
+      <div className="grid-2">
+        <CustomerSelect value="qveris" onChange={()=>{}}/>
+        <div className="field"><label className="field__label">任务标题 <span className="req">*</span></label><input className="input" defaultValue="撰写 Series A pitch deck V3"/></div>
+      </div>
+      <div className="field">
+        <label className="field__label">详细描述</label>
+        <textarea className="textarea" defaultValue="基于 V2 评审意见,重做 TAM/SAM 数据来源,Funnel 部分调整为客户视角。"/>
+      </div>
+      <div className="grid-3">
+        <div className="field"><label className="field__label">负责人 <span className="req">*</span></label>
+          <select className="select" defaultValue="李逸航">{employees.map(e => <option key={e.name}>{e.name}</option>)}</select>
+        </div>
+        <div className="field"><label className="field__label">优先级 <span className="req">*</span></label>
+          <select className="select" defaultValue="P0"><option>P0</option><option>P1</option><option>P2</option></select>
+        </div>
+        <div className="field"><label className="field__label">截止日 <span className="req">*</span></label><input className="input" type="date" defaultValue="2026-05-09"/></div>
+      </div>
+      <div className="grid-2">
+        <div className="field"><label className="field__label">状态</label>
+          <select className="select" defaultValue="进行中"><option>待开始</option><option>进行中</option><option>已完成</option><option>阻塞</option></select>
+        </div>
+        <div className="field"><label className="field__label">依赖项</label>
+          <input className="input" placeholder="可选,搜索其他任务" defaultValue="M·11 客户反馈整理"/>
+        </div>
+      </div>
+    </FormShell>
+  );
+}
+
+function ProgressForm({ push }) {
+  return (
+    <FormShell title="客户进度更新" badge="SOP"
+      onSave={() => push('已保存草稿')} onSubmit={() => push('进度已更新到客户白板')}>
+      <div className="grid-2">
+        <CustomerSelect value="qveris" onChange={()=>{}}/>
+        <div className="field">
+          <label className="field__label">当前 SOP 周数 <span className="req">*</span></label>
+          <input className="input" type="number" min="1" max="12" defaultValue="6"/>
+        </div>
+      </div>
+      <div className="field">
+        <label className="field__label">本周阶段</label>
+        <div className="row gap-4">
+          {['基础搭建 W1—W4', '质量提升 W5—W8', '成果交付 W9—W12'].map((s, i) => (
+            <span key={i} className={`chip ${i===1?'chip--active':''}`}>{s}</span>
+          ))}
+        </div>
+      </div>
+      <div className="field">
+        <label className="field__label">节奏状态 <span className="req">*</span></label>
+        <div className="row gap-8">
+          <label className="row gap-6"><input type="radio" name="r" defaultChecked style={{accentColor:'var(--success)'}}/> <StatusPill status="normal"/></label>
+          <label className="row gap-6"><input type="radio" name="r" style={{accentColor:'var(--warning)'}}/> <StatusPill status="warn"/></label>
+          <label className="row gap-6"><input type="radio" name="r" style={{accentColor:'var(--danger)'}}/> <StatusPill status="block"/></label>
+        </div>
+      </div>
+      <div className="field">
+        <label className="field__label">阻塞原因(如有)</label>
+        <textarea className="textarea" rows="2" placeholder="例:客户内部 BD 团队调整,Webinar 嘉宾确认延后 · 状态:观察中"/>
+      </div>
+    </FormShell>
+  );
+}
+
+/* === 重头戏:客户价值产出 === */
+function ValueForm({ push }) {
+  const [images, setImages] = useState([
+    { url: 'screenshot-li.png', label: 'LinkedIn 长文截图', tone: 'cyan' },
+    { url: 'screenshot-ana.png', label: '阅读量分析', tone: 'purple' },
+  ]);
+  const fileRef = useRef();
+  const trigger = () => fileRef.current?.click();
+  const onFiles = (e) => {
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+    setImages(s => [...s, ...files.map(f => ({ url: f.name, label: f.name, tone: 'cyan' }))]);
+    push(`已上传 ${files.length} 张截图`);
+  };
+
+  return (
+    <FormShell title="客户价值产出" badge="VALUE · 客户白板可见"
+      lastSaved="草稿自动保存于 14:32 · 上次提交于今日 11:08"
+      onSave={() => push('已保存草稿')} onSubmit={() => push('价值产出已发布到客户白板')}>
+
+      <div style={{padding: 12, background: 'rgba(179,136,255,0.06)', border: '1px solid var(--border-purple)', borderRadius: 6, fontSize: 12, color: 'var(--ink-2)'}}>
+        <span style={{color: 'var(--purple)', fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.04em'}}>● 客户可见</span>
+        　·　这条记录会以时间线卡片的形式出现在客户对外白板,客户每天/每周可以直接看到我们做了什么。请用客户能看懂的语言描述。
+      </div>
+
+      <div className="grid-3">
+        <CustomerSelect value="qveris" onChange={()=>{}}/>
+        <div className="field"><label className="field__label">日期 <span className="req">*</span></label><input className="input" type="date" defaultValue="2026-05-04"/></div>
+        <div className="field"><label className="field__label">产出类型 <span className="req">*</span></label>
+          <select className="select" defaultValue="内容"><option>内容</option><option>活动</option><option>对接</option><option>咨询</option></select>
+        </div>
+      </div>
+
+      <div className="field">
+        <label className="field__label">产出标题 <span className="req">*</span> <span className="field__hint" style={{marginLeft:8}}>面向客户,避免内部黑话</span></label>
+        <input className="input" defaultValue="LinkedIn 长文已发布:《企业知识资产化的三个支柱》"/>
+      </div>
+
+      <div className="field">
+        <label className="field__label">详细说明 <span className="req">*</span></label>
+        <textarea className="textarea" rows="3" defaultValue="围绕「企业知识资产化」内容主轴的第一篇旗舰长文,首日阅读 1.2k,互动 86 次,被 3 位北美 SaaS Founder 转发。客户的 LinkedIn 主页关注数从 480 升至 524。"/>
+      </div>
+
+      {/* Image upload — the user explicitly asked for this */}
+      <div className="field">
+        <label className="field__label">工作截图 / 配图 <span className="field__hint" style={{marginLeft: 8}}>客户白板会以图集形式展示</span></label>
+        <input ref={fileRef} type="file" accept="image/*" multiple style={{display: 'none'}} onChange={onFiles}/>
+        <div className="upload-zone" onClick={trigger}>
+          <div className="upload-zone__icon">⬆</div>
+          <div style={{fontSize: 13, color: 'var(--ink-2)', marginBottom: 4}}>拖拽图片到此处 · 或点击上传</div>
+          <div className="muted-2" style={{fontSize: 11}}>支持 PNG / JPG / GIF · 单文件 ≤ 8MB · 最多 12 张</div>
+        </div>
+        {images.length > 0 && (
+          <div className="image-grid">
+            {images.map((img, i) => (
+              <div key={i} className="image-tile">
+                <FakeImagePreview tone={img.tone} idx={i}/>
+                <button className="image-tile__rm" onClick={() => setImages(s => s.filter((_, idx) => idx !== i))}><Icon name="x" size={11}/></button>
+                <div className="image-tile__caption">{img.label}</div>
+              </div>
+            ))}
+            <div className="image-tile" style={{cursor: 'pointer', borderStyle: 'dashed'}} onClick={trigger}>
+              <div style={{textAlign: 'center'}}>
+                <Icon name="plus" size={20}/>
+                <div style={{marginTop: 4, fontSize: 10}}>添加</div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="grid-2">
+        <div className="field">
+          <label className="field__label">量化指标 <span className="field__hint" style={{marginLeft: 8}}>逗号分隔多个</span></label>
+          <input className="input" defaultValue="阅读量 1.2k, 互动 86, 转发 12, 关注 +44"/>
+        </div>
+        <div className="field">
+          <label className="field__label">关联客户需求</label>
+          <select className="select" defaultValue="主轴">
+            <option>主轴 · 内容主轴「企业知识资产化」</option>
+            <option>北美渠道</option>
+            <option>融资</option>
+            <option>ICP</option>
+            <option>无关联</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="field">
+        <label className="field__label">附加链接</label>
+        <input className="input" placeholder="LinkedIn / 飞书文档 / Notion 等" defaultValue="https://linkedin.com/pulse/qveris-knowledge-asset-pillars"/>
+      </div>
+    </FormShell>
+  );
+}
+
+function FakeImagePreview({ tone = 'cyan', idx = 0 }) {
+  const colors = tone === 'purple'
+    ? ['#1a1530', '#2a1f50', '#B388FF']
+    : ['#0a1622', '#0e2238', '#00E5FF'];
+  return (
+    <svg viewBox="0 0 120 90" width="100%" height="100%" style={{position: 'absolute', inset: 0}}>
+      <defs>
+        <linearGradient id={`g${idx}`} x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stopColor={colors[0]}/>
+          <stop offset="100%" stopColor={colors[1]}/>
+        </linearGradient>
+      </defs>
+      <rect width="120" height="90" fill={`url(#g${idx})`}/>
+      <rect x="8" y="8" width="40" height="3" fill={colors[2]} opacity="0.7"/>
+      <rect x="8" y="14" width="80" height="2" fill={colors[2]} opacity="0.4"/>
+      <rect x="8" y="20" width="60" height="2" fill={colors[2]} opacity="0.3"/>
+      <rect x="8" y="40" width="36" height="22" fill={colors[2]} opacity="0.15" rx="2"/>
+      <rect x="48" y="40" width="36" height="22" fill={colors[2]} opacity="0.25" rx="2"/>
+      <rect x="88" y="40" width="24" height="22" fill={colors[2]} opacity="0.1" rx="2"/>
+      <circle cx="100" cy="78" r="6" fill={colors[2]} opacity="0.5"/>
+    </svg>
+  );
+}
+
+function ProfileForm({ push }) {
+  return (
+    <FormShell title="客户画像更新" badge="PROFILE"
+      onSave={() => push('已保存草稿')} onSubmit={() => push('画像字段已更新')}>
+      <div className="grid-2">
+        <CustomerSelect value="qveris" onChange={()=>{}}/>
+        <div className="field"><label className="field__label">字段类型 <span className="req">*</span></label>
+          <select className="select" defaultValue="核心需求"><option>团队</option><option>融资</option><option>差距</option><option>目标用户</option><option>触达计划</option><option>核心需求</option></select>
+        </div>
+      </div>
+      <div className="field">
+        <label className="field__label">内容 <span className="req">*</span></label>
+        <textarea className="textarea" rows="4" defaultValue="客户希望本月内将冷邮件回复率稳定在 4% 以上,并将版本 B 的主题轮换机制规范化。新增主题需要在每周一的例会上批量评审。"/>
+      </div>
+      <div className="field">
+        <label className="field__label">来源(哪次会议)</label>
+        <select className="select" defaultValue="M·12">
+          <option>M·12 · 北美渠道复盘 + 5 月节奏调整</option>
+          <option>M·11 · Pitch Deck V2 评审</option>
+          <option>M·10 · 冷邮件 A/B 测试结果同步</option>
+          <option>客户问卷</option>
+          <option>异步消息</option>
+        </select>
+      </div>
+    </FormShell>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
