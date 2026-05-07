@@ -28,82 +28,11 @@
         radial-gradient(circle at 80% 70%, rgba(26, 26, 26, 0.03) 0%, transparent 40%);
     }
 
-    .container { max-width: 720px; margin: 0 auto; }
-
-    /* ========== 登录注册页 ========== */
-    .auth-wrapper {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
     }
 
-    .auth-card {
-      background: var(--paper);
-      border: 2px solid var(--line);
-      padding: 48px 40px;
-      box-shadow: 8px 8px 0 var(--line);
-      width: 100%;
-      max-width: 440px;
-    }
-
-    .auth-title {
-      font-size: 44px;
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 0.95;
-      margin-bottom: 8px;
-    }
-
-    .auth-subtitle {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--muted);
-      margin-bottom: 32px;
-    }
-
-    .auth-tabs {
-      display: flex;
-      border-bottom: 1.5px solid var(--ink);
-      margin-bottom: 28px;
-    }
-
-    .auth-tab {
-      flex: 1;
-      padding: 12px 0;
-      background: transparent;
-      border: none;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--muted);
-      cursor: pointer;
-      margin: 0;
-      width: auto;
-      transition: all 0.2s;
-      position: relative;
-    }
-    .auth-tab.active {
-      color: var(--ink);
-    }
-    .auth-tab.active::after {
-      content: '';
-      position: absolute;
-      left: 0; right: 0; bottom: -1.5px;
-      height: 3px;
-      background: var(--accent);
-    }
-    .auth-tab:hover:not(:disabled) {
-      background: transparent;
-      transform: none;
-      box-shadow: none;
-      color: var(--ink);
-    }
-
-    /* ========== 主页面 header ========== */
     header {
       margin-bottom: 48px;
       border-bottom: 2px solid var(--line);
@@ -111,8 +40,6 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 16px;
     }
 
     h1 {
@@ -122,40 +49,14 @@
       line-height: 0.95;
     }
 
-    .header-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 8px;
-    }
-
-    .user-info {
+    .date-stamp {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
+      font-size: 12px;
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-    .user-info strong { color: var(--ink); font-weight: 500; text-transform: none; }
 
-    .logout-btn {
-      background: transparent;
-      color: var(--ink);
-      border: 1.5px solid var(--ink);
-      width: auto;
-      padding: 6px 14px;
-      margin: 0;
-      font-size: 10px;
-      letter-spacing: 1.5px;
-    }
-    .logout-btn:hover:not(:disabled) {
-      background: var(--ink);
-      color: var(--bg);
-      transform: none;
-      box-shadow: none;
-    }
-
-    /* ========== 表单区 ========== */
     .form-card {
       background: var(--paper);
       border: 2px solid var(--line);
@@ -163,7 +64,7 @@
       box-shadow: 8px 8px 0 var(--line);
     }
 
-    .field { margin-bottom: 24px; }
+    .field { margin-bottom: 28px; }
 
     label {
       display: block;
@@ -174,10 +75,11 @@
       margin-bottom: 8px;
       color: var(--muted);
     }
+
     label .required { color: var(--accent); margin-left: 4px; }
 
     input[type="text"], input[type="date"], input[type="datetime-local"],
-    input[type="url"], input[type="email"], input[type="password"], textarea {
+    input[type="url"], textarea {
       width: 100%;
       padding: 12px 14px;
       border: 1.5px solid var(--ink);
@@ -218,11 +120,13 @@
       transition: all 0.2s;
       margin-top: 12px;
     }
+
     button:hover:not(:disabled) {
       background: var(--accent);
       transform: translate(-2px, -2px);
       box-shadow: 4px 4px 0 var(--ink);
     }
+
     button:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .status {
@@ -234,12 +138,11 @@
     }
     .status.success { display: block; background: #e8f5e9; border-left: 4px solid #2e7d32; color: #2e7d32; }
     .status.error { display: block; background: #ffebee; border-left: 4px solid var(--accent); color: var(--accent); }
-    .status.info { display: block; background: #fff3e0; border-left: 4px solid #e65100; color: #e65100; }
 
     .preview { margin-top: 12px; max-width: 200px; border: 1px solid var(--line); display: none; }
     .preview.show { display: block; }
 
-    /* ========== 时间线 ========== */
+    /* ========== 时间线样式 ========== */
     .timeline-section {
       margin-top: 80px;
       border-top: 2px solid var(--line);
@@ -333,6 +236,7 @@
       padding: 24px;
       transition: all 0.2s;
     }
+
     .timeline-card:hover {
       box-shadow: 4px 4px 0 var(--line);
       transform: translate(-2px, -2px);
@@ -351,6 +255,7 @@
       font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
       font-weight: 500;
+      color: var(--ink);
       letter-spacing: 0.5px;
     }
 
@@ -393,6 +298,7 @@
       margin-bottom: 8px;
       word-break: break-all;
     }
+    .timeline-link:hover { color: var(--ink); border-color: var(--ink); }
 
     .timeline-next {
       margin-top: 14px;
@@ -426,7 +332,7 @@
       font-style: italic;
     }
 
-    /* ========== Lightbox ========== */
+    /* ========== 图片放大查看 ========== */
     .lightbox {
       display: none;
       position: fixed;
@@ -437,74 +343,44 @@
       align-items: center;
       justify-content: center;
       padding: 40px;
+      animation: fadeInLightbox 0.2s ease-out;
     }
-    .lightbox.show { display: flex; animation: fadeIn 0.2s; }
-    .lightbox img { max-width: 100%; max-height: 100%; border: 2px solid var(--bg); }
+    .lightbox.show { display: flex; }
+    @keyframes fadeInLightbox { from { opacity: 0; } to { opacity: 1; } }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 100%;
+      border: 2px solid var(--bg);
+    }
+
     .lightbox-close {
       position: absolute;
-      top: 20px; right: 24px;
+      top: 20px;
+      right: 24px;
       color: var(--bg);
       font-family: 'JetBrains Mono', monospace;
       font-size: 13px;
       letter-spacing: 1px;
     }
 
-    /* 整体显隐切换 */
-    .hidden { display: none !important; }
-
     @media (max-width: 600px) {
       h1 { font-size: 40px; }
-      .auth-title { font-size: 36px; }
       .timeline-title { font-size: 32px; }
       .row { grid-template-columns: 1fr; }
-      .form-card, .auth-card { padding: 28px 22px; }
+      .form-card { padding: 24px; }
       .timeline-card { padding: 18px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- ============ 登录注册页 ============ -->
-  <div class="container auth-wrapper" id="authPage">
-    <div class="auth-card">
-      <div class="auth-title">Welcome.</div>
-      <div class="auth-subtitle">Daily Report System</div>
-
-      <div class="auth-tabs">
-        <button class="auth-tab active" id="tabLogin" type="button">登录</button>
-        <button class="auth-tab" id="tabSignup" type="button">注册</button>
-      </div>
-
-      <form id="authForm">
-        <div class="field">
-          <label>邮箱 <span class="required">*</span></label>
-          <input type="email" id="authEmail" required autocomplete="email" />
-        </div>
-
-        <div class="field">
-          <label>密码 <span class="required">*</span></label>
-          <input type="password" id="authPassword" required minlength="6" autocomplete="current-password" />
-        </div>
-
-        <button type="submit" id="authSubmit">登录 →</button>
-        <div class="status" id="authStatus"></div>
-      </form>
-    </div>
-  </div>
-
-  <!-- ============ 主应用页面 ============ -->
-  <div class="container hidden" id="appPage">
+  <div class="container">
     <header>
       <h1>Daily<br>Report.</h1>
-      <div class="header-right">
-        <div class="user-info">
-          Signed in as <strong id="userEmail">—</strong>
-        </div>
-        <button class="logout-btn" id="logoutBtn" type="button">退出登录</button>
-      </div>
+      <div class="date-stamp" id="todayStamp"></div>
     </header>
 
-    <!-- 表单 -->
+    <!-- ========== 表单区 ========== -->
     <div class="form-card">
       <form id="reportForm">
         <div class="row">
@@ -549,7 +425,7 @@
       </form>
     </div>
 
-    <!-- 时间线 -->
+    <!-- ========== 时间线区 ========== -->
     <section class="timeline-section">
       <div class="timeline-header">
         <div>
@@ -564,7 +440,7 @@
     </section>
   </div>
 
-  <!-- 图片放大 -->
+  <!-- ========== 图片放大遮罩 ========== -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-close">[ ESC / 点击关闭 ]</div>
     <img id="lightboxImg" />
@@ -573,140 +449,19 @@
   <script type="module">
     import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
-    // ===== 配置 =====
+    // ===== 配置：换成你自己的 =====
     const SUPABASE_URL = 'https://foyokflqyojoyzuvtsbe.supabase.co'
     const SUPABASE_ANON_KEY = 'sb_publishable_NQcPR-u4KwecKeHgxS9rfA_3uZEUjhe'
 
     const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
-    // ===== 工具函数 =====
-    function escapeHtml(str) {
-      if (str == null) return ''
-      return String(str)
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;').replace(/'/g, '&#039;')
-    }
-
-    function formatDate(s) {
-      if (!s) return ''
-      const d = new Date(s)
-      return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`
-    }
-
-    function formatDateTime(s) {
-      if (!s) return ''
-      const d = new Date(s)
-      return `${formatDate(s)} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`
-    }
-
-    function showStatus(el, msg, type) {
-      el.className = `status ${type}`
-      el.textContent = msg
-    }
-    function clearStatus(el) { el.className = 'status'; el.textContent = '' }
-
-    // ===== 认证逻辑 =====
-    const authPage = document.getElementById('authPage')
-    const appPage = document.getElementById('appPage')
-    const tabLogin = document.getElementById('tabLogin')
-    const tabSignup = document.getElementById('tabSignup')
-    const authForm = document.getElementById('authForm')
-    const authEmail = document.getElementById('authEmail')
-    const authPassword = document.getElementById('authPassword')
-    const authSubmit = document.getElementById('authSubmit')
-    const authStatus = document.getElementById('authStatus')
-
-    let authMode = 'login'  // 'login' or 'signup'
-
-    function switchAuthMode(mode) {
-      authMode = mode
-      clearStatus(authStatus)
-      if (mode === 'login') {
-        tabLogin.classList.add('active')
-        tabSignup.classList.remove('active')
-        authSubmit.textContent = '登录 →'
-        authPassword.setAttribute('autocomplete', 'current-password')
-      } else {
-        tabSignup.classList.add('active')
-        tabLogin.classList.remove('active')
-        authSubmit.textContent = '注册 →'
-        authPassword.setAttribute('autocomplete', 'new-password')
-      }
-    }
-
-    tabLogin.addEventListener('click', () => switchAuthMode('login'))
-    tabSignup.addEventListener('click', () => switchAuthMode('signup'))
-
-    authForm.addEventListener('submit', async (e) => {
-      e.preventDefault()
-      authSubmit.disabled = true
-      const originalText = authSubmit.textContent
-      authSubmit.textContent = '处理中...'
-      clearStatus(authStatus)
-
-      const email = authEmail.value.trim()
-      const password = authPassword.value
-
-      try {
-        if (authMode === 'login') {
-          const { error } = await supabase.auth.signInWithPassword({ email, password })
-          if (error) throw error
-          // 登录成功 - onAuthStateChange 监听器会自动切换页面
-        } else {
-          const { data, error } = await supabase.auth.signUp({ email, password })
-          if (error) throw error
-
-          // 如果开了邮箱验证,data.session 会是 null
-          if (!data.session) {
-            showStatus(authStatus, '✓ 注册成功!请到邮箱点击验证链接后再登录', 'info')
-            switchAuthMode('login')
-          }
-          // 如果关了邮箱验证,会自动登录,onAuthStateChange 处理
-        }
-      } catch (err) {
-        // 把英文错误翻译得友好一点
-        let msg = err.message
-        if (msg.includes('Invalid login credentials')) msg = '邮箱或密码错误'
-        else if (msg.includes('User already registered')) msg = '该邮箱已注册,请直接登录'
-        else if (msg.includes('Password should be at least')) msg = '密码至少 6 位'
-        else if (msg.includes('Email not confirmed')) msg = '请先到邮箱验证后再登录'
-        showStatus(authStatus, `✗ ${msg}`, 'error')
-      } finally {
-        authSubmit.disabled = false
-        authSubmit.textContent = originalText
-      }
-    })
-
-    // ===== 退出登录 =====
-    document.getElementById('logoutBtn').addEventListener('click', async () => {
-      await supabase.auth.signOut()
-    })
-
-    // ===== 页面切换:监听登录状态变化 =====
-    // 这是 Supabase 推荐的方式,无论是首次加载、登录、登出、token 刷新都会触发
-    supabase.auth.onAuthStateChange((event, session) => {
-      if (session?.user) {
-        // 已登录 - 显示主页面
-        authPage.classList.add('hidden')
-        appPage.classList.remove('hidden')
-        document.getElementById('userEmail').textContent = session.user.email
-        // 自动填默认负责人为邮箱前缀
-        const ownerInput = document.getElementById('owner')
-        if (!ownerInput.value) ownerInput.value = session.user.email.split('@')[0]
-        loadTimeline()
-      } else {
-        // 未登录 - 显示登录页
-        appPage.classList.add('hidden')
-        authPage.classList.remove('hidden')
-        // 清空表单
-        authForm.reset()
-      }
-    })
-
-    // ===== 主应用初始化 =====
+    // ===== 初始化 =====
     const today = new Date()
     document.getElementById('reportDate').value = today.toISOString().split('T')[0]
+    document.getElementById('todayStamp').textContent =
+      today.toISOString().split('T')[0].replace(/-/g, ' / ')
 
+    // 图片预览
     const imageFile = document.getElementById('imageFile')
     const imagePreview = document.getElementById('imagePreview')
     imageFile.addEventListener('change', (e) => {
@@ -728,38 +483,33 @@
       e.preventDefault()
       submitBtn.disabled = true
       submitBtn.textContent = '提交中...'
-      clearStatus(statusEl)
+      statusEl.className = 'status'
 
       try {
-        // 拿当前用户
-        const { data: { user } } = await supabase.auth.getUser()
-        if (!user) throw new Error('未登录')
-
-        // 上传图片
         let imageUrl = null
         const file = imageFile.files[0]
         if (file) {
           const ext = file.name.includes('.') ? file.name.split('.').pop().toLowerCase() : 'png'
           const safeExt = ext.replace(/[^a-z0-9]/g, '') || 'png'
-          const fileName = `${user.id}/report_${Date.now()}_${Math.floor(Math.random() * 100000)}.${safeExt}`
+          const fileName = `report_${Date.now()}_${Math.floor(Math.random() * 100000)}.${safeExt}`
 
           const { error: uploadError } = await supabase
-            .storage.from('report-images')
+            .storage
+            .from('report-images')
             .upload(fileName, file, { cacheControl: '3600', upsert: false })
 
           if (uploadError) throw uploadError
 
           const { data: urlData } = supabase
-            .storage.from('report-images')
+            .storage
+            .from('report-images')
             .getPublicUrl(fileName)
 
           imageUrl = urlData.publicUrl
         }
 
-        // 插数据 - 注意 user_id 字段
         const completedAtVal = document.getElementById('completedAt').value
         const payload = {
-          user_id: user.id,  // RLS 会校验这个必须等于 auth.uid()
           report_date: document.getElementById('reportDate').value,
           owner: document.getElementById('owner').value,
           description: document.getElementById('description').value,
@@ -776,34 +526,68 @@
 
         if (error) throw error
 
-        showStatus(statusEl, `✓ 提交成功!记录 ID: ${data[0].id.slice(0, 8)}...`, 'success')
+        statusEl.className = 'status success'
+        statusEl.textContent = `✓ 提交成功！记录 ID: ${data[0].id.slice(0, 8)}...`
         form.reset()
         imagePreview.classList.remove('show')
         document.getElementById('reportDate').value = today.toISOString().split('T')[0]
-        document.getElementById('owner').value = user.email.split('@')[0]
 
+        // 提交成功后自动刷新时间线
         loadTimeline()
+
       } catch (err) {
         console.error(err)
-        showStatus(statusEl, `✗ 提交失败: ${err.message}`, 'error')
+        statusEl.className = 'status error'
+        statusEl.textContent = `✗ 提交失败: ${err.message}`
       } finally {
         submitBtn.disabled = false
         submitBtn.textContent = '提交汇报 →'
       }
     })
 
-    // ===== 时间线 =====
+    // ===== 时间线加载 =====
     const timelineContainer = document.getElementById('timelineContainer')
     const timelineCount = document.getElementById('timelineCount')
     const refreshBtn = document.getElementById('refreshBtn')
+
+    // 工具函数：HTML 转义防 XSS
+    function escapeHtml(str) {
+      if (str == null) return ''
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;')
+    }
+
+    // 工具函数:格式化日期
+    function formatDate(dateStr) {
+      if (!dateStr) return ''
+      const d = new Date(dateStr)
+      const yyyy = d.getFullYear()
+      const mm = String(d.getMonth() + 1).padStart(2, '0')
+      const dd = String(d.getDate()).padStart(2, '0')
+      return `${yyyy}.${mm}.${dd}`
+    }
+
+    function formatDateTime(dateStr) {
+      if (!dateStr) return ''
+      const d = new Date(dateStr)
+      const yyyy = d.getFullYear()
+      const mm = String(d.getMonth() + 1).padStart(2, '0')
+      const dd = String(d.getDate()).padStart(2, '0')
+      const hh = String(d.getHours()).padStart(2, '0')
+      const min = String(d.getMinutes()).padStart(2, '0')
+      return `${yyyy}.${mm}.${dd} ${hh}:${min}`
+    }
 
     async function loadTimeline() {
       timelineContainer.innerHTML = '<div class="loading-state">正在加载历史汇报...</div>'
       refreshBtn.disabled = true
 
       try {
-        // 注意:这里不需要手动加 .eq('user_id', ...) 过滤
-        // RLS 策略会自动只返回当前用户的数据
+        // 按 created_at 倒序排列，最多取 50 条
         const { data, error } = await supabase
           .from('work_reports')
           .select('*')
@@ -819,6 +603,7 @@
           return
         }
 
+        // 渲染时间线
         timelineContainer.innerHTML = `<div class="timeline">${
           data.map(item => `
             <div class="timeline-item">
@@ -829,8 +614,11 @@
                 </div>
                 <div class="timeline-description">${escapeHtml(item.description)}</div>
                 ${item.image_url ? `
-                  <img class="timeline-image" src="${escapeHtml(item.image_url)}"
-                       alt="成果图片" data-full="${escapeHtml(item.image_url)}" loading="lazy" />
+                  <img class="timeline-image"
+                       src="${escapeHtml(item.image_url)}"
+                       alt="成果图片"
+                       data-full="${escapeHtml(item.image_url)}"
+                       loading="lazy" />
                 ` : ''}
                 ${item.result_link ? `
                   <a class="timeline-link" href="${escapeHtml(item.result_link)}" target="_blank" rel="noopener">
@@ -850,6 +638,7 @@
           `).join('')
         }</div>`
 
+        // 给图片绑定点击放大事件
         timelineContainer.querySelectorAll('.timeline-image').forEach(img => {
           img.addEventListener('click', () => {
             lightboxImg.src = img.dataset.full
@@ -868,15 +657,22 @@
 
     refreshBtn.addEventListener('click', loadTimeline)
 
-    // ===== Lightbox =====
+    // ===== 图片放大查看 =====
     const lightbox = document.getElementById('lightbox')
     const lightboxImg = document.getElementById('lightboxImg')
-    lightbox.addEventListener('click', () => lightbox.classList.remove('show'))
+
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('show')
+    })
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && lightbox.classList.contains('show')) {
         lightbox.classList.remove('show')
       }
     })
+
+    // ===== 页面加载时自动加载时间线 =====
+    loadTimeline()
   </script>
 </body>
 </html>
