@@ -836,6 +836,10 @@
         <li><a href="#sec-4-12">12、API 和 API Key</a></li>
         <li><a href="#sec-4-13">13、md 文件查看</a></li>
         <li><a href="#sec-4-14">14、obsidian</a></li>
+        <li><a href="#sec-4-15">15、Infinisynapse(客户产品)</a></li>
+        <li><a href="#sec-4-16">16、COCO AI（客户产品）</a></li>
+        
+        
       </ul>
     </li>
   </ul>
@@ -2332,6 +2336,204 @@ API Key  = 钥匙（证明你有资格进这扇门）</code></pre>
 <p>Obsidian 这三点都做到了。再加上它跟 AI 工具天然契合，<strong>在 AI 时代它的价值只会越来越大</strong>。</p>
  
 <p>你写的每一篇 .md 笔记，都是在给未来的"AI 助理"喂数据。等你哪天攒了几百篇笔记，再用 Claude Code 一接，那种"AI 完全懂我"的体验，就是 Notion 永远给不了你的。</p>
+
+<h2> Infinisynapse(客户产品)</h2>
+<h3>一句话解释</h3>
+<p>Infinisynapse 是一款 <strong>AI 数据分析工具</strong>。你直接用大白话问它问题（比如"上周哪个产品卖得最好"），它自己去你的数据库里查、分析、给你答案。<strong>不用写 SQL，不用写代码</strong>。</p>
+
+<h3>解决什么问题</h3>
+<p>很多公司的数据散在不同地方：业务库、Excel 表、云存储、各种 SaaS 工具。想做一个分析常常要找数据工程师写 SQL、把数据导来导去做整合、等好几天才能拿到结果，大数据量还跑不动或者跑起来很贵。</p>
+<p>Infinisynapse 的目标：让<strong>不会编程的业务人员</strong>也能像跟同事说话一样直接拿到分析结果。</p>
+
+<h3>主要能做什么</h3>
+<p><strong>直接连数据库</strong>：MySQL、PostgreSQL、Snowflake、MongoDB、ClickHouse、Excel、Oracle 等都支持，一键授权连接，不用把数据搬来搬去。</p>
+<p><strong>自然语言提问</strong>：中文英文都行，没有任何 SQL 门槛。</p>
+<p><strong>超大规模数据</strong>：官网案例里有处理 1200 万、4000 万、甚至 2 亿条记录的。</p>
+<p><strong>多模态融合</strong>：除了表格数据库，还能一起分析文档、音频、视频。这是它和大多数同类工具最不一样的地方。</p>
+<p><strong>本地或私有云部署</strong>：数据不出公司，敏感行业可用。</p>
+
+<h3>和别的工具比，强在哪</h3>
+<p>官网把自己对标的不是 ChatGPT 这类聊天机器人，而是<strong>"专业数据分析师"</strong>。具体差异如下：</p>
+<p><strong>不只是 NL2SQL</strong>：很多工具就是把"自然语言翻译成 SQL"，结果常常翻得乱七八糟。Infinisynapse 用了一套自己的 InfiniSQL 语言，专门给大模型优化过，准确率更高。</p>
+<p><strong>多源联合查询</strong>：不用先把数据合并到一个仓库，它能跨多个不同类型的数据库一次查出来。</p>
+<p><strong>多模态分析</strong>：能把销售数据、客服录音、合同文档放在一起分析，大多数 BI 工具做不到。</p>
+<p><strong>成本低</strong>：用户反馈"AWS 账单降到原来的 1/3"。</p>
+
+<h3>谁适合用</h3>
+<p><strong>数据分析师</strong>：常规查询不用反复造 SQL 轮子。</p>
+<p><strong>产品经理、增长、运营</strong>：自己拉数据看，不用排期等开发。</p>
+<p><strong>创业公司或小团队</strong>：没钱请专门的数据工程师团队。</p>
+<p><strong>研究人员、独立顾问</strong>：处理别人给的大批数据。</p>
+
+<h3>怎么开始用</h3>
+<p>在线版直接试：https://app.infinisynapse.cn</p>
+<p>也有 Chrome 扩展、Windows 版、macOS 桌面版。</p>
+<p>注册后按提示连接你的数据源，然后直接用大白话问问题就行。</p>
+
+<h3>一句话总结</h3>
+<p>把"想看个数据要找工程师写 SQL"改成"直接打字问、它自己干、几分钟出结果"。如果你团队里数据查询请求多但写 SQL 的人少，这就是它的价值。</p>
+
+
+<h2>COCO AI</h2>
+
+<h3>COCO 是什么？一句话解释</h3>
+
+<p><strong>COCO（coco.xyz）是一个"雇 AI 数字员工"的平台</strong>。它的官方 Slogan 是 <em>Hire AI Digital Employees</em>。你用它的时候不是在使用一个聊天机器人，而是<strong>像招人一样雇一支 AI 团队</strong>：每个 AI 都有自己的角色（产品、开发、运营、客服、HR 等），它们之间能协作、共享上下文、自动协调工作。几分钟就能部署上线，跑在 Telegram、Slack、飞书等你日常用的聊天工具里。</p>
+
+<h3>解决什么问题</h3>
+
+<p>很多公司的痛点不是"没人写代码"，而是<strong>重复性工作太多</strong>：</p>
+
+<ul>
+  <li>每天写日报周报、整理会议纪要</li>
+  <li>一条条筛简历、写 JD、安排面试</li>
+  <li>监控竞对、整理用户反馈、跨平台拉数据</li>
+  <li>客服回答相同的问题</li>
+  <li>代码 review、部署监控、生成发布说明</li>
+  <li>财务审核报销、合同对比、合规筛查</li>
+</ul>
+
+<p>这些事单独看都不难，但加起来要好几个人忙活。<strong>COCO 的思路是：把这些重复的、有清晰流程的工作打包成"岗位"，丢给 AI 员工 24 小时干</strong>，人腾出来做策略、判断、深度创造。</p>
+
+<p>官方在主页给了一个真实数据：<strong>某国有大型银行用 COCO 把贷款尽调时间从 3 天压到 2 小时</strong>。</p>
+
+<h3>主要产品（理解 COCO 的 4 块拼图）</h3>
+
+<p>COCO 不是单一产品，而是一个生态。新手只需要知道这几块：</p>
+
+<h4>Agent Cloud Service</h4>
+<p>托管服务：一键部署 AI 员工，零运维。<strong>这是 95% 用户实际买的东西</strong>，对应官网的付费套餐。</p>
+
+<h4>Zylos</h4>
+<p>开源的 AI agent 运行时，COCO 自研，<strong>5 层记忆架构</strong>，专为企业级长期任务优化。普通用户不用关心，想自部署或搞研究的人才需要看。</p>
+
+<h4>OpenClaw</h4>
+<p>另一个 agent 实现，对应入门档（$99/月）的"开箱即用"版本，自动用，不用管。</p>
+
+<h4>HxA Suite</h4>
+<p>让 AI 员工和人类员工在 Telegram、Slack、飞书等平台对话协作的桥梁。包含 Connect、Dashboard 等组件，自动用，不用配置。</p>
+
+<p>简单理解：<strong>Agent Cloud 是"租 AI 员工"，Zylos 是"AI 员工的大脑代码（开源）"，HxA 是"让 AI 员工进你公司聊天群的工具"</strong>。</p>
+
+<h3>与其他 AI 工具的核心差异</h3>
+
+<p>这是 COCO 最值得理解的点。市面上 AI 工具大致分三类，COCO 走的是第三类：单个 Agent 的工具（如 ChatGPT、Cursor），多 Agent 框架（如 LangChain），<strong>而 COCO 是"开箱即用的 AI 员工团队"</strong>。</p>
+
+<h4>单 Agent 与 Agent 团队的对比</h4>
+
+<p><strong>角色</strong>：普通 AI 工具是一个模型一个任务；COCO 是多个专业角色分工协作。</p>
+
+<p><strong>上下文</strong>：普通 AI 工具受单次对话上下文限制；COCO 团队成员共享上下文。</p>
+
+<p><strong>协作</strong>：普通 AI 工具没有协作概念；COCO 多个 AI 员工实时协作。</p>
+
+<p><strong>编排</strong>：普通 AI 工具需要你手动调度（先让它做 A 再做 B）；COCO 自动编排，自己决定下一步。</p>
+
+<p><strong>记忆</strong>：普通 AI 工具关掉对话就忘了；COCO 是持久化记忆，能长期跟进任务。</p>
+
+<h4>其他差异化点</h4>
+
+<p><strong>吃自己的狗粮</strong>：COCO 自己 6 人团队，每天用 30+ 个自家的 AI 员工跑代码 review、部署、竞品分析、客服。官方说这让他们发版速度快了 10 倍。</p>
+
+<p><strong>不锁定模型</strong>：不绑定某个 LLM，自动选当前最好的模型加最好的框架。</p>
+
+<p><strong>现成案例库</strong>：1001 个生产级用例，按"角色 / 任务 / 行业"三个维度找。</p>
+
+<p><strong>企业基因</strong>：5 层记忆架构是给企业长期任务设计的，不是聊几句的玩具。</p>
+
+<h3>它能干哪些活</h3>
+
+<p>官方提供 1001 个生产级用例，覆盖 30+ 个角色。下面挑一些常见的：</p>
+
+<h4>按角色</h4>
+
+<p><strong>产品经理（23 个用例）</strong>：情感分析、项目状态汇报、Sprint 规划、发布说明、工作流自动化等。</p>
+
+<p><strong>开发 / 工程师（52 个）</strong>：代码 review、自动生成测试、部署监控、API 文档、安全扫描、Bug 优先级判定。</p>
+
+<p><strong>运营（69 个）</strong>：会议纪要、库存预测、供应商评估等。</p>
+
+<p><strong>财务（41 个）</strong>：报销审核、财报生成、发票处理。</p>
+
+<p><strong>市场 / 内容（48 个）</strong>：SEO 写作、社交媒体管理、广告文案、品牌监控。</p>
+
+<p><strong>客服（40 个）</strong>：工单分类、知识库维护、多语言支持。</p>
+
+<p><strong>HR / 招聘（37 个）</strong>：简历筛选、JD 撰写、安排面试。</p>
+
+<p><strong>销售（49 个）</strong>：客户研究、CRM 更新、销售提案、销售预测。</p>
+
+<p><strong>法务（34 个）</strong>：合同分析、NDA 生成、IP 组合分析。</p>
+
+<p><strong>数据分析师 / 数据科学家</strong>：流失预测、特征工程建议、模型可解释性报告。</p>
+
+<p><strong>VC 分析师 / 尽调</strong>：LP 季度报告、deal pipeline 评分、Term Sheet 条款对比。</p>
+
+<h4>按任务</h4>
+
+<p>写作内容、数据分析、流程自动化、调研监控四大类。</p>
+
+<h3>真实用户怎么说</h3>
+
+<p><strong>某大型国有银行 副行长</strong>："以前几个人花几天的尽调，现在一人半天搞完。"</p>
+
+<p><strong>某 MCN 机构 市场总监</strong>："1 小时内能聚合分析全网主要社交账号的数据，效率提升非常大。"</p>
+
+<p><strong>某互联网大厂 团队负责人</strong>："监控竞品、整理用户反馈、聚合数据，以前要 2 个人几乎花两天，现在每天早上看报告就行，发版节奏几乎翻倍。"</p>
+
+<p><strong>业余炒股的上班族</strong>："AI 员工每天按我的策略筛股、推送投研报告、分析公司财务，我一个人就是一个研究团队。"</p>
+
+<p><strong>K12 教育机构 教研主管</strong>："AI 员工 24 小时辅导，自动识别学生薄弱点推送针对性练习，老师从重复劳动中解放出来。"</p>
+
+<p><strong>某互联网公司 招聘负责人</strong>："AI 起 JD、自动发到 LinkedIn 和招聘平台、有人投简历飞书提醒、附 AI 匹配评分和'要不要聊'的建议，招聘效率翻倍。"</p>
+
+<h3>定价（USD）</h3>
+
+<h4>Air —— $99 / 月</h4>
+<p>1 个 AI 员工实例、标准 AI 算力、基础技能包、覆盖所有渠道（Telegram、飞书、Slack 等）、邮件支持。<strong>适合自由职业者、个人开发者。</strong></p>
+
+<h4>Pro —— $449 / 月（官网推荐档）</h4>
+<p>1 个 AI 员工实例、<strong>高级 AI 算力</strong>（更大上下文 + 更强推理）、完整技能包、所有渠道、24 小时优先响应。<strong>适合创业团队、小企业。</strong></p>
+
+<h4>Ultra —— $999 / 月</h4>
+<p>3 个 Pro 级 AI 员工、高级算力 + 扩展配额、支持自定义技能包、专属客户成功经理、4 小时优先响应。<strong>适合成长期企业、部门级使用。</strong></p>
+
+<h4>Enterprise —— 起 $2000 / 月（自定义）</h4>
+<p>无限实例、私有化部署、深度集成开发、SLA 保障、SSO / SAML 单点登录。<strong>适合大型企业、集团客户。</strong></p>
+
+<p>支持按周、月、年付，<strong>年付省 17%</strong>。<strong>支付方式：Stripe（信用卡 / 借记卡）和加密货币（USDT / USDC）</strong>。可随时取消，不用自带 API Key（全托管）。</p>
+
+<h3>怎么开始用</h3>
+
+<p>第一步：访问 <strong>https://coco.xyz/</strong> 注册账号。</p>
+
+<p>第二步：选套餐。个人或测试用 Air，团队用 Pro。</p>
+
+<p>第三步：选你想要的"AI 岗位"（从 1001 个用例里挑，或自定义）。</p>
+
+<p>第四步：关联你的协作工具，比如 Telegram、Slack、飞书。</p>
+
+<p>第五步：AI 员工自动加入你的工作群组，开始干活。</p>
+
+<p>第六步：你只需要在群里 @ 它发任务，看它产出报告。</p>
+
+<p>更多文档：<strong>https://docs.coco.xyz/</strong></p>
+
+<h3>常见疑问</h3>
+
+<p><strong>能随时取消吗？</strong>能。</p>
+
+<p><strong>需要我自己的 AI API Key 吗？</strong>不需要，是全托管服务。</p>
+
+<p><strong>支持哪些 AI 模型？</strong>全托管，COCO 帮你选最优模型，不用你操心。</p>
+
+<p><strong>支持哪些支付方式？</strong>Stripe（信用卡和借记卡）以及 USDT / USDC 加密货币。</p>
+
+<h3>一句话总结</h3>
+
+<p>如果说 ChatGPT 是"给你一个聪明同事可以对话"，<strong>COCO 就是"给你一支可以排班、有记忆、能协作的 AI 部门"</strong>。</p>
+
+<p>它适合那些<strong>重复性工作太多、想把人解放出来做高价值事情</strong>的团队。不需要写代码、不需要自己接 API、不需要养服务器，选岗位、付月费、AI 进群干活，这是它最核心的卖点。</p>
 
 
 </main>
