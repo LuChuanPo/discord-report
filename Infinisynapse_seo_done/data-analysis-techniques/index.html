@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Data Analysis Techniques: Methods & Examples | InfiniSynapse</title>
+  <meta name="description" content="A complete guide to data analysis techniques. Explore data analysis methods, examples, and modern ways of data analysis powered by AI in 2026.">
+
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:title" content="Data Analysis Techniques: Methods & Examples | InfiniSynapse">
+  <meta property="og:description" content="A complete guide to data analysis techniques. Explore data analysis methods, examples, and modern ways of data analysis powered by AI in 2026.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/data-analysis-techniques">
+  <meta property="og:image" content="https://infinisynapse.com/og/data-analysis-techniques.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:image" content="https://infinisynapse.com/og/data-analysis-techniques.png">
+
+  <link rel="canonical" href="https://infinisynapse.com/data-analysis-techniques">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Schema #1: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "InfiniSynapse",
+    "url": "https://infinisynapse.com",
+    "logo": "https://infinisynapse.com/logo.png",
+    "sameAs": [
+      "https://x.com/InfiniSynapse"
+    ]
+  }
+  </script>
+
+  <!-- Schema #2: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://infinisynapse.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://infinisynapse.com/zh/blog"},
+      {"@type": "ListItem", "position": 3, "name": "Data Analysis Techniques", "item": "https://infinisynapse.com/data-analysis-techniques"}
+    ]
+  }
+  </script>
+
+  <!-- Schema #3: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Data Analysis Techniques: A Complete Guide with Examples",
+    "description": "A complete guide to data analysis techniques. Explore data analysis methods, examples, and modern ways of data analysis powered by AI in 2026.",
+    "image": ["https://infinisynapse.com/og/data-analysis-techniques.png"],
+    "datePublished": "2026-05-09",
+    "dateModified": "2026-05-09",
+    "publisher": {
+      "@type": "Organization",
+      "name": "InfiniSynapse",
+      "logo": {"@type": "ImageObject", "url": "https://infinisynapse.com/logo.png"}
+    },
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://infinisynapse.com/data-analysis-techniques"}
+  }
+  </script>
+
+  <!-- Schema #4: DefinedTerm -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    "name": "Data Analysis Techniques",
+    "description": "Data analysis techniques are the structured approaches used to inspect, clean, transform, and model data with the goal of discovering useful information, drawing conclusions, and supporting decision-making. The four core categories are descriptive, diagnostic, predictive, and prescriptive analytics, each answering a different question about the data.",
+    "inDefinedTermSet": {
+      "@type": "DefinedTermSet",
+      "name": "Data Analytics Glossary"
+    }
+  }
+  </script>
+
+  <!-- Schema #5: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are the main data analysis techniques?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The four main data analysis techniques are descriptive analytics (what happened), diagnostic analytics (why it happened), predictive analytics (what will happen), and prescriptive analytics (what to do about it). Within these categories sit specific methods like regression, clustering, cohort analysis, sentiment analysis, and time-series forecasting, each suited to a different type of question."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the 4 types of data analysis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The four types are descriptive (summarizes past data using averages and KPIs), diagnostic (identifies the cause of an observed pattern through drill-down and correlation), predictive (forecasts future outcomes using regression and machine learning), and prescriptive (recommends an action using optimization and simulation). Most real analyses combine two or more of these in sequence."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between data analysis methods and techniques?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In practice the terms are used interchangeably, but a useful distinction is that a data analysis technique describes the broad category (descriptive, predictive, etc.), while a data analysis method names the specific tool used inside that category (linear regression, k-means clustering, ANOVA). When this guide refers to methods we mean the specific procedure; when it says techniques we mean the broader approach."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which data analysis technique should a beginner start with?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start with descriptive analytics. It answers the most common business questions (sales by region, monthly active users, conversion rate by channel) and requires only basic aggregation skills. Once you can confidently describe what is happening in your data, move to diagnostic analytics to start asking why. Predictive and prescriptive techniques add value later, but only on a foundation of clean descriptive work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is AI changing the way we do data analysis in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI is collapsing the boundary between techniques rather than replacing any single one. A modern AI data analyst can run descriptive, diagnostic, and predictive steps in one conversation, federate across multiple data sources, and explain results in plain language. The techniques themselves remain the same; what changes is the time and SQL expertise required to execute them. Tools like Julius AI, Tableau AI, and InfiniSynapse each cover different parts of this shift."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:rgba(255,255,255,0.82);background:#0A0E1A;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    ::selection{background:rgba(124,155,255,0.3)}
+    a{color:#7C9BFF;text-decoration:none}
+    a:hover{color:#B5C6FF}
+
+    .nav{position:sticky;top:0;z-index:50;background:rgba(10,14,26,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06);padding:14px 0}
+    .nav-inner{max-width:1024px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .nav-logo-mark{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#7C9BFF 0%,#5B7FFF 50%,#3D5FE0 100%);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#0A0E1A}
+    .nav-logo span{font-size:16px;font-weight:600;color:rgba(255,255,255,0.97);letter-spacing:-0.01em}
+    .nav-links{display:flex;align-items:center;gap:22px;font-size:14px}
+    .nav-links a{color:rgba(255,255,255,0.55);transition:color 0.15s}
+    .nav-links a:hover{color:rgba(255,255,255,0.9)}
+    .nav-cta{background:linear-gradient(135deg,#B5C6FF 0%,#7C9BFF 40%,#5B7FFF 100%);color:#0A0E1A;padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;transition:opacity 0.2s}
+    .nav-cta:hover{opacity:0.9;color:#0A0E1A}
+
+    .wrap{max-width:1024px;margin:0 auto;padding:48px 24px}
+
+    h1{font-size:2.4rem;font-weight:500;line-height:1.2;margin-bottom:16px;color:rgba(255,255,255,0.97);letter-spacing:-0.02em}
+    h2{font-size:1.32rem;font-weight:600;margin:44px 0 16px;color:rgba(255,255,255,0.95);border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:10px;letter-spacing:-0.01em}
+    h3{font-size:16px;font-weight:600;margin:28px 0 10px;color:rgba(255,255,255,0.88)}
+    h4{font-size:14.5px;font-weight:600;margin:20px 0 8px;color:rgba(255,255,255,0.82)}
+    p{margin:0 0 18px;color:rgba(255,255,255,0.66)}
+    strong{color:rgba(255,255,255,0.94);font-weight:600}
+    em{color:rgba(255,255,255,0.74);font-style:italic}
+    ul,ol{margin:14px 0 18px 24px}
+    li{margin:8px 0;color:rgba(255,255,255,0.66)}
+    code{background:rgba(124,155,255,0.08);padding:2px 7px;border-radius:4px;font-size:14px;font-family:'SF Mono','Fira Code','JetBrains Mono',monospace;color:#B5C6FF;border:1px solid rgba(124,155,255,0.14)}
+
+    .meta-desc{font-size:1.08rem;color:rgba(255,255,255,0.52);margin-bottom:32px;line-height:1.55;max-width:740px}
+    .breadcrumb{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:20px}
+    .breadcrumb a{color:rgba(124,155,255,0.75)}
+    .breadcrumb a:hover{color:#B5C6FF}
+    .breadcrumb span{margin:0 6px}
+    .badge{display:inline-block;font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;margin-right:8px;margin-bottom:14px}
+    .badge-client{background:linear-gradient(135deg,rgba(124,155,255,0.18),rgba(61,95,224,0.18));color:#B5C6FF;border:1px solid rgba(124,155,255,0.25)}
+    .badge-cat{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.08)}
+
+    .toc{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:18px 22px;margin:0 0 36px}
+    .toc-label{font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+    .toc ul{margin:0;padding-left:18px;font-size:14.5px;list-style:decimal}
+    .toc a{color:rgba(255,255,255,0.7)}
+    .toc a:hover{color:#B5C6FF}
+
+    .tldr{background:rgba(124,155,255,0.05);border-left:3px solid #7C9BFF;border-radius:0 10px 10px 0;padding:18px 22px;margin:0 0 32px}
+    .tldr-label{font-size:12px;font-weight:600;color:#B5C6FF;margin-bottom:10px;text-transform:uppercase;letter-spacing:1.5px}
+    .tldr ul{margin:0;padding-left:18px;font-size:14.5px}
+    .tldr li{color:rgba(255,255,255,0.72);margin:5px 0}
+
+    .snippet-answer{background:rgba(255,255,255,0.025);border-left:3px solid #B5C6FF;padding:16px 20px;border-radius:0 8px 8px 0;font-size:15.5px;color:rgba(255,255,255,0.88);margin:8px 0 24px}
+    .snippet-answer ol{margin:8px 0 0 22px}
+    .snippet-answer li{color:rgba(255,255,255,0.85);margin:4px 0}
+
+    .ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0 12px}
+    .ba-card{padding:20px;border-radius:10px}
+    .ba-before{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.18)}
+    .ba-after{background:rgba(124,155,255,0.06);border:1px solid rgba(124,155,255,0.2)}
+    .ba-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
+    .ba-before .ba-label{color:#f87171}
+    .ba-after .ba-label{color:#B5C6FF}
+    .ba-text{font-size:14.5px;color:rgba(255,255,255,0.66);line-height:1.7}
+
+    .technique-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:20px 22px;margin:16px 0}
+    .technique-card h4{margin-top:0;color:rgba(255,255,255,0.92);font-size:15px}
+    .technique-tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:14px;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.8px;background:rgba(124,155,255,0.1);color:#B5C6FF;border:1px solid rgba(124,155,255,0.22)}
+    .technique-example{margin-top:10px;padding:10px 14px;background:rgba(0,0,0,0.18);border-left:2px solid rgba(124,155,255,0.4);font-size:14px;color:rgba(255,255,255,0.62);border-radius:0 6px 6px 0}
+    .technique-example strong{color:rgba(255,255,255,0.85)}
+
+    .compare-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
+    .compare-table th, .compare-table td{padding:13px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.06);vertical-align:top}
+    .compare-table th{background:rgba(255,255,255,0.03);color:rgba(255,255,255,0.88);font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:0.5px}
+    .compare-table td{color:rgba(255,255,255,0.68)}
+    .compare-table tr:hover td{background:rgba(255,255,255,0.012)}
+
+    .method-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+    .method-pill{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:14px 16px}
+    .method-pill h4{font-size:14px;margin:0 0 6px;color:rgba(255,255,255,0.9)}
+    .method-pill p{font-size:13.5px;color:rgba(255,255,255,0.6);margin:0;line-height:1.6}
+
+    .case-box{background:linear-gradient(135deg,rgba(124,155,255,0.04),rgba(61,95,224,0.02));border:1px solid rgba(124,155,255,0.14);border-radius:12px;padding:22px 24px;margin:20px 0}
+    .case-label{font-size:11px;font-weight:600;color:#B5C6FF;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px}
+    .case-box h4{margin:4px 0 10px;font-size:16px;color:rgba(255,255,255,0.95)}
+    .case-box p{font-size:14.5px;color:rgba(255,255,255,0.7);margin-bottom:10px}
+    .case-meta{font-size:13px;color:rgba(255,255,255,0.5);padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);margin-top:14px}
+    .case-meta strong{color:#B5C6FF}
+
+    .cta-box{background:linear-gradient(135deg,rgba(124,155,255,0.1),rgba(61,95,224,0.08));border:1px solid rgba(124,155,255,0.22);text-align:center;padding:36px;border-radius:14px;margin:44px 0}
+    .cta-box h3{color:rgba(255,255,255,0.96);margin:0 0 10px;font-size:20px;font-weight:600;border:none;padding:0}
+    .cta-box p{color:rgba(255,255,255,0.6);margin:0 0 22px;font-size:15px}
+    .cta-btn{display:inline-block;background:linear-gradient(135deg,#B5C6FF 0%,#7C9BFF 40%,#5B7FFF 100%);color:#0A0E1A;padding:13px 36px;border-radius:26px;font-weight:600;font-size:15px;transition:all 0.2s;text-decoration:none}
+    .cta-btn:hover{opacity:0.92;transform:translateY(-1px);color:#0A0E1A}
+
+    .faq-item{border-bottom:1px solid rgba(255,255,255,0.06);padding:20px 0}
+    .faq-q{font-weight:600;font-size:16px;color:rgba(255,255,255,0.92)}
+    .faq-a{margin-top:10px;color:rgba(255,255,255,0.62);font-size:14.5px;line-height:1.7}
+
+    .methodology{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:22px 26px;margin:36px 0;font-size:14px;color:rgba(255,255,255,0.58)}
+    .methodology h2{font-size:13px;border:none;padding:0;margin:0 0 14px;color:rgba(255,255,255,0.88);text-transform:uppercase;letter-spacing:1.2px}
+    .methodology p{margin:6px 0;font-size:13.5px}
+
+    .related{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+    .related a{display:block;padding:16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;text-decoration:none;color:#B5C6FF;font-size:14px;font-weight:500;transition:all 0.2s;line-height:1.5}
+    .related a:hover{background:rgba(124,155,255,0.05);border-color:rgba(124,155,255,0.28)}
+
+    .footer{background:#060912;border-top:1px solid rgba(255,255,255,0.04);padding:48px 24px;margin-top:60px}
+    .footer-inner{max-width:1024px;margin:0 auto}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer h4{font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
+    .footer-links{display:flex;flex-direction:column;gap:10px;font-size:14px}
+    .footer-links a{color:rgba(255,255,255,0.35);text-decoration:none;transition:color 0.15s}
+    .footer-links a:hover{color:rgba(255,255,255,0.75)}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.04);padding-top:24px;display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,0.28)}
+
+    @media(max-width:720px){
+      .ba-grid{grid-template-columns:1fr}
+      .related{grid-template-columns:1fr}
+      .method-grid{grid-template-columns:1fr}
+      h1{font-size:1.85rem}
+      h2{font-size:1.18rem}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .nav-links a:not(.nav-cta){display:none}
+      .wrap{padding:32px 20px}
+      .compare-table{font-size:12.5px}
+      .compare-table th,.compare-table td{padding:9px 7px}
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="https://infinisynapse.com" class="nav-logo">
+        <span class="nav-logo-mark">I</span>
+        <span>InfiniSynapse</span>
+      </a>
+      <div class="nav-links">
+        <a href="https://infinisynapse.com/#features">Features</a>
+        <a href="https://infinisynapse.com/tools">Tools</a>
+        <a href="https://infinisynapse.com/zh/docs">Docs</a>
+        <a href="https://infinisynapse.com/zh/blog">Blog</a>
+        <a href="https://app.infinisynapse.com/" class="nav-cta">Try Online</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrap">
+
+    <nav class="breadcrumb">
+      <a href="https://infinisynapse.com">Home</a><span>›</span>
+      <a href="https://infinisynapse.com/zh/blog">Blog</a><span>›</span>
+      Data Analysis Techniques
+    </nav>
+
+    <div>
+      <span class="badge badge-client">InfiniSynapse</span>
+      <span class="badge badge-cat">Complete Guide</span>
+    </div>
+
+    <h1>Data Analysis Techniques: A Complete Guide with Examples</h1>
+
+    <p class="meta-desc">The <strong>data analysis methods</strong> that drive business decisions, the <strong>data analysis examples</strong> that show them in action, and the modern <strong>ways of data analysis</strong> that AI is unlocking in 2026.</p>
+
+    <nav class="toc">
+      <div class="toc-label">Contents</div>
+      <ul>
+        <li><a href="#what-are">What are the main data analysis techniques?</a></li>
+        <li><a href="#before-after">Before and after: how the workflow changed</a></li>
+        <li><a href="#four-core">The 4 core data analysis techniques</a></li>
+        <li><a href="#methods-beyond">Common data analysis methods beyond the four types</a></li>
+        <li><a href="#examples">Data analysis examples: how teams actually use these techniques</a></li>
+        <li><a href="#modern-ways">Modern ways of data analysis: how AI changed the workflow</a></li>
+        <li><a href="#how-to-choose">How to choose the right technique</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <div class="tldr">
+      <div class="tldr-label">TL;DR</div>
+      <ul>
+        <li><strong>Problem:</strong> Dozens of data analysis techniques exist, and picking the wrong one wastes hours and produces results no one trusts.</li>
+        <li><strong>Solution:</strong> Map every question you ask to one of four core categories — descriptive, diagnostic, predictive, prescriptive — and pick the specific method from there.</li>
+        <li><strong>Result:</strong> A working framework, a method shortlist, real examples from e-commerce / SaaS / operations, and a view of what AI changes in 2026.</li>
+      </ul>
+    </div>
+
+    <h2 id="what-are">What are the main data analysis techniques?</h2>
+    <div class="snippet-answer"><strong>The main data analysis techniques split into four categories that each answer a different question:</strong>
+      <ol>
+        <li><strong>Descriptive analytics</strong> — what happened</li>
+        <li><strong>Diagnostic analytics</strong> — why it happened</li>
+        <li><strong>Predictive analytics</strong> — what will happen next</li>
+        <li><strong>Prescriptive analytics</strong> — what to do about it</li>
+      </ol>
+      <strong>Inside each category sit specific methods like regression, clustering, cohort analysis, time-series forecasting, and sentiment analysis.</strong>
+    </div>
+
+    <p>This four-part framework is the foundation of every serious analytics curriculum, and it is the map you should keep in your head when planning any analysis. The rest of this guide walks through each category in detail, the specific methods that live inside them, and how AI-powered tools are changing the way analysts execute these techniques in 2026.</p>
+
+    <h2 id="before-after">Before and after: how the workflow changed</h2>
+    <div class="ba-grid">
+      <div class="ba-card ba-before">
+        <div class="ba-label">Before — manual pipeline</div>
+        <div class="ba-text">An analyst runs descriptive analytics in a BI dashboard, spots a metric that looks off, then opens a SQL editor to manually run diagnostic queries — joining several tables, copying numbers into a spreadsheet, and writing up findings. A single question can take half a day.</div>
+      </div>
+      <div class="ba-card ba-after">
+        <div class="ba-label">After — with AI</div>
+        <div class="ba-text">The same analyst asks the question in plain English. An AI agent runs descriptive and diagnostic steps in one pass, federates across the warehouse, OLTP database, and a CSV, and returns the answer with the SQL attached. Half a day becomes five minutes.</div>
+      </div>
+    </div>
+
+    <h2 id="four-core">The 4 core data analysis techniques</h2>
+    <p>Every data analysis technique falls into one of four categories. The names matter less than the question each one answers. If you remember the question, you will always know which one you need.</p>
+
+    <div class="technique-card">
+      <span class="technique-tag">Technique 1</span>
+      <h4>Descriptive analytics — what happened</h4>
+      <p>Descriptive analytics summarizes what has already occurred. It is the default reporting layer of every business: dashboards, monthly KPIs, sales-by-region tables, conversion rate by channel. The methods are usually simple — counts, sums, averages, percentages, distributions — but the value is high because most operational decisions rely on accurate descriptive answers.</p>
+      <div class="technique-example">
+        <strong>Example:</strong> An e-commerce team's weekly dashboard shows total orders dropped 12% compared to last week. That is descriptive analytics. It tells you the fact, not the cause.
+      </div>
+    </div>
+
+    <div class="technique-card">
+      <span class="technique-tag">Technique 2</span>
+      <h4>Diagnostic analytics — why it happened</h4>
+      <p>Diagnostic analytics asks why a pattern appears. The methods here are drill-down, segmentation, correlation analysis, and root-cause analysis. The discipline is to keep splitting the data — by channel, by region, by user segment, by time — until you find the slice where the effect actually lives.</p>
+      <div class="technique-example">
+        <strong>Example:</strong> Continuing the e-commerce case above, the analyst segments the 12% drop by acquisition channel and finds it is concentrated in paid search. A second drill-down by campaign shows one major campaign paused mid-week. Cause found.
+      </div>
+    </div>
+
+    <div class="technique-card">
+      <span class="technique-tag">Technique 3</span>
+      <h4>Predictive analytics — what will happen</h4>
+      <p>Predictive analytics estimates future outcomes from historical patterns. The methods are statistical (regression, time-series forecasting, ARIMA) or machine-learning (classification, gradient boosting, neural networks). The output is a probability or a forecasted value, never a certainty — calibration of expectations matters as much as the prediction itself.</p>
+      <div class="technique-example">
+        <strong>Example:</strong> A SaaS company trains a classifier on past trial-to-paid conversions and uses it to score new trial signups. High-scoring users are routed to a sales rep within 24 hours; low-scoring users go into an automated email sequence.
+      </div>
+    </div>
+
+    <div class="technique-card">
+      <span class="technique-tag">Technique 4</span>
+      <h4>Prescriptive analytics — what to do about it</h4>
+      <p>Prescriptive analytics recommends an action. It builds on predictive results by adding optimization, simulation, or decision-rule logic. This is the hardest category to do well because it requires both a reliable prediction and a clear definition of the objective being optimized (revenue, retention, cost, risk).</p>
+      <div class="technique-example">
+        <strong>Example:</strong> A logistics company combines a delivery-time predictive model with an optimization layer that reroutes trucks in real time. The prescriptive output is not "delivery will be late" but "swap routes 14 and 22 to save 35 minutes total".
+      </div>
+    </div>
+
+    <p>Most real analyses are a sequence across all four. You start descriptive, move diagnostic when something looks off, run predictive once you have a stable hypothesis, and only attempt prescriptive when prediction is trusted and the cost of action is well understood.</p>
+
+    <h2 id="methods-beyond">Common data analysis methods beyond the four types</h2>
+    <p>The four categories tell you what kind of question you are asking. The specific <strong>data analysis method</strong> you choose tells you how to answer it. Here are the methods you will encounter most often in business analytics work:</p>
+
+    <div class="method-grid">
+      <div class="method-pill">
+        <h4>Regression analysis</h4>
+        <p>Quantifies the relationship between an outcome and one or more predictors. Linear, logistic, and multiple regression are the workhorses of predictive work.</p>
+      </div>
+      <div class="method-pill">
+        <h4>Correlation analysis</h4>
+        <p>Measures how strongly two variables move together. Useful early in diagnostic work to surface candidate causes, but never confused with causation.</p>
+      </div>
+      <div class="method-pill">
+        <h4>Cluster analysis</h4>
+        <p>Groups records that resemble each other. k-means and hierarchical clustering are common; the output is segments you can act on.</p>
+      </div>
+      <div class="method-pill">
+        <h4>Cohort analysis</h4>
+        <p>Tracks a defined group over time. Standard for retention, churn, and product-led growth metrics.</p>
+      </div>
+      <div class="method-pill">
+        <h4>Time-series analysis</h4>
+        <p>Models data ordered in time. Handles seasonality, trend, and forecast horizons. ARIMA, Prophet, and exponential smoothing are typical.</p>
+      </div>
+      <div class="method-pill">
+        <h4>A/B testing</h4>
+        <p>Compares two variants on a randomized population. The cleanest way to establish causality on a single change.</p>
+      </div>
+      <div class="method-pill">
+        <h4>Sentiment analysis</h4>
+        <p>Classifies text by emotional valence. Powered by NLP models; common for reviews, support tickets, and social posts.</p>
+      </div>
+      <div class="method-pill">
+        <h4>Factor analysis</h4>
+        <p>Reduces many variables to a few underlying factors. Useful when you suspect ten survey questions are really measuring three things.</p>
+      </div>
+    </div>
+
+    <p>A working analyst does not need to be expert in all of them. The right move is to be fluent in three or four that match your domain, and know enough about the rest to recognize when to bring in help.</p>
+
+    <h2 id="examples">Data analysis examples: how teams actually use these techniques</h2>
+    <p>Frameworks make sense once you see them used. The three <strong>data analysis examples</strong> below walk through real-shaped scenarios in e-commerce, SaaS, and operations — each one stitches together two or three techniques from above.</p>
+
+    <div class="case-box">
+      <div class="case-label">E-commerce</div>
+      <h4>Why did Q3 repeat-purchase rate drop?</h4>
+      <p>The team noticed repeat purchases were down 8% quarter over quarter. They started with descriptive analytics — splitting the rate by acquisition channel, product category, and customer cohort. The drop concentrated in customers who had signed up between April and June.</p>
+      <p>A cohort analysis confirmed it: this cohort had a noticeably worse 90-day retention curve than earlier cohorts. A diagnostic drill-down showed those customers had been acquired through a discount-heavy campaign — they bought once at 40% off and never came back.</p>
+      <div class="case-meta">
+        <strong>Techniques used:</strong> Descriptive analytics → Diagnostic analytics → Cohort analysis<br>
+        <strong>Outcome:</strong> The team paused the discount campaign and tested a smaller discount paired with a follow-up product recommendation, lifting 90-day retention from that cohort.
+      </div>
+    </div>
+
+    <div class="case-box">
+      <div class="case-label">SaaS</div>
+      <h4>Which trial users will convert to paid?</h4>
+      <p>A B2B SaaS company had 600 new trial signups per week and a 6% conversion rate. The sales team could only follow up with 50 of them. The question: how to pick the right 50.</p>
+      <p>The data team built a classifier — predictive analytics — using historical features: company size, role of the signup, time spent in the product on day one, number of teammates invited. The model scored every new signup within an hour of signup. The sales team called the top 50 each week. Conversion in that segment more than doubled.</p>
+      <div class="case-meta">
+        <strong>Techniques used:</strong> Predictive analytics → Classification model → A/B test (against random sales outreach)<br>
+        <strong>Outcome:</strong> Same headcount, ~2x conversion lift in the high-touch segment, validated against a control group.
+      </div>
+    </div>
+
+    <div class="case-box">
+      <div class="case-label">Operations</div>
+      <h4>Where does the customer onboarding funnel actually leak?</h4>
+      <p>An operations team owned a five-step onboarding funnel. Top-line conversion was 22% and had been flat for six months. They wanted to know which specific step was costing the most.</p>
+      <p>Diagnostic analytics on funnel data revealed that step three (verification document upload) had a 31% drop-off — twice as bad as the next-worst step. Further segmentation showed mobile users dropped at step three at 48%. Sentiment analysis on support tickets flagged "the photo upload keeps failing" as the dominant complaint.</p>
+      <div class="case-meta">
+        <strong>Techniques used:</strong> Descriptive analytics → Diagnostic analytics → Sentiment analysis<br>
+        <strong>Outcome:</strong> A bug fix on mobile photo uploads lifted step-three completion from 52% to 78%, raising overall funnel conversion several points.
+      </div>
+    </div>
+
+    <h2 id="modern-ways">Modern ways of data analysis: how AI changed the workflow</h2>
+    <p>The four techniques have not changed. What changed is how much time, SQL skill, and tooling you need to execute them. Modern <strong>ways of data analysis</strong> are increasingly defined by what an AI agent can do for you between asking the question and reading the answer.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Workflow step</th>
+          <th>Traditional approach</th>
+          <th>AI-augmented approach (2026)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Define the question</td>
+          <td>Analyst translates a business question into a data plan</td>
+          <td>Business user asks in plain English; AI clarifies ambiguity</td>
+        </tr>
+        <tr>
+          <td>Locate the data</td>
+          <td>Analyst maps which tables and sources hold the answer</td>
+          <td>Schema-aware AI links question terms to actual columns</td>
+        </tr>
+        <tr>
+          <td>Write the queries</td>
+          <td>Manual SQL, often multiple joins and CTEs</td>
+          <td>AI generates SQL; analyst reviews before running</td>
+        </tr>
+        <tr>
+          <td>Run descriptive + diagnostic together</td>
+          <td>Two separate cycles, often two analysts</td>
+          <td>One conversational pass; agent drills down on follow-ups</td>
+        </tr>
+        <tr>
+          <td>Federate across sources</td>
+          <td>Export to CSV, load into a warehouse, then query</td>
+          <td>Direct federation across databases and files, no ETL</td>
+        </tr>
+        <tr>
+          <td>Interpret results</td>
+          <td>Analyst writes summary in a report</td>
+          <td>AI generates summary; analyst validates and edits</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The AI-augmented column does not eliminate the analyst — it eliminates the slowest, lowest-value parts of the work. Modern AI tools each cover this shift differently, and the right choice depends on what you want to optimize:</p>
+
+    <ul>
+      <li><strong>Julius AI</strong> fits teams that want fast descriptive and basic diagnostic charts from spreadsheets or simple databases. It is strongest on quick-look analysis where the dataset is already in one place.</li>
+      <li><strong>Tableau AI / Tableau Pulse</strong> fits teams already standardized on Tableau. It augments existing dashboards with natural-language summaries and anomaly alerts, but stays inside the Tableau ecosystem.</li>
+      <li><strong>InfiniSynapse</strong> fits teams that need the full sweep — descriptive through prescriptive — across multiple data sources at scale. The agent federates queries across databases, files, and unstructured content, handles TB-scale workloads, and exposes both the SQL and the explanation.</li>
+    </ul>
+
+    <p>Honest framing: if your analytical work lives in one spreadsheet, Julius is lighter and gets you to a chart faster. If your team has a Tableau-centric workflow with strong BI maturity, Tableau AI is the path of least resistance. If you're running complex multi-source analyses on production-scale data, an AI data analyst like InfiniSynapse covers more of the workflow.</p>
+
+    <h2 id="how-to-choose">How to choose the right technique</h2>
+    <p>A simple decision rule that works for most situations:</p>
+
+    <ol>
+      <li><strong>What is the question about — past, present, future, or action?</strong>
+        <ul>
+          <li>Past or present state of the business → descriptive</li>
+          <li>Cause of an observed pattern → diagnostic</li>
+          <li>Likely future outcome → predictive</li>
+          <li>Best action to take → prescriptive</li>
+        </ul>
+      </li>
+      <li><strong>What kind of data do you have?</strong> Structured numeric data fits regression, time-series, and clustering. Categorical or grouped data fits cohort analysis and segmentation. Text fits sentiment analysis and topic modeling. Mixed sources fit modern AI agents that federate across them.</li>
+      <li><strong>How much trust do you need?</strong> A directional answer can come from descriptive + correlation. A high-stakes decision (pricing change, hiring plan) needs predictive with cross-validation, ideally backed by an A/B test before rollout.</li>
+    </ol>
+
+    <p>Three common mistakes to avoid. First, skipping descriptive analytics and jumping to predictive — you cannot trust a forecast if you do not know what the underlying data looks like. Second, confusing correlation with causation — most diagnostic findings are candidates for further testing, not conclusions. Third, building a prescriptive system on a predictive model that has not been validated in production — the recommendation will be confidently wrong.</p>
+
+    <div class="cta-box">
+      <h3>Ready to apply these techniques on your real data?</h3>
+      <p>InfiniSynapse runs descriptive, diagnostic, predictive, and prescriptive analyses across your databases and files via natural language. Free to start.</p>
+      <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse free →</a>
+    </div>
+
+    <h2 id="faq">FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-q">What are the main data analysis techniques?</div>
+      <div class="faq-a">The four main data analysis techniques are descriptive analytics (what happened), diagnostic analytics (why it happened), predictive analytics (what will happen), and prescriptive analytics (what to do about it). Within these categories sit specific methods like regression, clustering, cohort analysis, sentiment analysis, and time-series forecasting, each suited to a different type of question.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What are the 4 types of data analysis?</div>
+      <div class="faq-a">The four types are descriptive (summarizes past data using averages and KPIs), diagnostic (identifies the cause of an observed pattern through drill-down and correlation), predictive (forecasts future outcomes using regression and machine learning), and prescriptive (recommends an action using optimization and simulation). Most real analyses combine two or more of these in sequence.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between data analysis methods and techniques?</div>
+      <div class="faq-a">In practice the terms are used interchangeably, but a useful distinction is that a data analysis technique describes the broad category (descriptive, predictive, etc.), while a data analysis method names the specific tool used inside that category (linear regression, k-means clustering, ANOVA). When this guide refers to methods we mean the specific procedure; when it says techniques we mean the broader approach.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Which data analysis technique should a beginner start with?</div>
+      <div class="faq-a">Start with descriptive analytics. It answers the most common business questions (sales by region, monthly active users, conversion rate by channel) and requires only basic aggregation skills. Once you can confidently describe what is happening in your data, move to diagnostic analytics to start asking why. Predictive and prescriptive techniques add value later, but only on a foundation of clean descriptive work.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How is AI changing the way we do data analysis in 2026?</div>
+      <div class="faq-a">AI is collapsing the boundary between techniques rather than replacing any single one. A modern AI data analyst can run descriptive, diagnostic, and predictive steps in one conversation, federate across multiple data sources, and explain results in plain language. The techniques themselves remain the same; what changes is the time and SQL expertise required to execute them. Tools like Julius AI, Tableau AI, and InfiniSynapse each cover different parts of this shift.</div>
+    </div>
+
+    <div class="methodology">
+      <h2>About this guide</h2>
+      <p><strong>Last updated:</strong> 2026-05-09</p>
+      <p><strong>Methodology:</strong> The four-category framework follows the descriptive / diagnostic / predictive / prescriptive taxonomy used in standard analytics curricula and Gartner's analytics maturity model. Examples are scenario-based composites drawn from common patterns in e-commerce, SaaS, and operations practice.</p>
+      <p><strong>Conflict of interest:</strong> InfiniSynapse is the publisher of this guide. Tool comparisons (Julius AI, Tableau AI, InfiniSynapse) reflect each tool's public positioning at the time of writing; readers should verify current capabilities on vendor sites.</p>
+      <p><strong>Update cadence:</strong> Reviewed quarterly. Tool comparisons and 2026 references refreshed every 90 days.</p>
+    </div>
+
+    <h2>Related guides</h2>
+    <div class="related">
+      <a href="../best-ai-tools-for-data-analysis/index.html">Best AI Tools for Data Analysis in 2026</a>
+      <a href="../sql-data-analysis-with-ai/index.html">SQL Data Analysis with AI: From Question to Insight in Seconds</a>
+      <a href="../best-data-analysis-software/index.html">Best Data Analysis Software for Reporting and Insights in 2026</a>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div style="font-size:18px;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:12px">InfiniSynapse</div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.35);max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect any source. Ask in plain English. Get validated SQL and answers.</p>
+          <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online →</a>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <div class="footer-links">
+            <a href="https://infinisynapse.com/#features">Features</a>
+            <a href="https://infinisynapse.com/tools">Tools Market</a>
+            <a href="https://app.infinisynapse.com/">Try Online</a>
+            <a href="https://infinisynapse.com/download">Download</a>
+          </div>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <div class="footer-links">
+            <a href="https://infinisynapse.com/zh/docs">Documentation</a>
+            <a href="https://infinisynapse.com/zh/blog">Blog</a>
+            <a href="https://infinisynapse.com/#vision">Vision</a>
+          </div>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <div class="footer-links">
+            <a href="https://infinisynapse.com/#contact">Contact</a>
+            <a href="https://infinisynapse.com/careers">Careers</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+        <span>From question to insight, in seconds.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
