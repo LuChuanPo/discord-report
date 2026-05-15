@@ -831,6 +831,7 @@
             <li><a href="#sec-4-11-E">E、SEO 实操模拟器</a></li>
             <li><a href="#sec-4-11-F">F、流程图</a></li>
             <li><a href="#sec-4-11-G">G、Vercel 部署</a></li>
+            <li><a href="#sec-4-11-H">H、SEO页面写作规范&部署&检测全流程</a></li>
           </ul>
         </li>
         <li><a href="#sec-4-12">12、API 和 API Key</a></li>
@@ -2009,8 +2010,12 @@ pip --version</code></pre>
 </div>
 
 <!-- D -->
-<h3 id="sec-4-11-D">D、必看帖子</h3>
+<h3 id="sec-4-11-D">D、必看帖子||网页</h3>
 <p><a href="https://zhuanlan.zhihu.com/p/1937630123416322280" target="_blank" class="highlight-blue">https://zhuanlan.zhihu.com/p/1937630123416322280</a>：利用 Claude Code，24 小时把网站 SEO 干到谷歌首页，并赚 3000 美金，合理吗？</p>
+<p><a href="https://seo-wiki.vercel.app/" target="_blank" class="highlight-blue">https://seo-wiki.vercel.app/</a>：哥飞SEO策略Wiki
+从Web.Cafe社群201篇实战帖子中提取的核心策略。按第一性原理组织，每个策略包含：核心原理、具体步骤、实战案例、引用帖子。</p>
+<p><a href="https://seo-dashboard-plum.vercel.app/" target="_blank" class="highlight-blue">https://seo-dashboard-plum.vercel.app/</a>：AI SEO Dashboard做SEO必看的策略、信息、案例、数据网站教程
+</p>
 
 <!-- E -->
 <h3 id="sec-4-11-E">E、SEO 实操模拟器（小游戏模拟 SEO 全过程）</h3>
@@ -2109,6 +2114,1135 @@ git push</code></pre>
 
 <h4>五、小结</h4>
 <pre><code>写代码 → git push → Vercel 自动部署 → 全球可访问</code></pre>
+
+<h3 id="sec-4-11-H">H、SEO页面写作规范&部署&检测全流程</h3>
+<blockquote>
+  <p>这是一份面向新手的 SEO 页面"从 0 到上线再到检测"完整流程。共分 8 个步骤,按顺序执行即可。</p>
+</blockquote>
+
+<hr>
+
+<h4>步骤 1:了解客户官网或产品</h4>
+
+<p>从以下维度系统了解产品或服务:</p>
+
+<ol>
+  <li><strong>作用(Purpose)</strong>:产品主要解决什么问题或实现什么目标。</li>
+  <li><strong>功能(Features)</strong>:核心功能、附加功能或技术特性。</li>
+  <li><strong>使用场景(Use Cases)</strong>:产品适用的具体场景或行业。</li>
+  <li><strong>目标用户(Target Audience)</strong>:主要用户群体或决策人。</li>
+  <li><strong>解决痛点(Pain Points)</strong>:用户面临的问题,产品如何解决。</li>
+  <li><strong>优势(Competitive Advantages)</strong>:与同类产品相比的差异化亮点。</li>
+</ol>
+
+<blockquote>
+  <p><strong>提示</strong>:分析时可整理成表格,每个维度对应具体描述,方便后续关键词生成。</p>
+</blockquote>
+
+<hr>
+
+<h4>步骤 2:生成核心关键词与长尾关键词</h4>
+
+<ol>
+  <li>
+    <p><strong>生成核心关键词(Core Keywords)</strong></p>
+    <ul>
+      <li>基于产品功能、场景和用户痛点,提炼 n 个核心关键词(数量不限,初期尽量多)。</li>
+      <li>核心关键词可对应网站的页面标题或 H1 标签。</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>生成长尾关键词(Long-tail Keywords)</strong></p>
+    <ul>
+      <li>每个核心关键词生成 m 个长尾关键词(结合功能、场景、目标用户)。</li>
+      <li>布局建议:
+        <ul>
+          <li>核心关键词:页面中出现 <strong>8–10 次</strong>,用于 Title、H1、正文。</li>
+          <li>长尾关键词:页面中出现 <strong>6–8 次</strong>,用于 H2、H3、FAQ、正文段落。</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote>
+  <p><strong>示例</strong>:<br>
+  核心关键词:AI 自然语言分析平台<br>
+  长尾关键词:企业客户反馈 AI 分析、SQL 数据库文本分析、多语言自动化分析工具</p>
+</blockquote>
+
+<hr>
+
+<h4>步骤 3:关键词验证与竞争分析(KGR 法)</h4>
+
+<ol>
+  <li>
+    <p><strong>收集数据</strong></p>
+    <ul>
+      <li>使用 <strong>DataForSEO</strong> 查询关键词搜索量(search_volume)。</li>
+      <li>使用 <strong>SEMrush</strong> 或 Google 搜索 <code>allintitle:</code> 查询页面数量(allintitle_count)。</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>计算 KGR(Keyword Golden Ratio)</strong></p>
+    <pre><code>KGR = allintitle_count / search_volume</code></pre>
+  </li>
+  <li>
+    <p><strong>判断竞争度</strong></p>
+    <table>
+      <thead>
+        <tr><th>KGR 值</th><th>竞争度</th><th>上首页周期(参考新站)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>&lt; 0.25</td><td>🟢 黄金词</td><td>1–2 个月</td></tr>
+        <tr><td>0.25–1.0</td><td>🟡 中等竞争</td><td>3–6 个月</td></tr>
+        <tr><td>&gt; 1.0</td><td>🔴 高竞争</td><td>短期不优先</td></tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<blockquote>
+  <p><strong>建议</strong>:优先选择 KGR 小的关键词,越小竞争越低,越容易快速获取排名。</p>
+</blockquote>
+
+<hr>
+
+<h4>步骤 4:页面写作规范</h4>
+
+<blockquote>
+  <p>本步骤把"一个 SEO 页面应该怎么写"拆成 9 个子规范,按 4.1 → 4.9 顺序执行。</p>
+</blockquote>
+
+<h5>4.1 写作前:确定本篇文章的关键词清单</h5>
+
+<p>在开始写之前,先填好这张表:</p>
+
+<pre><code>主词(核心攻打的词):___________________
+搜索量:______  KGR:______
+次要词 1:___________________
+次要词 2:___________________
+次要词 3:___________________</code></pre>
+
+<h5>4.2 写 HTML Head 区域</h5>
+
+<p>Head 区域是用户看不见但搜索引擎最先读取的地方。这里填错了,排名就废了一半。</p>
+
+<h6>4.2.1 Title(页面标题)</h6>
+
+<p>这是搜索结果里蓝色那行大字,也是浏览器标签的名称。</p>
+
+<p><strong>规则:</strong></p>
+<ul>
+  <li>✅ 长度:<strong>60 个字符以内</strong>(超出会被截断)</li>
+  <li>✅ 主词必须<strong>完整连续</strong>出现,放在靠前位置</li>
+  <li>✅ 加上品牌名(放在末尾)</li>
+  <li>✅ 加上年份(可选,提升时效感)</li>
+</ul>
+
+<pre><code>&lt;title&gt;How to Add Data Analysis in Excel (2026 Guide) | YourBrand&lt;/title&gt;</code></pre>
+
+<p><strong>反例:</strong></p>
+
+<pre><code>&lt;!-- ❌ 太长、主词被截断 --&gt;
+&lt;title&gt;The Complete and Ultimate Step by Step Guide to Adding the Data Analysis ToolPak in Microsoft Excel for Beginners&lt;/title&gt;
+
+&lt;!-- ❌ 没有主词 --&gt;
+&lt;title&gt;Excel Tutorial | YourBrand&lt;/title&gt;</code></pre>
+
+<h6>4.2.2 Meta Description(页面描述)</h6>
+
+<p>这是搜索结果里标题下面那段灰色小字。它不直接影响排名,但影响用户<strong>要不要点进来</strong>。</p>
+
+<p><strong>规则:</strong></p>
+<ul>
+  <li>✅ 长度:<strong>155 个字符以内</strong>(超出被截断)</li>
+  <li>✅ 主词出现 1 次</li>
+  <li>✅ 包含 1–2 个次要词</li>
+  <li>✅ 要有"钩子",让用户想点击(说清楚文章能帮他解决什么)</li>
+</ul>
+
+<pre><code>&lt;meta name="description" content="Learn how to add data analysis in Excel using the built-in ToolPak. Plus: when an Excel data analysis tool isn't enough and what to use instead."&gt;</code></pre>
+
+<h6>4.2.3 Canonical(规范链接)</h6>
+
+<p>告诉搜索引擎"这个页面的官方地址是这个",防止重复内容惩罚。</p>
+
+<p><strong>规则:</strong></p>
+<ul>
+  <li>✅ 必须是这个页面的完整绝对 URL</li>
+  <li>✅ 协议用 <code>https</code></li>
+  <li>✅ 与浏览器地址栏显示的 URL <strong>完全一致</strong>,不多不少</li>
+</ul>
+
+<pre><code>&lt;link rel="canonical" href="https://yoursite.com/how-to-add-data-analysis-in-excel"&gt;</code></pre>
+
+<p><strong>常见错误:</strong></p>
+
+<pre><code>&lt;!-- ❌ 用了 http --&gt;
+&lt;link rel="canonical" href="http://yoursite.com/..."&gt;
+
+&lt;!-- ❌ URL 末尾斜杠不一致(真实页面没有斜杠但这里有) --&gt;
+&lt;link rel="canonical" href="https://yoursite.com/how-to-add-data-analysis-in-excel/"&gt;</code></pre>
+
+<h6>4.2.4 Robots(告诉搜索引擎能不能收录)</h6>
+
+<pre><code>&lt;!-- 正常文章页:允许收录、允许跟踪链接 --&gt;
+&lt;meta name="robots" content="index, follow"&gt;
+
+&lt;!-- 不想被收录的页面(如内部测试页)才用这个 --&gt;
+&lt;meta name="robots" content="noindex, nofollow"&gt;</code></pre>
+
+<h6>4.2.5 OG 标签(社交分享预览)</h6>
+
+<blockquote>
+  <p>⚠️ 注意:目前所有页面共用一张 OG 图(<code>https://yoursite.com/og.png</code>),必须部署在客户网站的根目录,确保打开链接能够看到图片。</p>
+</blockquote>
+
+<p>当有人把你的链接分享到 Twitter、LinkedIn、微信时,OG 标签控制预览卡片长什么样。</p>
+
+<pre><code>&lt;!-- 文章页固定写 article --&gt;
+&lt;meta property="og:type" content="article"&gt;
+
+&lt;!-- 与 &lt;title&gt; 保持一致 --&gt;
+&lt;meta property="og:title" content="How to Add Data Analysis in Excel | YourBrand"&gt;
+
+&lt;!-- 与 meta description 保持一致 --&gt;
+&lt;meta property="og:description" content="Learn how to add data analysis in Excel using the built-in ToolPak..."&gt;
+
+&lt;!-- 必须是这个页面的完整 URL,与 canonical 一致 --&gt;
+&lt;meta property="og:url" content="https://yoursite.com/how-to-add-data-analysis-in-excel"&gt;
+
+&lt;!-- 所有页面共用同一张 OG 图,放在网站根目录 --&gt;
+&lt;meta property="og:image" content="https://yoursite.com/og.png"&gt;</code></pre>
+
+<h6>4.2.6 Twitter Card 标签</h6>
+
+<pre><code>&lt;!-- summary_large_image = 显示大图卡片,SEO 文章统一用这个 --&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+
+&lt;!-- 你的 Twitter 账号(带@) --&gt;
+&lt;meta name="twitter:site" content="@YourTwitterHandle"&gt;
+
+&lt;!-- 与 og:image 用同一张图(全站共用) --&gt;
+&lt;meta name="twitter:image" content="https://yoursite.com/og.png"&gt;</code></pre>
+
+<h6>4.2.7 Viewport(移动端适配,必须有)</h6>
+
+<pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+<p>没有这行,手机上看到的就是缩小版的 PC 页面,Google 会降权。</p>
+
+<h6>4.2.8 完整 Head 模板</h6>
+
+<p>把上面所有内容合在一起,每个新页面照这个改:</p>
+
+<pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+  &lt;title&gt;你的 Title(≤60字符)| 品牌名&lt;/title&gt;
+  &lt;meta name="description" content="你的 Description(≤155字符)"&gt;
+  &lt;meta name="robots" content="index, follow"&gt;
+
+  &lt;meta property="og:type" content="article"&gt;
+  &lt;meta property="og:title" content="你的 Title | 品牌名"&gt;
+  &lt;meta property="og:description" content="你的 Description"&gt;
+  &lt;meta property="og:url" content="https://yoursite.com/页面slug"&gt;
+  &lt;meta property="og:image" content="https://yoursite.com/og.png"&gt;
+
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+  &lt;meta name="twitter:site" content="@你的Twitter"&gt;
+  &lt;meta name="twitter:image" content="https://yoursite.com/og.png"&gt;
+
+  &lt;link rel="canonical" href="https://yoursite.com/页面slug"&gt;
+&lt;/head&gt;</code></pre>
+
+<h5>4.3 页面内容结构(骨架)</h5>
+
+<p>一篇 SEO 文章的骨架是固定的,掌握这个骨架,内容往里填就行。</p>
+
+<h6>4.3.1 标准页面骨架</h6>
+
+<pre><code>导航栏
+  └─ Logo(链接到首页)
+  └─ 主导航链接(首页、产品、文档、博客等)
+  └─ CTA 按钮(注册 / 免费试用)
+
+正文
+  ├─ 面包屑导航(首页 &gt; 博客 &gt; 当前页标题)
+  ├─ H1 标题
+  ├─ 引导段落(150字以内,概括文章核心价值)
+  ├─ TL;DR 核心要点框(3–5 条,让懒得读全文的人也能获益)
+  ├─ 目录(H2 超过 5 个时必须有)
+  ├─ 正文内容(见 4.4)
+  ├─ 相关阅读(内链到其他页面)
+  ├─ FAQ 常见问题
+  └─ CTA(号召行动按钮)
+
+页脚
+  └─ 分类链接、法律声明、版权信息</code></pre>
+
+<h6>4.3.2 H 标签层级规则</h6>
+
+<p>H 标签(H1–H6)告诉搜索引擎文章的大纲结构,<strong>必须按层级使用,不能跳级</strong>。</p>
+
+<pre><code>H1:文章总标题(全页只能有 1 个)
+  H2:第一个大章节
+    H3:章节下的小节
+      H4:更细的分项(按需使用)
+  H2:第二个大章节
+    H3:小节
+  H2:第三个大章节</code></pre>
+
+<p><strong>常见错误:</strong></p>
+
+<pre><code>H1 → H3(跳过了 H2)❌
+H2 → H2 → H2 → H2(没有 H3,结构太扁平)⚠️
+全页两个 H1 ❌</code></pre>
+
+<h5>4.4 正文内容</h5>
+
+<h6>4.4.1 关键词要出现在哪里</h6>
+
+<p>主词必须出现在以下 7 个位置(少一个都会影响排名):</p>
+
+<table>
+  <thead>
+    <tr><th>位置</th><th>要求</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>URL slug</td><td>包含主词,用连字符 <code>-</code> 分隔单词</td></tr>
+    <tr><td><code>&lt;title&gt;</code></td><td>主词完整连续,60 字符内</td></tr>
+    <tr><td><code>&lt;meta description&gt;</code></td><td>主词出现 1 次,155 字符内</td></tr>
+    <tr><td><code>&lt;h1&gt;</code></td><td>主词完整连续,全页唯一</td></tr>
+    <tr><td>正文第一段前 100 字</td><td>主词自然出现 1 次</td></tr>
+    <tr><td>2–3 个 <code>&lt;h2&gt;</code> 标题</td><td>主词或次要词出现其中</td></tr>
+    <tr><td>正文全文</td><td>主词 5–10 次,次要词各 2–3 次</td></tr>
+  </tbody>
+</table>
+
+<p><strong>关键词密度:2–3%</strong>(每 100 个词里,主词出现约 2–3 次)</p>
+
+<p><strong>不要过度堆砌关键词</strong>,读起来像机器人在说话,Google 会降权:</p>
+
+<pre><code>❌ "Our Excel data analysis tool is the best Excel data analysis 
+   tool for Excel data analysis needs in Excel."</code></pre>
+
+<h6>4.4.2 第一段怎么写</h6>
+
+<p>第一段是用户进来最先读到的内容,也是搜索引擎判断相关性的重要区域。</p>
+
+<p><strong>格式:</strong></p>
+<ol>
+  <li>第一句直接点题(让用户知道来对地方了)</li>
+  <li>说清楚这篇文章能帮他解决什么</li>
+  <li>自然带入主词</li>
+  <li>100–150 字即可,不要废话</li>
+</ol>
+
+<p><strong>示例:</strong></p>
+
+<blockquote>
+  <p>If you're looking to add data analysis capabilities in Excel, the fastest path is the built-in <strong>Data Analysis ToolPak</strong> — a free add-in that ships with every copy of Excel. In this guide you'll learn how to enable it in under two minutes, run your first descriptive statistics and regression, and understand when this <strong>Excel data analysis tool</strong> hits its limits.</p>
+</blockquote>
+
+<h6>4.4.3 正文各段落规范</h6>
+
+<ul>
+  <li>每段 <strong>3–5 行</strong>,不要写整页不换段的大段文字</li>
+  <li>用 <code>&lt;ul&gt;</code> / <code>&lt;ol&gt;</code> 列表拆开步骤、注意事项</li>
+  <li>至少 1 个<strong>对比表格</strong>(对比多个选项、对比前后差异等)</li>
+  <li>重要信息用 <code>&lt;strong&gt;</code> 加粗,但不要满篇都是加粗</li>
+  <li>用小提示框、警告框区分普通文字和注意事项</li>
+</ul>
+
+<h6>4.4.4 文章长度参考</h6>
+
+<table>
+  <thead>
+    <tr><th>页面类型</th><th>建议字数</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>How-to 教程型</td><td>1,500–2,000 字</td></tr>
+    <tr><td>工具对比 / 评测型</td><td>1,800–2,500 字</td></tr>
+    <tr><td>信息型(什么是 X)</td><td>2,500–3,500 字</td></tr>
+    <tr><td>工具列表型</td><td>2,000–2,500 字</td></tr>
+  </tbody>
+</table>
+
+<p>字数不是越多越好,多余的废话会降低用户体验,导致跳出率高,反而影响排名。</p>
+
+<h6>4.4.5 FAQ 怎么写</h6>
+
+<p>FAQ 要回答用户真实会搜的问题,<strong>标题就是问题句</strong>,不要用"问题一"这种写法。</p>
+
+<p>好的 FAQ 标题:</p>
+<ul>
+  <li>How to add data analysis in Excel step by step?</li>
+  <li>Why is the Data Analysis option not showing in Excel?</li>
+  <li>Is the Data Analysis ToolPak free?</li>
+</ul>
+
+<p>每个 FAQ 答案:50–150 字,直接回答,不要绕。FAQ 至少 4–5 条。</p>
+
+<h5>4.5 图片处理</h5>
+
+<p>图片是 SEO 常被忽视的得分项,处理好了既帮排名又帮用户体验。</p>
+
+<h6>4.5.1 正文截图规范</h6>
+
+<p>一篇文章<strong>至少 3 张截图</strong>(没有图的文章用户信任度低)。</p>
+
+<table>
+  <thead>
+    <tr><th>要素</th><th>规范</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>数量</td><td>每篇至少 3 张</td></tr>
+    <tr><td>格式</td><td>PNG(截图)、WebP(压缩后)</td></tr>
+    <tr><td>尺寸</td><td>建议 1200×700px(宽幅,适配大多数布局)</td></tr>
+    <tr><td>文件大小</td><td>压缩到 200KB 以内(用 <a href="https://squoosh.app/">Squoosh</a> 或 TinyPNG)</td></tr>
+    <tr><td>文件命名</td><td>用关键词命名,如 <code>excel-data-analysis-toolpak-enable.png</code>,<strong>不要用</strong> <code>image001.png</code></td></tr>
+  </tbody>
+</table>
+
+<h6>4.5.2 alt 属性(最重要)</h6>
+
+<p><code>alt</code> 属性是搜索引擎"读取"图片内容的唯一方式,必须填,且要描述图片内容(含关键词,自然融入)。</p>
+
+<pre><code>&lt;!-- ✅ 好的 alt --&gt;
+&lt;img 
+  src="excel-data-analysis-enable.png" 
+  alt="Excel Options dialog showing how to enable the Data Analysis ToolPak add-in"
+  width="1200" 
+  height="700"
+  loading="lazy"
+&gt;
+
+&lt;!-- ❌ 坏的 alt --&gt;
+&lt;img src="img001.png" alt="image"&gt;
+&lt;img src="img001.png" alt=""&gt;  &lt;!-- 空的也不行 --&gt;
+&lt;img src="img001.png" alt="excel excel data analysis excel toolpak excel tutorial"&gt;  &lt;!-- 关键词堆砌 --&gt;</code></pre>
+
+<h6>4.5.3 width / height 属性</h6>
+
+<p>必须写,防止页面加载时图片位置跳动(Google 的 CLS 指标,影响排名)。</p>
+
+<pre><code>&lt;img src="..." alt="..." width="1200" height="700"&gt;</code></pre>
+
+<h6>4.5.4 loading="lazy"</h6>
+
+<p>除了第一屏的图片,其余全部加 <code>loading="lazy"</code>,加快页面加载速度。</p>
+
+<pre><code>&lt;!-- 首屏图(Hero图)不加 lazy,让它立刻加载 --&gt;
+&lt;img src="hero.png" alt="..." width="..." height="..."&gt;
+
+&lt;!-- 正文中的图全部加 lazy --&gt;
+&lt;img src="step1.png" alt="..." width="..." height="..." loading="lazy"&gt;</code></pre>
+
+<h6>4.5.5 OG 封面图(社交分享图)</h6>
+
+<p><strong>目前所有页面共用一张 OG 图</strong>(后续可按需为重点页面单独制作)。</p>
+
+<ul>
+  <li>尺寸:<strong>1200×630px</strong>(Open Graph 标准)</li>
+  <li>格式:PNG</li>
+  <li>内容:品牌名 + Logo + 品牌主色调背景(因为多页面共用,内容做通用化,不放具体页面标题)</li>
+  <li>命名:统一叫 <code>og.png</code></li>
+  <li>部署位置:网站根目录 <code>/og.png</code>(所有页面 Head 里都引用同一个 URL)</li>
+  <li><strong>必须上传到服务器并确认 URL 可访问</strong></li>
+</ul>
+
+<h5>4.6 链接设置</h5>
+
+<p>链接是 SEO 里最容易出问题的地方。一个 404 链接不只影响用户体验,还会影响 Google 对整个站点的评分。</p>
+
+<h6>4.6.1 链接的种类</h6>
+
+<table>
+  <thead>
+    <tr><th>类型</th><th>说明</th><th>示例</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>外链(出站)</td><td>链接到其他网站</td><td>链到 Wikipedia、官方文档</td></tr>
+    <tr><td>内链(站内)</td><td>链接到本站其他页面</td><td>链到博客其他文章</td></tr>
+    <tr><td>页面锚点</td><td>链接到本页某个位置</td><td><code>#faq</code></td></tr>
+    <tr><td>CTA 链接</td><td>注册、试用、购买等行动按钮</td><td>链到注册页</td></tr>
+  </tbody>
+</table>
+
+<h6>4.6.2 所有链接上线前必须验证可访问</h6>
+
+<p>这是最重要的一条规范。<strong>每一个链接,包括 Head 里的 og:image、canonical、Schema 里的 URL,都必须真实存在、返回 HTTP 200。</strong></p>
+
+<p><strong>怎么验证:</strong></p>
+
+<p>方法一:手动一个个点,确认页面正常打开。</p>
+
+<p>方法二:用 Chrome 插件 <a href="https://chrome.google.com/webstore/detail/check-my-links/ojkcdipcgfaekbeaelaapakgnjflfglf">Check My Links</a>,一键扫描整页所有链接。</p>
+
+<p>方法三:命令行批量验证(适合技术同学):</p>
+
+<pre><code>curl -o /dev/null -s -w "%{http_code}  %{url_effective}\n" https://yoursite.com/page-slug</code></pre>
+
+<p>返回 <code>200</code> = 正常,<code>404</code> = 页面不存在,<code>500</code> = 服务器错误。</p>
+
+<p><strong>常见需要验证的链接清单:</strong></p>
+
+<pre><code>页面内容里的链接
+  ✅ 导航栏所有链接(首页、产品页、文档页、博客页、注册页)
+  ✅ 正文内链(链到本站其他页面)
+  ✅ 外链(链到第三方网站,确认对方页面还在)
+  ✅ CTA 按钮链接(注册/试用页)
+  ✅ 页脚所有链接
+  ✅ 相关文章推荐链接
+
+Head 里的 URL
+  ✅ og:url(与 canonical 一致,且页面真实存在)
+  ✅ og:image(全站共用的 /og.png 真实存在,可以直接打开)
+  ✅ twitter:image(同上)
+  ✅ canonical href(与浏览器地址栏完全一致)
+
+Schema JSON 里的 URL
+  ✅ Organization.url(官网首页)
+  ✅ Organization.logo(Logo 图片 URL)
+  ✅ BreadcrumbList 每一层的 item URL
+  ✅ Article.image(OG 图片 URL)
+  ✅ Article.mainEntityOfPage @id(当前页 URL)</code></pre>
+
+<h6>4.6.3 内链怎么写</h6>
+
+<p>每篇文章至少链到本站<strong>其他 2 篇文章</strong>。</p>
+
+<p><strong>锚文本(链接的文字)规则:</strong></p>
+<ul>
+  <li>✅ 用自然语言短语,包含目标页的关键词</li>
+  <li>❌ 不要用"点击这里"、"了解更多"这种没有意义的文字</li>
+</ul>
+
+<pre><code>&lt;!-- ✅ 好的内链写法 --&gt;
+&lt;p&gt;
+  If you're ready to go beyond Excel, check out our guide to 
+  &lt;a href="/best-ai-tools-for-data-analysis"&gt;best AI tools for data analysis&lt;/a&gt;.
+&lt;/p&gt;
+
+&lt;!-- ❌ 坏的内链写法 --&gt;
+&lt;p&gt;
+  Want to know more? &lt;a href="/best-ai-tools-for-data-analysis"&gt;click here&lt;/a&gt;.
+&lt;/p&gt;</code></pre>
+
+<p><strong>内链用相对路径还是绝对路径?</strong></p>
+
+<p>推荐用<strong>相对路径</strong>,这样无论客户最终把页面部署在主域名、子域名还是子目录下都能正确跳转(详见步骤 7 的部署说明)。</p>
+
+<pre><code>&lt;!-- 相对路径(推荐,跨部署方式都能用) --&gt;
+&lt;a href="/best-ai-tools-for-data-analysis"&gt;best AI tools for data analysis&lt;/a&gt;
+
+&lt;!-- 绝对路径(只在确定最终域名时使用) --&gt;
+&lt;a href="https://yoursite.com/best-ai-tools-for-data-analysis"&gt;...&lt;/a&gt;</code></pre>
+
+<h6>4.6.4 外链规范</h6>
+
+<p>链到其他网站时:</p>
+<ul>
+  <li>链到<strong>权威来源</strong>(Wikipedia、官方文档、知名媒体),对排名有正向信号</li>
+  <li>链到竞品时谨慎(除非是对比文章,必须提到)</li>
+  <li>不确定目标站点是否可靠时,加 <code>rel="nofollow"</code></li>
+</ul>
+
+<pre><code>&lt;a href="https://support.microsoft.com/..." rel="noopener noreferrer"&gt;Microsoft 官方文档&lt;/a&gt;</code></pre>
+
+<h5>4.7 Schema 结构化数据</h5>
+
+<p>Schema 是一段写在 <code>&lt;head&gt;</code> 里的 JSON 代码,帮助 Google 理解页面的语义,可以触发搜索结果里的"富媒体摘要"(Rich Results)——比如 FAQ 折叠展示、教程步骤、面包屑等。</p>
+
+<p>所有代码放在 <code>&lt;script type="application/ld+json"&gt;</code> 标签里。</p>
+
+<h6>4.7.1 所有页面都要加的 Schema(必须)</h6>
+
+<p><strong>① Organization(告诉 Google 这个网站是谁)</strong></p>
+
+<pre><code>{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "你的品牌名",
+  "url": "https://yoursite.com",
+  "logo": "https://yoursite.com/logo.png",
+  "sameAs": [
+    "https://twitter.com/你的账号",
+    "https://linkedin.com/company/你的公司"
+  ]
+}</code></pre>
+
+<blockquote>
+  <p>⚠️ <code>logo</code> 和 <code>url</code> 必须是真实存在、可以访问的 URL</p>
+</blockquote>
+
+<p><strong>② BreadcrumbList(面包屑导航)</strong></p>
+
+<pre><code>{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://yoursite.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Blog",
+      "item": "https://yoursite.com/blog"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "当前页面标题",
+      "item": "https://yoursite.com/当前页slug"
+    }
+  ]
+}</code></pre>
+
+<p><strong>③ Article(文章信息)</strong></p>
+
+<pre><code>{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "与 H1 一致的标题",
+  "description": "与 meta description 一致",
+  "image": ["https://yoursite.com/og.png"],
+  "datePublished": "2026-01-15",
+  "dateModified": "2026-01-15",
+  "publisher": {
+    "@type": "Organization",
+    "name": "你的品牌名",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://yoursite.com/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://yoursite.com/当前页slug"
+  }
+}</code></pre>
+
+<h6>4.7.2 按页面类型选加的 Schema</h6>
+
+<p><strong>教程 / How-to 页:加 HowTo</strong></p>
+
+<pre><code>{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to [做什么]",
+  "description": "简短描述",
+  "totalTime": "PT10M",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "步骤标题",
+      "text": "步骤详情,用纯文字,不要包含 HTML 标签"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "第二步标题",
+      "text": "第二步详情"
+    }
+  ]
+}</code></pre>
+
+<p><strong>含 FAQ 区块的页面:加 FAQPage</strong></p>
+
+<pre><code>{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "FAQ 问题标题?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "答案内容,纯文本,不含 HTML 标签"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "第二个问题?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "第二个答案"
+      }
+    }
+  ]
+}</code></pre>
+
+<blockquote>
+  <p>⚠️ Schema 里 <code>name</code> 和 <code>text</code> 的内容要与页面上实际显示的一致,不能写页面上没有的内容</p>
+</blockquote>
+
+<h6>4.7.3 Schema 写完怎么验证</h6>
+
+<p>用 Google 官方工具:<a href="https://search.google.com/test/rich-results">https://search.google.com/test/rich-results</a></p>
+
+<p>粘贴页面 URL 或直接粘贴代码,看有没有报错。有红色错误必须修复,黄色警告尽量修复。</p>
+
+<h5>4.8 移动端检查</h5>
+
+<p>Google 现在以移动端版本为准来排名(Mobile-First Indexing),手机上显示不好直接影响排名。</p>
+
+<h6>4.8.1 最基础的移动端要求</h6>
+
+<p><strong>1. Viewport Meta 标签必须有:</strong></p>
+
+<pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+<p><strong>2. 字体在手机上可以正常阅读:</strong></p>
+<ul>
+  <li>正文字体不小于 16px</li>
+  <li>行高不小于 1.5</li>
+</ul>
+
+<p><strong>3. 按钮和链接手指可以点到:</strong></p>
+<ul>
+  <li>可点击区域至少 44×44px</li>
+  <li>相邻两个链接之间留足间距</li>
+</ul>
+
+<p><strong>4. 表格在手机上不溢出屏幕:</strong></p>
+
+<pre><code>/* 表格超出时允许横向滚动 */
+.table-wrapper {
+  overflow-x: auto;
+}</code></pre>
+
+<p><strong>5. 图片不超出屏幕宽度:</strong></p>
+
+<pre><code>img {
+  max-width: 100%;
+  height: auto;
+}</code></pre>
+
+<h6>4.8.2 怎么测试移动端</h6>
+
+<p>方法一:Chrome 浏览器 → F12 → 点击手机图标,切换到移动端模拟</p>
+
+<p>方法二:用 Google 官方工具:<a href="https://search.google.com/test/mobile-friendly">https://search.google.com/test/mobile-friendly</a></p>
+
+<h5>4.9 发布前终极自查清单</h5>
+
+<p>每篇文章发布前,把这个清单过一遍,全部打勾才能发布。</p>
+
+<p><strong>🔤 关键词</strong></p>
+<ul>
+  <li>☐ 已确定主词 + 至少 2 个次要词</li>
+  <li>☐ 主词出现在 URL slug</li>
+  <li>☐ 主词出现在 <code>&lt;title&gt;</code>,且 title ≤ 60 字符</li>
+  <li>☐ 主词出现在 <code>&lt;meta description&gt;</code>,且 description ≤ 155 字符</li>
+  <li>☐ 主词出现在 <code>&lt;h1&gt;</code>,且全页只有 1 个 <code>&lt;h1&gt;</code></li>
+  <li>☐ 主词出现在正文前 100 字</li>
+  <li>☐ 主词出现在至少 2 个 <code>&lt;h2&gt;</code> 里</li>
+  <li>☐ 正文主词出现 5–10 次,关键词密度约 2–3%</li>
+  <li>☐ 次要词各出现 2–3 次</li>
+</ul>
+
+<p><strong>📄 Head 区域</strong></p>
+<ul>
+  <li>☐ <code>&lt;title&gt;</code> 已填写,≤ 60 字符</li>
+  <li>☐ <code>&lt;meta description&gt;</code> 已填写,≤ 155 字符</li>
+  <li>☐ <code>&lt;meta name="robots" content="index, follow"&gt;</code> 已添加</li>
+  <li>☐ <code>&lt;link rel="canonical"&gt;</code> 已添加,URL 与浏览器地址栏完全一致</li>
+  <li>☐ <code>&lt;meta name="viewport"&gt;</code> 已添加</li>
+  <li>☐ <code>og:title</code> / <code>og:description</code> / <code>og:url</code> / <code>og:image</code> 均已填写</li>
+  <li>☐ <code>twitter:card</code> / <code>twitter:image</code> 已填写</li>
+</ul>
+
+<p><strong>🔗 链接验证</strong></p>
+<ul>
+  <li>☐ 导航栏所有链接已验证可访问(手动点击或用工具扫描)</li>
+  <li>☐ 正文所有内链已验证目标页面存在</li>
+  <li>☐ 正文所有外链已验证目标页面存在</li>
+  <li>☐ 页脚所有链接已验证可访问</li>
+  <li>☐ CTA 按钮链接已验证可访问</li>
+  <li>☐ <code>og:image</code> URL 已验证图片存在(直接在浏览器地址栏打开 URL)</li>
+  <li>☐ <code>canonical</code> URL 正确</li>
+  <li>☐ Schema 中所有 URL 已验证</li>
+</ul>
+
+<p><strong>🖼️ 图片</strong></p>
+<ul>
+  <li>☐ 正文至少 3 张截图</li>
+  <li>☐ 所有图片有 <code>alt</code> 属性(含关键词,自然描述)</li>
+  <li>☐ 所有图片有 <code>width</code> 和 <code>height</code> 属性</li>
+  <li>☐ 非首屏图片有 <code>loading="lazy"</code></li>
+  <li>☐ 图片文件已压缩,单张 &lt; 200KB</li>
+  <li>☐ 全站共用的 OG 封面图已上传,URL 可访问(1200×630px)</li>
+</ul>
+
+<p><strong>📋 Schema</strong></p>
+<ul>
+  <li>☐ Organization Schema 已添加</li>
+  <li>☐ BreadcrumbList Schema 已添加,每层 URL 可访问</li>
+  <li>☐ Article Schema 已添加,<code>datePublished</code> 为实际发布日期</li>
+  <li>☐ 教程页已添加 HowTo Schema</li>
+  <li>☐ 含 FAQ 的页面已添加 FAQPage Schema</li>
+  <li>☐ 用 Google Rich Results Test 验证,无红色错误</li>
+</ul>
+
+<p><strong>📝 内容</strong></p>
+<ul>
+  <li>☐ H 标签没有跳级(H1 → H2 → H3 按顺序)</li>
+  <li>☐ 文章字数符合该类型的建议范围</li>
+  <li>☐ 至少 1 个对比表格</li>
+  <li>☐ FAQ 至少 4–5 条,标题为问句格式</li>
+  <li>☐ 至少链到本站其他 2 篇文章(内链)</li>
+  <li>☐ 文末有 CTA 按钮</li>
+  <li>☐ 移动端显示正常(Chrome DevTools 验证)</li>
+</ul>
+
+<hr>
+
+<h4>步骤 5:页面写作 skill(辅助工具)</h4>
+
+<p>下载链接:<a href="https://github.com/LuChuanPo/seo-page-writer.git">https://github.com/LuChuanPo/seo-page-writer.git</a></p>
+
+<p>使用步骤很简单,可以看 Github 上的 readme。</p>
+
+<p>也可以生成一个类似的表格结构,发给安装好这个 skill 的 Claude Code。下面是示例数据,根据具体的页面更改:</p>
+
+<table>
+  <thead>
+    <tr><th>字段</th><th>内容</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>页面 URL</td><td><code>/sql-data-analysis-with-ai</code></td></tr>
+    <tr><td>产品介绍</td><td>InfiniSynapse 产品介绍 / 产品定位 / 核心内容:xxxx 等大概 500 字</td></tr>
+    <tr><td>Meta Title</td><td>SQL Data Analysis with AI: From Question to Insight (2026)</td></tr>
+    <tr><td>H1</td><td>SQL Data Analysis with AI: From Question to Insight in Seconds</td></tr>
+    <tr><td>Meta Description</td><td>Modern SQL data analysis powered by AI agents. See how data analysis using SQL evolved from manual queries to AI that understands your schema and business metrics.</td></tr>
+    <tr><td><strong>核心主词</strong></td><td>sql data analysis (8,100, KGR 0.024) 🟢 极致黄金</td></tr>
+    <tr><td>次要词</td><td>data analysis using sql (8,100, KGR 0.024) 🟢 极致黄金</td></tr>
+    <tr><td>KGR 状态</td><td>🟢🟢🟢 这是 InfiniSynapse 首批 SEO 的命脉,最高资源投入</td></tr>
+    <tr><td>文章长度</td><td>2,200–2,800 字</td></tr>
+    <tr><td>主词在哪些位置</td><td>URL、Meta Title、H1、Meta Description、第一段、4 个 H2、正文 8–10 次</td></tr>
+    <tr><td>次要词分布</td><td><code>data analysis using sql</code> 用作 1 个 H2,正文 4–5 次</td></tr>
+    <tr><td>内嵌 Try-it 工具</td><td>✅ 必做。嵌入"自然语言 → SQL 生成"现场 demo,用户输入 "top customers by revenue last quarter" 返回 SQL + 真实结果</td></tr>
+    <tr><td>在合适位置添加实例图片</td><td>图片 url 当前目录 page2.1.png,page2.2.png,page2.3.png</td></tr>
+    <tr><td>内链</td><td>链到页面 1(<code>/best-ai-tools-for-data-analysis</code>)、页面 3(<code>/data-analysis-techniques</code>)、页面 4(<code>/best-data-analysis-software</code>)</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h4>步骤 6:页面检测(发布前 AI 自查)</h4>
+
+<p>按照下面的维度让 AI 去看看页面符不符合标准:</p>
+
+<table>
+  <thead>
+    <tr><th>SEO 检测维度</th><th>检查内容 / 标准说明</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Meta Title</strong></td><td>标题长度最佳(40-60 个字符)</td></tr>
+    <tr><td><strong>Meta Description</strong></td><td>描述长度最佳(150-160 个字符)</td></tr>
+    <tr><td><strong>Canonical URL</strong></td><td>规范 URL 设置正确</td></tr>
+    <tr><td><strong>H1 Tag</strong></td><td>页面有一个 H1 标签,符合预期</td></tr>
+    <tr><td><strong>H2 Tag</strong></td><td>页面有 H2 标签来构建内容结构</td></tr>
+    <tr><td><strong>H3 Tag</strong></td><td>页面有 H3 标签来增强内容结构</td></tr>
+    <tr><td><strong>Social Media Meta Tags</strong></td><td>社交媒体元标签存在</td></tr>
+    <tr><td><strong>Images</strong></td><td>所有图片都有 ALT 文本,增强 SEO 和可访问性</td></tr>
+    <tr><td><strong>Internal Links</strong></td><td>页面有内部链接,支持网站结构</td></tr>
+    <tr><td><strong>External Links</strong></td><td>页面有外部链接,增强内容价值</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h4>步骤 7:页面上线(交付与部署)</h4>
+
+<h5>7.1 交付物的目录结构</h5>
+
+<p>我们交付给客户的是一个静态资源压缩包(<code>.zip</code>)。解压后是一组按页面 slug 组织的目录,每个目录包含该页面的所有相关资源。</p>
+
+<p><strong>标准目录结构示例:</strong></p>
+
+<pre><code>seo-pages/
+├── sql-data-analysis-with-ai/        # 页面 1 的目录,目录名 = URL slug
+│   ├── index.html                    # 页面正文(打开这个目录时默认加载)
+│   └── images/                       # 该页面用到的所有正文截图
+│       ├── page2.1.png
+│       ├── page2.2.png
+│       └── page2.3.png
+│
+├── best-ai-tools-for-data-analysis/  # 页面 2 的目录
+│   ├── index.html
+│   └── images/
+│       └── ...
+│
+├── data-analysis-techniques/         # 页面 3 的目录
+│   ├── index.html
+│   └── images/
+│
+├── og.png                            # 全站共用的 OG 社交分享图(1200×630px)
+├── sitemap.xml                       # 全站点地图(根据客户域名生成,见 7.4)
+├── robots.txt                        # 爬虫规则文件(见 7.5)
+└── README.md                         # 给客户运维看的部署说明</code></pre>
+
+<p><strong>关键点:</strong></p>
+<ul>
+  <li>每个页面单独一个文件夹,文件夹名 = URL 的最后一段 slug。</li>
+  <li>文件夹里 HTML <strong>必须命名为 <code>index.html</code></strong>,这样访问 <code>/sql-data-analysis-with-ai/</code> 时服务器会自动加载它,URL 末尾不需要带 <code>.html</code>,更符合 SEO 习惯。</li>
+  <li>图片资源放在该页面文件夹的 <code>images/</code> 子目录里,HTML 用相对路径引用:<code>&lt;img src="images/page2.1.png"&gt;</code>。</li>
+  <li><strong>OG 图片全站共用一张</strong>,统一命名为 <code>og.png</code>,放在压缩包<strong>根目录</strong>,客户部署时上传到网站根目录。所有页面 Head 里都引用 <code>https://客户域名/og.png</code> 这一个 URL。后续如有重点页面需要单独的 OG 图,再按 <code>og/[页面slug].png</code> 的命名规则补充。</li>
+  <li><code>sitemap.xml</code> 和 <code>robots.txt</code> 放在压缩包根目录,客户部署到网站根目录即可。</li>
+</ul>
+
+<h5>7.2 三种部署方式与对应的最终 URL</h5>
+
+<p>客户可以选择以下任意一种部署方式,我们的页面都能正常工作(因为我们已经把所有内链、图片都做成了相对路径)。</p>
+
+<table>
+  <thead>
+    <tr><th>部署方式</th><th>客户操作</th><th>最终页面 URL 示例</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>主域名根目录</strong></td><td>把每个页面文件夹直接放在网站根目录</td><td><code>https://infinisynapse.com/sql-data-analysis-with-ai/</code></td></tr>
+    <tr><td><strong>子目录</strong></td><td>把所有页面文件夹放在网站根目录下的一个父目录里(如 <code>/blog/</code>)</td><td><code>https://infinisynapse.com/blog/sql-data-analysis-with-ai/</code></td></tr>
+    <tr><td><strong>子域名</strong></td><td>单独开一个子域名(如 <code>learn.infinisynapse.com</code>),把页面放在该子域名根目录</td><td><code>https://learn.infinisynapse.com/sql-data-analysis-with-ai/</code></td></tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>💡 <strong>三种方式 SEO 权重对比</strong>:</p>
+  <ul>
+    <li>主域名根目录 ≈ 子目录 &gt; 子域名(子域名会被 Google 视为相对独立的站点,权重传递较弱)</li>
+    <li>如果客户主站权重较高,<strong>推荐使用子目录方式</strong>(<code>/blog/xxx</code>),最大化权重继承。</li>
+  </ul>
+</blockquote>
+
+<h5>7.3 如何让客户部署页面</h5>
+
+<p>把压缩包发给客户后,附上以下部署说明(可以直接复制下面这段给客户):</p>
+
+<blockquote>
+  <p><strong>部署说明(给客户运维)</strong></p>
+  <ol>
+    <li><strong>解压压缩包</strong>:得到 <code>seo-pages/</code> 目录。</li>
+    <li><strong>选择部署位置</strong>:决定页面挂在主域名根目录、子目录还是子域名(参考上面 7.2 的对比表)。</li>
+    <li><strong>上传文件</strong>:
+      <ul>
+        <li>使用 FTP / SFTP / SCP / 云存储控制台,把 <code>seo-pages/</code> 里<strong>所有的页面文件夹</strong>(如 <code>sql-data-analysis-with-ai/</code>、<code>best-ai-tools-for-data-analysis/</code> 等)上传到所选位置。</li>
+        <li>把 <code>sitemap.xml</code>、<code>robots.txt</code> 和 <strong><code>og.png</code></strong> 上传到<strong>网站根目录</strong>(<code>og.png</code> 是全站共用的社交分享图,所有页面的 Head 标签都会引用它,所以必须放根目录)。</li>
+      </ul>
+    </li>
+    <li><strong>服务器配置</strong>:确保 Web 服务器(Nginx / Apache / CDN)的目录默认文档设置包含 <code>index.html</code>(99% 默认就是)。</li>
+    <li><strong>验证部署</strong>:
+      <ul>
+        <li>在浏览器打开任一页面 URL,确认正文、图片、样式都正常显示。</li>
+        <li>打开 <code>https://你的域名/sitemap.xml</code>,确认能直接看到 XML 内容(不是 404)。</li>
+        <li>打开 <code>https://你的域名/robots.txt</code>,确认能直接看到文本内容。</li>
+      </ul>
+    </li>
+    <li><strong>提交到 Google Search Console</strong>(可选但推荐):
+      <ul>
+        <li>登录 <a href="https://search.google.com/search-console">Google Search Console</a></li>
+        <li>在"站点地图"功能里提交 <code>https://你的域名/sitemap.xml</code></li>
+        <li>这样 Google 会更快地发现并收录新页面。</li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<h5>7.4 sitemap.xml 怎么写</h5>
+
+<p>sitemap.xml 告诉搜索引擎"我这个站有哪些页面、它们的重要性、更新频率",是 Google 发现新页面最快的方式。</p>
+
+<p><strong>关键规则:</strong></p>
+<ul>
+  <li>文件名必须是 <code>sitemap.xml</code>,放在网站根目录</li>
+  <li><code>&lt;loc&gt;</code> 里的 URL <strong>必须是完整绝对 URL,使用客户实际部署后的域名</strong></li>
+  <li>末尾斜杠要和实际页面 URL 保持一致(我们的页面都是带末尾斜杠的目录形式,所以 <code>&lt;loc&gt;</code> 也要带 <code>/</code>)</li>
+  <li>编码使用 UTF-8</li>
+</ul>
+
+<p><strong>模板(以客户部署到 <code>https://infinisynapse.com</code> 主域名根目录为例):</strong></p>
+
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+
+  &lt;url&gt;
+    &lt;loc&gt;https://infinisynapse.com/sql-data-analysis-with-ai/&lt;/loc&gt;
+    &lt;lastmod&gt;2026-01-15&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;1.0&lt;/priority&gt;
+  &lt;/url&gt;
+
+  &lt;url&gt;
+    &lt;loc&gt;https://infinisynapse.com/best-ai-tools-for-data-analysis/&lt;/loc&gt;
+    &lt;lastmod&gt;2026-01-15&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.8&lt;/priority&gt;
+  &lt;/url&gt;
+
+  &lt;url&gt;
+    &lt;loc&gt;https://infinisynapse.com/data-analysis-techniques/&lt;/loc&gt;
+    &lt;lastmod&gt;2026-01-15&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.8&lt;/priority&gt;
+  &lt;/url&gt;
+
+&lt;/urlset&gt;</code></pre>
+
+<p><strong>根据不同部署方式调整 <code>&lt;loc&gt;</code> 的写法:</strong></p>
+
+<table>
+  <thead>
+    <tr><th>部署方式</th><th><code>&lt;loc&gt;</code> 示例</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>主域名根目录</td><td><code>https://infinisynapse.com/sql-data-analysis-with-ai/</code></td></tr>
+    <tr><td>子目录(<code>/blog/</code>)</td><td><code>https://infinisynapse.com/blog/sql-data-analysis-with-ai/</code></td></tr>
+    <tr><td>子域名</td><td><code>https://learn.infinisynapse.com/sql-data-analysis-with-ai/</code></td></tr>
+  </tbody>
+</table>
+
+<p><strong>字段含义:</strong></p>
+<ul>
+  <li><code>&lt;lastmod&gt;</code>:最后修改日期,格式 <code>YYYY-MM-DD</code>,跟着实际页面更新的日期改</li>
+  <li><code>&lt;changefreq&gt;</code>:更新频率,可选 <code>always</code> / <code>hourly</code> / <code>daily</code> / <code>weekly</code> / <code>monthly</code> / <code>yearly</code> / <code>never</code>,SEO 文章一般填 <code>monthly</code></li>
+  <li><code>&lt;priority&gt;</code>:相对优先级,0.0–1.0,最重要的核心页面填 <code>1.0</code>,普通页面填 <code>0.5–0.8</code></li>
+</ul>
+
+<p><strong>验证方法:</strong></p>
+
+<p>部署后用浏览器直接打开 <code>https://你的域名/sitemap.xml</code>,确保能看到 XML 文本内容。然后到 Google Search Console → 站点地图 → 提交 sitemap URL,几分钟后看状态是否为"成功"。</p>
+
+<h5>7.5 robots.txt 怎么写</h5>
+
+<p>robots.txt 告诉爬虫"哪些目录可以爬、哪些不能爬",必须放在网站根目录(<code>https://你的域名/robots.txt</code>)。</p>
+
+<p><strong>标准模板(适合大多数 SEO 页面场景):</strong></p>
+
+<pre><code>User-agent: *
+Allow: /
+
+Sitemap: https://infinisynapse.com/sitemap.xml</code></pre>
+
+<p><strong>字段含义:</strong></p>
+<ul>
+  <li><code>User-agent: *</code>:对所有搜索引擎爬虫生效(<code>*</code> 是通配符)</li>
+  <li><code>Allow: /</code>:允许爬取整个网站</li>
+  <li><code>Sitemap:</code>:告诉爬虫站点地图在哪里,<strong>这一行必须用完整绝对 URL</strong></li>
+</ul>
+
+<p><strong>如果客户有些目录不希望被爬取(例如后台、测试页),用 <code>Disallow</code>:</strong></p>
+
+<pre><code>User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /test/
+Disallow: /private/
+
+Sitemap: https://infinisynapse.com/sitemap.xml</code></pre>
+
+<p><strong>根据不同部署方式调整 Sitemap 行:</strong></p>
+
+<table>
+  <thead>
+    <tr><th>部署方式</th><th><code>Sitemap:</code> 行</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>主域名根目录</td><td><code>Sitemap: https://infinisynapse.com/sitemap.xml</code></td></tr>
+    <tr><td>子目录(<code>/blog/</code>)</td><td><code>Sitemap: https://infinisynapse.com/sitemap.xml</code>(robots.txt 总是放主域名根目录,不会因为页面挂在子目录而改变)</td></tr>
+    <tr><td>子域名</td><td><code>Sitemap: https://learn.infinisynapse.com/sitemap.xml</code></td></tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>⚠️ <strong>常见错误</strong>:</p>
+  <ul>
+    <li>❌ 把 <code>robots.txt</code> 放在子目录里(只有根目录的 robots.txt 才会被识别)</li>
+    <li>❌ <code>Sitemap:</code> 用了相对路径(必须完整 URL,带 <code>https://</code>)</li>
+    <li>❌ 写 <code>Disallow: /</code> 把整站封了(除非真不想被收录)</li>
+  </ul>
+</blockquote>
+
+<p><strong>验证方法:</strong></p>
+
+<p>浏览器直接打开 <code>https://你的域名/robots.txt</code>,看到纯文本内容即为部署成功。也可以用 Google Search Console 的 "robots.txt 测试工具" 验证语法。</p>
+
+<h5>7.6 上线后的最终验证清单</h5>
+
+<p>页面上传到客户服务器后,<strong>逐一</strong>完成以下验证:</p>
+
+<ul>
+  <li>☐ 每一个页面 URL 都能在浏览器打开,显示正常(不是 404、不是空白)</li>
+  <li>☐ 页面上的图片全部正常显示(没有破图)</li>
+  <li>☐ 页面内链点击后能跳到目标页(不是 404)</li>
+  <li>☐ <code>https://你的域名/sitemap.xml</code> 能打开并看到 XML 内容</li>
+  <li>☐ <code>https://你的域名/robots.txt</code> 能打开并看到文本内容</li>
+  <li>☐ 直接在浏览器打开 <code>https://你的域名/og.png</code>,能看到全站共用的 OG 社交分享图</li>
+  <li>☐ 在 Google Search Console 提交了 sitemap</li>
+  <li>☐ 用 Google Rich Results Test 验证 Schema 无红色错误</li>
+  <li>☐ 手机上访问页面显示正常</li>
+</ul>
+
+<hr>
+
+<h4>步骤 8:页面质量检测(上线后)</h4>
+
+<p>页面上线之后,用 <strong>QuickCreator Extension - All-in-One SEO Assistant for Teams</strong>(Chrome 扩展程序)检测页面的最终质量。</p>
+
+<p><strong>这一步的目的:</strong></p>
+
+<p>前面所有步骤都是"我们这边做得怎么样",这一步是从外部第三方工具的视角再扫一遍,确保上线后的页面在真实环境下的各项 SEO 指标都达标。</p>
+
+<p><strong>怎么用:</strong></p>
+
+<ol>
+  <li>在 Chrome 应用商店搜索安装 <code>QuickCreator Extension - All-in-One SEO Assistant for Teams</code>。</li>
+  <li>打开已上线的页面 URL。</li>
+  <li>点击扩展图标,运行全页扫描。</li>
+  <li>根据扫描报告里的红色 / 黄色提示项逐一修复。</li>
+</ol>
+
+<p><strong>重点关注的指标:</strong></p>
+<ul>
+  <li>Meta Title / Description 长度与关键词覆盖</li>
+  <li>H 标签层级结构</li>
+  <li>图片 alt 覆盖率</li>
+  <li>内链 / 外链数量与可访问性</li>
+  <li>Schema 结构化数据是否被正确识别</li>
+  <li>移动端友好度</li>
+</ul>
+
+<p>修复完所有红色问题后,这个页面的 SEO 上线流程才算真正完成。</p>
+
+<hr>
+
+<h4>附:全流程速览</h4>
+
+<pre><code>步骤 1  了解客户官网或产品
+   ↓
+步骤 2  生成核心关键词 + 长尾关键词
+   ↓
+步骤 3  关键词验证与竞争分析(KGR)
+   ↓
+步骤 4  页面写作规范(关键词清单 → Head → 骨架 → 正文 → 图片 → 链接 → Schema → 移动端 → 自查)
+   ↓
+步骤 5  使用页面写作 skill 辅助产出
+   ↓
+步骤 6  AI 自查 10 项 SEO 维度
+   ↓
+步骤 7  交付 + 客户部署 + sitemap.xml + robots.txt
+   ↓
+步骤 8  上线后用 QuickCreator Chrome 扩展做最终检测</code></pre>
+
+
 
 <!-- 4-12 API -->
 <h2 id="sec-4-12">12、API 和 API Key（区分）</h2>
