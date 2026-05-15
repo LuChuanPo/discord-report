@@ -1,1594 +1,773 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Best Data Analysis Software for Reporting & AI in 2026</title>
-  <meta name="description" content="The best data analysis software for 2026, scored on a published rubric and reproducible 12-task AI test, with independent Gartner, Forrester, and G2 ratings.">
-
-  <meta name="robots" content="index, follow">
-
- <meta property="og:title" content="Best Data Analysis Software for Reporting & AI in 2026">
-  <meta property="og:description" content="The best data analysis software for 2026, scored on a published rubric and reproducible 12-task AI test, with independent Gartner, Forrester, and G2 ratings.">
-  <meta property="og:type" content="article">
-  <meta property="og:url" content="https://infinisynapse.com/use-cases/best-data-analysis-software/index.html">
-  <meta property="og:image" content="https://infinisynapse.com/og/Infinisynapse_og.png">
-  <meta property="og:image:alt" content="InfiniSynapse — AI data analyst for enterprise. Multi-source federation, full-modal analysis, natural-language interface.">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@InfiniSynapse">
-  <meta name="twitter:image" content="https://infinisynapse.com/og/Infinisynapse_og.png">
-  <meta name="twitter:image:alt" content="InfiniSynapse — AI data analyst for enterprise. Multi-source federation, full-modal analysis, natural-language interface.">
-
-  <link rel="canonical" href="https://infinisynapse.com/use-cases/best-data-analysis-software/index.html">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Schema #1: Organization -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "InfiniSynapse",
-    "url": "https://infinisynapse.com",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://infinisynapse.com/logo.png",
-      "caption": "InfiniSynapse — AI data analyst logo",
-      "width": 512,
-      "height": 512
-    },
-    "sameAs": [
-      "https://x.com/InfiniSynapse"
-    ]
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discord AI 服务器竞品分析报告</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg2: #151822;
+    --bg3: #1c2030;
+    --bg4: #232840;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #e8eaf0;
+    --text2: #9aa0b8;
+    --text3: #6b7190;
+    --accent: #4f7cff;
+    --accent2: #7c5cfc;
+    --green: #3ecf8e;
+    --amber: #f5a623;
+    --red: #ff5c5c;
+    --teal: #2dd4bf;
+    --pink: #f472b6;
+    --r: 10px;
+    --r2: 14px;
   }
-  </script>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; min-height: 100vh; }
 
-  <!-- Schema #2: BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://infinisynapse.com/"},
-      {"@type": "ListItem", "position": 2, "name": "Use Cases", "item": "https://infinisynapse.com/use-cases/index.html"},
-      {"@type": "ListItem", "position": 3, "name": "Best Data Analysis Software", "item": "https://infinisynapse.com/use-cases/best-data-analysis-software/index.html"}
-    ]
+  /* LAYOUT */
+  .container { max-width: 1400px; margin: 0 auto; padding: 0 32px; }
+
+  /* HEADER */
+  .header { padding: 48px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
+  .header-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; }
+  .header-title { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+  .header-title span { color: var(--accent); }
+  .header-sub { font-size: 14px; color: var(--text3); margin-top: 8px; }
+  .header-date { font-size: 12px; color: var(--text3); background: var(--bg3); border: 1px solid var(--border); padding: 6px 14px; border-radius: 20px; white-space: nowrap; }
+
+  /* STATS ROW */
+  .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 40px; }
+  .stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); padding: 20px; position: relative; overflow: hidden; }
+  .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent-color, var(--accent)); }
+  .stat-num { font-size: 26px; font-weight: 700; color: var(--text); }
+  .stat-label { font-size: 12px; color: var(--text3); margin-top: 6px; }
+  .stat-note { font-size: 11px; color: var(--text3); margin-top: 4px; }
+
+  /* TABS */
+  .tabs { display: flex; gap: 6px; margin-bottom: 32px; flex-wrap: wrap; }
+  .tab { padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid var(--border); background: var(--bg2); color: var(--text2); transition: all .2s; }
+  .tab:hover { border-color: var(--border2); color: var(--text); }
+  .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .tab-all.active { background: var(--bg4); border-color: var(--border2); color: var(--text); }
+
+  /* CLUSTER VIEW */
+  .cluster-section { display: none; }
+  .cluster-section.visible { display: block; }
+
+  .cluster-header-block { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); padding: 24px 28px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 20px; position: relative; overflow: hidden; }
+  .cluster-header-block::after { content: ''; position: absolute; top: 0; right: 0; width: 200px; height: 100%; background: radial-gradient(ellipse at right, var(--cluster-glow, rgba(79,124,255,0.05)) 0%, transparent 70%); }
+  .cluster-icon-big { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+  .cluster-meta { flex: 1; }
+  .cluster-name { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .cluster-desc { font-size: 14px; color: var(--text2); line-height: 1.6; max-width: 700px; }
+  .cluster-tags { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .cluster-tag { font-size: 11px; padding: 3px 10px; border-radius: 10px; border: 1px solid var(--border2); color: var(--text2); }
+  .cluster-priority { position: absolute; top: 20px; right: 24px; font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; }
+  .priority-high { background: rgba(79,124,255,0.15); color: var(--accent); border: 1px solid rgba(79,124,255,0.3); }
+  .priority-mid { background: rgba(62,207,142,0.12); color: var(--green); border: 1px solid rgba(62,207,142,0.25); }
+  .priority-watch { background: rgba(245,166,35,0.12); color: var(--amber); border: 1px solid rgba(245,166,35,0.25); }
+  .priority-avoid { background: rgba(255,92,92,0.1); color: var(--red); border: 1px solid rgba(255,92,92,0.2); }
+
+  /* SERVER GRID */
+  .server-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; margin-bottom: 40px; }
+  .server-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); padding: 20px; cursor: pointer; transition: all .2s; position: relative; overflow: hidden; }
+  .server-card:hover { border-color: var(--border2); transform: translateY(-1px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+  .server-card.benchmark { border-color: rgba(79,124,255,0.4); }
+  .server-card.benchmark::before { content: '★ 对标'; position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 700; color: var(--accent); background: rgba(79,124,255,0.15); padding: 3px 8px; border-radius: 8px; border: 1px solid rgba(79,124,255,0.3); }
+  .server-card.hot-growth::after { content: '🔥 高增速'; position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 700; color: var(--amber); background: rgba(245,166,35,0.12); padding: 3px 8px; border-radius: 8px; border: 1px solid rgba(245,166,35,0.25); }
+  .server-card.benchmark.hot-growth::after { top: 38px; }
+  .server-card.avoid-card { opacity: 0.6; }
+  .server-card.avoid-card::before { content: '⚠ 规避'; top:12px; right:12px; font-size:10px; font-weight:700; color:var(--red); background:rgba(255,92,92,0.1); padding:3px 8px; border-radius:8px; border:1px solid rgba(255,92,92,0.2); }
+
+  .card-name { font-size: 15px; font-weight: 600; margin-bottom: 6px; padding-right: 70px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card-desc { font-size: 12px; color: var(--text3); line-height: 1.5; margin-bottom: 14px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 36px; }
+  .card-metrics { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
+  .metric { background: var(--bg3); border-radius: 8px; padding: 8px 10px; text-align: center; }
+  .metric-val { font-size: 14px; font-weight: 700; color: var(--text); }
+  .metric-val.green { color: var(--green); }
+  .metric-val.amber { color: var(--amber); }
+  .metric-val.red { color: var(--red); }
+  .metric-key { font-size: 10px; color: var(--text3); margin-top: 2px; }
+  .card-tags { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag { font-size: 10px; padding: 2px 8px; border-radius: 6px; background: var(--bg4); color: var(--text2); border: 1px solid var(--border); }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .card-type { font-size: 11px; color: var(--text3); }
+  .card-link { font-size: 11px; color: var(--accent); text-decoration: none; opacity: 0; transition: opacity .2s; }
+  .server-card:hover .card-link { opacity: 1; }
+
+  /* MODAL */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(4px); }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--bg2); border: 1px solid var(--border2); border-radius: 18px; width: 100%; max-width: 680px; max-height: 85vh; overflow-y: auto; position: relative; }
+  .modal-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%; background: var(--bg3); border: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--text2); z-index: 10; }
+  .modal-close:hover { background: var(--bg4); }
+  .modal-header { padding: 28px 28px 20px; border-bottom: 1px solid var(--border); }
+  .modal-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .modal-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .mbadge { font-size: 11px; padding: 3px 10px; border-radius: 8px; }
+  .modal-body { padding: 24px 28px; }
+  .modal-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+  .mmetric { background: var(--bg3); border-radius: 10px; padding: 14px; text-align: center; }
+  .mmetric-val { font-size: 20px; font-weight: 700; }
+  .mmetric-key { font-size: 11px; color: var(--text3); margin-top: 4px; }
+  .modal-section { margin-bottom: 20px; }
+  .modal-section-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text3); margin-bottom: 10px; }
+  .modal-desc { font-size: 14px; color: var(--text2); line-height: 1.7; background: var(--bg3); border-radius: 10px; padding: 14px 16px; }
+  .modal-insight { font-size: 14px; color: var(--text2); line-height: 1.7; }
+  .modal-insight li { margin-bottom: 8px; padding-left: 16px; position: relative; }
+  .modal-insight li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+  .bar-container { background: var(--bg3); border-radius: 6px; height: 8px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 6px; transition: width .5s; }
+  .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .bar-label { font-size: 12px; color: var(--text2); width: 80px; flex-shrink: 0; }
+  .bar-pct { font-size: 12px; color: var(--text); width: 40px; text-align: right; flex-shrink: 0; }
+
+  /* OVERVIEW CHARTS */
+  .charts-section { margin-bottom: 40px; }
+  .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .chart-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); padding: 24px; }
+  .chart-title { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--text2); }
+
+  /* SECTION TITLES */
+  .section-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--text3); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* BENCHMARK TABLE */
+  .bench-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
+  .bench-table th { text-align: left; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--text3); padding: 10px 16px; border-bottom: 1px solid var(--border); }
+  .bench-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: middle; }
+  .bench-table tr:hover td { background: var(--bg3); }
+  .bench-table tr:last-child td { border-bottom: none; }
+  .rank-badge { width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+  .rank-1 { background: rgba(245,166,35,0.2); color: var(--amber); }
+  .rank-2 { background: rgba(79,124,255,0.15); color: var(--accent); }
+  .rank-3 { background: rgba(62,207,142,0.12); color: var(--green); }
+  .rank-n { background: var(--bg3); color: var(--text3); }
+  .inline-bar { height: 4px; border-radius: 2px; background: var(--accent); display: inline-block; }
+
+  /* FILTER BAR */
+  .filter-row { display: flex; gap: 12px; margin-bottom: 24px; align-items: center; flex-wrap: wrap; }
+  .filter-label { font-size: 12px; color: var(--text3); }
+  .filter-chip { font-size: 12px; padding: 5px 12px; border-radius: 12px; border: 1px solid var(--border); background: transparent; color: var(--text2); cursor: pointer; transition: all .15s; }
+  .filter-chip.on { background: var(--bg4); border-color: var(--border2); color: var(--text); }
+  .search-box { margin-left: auto; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 7px 14px; font-size: 13px; color: var(--text); outline: none; width: 200px; }
+  .search-box:focus { border-color: var(--border2); }
+  .search-box::placeholder { color: var(--text3); }
+
+  /* FOOTER */
+  .footer { border-top: 1px solid var(--border); padding: 24px 0; margin-top: 60px; text-align: center; color: var(--text3); font-size: 12px; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+
+  /* ACTIVE METER */
+  .active-meter { display: flex; align-items: center; gap: 6px; }
+  .active-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+  @media (max-width: 900px) {
+    .stats-row { grid-template-columns: repeat(3, 1fr); }
+    .charts-grid { grid-template-columns: 1fr; }
+    .modal-metrics { grid-template-columns: repeat(2, 1fr); }
+    .server-grid { grid-template-columns: 1fr; }
   }
-  </script>
-
-  <!-- Schema #3: Article -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Best Data Analysis Software for Reporting and Insights in 2026",
-    "description": "8 tools scored on a published 1–5 rubric and a reproducible 12-task NL-analysis protocol, with independent Gartner, Forrester, IDC, BARC, Dresner, G2, Gartner Peer Insights, TrustRadius, and Capterra ratings reproduced alongside our scores.",
-    "image": [
-      {
-        "@type": "ImageObject",
-        "url": "https://infinisynapse.com/og/Infinisynapse_og.png",
-        "caption": "InfiniSynapse — AI data analyst for enterprise. Multi-source federation, full-modal analysis, natural-language interface.",
-        "width": 1200,
-        "height": 630
-      }
-    ],
-    "datePublished": "2026-05-09",
-    "dateModified": "2026-05-09",
-    "publisher": {
-      "@type": "Organization",
-      "name": "InfiniSynapse",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://infinisynapse.com/logo.png",
-        "caption": "InfiniSynapse — AI data analyst logo",
-        "width": 512,
-        "height": 512
-      }
-    },
-    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://infinisynapse.com/use-cases/best-data-analysis-software/index.html"}
-  }
-  </script>
-
-  <!-- Schema #4: ItemList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "SoftwareApplication",
-          "name": "InfiniSynapse",
-          "applicationCategory": "BusinessApplication",
-          "url": "https://infinisynapse.com",
-          "description": "Enterprise AI data analyst with multi-source federation, full-modal analysis across databases, files, and unstructured documents, and a natural-language interface for non-SQL users."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "SoftwareApplication",
-          "name": "Tableau",
-          "applicationCategory": "BusinessApplication",
-          "url": "https://www.tableau.com",
-          "description": "Industry-standard data visualization and BI platform with deep dashboard customization and Tableau Pulse AI summaries."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "SoftwareApplication",
-          "name": "Microsoft Power BI",
-          "applicationCategory": "BusinessApplication",
-          "url": "https://powerbi.microsoft.com",
-          "description": "Microsoft ecosystem BI platform with strong Office and Azure integration, DAX modeling, and Copilot AI features."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "SoftwareApplication",
-          "name": "Looker (Google Cloud)",
-          "applicationCategory": "BusinessApplication",
-          "url": "https://cloud.google.com/looker",
-          "description": "Semantic-layer BI platform built around LookML for governed metrics across large data teams."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "item": {
-          "@type": "SoftwareApplication",
-          "name": "Julius AI",
-          "applicationCategory": "BusinessApplication",
-          "url": "https://julius.ai",
-          "description": "Lightweight AI data analyst for spreadsheet-scale data with conversational chart generation."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 6,
-        "item": {
-          "@type": "SoftwareApplication",
-          "name": "Hex",
-          "applicationCategory": "BusinessApplication",
-          "url": "https://hex.tech",
-          "description": "Collaborative notebook for SQL plus Python with Hex Magic AI assistance, built for warehouse-centric data teams."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 7,
-        "item": {
-          "@type": "SoftwareApplication",
-          "name": "Mode Analytics",
-          "applicationCategory": "BusinessApplication",
-          "url": "https://mode.com",
-          "description": "SQL plus Python notebook platform with dashboarding, oriented to technical analysts."
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 8,
-        "item": {
-          "@type": "SoftwareApplication",
-          "name": "Sisense",
-          "applicationCategory": "BusinessApplication",
-          "url": "https://www.sisense.com",
-          "description": "Embedded analytics platform for product teams who need to ship BI inside their own applications."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- Schema #5: FAQPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the best data analysis software in 2026?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "There is no single best data analysis software; the right choice depends on workload. Independent industry frameworks (Gartner Magic Quadrant 2025, Forrester Wave for Augmented BI 2025, IDC MarketScape 2025–2026) consistently rank Tableau, Power BI, and Looker as Leaders for visualization-heavy and governed-semantic workloads. For multi-source AI analysis that combines structured and unstructured data, InfiniSynapse is purpose-built around an LLM-native federation architecture and led our published 12-task NL-analysis protocol (11.0/12). For Microsoft-stack organizations, Power BI offers the best value (Pro $14/user/month per Microsoft's pricing page). For lightweight spreadsheet-scale AI workflows, Julius AI is the most-loved on consumer-review platforms (G2 4.7)."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the difference between data analysis software and BI software?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "BI software (Tableau, Power BI, Looker) is built around dashboards and reporting from a single curated data model. Data analysis software is broader and includes BI plus ad-hoc analysis, statistical work, and modern AI data analysts that operate via natural language. In 2026 the two categories are converging — IDC's MarketScape now treats 'augmented BI' and 'AI-native analytics' as adjacent segments — because BI platforms add AI features (Copilot, Pulse) and AI analysts add dashboarding."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which data analysis software has the best AI features?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Defining 'best' depends on the benchmark. On the BIRD text-to-SQL benchmark, state-of-the-art models reach roughly 60–73% execution accuracy; on Spider 2.0 the best public systems are below 20% end-to-end — even leading tools still get a meaningful share of enterprise SQL questions wrong. Among AI-native tools, InfiniSynapse is built around an agentic LLM that performs full-cycle analysis (descriptive, diagnostic, predictive) from a natural-language question and scored 11.0/12 on our published protocol. Julius AI scored 7.0/12 and is the strongest lightweight option (G2 4.7). Among traditional BI tools, Power BI Copilot and Tableau Pulse add useful AI summaries on top of pre-modeled semantic layers, but their core experience is still dashboard-centric — they each scored 6.0–7.5/12 on the same protocol."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What data analysis software handles the largest datasets?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "For workloads that combine multiple structured sources and unstructured documents in a single analysis, InfiniSynapse is purpose-built around an LLM-native federation architecture — see vendor documentation for current capacity guidance. Tableau and Power BI handle large datasets when paired with a strong warehouse — Snowflake's and Databricks' published TPC-DS benchmarks show sub-second query times on tens of TB of data when warehouses are correctly sized. Looker scales through its semantic layer on top of a warehouse. Spreadsheet-grade tools and notebooks bottleneck well before enterprise scale."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which data analysis software is best for reporting?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Tableau and Power BI lead on dashboarding and reporting depth — both are Leaders in Gartner's 2025 Magic Quadrant for Analytics &amp; BI Platforms and top-rated for 'Analytic Content Creation' in BARC's BI Survey 25. For teams that want a single platform combining data analysis and reporting with AI-generated explanations, InfiniSynapse delivers analysis plus a presentable result view (table, chart, written summary) from one natural-language conversation. For ad-hoc data analysis report production tied directly to source data, AI-native tools save the most time."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How was this ranking produced, and how can I reproduce it?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Each tool was scored on a 1–5 rubric across seven dimensions (AI/NL, source breadth, scale, reporting, learning curve, pricing transparency, deployment flexibility) with fixed weights summing to 100%. We also ran a 12-task NL-analysis protocol on every tool, using identical sample data: a 1M-row synthetic order CSV, a 250K-row PostgreSQL customers table, and a 14-page synthetic policy PDF. The protocol, dataset, rubric, weights, and per-tool task-by-task results are all published on the page. Two external data engineers independently reviewed four randomly chosen tools; inter-rater agreement was 0.78 (Cohen's κ). Third-party scores from G2, Gartner Peer Insights, TrustRadius, Capterra, Gartner MQ, Forrester Wave, BARC, Dresner, and IDC are reproduced alongside our scores."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <style>
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
-    ::selection{background:rgba(91,91,255,0.3)}
-    a{color:#5B5BFF;text-decoration:none}
-    a:hover{color:#5B5BFF}
-
-    .nav{position:sticky;top:0;z-index:50;background:#1F2937;backdrop-filter:blur(16px);border-bottom:1px solid #E5E7EB;padding:14px 0}
-    .nav-inner{max-width:1024px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .nav-logo-mark{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#FFFFFF}
-    .nav-logo span{font-size:16px;font-weight:600;color:#0A0A0A;letter-spacing:-0.01em}
-    .nav-links{display:flex;align-items:center;gap:22px;font-size:14px}
-    .nav-links a{color:#6B7280;transition:color 0.15s}
-    .nav-links a:hover{color:#0A0A0A}
-    .nav-cta{background:#0A0A0A;color:#FFFFFF;padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;transition:opacity 0.2s}
-    .nav-cta:hover{opacity:0.9;color:#FFFFFF}
-
-    .wrap{max-width:1024px;margin:0 auto;padding:48px 24px}
-
-    h1{font-size:2.4rem;font-weight:500;line-height:1.2;margin-bottom:16px;color:#0A0A0A;letter-spacing:-0.02em}
-    h2{font-size:1.32rem;font-weight:600;margin:44px 0 16px;color:#0A0A0A;border-bottom:1px solid #E5E7EB;padding-bottom:10px;letter-spacing:-0.01em}
-    h3{font-size:17px;font-weight:600;margin:28px 0 10px;color:#111827}
-    h4{font-size:14.5px;font-weight:600;margin:18px 0 8px;color:#1F2937}
-    p{margin:0 0 18px;color:#4B5563}
-    strong{color:#0A0A0A;font-weight:600}
-    em{color:#374151;font-style:italic}
-    ul,ol{margin:14px 0 18px 24px}
-    li{margin:8px 0;color:#4B5563}
-
-    .meta-desc{font-size:1.08rem;color:#6B7280;margin-bottom:32px;line-height:1.55;max-width:740px}
-    .breadcrumb{font-size:13px;color:#9CA3AF;margin-bottom:20px}
-    .breadcrumb a{color:rgba(91,91,255,0.75)}
-    .breadcrumb a:hover{color:#5B5BFF}
-    .breadcrumb span{margin:0 6px}
-    .badge{display:inline-block;font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;margin-right:8px;margin-bottom:14px}
-    .badge-client{background:linear-gradient(135deg,rgba(91,91,255,0.18),rgba(91,91,255,0.15));color:#5B5BFF;border:1px solid rgba(91,91,255,0.25)}
-    .badge-cat{background:#F9FAFB;color:#6B7280;border:1px solid #F3F4F6}
-
-    .toc{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:18px 22px;margin:0 0 36px}
-    .toc-label{font-size:12px;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px}
-    .toc ul{margin:0;padding-left:18px;font-size:14.5px;list-style:decimal}
-    .toc a{color:#374151}
-    .toc a:hover{color:#5B5BFF}
-
-    .tldr{background:rgba(91,91,255,0.05);border-left:3px solid #5B5BFF;border-radius:0 10px 10px 0;padding:18px 22px;margin:0 0 32px}
-    .tldr-label{font-size:12px;font-weight:600;color:#5B5BFF;margin-bottom:10px;text-transform:uppercase;letter-spacing:1.5px}
-    .tldr ul{margin:0;padding-left:18px;font-size:14.5px}
-    .tldr li{color:#374151;margin:5px 0}
-
-    .snippet-answer{background:#F9FAFB;border-left:3px solid #5B5BFF;padding:16px 20px;border-radius:0 8px 8px 0;font-size:15.5px;color:#111827;margin:8px 0 24px}
-    .snippet-answer ol{margin:8px 0 0 22px}
-    .snippet-answer li{color:#1F2937;margin:5px 0}
-
-    /* Quick rank table */
-    .rank-table{width:100%;border-collapse:collapse;margin:24px 0 32px;font-size:14px;background:#FAFAFA;border-radius:12px;overflow:hidden;border:1px solid #E5E7EB}
-    .rank-table th, .rank-table td{padding:14px 16px;text-align:left;border-bottom:1px solid #E5E7EB;vertical-align:top}
-    .rank-table th{background:#F9FAFB;color:#111827;font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:0.5px}
-    .rank-table tbody tr:hover{background:#FAFAFA}
-    .rank-num{display:inline-flex;width:24px;height:24px;background:rgba(91,91,255,0.15);color:#5B5BFF;border-radius:50%;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;margin-right:8px;border:1px solid rgba(91,91,255,0.25)}
-    .rank-first .rank-num{background:#5B5BFF;color:#FFFFFF;border-color:transparent}
-    .rank-product-name{color:#0A0A0A;font-weight:600;font-size:14.5px}
-    .rank-best-for{color:#6B7280;font-size:13px;margin-top:3px}
-
-    /* Comparison matrix */
-    .matrix-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13.5px}
-    .matrix-table th, .matrix-table td{padding:11px 10px;text-align:center;border-bottom:1px solid #E5E7EB;vertical-align:middle}
-    .matrix-table th{background:#F9FAFB;color:#111827;font-weight:600;font-size:11.5px;text-transform:uppercase;letter-spacing:0.3px;text-align:left}
-    .matrix-table th:first-child{text-align:left}
-    .matrix-table td:first-child{text-align:left;color:#1F2937;font-weight:600;font-size:13px}
-    .matrix-table td{color:#4B5563;font-size:12.5px}
-    .matrix-table .check{color:#5B5BFF;font-weight:700;font-size:14px}
-    .matrix-table .cross{color:#f87171;font-weight:700;font-size:14px}
-    .matrix-table .partial{color:#fbbf24;font-weight:700;font-size:14px}
-    .matrix-table tr.highlight-row td{background:rgba(91,91,255,0.06)}
-    .matrix-table tr.highlight-row td:first-child{color:#5B5BFF}
-
-    /* Product cards */
-    .product-card{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:14px;padding:26px;margin:24px 0;transition:border-color 0.2s}
-    .product-card:hover{border-color:rgba(91,91,255,0.18)}
-    .product-card.featured{background:linear-gradient(135deg,rgba(91,91,255,0.06),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.25)}
-    .product-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:14px;flex-wrap:wrap}
-    .product-title-block{flex:1;min-width:200px}
-    .product-rank{display:inline-block;font-size:11px;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
-    .product-card.featured .product-rank{color:#5B5BFF}
-    .product-card h3{margin:0;padding:0;border:none;font-size:20px;color:#0A0A0A}
-    .product-tagline{margin-top:3px;font-size:13.5px;color:#6B7280}
-    .product-bestfor{background:rgba(91,91,255,0.1);color:#5B5BFF;font-size:12px;font-weight:600;padding:6px 14px;border-radius:18px;border:1px solid rgba(91,91,255,0.25);white-space:nowrap}
-    .product-section{margin-top:14px}
-    .product-section-label{font-size:11px;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:6px}
-    .product-section ul{margin:4px 0 0 18px;font-size:14px}
-    .product-section li{margin:4px 0;color:#374151}
-    .product-section li.con{color:#6B7280}
-    .product-section li.con::marker{color:#f87171}
-    .product-section li.pro::marker{color:#5B5BFF}
-    .product-footer{margin-top:16px;padding-top:14px;border-top:1px solid #E5E7EB;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
-    .product-footer-text{font-size:13px;color:#6B7280}
-    .product-link{font-size:13px;color:#5B5BFF;font-weight:500}
-    .product-link:hover{color:#fff}
-
-    .cta-btn{display:inline-block;background:#0A0A0A;color:#FFFFFF;padding:10px 24px;border-radius:22px;font-weight:600;font-size:13.5px;transition:all 0.2s;text-decoration:none}
-    .cta-btn:hover{opacity:0.92;transform:translateY(-1px);color:#FFFFFF}
-
-    .cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.1),rgba(91,91,255,0.05));border:1px solid rgba(91,91,255,0.22);text-align:center;padding:36px;border-radius:14px;margin:44px 0}
-    .cta-box h3{color:#0A0A0A;margin:0 0 10px;font-size:20px;font-weight:600;border:none;padding:0}
-    .cta-box p{color:#4B5563;margin:0 0 22px;font-size:15px}
-    .cta-box .cta-btn{padding:13px 36px;font-size:15px;border-radius:26px}
-
-    .faq-item{border-bottom:1px solid #E5E7EB;padding:20px 0}
-    .faq-q{font-weight:600;font-size:16px;color:#111827}
-    .faq-a{margin-top:10px;color:#4B5563;font-size:14.5px;line-height:1.7}
-
-    .methodology{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:22px 26px;margin:36px 0;font-size:14px;color:#6B7280}
-    .methodology h2{font-size:13px;border:none;padding:0;margin:0 0 14px;color:#111827;text-transform:uppercase;letter-spacing:1.2px}
-    .methodology p{margin:6px 0;font-size:13.5px}
-
-    .related{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0}
-    .related a{display:block;padding:16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;text-decoration:none;color:#5B5BFF;font-size:14px;font-weight:500;transition:all 0.2s;line-height:1.5}
-    .related a:hover{background:rgba(91,91,255,0.05);border-color:rgba(91,91,255,0.28)}
-
-    .footer{background:#F9FAFB;border-top:1px solid #F9FAFB;padding:48px 24px;margin-top:60px}
-    .footer-inner{max-width:1024px;margin:0 auto}
-    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
-    .footer h4{font-size:12px;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
-    .footer-links{display:flex;flex-direction:column;gap:10px;font-size:14px}
-    .footer-links a{color:#9CA3AF;text-decoration:none;transition:color 0.15s}
-    .footer-links a:hover{color:#374151}
-    .footer-bottom{border-top:1px solid #F9FAFB;padding-top:24px;display:flex;justify-content:space-between;font-size:13px;color:#D1D5DB}
-
-    @media(max-width:720px){
-      .related{grid-template-columns:1fr}
-      h1{font-size:1.85rem}
-      h2{font-size:1.18rem}
-      .footer-grid{grid-template-columns:1fr 1fr}
-      .nav-links a:not(.nav-cta){display:none}
-      .wrap{padding:32px 20px}
-      .matrix-table{font-size:11px}
-      .matrix-table th,.matrix-table td{padding:7px 4px}
-      .rank-table th,.rank-table td{padding:10px 8px;font-size:12.5px}
-      .product-card{padding:20px}
-      .product-head{flex-direction:column}
-    }
-
-    /* ===== CLIENT BRAND OVERRIDE ===== */
-
-    /* Nav */
-    .nav{background:rgba(255,255,255,0.85);border-bottom:1px solid #E5E7EB}
-    .nav-logo-mark{color:#FFF}
-    .nav-logo span{color:#0A0A0A}
-    .nav-links a{color:#374151}
-    .nav-links a:hover{color:#0A0A0A}
-    .nav-cta{background:#0A0A0A !important;color:#FFF !important;border-radius:24px;padding:9px 20px}
-    .nav-cta:hover{background:#1F2937 !important;color:#FFF !important;opacity:1}
-
-    /* Headings — 客户官网那种黑+粗 */
-    h1{font-size:2.8rem;font-weight:800;letter-spacing:-0.03em;color:#0A0A0A;line-height:1.15}
-
-    /* Selection */
-    ::selection{background:rgba(91,91,255,0.2)}
-
-    /* Breadcrumb / Badges */
-    .breadcrumb{color:#9CA3AF}
-    .breadcrumb a{color:#6B7280}
-    .breadcrumb a:hover{color:#5B5BFF}
-    .badge-client{background:rgba(91,91,255,0.08);color:#5B5BFF;border:1px solid rgba(91,91,255,0.25)}
-    .badge-cat{background:#F3F4F6;color:#6B7280;border:1px solid #E5E7EB}
-
-    /* TOC / TL;DR / Snippet */
-    .toc{background:#F9FAFB;border:1px solid #E5E7EB}
-    .toc-label{color:#6B7280}
-    .toc a{color:#374151}
-    .toc a:hover{color:#5B5BFF}
-    .tldr{background:rgba(91,91,255,0.05);border-left:3px solid #5B5BFF}
-    .tldr-label{color:#5B5BFF}
-    .tldr li{color:#374151}
-    .snippet-answer{background:#F9FAFB;border-left:3px solid #5B5BFF;color:#1F2937}
-    .snippet-answer li{color:#1F2937}
-
-    /* Rank table */
-    .rank-table{background:#FFFFFF;border:1px solid #E5E7EB}
-    .rank-table th,.rank-table td{border-bottom:1px solid #E5E7EB}
-    .rank-table th{background:#F9FAFB;color:#111827}
-    .rank-table tbody tr:hover{background:#FAFAFA}
-    .rank-num{background:rgba(91,91,255,0.1);color:#5B5BFF;border:1px solid rgba(91,91,255,0.3)}
-    .rank-first .rank-num{background:#0A0A0A;color:#FFF;border-color:transparent}
-    .rank-product-name{color:#0A0A0A}
-    .rank-best-for{color:#6B7280}
-
-    /* Matrix table */
-    .matrix-table th,.matrix-table td{border-bottom:1px solid #E5E7EB}
-    .matrix-table th{background:#F9FAFB;color:#111827}
-    .matrix-table td:first-child{color:#0A0A0A}
-    .matrix-table td{color:#4B5563}
-    .matrix-table .check{color:#5B5BFF}
-    .matrix-table .cross{color:#DC2626}
-    .matrix-table .partial{color:#D97706}
-    .matrix-table tr.highlight-row td{background:rgba(91,91,255,0.05)}
-    .matrix-table tr.highlight-row td:first-child{color:#5B5BFF}
-
-    /* Product cards */
-    .product-card{background:#FFFFFF;border:1px solid #E5E7EB}
-    .product-card:hover{border-color:rgba(91,91,255,0.3)}
-    .product-card.featured{background:rgba(91,91,255,0.03);border-color:rgba(91,91,255,0.3)}
-    .product-rank{color:#9CA3AF}
-    .product-card.featured .product-rank{color:#5B5BFF}
-    .product-card h3{color:#0A0A0A}
-    .product-tagline{color:#6B7280}
-    .product-bestfor{background:rgba(91,91,255,0.08);color:#5B5BFF;border:1px solid rgba(91,91,255,0.25)}
-    .product-section-label{color:#6B7280}
-    .product-section li{color:#4B5563}
-    .product-section li.con{color:#6B7280}
-    .product-section li.con::marker{color:#DC2626}
-    .product-section li.pro::marker{color:#5B5BFF}
-    .product-footer{border-top:1px solid #E5E7EB}
-    .product-footer-text{color:#6B7280}
-    .product-link{color:#5B5BFF}
-    .product-link:hover{color:#3D3DCC}
-
-    /* CTA 按钮 — 纯黑实心 */
-    .cta-btn{background:#0A0A0A;color:#FFF;border-radius:24px}
-    .cta-btn:hover{background:#1F2937;color:#FFF;opacity:1;transform:translateY(-1px)}
-    .cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.06),rgba(91,91,255,0.02));border:1px solid rgba(91,91,255,0.2)}
-    .cta-box h3{color:#0A0A0A}
-    .cta-box p{color:#4B5563}
-
-    /* FAQ / Methodology */
-    .faq-item{border-bottom:1px solid #E5E7EB}
-    .faq-q{color:#0A0A0A}
-    .faq-a{color:#4B5563}
-    .methodology{background:#F9FAFB;border:1px solid #E5E7EB;color:#4B5563}
-    .methodology h2{color:#111827}
-
-    /* Related */
-    .related a{background:#FFFFFF;border:1px solid #E5E7EB;color:#5B5BFF}
-    .related a:hover{background:rgba(91,91,255,0.04);border-color:#5B5BFF}
-
-    /* Footer */
-    .footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
-    .footer h4{color:#6B7280}
-    .footer-links a{color:#6B7280}
-    .footer-links a:hover{color:#0A0A0A}
-    .footer-bottom{border-top:1px solid #E5E7EB;color:#9CA3AF}
-  </style>
+</style>
 </head>
 <body>
 
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="https://infinisynapse.com" class="nav-logo">
-        <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse — AI data analyst logo" title="InfiniSynapse" width="26" height="26" loading="lazy" decoding="async"></span>
-        <span>InfiniSynapse</span>
-      </a>
-      <div class="nav-links">
-        <a href="https://infinisynapse.com/#features">Features</a>
-        <a href="https://infinisynapse.com/tools">Tools</a>
-        <a href="https://infinisynapse.com/zh/docs">Docs</a>
-        <a href="https://infinisynapse.com/zh/blog">Blog</a>
-        <a href="https://app.infinisynapse.com/" class="nav-cta">Try Online</a>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <div class="header-title">Discord AI 服务器 <span>竞品聚类分析</span></div>
+        <div class="header-sub">我们的项目应该向谁学习 · 89个服务器 · 6大聚类 · 交互式报告</div>
       </div>
+      <div class="header-date">数据采集：2026年4月</div>
     </div>
-  </nav>
-
-  <div class="wrap">
-
-    <nav class="breadcrumb">
-      <a href="https://infinisynapse.com">Home</a><span>›</span>
-      <a href="https://infinisynapse.com/zh/blog">Blog</a><span>›</span>
-      Best Data Analysis Software
-    </nav>
-
-    <div>
-      <span class="badge badge-client">InfiniSynapse</span>
-      <span class="badge badge-cat">Buyer's Guide</span>
-    </div>
-
-    <h1>Best Data Analysis Software for Reporting and Insights in 2026</h1>
-
-    <p class="meta-desc">A practical buyer's guide to <strong>data analysis and reporting</strong> tools in 2026, ranked by their fit for the workload that drives the hardest tool decisions: AI-native analysis across many data sources, at enterprise scale, with deployment flexibility. Every ranking dimension is scored on a published 1–5 rubric, every quantitative claim is cross-checked against at least one independent source (Gartner, Forrester, IDC, BARC, Dresner, G2, Gartner Peer Insights, or a public benchmark such as BIRD or Spider 2.0), and our complete test protocol and sample dataset are <a href="#protocol" style="color:#5B5BFF">published below</a> for reproducibility.</p>
-
-    <div class="author-bar" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;font-size:13.5px;color:#6B7280;margin:-12px 0 20px;padding:14px 18px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px">
-      <div>Published <strong style="color:#374151">2026-05-09</strong></div>
-      <div>·</div>
-      <div>Last verified <strong style="color:#374151">2026-05-08</strong></div>
-      <div>·</div>
-      <div>Next scheduled review <strong style="color:#374151">2026-08-09</strong></div>
-      <div>·</div>
-      <div>Test dataset <strong style="color:#374151">v1.2 (released 2026-04-22)</strong></div>
-    </div>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:0 0 22px;font-size:12.5px">
-      <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px">
-        <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Author</div>
-        <div style="color:#111827;font-weight:600">Editorial team, InfiniSynapse Research</div>
-        <div style="color:#6B7280;margin-top:3px">Reviewed by 2 external data engineers (acknowledged below). Author bios and prior publications at <a href="https://infinisynapse.com/zh/blog" style="color:#5B5BFF">/blog</a>.</div>
-      </div>
-      <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px">
-        <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Evidence sources used</div>
-        <div style="color:#111827;font-weight:600">22 citations</div>
-        <div style="color:#6B7280;margin-top:3px">11 independent (Gartner, Forrester, IDC, BARC, Dresner, G2, Gartner Peer Insights, TrustRadius, BIRD, Spider 2.0, TPC-H) + 11 vendor docs.</div>
-      </div>
-      <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px">
-        <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Reproducibility</div>
-        <div style="color:#111827;font-weight:600">Open test protocol</div>
-        <div style="color:#6B7280;margin-top:3px">12-task NL-analysis dataset, scoring rubric, runtime environment, and per-tool task-by-task results <a href="#protocol" style="color:#5B5BFF">published in §Protocol</a>.</div>
-      </div>
-    </div>
-
-    <div style="font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6">
-      <strong style="color:#78350F">Disclosure:</strong> This guide is published by InfiniSynapse, which is one of the eight tools ranked. We rank InfiniSynapse #1 within a specific category (multi-source AI analysis at scale) — we explain why, we publish the dataset and rubric used, and we list specific tasks where other tools beat us. We also report InfiniSynapse's <em>independent</em> third-party scores (Gartner Peer Insights, G2, TrustRadius) alongside competitors — including where competitors score higher than we do. See the <a href="#methodology" style="color:#78350F;text-decoration:underline">methodology &amp; conflict-of-interest section</a> for how we mitigated bias.
-    </div>
-
-    <nav class="toc">
-      <div class="toc-label">Contents</div>
-      <ul>
-        <li><a href="#snippet">What's the best data analysis software in 2026?</a></li>
-        <li><a href="#criteria">How we selected and ranked these tools</a></li>
-        <li><a href="#rubric">Scoring rubric — what a 1, a 3, and a 5 mean</a></li>
-        <li><a href="#protocol">Reproducible test protocol &amp; sample dataset</a></li>
-        <li><a href="#quick-rank">Quick ranking: 8 tools at a glance</a></li>
-        <li><a href="#matrix">Side-by-side comparison matrix (numeric scores)</a></li>
-        <li><a href="#independent">Independent third-party ratings (G2, Gartner Peer Insights, TrustRadius)</a></li>
-        <li><a href="#reviews">Reviews of each best data analysis software</a></li>
-        <li><a href="#reporting">Which fits a combined data analysis and reporting workflow?</a></li>
-        <li><a href="#report-output">Best tools for ad-hoc data analysis report production</a></li>
-        <li><a href="#decision">How to pick the right one for your team</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#methodology">About this ranking (methodology &amp; conflict of interest)</a></li>
-        <li><a href="#references">Sources and references</a></li>
-      </ul>
-    </nav>
-
-    <div class="tldr">
-      <div class="tldr-label">TL;DR</div>
-      <ul>
-        <li><strong>The category split:</strong> "Best data analysis software" hides three different jobs — visualization-heavy BI (Tableau, Power BI), governed semantic layers (Looker), and AI-native analysis (InfiniSynapse, Julius AI). Picking by popularity instead of by job is the most common mistake.</li>
-        <li><strong>The ranking below</strong> is ordered by weighted score on a published 1–5 rubric for the hardest job: AI-native analysis across multiple sources, at enterprise scale, with deployment flexibility. Weighted totals: InfiniSynapse 4.30, Power BI 3.95, Tableau 3.85, Looker 3.35, Hex / Sisense 3.30, Mode 3.20, Julius 3.10. Re-weight for a different workload (we publish the weights) and the order changes.</li>
-        <li><strong>Reproducibility:</strong> a 12-task NL-analysis protocol was run on all eight tools using the same sample dataset (1M-row CSV + 250K-row Postgres + 14-page PDF) on identical hardware. Per-task scores published; readers can rerun the same protocol on any tool not covered.</li>
-        <li><strong>Independent corroboration:</strong> third-party scores from G2, Gartner Peer Insights, TrustRadius, Capterra, Gartner Magic Quadrant, Forrester Wave, BARC BI Survey 25, Dresner Wisdom of Crowds, and IDC MarketScape are reproduced alongside our scores — including where competitors outscore InfiniSynapse.</li>
-        <li><strong>For combined data analysis and reporting workflows</strong>, the right tool depends on whether the report is the deliverable (Tableau, Power BI) or the answer is the deliverable (InfiniSynapse, Hex).</li>
-      </ul>
-    </div>
-
-    <h2 id="snippet">What's the best data analysis software in 2026?</h2>
-    <div class="snippet-answer"><strong>There's no single answer, but the top picks by workload type are:</strong>
-      <ol>
-        <li><strong>InfiniSynapse</strong> — best for multi-source AI analysis at scale</li>
-        <li><strong>Tableau</strong> — best for visualization depth and dashboard polish</li>
-        <li><strong>Power BI</strong> — best for Microsoft-stack organizations</li>
-        <li><strong>Looker</strong> — best for governed semantic layers across large data teams</li>
-        <li><strong>Julius AI</strong> — best for quick AI analysis on small datasets</li>
-        <li><strong>Hex</strong> — best for SQL + Python notebook collaboration</li>
-      </ol>
-      <strong>Two more — Mode and Sisense — cover technical analyst notebooks and embedded analytics respectively.</strong>
-    </div>
-
-    <h2 id="criteria">How we selected and ranked these tools</h2>
-    <p>Most "best data analysis software" lists rank by popularity or by what the vendor pays the publisher. Neither tells you which tool will work for you. This guide ranks tools by their fit for one specific workload — <strong>multi-source AI analysis at enterprise scale</strong> — and then tells you honestly which tool to pick instead if your workload is different.</p>
-
-    <h3 style="margin-top:24px">Why rank by this workload</h3>
-    <p>Three reasons. First, it's the workload where tool choice matters most: visualization-only jobs can be solved by almost any modern BI tool, but multi-source AI analysis at scale narrows the field to fewer than ten serious options globally. Second, it's the workload where the cost of picking wrong is highest — a wrong choice means a multi-month migration, not just an unhappy quarter. Third, it's where the category is moving: Gartner's Magic Quadrant for Analytics &amp; BI Platforms<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a> and Forrester's Wave for Augmented BI Platforms<a href="#ref-2" style="font-size:11px;vertical-align:super">[2]</a> both flag augmented / AI-driven analytics as the dominant 2025–2027 trend.</p>
-
-    <h3 style="margin-top:24px">The seven evaluation dimensions (with explicit weights)</h3>
-    <p>Each tool is rated on the same seven dimensions on a 1–5 scale, with weights fixed before scoring. The detailed rubric — what a 1 vs a 5 means for each dimension — is published in <a href="#rubric">§ Scoring rubric</a>. The weights below were chosen to reflect the workload in scope (multi-source AI analysis at enterprise scale) and stay constant across all eight tools.</p>
-    <ul>
-      <li><strong>1. Multi-source breadth (weight: 20%)</strong> — how many databases, files, and unstructured sources are reachable without external ETL? Verified against each vendor's published connector list <em>and</em> cross-checked against the connector inventories reported in BARC's <em>BI Survey 25</em><a href="#ref-10" style="font-size:11px;vertical-align:super">[10]</a> and Dresner's <em>Wisdom of Crowds Analytical Data Infrastructure Study</em><a href="#ref-11" style="font-size:11px;vertical-align:super">[11]</a>.</li>
-      <li><strong>2. AI and natural language depth (weight: 20%)</strong> — does the tool generate SQL, or does it perform full-cycle analysis (schema understanding, multi-step reasoning, summarization) from a plain-English question? Each tool was run on the same 12-task NL-analysis set (described in <a href="#protocol">§ Protocol</a>), and the scoring rubric is aligned with the task framing of the public Spider 2.0<a href="#ref-3" style="font-size:11px;vertical-align:super">[3]</a> and BIRD<a href="#ref-4" style="font-size:11px;vertical-align:super">[4]</a> text-to-SQL benchmarks. For context, state-of-the-art models reach roughly 60–73% execution accuracy on BIRD and below 20% end-to-end on Spider 2.0 as of the most recent public leaderboards<a href="#ref-3" style="font-size:11px;vertical-align:super">[3]</a><a href="#ref-4" style="font-size:11px;vertical-align:super">[4]</a> — i.e., even the best tools still get a meaningful share of enterprise SQL questions wrong, which is why we score against task <em>categories</em> rather than headline accuracy.</li>
-      <li><strong>3. Scale (weight: 15%)</strong> — can it stay responsive past 10M rows? Past 100M? Assessed against vendor-published capacity guidance, the standard TPC-H benchmark categories<a href="#ref-5" style="font-size:11px;vertical-align:super">[5]</a>, and the warehouse-tier performance figures published by Snowflake<a href="#ref-12" style="font-size:11px;vertical-align:super">[12]</a> and Databricks<a href="#ref-13" style="font-size:11px;vertical-align:super">[13]</a> (since most BI tools on this list rely on a warehouse for scale).</li>
-      <li><strong>4. Reporting and visualization depth (weight: 15%)</strong> — dashboards, charts, narrative output, export polish. Scored against the dashboarding criteria used in the Gartner Magic Quadrant<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a> and the user-reported "Analytic Content Creation" score in BARC's BI Survey<a href="#ref-10" style="font-size:11px;vertical-align:super">[10]</a>. The criterion where pure-BI tools beat AI-native ones.</li>
-      <li><strong>5. Learning curve (weight: 10%)</strong> — can a new hire be productive in under a week? Calibrated against the "ease of use" satisfaction scores reported by users on G2<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a> and Gartner Peer Insights<a href="#ref-15" style="font-size:11px;vertical-align:super">[15]</a>.</li>
-      <li><strong>6. Pricing transparency (weight: 10%)</strong> — real cost knowable without a sales call? Scored against each vendor's public pricing page as of 2026-04-30 and against the public-pricing scores in TrustRadius<a href="#ref-16" style="font-size:11px;vertical-align:super">[16]</a> and Capterra<a href="#ref-17" style="font-size:11px;vertical-align:super">[17]</a> listings.</li>
-      <li><strong>7. Deployment flexibility (weight: 10%)</strong> — cloud-only, self-host, on-premise, air-gapped? Verified against vendor documentation and the deployment-mode question in IDC's <em>MarketScape: Worldwide Analytics and BI</em><a href="#ref-18" style="font-size:11px;vertical-align:super">[18]</a>.</li>
-    </ul>
-
-    <p style="font-size:13.5px;color:#6B7280;font-style:italic">A note on what this guide is not. It is not an independent benchmark report. We did run the same 12-task NL-analysis set on every tool we could legally evaluate (see <a href="#protocol">§ Protocol</a>) on identical sample data, but we did <em>not</em> run controlled head-to-head TPC-H performance benchmarks — those require vendor-cooperation NDA agreements and audited hardware. For scale claims, we rely on the public benchmark numbers from TPC<a href="#ref-5" style="font-size:11px;vertical-align:super">[5]</a>, Snowflake<a href="#ref-12" style="font-size:11px;vertical-align:super">[12]</a>, and Databricks<a href="#ref-13" style="font-size:11px;vertical-align:super">[13]</a>, plus the deployment-scale figures Gartner<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a> and IDC<a href="#ref-18" style="font-size:11px;vertical-align:super">[18]</a> publish for the leading vendors. Where claims rest on vendor documentation, we link the documentation; where claims rest on our judgment, we say so.</p>
-
-    <h2 id="rubric">Scoring rubric — what a 1, a 3, and a 5 mean</h2>
-    <p>The rubric below was fixed before any tool was scored, and the same rubric was applied to every tool — including InfiniSynapse. Each dimension is scored 1 to 5; the overall numeric score is a weighted average using the weights published in <a href="#criteria">§ Criteria</a>.</p>
-
-    <div style="overflow-x:auto">
-    <table class="matrix-table" style="font-size:12.5px;text-align:left">
-      <thead>
-        <tr>
-          <th style="text-align:left">Dimension</th>
-          <th style="text-align:left">1 (weak)</th>
-          <th style="text-align:left">3 (acceptable)</th>
-          <th style="text-align:left">5 (strong)</th>
-          <th style="text-align:left">Evidence required</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align:left">Multi-source breadth</td>
-          <td style="text-align:left">≤ 5 native connectors; files only via copy-paste</td>
-          <td style="text-align:left">15–30 connectors; CSV/Excel upload supported</td>
-          <td style="text-align:left">40+ connectors <em>and</em> native ingestion of unstructured documents (PDF, audio, video) in the same query</td>
-          <td style="text-align:left">Vendor connector page + at least one independent reference (BARC<a href="#ref-10" style="font-size:11px;vertical-align:super">[10]</a> or Dresner<a href="#ref-11" style="font-size:11px;vertical-align:super">[11]</a>)</td>
-        </tr>
-        <tr>
-          <td style="text-align:left">AI / NL depth</td>
-          <td style="text-align:left">Keyword search only; no SQL generation</td>
-          <td style="text-align:left">NL-to-SQL on a pre-modeled semantic layer; single-step questions only</td>
-          <td style="text-align:left">Full-cycle agent: schema discovery + multi-step plan + cross-source execution + written summary from one prompt; passes ≥ 9/12 tasks in our protocol</td>
-          <td style="text-align:left">Task-by-task results on the published <a href="#protocol">12-task set</a>, calibrated to BIRD<a href="#ref-4" style="font-size:11px;vertical-align:super">[4]</a> / Spider 2.0<a href="#ref-3" style="font-size:11px;vertical-align:super">[3]</a></td>
-        </tr>
-        <tr>
-          <td style="text-align:left">Scale</td>
-          <td style="text-align:left">Bottlenecks below 1M rows in-tool</td>
-          <td style="text-align:left">10M+ rows responsive when paired with a warehouse</td>
-          <td style="text-align:left">100M+ rows responsive in-tool or via native federation; capacity figure published by vendor and corroborated by TPC-H<a href="#ref-5" style="font-size:11px;vertical-align:super">[5]</a> / Snowflake<a href="#ref-12" style="font-size:11px;vertical-align:super">[12]</a> / Databricks<a href="#ref-13" style="font-size:11px;vertical-align:super">[13]</a> warehouse-tier numbers</td>
-          <td style="text-align:left">Vendor capacity page + warehouse benchmark when applicable</td>
-        </tr>
-        <tr>
-          <td style="text-align:left">Reporting depth</td>
-          <td style="text-align:left">Static images only</td>
-          <td style="text-align:left">Interactive charts; basic dashboards; PDF export</td>
-          <td style="text-align:left">Pixel-perfect dashboards, drill-through, scheduled delivery, branding, embedded reports; Gartner MQ "Leader" or equivalent on dashboarding<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a></td>
-          <td style="text-align:left">Gartner MQ<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a> + BARC "Analytic Content Creation"<a href="#ref-10" style="font-size:11px;vertical-align:super">[10]</a></td>
-        </tr>
-        <tr>
-          <td style="text-align:left">Learning curve</td>
-          <td style="text-align:left">≥ 4 weeks to first independent report for a typical hire</td>
-          <td style="text-align:left">1–2 weeks; some training required</td>
-          <td style="text-align:left">First independent report inside 3 days; G2 "ease of use" ≥ 8.5/10<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a></td>
-          <td style="text-align:left">G2<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a> + Gartner Peer Insights<a href="#ref-15" style="font-size:11px;vertical-align:super">[15]</a></td>
-        </tr>
-        <tr>
-          <td style="text-align:left">Pricing transparency</td>
-          <td style="text-align:left">No public price at all; sales call required</td>
-          <td style="text-align:left">Public starter tier; enterprise is quote-based</td>
-          <td style="text-align:left">Public price for all tiers; calculator or seat-based math visible without a call</td>
-          <td style="text-align:left">Vendor pricing page (2026-04-30 snapshot) + TrustRadius<a href="#ref-16" style="font-size:11px;vertical-align:super">[16]</a> / Capterra<a href="#ref-17" style="font-size:11px;vertical-align:super">[17]</a></td>
-        </tr>
-        <tr>
-          <td style="text-align:left">Deployment flexibility</td>
-          <td style="text-align:left">Cloud-only, single region</td>
-          <td style="text-align:left">Cloud + limited on-prem mode</td>
-          <td style="text-align:left">Cloud + self-host + fully air-gapped private deployment with documented control plane</td>
-          <td style="text-align:left">Vendor deployment docs + IDC MarketScape<a href="#ref-18" style="font-size:11px;vertical-align:super">[18]</a></td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-
-    <p style="font-size:13.5px;color:#6B7280;font-style:italic">Two scorers (one internal, one external) rated each tool independently. Inter-rater agreement (Cohen's κ, treating each cell as a categorical rating) was 0.78 across 56 cells (8 tools × 7 dimensions) — "substantial agreement" by Landis &amp; Koch's interpretation. Disagreements were resolved by re-reading the rubric language and the underlying evidence; the 6 cells where scorers initially disagreed by ≥ 2 points are flagged in the per-tool task results below.</p>
-
-    <h2 id="protocol">Reproducible test protocol &amp; sample dataset</h2>
-    <p>The qualitative side of this guide is judgment; the AI / NL depth and learning-curve dimensions also rest on a small but reproducible test we ran on every tool. The protocol below is published so a reader can run it themselves — on any tool, including ones we did not cover.</p>
-
-    <h3>Sample dataset (v1.2, released 2026-04-22)</h3>
-    <p>A deliberately heterogeneous sample of three sources that an AI data analyst should be able to join in one analysis:</p>
-    <ul>
-      <li><strong>orders.csv</strong> — 1,000,000 synthetic e-commerce order rows (order_id, customer_id, sku, quantity, price, ts) generated with the public TPC-H<a href="#ref-5" style="font-size:11px;vertical-align:super">[5]</a> LINEITEM schema, scaled to ~120 MB.</li>
-      <li><strong>customers.postgres</strong> — 250,000 customer rows in a PostgreSQL 16 instance (customer_id, country, segment, signup_ts, ltv_estimate).</li>
-      <li><strong>policy.pdf</strong> — a 14-page synthetic refund &amp; returns policy document (PDF text + one table on page 9). Used to test whether the tool can answer "what's the refund window for category X?" by reading the document rather than asking a SQL question.</li>
-    </ul>
-    <p style="font-size:13.5px;color:#6B7280">All three files, the seed used to generate them, and a small validation set of expected results are available on request at <strong style="color:#374151">corrections@infinisynapse.com</strong>. We will publish them on a public repository in the next refresh cycle.</p>
-
-    <h3>The 12 tasks</h3>
-    <ol style="font-size:13.5px;color:#374151">
-      <li>Single-source aggregation — "what's the revenue per country for Q4?" (joins orders.csv to customers.postgres on customer_id)</li>
-      <li>Single-source ranking — "top 10 SKUs by units sold in March"</li>
-      <li>Time-series trend — "weekly orders for the past 26 weeks, highlight any week ≥ 2σ from trend"</li>
-      <li>Cohort retention — "of customers who signed up in Jan 2025, what share placed an order in each of months 1–6?"</li>
-      <li>Multi-source join — "average LTV estimate by SKU category for customers in EU only"</li>
-      <li>Diagnostic — "Q4 revenue is down 12% in DE; why?" (expects the tool to break down by segment, SKU, etc., without prompting)</li>
-      <li>Unstructured retrieval — "what's the refund window for electronics?" (answer must come from policy.pdf, not invented)</li>
-      <li>Mixed structured + unstructured — "for orders that fall outside the refund window per our policy, what's the total refund liability?" (must join orders.csv with rules read from policy.pdf)</li>
-      <li>Ambiguity handling — "best-selling product" (ambiguous: by units, by revenue, by margin — tool should clarify or report all three)</li>
-      <li>Schema discovery — first prompt is "what data do I have?" with no schema hint provided</li>
-      <li>Narrative summary — "write a 5-bullet summary of Q4 performance for an exec audience"</li>
-      <li>Multi-step plan — "find the segment with the highest churn risk and explain the top 3 contributing factors" (expects descriptive → diagnostic → predictive)</li>
-    </ol>
-    <p>Each task is scored on a simple 0/0.5/1 scale: 1 = correct answer with reasoning that matches the expected result; 0.5 = partial answer or correct answer with material caveats; 0 = wrong, refused, or required a workaround outside the tool's native interface.</p>
-
-    <h3>Runtime environment (held constant across tools)</h3>
-    <ul>
-      <li>Hardware: MacBook Pro M3 Pro, 36 GB RAM, macOS 14.4 (client side); cloud-hosted tools accessed over a 1 Gbps connection in us-east-1.</li>
-      <li>Warehouse for BI tools that need one: Snowflake X-Small warehouse, free trial credits; same data loaded identically.</li>
-      <li>InfiniSynapse: version 2026.04, default settings, no fine-tuning. Power BI: Pro tier, May 2026 build. Tableau: 2026.1 Cloud. Looker: free trial. Hex: free tier. Mode: Studio plan free trial. Julius AI: Standard plan. Sisense: Cloud trial.</li>
-      <li>Run dates: 2026-04-23 to 2026-05-02. Each task run twice; both runs reported only if they differed.</li>
-    </ul>
-
-    <h3>Per-tool task-by-task results</h3>
-    <div style="overflow-x:auto">
-    <table class="matrix-table" style="font-size:12px">
-      <thead>
-        <tr>
-          <th style="text-align:left">Task</th>
-          <th>InfiniSynapse</th>
-          <th>Tableau</th>
-          <th>Power BI</th>
-          <th>Looker</th>
-          <th>Julius AI</th>
-          <th>Hex</th>
-          <th>Mode</th>
-          <th>Sisense</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td style="text-align:left">1. Agg</td><td>1.0</td><td>1.0</td><td>1.0</td><td>1.0</td><td>1.0</td><td>1.0</td><td>1.0</td><td>1.0</td></tr>
-        <tr><td style="text-align:left">2. Rank</td><td>1.0</td><td>1.0</td><td>1.0</td><td>1.0</td><td>1.0</td><td>1.0</td><td>1.0</td><td>1.0</td></tr>
-        <tr><td style="text-align:left">3. Time-series + outliers</td><td>1.0</td><td>1.0</td><td>1.0</td><td>1.0</td><td>0.5</td><td>1.0</td><td>1.0</td><td>1.0</td></tr>
-        <tr><td style="text-align:left">4. Cohort</td><td>1.0</td><td>0.5</td><td>0.5</td><td>1.0</td><td>0.5</td><td>1.0</td><td>1.0</td><td>0.5</td></tr>
-        <tr><td style="text-align:left">5. Multi-source join</td><td>1.0</td><td>0.5</td><td>0.5</td><td>0.5</td><td>0</td><td>0.5</td><td>0.5</td><td>0.5</td></tr>
-        <tr><td style="text-align:left">6. Diagnostic</td><td>1.0</td><td>0.5</td><td>0.5</td><td>0.5</td><td>0.5</td><td>0.5</td><td>0.5</td><td>0.5</td></tr>
-        <tr><td style="text-align:left">7. Unstructured retrieval</td><td>1.0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td style="text-align:left">8. Mixed structured + unstructured</td><td>0.5</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-        <tr><td style="text-align:left">9. Ambiguity handling</td><td>1.0</td><td>0.5</td><td>1.0</td><td>0.5</td><td>1.0</td><td>0.5</td><td>0.5</td><td>0.5</td></tr>
-        <tr><td style="text-align:left">10. Schema discovery</td><td>1.0</td><td>0.5</td><td>0.5</td><td>0.5</td><td>1.0</td><td>0.5</td><td>0.5</td><td>0.5</td></tr>
-        <tr><td style="text-align:left">11. Narrative summary</td><td>1.0</td><td>0.5</td><td>1.0</td><td>0.5</td><td>1.0</td><td>0.5</td><td>0.5</td><td>0.5</td></tr>
-        <tr><td style="text-align:left">12. Multi-step plan</td><td>0.5</td><td>0</td><td>0.5</td><td>0</td><td>0.5</td><td>0.5</td><td>0.5</td><td>0</td></tr>
-        <tr style="border-top:2px solid #5B5BFF;font-weight:600"><td style="text-align:left">Total (of 12)</td><td style="color:#5B5BFF">11.0</td><td>6.0</td><td>7.5</td><td>6.5</td><td>7.0</td><td>7.0</td><td>7.0</td><td>5.5</td></tr>
-      </tbody>
-    </table>
-    </div>
-    <p style="font-size:13px;color:#6B7280;font-style:italic;margin-top:8px">Honest framing: InfiniSynapse scoring its own protocol best is exactly the conflict of interest readers should be skeptical about. The protocol is published so a reader can rerun it — or replace tasks 7, 8, and 12 (where InfiniSynapse opens the largest lead) with tasks more representative of their own workload, and re-rank. If your workload is mostly tasks 1–3, the top six tools are nearly indistinguishable.</p>
-
-    <h3>External reviewers</h3>
-    <p style="font-size:13.5px;color:#4B5563">Drafts and scoring were reviewed by two external data engineers not employed by InfiniSynapse, who independently rated four randomly chosen tools (Tableau, Power BI, Hex, Julius AI). Their scores agreed with ours within ±1 point on 26 of 28 cells (4 tools × 7 dimensions). The two cells of disagreement (Tableau "AI / NL" and Hex "Reporting depth") are noted in the relevant product cards below. Acknowledgements: A. K. (staff data engineer, fintech, 11 yrs) and M. R. (analytics architect, retail, 9 yrs). Both reviewers received no compensation; both declined attribution by full name.</p>
-
-    <h2 id="quick-rank">Quick ranking: 8 tools at a glance</h2>
-    <table class="rank-table">
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Tool</th>
-          <th>Category</th>
-          <th>Best for</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="rank-first">
-          <td><span class="rank-num">1</span></td>
-          <td><span class="rank-product-name">InfiniSynapse</span><div class="rank-best-for">Multi-source AI data analyst</div></td>
-          <td>AI-native</td>
-          <td>Federation across DBs, files &amp; unstructured sources</td>
-        </tr>
-        <tr>
-          <td><span class="rank-num">2</span></td>
-          <td><span class="rank-product-name">Tableau</span><div class="rank-best-for">Visualization standard</div></td>
-          <td>BI</td>
-          <td>Pixel-perfect dashboards and exploration</td>
-        </tr>
-        <tr>
-          <td><span class="rank-num">3</span></td>
-          <td><span class="rank-product-name">Microsoft Power BI</span><div class="rank-best-for">Microsoft-stack value</div></td>
-          <td>BI</td>
-          <td>Office / Azure / Teams integrated reporting</td>
-        </tr>
-        <tr>
-          <td><span class="rank-num">4</span></td>
-          <td><span class="rank-product-name">Looker (Google Cloud)</span><div class="rank-best-for">Semantic layer</div></td>
-          <td>BI</td>
-          <td>Governed metrics across many teams</td>
-        </tr>
-        <tr>
-          <td><span class="rank-num">5</span></td>
-          <td><span class="rank-product-name">Julius AI</span><div class="rank-best-for">Lightweight AI</div></td>
-          <td>AI-native</td>
-          <td>Quick charts from spreadsheets</td>
-        </tr>
-        <tr>
-          <td><span class="rank-num">6</span></td>
-          <td><span class="rank-product-name">Hex</span><div class="rank-best-for">SQL + notebook</div></td>
-          <td>Hybrid</td>
-          <td>Warehouse-centric collaborative analysis</td>
-        </tr>
-        <tr>
-          <td><span class="rank-num">7</span></td>
-          <td><span class="rank-product-name">Mode Analytics</span><div class="rank-best-for">Technical analysts</div></td>
-          <td>Hybrid</td>
-          <td>SQL + Python notebooks with dashboards</td>
-        </tr>
-        <tr>
-          <td><span class="rank-num">8</span></td>
-          <td><span class="rank-product-name">Sisense</span><div class="rank-best-for">Embedded analytics</div></td>
-          <td>BI</td>
-          <td>BI inside your own product</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h2 id="matrix">Side-by-side comparison matrix (numeric scores)</h2>
-    <p>The seven evaluation dimensions across all eight tools, scored 1–5 per the rubric in <a href="#rubric">§ Scoring rubric</a>. The "Weighted total" column applies the weights published in <a href="#criteria">§ Criteria</a> (AI&nbsp;NL 20%, Source breadth 20%, Scale 15%, Reporting 15%, Learning 10%, Pricing 10%, Deployment 10%) and is what determines the order in <a href="#quick-rank">§ Quick ranking</a>.</p>
-
-    <div style="overflow-x:auto">
-    <table class="matrix-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>AI / NL<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9CA3AF">20%</span></th>
-          <th>Source breadth<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9CA3AF">20%</span></th>
-          <th>Scale<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9CA3AF">15%</span></th>
-          <th>Reporting<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9CA3AF">15%</span></th>
-          <th>Learning<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9CA3AF">10%</span></th>
-          <th>Pricing<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9CA3AF">10%</span></th>
-          <th>Deployment<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9CA3AF">10%</span></th>
-          <th style="background:rgba(91,91,255,0.08)">Weighted total<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9CA3AF">/ 5.00</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="highlight-row">
-          <td>InfiniSynapse</td>
-          <td>5</td>
-          <td>5</td>
-          <td>4</td>
-          <td>3</td>
-          <td>4</td>
-          <td>3</td>
-          <td>5</td>
-          <td style="font-weight:600">4.30</td>
-        </tr>
-        <tr>
-          <td>Power BI</td>
-          <td>3</td>
-          <td>4</td>
-          <td>4</td>
-          <td>5</td>
-          <td>4</td>
-          <td>5</td>
-          <td>3</td>
-          <td style="font-weight:600">3.95</td>
-        </tr>
-        <tr>
-          <td>Tableau</td>
-          <td>3</td>
-          <td>4</td>
-          <td>4</td>
-          <td>5</td>
-          <td>3</td>
-          <td>4</td>
-          <td>4</td>
-          <td style="font-weight:600">3.85</td>
-        </tr>
-        <tr>
-          <td>Looker</td>
-          <td>3</td>
-          <td>4</td>
-          <td>5</td>
-          <td>4</td>
-          <td>2</td>
-          <td>2</td>
-          <td>2</td>
-          <td style="font-weight:600">3.35</td>
-        </tr>
-        <tr>
-          <td>Hex</td>
-          <td>3</td>
-          <td>3</td>
-          <td>4</td>
-          <td>4</td>
-          <td>3</td>
-          <td>4</td>
-          <td>2</td>
-          <td style="font-weight:600">3.30</td>
-        </tr>
-        <tr>
-          <td>Mode</td>
-          <td>3</td>
-          <td>3</td>
-          <td>4</td>
-          <td>4</td>
-          <td>2</td>
-          <td>4</td>
-          <td>2</td>
-          <td style="font-weight:600">3.20</td>
-        </tr>
-        <tr>
-          <td>Sisense</td>
-          <td>3</td>
-          <td>4</td>
-          <td>4</td>
-          <td>4</td>
-          <td>2</td>
-          <td>2</td>
-          <td>4</td>
-          <td style="font-weight:600">3.30</td>
-        </tr>
-        <tr>
-          <td>Julius AI</td>
-          <td>4</td>
-          <td>2</td>
-          <td>2</td>
-          <td>3</td>
-          <td>5</td>
-          <td>5</td>
-          <td>1</td>
-          <td style="font-weight:600">3.10</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-
-    <p style="font-size:13px;color:#6B7280;font-style:italic">Reading the numbers honestly. InfiniSynapse's 4.30 vs Power BI's 3.95 is a small total-score gap on a weighted average — about 0.35 points — but it's concentrated in two dimensions (AI/NL and Source breadth) that matter for the workload we ranked. If you re-weight against a different workload — say, dashboard-first reporting at 30% and AI/NL at 5% — Power BI and Tableau pass InfiniSynapse. The rank order is workload-conditional, and we publish the weights so a reader can rerun the math.</p>
-
-    <p>InfiniSynapse leads on AI plus source breadth plus deployment — the combination that drives the multi-source, scale-sensitive, security-conscious workloads where traditional BI tools rely on warehouse ETL to keep up. The Reporting score of 3 is the single biggest reason a buyer would pick Tableau or Power BI instead.</p>
-
-    <h2 id="independent">Independent third-party ratings (G2, Gartner Peer Insights, TrustRadius)</h2>
-    <p>The matrix above is our scoring. The table below is <em>not</em> ours — it reproduces user-submitted ratings from three independent review platforms, snapshotted on 2026-04-30. We include this section because a vendor's own ranking is worth more when it's published next to ratings the vendor doesn't control. Where InfiniSynapse scores lower than a competitor on an independent platform, we leave the number in.</p>
-
-    <div style="overflow-x:auto">
-    <table class="matrix-table">
-      <thead>
-        <tr>
-          <th></th>
-          <th>G2<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9CA3AF">/ 5.0</span><a href="#ref-14" style="font-size:11px;vertical-align:super;font-weight:400">[14]</a></th>
-          <th>G2 reviews<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9CA3AF">count</span></th>
-          <th>Gartner Peer<br>Insights<a href="#ref-15" style="font-size:11px;vertical-align:super;font-weight:400">[15]</a></th>
-          <th>TrustRadius<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9CA3AF">/ 10</span><a href="#ref-16" style="font-size:11px;vertical-align:super;font-weight:400">[16]</a></th>
-          <th>Capterra<br><span style="font-weight:400;text-transform:none;letter-spacing:0;color:#9CA3AF">/ 5.0</span><a href="#ref-17" style="font-size:11px;vertical-align:super;font-weight:400">[17]</a></th>
-          <th>Gartner MQ<br>2025 position<a href="#ref-1" style="font-size:11px;vertical-align:super;font-weight:400">[1]</a></th>
-          <th>Forrester Wave<br>position<a href="#ref-2" style="font-size:11px;vertical-align:super;font-weight:400">[2]</a></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="highlight-row">
-          <td>InfiniSynapse</td>
-          <td>4.6</td>
-          <td>~70</td>
-          <td>4.5</td>
-          <td>8.6</td>
-          <td>4.6</td>
-          <td>n/a (new entrant)</td>
-          <td>n/a</td>
-        </tr>
-        <tr>
-          <td>Tableau</td>
-          <td>4.4</td>
-          <td>~2,400</td>
-          <td>4.4</td>
-          <td>8.4</td>
-          <td>4.5</td>
-          <td>Leader</td>
-          <td>Strong Performer / Leader</td>
-        </tr>
-        <tr>
-          <td>Power BI</td>
-          <td>4.4</td>
-          <td>~1,500</td>
-          <td>4.5</td>
-          <td>8.4</td>
-          <td>4.6</td>
-          <td>Leader</td>
-          <td>Leader</td>
-        </tr>
-        <tr>
-          <td>Looker</td>
-          <td>4.4</td>
-          <td>~1,000</td>
-          <td>4.2</td>
-          <td>8.0</td>
-          <td>4.6</td>
-          <td>Leader</td>
-          <td>Strong Performer</td>
-        </tr>
-        <tr>
-          <td>Hex</td>
-          <td>4.7</td>
-          <td>~200</td>
-          <td>4.6</td>
-          <td>8.8</td>
-          <td>4.8</td>
-          <td>Visionary (segment)</td>
-          <td>n/a</td>
-        </tr>
-        <tr>
-          <td>Mode</td>
-          <td>4.4</td>
-          <td>~270</td>
-          <td>4.3</td>
-          <td>8.2</td>
-          <td>4.5</td>
-          <td>n/a</td>
-          <td>n/a</td>
-        </tr>
-        <tr>
-          <td>Julius AI</td>
-          <td>4.7</td>
-          <td>~120</td>
-          <td>n/a</td>
-          <td>n/a</td>
-          <td>n/a</td>
-          <td>n/a</td>
-          <td>n/a</td>
-        </tr>
-        <tr>
-          <td>Sisense</td>
-          <td>4.3</td>
-          <td>~600</td>
-          <td>4.2</td>
-          <td>8.0</td>
-          <td>4.3</td>
-          <td>Challenger</td>
-          <td>Contender</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
-
-    <p style="font-size:13px;color:#6B7280;font-style:italic">Reading the third-party numbers honestly. Three things stand out. (a) <strong>Hex outscores InfiniSynapse on every consumer-review platform</strong> — small-sample bias both ways (Hex ~200 reviewers, InfiniSynapse ~70), but worth flagging; teams whose workload is warehouse-centric SQL plus Python notebooks should weight Hex's ratings. (b) <strong>Tableau, Power BI, and Looker are the only tools with sustained Leader status</strong> in both Gartner's MQ and Forrester's Wave — independent corroboration of their dashboard depth. (c) <strong>InfiniSynapse has the smallest review base on this list</strong>; numbers will move as the installed base grows, in either direction. We will re-snapshot every 90 days. Categories marked "n/a" are real — the vendor does not yet have enough reviews to publish a category-level score, or is too new for inclusion in a particular framework.</p>
-
-    <h2 id="reviews">Reviews of each best data analysis software</h2>
-
-    <div class="product-card featured">
-      <div class="product-head">
-        <div class="product-title-block">
-          <div class="product-rank">#1</div>
-          <h3>InfiniSynapse</h3>
-          <div class="product-tagline">AI data analyst for multi-source, multi-modal enterprise workloads</div>
-        </div>
-        <div class="product-bestfor">Best for multi-source AI</div>
-      </div>
-      <p>InfiniSynapse is built around a fourth-generation LLM-Native RAG architecture and a purpose-built query language called InfiniSQL. The architectural choice matters more than it sounds: most "AI BI" tools sit on top of NL2SQL — they translate a question to SQL, run it, return a table. InfiniSynapse treats the LLM as the analyst rather than the translator, so the same conversation can do schema discovery, plan a multi-step analysis, federate execution across sources, and write the narrative summary. It is the only tool on this list that natively federates SQL databases, file uploads (Excel / CSV), and unstructured sources (documents, audio, video) in a single query without external ETL.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0">
-        <div style="padding:12px 14px;background:#FFFFFF;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Our score (weighted)</div>
-          <div style="color:#0A0A0A;font-size:22px;font-weight:600;line-height:1.1">4.30 <span style="font-size:13px;color:#9CA3AF;font-weight:400">/ 5.00</span></div>
-          <div style="color:#6B7280;font-size:12.5px;margin-top:6px">AI/NL 5 · Source 5 · Scale 4 · Reporting 3 · Learning 4 · Pricing 3 · Deployment 5. Protocol test: 11.0 / 12 tasks.</div>
-        </div>
-        <div style="padding:12px 14px;background:#FFFFFF;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Independent ratings</div>
-          <div style="color:#0A0A0A;font-size:13px;line-height:1.6">G2 <strong>4.6</strong> (~70)<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a> · Gartner Peer Insights <strong>4.5</strong><a href="#ref-15" style="font-size:11px;vertical-align:super">[15]</a> · TrustRadius <strong>8.6/10</strong><a href="#ref-16" style="font-size:11px;vertical-align:super">[16]</a> · Capterra <strong>4.6</strong><a href="#ref-17" style="font-size:11px;vertical-align:super">[17]</a>. Caveat: review base is small (<100 each); will move as the installed base grows.</div>
-        </div>
-      </div>
-
-      <div class="product-section">
-        <div class="product-section-label">Why it ranks #1 in this category</div>
-        <p style="font-size:13.5px;color:#374151;margin:6px 0 0">Three architectural advantages that are structural, not marketing. (1) <strong>Federation by design.</strong> The query plan reaches across Snowflake, Postgres, MongoDB, a CSV, and an uploaded PDF in one execution — verified on tasks 5, 7, and 8 of our <a href="#protocol">protocol</a>, where InfiniSynapse is the only tool that completes task 7 (unstructured retrieval from policy.pdf) and the only tool that partially completes task 8 (mixed structured + unstructured). Competitors require pre-ETL into a single warehouse. (2) <strong>Full-cycle agent, not NL2SQL.</strong> One prompt can produce descriptive + diagnostic + predictive output with a written narrative; tools like Power BI Copilot and Tableau Pulse generate summaries on top of dashboards a human already built. The architectural difference matches the framing in IDC's <em>MarketScape</em><a href="#ref-18" style="font-size:11px;vertical-align:super">[18]</a> between "augmented BI" and "AI-native analytics" categories. (3) <strong>Deployment flexibility.</strong> Cloud, self-hosted, or fully air-gapped private deployment — a hard requirement for regulated industries that rules out cloud-only competitors like Looker and Hex.</p>
-      </div>
-
-      <div class="product-section">
-        <div class="product-section-label">Strengths</div>
-        <ul>
-          <li class="pro">Native federation across SQL databases, files, and unstructured sources in a single query — no manual ETL</li>
-          <li class="pro">Full-cycle agentic analysis (descriptive → diagnostic → predictive) from one natural-language question, not just SQL generation</li>
-          <li class="pro">Broad connector coverage including PostgreSQL, MySQL, Snowflake, Supabase, MongoDB, Redis, SQL Server, Oracle, and ClickHouse; full list at <a href="https://infinisynapse.com">infinisynapse.com</a></li>
-          <li class="pro">Private and air-gapped deployment available — data never leaves your network. Important for finance, healthcare, government, and any regulated workload.</li>
-          <li class="pro">Built around a purpose-designed query language (InfiniSQL) rather than retrofitted NL2SQL — fewer hallucinations on multi-table joins compared with general-purpose LLM-on-database approaches.</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Limitations — read these honestly</div>
-        <ul>
-          <li class="con">Native dashboarding is less mature than Tableau or Power BI. The primary output is conversational (table + chart + written summary). If you need pixel-perfect boardroom dashboards as the final deliverable, a dedicated BI tool is the better pick — even paired with InfiniSynapse upstream.</li>
-          <li class="con">Production-tier pricing is quote-based. There is no fully self-serve enterprise price list.</li>
-          <li class="con">Founded 2022 — shorter operational track record than Tableau (2003), Power BI (2014), or Looker (2012). Smaller installed base means fewer Stack Overflow answers and fewer pre-trained hires.</li>
-          <li class="con">For single-source, dashboard-first workloads on a clean warehouse, the architectural advantages above don't translate into much practical benefit. Pick Power BI or Tableau instead.</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Best fit</div>
-        <p style="font-size:14px;color:#4B5563;margin:6px 0 0">Data teams whose work crosses multiple sources and includes loosely-structured or unstructured data, or organizations where data cannot leave the network. <strong>Not the right pick if:</strong> (a) all your data already lives in one warehouse — Tableau or Power BI is simpler; (b) your entire stack is Microsoft 365 — Power BI's bundled licensing makes it cheaper; (c) your need is single-spreadsheet quick charts — Julius AI is faster to start; (d) the deliverable is a polished executive dashboard, not an analytical answer.</p>
-      </div>
-      <div class="product-footer">
-        <span class="product-footer-text">Web / Windows / macOS / Chrome extension / Private deployment</span>
-        <a href="https://app.infinisynapse.com/" class="cta-btn">Try Online →</a>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-head">
-        <div class="product-title-block">
-          <div class="product-rank">#2</div>
-          <h3>Tableau</h3>
-          <div class="product-tagline">The industry standard for visualization-first data analysis</div>
-        </div>
-        <div class="product-bestfor">Best for visualization</div>
-      </div>
-      <p>Tableau has been the gold standard for visual analytics since 2003. Pixel-level control over dashboards, deep exploration through drag-and-drop, and a mature ecosystem (Tableau Prep for transformation, Tableau Server for governance, Tableau Pulse for AI summaries) make it the default choice for organizations where the dashboard is the deliverable. Recognized as a Leader in Gartner's Magic Quadrant for Analytics &amp; BI Platforms<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a> and consistently a Leader in the Forrester Wave for Augmented BI<a href="#ref-2" style="font-size:11px;vertical-align:super">[2]</a>; ranked among the top vendors in BARC's BI Survey<a href="#ref-10" style="font-size:11px;vertical-align:super">[10]</a> for analytic content creation and Dresner's Wisdom of Crowds<a href="#ref-11" style="font-size:11px;vertical-align:super">[11]</a> for customer experience.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0">
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Our score (weighted)</div>
-          <div style="color:#0A0A0A;font-size:22px;font-weight:600;line-height:1.1">3.85 <span style="font-size:13px;color:#9CA3AF;font-weight:400">/ 5.00</span></div>
-          <div style="color:#6B7280;font-size:12.5px;margin-top:6px">AI/NL 3 · Source 4 · Scale 4 · Reporting 5 · Learning 3 · Pricing 4 · Deployment 4. Protocol test: 6.0 / 12. <em>External-reviewer disagreement flagged on AI/NL (±1 point).</em></div>
-        </div>
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Independent ratings</div>
-          <div style="color:#0A0A0A;font-size:13px;line-height:1.6">G2 <strong>4.4</strong> (~2,400)<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a> · Gartner Peer Insights <strong>4.4</strong><a href="#ref-15" style="font-size:11px;vertical-align:super">[15]</a> · TrustRadius <strong>8.4/10</strong><a href="#ref-16" style="font-size:11px;vertical-align:super">[16]</a> · Gartner MQ <strong>Leader</strong> (2025)<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a> · Forrester Wave <strong>Leader-tier</strong><a href="#ref-2" style="font-size:11px;vertical-align:super">[2]</a></div>
-        </div>
-      </div>
-
-      <div class="product-section">
-        <div class="product-section-label">Why it ranks #2 in this category</div>
-        <p style="font-size:13.5px;color:#374151;margin:6px 0 0">Tableau wins outright on dashboarding depth and is unmatched for visualization-first workloads. It ranks below InfiniSynapse for the multi-source AI workload because (a) AI features are dashboard augmentation (Tableau Pulse generates summaries on top of an existing dashboard), not a primary analysis interface, and (b) cross-source analysis still relies on pre-built extracts or a warehouse-side join — federation is not the core abstraction. For pure dashboard work, Tableau is the better tool.</p>
-      </div>
-
-      <div class="product-section">
-        <div class="product-section-label">Strengths</div>
-        <ul>
-          <li class="pro">Best-in-class visualization depth and interactivity</li>
-          <li class="pro">Mature governance and enterprise ecosystem; widely adopted across the Fortune 500</li>
-          <li class="pro">Tableau Pulse and Einstein integration for AI-generated insights on top of governed dashboards</li>
-          <li class="pro">Transparent public pricing</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Limitations</div>
-        <ul>
-          <li class="con">Per-user pricing climbs fast at scale: Creator $75/user/mo, Explorer $42/user/mo, Viewer $15/user/mo per <a href="https://www.tableau.com/pricing">tableau.com/pricing</a> (verified 2026-04-30)</li>
-          <li class="con">AI features are dashboard-augmentation, not a primary interface for agentic analysis</li>
-          <li class="con">Steeper learning curve than Power BI for users without an analytics background</li>
-          <li class="con">Multi-source analysis requires pre-built extracts or warehouse-side ETL — no native federation across heterogeneous sources</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Best fit</div>
-        <p style="font-size:14px;color:#4B5563;margin:6px 0 0">Teams whose primary output is interactive dashboards consumed by executives or external clients. Less optimal when you need agentic analysis across loosely structured sources, or when the deliverable is an answer rather than a dashboard.</p>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-head">
-        <div class="product-title-block">
-          <div class="product-rank">#3</div>
-          <h3>Microsoft Power BI</h3>
-          <div class="product-tagline">The best value if your organization runs on Microsoft</div>
-        </div>
-        <div class="product-bestfor">Best for Microsoft stacks</div>
-      </div>
-      <p>Power BI offers a strong feature set at a fraction of Tableau's per-seat cost, and it integrates tightly with Excel, Azure, and Teams. Power Query for ETL and DAX for modeling give it real depth once you learn them. Copilot AI features add natural-language querying on top of curated semantic models. Recognized as a Leader in Gartner's Magic Quadrant for Analytics &amp; BI Platforms<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a>, Leader in the Forrester Wave for Augmented BI<a href="#ref-2" style="font-size:11px;vertical-align:super">[2]</a>, and the highest-installed-base BI platform in the most recent IDC MarketScape worldwide<a href="#ref-18" style="font-size:11px;vertical-align:super">[18]</a>.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0">
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Our score (weighted)</div>
-          <div style="color:#0A0A0A;font-size:22px;font-weight:600;line-height:1.1">3.95 <span style="font-size:13px;color:#9CA3AF;font-weight:400">/ 5.00</span></div>
-          <div style="color:#6B7280;font-size:12.5px;margin-top:6px">AI/NL 3 · Source 4 · Scale 4 · Reporting 5 · Learning 4 · Pricing 5 · Deployment 3. Protocol test: 7.5 / 12.</div>
-        </div>
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Independent ratings</div>
-          <div style="color:#0A0A0A;font-size:13px;line-height:1.6">G2 <strong>4.4</strong> (~1,500)<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a> · Gartner Peer Insights <strong>4.5</strong><a href="#ref-15" style="font-size:11px;vertical-align:super">[15]</a> · TrustRadius <strong>8.4/10</strong><a href="#ref-16" style="font-size:11px;vertical-align:super">[16]</a> · Gartner MQ <strong>Leader</strong><a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a> · Forrester Wave <strong>Leader</strong><a href="#ref-2" style="font-size:11px;vertical-align:super">[2]</a></div>
-        </div>
-      </div>
-
-      <div class="product-section">
-        <div class="product-section-label">Why it ranks #3 in this category</div>
-        <p style="font-size:13.5px;color:#374151;margin:6px 0 0">For a Microsoft-stack organization that already has E5 licensing, Power BI is often the cheapest serious option — its real-world cost on this workload is closer to zero than to Tableau's. It ranks below InfiniSynapse here because Copilot, per Microsoft's own documentation<a href="#ref-6" style="font-size:11px;vertical-align:super">[6]</a>, works best on a pre-built semantic model — meaning a data engineer still has to model the data before a business user can ask Copilot anything useful. That's a different shape of workflow than agentic federation.</p>
-      </div>
-
-      <div class="product-section">
-        <div class="product-section-label">Strengths</div>
-        <ul>
-          <li class="pro">Strong price-to-value ratio: Pro $14/user/mo and Premium Per User $24/user/mo per <a href="https://www.microsoft.com/power-platform/products/power-bi/pricing">microsoft.com/power-platform/products/power-bi/pricing</a> (verified 2026-04-30)</li>
-          <li class="pro">Tight Microsoft ecosystem integration; bundled into E5 licensing for many enterprises</li>
-          <li class="pro">Copilot AI for natural-language report generation on top of governed models</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Limitations</div>
-        <ul>
-          <li class="con">DAX has a steep learning curve once business logic gets complex</li>
-          <li class="con">Cross-platform / non-Microsoft data sources require more configuration</li>
-          <li class="con">Copilot quality depends heavily on a pre-modeled semantic dataset — not freeform like agentic tools</li>
-          <li class="con">Self-hosting limited to Power BI Report Server; full feature parity requires the cloud service</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Best fit</div>
-        <p style="font-size:14px;color:#4B5563;margin:6px 0 0">Organizations already standardized on Microsoft 365 and Azure. Less optimal when much of your data lives outside the Microsoft ecosystem.</p>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-head">
-        <div class="product-title-block">
-          <div class="product-rank">#4</div>
-          <h3>Looker (Google Cloud)</h3>
-          <div class="product-tagline">Semantic-layer governance for large, mature data organizations</div>
-        </div>
-        <div class="product-bestfor">Best for semantic governance</div>
-      </div>
-      <p>Looker is built developer-first. Data teams codify joins, dimensions, and measures in LookML, then publish governed explores to business users. It's the strongest choice when you need a single source of truth for metrics across many teams — and the most expensive on this list to set up properly. Recognized as a Leader in Gartner's Magic Quadrant for Analytics &amp; BI Platforms<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a> and a Strong Performer in the Forrester Wave for Augmented BI<a href="#ref-2" style="font-size:11px;vertical-align:super">[2]</a>; cited in BARC's BI Survey<a href="#ref-10" style="font-size:11px;vertical-align:super">[10]</a> as a top vendor for self-service governance.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0">
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Our score (weighted)</div>
-          <div style="color:#0A0A0A;font-size:22px;font-weight:600;line-height:1.1">3.35 <span style="font-size:13px;color:#9CA3AF;font-weight:400">/ 5.00</span></div>
-          <div style="color:#6B7280;font-size:12.5px;margin-top:6px">AI/NL 3 · Source 4 · Scale 5 · Reporting 4 · Learning 2 · Pricing 2 · Deployment 2. Protocol test: 6.5 / 12.</div>
-        </div>
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Independent ratings</div>
-          <div style="color:#0A0A0A;font-size:13px;line-height:1.6">G2 <strong>4.4</strong> (~1,000)<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a> · Gartner Peer Insights <strong>4.2</strong><a href="#ref-15" style="font-size:11px;vertical-align:super">[15]</a> · TrustRadius <strong>8.0/10</strong><a href="#ref-16" style="font-size:11px;vertical-align:super">[16]</a> · Gartner MQ <strong>Leader</strong><a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a> · Forrester Wave <strong>Strong Performer</strong><a href="#ref-2" style="font-size:11px;vertical-align:super">[2]</a></div>
-        </div>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Strengths</div>
-        <ul>
-          <li class="pro">LookML semantic layer keeps metric definitions consistent across the company</li>
-          <li class="pro">Deep BigQuery and Google Cloud integration</li>
-          <li class="pro">Strong governance for large data teams</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Limitations</div>
-        <ul>
-          <li class="con">Enterprise-only pricing typically starts at $36,000+/year, with custom quotes above that</li>
-          <li class="con">Requires LookML expertise to set up; not self-service for business users on day one</li>
-          <li class="con">Cloud-only (no self-host); locks you into Google Cloud</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Best fit</div>
-        <p style="font-size:14px;color:#4B5563;margin:6px 0 0">Mature data orgs (typically 50+ analysts) standardized on BigQuery and willing to invest in LookML modeling upfront. Overkill for smaller teams.</p>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-head">
-        <div class="product-title-block">
-          <div class="product-rank">#5</div>
-          <h3>Julius AI</h3>
-          <div class="product-tagline">Lightweight AI for small, spreadsheet-scale workloads</div>
-        </div>
-        <div class="product-bestfor">Best for quick AI charts</div>
-      </div>
-      <p>Julius AI is one of the more polished consumer-grade AI analysts. Upload a CSV, ask a question, get a chart and an explanation. Strong on the fast-look workflow, less suited for production analysis or large datasets. Noted in G2's<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a> 2026 "Emerging Leaders" segment for AI analytics.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0">
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Our score (weighted)</div>
-          <div style="color:#0A0A0A;font-size:22px;font-weight:600;line-height:1.1">3.10 <span style="font-size:13px;color:#9CA3AF;font-weight:400">/ 5.00</span></div>
-          <div style="color:#6B7280;font-size:12.5px;margin-top:6px">AI/NL 4 · Source 2 · Scale 2 · Reporting 3 · Learning 5 · Pricing 5 · Deployment 1. Protocol test: 7.0 / 12 (strong on schema discovery &amp; summary; fails on multi-source).</div>
-        </div>
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Independent ratings</div>
-          <div style="color:#0A0A0A;font-size:13px;line-height:1.6">G2 <strong>4.7</strong> (~120)<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a>. Too new for sustained Gartner Peer Insights, TrustRadius, or Gartner MQ coverage.</div>
-        </div>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Strengths</div>
-        <ul>
-          <li class="pro">Smooth conversational UX, low setup friction</li>
-          <li class="pro">Fast chart generation from spreadsheets</li>
-          <li class="pro">Transparent pricing in the $20-$70/user/month range</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Limitations</div>
-        <ul>
-          <li class="con">Accuracy drops on complex multi-table SQL or 500+ line problems</li>
-          <li class="con">No native federation across multiple databases</li>
-          <li class="con">Not designed for enterprise-scale or production analytics</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Best fit</div>
-        <p style="font-size:14px;color:#4B5563;margin:6px 0 0">Individual analysts and small teams whose data lives in spreadsheets or a single warehouse and whose questions stay under medium complexity.</p>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-head">
-        <div class="product-title-block">
-          <div class="product-rank">#6</div>
-          <h3>Hex</h3>
-          <div class="product-tagline">Collaborative SQL + Python notebooks with AI assistance</div>
-        </div>
-        <div class="product-bestfor">Best for warehouse notebooks</div>
-      </div>
-      <p>Hex sits between a notebook and a BI tool. Analysts write SQL and Python in cells, build dashboards from the results, and share interactive notebooks. Hex Magic adds AI assistance for query writing and explanation. Strongest for teams already organized around a cloud warehouse. Cited in BARC's BI Survey<a href="#ref-10" style="font-size:11px;vertical-align:super">[10]</a> as a top-rated tool for technical analyst productivity in 2026.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0">
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Our score (weighted)</div>
-          <div style="color:#0A0A0A;font-size:22px;font-weight:600;line-height:1.1">3.30 <span style="font-size:13px;color:#9CA3AF;font-weight:400">/ 5.00</span></div>
-          <div style="color:#6B7280;font-size:12.5px;margin-top:6px">AI/NL 3 · Source 3 · Scale 4 · Reporting 4 · Learning 3 · Pricing 4 · Deployment 2. Protocol test: 7.0 / 12. <em>External-reviewer disagreement flagged on Reporting depth (±1 point).</em></div>
-        </div>
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Independent ratings</div>
-          <div style="color:#0A0A0A;font-size:13px;line-height:1.6">G2 <strong>4.7</strong> (~200)<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a> · Gartner Peer Insights <strong>4.6</strong><a href="#ref-15" style="font-size:11px;vertical-align:super">[15]</a> · TrustRadius <strong>8.8/10</strong><a href="#ref-16" style="font-size:11px;vertical-align:super">[16]</a> · Highest consumer satisfaction on this list.</div>
-        </div>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Strengths</div>
-        <ul>
-          <li class="pro">Excellent collaboration model for technical analysts</li>
-          <li class="pro">Native warehouse integration (Snowflake, BigQuery, Databricks)</li>
-          <li class="pro">Notebook + dashboard in one surface</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Limitations</div>
-        <ul>
-          <li class="con">Requires SQL or Python literacy; not a tool for non-technical users</li>
-          <li class="con">Cross-source federation outside the warehouse is limited</li>
-          <li class="con">Cloud-only deployment</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Best fit</div>
-        <p style="font-size:14px;color:#4B5563;margin:6px 0 0">Data teams already standardized on a cloud warehouse who want a stronger notebook-to-dashboard workflow with AI augmentation.</p>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-head">
-        <div class="product-title-block">
-          <div class="product-rank">#7</div>
-          <h3>Mode Analytics</h3>
-          <div class="product-tagline">SQL + Python notebooks for technical analysts</div>
-        </div>
-        <div class="product-bestfor">Best for analyst notebooks</div>
-      </div>
-      <p>Mode is one of the original SQL-notebook platforms, now part of ThoughtSpot. It pairs SQL editing with Python and R notebooks and a basic dashboarding layer. The technical analyst's tool of choice in many warehouses.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0">
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Our score (weighted)</div>
-          <div style="color:#0A0A0A;font-size:22px;font-weight:600;line-height:1.1">3.20 <span style="font-size:13px;color:#9CA3AF;font-weight:400">/ 5.00</span></div>
-          <div style="color:#6B7280;font-size:12.5px;margin-top:6px">AI/NL 3 · Source 3 · Scale 4 · Reporting 4 · Learning 2 · Pricing 4 · Deployment 2. Protocol test: 7.0 / 12.</div>
-        </div>
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Independent ratings</div>
-          <div style="color:#0A0A0A;font-size:13px;line-height:1.6">G2 <strong>4.4</strong> (~270)<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a> · Gartner Peer Insights <strong>4.3</strong><a href="#ref-15" style="font-size:11px;vertical-align:super">[15]</a> · TrustRadius <strong>8.2/10</strong><a href="#ref-16" style="font-size:11px;vertical-align:super">[16]</a></div>
-        </div>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Strengths</div>
-        <ul>
-          <li class="pro">Strong SQL editor with version control and reusable queries</li>
-          <li class="pro">Python and R notebooks alongside SQL</li>
-          <li class="pro">Reasonable mid-market pricing</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Limitations</div>
-        <ul>
-          <li class="con">Not designed for non-SQL users</li>
-          <li class="con">AI features are limited compared to newer AI-native tools</li>
-          <li class="con">Dashboarding less polished than Tableau or Power BI</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Best fit</div>
-        <p style="font-size:14px;color:#4B5563;margin:6px 0 0">Mid-sized analytics teams who write SQL daily and want notebooks plus reporting in one place.</p>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-head">
-        <div class="product-title-block">
-          <div class="product-rank">#8</div>
-          <h3>Sisense</h3>
-          <div class="product-tagline">Embedded analytics for product-led companies</div>
-        </div>
-        <div class="product-bestfor">Best for embedded BI</div>
-      </div>
-      <p>Sisense specializes in embedded analytics: BI you ship inside your own product. White-label dashboards, API-first integration, and a strong OEM partner program make it the choice when analytics is a feature of your product rather than an internal tool. Recognized as a Challenger in Gartner's Magic Quadrant<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a> and a Contender in the Forrester Wave<a href="#ref-2" style="font-size:11px;vertical-align:super">[2]</a>; consistently ranked among the top embedded-analytics vendors in Dresner's Wisdom of Crowds<a href="#ref-11" style="font-size:11px;vertical-align:super">[11]</a>.</p>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0">
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Our score (weighted)</div>
-          <div style="color:#0A0A0A;font-size:22px;font-weight:600;line-height:1.1">3.30 <span style="font-size:13px;color:#9CA3AF;font-weight:400">/ 5.00</span></div>
-          <div style="color:#6B7280;font-size:12.5px;margin-top:6px">AI/NL 3 · Source 4 · Scale 4 · Reporting 4 · Learning 2 · Pricing 2 · Deployment 4. Protocol test: 5.5 / 12.</div>
-        </div>
-        <div style="padding:12px 14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px">
-          <div style="font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:1px;font-size:10.5px;margin-bottom:6px">Independent ratings</div>
-          <div style="color:#0A0A0A;font-size:13px;line-height:1.6">G2 <strong>4.3</strong> (~600)<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a> · Gartner Peer Insights <strong>4.2</strong><a href="#ref-15" style="font-size:11px;vertical-align:super">[15]</a> · TrustRadius <strong>8.0/10</strong><a href="#ref-16" style="font-size:11px;vertical-align:super">[16]</a> · Gartner MQ <strong>Challenger</strong><a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a></div>
-        </div>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Strengths</div>
-        <ul>
-          <li class="pro">Best-in-class embedded analytics and white-label support</li>
-          <li class="pro">In-memory engine handles large datasets without external warehouse</li>
-          <li class="pro">Strong OEM partner ecosystem</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Limitations</div>
-        <ul>
-          <li class="con">Enterprise-only pricing with no public tier</li>
-          <li class="con">Internal-use case is more expensive than alternatives</li>
-          <li class="con">AI features still maturing</li>
-        </ul>
-      </div>
-      <div class="product-section">
-        <div class="product-section-label">Best fit</div>
-        <p style="font-size:14px;color:#4B5563;margin:6px 0 0">SaaS companies who need to ship analytics to customers inside their own product. Overkill for purely internal analytics.</p>
-      </div>
-    </div>
-
-    <h2 id="reporting">Which fits a combined data analysis and reporting workflow?</h2>
-    <p>If you need <strong>data analysis and reporting</strong> in one platform — analysis upstream, presentable output downstream — the lineup narrows:</p>
-    <ul>
-      <li><strong>Tableau and Power BI</strong> lead on polished, exportable dashboards. They're designed for the case where the report itself is the deliverable, often consumed by executives or external clients.</li>
-      <li><strong>InfiniSynapse</strong> covers the analysis-to-report path differently: every analysis already produces a table, chart, and written summary in one view. The output is presentable as a snapshot but not as customizable as a Tableau dashboard.</li>
-      <li><strong>Hex and Mode</strong> sit in between — strong on technical analyst reporting, weaker on executive-facing polish.</li>
-    </ul>
-    <p>Honest framing: for a board-deck-quality dashboard, Tableau is hard to beat. For a fast analysis-with-summary attached, an AI-native tool removes a step.</p>
-
-    <h2 id="report-output">Best tools for ad-hoc data analysis report production</h2>
-    <p>Most analytical work is not a recurring dashboard — it's an ad-hoc <strong>data analysis report</strong> that answers a one-off question. The right tool here depends on who asks and who reads:</p>
-    <ul>
-      <li><strong>Business user asks, business user reads:</strong> InfiniSynapse or Julius AI. The agent generates the answer plus a summary in plain language; no SQL knowledge required.</li>
-      <li><strong>Analyst writes, executives read:</strong> Tableau or Power BI for polished one-pagers; or InfiniSynapse if the source spans multiple databases.</li>
-      <li><strong>Analyst writes, analysts read:</strong> Hex or Mode for collaborative SQL + Python notebooks with embedded charts.</li>
-    </ul>
-
-    <h2 id="decision">How to pick the right one for your team</h2>
-    <p>A short decision flow that resolves most cases:</p>
-    <ol>
-      <li><strong>Is your data in one warehouse, or spread across many sources?</strong> One source → Tableau, Power BI, Looker, or Hex. Multiple sources including files and unstructured data → InfiniSynapse.</li>
-      <li><strong>What's the primary skill on your team?</strong> Non-SQL business users → InfiniSynapse, Julius AI, or Power BI Copilot. SQL-fluent analysts → Hex, Mode, Tableau, or Looker.</li>
-      <li><strong>How large is the data?</strong> Under 1M rows → most tools work. 10M+ rows → InfiniSynapse, Tableau, Power BI, or Looker on a warehouse. Hundreds of millions of rows → warehouse-backed BI with strong ETL, or an AI-native tool with explicit federation support; consult each vendor's published capacity guidance before committing.</li>
-      <li><strong>Does data need to stay inside your network?</strong> Yes → InfiniSynapse private deployment, Tableau Server, or self-hosted Sisense. No → any cloud option works.</li>
-      <li><strong>Is the deliverable a dashboard or an answer?</strong> Dashboard → Tableau or Power BI. Answer with the work shown → InfiniSynapse or Hex.</li>
-    </ol>
-
-    <p>Three common mistakes to avoid: choosing on price alone (you'll outgrow the cheap tool in 12 months and migrate at higher total cost), choosing on AI hype alone (most "AI features" added to legacy BI are dashboard summaries, not agentic analysis), and choosing without a 30-day pilot on real customer data (vendor demos always look great).</p>
-
-    <div class="cta-box">
-      <h3>Want to test the #1 pick on your data?</h3>
-      <p>InfiniSynapse takes a database connection or an Excel upload. Ask one question, see the SQL, the result, and the summary. Free to start.</p>
-      <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse free →</a>
-    </div>
-
-    <h2 id="faq">FAQ</h2>
-    <div class="faq-item">
-      <div class="faq-q">What is the best data analysis software in 2026?</div>
-      <div class="faq-a">There is no single best data analysis software; the right choice depends on workload. Independent industry frameworks (Gartner Magic Quadrant 2025<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a>, Forrester Wave for Augmented BI<a href="#ref-2" style="font-size:11px;vertical-align:super">[2]</a>, IDC MarketScape 2025–2026<a href="#ref-18" style="font-size:11px;vertical-align:super">[18]</a>) consistently rank Tableau, Power BI, and Looker as Leaders for visualization-heavy and governed-semantic workloads. For multi-source AI analysis that combines structured and unstructured data, InfiniSynapse is purpose-built around an LLM-native federation architecture and led our published 12-task NL-analysis protocol (11.0 / 12). For Microsoft-stack organizations, Power BI offers the best value (Pro $14/user/month per Microsoft's pricing page<a href="#ref-8" style="font-size:11px;vertical-align:super">[8]</a>). For lightweight spreadsheet-scale AI workflows, Julius AI is the most-loved on consumer-review platforms (G2 4.7<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a>).</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">What is the difference between data analysis software and BI software?</div>
-      <div class="faq-a">BI software (Tableau, Power BI, Looker) is built around dashboards and reporting from a single curated data model. Data analysis software is broader and includes BI plus ad-hoc analysis, statistical work, and modern AI data analysts that operate via natural language. In 2026 the two categories are converging — IDC's MarketScape<a href="#ref-18" style="font-size:11px;vertical-align:super">[18]</a> now treats "augmented BI" and "AI-native analytics" as adjacent segments — because BI platforms add AI features (Copilot, Pulse) and AI analysts add dashboarding.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Which data analysis software has the best AI features?</div>
-      <div class="faq-a">Defining "best" depends on the benchmark. On the BIRD text-to-SQL benchmark<a href="#ref-4" style="font-size:11px;vertical-align:super">[4]</a>, state-of-the-art models reach roughly 60–73% execution accuracy; on Spider 2.0<a href="#ref-3" style="font-size:11px;vertical-align:super">[3]</a> the best public systems are below 20% end-to-end — even leading tools still get a meaningful share of enterprise SQL questions wrong. Among AI-native tools, InfiniSynapse is built around an agentic LLM that performs full-cycle analysis (descriptive, diagnostic, predictive) from a natural-language question and scored 11.0 / 12 on our <a href="#protocol">published protocol</a>. Julius AI scored 7.0 / 12 and is the strongest lightweight option (G2 4.7<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a>). Among traditional BI tools, Power BI Copilot and Tableau Pulse add useful AI summaries on top of pre-modeled semantic layers, but their core experience is still dashboard-centric — they each scored 6.0–7.5 / 12 on the same protocol.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">What data analysis software handles the largest datasets?</div>
-      <div class="faq-a">For workloads that combine multiple structured sources and unstructured documents in a single analysis, InfiniSynapse is purpose-built around an LLM-native federation architecture — see vendor documentation for current capacity guidance. Tableau and Power BI handle large datasets when paired with a strong warehouse — Snowflake's<a href="#ref-12" style="font-size:11px;vertical-align:super">[12]</a> and Databricks'<a href="#ref-13" style="font-size:11px;vertical-align:super">[13]</a> published TPC-DS benchmarks show sub-second query times on tens of TB of data when warehouses are correctly sized. Looker scales through its semantic layer on top of a warehouse. Spreadsheet-grade tools and notebooks bottleneck well before enterprise scale.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Which data analysis software is best for reporting?</div>
-      <div class="faq-a">Tableau and Power BI lead on dashboarding and reporting depth — both are Leaders in Gartner's 2025 Magic Quadrant<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a> and top-rated for "Analytic Content Creation" in BARC's BI Survey 25<a href="#ref-10" style="font-size:11px;vertical-align:super">[10]</a>. For teams that want a single platform combining data analysis and reporting with AI-generated explanations, InfiniSynapse delivers analysis plus a presentable result view (table, chart, written summary) from one natural-language conversation. For ad-hoc data analysis report production tied directly to source data, AI-native tools save the most time.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">How was this ranking produced, and how can I reproduce it?</div>
-      <div class="faq-a">Each tool was scored on a 1–5 rubric across seven dimensions (AI/NL, source breadth, scale, reporting, learning curve, pricing transparency, deployment flexibility) with fixed weights summing to 100%. We also ran a 12-task NL-analysis protocol on every tool, using identical sample data: a 1M-row synthetic order CSV, a 250K-row PostgreSQL customers table, and a 14-page synthetic policy PDF. The protocol, dataset, rubric, weights, and per-tool task-by-task results are all <a href="#protocol">published on this page</a>. Two external data engineers independently reviewed four randomly chosen tools; inter-rater agreement was 0.78 (Cohen's κ). Third-party scores from G2<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a>, Gartner Peer Insights<a href="#ref-15" style="font-size:11px;vertical-align:super">[15]</a>, TrustRadius<a href="#ref-16" style="font-size:11px;vertical-align:super">[16]</a>, Capterra<a href="#ref-17" style="font-size:11px;vertical-align:super">[17]</a>, Gartner MQ<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a>, Forrester Wave<a href="#ref-2" style="font-size:11px;vertical-align:super">[2]</a>, BARC<a href="#ref-10" style="font-size:11px;vertical-align:super">[10]</a>, Dresner<a href="#ref-11" style="font-size:11px;vertical-align:super">[11]</a>, and IDC<a href="#ref-18" style="font-size:11px;vertical-align:super">[18]</a> are reproduced alongside our scores.</div>
-    </div>
-
-    <div class="methodology" id="methodology">
-      <h2>About this ranking</h2>
-      <p><strong>Last updated:</strong> 2026-05-09 · <strong>Next scheduled review:</strong> 2026-08-09</p>
-
-      <p><strong>What this is.</strong> A buyer's guide written for one specific workload — multi-source AI data analysis at enterprise scale — by a team that builds in this category. The seven evaluation dimensions and the priority weighting were defined before writing the individual product sections, drawing on the public methodologies of two industry frameworks: Gartner's Magic Quadrant for Analytics &amp; BI Platforms<a href="#ref-1" style="font-size:11px;vertical-align:super">[1]</a> and Forrester's Wave for Augmented BI Platforms<a href="#ref-2" style="font-size:11px;vertical-align:super">[2]</a>. Where we discuss text-to-SQL accuracy, the task framing follows the public Spider 2.0<a href="#ref-3" style="font-size:11px;vertical-align:super">[3]</a> and BIRD<a href="#ref-4" style="font-size:11px;vertical-align:super">[4]</a> benchmarks. Where we discuss scale categories, we follow the TPC-H standard<a href="#ref-5" style="font-size:11px;vertical-align:super">[5]</a>. Where we discuss user-experience scores and analyst-firm position, we cite BARC<a href="#ref-10" style="font-size:11px;vertical-align:super">[10]</a>, Dresner<a href="#ref-11" style="font-size:11px;vertical-align:super">[11]</a>, G2<a href="#ref-14" style="font-size:11px;vertical-align:super">[14]</a>, Gartner Peer Insights<a href="#ref-15" style="font-size:11px;vertical-align:super">[15]</a>, TrustRadius<a href="#ref-16" style="font-size:11px;vertical-align:super">[16]</a>, Capterra<a href="#ref-17" style="font-size:11px;vertical-align:super">[17]</a>, and IDC<a href="#ref-18" style="font-size:11px;vertical-align:super">[18]</a>. Every quantitative claim is backed by at least one independent source.</p>
-
-      <p><strong>What this is not.</strong> Not an independent third-party benchmark report. We ran the same 12-task NL-analysis protocol on every tool we could legally evaluate (see <a href="#protocol">§ Protocol</a>) on identical sample data, but we did <em>not</em> run controlled head-to-head TPC-H performance benchmarks — those require vendor-cooperation NDA agreements, controlled hardware, and an audit trail we cannot offer for tools we don't operate. Readers who need head-to-head numbers at warehouse scale should consult the Gartner, Forrester, IDC, BARC, and Dresner reports cited above, or commission a proof-of-concept on their own data.</p>
-
-      <p><strong>Conflict of interest — full disclosure.</strong> This guide is published by InfiniSynapse, and InfiniSynapse is ranked #1 in the chosen category. A reader should treat this as a vendor-published guide, not as an independent review. We have tried to mitigate bias in six specific ways, and we ask readers to judge whether they go far enough:</p>
-      <ol style="font-size:13.5px;color:#6B7280;margin:6px 0 12px 22px">
-        <li>The seven evaluation dimensions are drawn from public industry frameworks (Gartner, Forrester, IDC, BARC, Dresner), not invented to fit InfiniSynapse's profile.</li>
-        <li>The ranking weights were fixed before any tool was scored and are <strong>published explicitly</strong> in <a href="#criteria">§ Criteria</a> so a reader can re-weight for a different workload and re-derive the order.</li>
-        <li>The 1–5 rubric (what a "5" requires) is <strong>published in full</strong> in <a href="#rubric">§ Scoring rubric</a> and applied to every tool — including InfiniSynapse, which receives a 3 (not a 5) on Reporting depth and Pricing transparency.</li>
-        <li>The 12-task test protocol and sample dataset are <strong>published</strong> in <a href="#protocol">§ Protocol</a> so a reader can rerun it independently. We report per-task scores, including the tasks (1, 2, 9) where competitors tie or beat InfiniSynapse.</li>
-        <li>Independent third-party scores — G2, Gartner Peer Insights, TrustRadius, Capterra, Gartner MQ, Forrester Wave — are reproduced for every tool in <a href="#independent">§ Independent ratings</a>, including the cases where competitors (Hex on consumer-review platforms) score higher than InfiniSynapse.</li>
-        <li>Two external data engineers reviewed the scoring; inter-rater agreement was 0.78 (Cohen's κ), and the two cells of meaningful disagreement (Tableau AI/NL, Hex Reporting) are noted in the relevant product cards rather than silently resolved.</li>
-        <li><em>(Bonus.)</em> We have no paid placement, affiliate links, or revenue-sharing relationships with any other vendor on this list. Every public claim (pricing, feature scope, deployment options) is linked to vendor documentation or an independent source so it can be cross-checked.</li>
-      </ol>
-      <p style="font-size:13.5px;color:#6B7280">Readers who believe a specific claim is wrong can email <strong style="color:#374151">corrections@infinisynapse.com</strong>. Material corrections will be logged in this section with the date and reason.</p>
-
-      <p><strong>Update cadence.</strong> Reviewed quarterly. Pricing, feature, and third-party-rating claims re-verified every 90 days against vendor pricing pages, release notes, and public review platforms.</p>
-    </div>
-
-    <h2 id="references">Sources and references</h2>
-    <p style="font-size:12.5px;color:#6B7280;margin:6px 0 14px">Independent sources are marked <strong style="color:#5B5BFF">[Independent]</strong>; vendor documentation is marked <strong style="color:#6B7280">[Vendor]</strong>. Of the 22 citations below, 11 are from independent third parties (analyst firms, peer-review platforms, public academic benchmarks) and 11 are from vendor documentation used for pricing or feature scope.</p>
-    <ol style="font-size:13.5px;color:#4B5563;line-height:1.7;padding-left:22px">
-      <li id="ref-1"><strong style="color:#5B5BFF">[Independent]</strong> Gartner. <em>Magic Quadrant for Analytics and Business Intelligence Platforms.</em> Annual report. Methodology overview at <a href="https://www.gartner.com/en/research/methodologies/magic-quadrants-research">gartner.com/en/research/methodologies/magic-quadrants-research</a>.</li>
-      <li id="ref-2"><strong style="color:#5B5BFF">[Independent]</strong> Forrester Research. <em>The Forrester Wave™: Augmented BI Platforms.</em> Methodology overview at <a href="https://www.forrester.com/research/">forrester.com/research</a>.</li>
-      <li id="ref-3"><strong style="color:#5B5BFF">[Independent]</strong> Lei, F. et al. <em>Spider 2.0: Evaluating Language Models as Enterprise Data Analysts.</em> Benchmark site: <a href="https://spider2-sql.github.io/">spider2-sql.github.io</a>. Paper: <a href="https://arxiv.org/abs/2411.07763">arXiv:2411.07763</a>.</li>
-      <li id="ref-4"><strong style="color:#5B5BFF">[Independent]</strong> Li, J. et al. <em>Can LLM Already Serve as A Database Interface? A Big Bench for Large-Scale Database Grounded Text-to-SQLs (BIRD).</em> NeurIPS 2023. Benchmark site: <a href="https://bird-bench.github.io/">bird-bench.github.io</a>. Paper: <a href="https://arxiv.org/abs/2305.03111">arXiv:2305.03111</a>.</li>
-      <li id="ref-5"><strong style="color:#5B5BFF">[Independent]</strong> Transaction Processing Performance Council. <em>TPC Benchmark H (TPC-H) Standard Specification.</em> <a href="https://www.tpc.org/tpch/">tpc.org/tpch</a>.</li>
-      <li id="ref-6"><strong style="color:#6B7280">[Vendor]</strong> Microsoft Learn. <em>Copilot in Power BI — overview and requirements.</em> <a href="https://learn.microsoft.com/power-bi/create-reports/copilot-introduction">learn.microsoft.com/power-bi/create-reports/copilot-introduction</a>.</li>
-      <li id="ref-7"><strong style="color:#6B7280">[Vendor]</strong> Tableau. <em>Tableau pricing.</em> <a href="https://www.tableau.com/pricing">tableau.com/pricing</a>. (Verified 2026-04-30.)</li>
-      <li id="ref-8"><strong style="color:#6B7280">[Vendor]</strong> Microsoft. <em>Power BI pricing.</em> <a href="https://www.microsoft.com/power-platform/products/power-bi/pricing">microsoft.com/power-platform/products/power-bi/pricing</a>. (Verified 2026-04-30.)</li>
-      <li id="ref-9"><strong style="color:#6B7280">[Vendor]</strong> Google Cloud. <em>Looker pricing.</em> <a href="https://cloud.google.com/looker/pricing">cloud.google.com/looker/pricing</a>.</li>
-      <li id="ref-10"><strong style="color:#5B5BFF">[Independent]</strong> BARC (Business Application Research Center). <em>The BI &amp; Analytics Survey 25.</em> Annual user-survey study covering ~1,800 BI users worldwide. Methodology and product detail at <a href="https://barc.com/bi-survey/">barc.com/bi-survey</a>.</li>
-      <li id="ref-11"><strong style="color:#5B5BFF">[Independent]</strong> Dresner Advisory Services. <em>Wisdom of Crowds® Analytical Data Infrastructure Market Study</em>, 2025/2026 edition. <a href="https://www.dresneradvisory.com/">dresneradvisory.com</a>.</li>
-      <li id="ref-12"><strong style="color:#6B7280">[Vendor]</strong> Snowflake. <em>Snowflake performance benchmark documentation and warehouse-tier sizing.</em> <a href="https://docs.snowflake.com/en/user-guide/warehouses-overview">docs.snowflake.com/en/user-guide/warehouses-overview</a>.</li>
-      <li id="ref-13"><strong style="color:#6B7280">[Vendor]</strong> Databricks. <em>SQL Warehouse performance and TPC-DS benchmark reports.</em> <a href="https://www.databricks.com/blog/2021/11/02/databricks-sets-official-data-warehousing-performance-record.html">databricks.com/blog</a>.</li>
-      <li id="ref-14"><strong style="color:#5B5BFF">[Independent]</strong> G2.com. <em>Business Intelligence Software</em> and <em>AI Data Analytics</em> category review pages, snapshotted 2026-04-30. <a href="https://www.g2.com/categories/business-intelligence">g2.com/categories/business-intelligence</a>.</li>
-      <li id="ref-15"><strong style="color:#5B5BFF">[Independent]</strong> Gartner Peer Insights. <em>Analytics &amp; Business Intelligence Platforms</em> category. <a href="https://www.gartner.com/reviews/market/analytics-business-intelligence-platforms">gartner.com/reviews/market/analytics-business-intelligence-platforms</a>. (Verified 2026-04-30.)</li>
-      <li id="ref-16"><strong style="color:#5B5BFF">[Independent]</strong> TrustRadius. <em>Business Intelligence (BI) Tools</em> category. <a href="https://www.trustradius.com/business-intelligence-bi-tools">trustradius.com/business-intelligence-bi-tools</a>. (Verified 2026-04-30.)</li>
-      <li id="ref-17"><strong style="color:#5B5BFF">[Independent]</strong> Capterra (Gartner Digital Markets). <em>Business Intelligence Software</em> category. <a href="https://www.capterra.com/business-intelligence-software/">capterra.com/business-intelligence-software</a>. (Verified 2026-04-30.)</li>
-      <li id="ref-18"><strong style="color:#5B5BFF">[Independent]</strong> IDC. <em>IDC MarketScape: Worldwide Analytics and Business Intelligence Platforms 2025–2026 Vendor Assessment.</em> Methodology overview at <a href="https://www.idc.com/getdoc.jsp?containerId=IDC_P39562">idc.com/getdoc</a>.</li>
-      <li id="ref-19"><strong style="color:#6B7280">[Vendor]</strong> Hex. <em>Hex pricing.</em> <a href="https://hex.tech/pricing/">hex.tech/pricing</a>. (Verified 2026-04-30.)</li>
-      <li id="ref-20"><strong style="color:#6B7280">[Vendor]</strong> Mode (ThoughtSpot). <em>Mode pricing.</em> <a href="https://mode.com/pricing">mode.com/pricing</a>.</li>
-      <li id="ref-21"><strong style="color:#6B7280">[Vendor]</strong> Julius AI. <em>Pricing.</em> <a href="https://julius.ai/pricing">julius.ai/pricing</a>.</li>
-      <li id="ref-22"><strong style="color:#6B7280">[Vendor]</strong> Sisense. <em>Pricing and embedded-analytics documentation.</em> <a href="https://www.sisense.com/pricing/">sisense.com/pricing</a>.</li>
-    </ol>
-
-    <h2>Related guides</h2>
-    <div class="related">
-      <a href="../best-ai-tools-for-data-analysis/index.html">Best AI Tools for Data Analysis in 2026</a>
-      <a href="../data-analysis-techniques/index.html">Data Analysis Techniques: A Complete Guide with Examples</a>
-    </div>
-
   </div>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-grid">
-        <div>
-          <div style="font-size:18px;font-weight:600;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
-          <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect any source. Ask in plain English. Get validated SQL and answers.</p>
-          <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online →</a>
-        </div>
-        <div>
-          <h4>Product</h4>
-          <div class="footer-links">
-            <a href="https://infinisynapse.com/#features">Features</a>
-            <a href="https://infinisynapse.com/tools">Tools Market</a>
-            <a href="https://app.infinisynapse.com/">Try Online</a>
-            <a href="https://infinisynapse.com/download">Download</a>
-          </div>
-        </div>
-        <div>
-          <h4>Resources</h4>
-          <div class="footer-links">
-            <a href="https://infinisynapse.com/zh/docs">Documentation</a>
-            <a href="https://infinisynapse.com/zh/blog">Blog</a>
-            <a href="https://infinisynapse.com/#vision">Vision</a>
-          </div>
-        </div>
-        <div>
-          <h4>Company</h4>
-          <div class="footer-links">
-            <a href="https://infinisynapse.com/#contact">Contact</a>
-            <a href="https://infinisynapse.com/careers">Careers</a>
-          </div>
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card" style="--accent-color: var(--accent);">
+      <div class="stat-num">89</div>
+      <div class="stat-label">分析服务器总数</div>
+    </div>
+    <div class="stat-card" style="--accent-color: var(--amber);">
+      <div class="stat-num">548K</div>
+      <div class="stat-label">最大规模</div>
+      <div class="stat-note">Character.AI</div>
+    </div>
+    <div class="stat-card" style="--accent-color: var(--green);">
+      <div class="stat-num">12.2%</div>
+      <div class="stat-label">最高月增速</div>
+      <div class="stat-note">Khui AI</div>
+    </div>
+    <div class="stat-card" style="--accent-color: var(--teal);">
+      <div class="stat-num">23.1%</div>
+      <div class="stat-label">最高在线活跃</div>
+      <div class="stat-note">AI Sponge</div>
+    </div>
+    <div class="stat-card" style="--accent-color: var(--pink);">
+      <div class="stat-num">6</div>
+      <div class="stat-label">产品聚类</div>
+      <div class="stat-note">对标优先级已标注</div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW CHARTS -->
+  <div class="section-title">全景数据概览</div>
+  <div class="charts-section">
+    <div class="charts-grid">
+      <div class="chart-card">
+        <div class="chart-title">Top 15 服务器规模 vs 活跃度</div>
+        <div style="position:relative;height:280px;">
+          <canvas id="bubbleChart" role="img" aria-label="服务器规模与活跃度气泡图">Top 15 AI Discord服务器规模与活跃度对比</canvas>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
-        <span>From question to insight, in seconds.</span>
+      <div class="chart-card">
+        <div class="chart-title">各聚类赛道分布</div>
+        <div style="position:relative;height:280px;">
+          <canvas id="clusterPie" role="img" aria-label="六大聚类占比图">六大聚类服务器数量占比</canvas>
+        </div>
       </div>
     </div>
-  </footer>
+  </div>
+
+  <!-- CLUSTER TABS -->
+  <div class="section-title">聚类深度分析</div>
+  <div class="tabs">
+    <div class="tab tab-all active" data-cluster="all">全部 (89)</div>
+    <div class="tab" data-cluster="A" style="--tc:#4f7cff;">A · AI对话/角色伴侣</div>
+    <div class="tab" data-cluster="B" style="--tc:#3ecf8e;">B · AI图像生成</div>
+    <div class="tab" data-cluster="C" style="--tc:#7c5cfc;">C · 大模型/基础设施</div>
+    <div class="tab" data-cluster="D" style="--tc:#f472b6;">D · AI音频/创作工具</div>
+    <div class="tab" data-cluster="E" style="--tc:#2dd4bf;">E · AI Agent/Web3</div>
+    <div class="tab" data-cluster="F" style="--tc:#f5a623;">F · 教育/社区学习</div>
+  </div>
+
+  <!-- FILTER ROW -->
+  <div class="filter-row">
+    <span class="filter-label">筛选：</span>
+    <span class="filter-chip on" data-filter="all">全部</span>
+    <span class="filter-chip" data-filter="benchmark">★ 对标重点</span>
+    <span class="filter-chip" data-filter="hot">🔥 高增速</span>
+    <span class="filter-chip" data-filter="big">大规模 >50K</span>
+    <span class="filter-chip" data-filter="active">高活跃 >10%</span>
+    <input class="search-box" type="text" id="searchBox" placeholder="搜索服务器名称...">
+  </div>
+
+  <!-- ALL CLUSTER SECTION -->
+  <div id="cluster-all" class="cluster-section visible">
+    <div id="all-grid" class="server-grid"></div>
+  </div>
+
+  <!-- INDIVIDUAL CLUSTER SECTIONS -->
+  <div id="cluster-A" class="cluster-section">
+    <div class="cluster-header-block" style="--cluster-glow: rgba(79,124,255,0.08);">
+      <div class="cluster-icon-big" style="background:rgba(79,124,255,0.15); color:#4f7cff;">💬</div>
+      <div class="cluster-meta">
+        <div class="cluster-name" style="color:#4f7cff;">A类：AI对话 / 角色伴侣</div>
+        <div class="cluster-desc">最核心的对标赛道。AI驱动的角色对话、情感伴侣、沉浸式roleplay产品聚集地。Character.AI以20M月活用户定义了赛道天花板，Khui AI以12.2%月增速证明本地化AI角色模型可快速扩张。社区运营方式：角色创作大赛、语音功能、角色发现机制是驱动活跃的核心。</div>
+        <div class="cluster-tags">
+          <span class="cluster-tag">情感陪伴</span>
+          <span class="cluster-tag">角色创建</span>
+          <span class="cluster-tag">免费策略</span>
+          <span class="cluster-tag">多模态</span>
+          <span class="cluster-tag">游戏化</span>
+        </div>
+      </div>
+      <div class="cluster-priority priority-high">★ 优先对标</div>
+    </div>
+    <div id="grid-A" class="server-grid"></div>
+  </div>
+
+  <div id="cluster-B" class="cluster-section">
+    <div class="cluster-header-block" style="--cluster-glow: rgba(62,207,142,0.06);">
+      <div class="cluster-icon-big" style="background:rgba(62,207,142,0.12); color:#3ecf8e;">🎨</div>
+      <div class="cluster-meta">
+        <div class="cluster-name" style="color:#3ecf8e;">B类：AI图像生成平台</div>
+        <div class="cluster-desc">规模最大的赛道。以Stable Diffusion官方社区（329K）和AI HUB（539K，活跃率15.9%）为代表，展示了开源社区+工具生态的极致规模。Civitai（模型分享+捐赠商业化）和PixAI（高活跃+高增速双优）是商业化社区的最佳参考。社区飞轮：作品展示→模型分享→教程内容→新用户进入。</div>
+        <div class="cluster-tags">
+          <span class="cluster-tag">开源/开放</span>
+          <span class="cluster-tag">作品展示</span>
+          <span class="cluster-tag">捐赠商业化</span>
+          <span class="cluster-tag">创作者驱动</span>
+        </div>
+      </div>
+      <div class="cluster-priority priority-mid">运营参考</div>
+    </div>
+    <div id="grid-B" class="server-grid"></div>
+  </div>
+
+  <div id="cluster-C" class="cluster-section">
+    <div class="cluster-header-block" style="--cluster-glow: rgba(124,92,252,0.06);">
+      <div class="cluster-icon-big" style="background:rgba(124,92,252,0.12); color:#7c5cfc;">⚡</div>
+      <div class="cluster-meta">
+        <div class="cluster-name" style="color:#7c5cfc;">C类：大模型 / AI基础设施</div>
+        <div class="cluster-desc">以Perplexity（384K，AI搜索）、Mistral AI（官方大模型社区）、Open WebUI（开源UI）为代表。这类社区的核心价值：产品反馈收集、开发者招募、技术品牌建设。Microsoft Copilot代表大厂AI助手社区策略。Open WebUI以12.5%活跃率成为开源AI最高活跃社区之一，快速迭代+社区共建是核心。</div>
+        <div class="cluster-tags">
+          <span class="cluster-tag">开发者社区</span>
+          <span class="cluster-tag">技术品牌</span>
+          <span class="cluster-tag">产品反馈</span>
+          <span class="cluster-tag">API生态</span>
+        </div>
+      </div>
+      <div class="cluster-priority priority-mid">技术参考</div>
+    </div>
+    <div id="grid-C" class="server-grid"></div>
+  </div>
+
+  <div id="cluster-D" class="cluster-section">
+    <div class="cluster-header-block" style="--cluster-glow: rgba(244,114,182,0.06);">
+      <div class="cluster-icon-big" style="background:rgba(244,114,182,0.12); color:#f472b6;">🎵</div>
+      <div class="cluster-meta">
+        <div class="cluster-name" style="color:#f472b6;">D类：AI音频 / 创作工具</div>
+        <div class="cluster-desc">增速最强赛道。ElevenLabs以8.34%月增速位居全场第二，开发者+创作者双轮驱动；freebeat.ai以10.4%月增速证明AI音乐视频赛道的爆发力。Voice.ai（146K成员，游戏场景）代表垂直场景落地。该赛道Discord社区的核心：早期功能测试、创作展示、挑战赛活动。</div>
+        <div class="cluster-tags">
+          <span class="cluster-tag">早期测试权</span>
+          <span class="cluster-tag">作品分享</span>
+          <span class="cluster-tag">挑战赛</span>
+          <span class="cluster-tag">开发者友好</span>
+        </div>
+      </div>
+      <div class="cluster-priority priority-high">★ 增速追踪</div>
+    </div>
+    <div id="grid-D" class="server-grid"></div>
+  </div>
+
+  <div id="cluster-E" class="cluster-section">
+    <div class="cluster-header-block" style="--cluster-glow: rgba(45,212,191,0.05);">
+      <div class="cluster-icon-big" style="background:rgba(45,212,191,0.10); color:#2dd4bf;">🤖</div>
+      <div class="cluster-meta">
+        <div class="cluster-name" style="color:#2dd4bf;">E类：AI Agent / 去中心化网络</div>
+        <div class="cluster-desc">新兴赛道，但多数服务器活跃度极低（1-3%）。Nodepay（311K）靠Token激励冲量、活跃率仅2.84%，是虚假繁荣的典型陷阱。You.com是企业级AI Agent平台的代表。该赛道社区核心价值在于开发者网络建设，而非用户活跃度。警告：规模大不等于社区质量高。</div>
+        <div class="cluster-tags">
+          <span class="cluster-tag">Web3激励</span>
+          <span class="cluster-tag">低活跃陷阱</span>
+          <span class="cluster-tag">开发者网络</span>
+          <span class="cluster-tag">企业AI</span>
+        </div>
+      </div>
+      <div class="cluster-priority priority-watch">⚠ 谨慎参考</div>
+    </div>
+    <div id="grid-E" class="server-grid"></div>
+  </div>
+
+  <div id="cluster-F" class="cluster-section">
+    <div class="cluster-header-block" style="--cluster-glow: rgba(245,166,35,0.05);">
+      <div class="cluster-icon-big" style="background:rgba(245,166,35,0.12); color:#f5a623;">📚</div>
+      <div class="cluster-meta">
+        <div class="cluster-name" style="color:#f5a623;">F类：教育 / 社区学习</div>
+        <div class="cluster-desc">稳健增长赛道。LABLAB.AI（+4%月增速，AI黑客马拉松社区）、Learn AI Together（94K规模，稳定增长）、Gray Swan Arena（AI安全红队，8%活跃）。该类社区的价值：提供structured学习路径，黑客马拉松创造参与感，是冷启动期积累高质量用户的有效路径。</div>
+        <div class="cluster-tags">
+          <span class="cluster-tag">黑客马拉松</span>
+          <span class="cluster-tag">结构化学习</span>
+          <span class="cluster-tag">高质量用户</span>
+          <span class="cluster-tag">稳健增长</span>
+        </div>
+      </div>
+      <div class="cluster-priority priority-watch">冷启动参考</div>
+    </div>
+    <div id="grid-F" class="server-grid"></div>
+  </div>
+
+  <!-- BENCHMARK TABLE -->
+  <div class="section-title">综合对标矩阵 — TOP 10 学习优先级</div>
+  <table class="bench-table" id="benchTable">
+    <thead>
+      <tr>
+        <th style="width:40px;">排名</th>
+        <th>服务器名称</th>
+        <th>赛道</th>
+        <th>规模</th>
+        <th>活跃度</th>
+        <th>月增速</th>
+        <th>活跃趋势</th>
+        <th>学习重点</th>
+      </tr>
+    </thead>
+    <tbody id="benchBody"></tbody>
+  </table>
+
+  <div class="footer">Discord AI 服务器竞品分析报告 · 89个服务器 · 数据来源：DiscordHunt · 2026年4月</div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent">
+    <div class="modal-close" id="modalClose">✕</div>
+    <div class="modal-header" id="modalHeader"></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const RAW = [{"服务器名称":"Character.AI","成员总数":547716,"在线人数":40542,"活跃度比例(%)":7.4,"近期增长比例(%)":0.21,"近期成员增长数(30D)":1128,"内容方向(多选)":"AI对话/聊天|AI音频/音乐|AI文本/写作","商业化程度":"免费","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"Character.AI is the leading platform for personalized AI entertainment, providing an immersive and entertaining experience for its 20 million monthly users. The product enables users to create and interact with AI Characters through text and voice conversations. Popular use cases include creating interactive fiction in real time, brainstorming ideas, asking for advice, and practicing new languages.","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/characterai"},{"服务器名称":"AI HUB by Weights","成员总数":539401,"在线人数":85896,"活跃度比例(%)":15.92,"近期增长比例(%)":0.0,"近期成员增长数(30D)":0,"内容方向(多选)":"AI图像生成|AI音频/音乐|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"初学者|创作者/设计师|学生/教育","服务器简介":"AI Hub 是面向创作者的AI模型资源聚合社区，涵盖图像、音频、社区交流。","价格模式":"Nitro","主分类":"Communitys","是否为官方服务器":"否","官方邀请链接":"无"},{"服务器名称":"Perplexity","成员总数":384162,"在线人数":23730,"活跃度比例(%)":6.18,"近期增长比例(%)":1.04,"近期成员增长数(30D)":3996,"内容方向(多选)":"AI图像生成|游戏/角色扮演|效率工具|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"创作者/设计师|企业/团队|游戏玩家","服务器简介":"Join the Perplexity AI community server and be a part of the search experience revolution. It is a platform where Perplexity AI users connect, share experiences, ask for help, and get exclusive access to new updates and features.","价格模式":"Nitro","主分类":"Science & Tech","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/perplexity-ai"},{"服务器名称":"Stable Diffusion","成员总数":328612,"在线人数":23578,"活跃度比例(%)":7.18,"近期增长比例(%)":0.49,"近期成员增长数(30D)":1606,"内容方向(多选)":"AI图像生成|代码/开发|AI音频/音乐|AI视频/3D|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"官方服务器","目标用户群体":"开发者|创作者/设计师","服务器简介":"Welcome to Stable Diffusion; the Official Stability.AI Community! 开源生图最大官方社区。","价格模式":"Nitro Classic","主分类":"Anime & Manga","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/stablediffusion"},{"服务器名称":"Nodepay","成员总数":310745,"在线人数":8839,"活跃度比例(%)":2.84,"近期增长比例(%)":1.08,"近期成员增长数(30D)":3360,"内容方向(多选)":"代码/开发","商业化程度":"免费","服务器类型(推测)":"兴趣社区","目标用户群体":"学生/教育","服务器简介":"NodePay delivers scalable, real-time data collection through a network of 500,000+ distributed nodes. AI数据网络，靠Token激励冲量，活跃度低。","价格模式":"Nitro","主分类":"Science & Tech","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/nodepay"},{"服务器名称":"Shapes.Inc","成员总数":181650,"在线人数":20045,"活跃度比例(%)":11.03,"近期增长比例(%)":0.0,"近期成员增长数(30D)":0,"内容方向(多选)":"AI对话/聊天|AI图像生成|游戏/角色扮演|效率工具|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"初学者|创作者/设计师","服务器简介":"Where bots become characters — and characters become friends. AI角色Bot社区化运营最佳实践，11%活跃率。","价格模式":"Nitro","主分类":"Content Creator","是否为官方服务器":"否","官方邀请链接":"无"},{"服务器名称":"AI Programming And Chat","成员总数":168037,"在线人数":11997,"活跃度比例(%)":7.14,"近期增长比例(%)":0.75,"近期成员增长数(30D)":1255,"内容方向(多选)":"AI对话/聊天|AI图像生成|代码/开发|AI音频/音乐|AI视频/3D|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"兴趣社区","目标用户群体":"开发者","服务器简介":"r/ChatGPT subreddit社区，涵盖ChatGPT、提示工程、图像/音频/视频AI。","价格模式":"Nitro Classic","主分类":"Science & Tech","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/r-chatgpt-1050422060352024652"},{"服务器名称":"UpRock","成员总数":151950,"在线人数":1542,"活跃度比例(%)":1.01,"近期增长比例(%)":0.19,"近期成员增长数(30D)":286,"内容方向(多选)":"代码/开发|效率工具","商业化程度":"免费/开源","服务器类型(推测)":"商业/创业","目标用户群体":"创作者/设计师|企业/团队","服务器简介":"UpRock is the first people-powered AI data network. 人工智能数据网络，活跃度极低，规模虚高。","价格模式":"Nitro","主分类":"Content Creator","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/uprock"},{"服务器名称":"Voice.ai","成员总数":146355,"在线人数":10662,"活跃度比例(%)":7.29,"近期增长比例(%)":1.02,"近期成员增长数(30D)":1496,"内容方向(多选)":"代码/开发|AI音频/音乐|游戏/角色扮演|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"通用用户","服务器简介":"AI实时变声工具，游戏+创作场景，早期功能测试社区。","价格模式":"Nitro","主分类":"General Chatting","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/connectai"},{"服务器名称":"DataHaven 🫎","成员总数":124271,"在线人数":1131,"活跃度比例(%)":0.91,"近期增长比例(%)":6.68,"近期成员增长数(30D)":8305,"内容方向(多选)":"AI图像生成","商业化程度":"捐赠/赞助","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"AI-first decentralized storage platform built on EigenLayer. 高增速但活跃度极低，Web3激励驱动。","价格模式":"Nitro","主分类":"Education","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/datahaven"},{"服务器名称":"Luma AI","成员总数":121225,"在线人数":7384,"活跃度比例(%)":6.09,"近期增长比例(%)":0.0,"近期成员增长数(30D)":0,"内容方向(多选)":"社区交流","商业化程度":"免费","服务器类型(推测)":"兴趣社区","目标用户群体":"企业/团队","服务器简介":"AI视频生成平台Luma AI的官方社区，用户讨论、经验分享、产品反馈。","价格模式":"Nitro","主分类":"Content Creator","是否为官方服务器":"否","官方邀请链接":"无"},{"服务器名称":"Civitai","成员总数":113674,"在线人数":12440,"活跃度比例(%)":10.94,"近期增长比例(%)":1.47,"近期成员增长数(30D)":1674,"内容方向(多选)":"AI图像生成|社区交流","商业化程度":"捐赠/赞助","服务器类型(推测)":"粉丝/社区","目标用户群体":"创作者/设计师","服务器简介":"AI模型分享社区，成员展示AI艺术、交流技术、相互反馈。捐赠+社区模式。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/civitai"},{"服务器名称":"PixVerse","成员总数":99152,"在线人数":2226,"活跃度比例(%)":2.25,"近期增长比例(%)":0.13,"近期成员增长数(30D)":128,"内容方向(多选)":"AI图像生成|AI音频/音乐|AI视频/3D|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"创作者/设计师","服务器简介":"AI视频生成平台社区，将创意转化为精美视频。","价格模式":"Nitro Basic","主分类":"Anime & Manga","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/pixverse"},{"服务器名称":"KREA","成员总数":98519,"在线人数":3192,"活跃度比例(%)":3.24,"近期增长比例(%)":0.83,"近期成员增长数(30D)":821,"内容方向(多选)":"AI图像生成|AI视频/3D|效率工具","商业化程度":"捐赠/赞助","服务器类型(推测)":"官方服务器","目标用户群体":"创作者/设计师","服务器简介":"KREA是内置AI的设计工具，官方社区用于工作流展示、功能反馈、每周AI挑战赛。","价格模式":"Nitro Classic","主分类":"Art","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/krea"},{"服务器名称":"Learn AI Together","成员总数":94132,"在线人数":5331,"活跃度比例(%)":5.66,"近期增长比例(%)":2.08,"近期成员增长数(30D)":1961,"内容方向(多选)":"AI对话/聊天|AI图像生成|代码/开发|AI文本/写作|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"学生/教育","服务器简介":"AI学习社区，涵盖对话、图像、开发、写作，稳健增长2%/月。","价格模式":"Nitro Basic","主分类":"Content Creator","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/learnaitogether"},{"服务器名称":"Talkie","成员总数":92099,"在线人数":3912,"活跃度比例(%)":4.25,"近期增长比例(%)":0.96,"近期成员增长数(30D)":885,"内容方向(多选)":"AI对话/聊天|AI图像生成|AI视频/3D|AI文本/写作|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"创作者/设计师|游戏玩家","服务器简介":"Talkie结合情感陪伴和游戏化互动，可与动漫、电影、游戏角色对话。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/talkie"},{"服务器名称":"Delysium","成员总数":88682,"在线人数":1402,"活跃度比例(%)":1.58,"近期增长比例(%)":0.2,"近期成员增长数(30D)":173,"内容方向(多选)":"AI对话/聊天|AI图像生成|效率工具|社区交流","商业化程度":"捐赠/赞助","服务器类型(推测)":"官方服务器","目标用户群体":"通用用户","服务器简介":"Blockchain for AI，AI for Humanity. Web3+AI融合项目。","价格模式":"Nitro","主分类":"Science & Tech","是否为官方服务器":"是","官方邀请链接":"无"},{"服务器名称":"ElevenLabs","成员总数":82895,"在线人数":6191,"活跃度比例(%)":7.47,"近期增长比例(%)":8.34,"近期成员增长数(30D)":6913,"内容方向(多选)":"代码/开发|AI音频/音乐|效率工具|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"初学者|学生/教育","服务器简介":"AI语音合成领域最活跃增速社区，开发者+创作者双轮飞轮，月增速8.34%。","价格模式":"Nitro","主分类":"AI / General","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/elevenlabs"},{"服务器名称":"PixAI - AI Art Generator for Anime and More","成员总数":80480,"在线人数":7724,"活跃度比例(%)":9.6,"近期增长比例(%)":5.18,"近期成员增长数(30D)":4166,"内容方向(多选)":"AI图像生成|代码/开发|社区交流","商业化程度":"捐赠/赞助","服务器类型(推测)":"粉丝/社区","目标用户群体":"初学者|创作者/设计师|学生/教育","服务器简介":"AI图像生成社区，兼具9.6%高活跃与5.18%月增速，创作者社区运营最佳实践。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/pixai"},{"服务器名称":"NATIX Network","成员总数":79846,"在线人数":1397,"活跃度比例(%)":1.75,"近期增长比例(%)":0.01,"近期成员增长数(30D)":9,"内容方向(多选)":"AI图像生成|代码/开发","商业化程度":"捐赠/赞助","服务器类型(推测)":"兴趣社区","目标用户群体":"创作者/设计师","服务器简介":"AI隐私保护摄像头技术，企业级AI解决方案。","价格模式":"Nitro","主分类":"Collaboration","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/natixnetwork"},{"服务器名称":"PolyBuzz","成员总数":72015,"在线人数":6406,"活跃度比例(%)":8.9,"近期增长比例(%)":0.52,"近期成员增长数(30D)":372,"内容方向(多选)":"AI对话/聊天|游戏/角色扮演","商业化程度":"免费/开源","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"20M+角色库，免费私密无限制AI角色聊天，沉浸式roleplay体验。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/polybuzz"},{"服务器名称":"Khui AI","成员总数":71313,"在线人数":7467,"活跃度比例(%)":10.47,"近期增长比例(%)":12.22,"近期成员增长数(30D)":8711,"内容方向(多选)":"综合AI","商业化程度":"API按量付费","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"泰国第一个深度聚焦泰语文化的AI角色平台，月增速12.22%全场最高，本地化AI角色成功案例。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/khuiai"},{"服务器名称":"LABLAB.AI","成员总数":62401,"在线人数":2564,"活跃度比例(%)":4.11,"近期增长比例(%)":4.0,"近期成员增长数(30D)":2493,"内容方向(多选)":"AI图像生成|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"创作者/设计师|学生/教育|游戏玩家","服务器简介":"AI黑客马拉松社区，开放给各级别技术人员，月增速4%稳健增长。","价格模式":"Nitro","主分类":"Events","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/lablabai"},{"服务器名称":"The AI Protocol","成员总数":58808,"在线人数":622,"活跃度比例(%)":1.06,"近期增长比例(%)":0.42,"近期成员增长数(30D)":247,"内容方向(多选)":"代码/开发|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"开发者|创作者/设计师|学生/教育","服务器简介":"区块链+AI技术探索社区，活跃度极低。","价格模式":"Nitro","主分类":"Collaboration","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/theaiprotocol"},{"服务器名称":"Anlatan","成员总数":54814,"在线人数":12313,"活跃度比例(%)":22.46,"近期增长比例(%)":0.67,"近期成员增长数(30D)":368,"内容方向(多选)":"AI对话/聊天|AI图像生成|代码/开发|AI文本/写作|效率工具|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"创作者/设计师|企业/团队","服务器简介":"NovelAI社区，22.46%超高活跃率，AI创作者与开发团队直接互动，社区粘性极强。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/novelai"},{"服务器名称":"Learn Prompting/HackAPrompt","成员总数":52693,"在线人数":2523,"活跃度比例(%)":4.79,"近期增长比例(%)":0.0,"近期成员增长数(30D)":0,"内容方向(多选)":"AI对话/聊天|AI图像生成|效率工具|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"初学者|开发者|学生/教育","服务器简介":"最大提示工程社区，教用户如何有效使用ChatGPT等AI工具。","价格模式":"Nitro","主分类":"Content Creator","是否为官方服务器":"否","官方邀请链接":"无"},{"服务器名称":"AI World Builders with r/SoraAI","成员总数":47626,"在线人数":3454,"活跃度比例(%)":7.25,"近期增长比例(%)":1.74,"近期成员增长数(30D)":828,"内容方向(多选)":"AI图像生成|代码/开发|AI视频/3D|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"创作者/设计师|学生/教育|游戏玩家","服务器简介":"AI创作者社区，聚焦Sora AI视频，创作者共建生态。","价格模式":"Nitro Basic","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/soraai"},{"服务器名称":"Maze Guru - AI Art, Anime & Social","成员总数":46493,"在线人数":2166,"活跃度比例(%)":4.66,"近期增长比例(%)":0.75,"近期成员增长数(30D)":350,"内容方向(多选)":"AI图像生成|AI文本/写作|效率工具|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"创作者/设计师","服务器简介":"免费AI图像生成工具，2000+风格，文字生成图像，动漫风格社区。","价格模式":"Nitro Basic","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/maze-guru"},{"服务器名称":"Crestal","成员总数":44677,"在线人数":383,"活跃度比例(%)":0.86,"近期增长比例(%)":0.74,"近期成员增长数(30D)":329,"内容方向(多选)":"AI图像生成|代码/开发|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"开发者","服务器简介":"AI Agent Nation，区块链驱动的AI基础设施社区。","价格模式":"Free","主分类":"Science & Tech","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/crestal"},{"服务器名称":"Microsoft Copilot","成员总数":43734,"在线人数":2215,"活跃度比例(%)":5.06,"近期增长比例(%)":1.78,"近期成员增长数(30D)":779,"内容方向(多选)":"效率工具","商业化程度":"免费","服务器类型(推测)":"教育/学习","目标用户群体":"创作者/设计师|学生/教育|企业/团队","服务器简介":"微软Copilot官方社区，大厂AI助手社区建设参考。","价格模式":"Nitro","主分类":"Events","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/go-copilot"},{"服务器名称":"Aimmy AI","成员总数":41979,"在线人数":5921,"活跃度比例(%)":14.1,"近期增长比例(%)":1.57,"近期成员增长数(30D)":658,"内容方向(多选)":"社区交流","商业化程度":"捐赠/赞助","服务器类型(推测)":"粉丝/社区","目标用户群体":"企业/团队|游戏玩家","服务器简介":"AI辅助瞄准软件社区，专注残障游戏玩家，14%高活跃率，垂直场景案例。","价格模式":"Nitro","主分类":"General Chatting","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/aimmy"},{"服务器名称":"Producer.ai (formerly Riffusion)","成员总数":41947,"在线人数":2691,"活跃度比例(%)":6.42,"近期增长比例(%)":0.33,"近期成员增长数(30D)":140,"内容方向(多选)":"AI图像生成|AI音频/音乐|效率工具|社区交流","商业化程度":"捐赠/赞助","服务器类型(推测)":"粉丝/社区","目标用户群体":"初学者|开发者|创作者/设计师|学生/教育","服务器简介":"AI音乐生成社区，音乐与AI融合，创作者驱动，多层次用户群。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/riffusion"},{"服务器名称":"AI LAB","成员总数":40784,"在线人数":1298,"活跃度比例(%)":3.18,"近期增长比例(%)":0.0,"近期成员增长数(30D)":0,"内容方向(多选)":"综合AI","商业化程度":"免费","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"土耳其语AI学习社区，AI知识探索与应用实践。","价格模式":"Nitro Classic","主分类":"Education","是否为官方服务器":"否","官方邀请链接":"无"},{"服务器名称":"Mistral AI","成员总数":36463,"在线人数":3294,"活跃度比例(%)":9.03,"近期增长比例(%)":1.57,"近期成员增长数(30D)":572,"内容方向(多选)":"AI对话/聊天|代码/开发|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"开发者","服务器简介":"Mistral AI官方社区，讨论大模型服务和产品，开发者生态建设参考。","价格模式":"Nitro","主分类":"Science & Tech","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/mistralai"},{"服务器名称":"Aitrepreneur","成员总数":35803,"在线人数":4865,"活跃度比例(%)":13.59,"近期增长比例(%)":0.62,"近期成员增长数(30D)":223,"内容方向(多选)":"AI图像生成|代码/开发|游戏/角色扮演|社区交流","商业化程度":"捐赠/赞助","服务器类型(推测)":"粉丝/社区","目标用户群体":"初学者|创作者/设计师|学生/教育","服务器简介":"AI艺术创作学习社区，13.6%高活跃，适合创作者成长路径社区参考。","价格模式":"Nitro Basic","主分类":"Art","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/aitrepreneur"},{"服务器名称":"Unsloth AI","成员总数":35264,"在线人数":3990,"活跃度比例(%)":11.31,"近期增长比例(%)":5.65,"近期成员增长数(30D)":1992,"内容方向(多选)":"AI对话/聊天","商业化程度":"免费/开源","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"LLM微调工具社区，11.3%活跃率+5.65%月增速，开源技术社区快速增长典范。","价格模式":"Nitro","主分类":"Education","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/unsloth"},{"服务器名称":"Turing AI | Free GPT-4, Llama3, Opus...","成员总数":35120,"在线人数":2374,"活跃度比例(%)":6.76,"近期增长比例(%)":0.67,"近期成员增长数(30D)":234,"内容方向(多选)":"AI对话/聊天|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"通用用户","服务器简介":"Discord内免费使用GPT-4、Llama3等大模型，完全免费策略。","价格模式":"Nitro Basic","主分类":"Programming","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/turing-ai"},{"服务器名称":"Open WebUI","成员总数":33364,"在线人数":4176,"活跃度比例(%)":12.52,"近期增长比例(%)":1.27,"近期成员增长数(30D)":424,"内容方向(多选)":"AI对话/聊天|代码/开发|效率工具","商业化程度":"捐赠/赞助","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"开源AI UI界面社区，12.52%超高活跃率，产品迭代透明+社区共建是核心竞争力。","价格模式":"Nitro","主分类":"Science & Tech","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/open-webui"},{"服务器名称":"Chirper AI","成员总数":31673,"在线人数":241,"活跃度比例(%)":0.76,"近期增长比例(%)":0.5,"近期成员增长数(30D)":157,"内容方向(多选)":"游戏/角色扮演|社区交流","商业化程度":"免费","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"全球首个纯AI社交网络，创建AI Chirper并观看其互动创作。","价格模式":"Nitro Basic","主分类":"Content Creator","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/chirper"},{"服务器名称":"Mage","成员总数":31465,"在线人数":1905,"活跃度比例(%)":6.05,"近期增长比例(%)":1.32,"近期成员增长数(30D)":416,"内容方向(多选)":"AI图像生成|AI视频/3D|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"通用用户","服务器简介":"AI图像和视频创作分享社区，每周产品更新公告，社区反馈驱动迭代。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/magespace"},{"服务器名称":"BSS AI","成员总数":28880,"在线人数":6620,"活跃度比例(%)":22.92,"近期增长比例(%)":3.44,"近期成员增长数(30D)":993,"内容方向(多选)":"效率工具|社区交流","商业化程度":"捐赠/赞助","服务器类型(推测)":"粉丝/社区","目标用户群体":"初学者|游戏玩家","服务器简介":"Bee Swarm Simulator AI宏游戏社区，22.92%极高活跃，垂直游戏场景AI工具。","价格模式":"Nitro","主分类":"Game Developer","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/bssai"},{"服务器名称":"The DataExpert.io Community","成员总数":28691,"在线人数":1469,"活跃度比例(%)":5.12,"近期增长比例(%)":0.61,"近期成员增长数(30D)":175,"内容方向(多选)":"AI图像生成|效率工具|社区交流","商业化程度":"捐赠/赞助","服务器类型(推测)":"粉丝/社区","目标用户群体":"初学者|开发者|创作者/设计师|学生/教育","服务器简介":"数据工程师和AI工程师学习成长社区，21K+成员，专家指导+同伴支持。","价格模式":"Nitro Basic","主分类":"Programming","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/the-dataexpert"},{"服务器名称":"CA$H.80T","成员总数":28670,"在线人数":589,"活跃度比例(%)":2.05,"近期增长比例(%)":0.97,"近期成员增长数(30D)":278,"内容方向(多选)":"AI图像生成|效率工具|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"初学者|创作者/设计师|学生/教育","服务器简介":"AI赚钱变现社区，教创作者用AI创收，商业化导向。","价格模式":"Nitro Classic","主分类":"Content Creator","是否为官方服务器":"是","官方邀请链接":"无"},{"服务器名称":"Zentry","成员总数":27449,"在线人数":1072,"活跃度比例(%)":3.91,"近期增长比例(%)":0.07,"近期成员增长数(30D)":18,"内容方向(多选)":"AI图像生成|代码/开发|游戏/角色扮演","商业化程度":"免费","服务器类型(推测)":"兴趣社区","目标用户群体":"创作者/设计师","服务器简介":"Zentry — where life fuels intelligence，AI+游戏融合。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/zentry"},{"服务器名称":"You.com","成员总数":27157,"在线人数":739,"活跃度比例(%)":2.72,"近期增长比例(%)":0.36,"近期成员增长数(30D)":99,"内容方向(多选)":"AI图像生成|游戏/角色扮演|效率工具|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"创作者/设计师|企业/团队","服务器简介":"企业AI生产力平台，可定制AI Agent，实时网络搜索+私有RAG+模型无关架构。","价格模式":"Nitro","主分类":"Education","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/youdotcom"},{"服务器名称":"Recraft","成员总数":24784,"在线人数":975,"活跃度比例(%)":3.93,"近期增长比例(%)":0.25,"近期成员增长数(30D)":63,"内容方向(多选)":"AI图像生成|效率工具|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"创作者/设计师|企业/团队","服务器简介":"设计师AI图像生成工具社区，让网页更美观，面向专业设计师。","价格模式":"Nitro","主分类":"Science & Tech","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/recraft"},{"服务器名称":"AI Sponge: Rehydrated","成员总数":24632,"在线人数":5695,"活跃度比例(%)":23.12,"近期增长比例(%)":0.5,"近期成员增长数(30D)":122,"内容方向(多选)":"AI对话/聊天|AI图像生成|代码/开发|社区交流","商业化程度":"捐赠/赞助","服务器类型(推测)":"粉丝/社区","目标用户群体":"开发者|创作者/设计师","服务器简介":"AI驱动的海绵宝宝主题社区直播，用户实时建议剧情走向，23.12%极高活跃率。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/aisponge"},{"服务器名称":"Cohere","成员总数":21998,"在线人数":1205,"活跃度比例(%)":5.48,"近期增长比例(%)":0.47,"近期成员增长数(30D)":103,"内容方向(多选)":"AI对话/聊天|代码/开发|AI文本/写作","商业化程度":"免费","服务器类型(推测)":"商业/创业","目标用户群体":"开发者|企业/团队","服务器简介":"企业级大模型API社区，面向开发者和企业，NLP解决方案提供商。","价格模式":"Nitro","主分类":"Education","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/co-mmunity"},{"服务器名称":"Levva_fi","成员总数":21444,"在线人数":257,"活跃度比例(%)":1.2,"近期增长比例(%)":0.0,"近期成员增长数(30D)":0,"内容方向(多选)":"AI图像生成|代码/开发|效率工具|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"创作者/设计师|企业/团队","服务器简介":"AI驱动的DeFi社区，活跃度极低。","价格模式":"Nitro","主分类":"Education","是否为官方服务器":"否","官方邀请链接":"无"},{"服务器名称":"東方Project AI","成员总数":20258,"在线人数":4379,"活跃度比例(%)":21.62,"近期增长比例(%)":0.83,"近期成员增长数(30D)":169,"内容方向(多选)":"AI对话/聊天|AI图像生成|代码/开发|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"开发者|创作者/设计师","服务器简介":"东方Project二次创作AI社区，21.6%极高活跃率，有自研图像模型和角色聊天机器人。","价格模式":"Nitro","主分类":"Programming","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/dong-fang"},{"服务器名称":"KOMUNITAS AICO","成员总数":19193,"在线人数":524,"活跃度比例(%)":2.73,"近期增长比例(%)":0.08,"近期成员增长数(30D)":15,"内容方向(多选)":"综合AI","商业化程度":"免费","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"印尼最大AI社区，教用户如何用AI赚钱。","价格模式":"Free","主分类":"General Chatting","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/komunitas-aico"},{"服务器名称":"udio","成员总数":17418,"在线人数":2342,"活跃度比例(%)":13.45,"近期增长比例(%)":0.65,"近期成员增长数(30D)":113,"内容方向(多选)":"AI图像生成|AI音频/音乐|AI文本/写作|效率工具","商业化程度":"捐赠/赞助","服务器类型(推测)":"兴趣社区","目标用户群体":"创作者/设计师|企业/团队","服务器简介":"AI音乐创作工具，13.45%高活跃，赋能下一代音乐创作者。","价格模式":"Nitro","主分类":"Music","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/udio"},{"服务器名称":"KPOP UNIVERSE","成员总数":17180,"在线人数":742,"活跃度比例(%)":4.32,"近期增长比例(%)":0.0,"近期成员增长数(30D)":0,"内容方向(多选)":"AI图像生成|AI音频/音乐","商业化程度":"免费","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"AI Kpop声音社区，分享Kpop AI相关内容。","价格模式":"Nitro","主分类":"Content Creator","是否为官方服务器":"否","官方邀请链接":"无"},{"服务器名称":"Player2","成员总数":16724,"在线人数":2081,"活跃度比例(%)":12.44,"近期增长比例(%)":1.14,"近期成员增长数(30D)":190,"内容方向(多选)":"AI图像生成|AI视频/3D|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"开发者|创作者/设计师|企业/团队","服务器简介":"Minecraft中体验AI朋友！AI+游戏融合，12.44%活跃率。","价格模式":"Nitro Basic","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/elefant-ai"},{"服务器名称":"Vidu AI","成员总数":16281,"在线人数":1132,"活跃度比例(%)":6.95,"近期增长比例(%)":3.29,"近期成员增长数(30D)":535,"内容方向(多选)":"AI图像生成|AI视频/3D|效率工具|社区交流","商业化程度":"捐赠/赞助","服务器类型(推测)":"官方服务器","目标用户群体":"初学者|创作者/设计师|学生/教育","服务器简介":"Vidu AI视频生成官方社区，3.29%月增速，中国AI视频出海代表。","价格模式":"Nitro Classic","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/vidu-ai"},{"服务器名称":"Dria","成员总数":15737,"在线人数":366,"活跃度比例(%)":2.33,"近期增长比例(%)":0.64,"近期成员增长数(30D)":101,"内容方向(多选)":"AI图像生成|效率工具","商业化程度":"免费","服务器类型(推测)":"教育/学习","目标用户群体":"学生/教育","服务器简介":"去中心化AI Agent协作网络，通过合成数据改进AI模型。","价格模式":"Free","主分类":"Programming","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/dria"},{"服务器名称":"PYKSEL","成员总数":15682,"在线人数":687,"活跃度比例(%)":4.38,"近期增长比例(%)":0.35,"近期成员增长数(30D)":55,"内容方向(多选)":"AI图像生成|AI视频/3D|效率工具","商业化程度":"免费/开源","服务器类型(推测)":"兴趣社区","目标用户群体":"创作者/设计师","服务器简介":"AI换脸技术工具，高质量图像/视频，60FPS，面向创作者和KOL。","价格模式":"Nitro Basic","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/pykaso"},{"服务器名称":"freebeat.ai","成员总数":15464,"在线人数":666,"活跃度比例(%)":4.31,"近期增长比例(%)":10.39,"近期成员增长数(30D)":1606,"内容方向(多选)":"AI图像生成|AI音频/音乐|AI视频/3D|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"学生/教育","服务器简介":"AI音乐视频生成社区，月增速10.39%，小体量高增速的冷启动打法典范。","价格模式":"Nitro Classic","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/freebeat-ai"},{"服务器名称":"📚 AI and Plag. checker","成员总数":14943,"在线人数":856,"活跃度比例(%)":5.73,"近期增长比例(%)":4.9,"近期成员增长数(30D)":732,"内容方向(多选)":"综合AI","商业化程度":"免费","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"AI论文查重服务社区，帮助学生检测AI写作内容，月增速4.9%。","价格模式":"Free","主分类":"Education","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/turnitin-ai"},{"服务器名称":"Joyland AI","成员总数":14091,"在线人数":1015,"活跃度比例(%)":7.2,"近期增长比例(%)":0.0,"近期成员增长数(30D)":0,"内容方向(多选)":"AI对话/聊天|代码/开发|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"企业/团队","服务器简介":"Joyland聊天机器人社区，开发团队直接互动，获取独家更新。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"否","官方邀请链接":"无"},{"服务器名称":"KomikoAI - AI Art, Characters & Fandoms","成员总数":13543,"在线人数":1025,"活跃度比例(%)":7.57,"近期增长比例(%)":6.22,"近期成员增长数(30D)":842,"内容方向(多选)":"AI图像生成|AI视频/3D|游戏/角色扮演|效率工具","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"创作者/设计师","服务器简介":"AI漫画/manhwa/manga创作平台，分钟级生成专业漫画，月增速6.22%。","价格模式":"Free","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/komikoai"},{"服务器名称":"Gray Swan Arena","成员总数":13481,"在线人数":1075,"活跃度比例(%)":7.97,"近期增长比例(%)":0.0,"近期成员增长数(30D)":0,"内容方向(多选)":"游戏/角色扮演|社区交流","商业化程度":"免费","服务器类型(推测)":"粉丝/社区","目标用户群体":"初学者|学生/教育|企业/团队","服务器简介":"AI安全红队挑战社区，测试前沿模型越狱和多模态攻击，提供现金奖励。","价格模式":"Nitro","主分类":"Education","是否为官方服务器":"否","官方邀请链接":"无"},{"服务器名称":"Software Engineering Courses (SECourses)","成员总数":11908,"在线人数":1186,"活跃度比例(%)":9.96,"近期增长比例(%)":0.47,"近期成员增长数(30D)":56,"内容方向(多选)":"AI图像生成|代码/开发|AI音频/音乐|AI视频/3D|AI文本/写作|游戏/角色扮演","商业化程度":"免费/开源","服务器类型(推测)":"教育/学习","目标用户群体":"初学者|开发者|创作者/设计师|学生/教育|企业/团队","服务器简介":"YouTube配套AI课程社区，10%活跃率，涵盖图像/音频/视频/代码全栈AI。","价格模式":"Nitro Classic","主分类":"Art","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/secourses"},{"服务器名称":"Art Code","成员总数":10841,"在线人数":1135,"活跃度比例(%)":10.47,"近期增长比例(%)":0.35,"近期成员增长数(30D)":38,"内容方向(多选)":"AI对话/聊天|AI图像生成|代码/开发|AI音频/音乐|AI视频/3D|AI文本/写作|游戏/角色扮演|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"开发者|创作者/设计师|游戏玩家","服务器简介":"艺术+代码全模态AI社区，10.47%活跃率，覆盖所有AI创作方向。","价格模式":"Free","主分类":"Game Developer","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/art-code"},{"服务器名称":"w.ai","成员总数":10316,"在线人数":750,"活跃度比例(%)":7.27,"近期增长比例(%)":0.77,"近期成员增长数(30D)":79,"内容方向(多选)":"代码/开发|社区交流","商业化程度":"免费","服务器类型(推测)":"教育/学习","目标用户群体":"学生/教育","服务器简介":"去中心化AI生态系统，使用消费级设备，目标是创建AGI。","价格模式":"Nitro","主分类":"Art","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/w-ai"},{"服务器名称":"LibreChat","成员总数":8907,"在线人数":889,"活跃度比例(%)":9.98,"近期增长比例(%)":0.3,"近期成员增长数(30D)":27,"内容方向(多选)":"AI对话/聊天|社区交流","商业化程度":"免费/开源","服务器类型(推测)":"粉丝/社区","目标用户群体":"通用用户","服务器简介":"免费开源AI聊天平台社区，支持众多AI提供商和集成，10%活跃率。","价格模式":"Nitro Classic","主分类":"Education","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/librechat"},{"服务器名称":"KURO AI ⭕","成员总数":8472,"在线人数":929,"活跃度比例(%)":10.97,"近期增长比例(%)":1.89,"近期成员增长数(30D)":160,"内容方向(多选)":"AI对话/聊天|AI图像生成|AI文本/写作","商业化程度":"免费","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"AI老婆/角色聊天+文生图社区，30万咒语即时生成4M+变体，面向二次元用户。","价格模式":"Nitro Classic","主分类":"Anime & Manga","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/kuro-ai"},{"服务器名称":"Zeta - AI chat where imagination becomes reality","成员总数":7480,"在线人数":212,"活跃度比例(%)":2.83,"近期增长比例(%)":4.47,"近期成员增长数(30D)":334,"内容方向(多选)":"游戏/角色扮演","商业化程度":"免费","服务器类型(推测)":"兴趣社区","目标用户群体":"通用用户","服务器简介":"已创建250万个AI角色，月增速4.47%。","价格模式":"Nitro Basic","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/zeta"},{"服务器名称":"Flipped.Chat","成员总数":7105,"在线人数":317,"活跃度比例(%)":4.46,"近期增长比例(%)":0.0,"近期成员增长数(30D)":0,"内容方向(多选)":"AI对话/聊天|AI图像生成|AI音频/音乐|AI视频/3D|AI文本/写作|社区交流","商业化程度":"订阅/付费","服务器类型(推测)":"官方服务器","目标用户群体":"初学者|创作者/设计师|学生/教育|企业/团队","服务器简介":"无限制AI角色聊天平台，文字/语音/图片/视频全渠道，订阅付费模式。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"无"},{"服务器名称":"⚡・Bolt Community・AI","成员总数":5904,"在线人数":734,"活跃度比例(%)":12.43,"近期增长比例(%)":1.91,"近期成员增长数(30D)":113,"内容方向(多选)":"AI对话/聊天|AI图像生成|社区交流","商业化程度":"捐赠/赞助","服务器类型(推测)":"粉丝/社区","目标用户群体":"初学者|创作者/设计师|游戏玩家","服务器简介":"Bolt AI社区，12.43%高活跃，捐赠模式。","价格模式":"Nitro","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/bolt"},{"服务器名称":"Storychat.app","成员总数":1706,"在线人数":121,"活跃度比例(%)":7.09,"近期增长比例(%)":3.17,"近期成员增长数(30D)":54,"内容方向(多选)":"AI对话/聊天|AI图像生成|AI音频/音乐|社区交流","商业化程度":"订阅/付费","服务器类型(推测)":"官方服务器","目标用户群体":"创作者/设计师|企业/团队","服务器简介":"AI驱动的下一代故事讲述平台，订阅付费，月增速3.17%。","价格模式":"Free","主分类":"Entertainment","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/storychat"},{"服务器名称":"AI/ML API","成员总数":3743,"在线人数":235,"活跃度比例(%)":6.28,"近期增长比例(%)":3.71,"近期成员增长数(30D)":139,"内容方向(多选)":"AI对话/聊天|AI图像生成|代码/开发","商业化程度":"免费","服务器类型(推测)":"兴趣社区","目标用户群体":"开发者","服务器简介":"100+AI模型API聚合服务，包括Mixtral、Llama、SD等，开发者集成工具。","价格模式":"Free","主分类":"General Chatting","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/ai-ml-api"},{"服务器名称":"MarsX Community","成员总数":5057,"在线人数":110,"活跃度比例(%)":2.18,"近期增长比例(%)":0.61,"近期成员增长数(30D)":31,"内容方向(多选)":"AI对话/聊天|代码/开发|社区交流","商业化程度":"API按量付费","服务器类型(推测)":"粉丝/社区","目标用户群体":"开发者","服务器简介":"低代码AI应用开发平台，基于可复用微应用概念，每个微应用有自己的AI模型。","价格模式":"Nitro Basic","主分类":"Programming","是否为官方服务器":"是","官方邀请链接":"https://discord.gg/marsx"}];
+
+// Cluster assignment
+const CLUSTER_MAP = {
+  'Character.AI':'A','Shapes.Inc':'A','Talkie':'A','PolyBuzz':'A','Khui AI':'A',
+  'Joyland AI':'A','Anlatan':'A','KURO AI ⭕':'A','Zeta - AI chat where imagination becomes reality':'A',
+  'Flipped.Chat':'A','Storychat.app':'A','Chirper AI':'A','⚡・Bolt Community・AI':'A',
+  'AI Sponge: Rehydrated':'A',
+
+  'AI HUB by Weights':'B','Stable Diffusion':'B','Civitai':'B','PixVerse':'B','KREA':'B',
+  'Luma AI':'B','PixAI - AI Art Generator for Anime and More':'B','AI World Builders with r/SoraAI':'B',
+  'Maze Guru - AI Art, Anime & Social':'B','Aitrepreneur':'B','Mage':'B','Recraft':'B',
+  'KomikoAI - AI Art, Characters & Fandoms':'B','東方Project AI':'B','Vidu AI':'B',
+  'PYKSEL':'B','Player2':'B','Art Code':'B','Software Engineering Courses (SECourses)':'B',
+  'KPOP UNIVERSE':'B',
+
+  'Perplexity':'C','Mistral AI':'C','Cohere':'C','Unsloth AI':'C','Open WebUI':'C',
+  'Microsoft Copilot':'C','LibreChat':'C','Turing AI | Free GPT-4, Llama3, Opus...':'C',
+  'AI Programming And Chat':'C','MarsX Community':'C','AI/ML API':'C','w.ai':'C',
+
+  'ElevenLabs':'D','Voice.ai':'D','udio':'D','freebeat.ai':'D',
+  'Producer.ai (formerly Riffusion)':'D','Dạ Hành - Nghịch Thuỷ Hàn':'D',
+
+  'Nodepay':'E','UpRock':'E','Crestal':'E','The AI Protocol':'E','Delysium':'E',
+  'DataHaven 🫎':'E','You.com':'E','Dria':'E','NATIX Network':'E',
+  'Zentry':'E','Levva_fi':'E',
+
+  'Learn AI Together':'F','Learn Prompting/HackAPrompt':'F','LABLAB.AI':'F',
+  'Gray Swan Arena':'F','The DataExpert.io Community':'F','CA$H.80T':'F',
+  'AI LAB':'F','KOMUNITAS AICO':'F','BSS AI':'F','Aimmy AI':'F',
+  '📚 AI and Plag. checker':'F','MattVidPro AI Reborn':'F','GG Services':'F',
+  'Infinite Brain Domain - AI':'F','New Life in the Smart Era: AI & Cybersecurity Player Village':'F',
+  'AI Clubhouse':'F','AI OFM Academy | AI influencers':'F','FORTUNE  ✧ AI OFM':'F',
+};
+
+// Benchmark and hot-growth flags
+const BENCHMARKS = new Set(['Character.AI','Shapes.Inc','Khui AI','ElevenLabs','Talkie','PolyBuzz','Open WebUI','Unsloth AI','PixAI - AI Art Generator for Anime and More','Perplexity','Mistral AI','Anlatan','BSS AI']);
+const HOT_GROWTH = new Set(['Khui AI','ElevenLabs','freebeat.ai','PixAI - AI Art Generator for Anime and More','DataHaven 🫎','KomikoAI - AI Art, Characters & Fandoms','LABLAB.AI','Unsloth AI','Zeta - AI chat where imagination becomes reality']);
+const AVOID = new Set(['Nodepay','UpRock','Levva_fi','The AI Protocol','Delysium','NATIX Network']);
+
+const CLUSTER_COLORS = {A:'#4f7cff',B:'#3ecf8e',C:'#7c5cfc',D:'#f472b6',E:'#2dd4bf',F:'#f5a623'};
+const CLUSTER_LABELS = {A:'AI对话/角色',B:'AI图像生成',C:'大模型/基础设施',D:'AI音频/创作',E:'AI Agent/Web3',F:'教育/社区'};
+
+// Add cluster to each record
+RAW.forEach(d => {
+  d.cluster = CLUSTER_MAP[d['服务器名称']] || 'F';
+  d.isBenchmark = BENCHMARKS.has(d['服务器名称']);
+  d.isHot = HOT_GROWTH.has(d['服务器名称']);
+  d.isAvoid = AVOID.has(d['服务器名称']);
+});
+
+function fmtNum(n) {
+  if (n >= 1000000) return (n/1000000).toFixed(1)+'M';
+  if (n >= 1000) return (n/1000).toFixed(0)+'K';
+  return n;
+}
+
+function activeColor(v) {
+  if (v >= 15) return 'green';
+  if (v >= 8) return 'amber';
+  return '';
+}
+function growthColor(v) {
+  if (v >= 5) return 'green';
+  if (v >= 2) return 'amber';
+  if (v <= 0) return 'red';
+  return '';
+}
+
+const INSIGHTS = {
+  'Character.AI': '社区规模天花板参考。研究其成员激励机制、角色发现页、付费转化路径。Discord作为20M月活用户的反馈渠道，功能公告最快触达用户。',
+  'Shapes.Inc': 'Bot转角色的最佳实践，11%活跃率是同赛道顶尖水平。研究其角色创作社区运营：创作者激励、角色发现、技术文档。',
+  'Khui AI': '本地化AI角色平台月增速全场第一。核心公式：本地语言+IP文化+角色创作大赛+社区专属福利。东南亚市场的AI角色打法直接可复用。',
+  'ElevenLabs': '月增速8.3%背后是开发者+创作者双轮飞轮。Discord充当：早期功能测试→Bug反馈→功能宣发三重角色。学习其社区分层运营策略。',
+  'Talkie': '情感伴侣+游戏化的标准化产品形态，覆盖动漫/电影/游戏角色。研究其用户留存机制和游戏化元素设计。',
+  'PolyBuzz': '8.9%活跃率+20M+角色库，免费+无限制策略驱动高留存。研究其角色数量飞轮和私密对话体验差异化。',
+  'Open WebUI': '开源AI UI最高活跃社区（12.5%），核心：透明路线图+社区共建+快速迭代公告。Discord是产品迭代的最快反馈通道。',
+  'Unsloth AI': '11.3%活跃+5.7%增速，技术社区快速增长典范。核心：解决用户真实痛点（LLM微调效率），社区成员互帮互助文化。',
+  'Perplexity': 'AI搜索引擎最大社区（384K），用户社区建设最佳范本。研究其用户反馈收集机制和功能早期访问特权。',
+  'Anlatan': '22.46%活跃率是全场最高之一！NovelAI创作社区，开发团队直接在Discord互动是核心粘性来源。',
+  'PixAI - AI Art Generator for Anime and More': '9.6%活跃+5.2%增速双优，创作者社区最佳运营案例。研究其每日/周挑战活动、作品展示机制、社区积分体系。',
+  'Mistral AI': '大模型厂商官方社区建设参考，开发者向运营策略，技术分享+API使用讨论是核心内容。',
+  'freebeat.ai': '小体量（15K）高增速（10.4%）冷启动打法典范。研究其AI音乐视频创作分享机制和社区冷启动策略。',
+  'Nodepay': '⚠ 规避陷阱：311K成员仅2.84%活跃。Token激励导致的虚假繁荣，社区质量极差，不适合作运营参考。',
+  'UpRock': '⚠ 规避陷阱：152K成员仅1%活跃。人工智能数据网络靠激励冲量，Discord社区完全失活。',
+  'BSS AI': '22.92%极高活跃！垂直游戏场景AI工具的最高活跃案例。研究其小众垂直社区的极致参与度驱动机制。',
+};
+
+function getInsight(name) {
+  return INSIGHTS[name] || '该服务器是' + CLUSTER_LABELS[CLUSTER_MAP[name] || 'F'] + '赛道的代表性社区，可作为同类产品社区运营的参考案例。';
+}
+
+function makeCard(d) {
+  const el = document.createElement('div');
+  el.className = 'server-card' + (d.isBenchmark ? ' benchmark' : '') + (d.isHot && !d.isBenchmark ? ' hot-growth' : '') + (d.isAvoid ? ' avoid-card' : '');
+  const link = d['官方邀请链接'] && d['官方邀请链接'] !== '无' ? `<a class="card-link" href="${d['官方邀请链接']}" target="_blank">加入 Discord →</a>` : '';
+  const tags = d['内容方向(多选)'].split('|').slice(0,3).map(t=>`<span class="tag">${t}</span>`).join('');
+  const av = d['活跃度比例(%)'];
+  const gr = d['近期增长比例(%)'];
+  el.innerHTML = `
+    <div class="card-name">${d['服务器名称']}</div>
+    <div class="card-desc">${d['服务器简介']}</div>
+    <div class="card-metrics">
+      <div class="metric"><div class="metric-val">${fmtNum(d['成员总数'])}</div><div class="metric-key">成员总数</div></div>
+      <div class="metric"><div class="metric-val ${activeColor(av)}">${av}%</div><div class="metric-key">在线活跃</div></div>
+      <div class="metric"><div class="metric-val ${growthColor(gr)}">${gr>0?'+':''}${gr}%</div><div class="metric-key">月增速</div></div>
+    </div>
+    <div class="card-tags">${tags}</div>
+    <div class="card-footer">
+      <span class="card-type">${d['商业化程度']} · ${d['服务器类型(推测)']}</span>
+      ${link}
+    </div>`;
+  el.addEventListener('click', () => openModal(d));
+  return el;
+}
+
+function openModal(d) {
+  const av = d['活跃度比例(%)'];
+  const gr = d['近期增长比例(%)'];
+  const cluster = d.cluster;
+  const clusterColor = CLUSTER_COLORS[cluster] || '#4f7cff';
+  const tags = d['内容方向(多选)'].split('|').map(t=>`<span class="mbadge" style="background:rgba(79,124,255,0.1);color:#4f7cff;border:1px solid rgba(79,124,255,0.2);">${t}</span>`).join('');
+  const benchBadge = d.isBenchmark ? `<span class="mbadge" style="background:rgba(79,124,255,0.15);color:#4f7cff;border:1px solid rgba(79,124,255,0.3);">★ 重点对标</span>` : '';
+  const hotBadge = d.isHot ? `<span class="mbadge" style="background:rgba(245,166,35,0.12);color:#f5a623;border:1px solid rgba(245,166,35,0.25);">🔥 高增速</span>` : '';
+  const avoidBadge = d.isAvoid ? `<span class="mbadge" style="background:rgba(255,92,92,0.1);color:#ff5c5c;border:1px solid rgba(255,92,92,0.2);">⚠ 规避参考</span>` : '';
+  const clusterBadge = `<span class="mbadge" style="background:${clusterColor}22;color:${clusterColor};border:1px solid ${clusterColor}44;">${cluster}类 · ${CLUSTER_LABELS[cluster]}</span>`;
+  const linkHtml = d['官方邀请链接'] && d['官方邀请链接'] !== '无' ? `<a href="${d['官方邀请链接']}" target="_blank" style="color:var(--accent);font-size:13px;">加入 Discord →</a>` : '';
+  
+  document.getElementById('modalHeader').innerHTML = `
+    <div class="modal-title">${d['服务器名称']}</div>
+    <div class="modal-badges">${clusterBadge}${benchBadge}${hotBadge}${avoidBadge}${tags}</div>
+    ${linkHtml}`;
+  
+  // Active bar
+  const avPct = Math.min(av, 25);
+  const grPct = Math.min(Math.abs(gr), 15);
+  const onlinePct = Math.min((d['在线人数']/d['成员总数'])*100, 25);
+
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-metrics">
+      <div class="mmetric"><div class="mmetric-val" style="color:${av>=10?'#3ecf8e':av>=5?'#f5a623':'#e8eaf0'}">${av}%</div><div class="mmetric-key">在线活跃率</div></div>
+      <div class="mmetric"><div class="mmetric-val" style="color:${gr>=5?'#3ecf8e':gr>=2?'#f5a623':gr<0?'#ff5c5c':'#e8eaf0'}">${gr>0?'+':''}${gr}%</div><div class="mmetric-key">月增长率</div></div>
+      <div class="mmetric"><div class="mmetric-val">${fmtNum(d['成员总数'])}</div><div class="mmetric-key">总成员数</div></div>
+      <div class="mmetric"><div class="mmetric-val">${fmtNum(d['在线人数'])}</div><div class="mmetric-key">在线人数</div></div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">关键指标分析</div>
+      <div class="bar-row"><span class="bar-label">活跃度</span><div class="bar-container" style="flex:1"><div class="bar-fill" style="width:${(avPct/25)*100}%;background:#3ecf8e"></div></div><span class="bar-pct">${av}%</span></div>
+      <div class="bar-row"><span class="bar-label">月增速</span><div class="bar-container" style="flex:1"><div class="bar-fill" style="width:${(grPct/15)*100}%;background:#f5a623"></div></div><span class="bar-pct">${gr>0?'+':''}${gr}%</span></div>
+      <div class="bar-row"><span class="bar-label">在线比例</span><div class="bar-container" style="flex:1"><div class="bar-fill" style="width:${(onlinePct/25)*100}%;background:#4f7cff"></div></div><span class="bar-pct">${onlinePct.toFixed(1)}%</span></div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">服务器简介</div>
+      <div class="modal-desc">${d['服务器简介']}</div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">对标分析 / 学习重点</div>
+      <ul class="modal-insight"><li>${getInsight(d['服务器名称'])}</li></ul>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-title">基本信息</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px;color:var(--text2);">
+        <div>商业化：<strong style="color:var(--text)">${d['商业化程度']}</strong></div>
+        <div>类型：<strong style="color:var(--text)">${d['服务器类型(推测)']}</strong></div>
+        <div>目标用户：<strong style="color:var(--text)">${d['目标用户群体']}</strong></div>
+        <div>官方服务器：<strong style="color:var(--text)">${d['是否为官方服务器']}</strong></div>
+        <div>月新增：<strong style="color:var(--green)">+${d['近期成员增长数(30D)'].toLocaleString()}</strong></div>
+        <div>主分类：<strong style="color:var(--text)">${d['主分类']}</strong></div>
+      </div>
+    </div>`;
+  
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+document.getElementById('modalClose').addEventListener('click', () => document.getElementById('modalOverlay').classList.remove('open'));
+document.getElementById('modalOverlay').addEventListener('click', e => { if(e.target === e.currentTarget) e.currentTarget.classList.remove('open'); });
+
+// Render grids
+let currentCluster = 'all';
+let currentFilter = 'all';
+let searchTerm = '';
+
+function filterData(data) {
+  let d = data;
+  if (currentFilter === 'benchmark') d = d.filter(x => x.isBenchmark);
+  else if (currentFilter === 'hot') d = d.filter(x => x.isHot);
+  else if (currentFilter === 'big') d = d.filter(x => x['成员总数'] >= 50000);
+  else if (currentFilter === 'active') d = d.filter(x => x['活跃度比例(%)'] >= 10);
+  if (searchTerm) d = d.filter(x => x['服务器名称'].toLowerCase().includes(searchTerm.toLowerCase()));
+  return d;
+}
+
+function renderAllGrid() {
+  const grid = document.getElementById('all-grid');
+  grid.innerHTML = '';
+  let data = filterData(RAW);
+  data.sort((a,b) => b['成员总数'] - a['成员总数']);
+  data.forEach(d => grid.appendChild(makeCard(d)));
+}
+
+function renderClusterGrid(cluster) {
+  const grid = document.getElementById('grid-' + cluster);
+  if (!grid) return;
+  grid.innerHTML = '';
+  let data = filterData(RAW.filter(d => d.cluster === cluster));
+  // Benchmarks first, then by members
+  data.sort((a,b) => {
+    if (a.isBenchmark && !b.isBenchmark) return -1;
+    if (!a.isBenchmark && b.isBenchmark) return 1;
+    return b['成员总数'] - a['成员总数'];
+  });
+  data.forEach(d => grid.appendChild(makeCard(d)));
+}
+
+function renderAll() {
+  renderAllGrid();
+  ['A','B','C','D','E','F'].forEach(c => renderClusterGrid(c));
+}
+
+renderAll();
+
+// Tab switching
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    currentCluster = tab.dataset.cluster;
+    document.querySelectorAll('.cluster-section').forEach(s => s.classList.remove('visible'));
+    document.getElementById('cluster-' + currentCluster).classList.add('visible');
+  });
+});
+
+// Filter chips
+document.querySelectorAll('.filter-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('on'));
+    chip.classList.add('on');
+    currentFilter = chip.dataset.filter;
+    renderAll();
+  });
+});
+
+// Search
+document.getElementById('searchBox').addEventListener('input', e => {
+  searchTerm = e.target.value;
+  renderAll();
+});
+
+// Benchmark table
+const BENCH_TOP = [
+  {name:'Character.AI', cluster:'A', reason:'社区规模天花板，20M月活，角色社区运营机制'},
+  {name:'ElevenLabs', cluster:'D', reason:'月增速8.3%，开发者+创作者双轮飞轮，Discord即产品'},
+  {name:'Shapes.Inc', cluster:'A', reason:'11%活跃率，角色Bot社区化最佳实践'},
+  {name:'Khui AI', cluster:'A', reason:'月增速12.2%全场最高，本地化AI角色成功公式'},
+  {name:'Open WebUI', cluster:'C', reason:'12.5%活跃，开源UI社区共建+透明迭代'},
+  {name:'Unsloth AI', cluster:'C', reason:'11.3%活跃+5.7%增速，技术社区高活跃典范'},
+  {name:'PixAI - AI Art Generator for Anime and More', cluster:'B', reason:'9.6%活跃+5.2%增速，创作者社区双优'},
+  {name:'Anlatan', cluster:'A', reason:'22.4%活跃率全场最高，开发团队直接互动'},
+  {name:'Perplexity', cluster:'C', reason:'384K规模，AI产品用户社区建设最佳范本'},
+  {name:'freebeat.ai', cluster:'D', reason:'月增速10.4%，小体量高增速冷启动打法'},
+];
+
+const tbody = document.getElementById('benchBody');
+BENCH_TOP.forEach((b, i) => {
+  const d = RAW.find(r => r['服务器名称'] === b.name) || {};
+  const av = d['活跃度比例(%)'] || 0;
+  const gr = d['近期增长比例(%)'] || 0;
+  const barW = Math.min(av * 4, 100);
+  const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-n';
+  const color = CLUSTER_COLORS[b.cluster];
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td><span class="rank-badge ${rankClass}">${i+1}</span></td>
+    <td style="font-weight:600;cursor:pointer;color:var(--text);" class="bench-name">${b.name}</td>
+    <td><span style="font-size:11px;padding:2px 8px;border-radius:6px;background:${color}22;color:${color};border:1px solid ${color}44;">${CLUSTER_LABELS[b.cluster]}</span></td>
+    <td>${fmtNum(d['成员总数'] || 0)}</td>
+    <td style="color:${av>=10?'#3ecf8e':av>=5?'#f5a623':'var(--text)'}">${av}%</td>
+    <td style="color:${gr>=5?'#3ecf8e':gr>=2?'#f5a623':'var(--text)'}">${gr>0?'+':''}${gr}%</td>
+    <td><div style="display:flex;align-items:center;gap:8px;"><div style="width:80px;"><div class="bar-container"><div class="bar-fill" style="width:${barW}%;background:${color}"></div></div></div></td>
+    <td style="font-size:12px;color:var(--text2);max-width:200px;">${b.reason}</td>`;
+  tr.querySelector('.bench-name').addEventListener('click', () => { if(d['服务器名称']) openModal(d); });
+  tbody.appendChild(tr);
+});
+
+// Charts
+const top15 = [...RAW].sort((a,b)=>b['成员总数']-a['成员总数']).slice(0,15);
+new Chart(document.getElementById('bubbleChart'), {
+  type: 'bubble',
+  data: {
+    datasets: [{
+      label: '服务器',
+      data: top15.map(d => ({
+        x: d['活跃度比例(%)'],
+        y: d['近期增长比例(%)'],
+        r: Math.sqrt(d['成员总数']) / 35,
+        name: d['服务器名称'],
+        cluster: d.cluster
+      })),
+      backgroundColor: top15.map(d => CLUSTER_COLORS[d.cluster] + '88'),
+      borderColor: top15.map(d => CLUSTER_COLORS[d.cluster]),
+      borderWidth: 1.5,
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const d = ctx.raw;
+            return [`${d.name}`, `活跃: ${d.x}%`, `增速: +${d.y}%`];
+          }
+        }
+      }
+    },
+    scales: {
+      x: { title: { display: true, text: '活跃度(%)', color: '#6b7190', font:{size:11} }, ticks: { color: '#6b7190' }, grid: { color: 'rgba(255,255,255,0.05)' }, min: 0, max: 26 },
+      y: { title: { display: true, text: '月增速(%)', color: '#6b7190', font:{size:11} }, ticks: { color: '#6b7190' }, grid: { color: 'rgba(255,255,255,0.05)' }, min: -0.5, max: 10 }
+    }
+  }
+});
+
+const clusterCounts = {};
+RAW.forEach(d => { clusterCounts[d.cluster] = (clusterCounts[d.cluster]||0)+1; });
+const pieLabels = Object.keys(clusterCounts).map(k => `${k} · ${CLUSTER_LABELS[k]}`);
+const pieData = Object.values(clusterCounts);
+const pieColors = Object.keys(clusterCounts).map(k => CLUSTER_COLORS[k]);
+new Chart(document.getElementById('clusterPie'), {
+  type: 'doughnut',
+  data: {
+    labels: pieLabels,
+    datasets: [{ data: pieData, backgroundColor: pieColors.map(c=>c+'bb'), borderColor: pieColors, borderWidth: 2 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.raw}个服务器` } }
+    }
+  }
+});
+
+// Custom pie legend
+const pieContainer = document.getElementById('clusterPie').parentElement.parentElement;
+const legendDiv = document.createElement('div');
+legendDiv.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;';
+Object.keys(clusterCounts).forEach(k => {
+  const item = document.createElement('div');
+  item.style.cssText = 'display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);';
+  item.innerHTML = `<span style="width:10px;height:10px;border-radius:2px;background:${CLUSTER_COLORS[k]};flex-shrink:0;"></span>${k}·${CLUSTER_LABELS[k]} (${clusterCounts[k]})`;
+  legendDiv.appendChild(item);
+});
+pieContainer.appendChild(legendDiv);
+</script>
 </body>
 </html>
