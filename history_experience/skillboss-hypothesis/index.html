@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给SkillBoss做SEO：我的假设、推断与步骤</title>
+    <style>
+:root {
+    --bg: #fafafa;
+    --text: #1a1a1a;
+    --text-secondary: #555;
+    --border: #e2e2e2;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --code-bg: #f0f0f0;
+    --table-stripe: #f7f7f7;
+    --blockquote-border: #2563eb;
+    --blockquote-bg: #f5f7fa;
+    --max-width: 860px;
+    --radius: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+/* Navigation bar */
+.nav-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+.nav-bar a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.nav-bar a:hover { text-decoration: underline; }
+
+/* Headings */
+h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0.4em 0 0.3em;
+    letter-spacing: -0.02em;
+    color: #111;
+}
+h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 2em 0 0.6em;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+}
+h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 1.5em 0 0.5em;
+    color: #333;
+}
+h4 {
+    font-size: 1.05em;
+    font-weight: 600;
+    margin: 1.2em 0 0.4em;
+    color: #444;
+}
+
+/* Paragraphs */
+p { margin: 0.8em 0; }
+
+/* Blockquote */
+blockquote {
+    margin: 1.2em 0;
+    padding: 16px 20px;
+    border-left: 4px solid var(--blockquote-border);
+    background: var(--blockquote-bg);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: #444;
+}
+blockquote p { margin: 0.4em 0; }
+blockquote strong { color: #1a1a1a; }
+
+/* Code */
+code {
+    font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.88em;
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #d63384;
+}
+pre {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 1.2em 0;
+    line-height: 1.6;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: 0.85em;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2em 0;
+    font-size: 0.95em;
+}
+thead { background: #f0f3f8; }
+th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #555;
+}
+td {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+
+/* Lists */
+ul, ol { margin: 0.6em 0 0.6em 1.5em; }
+li { margin: 0.3em 0; }
+li > ul, li > ol { margin: 0.2em 0 0.2em 1.5em; }
+
+/* Links */
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Horizontal rule */
+hr {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 2.5em 0;
+}
+
+/* Strong / emphasis */
+strong { color: #111; font-weight: 600; }
+
+/* Header metadata block (first blockquote) */
+blockquote:first-of-type {
+    background: linear-gradient(135deg, #f0f5ff 0%, #fafafe 100%);
+    border-left-color: var(--accent);
+    font-size: 0.95em;
+}
+blockquote:first-of-type strong { color: var(--accent); }
+
+/* Responsive */
+@media (max-width: 640px) {
+    .container { padding: 24px 16px 60px; }
+    h1 { font-size: 1.6em; }
+    h2 { font-size: 1.25em; }
+    h3 { font-size: 1.1em; }
+    table { font-size: 0.82em; }
+    th, td { padding: 8px 10px; }
+    pre { padding: 16px; }
+}
+
+/* Print */
+@media print {
+    body { background: #fff; }
+    .nav-bar { display: none; }
+    .container { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="../">← 返回导航页</a>
+    </nav>
+    <div class="container">
+<h1>给SkillBoss做SEO：我的假设、推断与步骤</h1>
+<blockquote>
+<p><strong>写给谁看</strong>：AIWatch团队成员
+<strong>目的</strong>：让大家理解这个项目背后的判断链——不只是"做了什么"，更是"为什么这么做"
+<strong>核心信息</strong>：每一步决策都建立在一个假设之上。假设错了，整条链就要重来。这份文档把所有假设摊开来讲清楚，方便后面复制给其他客户的时候能少走弯路。</p>
+</blockquote>
+<hr />
+<h2>引子：这个项目的本质是什么</h2>
+<p>我先说一个判断——这个项目不是"给客户写一批SEO文章"，而是<strong>用AI建立一个跨境SaaS的长尾流量基础设施</strong>。</p>
+<p>听起来有点拗口，但区别非常重要：</p>
+<ul>
+<li>写文章是"今天写明天发，发完看流量"，是一次性投入</li>
+<li>建基础设施是"一次搭好长期跑，每周补几页就能持续吃流量"，是复利型投入</li>
+</ul>
+<p>这个区别决定了所有后续判断。如果只是写文章，那评估标准就是"这篇文章好不好看、专业不专业"；但如果是建基础设施，评估标准就变成了"这个体系会不会被Google索引、会不会被AI推荐、能不能持续产出"。</p>
+<p><strong>这是第一个底层假设：长期来看，跨境SaaS的获客成本会越来越高，自有流量基础设施是唯一的解药。</strong></p>
+<p>如果你不认同这个假设，后面所有动作都没必要做——直接去投广告就行。但我们认同，所以我们做了这件事。</p>
+<hr />
+<h2>第一部分：宏观假设——为什么选pSEO这条路</h2>
+<h3>假设1：Google搜索流量正在变形，但没有死</h3>
+<p>很多人会跟你说"SEO已死，因为AI Overviews接管了"。这个判断<strong>对一半，错一半</strong>。</p>
+<p>对的部分：用户行为确实在变。58.5%的搜索是零点击（在美国），AI Overviews直接吃掉了大量信息类查询的流量。Lovable这家公司SEO流量暴跌80-90%是真的。</p>
+<p>错的部分：<strong>结构化、有交易意图的搜索仍然存在</strong>。一个想买"Instagram API"的开发者，不会满足于AI给的概述，他要看具体定价、看文档、看竞品对比。这部分流量还在。</p>
+<p><strong>所以我们的赌注是：搜"how to build X with API"、"alternative to X"、"X vs Y"这类有明确意图的长尾词，传统SEO还有用。</strong></p>
+<p>如果你赌反了，赌"Google已死"，那就应该全部投入到AI搜索优化、社交媒体、KOL投放。我们没赌反，因为：</p>
+<ol>
+<li>SkillBoss的目标用户是开发者和增长黑客，他们仍在大量使用Google</li>
+<li>这部分流量的转化路径很清晰（搜索→进站→注册API key→付费）</li>
+<li>长尾词的总量仍然庞大（92%的搜索词月搜索量&lt;10次，加起来占总流量70%+）</li>
+</ol>
+<h3>假设2：跨境B2B SaaS的获客必须靠搜索</h3>
+<p>为什么不做小红书？为什么不做YouTube？为什么不做LinkedIn？</p>
+<p>因为SkillBoss的用户画像是：
+- 海外开发者
+- 决策路径是"遇到问题→Google搜→对比方案→试用→付费"
+- 不刷小红书，不看中文YouTube，LinkedIn只是辅助</p>
+<p><strong>对这群人，搜索引擎是唯一的"决策入口"。</strong> 错过这个入口，等于在他们的心智里不存在。</p>
+<h3>假设3：AI生成内容不会被Google直接判死刑</h3>
+<p>这是争议最大的一个假设。</p>
+<p>反对方观点：Google 2024-2025年算法明确打击"大规模内容滥用"。DoorDash生成500万低质量页面被直接降权。Excel批量替换关键词的pSEO是死路。</p>
+<p>我的判断：<strong>Google打击的不是"AI生成"，而是"低质量、无独特价值"</strong>。</p>
+<p>支持这个判断的证据：
+1. Google官方在Search Central的声明里明确说：内容是不是AI写的不是判断标准，质量才是
+2. Simular.ai用大量AI内容做到86%上首页（如果AI=死刑，这家公司早完了）
+3. Google自己也在用AI生成搜索结果摘要</p>
+<p>所以我们的策略是：<strong>用AI生成，但要装上"质量信号"</strong>。具体包括：
+- 真实的统计数据
+- 权威来源引用（带出站链接）
+- 可交互的工具组件（哥飞的"精品工具页面"理论）
+- 结构化数据标记（Schema）</p>
+<p>如果Google后续判我们死刑，我承认这个假设错了，会复盘。但截至目前，这个假设没有被证伪。</p>
+<h3>假设4：AI搜索引擎是新的流量入口，必须同步优化</h3>
+<p>ChatGPT、Perplexity、Claude、Gemini这些AI产品，本质上是新的"搜索引擎"。它们也在爬取网页、构建索引、生成答案。</p>
+<p>普林斯顿大学的GEO论文（KDD 2024）测试了9种内容优化策略对AI搜索可见性的影响：</p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>AI可见性变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>权威引用</td>
+<td>+40%</td>
+</tr>
+<tr>
+<td>统计数据注入</td>
+<td>+37%</td>
+</tr>
+<tr>
+<td>流畅性优化</td>
+<td>+28%</td>
+</tr>
+<tr>
+<td>出站链接</td>
+<td>+27%</td>
+</tr>
+<tr>
+<td>关键词堆砌</td>
+<td>-8%</td>
+</tr>
+</tbody>
+</table>
+<p>这是一个学术研究，数据可信。<strong>所以我们做SEO的同时必须做GEO（Generative Engine Optimization）</strong>。</p>
+<p>注意最后一行：关键词堆砌不是无效，是<strong>反效果</strong>。这个直接颠覆了传统SEO思维。如果一个文案把关键词塞30遍，他在Google时代是优秀员工，在AI时代是公司负担。</p>
+<hr />
+<h2>第二部分：客户选择推断——为什么先做SkillBoss</h2>
+<h3>推断1：4个客户里，SkillBoss的产品天然适合pSEO</h3>
+<p>我们当时手上有4个候选客户：SkillBoss、QVeris、Coco、Teamily。</p>
+<p>判断一个产品是否适合做pSEO，看一个核心指标：<strong>关键词组合空间</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>客户</th>
+<th>产品本质</th>
+<th>可拆维度</th>
+<th>关键词空间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SkillBoss</td>
+<td>697个API端点的统一网关</td>
+<td>API类型 × 行业 × 用例</td>
+<td>几百到上千</td>
+</tr>
+<tr>
+<td>QVeris</td>
+<td>出海2B服务</td>
+<td>服务类型 × 行业</td>
+<td>几十到上百</td>
+</tr>
+<tr>
+<td>Coco</td>
+<td>AI协作平台</td>
+<td>角色 × 场景</td>
+<td>几十</td>
+</tr>
+<tr>
+<td>Teamily</td>
+<td>团队协作工具</td>
+<td>功能 × 场景</td>
+<td>几十</td>
+</tr>
+</tbody>
+</table>
+<p>SkillBoss的关键词空间是其他三家的5-10倍。这意味着同样的工作量，给SkillBoss做能产出更多页面、覆盖更多搜索词。</p>
+<p><strong>这是一个"投入产出比"的判断</strong>。资源有限的时候，先做ROI最高的那个。</p>
+<h3>推断2：先做一个客户跑通，再复制</h3>
+<p>为什么不4个客户同时做？</p>
+<p>因为这是<strong>未经验证的假设</strong>。如果4个同时做，万一假设错了（比如Google不收录），我们等于同时浪费4倍精力。</p>
+<p>正确的做法是：<strong>先用一个客户做MVP，验证完再复制</strong>。</p>
+<p>这是工程思维，不是销售思维。销售思维是"客户都付钱了，凭什么不一起做"，工程思维是"未经验证的方案不能批量铺开"。</p>
+<p>如果你以后做新业务，记住这个判断：<strong>任何未经验证的方法论，先在一个客户身上跑通，再复制。</strong></p>
+<h3>推断3：SkillBoss的曲晓音不知情，反而是优势</h3>
+<p>我没有提前告诉曲晓音我在做这件事。这看起来不合常理（客户不知道我们在做？），但其实是有意为之。</p>
+<p>原因有两个：</p>
+<ol>
+<li>
+<p><strong>预期管理</strong>：如果提前告诉她"我要做200页SEO"，她会有期待。万一做出来效果不好，期待落空就是失分。先做出来再说，是惊喜不是风险。</p>
+</li>
+<li>
+<p><strong>试错成本极低</strong>：整个项目从0到200页总成本不到$10（Claude API约$4，图片生成约$2，部署免费）。这种成本下，根本不需要客户"确认"再做——做出来再给她看，效果好就直接用。</p>
+</li>
+</ol>
+<p><strong>这背后是一个判断：当试错成本极低时，"先斩后奏"比"先沟通后行动"效率高一个数量级。</strong></p>
+<p>但注意：这个策略只适用于成本极低的项目。如果是要花$5000的项目，必须先沟通。</p>
+<hr />
+<h2>第三部分：策略推断——8种页面类型从哪来</h2>
+<h3>推断1：通过竞品反向工程找模式</h3>
+<p>我没有凭空想出"做这8种类型"。我做的事是：扫描92个AI产品的SEO策略，看大家都在做什么。</p>
+<p>这个动作的背后逻辑是：<strong>已经被验证过的模式比创新更可靠</strong>。</p>
+<p>为什么？因为SEO是一个"博弈游戏"——你和Google的算法博弈，你和竞品博弈。如果一个模式已经有公司用它做成了，说明这个模式在当前算法下有效。直接复制比自己创新风险低得多。</p>
+<h3>推断2：每种类型对应一种搜索意图</h3>
+<p>不是8种类型随便选的。每一种都对应一种特定的搜索意图：</p>
+<table>
+<thead>
+<tr>
+<th>页面类型</th>
+<th>用户搜索时在想什么</th>
+<th>参考案例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How-to教程</td>
+<td>"我要解决一个问题，需要步骤"</td>
+<td>Quillbot</td>
+</tr>
+<tr>
+<td>API×行业</td>
+<td>"我在X行业，怎么用Y"</td>
+<td>Wanderlog</td>
+</tr>
+<tr>
+<td>竞品Alternative</td>
+<td>"X太贵/不好用，找替代品"</td>
+<td>GoEnhance</td>
+</tr>
+<tr>
+<td>竞品Compare</td>
+<td>"在X和Y之间纠结"</td>
+<td>Topview</td>
+</tr>
+<tr>
+<td>数据素材库</td>
+<td>"我要看真实数据样本"</td>
+<td>Shutterstock</td>
+</tr>
+<tr>
+<td>API集成</td>
+<td>"我要把X和Y连起来"</td>
+<td>Zapier</td>
+</tr>
+<tr>
+<td>用户角色页</td>
+<td>"为我这种角色定制的方案"</td>
+<td>Collov</td>
+</tr>
+<tr>
+<td>工作流模板</td>
+<td>"给我一个能直接用的方案"</td>
+<td>Kahoot</td>
+</tr>
+</tbody>
+</table>
+<p><strong>搜索意图决定流量质量</strong>。一个搜"X vs Y"的人，决策意图比搜"什么是X"的人强10倍。所以我们做这8种是有意识地覆盖"中后期决策意图"，不是覆盖"早期认知意图"。</p>
+<h3>推断3：Topic Cluster比单页SEO重要</h3>
+<p>这是大罗（SEO专家）教我的一个洞察。</p>
+<p>ChatGPT用RRF（Reciprocal Rank Fusion）算法做内容检索。这个算法对<strong>主题集群</strong>（围绕一个主题的多篇内容互相链接）特别友好。单一页面再强，也不如一个主题集群。</p>
+<p>所以我们的8种页面不是孤立存在的，它们围绕一个核心主题——"AI API Gateway"——形成一个内容生态。每种类型从不同角度切入这个主题，互相内链。</p>
+<p><strong>这个布局让我们在AI搜索中的整体可见度比单页优化高一个量级。</strong></p>
+<hr />
+<h2>第四部分：内容生成的判断</h2>
+<h3>判断1：让Claude执行业务SOP，不是让它"写文章"</h3>
+<p>很多人用AI写内容的方式是：丢一个标题给ChatGPT，让它写。结果出来的全是车轱辘话。</p>
+<p>为什么？因为标题里没有"业务灵魂"。</p>
+<p>我们的做法不一样。每个页面的prompt里包含：
+- 具体的API类型和能力（context）
+- 具体的行业场景和痛点（场景）
+- before/after的对比框架（结构）
+- 必须包含的统计数据要求（约束）
+- 字数和段落要求（格式）
+- 不能出现的内容（边界）</p>
+<p><strong>Claude执行的是一个"业务SOP"，不是"创作任务"</strong>。前者输出可控，后者输出随机。</p>
+<p>如果你以后用AI生成内容，记住这一点：你越像产品经理一样写需求，AI就越像高级员工一样输出。</p>
+<h3>判断2：信息密度比字数重要</h3>
+<p>最早一批生成的页面平均1273词，对比Simular的4400词差很远。我用扩写脚本把它们拉到了2500+词。</p>
+<p>但拉长之后我反思了一下——大罗说"长文在AI时代是负债"。AI搜索只读前377词，超过的部分基本不会被引用。</p>
+<p>所以现在的判断是：<strong>字数有底线（&gt;1500词，让Google觉得是"严肃内容"），但不追求上限</strong>。重要的是前377词的信息密度——这部分必须包含核心价值、关键数据、权威引用。</p>
+<p>这就是为什么每个页面顶部都有"Key Takeaways"——不是给人看的，是给AI搜索引擎看的。</p>
+<h3>判断3：原创数据是AI最稀缺的资源</h3>
+<p>饼干哥哥（跨境电商SEO实战派）说过一句话：<strong>一手数据是AI最稀缺的资源，因为AI自己编不出来</strong>。</p>
+<p>这句话对我们的启发很大。SkillBoss有大量内部数据：API响应时间、调用量、成功率、各端点的使用频率分布。这些数据全网只有他们有。</p>
+<p>所以页面里的数据要分两类：
+- <strong>公开数据</strong>：行业报告、第三方研究——加权威引用，提升可信度
+- <strong>一手数据</strong>：SkillBoss内部benchmark——这是稀缺的护城河，AI抄不走</p>
+<p><strong>未来这块要加大投入</strong>——和SkillBoss团队对接，把他们的内部数据系统性地转化成对外的页面内容。</p>
+<hr />
+<h2>第五部分：技术SEO的关键判断</h2>
+<h3>判断1：URL结构必须分散</h3>
+<p>最早所有页面都放在 <code>/pseo/skillboss/</code> 一个目录下。后来才知道Google对单一目录下页面过多会"folder penalty"——单目录权重稀释。</p>
+<p>改成了8个独立路径：
+- <code>/use-cases/</code>
+- <code>/industry/</code>
+- <code>/explore/</code>
+- <code>/integrations/</code>
+- <code>/alternatives/</code>
+- <code>/compare/</code>
+- <code>/for/</code>
+- <code>/templates/</code></p>
+<p><strong>每个路径独立积累权重，不互相稀释。</strong></p>
+<p>如果以后给其他客户做，记得一开始就用分散的URL结构，不要等到200页了再改。</p>
+<h3>判断2：Schema标记是低成本高回报的</h3>
+<p>Schema.org结构化数据是Google官方推荐的"告诉机器人这是什么内容"的标准。我们加了三层：</p>
+<ul>
+<li><strong>HowTo</strong>：让Google在搜索结果直接展示步骤（占据更大的SERP空间）</li>
+<li><strong>FAQPage</strong>：让Google展示FAQ折叠（提升CTR）</li>
+<li><strong>BreadcrumbList</strong>：面包屑导航（增强相关性信号）</li>
+</ul>
+<p>成本：每个页面多写几行JSON。
+回报：搜索结果展现样式更丰富，CTR提升20-30%（行业数据）。</p>
+<p>这种"低成本高回报"的事情必须做。</p>
+<h3>判断3：robots.txt不能屏蔽AI爬虫</h3>
+<p>很多公司的默认robots.txt是屏蔽所有非Google爬虫的，包括：
+- GPTBot（OpenAI/ChatGPT）
+- ClaudeBot（Anthropic）
+- PerplexityBot
+- Google-Extended（Gemini）</p>
+<p><strong>屏蔽这些等于在AI搜索里"主动消失"</strong>。</p>
+<p>我们的部署明确允许这些爬虫。这是必须的——否则前面所有GEO优化都白做。</p>
+<hr />
+<h2>第六部分：基于普林斯顿数据的优化决策</h2>
+<p>200页生成完之后，我做了一次完整的GEO健康度审计：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>优化前</th>
+<th>优化后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>出站链接</td>
+<td>0/200页</td>
+<td>171/200页</td>
+</tr>
+<tr>
+<td>权威引用</td>
+<td>145/200页</td>
+<td>200/200页</td>
+</tr>
+<tr>
+<td>关键词堆砌风险</td>
+<td>22页</td>
+<td>5页</td>
+</tr>
+<tr>
+<td>统计数据密度OK</td>
+<td>175/200页</td>
+<td>182/200页</td>
+</tr>
+</tbody>
+</table>
+<h3>决策1：批量注入出站链接</h3>
+<p>普林斯顿数据：出站链接 = +27% AI可见性。</p>
+<p>但我们200页0出站链接。这是"传统SEO思维"的遗留——不给出站链接，把用户锁在站内。</p>
+<p><strong>GEO时代的逻辑反过来：出站链接是"我有据可查"的信号，是在买信任</strong>。</p>
+<p>我写了一个脚本，根据每个页面的类别（社交、爬虫、AI、电商等）匹配对应的权威来源（Forrester、McKinsey、Sprout Social、Zyte等），自动在内容里插入带链接的引用句。</p>
+<p>200页注入了436个出站链接。</p>
+<h3>决策2：补齐55页缺失的权威引用</h3>
+<p>权威引用 = +40% AI可见性，是普林斯顿数据里效果最强的策略。</p>
+<p>我们200页里有55页的<code>authority_citations</code>字段是空的——这是早期生成的批次没要求这个字段导致的。</p>
+<p>写脚本根据类别从模板库选3条引用补上。</p>
+<h3>决策3：降低22页的关键词堆砌</h3>
+<p>22页里"SkillBoss"这个词出现了15次以上。这是反效果——普林斯顿数据：堆砌关键词 = -8%可见性。</p>
+<p>写脚本把超过8次后的SkillBoss替换成同义词（the platform, the unified API, the gateway等）。</p>
+<p><strong>这个决策表面是技术性的，背后是认知升级</strong>：在GEO时代，品牌名重复出现不是优势，是噪音。</p>
+<hr />
+<h2>第七部分：部署策略——为什么第一周只给50页</h2>
+<h3>判断1：不一次全上，分批发布</h3>
+<p>200页全部生成完，但第一周只给客户50页。为什么？</p>
+<p><strong>核心原因是数据驱动</strong>。我们不知道哪种页面类型表现最好——可能是How-to页面收录最快，也可能是Alternative页面排名最高。在不知道的情况下批量铺开，等于赌博。</p>
+<p>正确的做法是：<strong>先发50页测试，看哪种类型有效，再决定后续的资源投入</strong>。</p>
+<p>50页里8种类型都覆盖（20教程+12行业+5探索+4集成+3替代+2对比+2角色+2模板），是为了让每种类型都有足够的样本量去判断效果。</p>
+<h3>判断2：选最高质量的50页先发</h3>
+<p>不是随便挑50页。我对每个页面打了一个质量分（基于词数、引用数、出站链接、统计密度），从每个类别里选分数最高的。</p>
+<p>50页的质量数据：
+- 平均词数3300词
+- 100%有权威引用
+- 85%+有出站链接
+- 平均质量分13.6/15</p>
+<p><strong>第一批的目标是建立Google对这个域名的"质量信任"</strong>。如果第一批是垃圾内容，Google会给整个域名打低分，后面再发好内容也很难翻身。</p>
+<p>第一印象很重要——对Google也一样。</p>
+<h3>判断3：客户的5个动作</h3>
+<p>部署完之后，SkillBoss需要做5件事，按重要性排序：</p>
+<ol>
+<li><strong>验证Google Search Console</strong>——这是收录的前提，10分钟搞定</li>
+<li><strong>提交Sitemap</strong>——告诉Google"这里有50页"，2分钟</li>
+<li><strong>每天手动请求索引5-10个URL</strong>——这是第一周最重要的动作，比等Google自己来快10倍</li>
+<li><strong>检查robots.txt不屏蔽AI爬虫</strong>——确保我们前面所有GEO优化没白做</li>
+<li><strong>从主站加几个内链</strong>——把官网域名权重传递给子域名</li>
+</ol>
+<p>每一个动作背后都有判断。比如"每天手动请求索引"——这个不做的话，Google可能2-4周才会爬到所有页面。做了就1-2天爬完。</p>
+<hr />
+<h2>第八部分：风险评估——什么情况下这个方案会失败</h2>
+<p>我必须诚实——这个方案不是必胜的。它建立在假设之上，假设错了就会失败。</p>
+<h3>风险1：Google判定为低质量内容（概率：30%）</h3>
+<p>如果Google的算法升级，能识别出这是AI生成的批量内容，可能直接降权或不收录。</p>
+<p><strong>应对</strong>：
+- 内容前2/3不提产品，给真实价值
+- 加交互组件（Try It），让页面不只是文字
+- Schema标记完整
+- 持续监控GSC的"已抓取未编入索引"数据</p>
+<p>如果半年后大部分页面还是没被收录，那就是这个风险落地了。届时需要重新评估方向。</p>
+<h3>风险2：外链建设跟不上（概率：60%）</h3>
+<p>普林斯顿的ABC信号里A=外链是最重要的。我们现在外链基本为零。</p>
+<p><strong>应对</strong>：
+- 把导航站提交到各种"工具目录站"
+- 在Reddit、Hacker News等社区分享高质量页面
+- 和SkillBoss联动，从他们的官网、博客、邮件列表导流
+- 找媒体写关于SkillBoss的报道</p>
+<p>外链建设是长期工作，急不得。</p>
+<h3>风险3：AI搜索引擎不引用我们（概率：40%）</h3>
+<p>即使Google收录了，AI搜索（ChatGPT、Perplexity）可能也不引用我们。</p>
+<p><strong>应对</strong>：
+- 已经按GEO优化做了出站链接、权威引用、统计数据
+- 后续要监测AI搜索结果，看我们的页面在哪些查询下被引用
+- 根据数据反向调整内容策略</p>
+<h3>风险4：客户不愿意配合（概率：20%）</h3>
+<p>如果SkillBoss不愿意给GSC权限、不肯做手动索引、不肯加内链——那再好的页面也没用。</p>
+<p><strong>应对</strong>：
+- 给客户清晰的操作指南（已写好）
+- 用Simular的案例数据说服客户配合
+- 设定明确的"客户责任"vs"我们责任"</p>
+<hr />
+<h2>第九部分：复制路径——怎么给其他客户做</h2>
+<p>这套方法论已经在SkillBoss跑通（至少是技术跑通了）。如果以后给QVeris、Coco、Teamily做，按以下步骤：</p>
+<h3>Step 1：评估关键词空间（半天）</h3>
+<p>对客户的产品做拆解：
+- 产品的核心功能有几个？
+- 每个功能能拆出几种用法？
+- 每种用法对应几个行业？</p>
+<p>如果关键词空间&lt;50，pSEO不适合这个客户，应该考虑别的策略。</p>
+<h3>Step 2：定制8种页面类型（1天）</h3>
+<p>不是8种全做。看客户产品适合哪几种：
+- B2B SaaS：use-cases、industry、alternatives、compare、for、templates 都做
+- B2C产品：use-cases、explore、templates 为主
+- 工具类：use-cases、integrations、alternatives 为主</p>
+<h3>Step 3：设计Try It交互组件（1-2天）</h3>
+<p>这是差异化的关键。不同客户的Try It不一样：
+- SkillBoss：API demo
+- QVeris：服务咨询表单+案例展示
+- Coco：协作场景预览
+- Teamily：模板库浏览</p>
+<h3>Step 4：批量生成内容（1天）</h3>
+<p>复用现有脚本（generate-pages.js等），只需改prompt里的产品context。</p>
+<p>成本：每个客户200页大约$10-15。</p>
+<h3>Step 5：GEO优化（半天）</h3>
+<p>跑现有的优化脚本：
+- 注入出站链接
+- 补齐权威引用
+- 检查关键词堆砌</p>
+<h3>Step 6：部署+客户操作指南（1天）</h3>
+<p>复用部署模板，改个域名和配色。</p>
+<h3>Step 7：监控+迭代（持续）</h3>
+<p>每周看GSC数据，调整内容策略。</p>
+<p><strong>总时间：每个客户4-5天 + 后续每周1-2小时维护</strong>。</p>
+<hr />
+<h2>第十部分：给团队的核心建议</h2>
+<h3>建议1：每个判断都要能说出"假设是什么"</h3>
+<p>我做这个项目最大的体会是：<strong>所有的工作流程都建立在某个假设之上</strong>。</p>
+<p>写文章的人很少意识到自己的假设。"我要写一篇关于X的文章"——这背后假设了：用户会搜X、用户在Google搜不在ChatGPT搜、长文比短文好、关键词重复有用……</p>
+<p>每一个假设都可能错。</p>
+<p>我希望团队同事在做任何工作之前，<strong>先问自己：我做这个动作背后的假设是什么？这个假设有什么证据支撑？如果假设错了会怎样？</strong></p>
+<p>这个习惯能让你少做90%的无用功。</p>
+<h3>建议2：试错成本越低，越要勇于尝试</h3>
+<p>这个项目从0到200页只花了不到$10和不到一天。这种成本下，"做了再说"比"想清楚再做"更高效。</p>
+<p><strong>判断试错成本</strong>是关键能力：
+- 试错成本低 → 直接干
+- 试错成本中 → 做小规模MVP
+- 试错成本高 → 充分论证再动手</p>
+<p>很多人犯的错误是：<strong>在低成本场景做高成本场景的决策流程</strong>。结果就是做事拖拉、效率低下。</p>
+<h3>建议3：方法论比工具重要</h3>
+<p>这个项目用了Claude Code、Vercel、Notion API等工具。但这些都不是关键。</p>
+<p>关键是<strong>方法论</strong>：
+- 怎么从92个竞品里提炼模式
+- 怎么判断哪种页面类型对应哪种搜索意图
+- 怎么用普林斯顿论文数据决定优化方向
+- 怎么平衡传统SEO和GEO的不同要求</p>
+<p>工具会过时（Claude Code明年可能换成新的），但方法论可以迁移。</p>
+<p>我希望团队同事不要陷入"会用某个工具"的层次，要往上一层走——理解方法论。</p>
+<h3>建议4：每个项目都要留下可复用资产</h3>
+<p>这个项目结束后留下的可复用资产：</p>
+<table>
+<thead>
+<tr>
+<th>资产</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8种页面类型模板</td>
+<td>复制给其他客户</td>
+</tr>
+<tr>
+<td>生成脚本（generate-*.js）</td>
+<td>改prompt即可生成新客户内容</td>
+</tr>
+<tr>
+<td>优化脚本（optimize-*.js）</td>
+<td>通用的GEO优化工具</td>
+</tr>
+<tr>
+<td>部署方案文档</td>
+<td>客户操作SOP</td>
+</tr>
+<tr>
+<td>Try It组件代码</td>
+<td>可复用的API demo框架</td>
+</tr>
+</tbody>
+</table>
+<p>这意味着<strong>给第二个客户做，时间能压缩到第一个客户的1/3</strong>。给第十个客户做，可能就是1天的事。</p>
+<p><strong>好的工作不是把当前任务做完，是把当前任务做完的同时积累出可复用资产。</strong></p>
+<hr />
+<h2>结语：保持怀疑</h2>
+<p>最后说一句——上面所有的判断、假设、推断，都可能是错的。</p>
+<p>我写这篇文档不是为了让大家"按我说的做"，而是为了让大家<strong>理解判断链条</strong>。理解之后，你应该能识别出哪些判断是稳的、哪些是赌的、哪些可能在未来被推翻。</p>
+<p>如果半年后SkillBoss的SEO数据出来，被Google判死刑了——那就回来重读这篇文档，看看是哪个假设错了，下次怎么调整。</p>
+<p>这才是文档的价值——<strong>不是教条，是一个可以被回溯和反思的判断链</strong>。</p>
+<p>我们一起把这套方法论迭代成可以服务100个客户的标准作业流程。</p>
+<hr />
+<p><em>文档版本：v1.0 | 2026-04-09</em>
+<em>作者：Will（郎瀚威）+ Claude</em>
+<em>面向：AIWatch团队</em></p>
+    </div>
+</body>
+</html>

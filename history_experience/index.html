@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIWatch SEO 团队历史经验文档</title>
+    <style>
+        :root {
+            --bg: #fafafa;
+            --text: #1a1a1a;
+            --border: #e2e2e2;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --card-bg: #fff;
+            --tag-bg: #eff6ff;
+            --tag-text: #2563eb;
+            --radius: 10px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 960px; margin: 0 auto; padding: 60px 24px 80px; }
+
+        header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+        header h1 {
+            font-size: 2.4em;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #111;
+            margin-bottom: 12px;
+        }
+        header p {
+            font-size: 1.1em;
+            color: #666;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+        .badge {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-size: 0.8em;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 30px;
+            transition: box-shadow 0.2s, transform 0.15s;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+        .card:hover {
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+            border-color: #c8d8f0;
+        }
+
+        .card-num {
+            font-size: 0.78em;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+        .card h2 {
+            font-size: 1.25em;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .card p {
+            font-size: 0.92em;
+            color: #666;
+            line-height: 1.6;
+            flex: 1;
+        }
+        .card-footer {
+            margin-top: 18px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            display: inline-block;
+            font-size: 0.78em;
+            background: #f3f4f6;
+            color: #555;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 64px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+            color: #999;
+            font-size: 0.88em;
+        }
+
+        @media (max-width: 500px) {
+            .container { padding: 36px 16px 60px; }
+            header h1 { font-size: 1.7em; }
+            .grid { grid-template-columns: 1fr; }
+            .card { padding: 22px 20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<header>
+    <div class="badge">AIWatch 团队</div>
+    <h1>SEO 历史经验文档</h1>
+    <p>基于 SkillBoss、QVeris、Coco AI、InfiniSynapse 四个真实项目的完整沉淀——从决策假设到执行复盘。</p>
+</header>
+
+<div class="grid">
+
+<a class="card" href="./aiwatch-customer-manual/index.html">
+    <div class="card-num">01 · 客户向</div>
+    <h2>SEO 页面交付后客户操作手册</h2>
+    <p>客户拿到交付的 SEO 页面后，从部署到 Vercel、绑定域名、GSC 验证、提交 Sitemap、手动请求索引的完整流程。含每周维护清单和 FAQ。</p>
+    <div class="card-footer">
+        <span class="tag">客户交付</span>
+        <span class="tag">GSC 配置</span>
+        <span class="tag">部署指南</span>
+    </div>
+</a>
+
+<a class="card" href="./aiwatch-sop/index.html">
+    <div class="card-num">02 · 团队向</div>
+    <h2>AIWatch SEO 标准作业流程 v1.0</h2>
+    <p>基于 4 个项目沉淀的统一 SOP：项目启动前判断、内容生产质量红线、技术实施标准、GEO 优化清单、发布索引策略、风险评估与复用资产清单。</p>
+    <div class="card-footer">
+        <span class="tag">SOP</span>
+        <span class="tag">质量红线</span>
+        <span class="tag">GEO 优化</span>
+    </div>
+</a>
+
+<a class="card" href="./infinisynapse-process/index.html">
+    <div class="card-num">03 · 项目复盘</div>
+    <h2>InfiniSynapse SEO 项目复盘</h2>
+    <p>从空文件夹到 10 页上线的完整路径：5 个差异化点对称结构、"我们不是 X"反向定义法、SPA 抓取坑、手写 vs LLM 生成的决策边界、Julius 对标报告对齐。</p>
+    <div class="card-footer">
+        <span class="tag">复盘文档</span>
+        <span class="tag">差异化定位</span>
+        <span class="tag">工程决策</span>
+    </div>
+</a>
+
+<a class="card" href="./qveris-decision-log/index.html">
+    <div class="card-num">04 · 决策日志</div>
+    <h2>QVeris SEO 实战决策日志</h2>
+    <p>最完整的踩坑记录：60 页全废 → DataForSEO 验证 → KGR 双重过滤 → 渐进式 8 周计划。含五层 SOP（产品诊断 / 关键词研究 / 定位决策 / 内容生产 / 监控优化）、错误案例库、DataForSEO API 模板。</p>
+    <div class="card-footer">
+        <span class="tag">KGR 验证</span>
+        <span class="tag">DataForSEO</span>
+        <span class="tag">五层 SOP</span>
+    </div>
+</a>
+
+<a class="card" href="./coco-playbook/index.html">
+    <div class="card-num">05 · 执行手册</div>
+    <h2>Coco AI SEO 完整决策手册</h2>
+    <p>14 个 SEO 落地页的设计逻辑：真实客户案例反向映射选题、"AI + 角色 + 行业"三段长尾关键词、E-E-A-T 模块设计、案例脱敏 SOP、Day 0-7 标准动作。</p>
+    <div class="card-footer">
+        <span class="tag">案例反向映射</span>
+        <span class="tag">E-E-A-T</span>
+        <span class="tag">Day 0-7 SOP</span>
+    </div>
+</a>
+
+<a class="card" href="./skillboss-hypothesis/index.html">
+    <div class="card-num">06 · 策略推演</div>
+    <h2>SkillBoss SEO 假设与推断</h2>
+    <p>从"写文章"到"建长尾流量基础设施"的认知升级：8 种 pSEO 页面类型推导、普林斯顿 GEO 数据驱动优化（+40% 权威引用 / +27% 出站链接）、200 页批量健康度审计。</p>
+    <div class="card-footer">
+        <span class="tag">pSEO 批量</span>
+        <span class="tag">GEO 优化</span>
+        <span class="tag">Topic Cluster</span>
+    </div>
+</a>
+
+</div>
+
+<footer>
+    AIWatch 团队 · 2026 · 基于 4 个真实项目沉淀
+</footer>
+
+</div>
+</body>
+</html>

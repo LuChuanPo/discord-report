@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给 QVeris 做 SEO：完整决策日志</title>
+    <style>
+:root {
+    --bg: #fafafa;
+    --text: #1a1a1a;
+    --text-secondary: #555;
+    --border: #e2e2e2;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --code-bg: #f0f0f0;
+    --table-stripe: #f7f7f7;
+    --blockquote-border: #2563eb;
+    --blockquote-bg: #f5f7fa;
+    --max-width: 860px;
+    --radius: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+/* Navigation bar */
+.nav-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+.nav-bar a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.nav-bar a:hover { text-decoration: underline; }
+
+/* Headings */
+h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0.4em 0 0.3em;
+    letter-spacing: -0.02em;
+    color: #111;
+}
+h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 2em 0 0.6em;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+}
+h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 1.5em 0 0.5em;
+    color: #333;
+}
+h4 {
+    font-size: 1.05em;
+    font-weight: 600;
+    margin: 1.2em 0 0.4em;
+    color: #444;
+}
+
+/* Paragraphs */
+p { margin: 0.8em 0; }
+
+/* Blockquote */
+blockquote {
+    margin: 1.2em 0;
+    padding: 16px 20px;
+    border-left: 4px solid var(--blockquote-border);
+    background: var(--blockquote-bg);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: #444;
+}
+blockquote p { margin: 0.4em 0; }
+blockquote strong { color: #1a1a1a; }
+
+/* Code */
+code {
+    font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.88em;
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #d63384;
+}
+pre {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 1.2em 0;
+    line-height: 1.6;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: 0.85em;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2em 0;
+    font-size: 0.95em;
+}
+thead { background: #f0f3f8; }
+th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #555;
+}
+td {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+
+/* Lists */
+ul, ol { margin: 0.6em 0 0.6em 1.5em; }
+li { margin: 0.3em 0; }
+li > ul, li > ol { margin: 0.2em 0 0.2em 1.5em; }
+
+/* Links */
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Horizontal rule */
+hr {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 2.5em 0;
+}
+
+/* Strong / emphasis */
+strong { color: #111; font-weight: 600; }
+
+/* Header metadata block (first blockquote) */
+blockquote:first-of-type {
+    background: linear-gradient(135deg, #f0f5ff 0%, #fafafe 100%);
+    border-left-color: var(--accent);
+    font-size: 0.95em;
+}
+blockquote:first-of-type strong { color: var(--accent); }
+
+/* Responsive */
+@media (max-width: 640px) {
+    .container { padding: 24px 16px 60px; }
+    h1 { font-size: 1.6em; }
+    h2 { font-size: 1.25em; }
+    h3 { font-size: 1.1em; }
+    table { font-size: 0.82em; }
+    th, td { padding: 8px 10px; }
+    pre { padding: 16px; }
+}
+
+/* Print */
+@media print {
+    body { background: #fff; }
+    .nav-bar { display: none; }
+    .container { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="../">← 返回导航页</a>
+    </nav>
+    <div class="container">
+<h1>给 QVeris 做 SEO：完整决策日志</h1>
+<blockquote>
+<p><strong>文档对象</strong>：AIWatch 团队成员（孔维彤、刘玉晗、孔月、张志博、程果）
+<strong>目的</strong>：让你完整理解从零到一给一个客户做 SEO 的全过程——我做了哪些假设、哪些推断、哪些步骤、踩过哪些坑、最终沉淀了什么 SOP
+<strong>写作时间</strong>：2026-04-19
+<strong>核心原则</strong>：这个文档的价值不是"看完就知道怎么做 SEO"，而是让你看完以后，<strong>遇到下一个客户时能复用这套思考框架</strong>。SEO 不是套模板，是一系列连续的判断。我希望你看完能学会判断，而不是学会复制。</p>
+</blockquote>
+<hr />
+<h2>一、案例背景：QVeris 是谁，为什么这是个好的实战案例</h2>
+<p>QVeris 是出海 to B 客户，2026 年 4 月 3 日启动 Onboarding，目前合作 3 周，第一次 W1 阶段。</p>
+<p><strong>产品定位</strong>：AI capability routing 平台。用一句话讲就是"给 AI Agent 提供金融数据的中央调度层"——开发者通过 QVeris 的一个 API，可以调用 564 个评估过的金融数据 provider（Polygon、Finnhub、Alpha Vantage 等），覆盖 141 个金融能力（实时行情、公司基本面、宏观指标等）。</p>
+<p><strong>客户对接人</strong>：曲东奇（合伙人/运营），CEO 王林芳负责技术和融资。</p>
+<p><strong>为什么从我们的角度看，这是个有价值的训练案例</strong>：</p>
+<ol>
+<li><strong>典型的出海 to B 冷启动</strong>：种子轮、团队 10-15 人、CEO 没去过硅谷、零品牌认知、需要从零打造海外 SEO 资产</li>
+<li><strong>产品定位还在演化</strong>：从"API 聚合/工具路由"在向"Computer Use 基础设施"或"金融数据 MCP Server"演化——SEO 选词必须配合产品方向</li>
+<li><strong>赛道交叉</strong>：QVeris 横跨 AI Gateway、MCP 生态、金融数据 API 三个赛道，每个赛道的玩法都不一样——这正好让我们能演练"如何在交叉赛道找定位"</li>
+<li><strong>可量化验证</strong>：金融数据 API 是 B2B 高客单产品，KPI 清晰（注册数、API 调用量），SEO 效果可追踪</li>
+</ol>
+<p>更重要的是，<strong>这是一个我们真实在踩坑的案例</strong>。下面记录的不是"我教你怎么做对"，而是"我做了 4 周，前 3 周方向都错了，第 4 周才找到真正能跑通的路径"。</p>
+<hr />
+<h2>二、踩过的坑（按时间顺序的完整事件链）</h2>
+<h3>阶段 1：错误假设期（Week 1）—— 我做错的第一步是没验证</h3>
+<p><strong>当时我在想什么</strong>：</p>
+<p>QVeris 是 AI Routing 平台，对吧？那做 SEO 应该围绕这些词：AI gateway, AI router, multi-agent orchestration, computer use, claude code, MCP server。我让 Claude 帮我推一份 50 页的 how-to 教程列表，覆盖 5 个分类（AI Model Routing / Computer Use / Agent Orchestration / Comparison / Developer Tutorials）。</p>
+<p><strong>我怎么做的</strong>：</p>
+<p>第一周我做了下面这些事，全部基于"假设"而非"验证"：</p>
+<ol>
+<li>让 Claude 生成 50 个 how-to 标题（"How to Route AI Requests to the Best Model Automatically"……）</li>
+<li>用 Claude API 批量生成每页 2500 字的内容，每页都包含 Method 1（DIY）+ Method 2（现有工具）+ Method 3（QVeris）的三层结构</li>
+<li>用 SkillBoss API 给每页生成一张 hero 图</li>
+<li>部署到 seo-doctor.vercel.app（一个独立 Vercel 子域名）</li>
+<li>同时还做了 10 个 Capability 页面（基于 QVeris 自己的能力地图数据）</li>
+</ol>
+<p><strong>60 个页面，5 天上线。</strong></p>
+<p>我那时候还挺得意。心想"批量生产+真实数据嵌入+三层递进结构，应该是高质量 pSEO 了"。</p>
+<p><strong>这第一周的根本错误是什么</strong>：</p>
+<p>我<strong>没有验证任何一个关键词的真实搜索量</strong>。我只是凭直觉觉得"AI gateway 这个词应该有人搜，因为 AI gateway 是个真实概念"。</p>
+<p>但是——"AI gateway"和"How to Route AI Requests to the Best Model Automatically"是两回事。后者是我编出来的句子，可能根本没人搜。</p>
+<h3>阶段 2：发现问题——大罗 SEO 的视角</h3>
+<p>第一周做完后，曲东奇方向没改我也没新需求，我就回头审视自己的产出。这时候我看到大罗 SEO（@daluoseo）发了一条 Twitter，标题是《26 年发布的 AI SEO 工具 却还在用 22 年的优化逻辑》。他批评的是 Replit 的 AI SEO 功能，但他指出的"4 个过时假设"，<strong>我全部踩中了</strong>：</p>
+<ol>
+<li>❌ 发得越多流量越大 —— 我一周上了 60 页</li>
+<li>❌ 看起来像 SEO 就能排 —— 我做了 H1/H2/FAQ/Schema 全套</li>
+<li>❌ 规模可以弥补信息增量不足 —— 我用 Claude 生成内容</li>
+<li>❌ AI 能自动替你完成 SEO 判断 —— 我让 Claude 选词</li>
+</ol>
+<p>我用一个简单脚本检查了一下我做的 50 个页面的相似度：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 检查 Method 2 标题重复</span>
+<span class="m">17</span><span class="w"> </span>个页面用了完全相同的<span class="w"> </span>Method<span class="w"> </span><span class="m">2</span><span class="w"> </span>标题：
+<span class="s2">&quot;Method 2: Existing Tools (OpenRouter / LiteLLM / etc)&quot;</span>
+
+<span class="c1"># 检查 Method 3 标题重复</span>
+<span class="m">23</span><span class="w"> </span>个页面用了完全相同的<span class="w"> </span>Method<span class="w"> </span><span class="m">3</span><span class="w"> </span>标题：
+<span class="s2">&quot;Method 3: QVeris Intelligent Routing&quot;</span>
+
+<span class="c1"># 检查 CTA 文案</span>
+<span class="m">50</span><span class="w"> </span>个页面的<span class="w"> </span>CTA<span class="w"> </span>文案完全一样（只有<span class="w"> </span><span class="m">1</span><span class="w"> </span>种）
+</code></pre></div>
+
+<p>这就是大罗说的"工业化改写"——披着 AI 的皮的传统站群打法。Google 一眼就能识别。</p>
+<p><strong>学到的教训 1</strong>：每页必须有独特价值，不只是 H1 不同。Method 标题、CTA、内容结构、案例都必须不同。否则 Google 会把整批页面识别为低质量复制内容池，整体降权。</p>
+<h3>阶段 3：DataForSEO 验证——残酷的真相</h3>
+<p>我让曲东奇充值了 DataForSEO API（$5 起步够用），然后我把 60 个页面的关键词全部跑了一遍搜索量验证。结果让我倒吸一口冷气：</p>
+<p><strong>79 个关键词中，66 个零搜索，13 个有量。</strong></p>
+<p>具体的：</p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>搜索量/月</th>
+<th>我的判断</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>openrouter alternatives</td>
+<td>480</td>
+<td>还行</td>
+</tr>
+<tr>
+<td>multi agent orchestration</td>
+<td>480</td>
+<td>还行</td>
+</tr>
+<tr>
+<td>stock market data api</td>
+<td>260</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>ai api gateway</td>
+<td>40</td>
+<td>真没人搜</td>
+</tr>
+<tr>
+<td>ai model routing</td>
+<td>20</td>
+<td>真没人搜</td>
+</tr>
+<tr>
+<td>route ai requests to the best model</td>
+<td>0</td>
+<td><strong>我自己编的标题</strong></td>
+</tr>
+<tr>
+<td>manage multiple ai api keys</td>
+<td>0</td>
+<td><strong>我自己编的标题</strong></td>
+</tr>
+<tr>
+<td>build a multi-model ai pipeline</td>
+<td>0</td>
+<td><strong>我自己编的标题</strong></td>
+</tr>
+<tr>
+<td>switch between ai models without code changes</td>
+<td>0</td>
+<td><strong>我自己编的标题</strong></td>
+</tr>
+<tr>
+<td>...（剩下 41 个 how-to 标题）</td>
+<td>全部 0</td>
+<td><strong>全部我自己编的标题</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>我做的 50 个 how-to 教程页，关键词全部是零搜索。</strong></p>
+<p>不是搜索量小——是真的零。Google 数据库里没人这样搜过。</p>
+<p><strong>学到的教训 2</strong>：让 Claude 帮你"想"关键词是危险的。Claude 会写出<strong>听起来像 SEO 关键词的句子</strong>，但句子和关键词是两回事。SEO 关键词是用户真实搜索行为的统计结果，必须用真实搜索数据验证，不能猜。</p>
+<h3>阶段 4：扩展关键词研究——找到真正的金矿</h3>
+<p>OK，既然我自己想的词全错，那就去看真实数据告诉我什么词有量。</p>
+<p>我做了几件事：</p>
+<h4>4.1 围绕 QVeris 的产品赛道做种子词扩展</h4>
+<p>我让 Claude 列出 QVeris 真实涉及的所有赛道：
+- AI Gateway / LLM 路由（核心产品）
+- 金融数据 API（capability map）
+- AI 代理 / Computer Use / MCP（生态依赖）
+- 通用自动化竞品（横向参照）</p>
+<p>然后每个赛道列 25-30 个种子词，全部丢进 DataForSEO 跑搜索量。</p>
+<p><strong>结果</strong>：627 个关键词，603 个有搜索量，98 个月搜 100+。</p>
+<h4>4.2 关键发现：MCP 是被忽视的金矿</h4>
+<table>
+<thead>
+<tr>
+<th>赛道</th>
+<th>总搜索量/月</th>
+<th>代表词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MCP 生态</strong></td>
+<td><strong>130,000+</strong></td>
+<td>mcp server (60,500), claude mcp (5,400), mcp tools (2,400)</td>
+</tr>
+<tr>
+<td>Claude Code 生态</td>
+<td>600,000+</td>
+<td>claude code (368,000), claude code skills (8,100)</td>
+</tr>
+<tr>
+<td>OpenClaw 生态</td>
+<td>175,000+</td>
+<td>openclaw (165,000), clawhub (9,900)</td>
+</tr>
+<tr>
+<td>AI Gateway/Router</td>
+<td>118,000+</td>
+<td>openrouter (90,500), litellm (18,100)</td>
+</tr>
+<tr>
+<td>通用自动化竞品</td>
+<td>72,000+</td>
+<td>composio (60,500), llamaindex (8,100)</td>
+</tr>
+<tr>
+<td>AI + Finance 交叉</td>
+<td>55,000+</td>
+<td>ai trading (12,100), ai trading bot (6,600)</td>
+</tr>
+<tr>
+<td>金融数据 API</td>
+<td>28,000+</td>
+<td>yahoo finance api (3,600), polygon api (1,300)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>我之前根本没把 MCP 和 Claude Code 当成核心赛道</strong>，但数据显示这俩才是真正的大流量池——而且 QVeris 官网就明确支持 MCP Server 和 Claude Code 集成。<strong>我做的 60 页 SEO 里，MCP 相关的页面是 0 个</strong>。</p>
+<p><strong>学到的教训 3</strong>：客户的产品定位经常在演化，SEO 选词必须基于客户产品当前真实支持的能力，不是你脑子里对客户的印象。每接手一个新客户，先把官网每个菜单都点一遍，看清楚他们到底支持什么。</p>
+<h4>4.3 但搜索量大≠值得做（KGR 的引入）</h4>
+<p>到这一步我又掉进了第二个陷阱。我看到 mcp server 有 60,500/月搜索量，立刻兴奋起来——这词 QVeris 一定要做！</p>
+<p>幸好这时候我看到饼干哥哥的 SEO Dashboard 提到了 KGR（Keyword Golden Ratio）：</p>
+<div class="codehilite"><pre><span></span><code>KGR = intitle 结果数 ÷ 月搜索量
+
+KGR &lt; 0.25 → 🟢极好（新站 3 个月内能排上去）
+KGR 0.25-1.0 → 🟡一般（需要好内容+少量外链）
+KGR &gt; 1.0 → 🔴困难（新站不要碰）
+</code></pre></div>
+
+<p>KGR 衡量的是"竞争度"——已经有多少页面在抢这个词。intitle 结果数就是 Google 上有多少页面的标题包含这个词的精确匹配。</p>
+<p>我把 30 个最看好的关键词跑了 KGR：</p>
+<div class="codehilite"><pre><span></span><code><span class="err">🔴困难</span><span class="w"> </span><span class="n">mcp</span><span class="w"> </span><span class="n">server</span><span class="w">          </span><span class="mi">60</span><span class="p">,</span><span class="mi">500</span><span class="w"> </span><span class="n">vol</span><span class="w">  </span><span class="mi">1</span><span class="p">,</span><span class="mi">090</span><span class="p">,</span><span class="mi">000</span><span class="w"> </span><span class="n">intitle</span><span class="w">  </span><span class="n">KGR</span><span class="w"> </span><span class="mf">18.02</span>
+<span class="err">🔴困难</span><span class="w"> </span><span class="n">claude</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="n">skills</span><span class="w">   </span><span class="mi">8</span><span class="p">,</span><span class="mi">100</span><span class="w"> </span><span class="n">vol</span><span class="w">     </span><span class="mi">30</span><span class="p">,</span><span class="mi">300</span><span class="w"> </span><span class="n">intitle</span><span class="w">  </span><span class="n">KGR</span><span class="w">  </span><span class="mf">3.74</span>
+<span class="err">🔴困难</span><span class="w"> </span><span class="n">ai</span><span class="w"> </span><span class="n">trading</span><span class="w"> </span><span class="n">bot</span><span class="w">       </span><span class="mi">6</span><span class="p">,</span><span class="mi">600</span><span class="w"> </span><span class="n">vol</span><span class="w">     </span><span class="mi">48</span><span class="p">,</span><span class="mi">600</span><span class="w"> </span><span class="n">intitle</span><span class="w">  </span><span class="n">KGR</span><span class="w">  </span><span class="mf">7.36</span>
+<span class="err">🔴困难</span><span class="w"> </span><span class="n">financial</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="n">api</span><span class="w">   </span><span class="mi">1</span><span class="p">,</span><span class="mi">300</span><span class="w"> </span><span class="n">vol</span><span class="w">     </span><span class="mi">15</span><span class="p">,</span><span class="mi">500</span><span class="w"> </span><span class="n">intitle</span><span class="w">  </span><span class="n">KGR</span><span class="w"> </span><span class="mf">11.92</span>
+<span class="err">🔴困难</span><span class="w"> </span><span class="n">mcp</span><span class="w"> </span><span class="n">tools</span><span class="w">             </span><span class="mi">2</span><span class="p">,</span><span class="mi">400</span><span class="w"> </span><span class="n">vol</span><span class="w">    </span><span class="mi">190</span><span class="p">,</span><span class="mi">000</span><span class="w"> </span><span class="n">intitle</span><span class="w">  </span><span class="n">KGR</span><span class="w"> </span><span class="mf">79.17</span>
+
+<span class="err">🟢极好</span><span class="w"> </span><span class="n">polygon</span><span class="w"> </span><span class="n">pricing</span><span class="w">       </span><span class="mi">2</span><span class="p">,</span><span class="mi">900</span><span class="w"> </span><span class="n">vol</span><span class="w">           </span><span class="mi">6</span><span class="w"> </span><span class="n">intitle</span><span class="w">  </span><span class="n">KGR</span><span class="w">  </span><span class="mf">0.00</span>
+<span class="err">🟢极好</span><span class="w"> </span><span class="n">mcp</span><span class="w"> </span><span class="n">server</span><span class="w"> </span><span class="n">list</span><span class="w">       </span><span class="mi">1</span><span class="p">,</span><span class="mi">600</span><span class="w"> </span><span class="n">vol</span><span class="w">         </span><span class="mi">274</span><span class="w"> </span><span class="n">intitle</span><span class="w">  </span><span class="n">KGR</span><span class="w">  </span><span class="mf">0.17</span>
+<span class="err">🟢极好</span><span class="w"> </span><span class="n">openrouter</span><span class="w"> </span><span class="n">alternative</span><span class="w">  </span><span class="mi">480</span><span class="w"> </span><span class="n">vol</span><span class="w">          </span><span class="mi">93</span><span class="w"> </span><span class="n">intitle</span><span class="w">  </span><span class="n">KGR</span><span class="w">  </span><span class="mf">0.19</span>
+<span class="err">🟢极好</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="n">vantage</span><span class="w"> </span><span class="n">pricing</span><span class="w">   </span><span class="mi">480</span><span class="w"> </span><span class="n">vol</span><span class="w">           </span><span class="mi">7</span><span class="w"> </span><span class="n">intitle</span><span class="w">  </span><span class="n">KGR</span><span class="w">  </span><span class="mf">0.01</span>
+<span class="err">🟢极好</span><span class="w"> </span><span class="n">stock</span><span class="w"> </span><span class="n">api</span><span class="w"> </span><span class="n">free</span><span class="w">          </span><span class="mi">390</span><span class="w"> </span><span class="n">vol</span><span class="w">           </span><span class="mi">5</span><span class="w"> </span><span class="n">intitle</span><span class="w">  </span><span class="n">KGR</span><span class="w">  </span><span class="mf">0.01</span>
+</code></pre></div>
+
+<p><strong>Polygon Pricing 这个词，月搜索量 2,900，但 intitle 结果只有 6 个！</strong> 这意味着虽然有人搜，但几乎没人写过深度的 Polygon 定价分析页面。这是新站能直接排到前 10 的金矿。</p>
+<p>而 mcp server 这个 60,500 的大词，intitle 是 109 万——任何新站都不可能在这个词上排进前 10 名，3 年内都不可能。</p>
+<p><strong>学到的教训 4</strong>：搜索量和 KGR 必须<strong>双重验证</strong>。光看搜索量会被诱惑去抢大词，结果几年都排不上去；光看 KGR 会找到无人竞争但也无人搜索的死词。两者都要 OK 才值得做。</p>
+<h4>4.4 KGR 验证后的真实可做关键词清单</h4>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>搜索量/月</th>
+<th>KGR</th>
+<th>评级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>polygon pricing</td>
+<td>2,900</td>
+<td>0.00</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>mcp server list</td>
+<td>1,600</td>
+<td>0.17</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>alpha vantage pricing</td>
+<td>480</td>
+<td>0.01</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>openrouter alternative</td>
+<td>480</td>
+<td>0.19</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>langchain alternative</td>
+<td>480</td>
+<td>0.20</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>stock api free</td>
+<td>390</td>
+<td>0.01</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>free stock data api</td>
+<td>260</td>
+<td>0.02</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>litellm alternative</td>
+<td>210</td>
+<td>0.21</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>free financial api</td>
+<td>140</td>
+<td>0.02</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>ai agent for stock trading</td>
+<td>110</td>
+<td>0.06</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>crewai alternative</td>
+<td>90</td>
+<td>0.09</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>composio alternative</td>
+<td>40</td>
+<td>0.05</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>quantconnect alternative</td>
+<td>40</td>
+<td>0.08</td>
+<td>🟢极好</td>
+</tr>
+<tr>
+<td>yahoo finance api alternative</td>
+<td>20</td>
+<td>0.15</td>
+<td>🟢极好</td>
+</tr>
+</tbody>
+</table>
+<p><strong>14 个真正的绿色机会词。</strong> 单个搜索量看起来不大（最大 2,900），但加起来 7,240/月，而且全部 KGR &lt; 0.25，新站 3 个月内能拿到前 10。</p>
+<p>而我之前规划的"50 个 how-to + 10 capability"中，能通过 KGR 检验的只有 2-3 个。</p>
+<h3>阶段 5：从头制定计划——8 周渐进式</h3>
+<p>到这一步，我已经看清楚正确的路径了。我把整个 8 周计划重写：</p>
+<div class="codehilite"><pre><span></span><code>Week 1: 10 页绿色 KGR 词验证期
+   ├── 全部选 KGR &lt; 0.25 的词
+   ├── 每页都嵌入 QVeris 真实数据（564 providers 实测）
+   └── 成功标准：7 天收录率 &gt; 50%
+
+Week 2: 10 页黄色 KGR 词扩展期
+   ├── KGR 0.25-1.0
+   └── 前提：Week 1 收录率 &gt; 50% 才执行
+
+Week 3: 30 页 Provider 定价矩阵
+   ├── 每个 provider 一个定价页（KGR 普遍极低）
+   └── 信息增量：QVeris 实测延迟和成功率
+
+Week 4: 30 页 Alternative 矩阵
+   ├── 直接竞品 alternative 页（高购买意图）
+   └── X vs Y 对比页
+
+Week 5-8: 根据前 4 周表现决定扩展方向
+</code></pre></div>
+
+<p><strong>核心原则</strong>：
+1. 渐进式发布——Week 1 上 10 页验证，确认能收录再扩
+2. 每周固定的失败信号检查（收录率&lt;50% 就暂停）
+3. 信息增量必须来自 QVeris 真实数据，不是 Claude 编</p>
+<p><strong>学到的教训 5</strong>：所有 SEO 计划必须有"失败退出"机制。不是"我要做 280 页"，而是"我先做 10 页，2-3 个月后看数据，再决定是扩大、转向、还是撤退"。Type 1 决策（不可逆的，比如定位）必须慎重；Type 2 决策（可逆的，比如某一页内容）应该快速行动。</p>
+<hr />
+<h2>三、完整的决策框架（这是给客户做 SEO 时你应该用的）</h2>
+<p>把上面的踩坑过程压缩成可复用的框架，就是我们的 SEO 五层 SOP：</p>
+<h3>第 1 层：客户产品诊断（Decision Layer）</h3>
+<p><strong>目标</strong>：用 1-2 小时把客户产品搞清楚，输出"客户 SEO 战略一页纸"。</p>
+<p><strong>10 个标准化问题</strong>（每个新客户都要回答）：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>维度</th>
+<th>选项</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>产品类型</td>
+<td>工具型 SaaS / 内容型 / 平台型 / 数据型 / 服务型</td>
+</tr>
+<tr>
+<td>2</td>
+<td>主要用户</td>
+<td>开发者 / 业务/营销 / 消费者(2C) / 企业采购 / 多角色</td>
+</tr>
+<tr>
+<td>3</td>
+<td>付费阈值</td>
+<td>免费 / &lt;$100/月 / &gt;$1K/月 / 企业单 / 交易分成</td>
+</tr>
+<tr>
+<td>4</td>
+<td>主要搜索意图</td>
+<td>信息型(how-to) / 对比型(vs) / 交易型(buy) / 导航型(品牌)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>赛道阶段</td>
+<td>蓝海新赛道 / 红海大厂混战 / 有明确竞品 / 品牌词为主</td>
+</tr>
+<tr>
+<td>6</td>
+<td>独家信息增量</td>
+<td>这个产品有什么数据/案例/算法/集成是竞品没有的？</td>
+</tr>
+<tr>
+<td>7</td>
+<td>产品体验门槛</td>
+<td>直接用(无注册) / 需要注册 / 需要对接/API Key</td>
+</tr>
+<tr>
+<td>8</td>
+<td>地域/语言</td>
+<td>英文为主 / 中文为主 / 中英双语 / 多语言</td>
+</tr>
+<tr>
+<td>9</td>
+<td>产品迭代速度</td>
+<td>周级(快) / 月级 / 季度级(慢)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>流量期望时间</td>
+<td>3 个月见效 / 6 个月 / 1 年长线</td>
+</tr>
+</tbody>
+</table>
+<p><strong>重点是第 6 个</strong>：独家信息增量。如果一个客户<strong>没有任何独家数据</strong>，SEO 是做不动的。Google 现在不奖励"重新组织已有信息"的页面。</p>
+<p>QVeris 的独家信息增量是：<strong>564 个金融数据 provider 的实测延迟、成功率、价格数据</strong>。这是别人没有的，所以我们做的每页对比都比竞品对比文有信息增量。</p>
+<p>但如果你接到一个客户，发现他们没有任何独家数据——你必须先帮他们<strong>积累信息增量</strong>，再做 SEO。否则就是在水池里浇水。</p>
+<h3>第 2 层：关键词研究（Execution Layer，工具化）</h3>
+<p><strong>工具</strong>：DataForSEO API（$5/月够用）</p>
+<p><strong>步骤</strong>：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Step 1: 列出种子词</span>
+<span class="c1"># 围绕客户产品的 4-6 个赛道，每个赛道 25-30 个词</span>
+<span class="c1"># 包括：核心功能词、竞品品牌词、长尾应用场景词</span>
+
+<span class="c1"># Step 2: 批量查搜索量</span>
+<span class="n">POST</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">dataforseo</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">v3</span><span class="o">/</span><span class="n">keywords_data</span><span class="o">/</span><span class="n">google_ads</span><span class="o">/</span><span class="n">search_volume</span><span class="o">/</span><span class="n">live</span>
+<span class="p">[{</span><span class="s2">&quot;keywords&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">...</span><span class="p">],</span> <span class="s2">&quot;language_code&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;location_code&quot;</span><span class="p">:</span> <span class="mi">2840</span><span class="p">}]</span>
+
+<span class="c1"># Step 3: 过滤</span>
+<span class="n">volumes</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">v</span> <span class="o">=&gt;</span> <span class="n">v</span><span class="o">.</span><span class="n">volume</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># 没搜索量的直接 pass</span>
+
+<span class="c1"># Step 4: 批量跑 KGR</span>
+<span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">volumes</span><span class="p">:</span>
+    <span class="n">intitle</span> <span class="o">=</span> <span class="n">SERP_API</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;intitle:&quot;</span><span class="si">{</span><span class="n">keyword</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span>
+    <span class="n">kgr</span> <span class="o">=</span> <span class="n">intitle</span> <span class="o">/</span> <span class="n">volume</span>
+
+<span class="c1"># Step 5: 评级</span>
+<span class="n">kgr</span> <span class="o">&lt;</span> <span class="mf">0.25</span> <span class="err">→</span> <span class="err">🟢</span> <span class="n">优先做</span>
+<span class="n">kgr</span> <span class="mf">0.25</span><span class="o">-</span><span class="mf">1.0</span> <span class="err">→</span> <span class="err">🟡</span> <span class="n">配合外链才做</span>
+<span class="n">kgr</span> <span class="o">&gt;</span> <span class="mf">1.0</span> <span class="err">→</span> <span class="err">🔴</span> <span class="n">不做</span>
+</code></pre></div>
+
+<p><strong>项目里已有的脚本</strong>：
+- <code>verify-keywords.js</code> —— 批量查搜索量
+- <code>kgr-check.js</code> —— 批量跑 KGR
+- 脚本路径：<code>C:/Users/langh/OneDrive/Desktop/claude code/qveris-seo/</code></p>
+<p><strong>给团队的硬规则</strong>：每个客户的 SEO 计划开始前，<strong>必须先跑 100+ 关键词的 DataForSEO 验证</strong>。不允许用直觉选词。这是不可妥协的红线。</p>
+<h3>第 3 层：定位决策（Decision Layer，需要你/我判断）</h3>
+<p><strong>这是唯一不能完全 scale 的环节</strong>。基于 Layer 1+2 的数据，做出"做哪类页面、不做哪类"的决策。</p>
+<p>决策规则（从 QVeris 项目沉淀的）：</p>
+<div class="codehilite"><pre><span></span><code><span class="k">IF</span><span class="w"> </span>搜索意图<span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;交易型(buy)&quot;</span><span class="w"> </span><span class="nv">AND</span><span class="w"> </span><span class="nv">KGR</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span>.<span class="mi">25</span>:
+<span class="w">    </span>→<span class="w"> </span>优先做<span class="w"> </span><span class="nv">Alternative</span><span class="w"> </span>页<span class="w"> </span><span class="o">/</span><span class="w"> </span>对比页<span class="w"> </span><span class="o">/</span><span class="w"> </span>定价页（购买意图最强）
+
+<span class="nv">ELIF</span><span class="w"> </span>搜索意图<span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;信息型(how-to)&quot;</span><span class="w"> </span><span class="nv">AND</span><span class="w"> </span><span class="nv">KGR</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span>.<span class="mi">25</span><span class="w"> </span><span class="nv">AND</span><span class="w"> </span>搜索量<span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span>:
+<span class="w">    </span>→<span class="w"> </span>次优做<span class="w"> </span>概念解释页<span class="w"> </span><span class="o">/</span><span class="w"> </span>列表页
+
+<span class="nv">ELIF</span><span class="w"> </span><span class="nv">KGR</span><span class="w"> </span>在<span class="w"> </span><span class="mi">0</span>.<span class="mi">25</span><span class="o">-</span><span class="mi">1</span>.<span class="mi">0</span><span class="w"> </span><span class="nv">AND</span><span class="w"> </span>搜索量<span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">500</span>:
+<span class="w">    </span>→<span class="w"> </span>需要好内容<span class="o">+</span>外链才做（不是优先级）
+
+<span class="nv">ELIF</span><span class="w"> </span><span class="nv">KGR</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span>.<span class="mi">0</span>:
+<span class="w">    </span>→<span class="w"> </span>直接<span class="w"> </span><span class="nv">pass</span>，不浪费时间
+</code></pre></div>
+
+<p><strong>输出</strong>：每个客户一份"关键词执行优先级清单"，包括：
+- Top 10 必做关键词（KGR 极好）
+- Top 20 次要关键词（KGR 一般）
+- Pass 列表（KGR 困难，3 个月内不碰）</p>
+<h3>第 4 层：内容生产（半工具化）</h3>
+<p><strong>模板可以共享，但每页的"独特信息增量"必须 custom</strong>。</p>
+<p><strong>模板部分</strong>（所有客户共用）：
+- HTML 结构
+- Schema markup（FAQ、HowTo、SoftwareApplication）
+- 内链规则（每页 3-5 条相关内链）
+- CTA 框架</p>
+<p><strong>Custom 部分</strong>（每个客户必须自己产出）：
+- 独家数据（QVeris 是 564 provider 实测；其他客户必须有自己的独家数据）
+- 真实案例
+- 客户视角的痛点描述（不是 AI 编的"通用痛点"）
+- CTA 文案（每类页面要不一样，不能 50 页都是"试用 QVeris"）</p>
+<p><strong>质量底线</strong>（来自 Kostja 的 4 条 + 大罗的补充）：</p>
+<ol>
+<li>✅ 唯一的 Title + Meta（不能用同一个模板标题）</li>
+<li>✅ 非通用的正文（每页必须有该页独有的数据）</li>
+<li>✅ 可追溯的事实（数据有来源，能链接到原始资料）</li>
+<li>✅ 明确的 CTA（不是信息死胡同）</li>
+<li>✅ 前 400 词包含核心结论（AI 搜索只读 377 词）</li>
+<li>✅ 至少 3 个具体统计数据（GEO 优化 +37% 可见性）</li>
+<li>✅ 至少 1 个权威引用 + 出站链接（GEO 优化 +40% 可见性）</li>
+</ol>
+<p><strong>差异化硬指标</strong>：任意两个页面的相似度必须 &lt; 30%（用 TF-IDF 或 embedding 计算）。<strong>Build 前要跑相似度检测脚本，&gt; 30% 的页面阻断部署。</strong></p>
+<h3>第 5 层：监控与优化（完全工具化）</h3>
+<p><strong>每周监控</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>目标</th>
+<th>不达标的处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7 天收录率</td>
+<td>&gt; 60%</td>
+<td>降速到 20 页/周，加大外链建设</td>
+</tr>
+<tr>
+<td>crawled-not-indexed</td>
+<td>&lt; 15%</td>
+<td>检查内容质量，合并相似页面</td>
+</tr>
+<tr>
+<td>KGR &lt; 0.25 词的排名</td>
+<td>2 周内进前 50</td>
+<td>增加外链，优化 On-page</td>
+</tr>
+</tbody>
+</table>
+<p><strong>每月检查</strong>：
+- 有排名（前 100）的页面数 / 总页面数 → 应该 &gt; 50%
+- 前 20 名关键词数 → 月增 20+
+- 搜索流量 → 月增 300%+</p>
+<p><strong>关键决策点</strong>：
+- 每 2 周一次"扩量 / 暂停 / 转向"决策
+- 决策必须基于数据，不是直觉</p>
+<hr />
+<h2>四、给团队的具体执行指导</h2>
+<h3>4.1 当你拿到一个新客户，第一周做什么</h3>
+<p><strong>Day 1（半天）</strong>：客户产品研究
+- 把客户官网每个菜单都点一遍，记录他们真实支持什么
+- 看客户的 Twitter/LinkedIn，了解定位和叙事
+- 看客户的 GitHub 或 Docs（如果有），了解技术栈
+- <strong>重点</strong>：他们的"独家信息增量"是什么？把它写在一句话里</p>
+<p><strong>Day 1（半天）</strong>：Onboarding 会议
+- 用 10 维诊断问卷过一遍
+- 重点确认搜索意图和付费模式
+- 让客户给 5 个他认为的"必做关键词"——之后我们会用 DataForSEO 验证</p>
+<p><strong>Day 2（一整天）</strong>：关键词研究
+- 围绕客户的 4-6 个赛道列种子词（每赛道 25-30 个）
+- 跑 DataForSEO 搜索量
+- 挑出有量的（&gt;100）
+- 跑 KGR
+- 输出：Top 10 必做 + Top 20 次要 + 失败列表</p>
+<p><strong>Day 3（半天）</strong>：竞品分析
+- 用 DataForSEO ranked_keywords API 拉取 5 个主要竞品的 SEO 关键词
+- 看哪些词竞品已经在排名，哪些是空白
+- 输出：竞品对照矩阵</p>
+<p><strong>Day 4（一整天）</strong>：定位决策 + 第一周计划
+- 跟我（郎瀚威）或资深成员一起做 Layer 3 决策
+- 决定第一周做哪 10 页
+- 准备每页的独特信息增量来源</p>
+<p><strong>Day 5（一整天）</strong>：第一周内容生产
+- 用 Claude API 批量生成
+- 跑相似度检测
+- 部署 + 提交 GSC</p>
+<h3>4.2 内容生产的具体规则</h3>
+<p><strong>❌ 不要做的事</strong>：</p>
+<ol>
+<li>不要让 Claude 帮你"想"关键词——它会编出听起来像但没人搜的句子</li>
+<li>不要批量用同一个 prompt 生成 50 页——内容会高度雷同</li>
+<li>不要用 Claude 生成"通用痛点描述"——Google 能识别这种模板内容</li>
+<li>不要在没确认 KGR 的情况下做大词</li>
+<li>不要一次性发布 50+ 页面——必须渐进式</li>
+<li>不要跳过 GSC 提交——AI 写的内容如果不主动提交，可能永远不被收录</li>
+<li>不要用同一个 CTA 文案在所有页面上——这是被识别为"批量内容"的信号</li>
+</ol>
+<p><strong>✅ 必须做的事</strong>：</p>
+<ol>
+<li>每页必须有该页独有的数据/案例</li>
+<li>每页前 400 词必须包含核心结论（不要把精华埋在第 3 段以后）</li>
+<li>每页至少 3 个具体统计数据，至少 1 个权威引用</li>
+<li>每页 H2/H3 结构要不同（不能 50 页都是 Method 1/2/3）</li>
+<li>每页 CTA 文案要根据页面类型变化</li>
+<li>Build 前跑相似度检测，&gt;30% 阻断</li>
+<li>部署后立即 GSC 提交 sitemap + 手动请求索引前 5 个页面</li>
+<li>部署后 24 小时内在 Reddit/HN 推广 2-3 个最重要页面（加速收录）</li>
+</ol>
+<h3>4.3 KGR 验证的执行细节</h3>
+<p><strong>步骤</strong>：</p>
+<ol>
+<li>拿到 50-100 个种子关键词，跑 DataForSEO 搜索量</li>
+<li>过滤掉零搜索的</li>
+<li>剩下的按搜索量降序排列</li>
+<li>从前 30 个开始跑 KGR（用 SERP API 查 <code>intitle:"keyword"</code> 的结果数）</li>
+<li>每个 KGR 查询要等 1.5 秒（rate limit）</li>
+<li>记录到 CSV</li>
+</ol>
+<p><strong>KGR 解读</strong>：</p>
+<div class="codehilite"><pre><span></span><code>KGR &lt; 0.10  → 🟢💎 极少竞争（必做）
+KGR 0.10-0.25 → 🟢 低竞争（必做）
+KGR 0.25-0.5  → 🟡 中等竞争（要好内容）
+KGR 0.5-1.0   → 🟡 较高竞争（需要外链配合）
+KGR &gt; 1.0     → 🔴 高竞争（新站不碰）
+KGR &gt; 5.0     → 🔴 极高竞争（除非有大量外链否则不可能）
+</code></pre></div>
+
+<p><strong>特殊情况</strong>：</p>
+<ul>
+<li>搜索量很小但 KGR 也极小（比如搜索量 20，intitle 3）：这是 long-tail gold，可以做但不要花太多精力</li>
+<li>搜索量极大（10K+）但 KGR &gt; 5：千万不要做。这是 trap——大词背后有 Wikipedia/官方文档/大厂博客在排名，新站完全没机会</li>
+</ul>
+<h3>4.4 失败信号的识别和处理</h3>
+<p><strong>信号 1：3 个月后大部分词都没排进前 100</strong>
+→ <strong>可能问题</strong>：定位错了
+→ <strong>处理</strong>：回到 Layer 1 重新诊断，可能客户的真实用户和我们假设的不一样</p>
+<p><strong>信号 2：被 Google 收录但没排名</strong>
+→ <strong>可能问题</strong>：KGR 估算错了，词的真实竞争比 KGR 显示的高
+→ <strong>处理</strong>：跑前 10 名页面的 DR/外链分析，看是不是大厂占位</p>
+<p><strong>信号 3：有排名但点击率极低</strong>
+→ <strong>可能问题</strong>：搜索意图错了，用户搜这个词其实想要别的
+→ <strong>处理</strong>：重新看 SERP，看排名前 5 的页面是什么类型，调整内容方向</p>
+<p><strong>信号 4：有点击但没注册转化</strong>
+→ <strong>可能问题</strong>：用户画像错了
+→ <strong>处理</strong>：可能我们以为是开发者，其实是学生；或者付费意愿不在我们想的那个点上</p>
+<p>每种失败都有明确的诊断和回滚机制。<strong>最坏情况只是浪费 10 页的工作（3-5 天），不是 6 个月</strong>。这就是 MVP 验证的价值。</p>
+<hr />
+<h2>五、QVeris 项目沉淀的工具和资产</h2>
+<p>下面这些工具都在 <code>C:/Users/langh/OneDrive/Desktop/claude code/</code> 目录下，<strong>任何客户都能复用</strong>：</p>
+<h3>5.1 工具脚本</h3>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>路径</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>关键词搜索量批量查询</td>
+<td><code>qveris-seo/verify-keywords.js</code></td>
+<td>DataForSEO API 批量查搜索量</td>
+</tr>
+<tr>
+<td>KGR 竞争度批量查询</td>
+<td><code>qveris-seo/kgr-check.js</code></td>
+<td>DataForSEO SERP API 跑 intitle</td>
+</tr>
+<tr>
+<td>关键词研究扩展</td>
+<td><code>qveris-seo/research-keywords.js</code></td>
+<td>多赛道种子词扩展</td>
+</tr>
+<tr>
+<td>内容批量生成</td>
+<td><code>qveris-seo/generate-cap-content.js</code></td>
+<td>Claude API 生成结构化内容</td>
+</tr>
+<tr>
+<td>HTML 构建</td>
+<td><code>qveris-seo/build-html.js</code></td>
+<td>生成静态 HTML 页面</td>
+</tr>
+<tr>
+<td>图片生成</td>
+<td><code>qveris-seo/generate-images.js</code></td>
+<td>SkillBoss API 生成 hero 图</td>
+</tr>
+</tbody>
+</table>
+<h3>5.2 SEO Doctor 工具</h3>
+<p>我做了一个交互式诊断工具，部署在 <strong>https://seo-doctor.vercel.app</strong>：</p>
+<p>输入客户网址 → AI 自动抓取 → 10 维诊断 → 对话追问 → DataForSEO 关键词验证 → KGR 竞争度分析 → 生成 4 周执行计划。</p>
+<p><strong>这是 Layer 1-3 的自动化工具</strong>。任何团队成员拿到新客户，先用这个工具跑一遍，再人工 review。</p>
+<h3>5.3 文档资产</h3>
+<table>
+<thead>
+<tr>
+<th>文档</th>
+<th>路径</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8 周执行计划模板</td>
+<td><code>qveris-seo/PLAN-8weeks.md</code></td>
+<td>8 周渐进式发布的标准模板</td>
+</tr>
+<tr>
+<td>关键词数据库</td>
+<td><code>qveris-seo/data/keyword-research.json</code></td>
+<td>627 个 AI/Finance 赛道关键词</td>
+</tr>
+<tr>
+<td>KGR 验证结果</td>
+<td><code>qveris-seo/data/kgr-results.json</code></td>
+<td>60+ 关键词的 KGR 数据</td>
+</tr>
+<tr>
+<td>决策日志</td>
+<td><code>qveris-seo/QVeris-SEO实战决策日志.md</code></td>
+<td>（本文档）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>六、错误案例库（不要再犯的错）</h2>
+<h3>错误 1：批量生成关键词清单不验证</h3>
+<p><strong>犯错场景</strong>：让 Claude 帮我列了 50 个 how-to 标题，没验证就开始写
+<strong>结果</strong>：50 个全部零搜索
+<strong>正确做法</strong>：所有关键词必须先过 DataForSEO 验证。<strong>没有数据支撑的关键词不允许进入内容生产环节。</strong></p>
+<h3>错误 2：50 个页面用同一个 Method 模板</h3>
+<p><strong>犯错场景</strong>：让 Claude 用同一个 prompt 生成 50 页，结果 17 个页面 Method 2 标题完全一样
+<strong>结果</strong>：Google 会把整批页面识别为"工业化改写"
+<strong>正确做法</strong>：Build 前跑相似度检测脚本，相似度 &gt; 30% 阻断部署。或者每批 10 页用不同的 prompt 模板。</p>
+<h3>错误 3：50 个 CTA 文案完全一样</h3>
+<p><strong>犯错场景</strong>：所有 50 个页面 CTA 都是"试用 QVeris 免费版"
+<strong>结果</strong>：被 Google 识别为"低质量批量内容"的强信号
+<strong>正确做法</strong>：根据页面类型差异化 CTA。<strong>对比页</strong>："看完整 564 provider 评测"；<strong>定价页</strong>："对比 QVeris 的实际成本"；<strong>教程页</strong>："立即试用 QVeris MCP Server"</p>
+<h3>错误 4：抢搜索量大但 KGR 极高的词</h3>
+<p><strong>犯错场景</strong>：看到 mcp server 60,500 搜索量，立刻规划 Pillar Page
+<strong>结果</strong>：intitle 109 万，新站 3 年都排不上去
+<strong>正确做法</strong>：搜索量和 KGR 必须双重验证。新站<strong>只</strong>做 KGR &lt; 0.25 的词。</p>
+<h3>错误 5：一次性上线 50+ 页面</h3>
+<p><strong>犯错场景</strong>：一周做完 60 页，全部 deploy
+<strong>结果</strong>：Google 爬虫预算分配不过来，大部分页面 crawled-not-indexed
+<strong>正确做法</strong>：渐进式发布，Week 1 上 10 页验证，等收录率 &gt; 60% 再扩大。</p>
+<h3>错误 6：忘记提交 GSC 和外链建设</h3>
+<p><strong>犯错场景</strong>：60 页部署完就以为结束了
+<strong>结果</strong>：30 天后只有 5 页被收录
+<strong>正确做法</strong>：部署后必做：
+1. GSC 提交 sitemap
+2. 手动请求索引前 5 个最重要页面
+3. 提交到 ProductHunt / G2 / AlternativeTo / Capterra（外链冷启动）
+4. 在 Reddit / HN 发 2-3 个有价值的讨论帖（含页面链接）</p>
+<h3>错误 7：用 AI 写"通用痛点"</h3>
+<p><strong>犯错场景</strong>：让 Claude 编写"开发者面对多 vendor 的痛苦"
+<strong>结果</strong>：和其他 100 个 SEO 文章读起来一模一样
+<strong>正确做法</strong>：痛点必须来自客户的真实用户访谈或客户内部数据。如果没有，就先去 Reddit/Twitter 看真实的用户吐槽，提炼出来。</p>
+<hr />
+<h2>七、给团队的最后建议</h2>
+<h3>7.1 心态：SEO 是判断的艺术，不是执行的体力活</h3>
+<p>大罗的原话：<strong>"AI 牛逼的地方是快速把行业公开经验整合，对小白入门到平均水平是神器。但想精进就会发现 AI 答案趋向于平庸。"</strong></p>
+<p>你的判断力比你的执行力值钱 10 倍。如果你只会用 Claude 批量生成内容，你的工作 6 个月内会被自动化淘汰。但如果你能做关键词战略判断、产品定位判断、信息增量判断——这些能力 5 年都不会贬值。</p>
+<h3>7.2 学习路径</h3>
+<p><strong>第一周</strong>：
+- 把这份文档完整读一遍
+- 把 SEO Dashboard (<code>seo-dashboard-plum.vercel.app</code>) 的全部内容读一遍
+- 把 QVeris 项目的脚本代码看一遍（重点看 <code>verify-keywords.js</code> 和 <code>kgr-check.js</code>）</p>
+<p><strong>第二周</strong>：
+- 选一个不重要的小客户，用我们的 SOP 跑一遍（从诊断到 Week 1 计划）
+- 跑完和我对一次，看你的判断和我的判断差距在哪
+- 修正你的认知</p>
+<p><strong>第三周</strong>：
+- 独立完成一个客户的诊断+关键词研究+Week 1 计划
+- 我只做最终 review，不参与决策</p>
+<p><strong>第四周</strong>：
+- 你能独立做完整的 SEO 项目
+- 开始指导别的同事</p>
+<h3>7.3 红线规则（不允许触碰）</h3>
+<ol>
+<li>❌ <strong>不允许跳过 DataForSEO 关键词验证</strong>——任何关键词都必须有数据支撑</li>
+<li>❌ <strong>不允许跳过 KGR 检验</strong>——只做 KGR &lt; 1.0 的词</li>
+<li>❌ <strong>不允许批量生成相似页面</strong>——任意两页相似度 &gt; 30% 必须重写</li>
+<li>❌ <strong>不允许一次性上线 30+ 页面</strong>——必须渐进式</li>
+<li>❌ <strong>不允许用 AI 生成"通用痛点"</strong>——必须有真实数据/案例</li>
+<li>❌ <strong>不允许跳过 GSC 提交和外链建设</strong>——内容做完不等于结束</li>
+</ol>
+<h3>7.4 必读外部资源</h3>
+<table>
+<thead>
+<tr>
+<th>资源</th>
+<th>链接/位置</th>
+<th>必读章节</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大罗 SEO Twitter</td>
+<td>@daluoseo</td>
+<td>全部置顶推文</td>
+</tr>
+<tr>
+<td>Kostja Programmatic SEO 指南</td>
+<td>Alignify 官网</td>
+<td>三层架构、5 通道外链</td>
+</tr>
+<tr>
+<td>哥飞 SEO 教程</td>
+<td>Twitter @gefei55</td>
+<td>SEO 六步法、4:2:4 时间分配</td>
+</tr>
+<tr>
+<td>饼干哥哥 GEO 系列</td>
+<td>4 篇深度文章</td>
+<td>三层叠加、统计数据注入</td>
+</tr>
+<tr>
+<td>AISEO Dashboard</td>
+<td>seo-dashboard-plum.vercel.app</td>
+<td>全部 9 种 pSEO 类型</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>八、结束语：从 QVeris 项目我学到的最深一课</h2>
+<p>最深一课不是某个具体技巧，而是：</p>
+<p><strong>SEO 不是一次性项目，是一个持续的判断游戏。</strong></p>
+<p>我们一开始觉得"做 60 页就完了"，后来发现这 60 页全部走错路。但<strong>这不是失败</strong>——这是必经的学习过程。任何一个客户的第一批内容有 80% 都会被推翻重做。关键不是一开始就做对，而是：</p>
+<ol>
+<li><strong>快速做小样本</strong>（10 页验证）</li>
+<li><strong>快速看数据</strong>（2-4 周收录率）</li>
+<li><strong>快速调整方向</strong>（数据不达标立刻改）</li>
+</ol>
+<p>不要害怕做错。害怕的应该是"做错了还在大规模执行"。</p>
+<p>我们这次踩的所有坑，都不是因为我们笨——而是因为我们没用真实数据驱动决策。一旦接入了 DataForSEO 和 KGR 这套工具链，前面所有的"凭直觉"都被替换成了"凭数据"。然后所有的判断都开始变得明确。</p>
+<p><strong>这就是为什么我说 SEO 是判断的艺术</strong>：不是你比别人勤奋，是你比别人更早地用数据替换了直觉。</p>
+<p>希望你看完这份文档后，下一次接客户时不需要踩同样的坑。我们的 SOP 就是这些坑的浓缩。</p>
+<hr />
+<p><strong>文档版本</strong>：v1.0
+<strong>最后更新</strong>：2026-04-19
+<strong>作者</strong>：郎瀚威 (@hanweilang)
+<strong>修订记录</strong>：
+- v1.0 (2026-04-19) - 基于 QVeris 项目第 1-3 周经验整理初版</p>
+<hr />
+<h2>附录 A：常用 DataForSEO API 调用模板</h2>
+<h3>A.1 批量查搜索量</h3>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Basic &lt;BASE64&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;[{</span>
+<span class="s1">    &quot;keywords&quot;: [&quot;keyword1&quot;, &quot;keyword2&quot;, ...],</span>
+<span class="s1">    &quot;language_code&quot;: &quot;en&quot;,</span>
+<span class="s1">    &quot;location_code&quot;: 2840</span>
+<span class="s1">  }]&#39;</span>
+</code></pre></div>
+
+<p>每次请求 $0.075，可一次查 700 个关键词。</p>
+<h3>A.2 跑 KGR</h3>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;https://api.dataforseo.com/v3/serp/google/organic/live/advanced&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Basic &lt;BASE64&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;[{</span>
+<span class="s1">    &quot;keyword&quot;: &quot;intitle:\&quot;your keyword\&quot;&quot;,</span>
+<span class="s1">    &quot;location_code&quot;: 2840,</span>
+<span class="s1">    &quot;language_code&quot;: &quot;en&quot;,</span>
+<span class="s1">    &quot;device&quot;: &quot;desktop&quot;,</span>
+<span class="s1">    &quot;depth&quot;: 10</span>
+<span class="s1">  }]&#39;</span>
+</code></pre></div>
+
+<p>每次请求 $0.013，可读取 <code>result[0].se_results_count</code> 作为 intitle 数。</p>
+<h3>A.3 拉竞品排名词</h3>
+<div class="codehilite"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;https://api.dataforseo.com/v3/dataforseo_labs/google/ranked_keywords/live&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Basic &lt;BASE64&gt;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;[{</span>
+<span class="s1">    &quot;target&quot;: &quot;competitor.com&quot;,</span>
+<span class="s1">    &quot;language_code&quot;: &quot;en&quot;,</span>
+<span class="s1">    &quot;location_code&quot;: 2840,</span>
+<span class="s1">    &quot;limit&quot;: 100,</span>
+<span class="s1">    &quot;order_by&quot;: [&quot;keyword_data.keyword_info.search_volume,desc&quot;]</span>
+<span class="s1">  }]&#39;</span>
+</code></pre></div>
+
+<p>每次 $0.013，看竞品在哪些词上排名。</p>
+<hr />
+<h2>附录 B：客户启动会议 Checklist</h2>
+<p>接到新客户后第一次会议必问：</p>
+<ul>
+<li>[ ] 你的产品一句话定义是什么？</li>
+<li>[ ] 你的目标客户是谁？（具体到角色、行业、规模）</li>
+<li>[ ] 你的付费用户和免费用户的画像有什么不同？</li>
+<li>[ ] 你的产品有什么独家数据/能力/集成？</li>
+<li>[ ] 你最大的 3 个竞品是谁？</li>
+<li>[ ] 你希望 SEO 在 3/6/12 个月分别带来什么？</li>
+<li>[ ] 你的产品最近 3 个月有什么大的变化？未来 3 个月计划什么变化？</li>
+<li>[ ] 你能给我 5 个你认为"必须排在 Google 第一"的关键词吗？（之后用 DataForSEO 验证）</li>
+<li>[ ] 你的网站现在有哪些已经 indexed 的页面？（用 <code>site:domain.com</code> 查）</li>
+<li>[ ] 你有 GSC 权限吗？能给我吗？</li>
+<li>[ ] 你愿意配合做哪些事？（产出案例、提供数据、提供专家访谈）</li>
+</ul>
+<hr />
+<p><strong>完。</strong></p>
+    </div>
+</body>
+</html>

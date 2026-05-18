@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给 Coco AI 做 SEO：完整决策手册</title>
+    <style>
+:root {
+    --bg: #fafafa;
+    --text: #1a1a1a;
+    --text-secondary: #555;
+    --border: #e2e2e2;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --code-bg: #f0f0f0;
+    --table-stripe: #f7f7f7;
+    --blockquote-border: #2563eb;
+    --blockquote-bg: #f5f7fa;
+    --max-width: 860px;
+    --radius: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+/* Navigation bar */
+.nav-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+.nav-bar a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.nav-bar a:hover { text-decoration: underline; }
+
+/* Headings */
+h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0.4em 0 0.3em;
+    letter-spacing: -0.02em;
+    color: #111;
+}
+h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 2em 0 0.6em;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+}
+h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 1.5em 0 0.5em;
+    color: #333;
+}
+h4 {
+    font-size: 1.05em;
+    font-weight: 600;
+    margin: 1.2em 0 0.4em;
+    color: #444;
+}
+
+/* Paragraphs */
+p { margin: 0.8em 0; }
+
+/* Blockquote */
+blockquote {
+    margin: 1.2em 0;
+    padding: 16px 20px;
+    border-left: 4px solid var(--blockquote-border);
+    background: var(--blockquote-bg);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: #444;
+}
+blockquote p { margin: 0.4em 0; }
+blockquote strong { color: #1a1a1a; }
+
+/* Code */
+code {
+    font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.88em;
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #d63384;
+}
+pre {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 1.2em 0;
+    line-height: 1.6;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: 0.85em;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2em 0;
+    font-size: 0.95em;
+}
+thead { background: #f0f3f8; }
+th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #555;
+}
+td {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+
+/* Lists */
+ul, ol { margin: 0.6em 0 0.6em 1.5em; }
+li { margin: 0.3em 0; }
+li > ul, li > ol { margin: 0.2em 0 0.2em 1.5em; }
+
+/* Links */
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Horizontal rule */
+hr {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 2.5em 0;
+}
+
+/* Strong / emphasis */
+strong { color: #111; font-weight: 600; }
+
+/* Header metadata block (first blockquote) */
+blockquote:first-of-type {
+    background: linear-gradient(135deg, #f0f5ff 0%, #fafafe 100%);
+    border-left-color: var(--accent);
+    font-size: 0.95em;
+}
+blockquote:first-of-type strong { color: var(--accent); }
+
+/* Responsive */
+@media (max-width: 640px) {
+    .container { padding: 24px 16px 60px; }
+    h1 { font-size: 1.6em; }
+    h2 { font-size: 1.25em; }
+    h3 { font-size: 1.1em; }
+    table { font-size: 0.82em; }
+    th, td { padding: 8px 10px; }
+    pre { padding: 16px; }
+}
+
+/* Print */
+@media print {
+    body { background: #fff; }
+    .nav-bar { display: none; }
+    .container { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="../">← 返回导航页</a>
+    </nav>
+    <div class="container">
+<h1>给 Coco AI 做 SEO：完整决策手册</h1>
+<blockquote>
+<p>内部文档 · v1 · 2026-04-15
+受众：AIWatch 团队成员
+目的：把"为 Coco 做 SEO"这件事的<strong>全部假设、推断、判断和步骤</strong>讲清楚,让任何接手的同事能复现、能改、能扩展到下一个客户</p>
+</blockquote>
+<hr />
+<h2>0. TL;DR(60 秒读完)</h2>
+<p>我们为 Coco AI(coco.xyz)生产了 <strong>14 个 SEO 落地页</strong>,部署在 https://coco-seo.vercel.app/cases/。</p>
+<ul>
+<li><strong>结构</strong>:10 个真实客户场景页 + 4 个产品/理念页</li>
+<li><strong>方法论参考</strong>:高手网站 SEO 分析库(seo-wiki)、Simular.ai 三层递进模板、Coco 联创 Charlie 直接确认的案例边界</li>
+<li><strong>核心交付物</strong>:<code>coco-seo/</code> 项目(数据驱动 + 模板引擎 + 一键 Vercel 部署)</li>
+<li><strong>总开发耗时</strong>:约 3 小时(含两次方向性返工)</li>
+<li><strong>可复用度</strong>:技术骨架可直接套到下一个客户(改 <code>data/pages.js</code> + <code>build.js</code> 的品牌字符串即可)</li>
+</ul>
+<p><strong>最重要的一条经验</strong>:<strong>你以为你了解客户,你大概率不了解。在动笔之前,把"产品定位"从客户嘴里逼出来,而不是从会议记录里推断。</strong> 我在这次任务里因为没做这一步,返工了一次。</p>
+<hr />
+<h2>1. 任务背景</h2>
+<h3>1.1 客户是谁</h3>
+<p>Coco AI(coco.xyz),新加坡注册,2025 年 3 月成立。</p>
+<ul>
+<li>联创:Charlie Hu(增长/BD,前 Polygon 亚太)+ Kevin He(CEO/CTO,前火币高级技术总监)</li>
+<li>现役会议数:8 次(截至 2026-04-15),累计 TOP3 现役客户</li>
+<li>母公司 Blayer 融资 2500 万美金(Franklin Templeton 等顶级 LP)</li>
+</ul>
+<h3>1.2 用户给我的需求</h3>
+<p><strong>原始需求</strong>(分多次澄清):</p>
+<ol>
+<li>"请你参考项目库里 qveris seo 项目,为 coco 项目,做 seo 项目 10 个页面"</li>
+<li>"请你参考 高手网站 seo 分析库"</li>
+<li>"部署到 vercel 上,去掉保护"</li>
+<li>(发了 https://docs.coco.xyz/use-cases/ 链接) "他现在的案例是这些,你重新理解下"</li>
+<li>(发了一份 Coco AI 中文 Q&amp;A 手册)</li>
+<li>"好,你读完了,开写吧"</li>
+<li>(发了 Charlie 的微信截图)WIDTH 案例敏感要往后,蜜雪/物流/Jessie/HxA/Zylos/HITL 没问题</li>
+<li>"首页排版加个分类"</li>
+</ol>
+<p><strong>信号解读</strong>:</p>
+<ul>
+<li>客户已经在做 SEO 了(有 docs/use-cases),不是从零开始</li>
+<li>联创会亲自审核内容(微信截图),案例边界很重要</li>
+<li>我们这套不是替代客户官网,是<strong>对外的 pSEO 内容矩阵</strong>(programmatic SEO,以长尾关键词为支点的批量内容站)</li>
+</ul>
+<hr />
+<h2>2. 第一次走偏:基于会议记录的"伪推断"</h2>
+<blockquote>
+<p>这一节我把自己犯的错完整记下来。<strong>对团队最有教育意义的不是我做对的部分,是我做错的部分</strong>。</p>
+</blockquote>
+<h3>2.1 我当时手里有什么</h3>
+<ul>
+<li><code>cases_coco.json</code>:基于过去 8 次会议整理的 3 个案例(SOP 化)</li>
+<li>用户记忆里的 Coco 描述:"HSA 人机协作架构""Zylos 章鱼架构""更安全更高效的 Claude Code"——这是 W3-W5 期间一次 Twitter A/B 测试胜出的定位语</li>
+<li>qveris-seo 项目模板(用 <code>qveris.ai</code> 做 50 页 pSEO 的项目)</li>
+</ul>
+<h3>2.2 我做的(错误)推断</h3>
+<p>我把 "更安全更高效的 Claude Code" 当成 Coco 的<strong>当前产品定位</strong>,然后从这个定位往外推 10 个 SEO 页面:</p>
+<ul>
+<li>Claude Code Alternatives for Enterprise Teams</li>
+<li>How to Solve AI Agent Memory Loss in Long Coding Sessions</li>
+<li>How to Make AI Coding Assistants Safe for Enterprise Use</li>
+<li>……(全是开发者工具角度)</li>
+</ul>
+<p>这套方向<strong>逻辑自洽,但和客户实际定位差了一个时代</strong>。</p>
+<h3>2.3 哪里错了</h3>
+<p>用户给我发了 https://docs.coco.xyz/use-cases/ 后,我去抓取了实际页面,发现 Coco 当前的真实定位是:</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>我以为</th>
+<th>实际</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定位</td>
+<td>"更安全的 Claude Code"</td>
+<td>企业级<strong>多 Agent 协作平台</strong>(Multi-Agent Coordination Platform)</td>
+</tr>
+<tr>
+<td>主要受众</td>
+<td>开发者</td>
+<td>企业 CEO / 业务一把手</td>
+</tr>
+<tr>
+<td>核心场景</td>
+<td>写代码</td>
+<td>客服/CRM/合规/财务/HR/投研/银行尽调</td>
+</tr>
+<tr>
+<td>核心产品</td>
+<td>Claude Code 增强</td>
+<td>Zylos(开源 Agent 运行时) + HxA Connect(跨平台协作) + Coco Agent Cloud(云服务)</td>
+</tr>
+<tr>
+<td>已验证案例</td>
+<td>推断</td>
+<td>200+ 付费企业,1001+ 生产案例</td>
+</tr>
+</tbody>
+</table>
+<p><strong>为什么会犯这个错</strong>:</p>
+<ol>
+<li><strong>会议记录里的定位语 ≠ 当前对外定位</strong>。"更安全的 Claude Code" 是几个月前的 A/B 测试结果,但产品已经迭代,对外定位已经升级到平台级。</li>
+<li><strong>没有看客户当前对外口径</strong>。客户的官网、docs、最新 pitch deck 才是权威定位源,会议记录是历史快照。</li>
+<li><strong>"工程师做 SEO" 的偏差</strong>。我下意识把客户当成开发者工具公司(因为提到 Claude Code、Zylos),没有意识到 Coco 的核心客户其实是<strong>业务侧</strong>的 CEO/CFO/合规总监。</li>
+</ol>
+<h3>2.4 教训写进 SOP</h3>
+<blockquote>
+<p><strong>客户 SEO 项目第一步:扒 ta 的当前对外口径,不要从内部会议记录推断</strong></p>
+<p>必扒清单:
+1. 客户官网首页 H1 + 产品页 + Pricing 页
+2. 客户 docs 站(如果有)
+3. 客户最新一期 pitch deck / 一句话定义文档
+4. 联创的最近一期公开访谈/直播(过去 30 天内)</p>
+<p>直到客户能用一句话告诉你"我是 X for Y who do Z"之前,<strong>不要写一行 SEO 文案</strong>。</p>
+</blockquote>
+<hr />
+<h2>3. 纠偏:从会议记录到联创亲口的产品手册</h2>
+<h3>3.1 信息源升级</h3>
+<p>用户在我返工后给了一份<strong>精炼的产品介绍</strong>(他自己根据联创公开演讲整理的中文 Q&amp;A 手册)。这份是这次项目里<strong>最高密度、最高准确度的信息源</strong>。摘录关键信号:</p>
+<blockquote>
+<p>一句话定义:Coco AI 是企业级多 Agent 协作平台,帮企业一键部署 AI 员工团队,替代部分人力工作流(CRM、客服、运营、研发等),核心理念是 Human in the Loop——人做决策,Agent 做执行。</p>
+<p>三大产品线:
+- Zylos:自研开源 AI Agent 运行时,五层记忆架构,解决长对话失忆
+- HxA Connect:多 Agent 实时协作通信(Telegram/飞书/Slack/WhatsApp)
+- Coco Agent Cloud:一键部署的企业 AI 团队云服务</p>
+<p>已验证的 10 个核心使用场景(有真实客户在用):
+1. AI 驱动的个性化 CRM
+2. 企业客服自动化(蜜雪冰城东南亚 10→100 家)
+3. 银行贷款尽调(国有银行,3 天→2 小时)
+4. 财务对账与库存管理
+5. 内容/社媒自动化运营
+6. 合规资讯自动推送(WIDTH 新加坡)
+7. 情报驱动的销售外联
+8. 产品研发/代码协作(Kevin 的 Jessie 案例)
+9. HR/招聘自动化
+10. 投研与数据分析</p>
+</blockquote>
+<p>这份手册的价值在于:<strong>它已经替我做完了客户访谈和产品研究</strong>。我只需要把每个场景翻译成英文 SEO 页面。</p>
+<h3>3.2 二次方向锁定</h3>
+<p>锁定后的页面框架变成:</p>
+<ul>
+<li><strong>10 页对应 10 个验证场景</strong>(每页绑定一个真实客户案例)</li>
+<li><strong>4 页对应 3 个产品 + 1 个理念</strong>(Jessie 案例 / HxA Connect / Zylos / Human in the Loop)</li>
+<li>总共 <strong>14 页</strong></li>
+</ul>
+<h3>3.3 联创亲自校准案例边界</h3>
+<p>写完之后,联创 Charlie 通过用户发来微信截图,直接给案例边界:</p>
+<ul>
+<li>✅ 蜜雪冰城东南亚 10→100 家 — "这个值得反复多讲"</li>
+<li>✅ 东南亚物流 14 部门 — 可以用</li>
+<li>✅ Jessie 案例 / HxA Connect / Zylos 产品页 / HITL 理念 — "这几个没问题,我们自己的"</li>
+<li>⚠️ WIDTH 新加坡合规 — "还比较敏感可能要往后" — 我把 "WIDTH" 这个公司名替换为 "a Singapore-based multi-jurisdiction compliance vendor",保留案例叙述结构但去掉直接品牌指认</li>
+</ul>
+<p><strong>这是 SEO 项目里最容易被忽略但最重要的一步:案例脱敏 / 案例授权</strong>。客户案例是 E-E-A-T 信号里最强的"经验"证据,但也是最容易踩雷的地方。<strong>永远问联创"哪些案例可以提名,哪些不能,哪些可以提名但不能写细节"</strong>。</p>
+<hr />
+<h2>4. 方法论:为什么这样做 SEO</h2>
+<h3>4.1 参考的两个核心框架</h3>
+<h4>A. 高手网站 SEO 分析库(seo-wiki)</h4>
+<p>这是用户内部的另一个项目,沉淀了 60+ 篇高手 SEO 实战文章和 6 个核心策略(找词选品、建站上线、SEO 优化、外链建设、流量增长、变现复盘)。</p>
+<p>我从中拿走的关键原则:</p>
+<table>
+<thead>
+<tr>
+<th>原则</th>
+<th>应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>新词新站策略</strong>:找过去 12 个月才出现显著搜索量的词,竞争空白,新站可"上线即排名"</td>
+<td>14 个页面全部围绕 2024-2026 才起量的 AI Agent 长尾词</td>
+</tr>
+<tr>
+<td><strong>E-E-A-T 四维</strong>:Experience(第一手经验)、Expertise(专业)、Authoritativeness(权威)、Trustworthiness(可信)</td>
+<td>每页加一段 "First-hand reference" 模块,引用真实客户/数字</td>
+</tr>
+<tr>
+<td><strong>TDK 规范</strong>:Title 50-70 字符、Description 140-158 字符、关键词放最前</td>
+<td>模板严格 enforce,build 时自动 clamp</td>
+</tr>
+<tr>
+<td><strong>结构化数据</strong>:HowTo + FAQPage + BreadcrumbList + SoftwareApplication 四套 schema</td>
+<td>每页同时插入 4 个 JSON-LD</td>
+</tr>
+<tr>
+<td><strong>单 H1 + H2 分区</strong>:H1 每页只有 1 个,H2 是 section,H3 是 sub-item</td>
+<td>模板硬保证</td>
+</tr>
+<tr>
+<td><strong>内容集群</strong>:父页 + 子页 + 内链网络</td>
+<td>14 页两两互链,index 页按分类聚合</td>
+</tr>
+<tr>
+<td><strong>PageSpeed</strong>:目标 95+</td>
+<td>inline CSS、无外部 JS、字体不外链</td>
+</tr>
+</tbody>
+</table>
+<h4>B. Simular.ai 三层递进模板(qveris-seo 沿用)</h4>
+<p>每个落地页按"递进式说服"结构展开:</p>
+<ol>
+<li><strong>Pain</strong>(用户的具体痛苦,带数字)</li>
+<li><strong>The Problem</strong>(痛苦的本质原因)</li>
+<li><strong>Method 1: 手动 / DIY</strong>(承认现状方案,列优劣)</li>
+<li><strong>Method 2: 现有工具</strong>(承认竞品,列优劣)</li>
+<li><strong>Method 3: 客户产品</strong>(在最后 1/3 才出现)</li>
+<li><strong>How to set it up</strong>(三步操作)</li>
+<li><strong>FAQ</strong>(5 个真实问题)</li>
+</ol>
+<p><strong>关键</strong>:<strong>前 2/3 内容不提及客户产品</strong>。这是建立信任的核心动作——开发者/B 端读者最讨厌的就是"全篇都在卖你的东西"。先帮他理解问题,再给他选项,最后才说"我们也是一个选项,而且更好"。</p>
+<h3>4.2 为什么选这两个框架而不是别的</h3>
+<ul>
+<li><strong>不选 HubSpot 风格内容营销</strong>(品牌故事 + 漂亮配图):太软,B 端开发者不买账</li>
+<li><strong>不选纯 KGR(关键词难度比)堆量</strong>:对客户品牌伤害大,内容质量太差</li>
+<li><strong>不选 AI 一键生成 100 页</strong>:失控,质量不可控,被 Google 判低质风险</li>
+</ul>
+<p>Simular.ai 的递进结构 + 高手库的 E-E-A-T 落实,是当前对 <strong>APAC B 端 SaaS</strong> 最匹配的组合。</p>
+<hr />
+<h2>5. 关键决策表</h2>
+<p>每一个决策都有 trade-off,这一节把"为什么这样选"摆出来。</p>
+<h3>5.1 站点定位:做 14 个独立长落地页,而不是博客流</h3>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>优点</th>
+<th>缺点</th>
+<th>选/不选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>博客流(WordPress 风格)</td>
+<td>容易扩展,RSS 友好</td>
+<td>文章流到第 3 页就死了,SEO 价值低</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>14 个独立深度页(pSEO)</td>
+<td>每页独立可索引,关键词聚焦</td>
+<td>维护单页时间长</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>文档站(Mintlify 风格)</td>
+<td>适合产品文档</td>
+<td>不适合营销转化页</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p><strong>选 pSEO 的核心理由</strong>:每页都是一个完整的"问题-方案"叙事,可以独立做外链建设、独立做社交分发、独立追排名。</p>
+<h3>5.2 域名策略:<code>coco-seo.vercel.app</code> vs <code>coco.xyz/cases/</code></h3>
+<p>我们目前部署在 <code>coco-seo.vercel.app</code> 子域。<strong>最终应迁移到 <code>coco.xyz/blog/</code> 或 <code>coco.xyz/cases/</code> 一级路径</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>子域 <code>seo.coco.xyz</code></td>
+<td>部署独立</td>
+<td>Google 判定为不同站点,主站权重不传导</td>
+</tr>
+<tr>
+<td>一级路径 <code>coco.xyz/cases/</code></td>
+<td>主站权重传导,DR 共享</td>
+<td>需要客户配合做 reverse proxy 或集成到主站</td>
+</tr>
+<tr>
+<td>独立站 <code>cocoseo.com</code></td>
+<td>完全独立</td>
+<td>没有主站权重,从 0 起步</td>
+</tr>
+</tbody>
+</table>
+<p><strong>当前 <code>coco-seo.vercel.app</code> 是临时方案,等客户审核完内容后,谈一级路径迁移</strong>。</p>
+<h3>5.3 语言策略:英文优先,中文待定</h3>
+<p>Coco 国内版/国际版分开运营。我们这一期做的是<strong>国际版的英文 SEO</strong>。</p>
+<p>理由:
+- 联创 Charlie 在新加坡,主战场是 APAC + 欧美
+- Coco 海外定价用 USD/USDT,目标客户英文读写无障碍
+- 中文 SEO 池子小,APAC 英文池子大且竞争未饱和</p>
+<p><strong>下一期</strong>:如果国内版需要 SEO,会用同一套数据驱动模板生产中文页,关键词替换为百度/Bing CN 的高搜索量词。</p>
+<h3>5.4 内容长度:每页 2500-3500 词,而不是 800 词</h3>
+<p>Google 在 2024 年后明显倾向"全面回答"的长内容,但代价是写作成本高。</p>
+<table>
+<thead>
+<tr>
+<th>长度</th>
+<th>写作时间</th>
+<th>排名表现</th>
+<th>选/不选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>800 词(博客平均)</td>
+<td>1 小时/篇</td>
+<td>长尾关键词难突破</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>1500 词</td>
+<td>2 小时/篇</td>
+<td>中等表现</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>2500-3500 词</td>
+<td>4 小时/篇</td>
+<td>高 Featured Snippet 几率</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>5000+ 词</td>
+<td>8 小时/篇</td>
+<td>边际收益递减,跳出率高</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p>我们选 2500-3500 词,每篇含 5 个 sections + 3 steps + 5 FAQ + 1 CTA + 1 E-E-A-T 模块,字数自然落在区间内。</p>
+<h3>5.5 是否用 AI 生成内容</h3>
+<p><strong>用,但不是一键生成</strong>。</p>
+<ul>
+<li>数据(每页的 before/after、sections 内容)由我手写,基于用户提供的 Q&amp;A 手册和联创口径</li>
+<li>模板(HTML/CSS/Schema)由代码生成</li>
+<li>这是 "AI 辅助 + 人工把关" 模式,不是 "AI 一键 100 页" 模式</li>
+</ul>
+<p><strong>为什么不一键生成</strong>:</p>
+<ol>
+<li>AI 一键生成的内容<strong>没有客户口径</strong>(例如 Charlie 的原话引用、具体客户数字),E-E-A-T 直接归零</li>
+<li>AI 一键生成容易出现<strong>事实错误</strong>(把竞品名搞混、把客户案例编造),对客户品牌伤害大</li>
+<li>Google 在 2024-2025 多次明确"AI 内容本身不被惩罚,但低质 AI 内容会被惩罚",我们的赌注是质量,不是数量</li>
+</ol>
+<hr />
+<h2>6. 14 个页面的设计逻辑</h2>
+<h3>6.1 为什么选这 14 个,而不是别的</h3>
+<p>我们的选题不是从关键词工具里"挖"出来的,是从<strong>已验证客户场景</strong>里"映射"出来的。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>页面 slug</th>
+<th>对应 Coco 场景</th>
+<th>选题逻辑</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>ai-crm-linkedin-multi-agent-outreach</code></td>
+<td>Charlie 自己的 BD CRM</td>
+<td>联创亲身案例,E-E-A-T 满分</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>ai-customer-service-agent-team-fnb-chain</code></td>
+<td>蜜雪冰城东南亚</td>
+<td>Charlie "值得反复多讲"</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>ai-agent-bank-credit-due-diligence</code></td>
+<td>国有银行尽调 3天→2小时</td>
+<td>高数字反差,适合做 Featured Snippet</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>ai-finance-reconciliation-multi-store-inventory</code></td>
+<td>蜜雪冰城财务对账</td>
+<td>同客户多场景,内容集群打深度</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>ai-content-social-media-multi-platform-automation</code></td>
+<td>MCN 内容自动化</td>
+<td>已部署客户,英文搜索量大</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>ai-compliance-multi-jurisdiction-regulatory-monitoring</code></td>
+<td>新加坡 RegTech 客户</td>
+<td><strong>WIDTH 脱敏</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>ai-sales-intelligence-regulatory-hiring-signals</code></td>
+<td>同上客户的销售情报衍生</td>
+<td>把合规客户的"信号驱动"模式延伸到通用销售</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>multi-agent-code-review-development-pipeline</code></td>
+<td>Kevin's team / Jessie 衍生</td>
+<td>开发者关键词搜索量大</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>ai-hr-agents-job-posting-screening-interview-ops</code></td>
+<td>Coco 自己起源(AI 招聘)</td>
+<td>创业故事+产品功能融合</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>ai-investment-research-portfolio-analysis</code></td>
+<td>个人投资者案例</td>
+<td>长尾,SOHO/家办市场未被满足</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>jessie-ai-tech-lead-managing-ai-engineers</code></td>
+<td>Kevin's Jessie</td>
+<td><strong>联创亲自盖章可以反复讲</strong></td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>hxa-connect-multi-agent-collaboration-across-chat-platforms</code></td>
+<td>HxA Connect 产品</td>
+<td>产品页 SEO,目标 brand keyword + category keyword 双命中</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>zylos-open-source-ai-agent-runtime-five-layer-memory</code></td>
+<td>Zylos 产品</td>
+<td>同上,叠加开源关键词</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>human-in-the-loop-multi-agent-enterprise-framework</code></td>
+<td>HITL 理念</td>
+<td>抢占 "human in the loop" 这个核心品牌词</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2 关键词选择的两个原则</h3>
+<h4>原则 1:不要追"AI" 头部词</h4>
+<p>像 "AI agent"、"AI for business" 这种头部词,DR 70+ 大站(Zapier、Hubspot、Forbes)已经占满。新站打不进去。</p>
+<h4>原则 2:追"AI + [角色] + [行业]" 的三段长尾</h4>
+<p>例如:
+- ❌ "ai customer service" (太宽,Intercom/Zendesk 占据)
+- ✅ "ai customer service agent restaurant chain franchise" (具体到行业)</p>
+<p>每个页面的 keyword 都遵守这个三段式。这也是 Coco 自己 docs/use-cases 的"Role × Task × Industry"三维分类的延伸。</p>
+<h3>6.3 每页结构(模板)</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">[Hero]</span>
+<span class="na">- Category badge</span>
+<span class="na">- H1 (单页唯一)</span>
+<span class="na">- Lede (痛点一句话)</span>
+
+<span class="k">[Before / After 对比卡]</span>
+<span class="na">- Before</span><span class="o">:</span><span class="w"> </span><span class="s">现状,带具体数字</span>
+<span class="na">- After Coco</span><span class="o">:</span><span class="w"> </span><span class="s">部署后效果,带具体数字</span>
+
+<span class="k">[5 个 Section]</span>
+<span class="na">- Why [problem matters now]</span>
+<span class="na">- The Problem</span>
+<span class="na">- Method 1</span><span class="o">:</span><span class="w"> </span><span class="s">手动 / 现状</span>
+<span class="na">- Method 2</span><span class="o">:</span><span class="w"> </span><span class="s">现有工具 / 竞品</span>
+<span class="na">- Method 3</span><span class="o">:</span><span class="w"> </span><span class="s">Coco 方案</span>
+
+<span class="k">[E-E-A-T First-hand Reference]</span>
+<span class="na">- 一段引用真实客户/联创原话/具体数字</span>
+
+<span class="k">[How to set it up]</span>
+<span class="na">- 3 步,带 code 块</span>
+
+<span class="k">[CTA]</span>
+<span class="na">- 一句价值主张 + Try it 按钮</span>
+
+<span class="k">[FAQ]</span>
+<span class="na">- 5 个真实问题(不是营销问题)</span>
+
+<span class="k">[Related guides]</span>
+<span class="na">- 4 个相关页面卡片(自动生成,基于 slug 距离)</span>
+
+<span class="k">[Footer]</span>
+</code></pre></div>
+
+<hr />
+<h2>7. 技术实现</h2>
+<h3>7.1 项目结构</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">coco</span><span class="o">-</span><span class="n">seo</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="k">data</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">pages</span><span class="p">.</span><span class="n">js</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="n">页内容数据</span><span class="p">(</span><span class="n">全部手写</span><span class="p">)</span>
+<span class="err">├──</span><span class="w"> </span><span class="k">public</span><span class="o">/</span><span class="w">               </span><span class="err">#</span><span class="w"> </span><span class="n">构建产物</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="k">index</span><span class="p">.</span><span class="n">html</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">首页</span><span class="p">(</span><span class="o">=</span><span class="n">cases</span><span class="o">/</span><span class="k">index</span><span class="p">.</span><span class="n">html</span><span class="p">)</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">cases</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="k">index</span><span class="p">.</span><span class="n">html</span><span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="n">资源中心</span><span class="p">,</span><span class="mi">4</span><span class="w"> </span><span class="n">组分类</span>
+<span class="err">│</span><span class="w">   </span><span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="o">[</span><span class="n">slug</span><span class="o">]/</span><span class="k">index</span><span class="p">.</span><span class="n">html</span><span class="w"> </span><span class="err">×</span><span class="w"> </span><span class="mi">14</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">sitemap</span><span class="p">.</span><span class="nc">xml</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">robots</span><span class="p">.</span><span class="n">txt</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">build</span><span class="p">.</span><span class="n">js</span><span class="w">              </span><span class="err">#</span><span class="w"> </span><span class="n">模板引擎</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">package</span><span class="p">.</span><span class="n">json</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">vercel</span><span class="p">.</span><span class="n">json</span><span class="w">           </span><span class="err">#</span><span class="w"> </span><span class="n">部署配置</span>
+<span class="err">└──</span><span class="w"> </span><span class="n">SEO</span><span class="o">-</span><span class="n">PLAYBOOK</span><span class="p">.</span><span class="n">md</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="n">本文档</span>
+</code></pre></div>
+
+<h3>7.2 build.js 做了什么</h3>
+<ol>
+<li>读 <code>data/pages.js</code>(14 页对象数组)</li>
+<li>对每页:</li>
+<li>生成 4 套 JSON-LD schema</li>
+<li>自动 clamp meta description 到 140-158 字符</li>
+<li>自动选 4 个 related pages(基于数组距离)</li>
+<li>注入 E-E-A-T 段(从 <code>eeatFor()</code> 映射拿)</li>
+<li>生成首页(按 4 组分类聚合)</li>
+<li>生成 sitemap.xml(14 + index + root)</li>
+<li>生成 robots.txt</li>
+</ol>
+<p><strong>核心设计原则</strong>:<strong>数据和模板分离</strong>。换客户只需要改 <code>data/pages.js</code> + 5 处品牌字符串(BRAND, TAGLINE, SITE 等)。</p>
+<h3>7.3 SEO 关键技术细节</h3>
+<table>
+<thead>
+<tr>
+<th>点</th>
+<th>实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TDK</td>
+<td>title 强制 &lt; 70 字符,description 自动 clamp 到 140-158</td>
+</tr>
+<tr>
+<td>Canonical</td>
+<td>每页绝对 URL,带 trailing slash(vercel.json <code>trailingSlash: true</code>)</td>
+</tr>
+<tr>
+<td>Schema.org</td>
+<td>HowTo + FAQPage + BreadcrumbList + SoftwareApplication 四套</td>
+</tr>
+<tr>
+<td>Open Graph + Twitter Card</td>
+<td>每页都有</td>
+</tr>
+<tr>
+<td>Sitemap</td>
+<td>XML,带 lastmod + priority</td>
+</tr>
+<tr>
+<td>Robots</td>
+<td>全开 + sitemap 引用</td>
+</tr>
+<tr>
+<td>单 H1</td>
+<td>模板硬保证</td>
+</tr>
+<tr>
+<td>Inline CSS</td>
+<td>无外部 CSS 文件,首屏 0 阻塞</td>
+</tr>
+<tr>
+<td>无外链 JS</td>
+<td>0 个 script(除 JSON-LD)</td>
+</tr>
+<tr>
+<td>字体</td>
+<td>系统字体栈,不引外部 webfont</td>
+</tr>
+<tr>
+<td>移动适配</td>
+<td><code>@media(max-width:640px)</code> 单点断点</td>
+</tr>
+<tr>
+<td>Crawl 预算</td>
+<td>14 页全在 sitemap,内链 4×14=56 条相关链接,平均深度 ≤2</td>
+</tr>
+</tbody>
+</table>
+<h3>7.4 为什么不用 Next.js / Astro / 11ty</h3>
+<p>我们选了<strong>最简单的 Node.js 字符串模板</strong>。</p>
+<p>理由:
+- 14 页静态站,Next.js 是大炮打蚊子
+- 没有交互需求,React 是负担
+- 客户随时可能让我们改 100 个细节(措辞、案例、数字),纯字符串模板改起来最快
+- 部署到 Vercel 不需要任何 build framework,直接 <code>node build.js</code> 就出 HTML</p>
+<p><strong>下一期如果加搜索/筛选</strong>,再考虑迁移到 Astro 或 Eleventy。</p>
+<hr />
+<h2>8. 部署与运营</h2>
+<h3>8.1 部署流程</h3>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>coco-seo
+node<span class="w"> </span>build.js<span class="w">              </span><span class="c1"># 生成 public/</span>
+vercel<span class="w"> </span>--prod<span class="w"> </span>--yes<span class="w">        </span><span class="c1"># 部署到 Vercel(已 alias 到 coco-seo.vercel.app)</span>
+</code></pre></div>
+
+<h3>8.2 Vercel 配置要点</h3>
+<ul>
+<li><code>public: true</code> — <strong>关键</strong>,确保 Deployment Protection 关闭(用户明确要求"去掉保护")</li>
+<li><code>cleanUrls: true</code> — <code>/cases/zylos-xxx</code> 而不是 <code>/cases/zylos-xxx.html</code></li>
+<li><code>trailingSlash: true</code> — 统一 URL 形式,避免 canonical 重复</li>
+<li><code>Cache-Control: public, max-age=3600, must-revalidate</code> — Vercel CDN 缓存 1 小时,内容更新后 must-revalidate 拉新</li>
+</ul>
+<h3>8.3 上线后必做(seo-wiki 的 5 件事)</h3>
+<blockquote>
+<p>这一节是 seo-wiki 里"上线当天必做 5 件事"的落地清单</p>
+</blockquote>
+<ol>
+<li><strong>提交 Google Search Console</strong></li>
+<li>域名验证(DNS TXT)</li>
+<li>提交 https://coco-seo.vercel.app/sitemap.xml</li>
+<li>
+<p>手动 Request Indexing 首页和 14 个内页</p>
+</li>
+<li>
+<p><strong>提交 Bing Webmaster Tools</strong></p>
+</li>
+<li>
+<p>直接从 GSC 导入(Bing 支持一键)</p>
+</li>
+<li>
+<p><strong>检查 robots.txt</strong></p>
+</li>
+<li>https://coco-seo.vercel.app/robots.txt</li>
+<li>
+<p>确认没有 <code>Disallow: /</code></p>
+</li>
+<li>
+<p><strong>确认 HTTPS</strong></p>
+</li>
+<li>
+<p>Vercel 默认全站 HTTPS,这条自动满足</p>
+</li>
+<li>
+<p><strong>监控工具接入</strong></p>
+</li>
+<li>Ahrefs 免费版(添加项目,100 个免费监控)</li>
+<li>Google Analytics 4(GA4)</li>
+<li>Cloudflare Web Analytics(隐私友好,免费)</li>
+</ol>
+<h3>8.4 上线后 30/60/90 天预期</h3>
+<p>(基于 seo-wiki 里多个新站案例的中位数)</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>预期指标</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第 7 天</td>
+<td>Google 收录 ≥ 8/14 页,首次出现长尾排名(Position 30-60)</td>
+</tr>
+<tr>
+<td>第 30 天</td>
+<td>收录 14/14,3-5 个长尾词进入第 2 页(Position 11-20)</td>
+</tr>
+<tr>
+<td>第 60 天</td>
+<td>1-2 个核心词进首页(Position 1-10),首次出现 organic clicks</td>
+</tr>
+<tr>
+<td>第 90 天</td>
+<td>月 organic 流量 500-2000(取决于外链建设进度)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键</strong>:<strong>SEO 是复利游戏,前 60 天看不到结果是正常的,不要在第 30 天因为没流量就放弃</strong>。</p>
+<hr />
+<h2>9. 可复用 SOP:下一个客户怎么做</h2>
+<p>把这次经验提炼成可复用步骤,下次接到类似项目(为某个 B 端 SaaS 做 pSEO),直接照做。</p>
+<h3>9.1 Day 0:客户研究(2 小时)</h3>
+<ul>
+<li>[ ] 扒客户官网、Pricing、docs、最近一期 pitch deck</li>
+<li>[ ] 找联创最近一次公开访谈/直播</li>
+<li>[ ] <strong>要联创/客户口径文档</strong>(精炼一页,不要给我会议记录)</li>
+<li>[ ] 列出 5-10 个<strong>真实部署案例</strong>(带客户名、行业、数字)</li>
+<li>[ ] 找客户的 1-3 个核心竞品</li>
+</ul>
+<h3>9.2 Day 1:选题 + 关键词(3 小时)</h3>
+<ul>
+<li>[ ] 围绕已验证场景设计 N 页(N 通常 = 客户场景数 + 3-5 个产品/理念页)</li>
+<li>[ ] 每页一个三段长尾关键词(<code>AI + [role/task] + [industry/qualifier]</code>)</li>
+<li>[ ] 用 Ahrefs 查每个词的 KD(&lt; 30%)和 Volume(&gt; 100/月最佳)</li>
+<li>[ ] 列竞品在这个词上的排名,确认有空间</li>
+<li>[ ] <strong>联创/客户审一遍选题</strong>,拿到边界(哪些案例可以提名,哪些要脱敏)</li>
+</ul>
+<h3>9.3 Day 2-3:写内容(每页 1-2 小时)</h3>
+<ul>
+<li>[ ] 用 Simular 三层模板(Pain → DIY → 现有工具 → 客户方案)</li>
+<li>[ ] 每页严格 2500-3500 词</li>
+<li>[ ] 每页 1 个 E-E-A-T 模块(真实数字 / 联创原话 / 具体客户案例)</li>
+<li>[ ] 每页 5 个 FAQ(真实问题,不是营销问题)</li>
+<li>[ ] 每页 3 个操作步骤</li>
+<li>[ ] 内部审稿:看每页能不能通过"不提客户产品也是一篇好文章"的检验</li>
+</ul>
+<h3>9.4 Day 4:技术实现(2 小时)</h3>
+<ul>
+<li>[ ] 复制 <code>coco-seo/</code> 模板,改品牌字符串</li>
+<li>[ ] 替换 <code>data/pages.js</code></li>
+<li>[ ] <code>node build.js</code> 生成</li>
+<li>[ ] 本地预览所有 14 页 + index</li>
+<li>[ ] 检查:H1 数 == 1 / Schema 4 套 / TDK 长度 / canonical / 内链</li>
+</ul>
+<h3>9.5 Day 5:部署 + 客户审核(1 天)</h3>
+<ul>
+<li>[ ] <code>vercel --prod --yes</code></li>
+<li>[ ] 把 https://[client]-seo.vercel.app 发给联创/客户审核</li>
+<li>[ ] <strong>客户对每页都给一句反馈</strong>(1-2 轮迭代)</li>
+<li>[ ] 案例脱敏 / 措辞调整</li>
+<li>[ ] 重新部署</li>
+</ul>
+<h3>9.6 Day 6:上线 + 提交(1 小时)</h3>
+<ul>
+<li>[ ] GSC 验证 + sitemap 提交 + 14 页 Request Indexing</li>
+<li>[ ] Bing Webmaster</li>
+<li>[ ] Ahrefs 监控</li>
+<li>[ ] 拉一个 dashboard 给客户看排名追踪</li>
+</ul>
+<h3>9.7 Day 7+:外链 + 内容补充(持续)</h3>
+<ul>
+<li>[ ] 提交导航站(Toolify、Backlink Dirs、Producthunt)</li>
+<li>[ ] HackerNews / Reddit / Dev.to 软文(如果适合)</li>
+<li>[ ] 找同领域 5-10 个 blog 互换外链</li>
+<li>[ ] 每月新增 2-3 页(基于客户最新案例)</li>
+</ul>
+<hr />
+<h2>10. 最容易踩的 5 个坑</h2>
+<p>按踩坑严重度从高到低排序。</p>
+<h3>坑 1:基于内部会议记录推断客户定位</h3>
+<p><strong>症状</strong>:写了一周,客户说"这不是我们现在的定位"。</p>
+<p><strong>预防</strong>:Day 0 必须拿到<strong>客户当前对外口径</strong>(官网 + docs + pitch deck + 30 天内访谈),会议记录只做背景参考。</p>
+<h3>坑 2:案例提名没经过联创审核</h3>
+<p><strong>症状</strong>:写完上线了,客户说"这个客户名我们不能提",紧急下线。</p>
+<p><strong>预防</strong>:Day 1 选题阶段就把"哪些客户可以提名 / 哪些可以提名但不写细节 / 哪些必须脱敏"列清单,联创签字才能写。</p>
+<h3>坑 3:Vercel Deployment Protection 没关</h3>
+<p><strong>症状</strong>:部署完发链接给客户,客户看到 SSO 登录页,以为我们没部署成功。</p>
+<p><strong>预防</strong>:<code>vercel.json</code> 加 <code>"public": true</code>,部署后立刻 curl 一遍验证 HTTP 200(不是 401)。</p>
+<h3>坑 4:title/description 没 clamp 长度</h3>
+<p><strong>症状</strong>:Google 把 title 截断成 "How to Build a Multi-...",description 显示一段后省略号。点击率掉一半。</p>
+<p><strong>预防</strong>:模板里硬 clamp。title 控制在 50-70 字符,description 控制在 140-158。本项目的 <code>clamp()</code> 函数已经做了。</p>
+<h3>坑 5:内容长度堆够了但没 E-E-A-T</h3>
+<p><strong>症状</strong>:3000 字的内容,但全是泛泛而谈,没有真实数字、没有客户名、没有联创原话。Google 判低质,排名上不去。</p>
+<p><strong>预防</strong>:每页强制一个 "First-hand reference" 模块,写不出来就改写到能写出来为止。E-E-A-T 是 2024+ Google 排名的核心因子。</p>
+<hr />
+<h2>11. 这次项目的真实时间花费</h2>
+<p>完全诚实记录,给团队估算下一个项目用。</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>时间</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一次方向(错误)</td>
+<td>~30 分钟</td>
+</tr>
+<tr>
+<td>用户纠偏 + 重读真实定位</td>
+<td>~15 分钟</td>
+</tr>
+<tr>
+<td>用户给出精炼 brief</td>
+<td>(用户自己整理,我读 5 分钟)</td>
+</tr>
+<tr>
+<td>重写 14 页内容</td>
+<td>~90 分钟</td>
+</tr>
+<tr>
+<td>写模板引擎 + 构建脚本</td>
+<td>~30 分钟</td>
+</tr>
+<tr>
+<td>联创案例脱敏(WIDTH)</td>
+<td>~5 分钟</td>
+</tr>
+<tr>
+<td>加首页分类 + 重新部署</td>
+<td>~15 分钟</td>
+</tr>
+<tr>
+<td>写本文档</td>
+<td>~30 分钟</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>约 3.5 小时</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>如果用户一开始就给我精炼的 brief,可以省掉 30+15=45 分钟的返工</strong>。这就是 Day 0 客户研究值钱的地方。</p>
+<p>下一个客户:<strong>预算 1 个工作日(8 小时)</strong>,前提是 Day 0 客户研究做扎实。</p>
+<hr />
+<h2>12. 给团队的行动指南</h2>
+<h3>12.1 你接到一个 SEO 项目,先做这三件事</h3>
+<ol>
+<li><strong>不要直接写</strong>。先扒客户当前对外口径,2 小时。</li>
+<li><strong>不要从零开始</strong>。先看 <code>coco-seo/</code> 模板和 <code>qveris-seo/</code> 模板,选一个改。</li>
+<li><strong>不要跳过联创审核</strong>。每一页落地之前,联创点头才能上线。</li>
+</ol>
+<h3>12.2 你想优化已有 SEO 项目,看这三个指标</h3>
+<ol>
+<li><strong>GSC 收录率</strong>:&lt; 80% 说明技术 SEO 有问题(canonical / sitemap / robots)</li>
+<li><strong>平均 Position</strong>:停滞在 30-50 说明内容质量不够,加 E-E-A-T</li>
+<li><strong>CTR</strong>:Position 高但 CTR 低,说明 title/description 没写好,优化 TDK</li>
+</ol>
+<h3>12.3 你接到客户的"内容修改"请求,这样响应</h3>
+<ol>
+<li>客户说"这段措辞改一下" → 改 <code>data/pages.js</code>,<code>node build.js</code>,<code>vercel --prod</code>,5 分钟交付</li>
+<li>客户说"这个案例不能用了" → 改 <code>data/pages.js</code> + <code>eeatFor()</code> 映射,15 分钟交付</li>
+<li>客户说"加一个新场景" → 复制现有页结构,写新数据,30 分钟交付</li>
+<li>客户说"换个分组方式" → 改 <code>build.js</code> 的 <code>GROUPS</code> 数组,10 分钟交付</li>
+</ol>
+<p><strong>所有修改都是数据修改,不是代码修改</strong>。这就是模板引擎设计的意义。</p>
+<h3>12.4 你不确定怎么做的时候,问三个问题</h3>
+<ol>
+<li><strong>客户的当前对外口径是什么?</strong> 找最新一份对外材料。</li>
+<li><strong>联创对这个细节怎么想?</strong> 直接问,不要猜。</li>
+<li><strong>seo-wiki 里有相关案例吗?</strong> 60+ 篇高手实战,大概率有人踩过同样的坑。</li>
+</ol>
+<hr />
+<h2>13. 附录:关键文件位置</h2>
+<div class="codehilite"><pre><span></span><code>coco-seo/data/pages.js                    # 14 页内容(可改)
+coco-seo/build.js                         # 模板引擎
+coco-seo/vercel.json                      # 部署配置
+coco-seo/public/                          # 构建产物(不要手动改)
+coco-seo/SEO-PLAYBOOK.md                  # 本文档
+
+qveris-seo/                               # 同结构的另一个客户参考实现
+qveris-seo/qveris-pages-plan.md           # 50 页选题模板,可借鉴
+
+seo-wiki/content/strategies.ts            # 6 大 SEO 策略原则
+seo-wiki/content/articles.json            # 60+ 篇高手实战文章
+
+cases_coco.json                           # Coco 历史会议记录(背景参考)
+</code></pre></div>
+
+<p>线上:
+- 站点:https://coco-seo.vercel.app/
+- Vercel 项目:https://vercel.com/hairdryer2324s-projects/coco-seo
+- Sitemap:https://coco-seo.vercel.app/sitemap.xml
+- Robots:https://coco-seo.vercel.app/robots.txt</p>
+<hr />
+<h2>14. 写在最后</h2>
+<p>SEO 不是玄学,是工程 + 内容 + 耐心。</p>
+<ul>
+<li><strong>工程部分</strong>(技术 SEO、TDK、Schema、PageSpeed)有标准答案,本项目的模板引擎已经覆盖</li>
+<li><strong>内容部分</strong>(选题、E-E-A-T、客户口径)是这次项目最难的部分,也是这份文档的重点</li>
+<li><strong>耐心部分</strong>(60-90 天爬坡、外链积累、月度迭代)是团队的事,不是工具的事</li>
+</ul>
+<p>下一个客户接进来,把这份文档读一遍,跟着 Day 0 → Day 7 走,<strong>不会比这次差</strong>。</p>
+<p>如果做得比这次好——把改进写回这份文档,版本号 +1。</p>
+<p>— <em>2026-04-15</em></p>
+    </div>
+</body>
+</html>

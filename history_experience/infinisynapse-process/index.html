@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfiniSynapse SEO 项目复盘文档</title>
+    <style>
+:root {
+    --bg: #fafafa;
+    --text: #1a1a1a;
+    --text-secondary: #555;
+    --border: #e2e2e2;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --code-bg: #f0f0f0;
+    --table-stripe: #f7f7f7;
+    --blockquote-border: #2563eb;
+    --blockquote-bg: #f5f7fa;
+    --max-width: 860px;
+    --radius: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+/* Navigation bar */
+.nav-bar {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+.nav-bar a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.nav-bar a:hover { text-decoration: underline; }
+
+/* Headings */
+h1 {
+    font-size: 2.2em;
+    font-weight: 800;
+    line-height: 1.3;
+    margin: 0.4em 0 0.3em;
+    letter-spacing: -0.02em;
+    color: #111;
+}
+h2 {
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 2em 0 0.6em;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+}
+h3 {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 1.5em 0 0.5em;
+    color: #333;
+}
+h4 {
+    font-size: 1.05em;
+    font-weight: 600;
+    margin: 1.2em 0 0.4em;
+    color: #444;
+}
+
+/* Paragraphs */
+p { margin: 0.8em 0; }
+
+/* Blockquote */
+blockquote {
+    margin: 1.2em 0;
+    padding: 16px 20px;
+    border-left: 4px solid var(--blockquote-border);
+    background: var(--blockquote-bg);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: #444;
+}
+blockquote p { margin: 0.4em 0; }
+blockquote strong { color: #1a1a1a; }
+
+/* Code */
+code {
+    font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+    font-size: 0.88em;
+    background: var(--code-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #d63384;
+}
+pre {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 20px 24px;
+    border-radius: var(--radius);
+    overflow-x: auto;
+    margin: 1.2em 0;
+    line-height: 1.6;
+}
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-size: 0.85em;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2em 0;
+    font-size: 0.95em;
+}
+thead { background: #f0f3f8; }
+th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #555;
+}
+td {
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+}
+tr:nth-child(even) td { background: var(--table-stripe); }
+
+/* Lists */
+ul, ol { margin: 0.6em 0 0.6em 1.5em; }
+li { margin: 0.3em 0; }
+li > ul, li > ol { margin: 0.2em 0 0.2em 1.5em; }
+
+/* Links */
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Horizontal rule */
+hr {
+    border: none;
+    border-top: 2px solid var(--border);
+    margin: 2.5em 0;
+}
+
+/* Strong / emphasis */
+strong { color: #111; font-weight: 600; }
+
+/* Header metadata block (first blockquote) */
+blockquote:first-of-type {
+    background: linear-gradient(135deg, #f0f5ff 0%, #fafafe 100%);
+    border-left-color: var(--accent);
+    font-size: 0.95em;
+}
+blockquote:first-of-type strong { color: var(--accent); }
+
+/* Responsive */
+@media (max-width: 640px) {
+    .container { padding: 24px 16px 60px; }
+    h1 { font-size: 1.6em; }
+    h2 { font-size: 1.25em; }
+    h3 { font-size: 1.1em; }
+    table { font-size: 0.82em; }
+    th, td { padding: 8px 10px; }
+    pre { padding: 16px; }
+}
+
+/* Print */
+@media print {
+    body { background: #fff; }
+    .nav-bar { display: none; }
+    .container { max-width: 100%; padding: 0; }
+}
+</style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="../">← 返回导航页</a>
+    </nav>
+    <div class="container">
+<h1>InfiniSynapse SEO 项目复盘文档</h1>
+<blockquote>
+<p>写给团队的执行说明：我做了什么假设、做了什么推断、走了什么步骤
+项目代号：infinisynapse-seo
+部署地址：https://infinisynapse-seo.vercel.app
+完成时间：2026-04-26
+作者：Will（郎瀚威）</p>
+</blockquote>
+<hr />
+<h2>0. 这份文档是给谁看的</h2>
+<p>这份文档不是给 InfiniSynapse 客户看的，是给我们团队内部看的。如果你接手这个项目继续做，或者要把这套方法论复制到其他客户上，先读这份。</p>
+<p>我会讲清楚三件事：</p>
+<ol>
+<li><strong>我做了哪些假设</strong> —— 没有假设就没有决策，但假设错了整盘都得重来</li>
+<li><strong>我做了哪些推断</strong> —— 从输入到输出之间的链路，每一步为什么这么选</li>
+<li><strong>我执行了哪些步骤</strong> —— 从空文件夹到部署上线的完整路径</li>
+</ol>
+<p>文档目标读者是已经熟悉我们 SEO 工作流（参考过 qveris-seo、coco-seo、skillboss）的同事。完全没接触过的同事，建议先读 qveris-seo 的 README 再回来。</p>
+<hr />
+<h2>1. 项目背景</h2>
+<h3>1.1 任务起源</h3>
+<p>客户给的原始需求是一句话：「参考项目库里 qveris seo 项目，为 https://app.infinisynapse.com/ 项目，做 seo 项目 10 个页面」。</p>
+<p>后续客户补充了一份 PDF：《InfiniSynapse 对标 Julius AI 可学习策略全景分析》，约 6 千字，是一份完整的对标策略报告。这份 PDF 在我做完第一版 10 页之后才到，所以工作分两个阶段：</p>
+<ul>
+<li><strong>第一阶段</strong>：只有「参考 qveris seo」+「app.infinisynapse.com 的产品介绍」两个输入</li>
+<li><strong>第二阶段</strong>：补充了 Julius AI 对标报告，重新校准方向</li>
+</ul>
+<p>第二阶段我没有重做 10 页（因为大方向已经对上了），而是给客户一个增量调整建议清单。</p>
+<h3>1.2 输入材料盘点</h3>
+<p>我手上的材料：</p>
+<ol>
+<li><strong>qveris-seo 项目代码</strong>（参考模板）—— 50 页 SEO 站点，dark theme，cyan accent，三层递进内容法</li>
+<li><strong>app.infinisynapse.com 产品页</strong>（首次抓取信息极少，只有产品名）</li>
+<li><strong>infinisynapse.com 主站</strong>（第二次抓取拿到完整产品定位）</li>
+<li><strong>Julius 对标策略 PDF</strong>（第二阶段补充）</li>
+</ol>
+<p>这里有一个需要团队注意的细节：<strong>WebFetch 抓 app.infinisynapse.com 几乎没拿到内容</strong>，因为是 SPA 应用。下次遇到 SPA 客户，要么用 Playwright/Chrome MCP 渲染后再抓，要么直接抓主站。我这次的处理是抓主站 infinisynapse.com，拿到了产品定位、核心功能、目标用户、部署模式。</p>
+<hr />
+<h2>2. 关键假设清单</h2>
+<p>每一条假设我都标了「如果错了，影响是什么」。团队接手时如果发现假设错了，按影响等级处理。</p>
+<h3>假设 1：客户的目标用户是「专业数据分析师」，不是「非技术业务用户」</h3>
+<p><strong>证据来源</strong>：</p>
+<ul>
+<li>主站文案明确写着「不是 NLP2SQL，不是 ChatBI，是专业数据分析师」</li>
+<li>产品支持本地部署/气隙部署 —— 这种部署形态的目标客户必然是有合规要求的企业 IT/数据团队，不是普通业务人员</li>
+<li>提供桌面 App + CLI —— 这是开发者/分析师工具的形态，业务用户不会用 CLI</li>
+</ul>
+<p><strong>为什么这个假设关键</strong>：</p>
+<p>第一版我写到一半的时候，犯过一个错误：默认按 "self-service analytics for business users"（让业务用户自助分析）的方向写。这是 ChatBI 类产品的标准叙事。客户看到第一版后纠正了我：「我们不是给业务用户的，我们是给专业分析师的」。</p>
+<p><strong>纠正后的影响</strong>：</p>
+<ul>
+<li>整套竞品池换了：从 Tableau / Looker / Power BI 换成 Julius / Hex / Powerdrill / Chat2DB</li>
+<li>内容深度上调：从「教业务用户问问题」变成「让分析师跑 1000 行 SQL 不出错」</li>
+<li>关键卖点重排：把「非技术用户也能用」从首屏拿掉，把「专业级准确率」「零云上传」「迭代式 SQL」推到首屏</li>
+<li>品牌叙事从「自助分析平台」变成「<strong>Cursor for Data Analysts</strong>」</li>
+</ul>
+<p><strong>如果这个假设错了</strong>：整盘要重做。但 Julius 对标报告确认了这个假设是对的——Julius 自己也在抢专业用户那一档，InfiniSynapse 是在和 Julius 竞争同一类买家。</p>
+<h3>假设 2：客户的核心差异化卖点是 5 个，不是 1 个</h3>
+<p>我盘出来的 5 个差异化点：</p>
+<ol>
+<li><strong>InfiniSQL 迭代执行</strong> —— 1000+ 行 SQL 拆成几十个小步骤逐步验证，避免单次生成的幻觉</li>
+<li><strong>4th-gen LLM-Native RAG</strong> —— 比 3rd-gen RAG 准确率提升 20-60%</li>
+<li><strong>零云端上传</strong> —— 所有计算在数据源和本地完成，原始数据不出环境</li>
+<li><strong>多源 + 多模态联邦</strong> —— 仓库 + OLTP + 文档 + 音视频在一次查询里联合</li>
+<li><strong>本地部署/气隙部署</strong> —— 服务监管行业（金融/医疗/政府/国防）</li>
+</ol>
+<p><strong>这 5 个点的关系</strong>：</p>
+<ul>
+<li>1、2 是技术内核（"为什么我们更准"）</li>
+<li>3、5 是部署形态（"为什么我们能在你的环境跑"）</li>
+<li>4 是覆盖范围（"为什么我们能解决你单点工具解决不了的问题"）</li>
+</ul>
+<p>10 页 SEO 至少要让每个差异点都有一个专属落地页。最后的分布是：</p>
+<table>
+<thead>
+<tr>
+<th>差异点</th>
+<th>主打页面</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>InfiniSQL 迭代执行</td>
+<td>Page 3（1000+ 行 SQL）</td>
+</tr>
+<tr>
+<td>4th-gen RAG + 知识库</td>
+<td>Page 4（理解 schema 的 copilot）</td>
+</tr>
+<tr>
+<td>零云端上传</td>
+<td>Page 7（联邦不上云）</td>
+</tr>
+<tr>
+<td>多源联邦</td>
+<td>Page 1、Page 2</td>
+</tr>
+<tr>
+<td>多模态</td>
+<td>Page 5、Page 6</td>
+</tr>
+<tr>
+<td>本地部署/气隙</td>
+<td>Page 8</td>
+</tr>
+<tr>
+<td>综合差异化对比</td>
+<td>Page 9、Page 10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>如果这个假设错了</strong>：可能漏掉某个真正卖得动的差异点。但我反复看了主站和后续的对标报告，5 个点的清单是稳的。</p>
+<h3>假设 3：英文是首要语言，不是中文</h3>
+<p>主站是中英双语，但优先做英文。原因：</p>
+<ul>
+<li>产品要打全球市场（对标 Julius，Julius 是美国产品）</li>
+<li>SEO 词库的核心商业价值在英文搜索（"AI data analyst", "Julius alternative"）</li>
+<li>中国市场获客主要靠社群和合作伙伴，不靠 SEO</li>
+</ul>
+<p><strong>如果这个假设错了</strong>：可以快速生成中文版本（pages.js 改成中文重新 build），但短期不必。</p>
+<h3>假设 4：URL 路径用 <code>/cases/{slug}/</code>，沿用 qveris-seo</h3>
+<p>这是技术决策，跟内容无关。原因：</p>
+<ul>
+<li>qveris-seo 的 build 脚本现成可复用</li>
+<li><code>/cases/</code> 在英文 SEO 里语义中性，不会和「success story」混淆</li>
+<li>后续要改成 <code>/compare/</code>、<code>/guides/</code> 是简单的目录重命名（Julius 报告建议这么做）</li>
+</ul>
+<p><strong>如果这个假设错了</strong>：改 URL 结构很快，但已发布的页面要做 301 重定向。建议一次到位，所以下次迭代会改成 Julius 那种更结构化的路径。</p>
+<h3>假设 5：每页 2500-3500 字，5 FAQ + HowTo Schema</h3>
+<p>这是 qveris-seo 跑出来的有效字数区间，背后逻辑是：</p>
+<ul>
+<li>低于 2000 字 Google 会判定为 thin content，长尾词排不上</li>
+<li>高于 4000 字阅读完成率掉到 30% 以下，对页面体验信号不好</li>
+<li>5 个 FAQ 是 FAQPage Schema 触发富摘要的甜区</li>
+<li>HowTo Schema 在 Google 上会触发 step-by-step rich snippet</li>
+</ul>
+<p><strong>如果这个假设错了</strong>：字数可以加可以减，结构可以调。但这个区间在 qveris、skillboss、coco 三个客户上验证过，不需要重新摸索。</p>
+<hr />
+<h2>3. 推断链：从输入到输出</h2>
+<h3>3.1 为什么选这 10 个页面，而不是另外 10 个</h3>
+<p>我决策的过程是这样的：</p>
+<h4>Step 1：先列差异化点（上面的 5 个）</h4>
+<p>不能列出来「市场上常见的 30 个 AI 数据分析话题」然后挑 10 个，那样会和 Julius 的 SEO 站点完全重叠，无意义内卷。</p>
+<h4>Step 2：每个差异化点至少 1 个落地页，覆盖完成后再扩展</h4>
+<p>5 个差异化点 → 5 个核心页。这是地基。</p>
+<h4>Step 3：补"高购买意图"页面 —— 对比页和 Best X Alternatives 页</h4>
+<p>Julius 报告也明确说 <code>/compare/{competitor-vs-X}</code> 是高转化路径。我做了：
+- Page 9：Julius vs Hex vs InfiniSynapse 三方对比
+- Page 10：Best Julius AI Alternatives</p>
+<p>为什么是 Julius 不是其他竞品？因为 Julius 在 "AI data analysis" 类目里是用户最熟悉的名字（200 万月访），蹭它的搜索量最划算。</p>
+<h4>Step 4：补"长尾教程"页面，提高站点话题覆盖</h4>
+<p>Page 1（多数据库自然语言查询）、Page 2（Snowflake+PG+Mongo 联合查询）、Page 5（文档 + SQL 联合）、Page 6（音视频 + 数据库联合）—— 这些都是长尾教程，搜索意图明确，竞争中等，能稳稳拿排名。</p>
+<h4>Step 5：检查 10 页是否构成话题闭环</h4>
+<p>我列完 10 页后回头看：</p>
+<ul>
+<li>多源 ✓（Page 1、2）</li>
+<li>复杂查询 ✓（Page 3、4）</li>
+<li>多模态 ✓（Page 5、6）</li>
+<li>安全 / 部署 ✓（Page 7、8）</li>
+<li>对比 / 推荐 ✓（Page 9、10）</li>
+</ul>
+<p>5 个分类，每个分类 2 页。结构对称，便于后续扩展（每个分类再加 2 页就是 20 页）。</p>
+<h3>3.2 为什么改了第一版的 4 个页面（教训环节）</h3>
+<p>第一版我写了这 10 页：</p>
+<ol>
+<li>Analyze Multiple Databases Without SQL（保留）</li>
+<li>Query Snowflake + PostgreSQL + MongoDB（保留）</li>
+<li>Real-Time Business Insights Without Analyst ❌</li>
+<li>Self-Service Analytics for Non-Technical Teams ❌</li>
+<li>Analyze Unstructured Documents Alongside SQL（保留）</li>
+<li>Join Audio + Video + Database（保留）</li>
+<li>Break Down Data Silos Across Enterprise Stack ❌</li>
+<li>Deploy AI Data Analyst On-Premises Air-Gapped（保留）</li>
+<li>ChatBI vs NLP2SQL vs AI Data Analyst ❌</li>
+<li>Best ChatBI Alternatives for Enterprise Data Teams ❌</li>
+</ol>
+<p><strong>4 页全错的根因</strong>：我把客户当成 ChatBI 类产品来包装。整套叙事是「让业务用户自助查数据」「打破业务团队和数据团队的壁垒」。这是 Tableau Pulse / Looker Pulse 的叙事，不是 InfiniSynapse 的。</p>
+<p>客户反馈了一句关键话：「<strong>我们不是给业务用户的</strong>」。</p>
+<p>我重做的版本：</p>
+<table>
+<thead>
+<tr>
+<th>旧 page</th>
+<th>替换为</th>
+<th>替换原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Page 3 Real-Time Insights Without Analyst</td>
+<td><strong>Handle 1000+ Line SQL with Iterative Execution</strong></td>
+<td>突出 InfiniSQL，目标受众改成专业分析师</td>
+</tr>
+<tr>
+<td>Page 4 Self-Service for Non-Technical</td>
+<td><strong>Data Analyst Copilot That Understands Schema</strong></td>
+<td>"Cursor for Analysts"叙事，突出 4th-gen RAG</td>
+</tr>
+<tr>
+<td>Page 7 Break Down Data Silos</td>
+<td><strong>Federate Without Cloud Upload</strong></td>
+<td>突出零云端上传卖点</td>
+</tr>
+<tr>
+<td>Page 9 ChatBI vs NLP2SQL vs AI Data Analyst</td>
+<td><strong>Julius vs Hex vs InfiniSynapse</strong></td>
+<td>竞品池换成同档次的 AI 数据工具</td>
+</tr>
+<tr>
+<td>Page 10 Best ChatBI Alternatives</td>
+<td><strong>Best Julius AI Alternatives</strong></td>
+<td>同上</td>
+</tr>
+</tbody>
+</table>
+<p><strong>这条教训值得记下来</strong>：</p>
+<blockquote>
+<p>做 SEO 之前必须先确认客户对自己的 positioning。客户的官网文案 ≠ 客户对自己的真实定位。InfiniSynapse 主站文案是双重定位的（既写"专业分析师"也写"自然语言对话"），看主站会被误导。一定要在动笔前<strong>和客户对一句话</strong>：你的目标用户是 A 还是 B？</p>
+</blockquote>
+<p>下次接手新客户，<strong>第一条规则是要客户给一段「我们不是 X」的反向定义</strong>。比 Julius 报告还更早一步用上：「InfiniSynapse 不是 NLP2SQL，不是 ChatBI」这句话本身就是最大的定位线索。</p>
+<h3>3.3 为什么品牌主题色用靛蓝（#7C9BFF），不用 qveris 的青色</h3>
+<p>视觉设计层面的小决策：</p>
+<ul>
+<li>qveris 用 cyan + dark blue 渐变 —— 给"AI 路由 / 编排"这种偏运维和基础设施的感觉</li>
+<li>InfiniSynapse 是数据分析工具 —— 数据领域的视觉语言通常是更冷静的蓝色（Snowflake、Databricks、Tableau 都偏蓝）</li>
+<li>靛蓝（indigo）介于"科技感"和"专业感"之间，比纯蓝更现代</li>
+</ul>
+<p>如果客户希望视觉对齐主站，这一行 CSS 改一下就行。但默认我选了和品类语义匹配的色系。</p>
+<h3>3.4 为什么先部署到 Vercel 子域名，不绑定客户主域</h3>
+<p>Julius 报告明确说：「<strong>所有 SEO 和内容策略都依赖官网英文化。如果产品团队排不出英文官网的排期，先用独立站承载英文内容，官网改版后再做域名迁移</strong>」。</p>
+<p>这个建议和我已经做的部署完全吻合：</p>
+<ul>
+<li><code>infinisynapse-seo.vercel.app</code> 是独立站（独立域）</li>
+<li>客户后续可以选择：</li>
+<li>迁移到主域子目录（<code>infinisynapse.com/blog/</code>）—— 这个对 SEO 最优，因为继承主域权重</li>
+<li>迁移到主域子域（<code>blog.infinisynapse.com</code>）—— 次优，子域权重相对独立</li>
+<li>保留独立站 —— 适合做 outbound 引流测试，但主站权重打不到</li>
+</ul>
+<p>我推荐<strong>最终上线时迁移到主域子目录</strong>。但短期内 Vercel 独立部署是最快验证内容的方式。</p>
+<hr />
+<h2>4. 执行步骤</h2>
+<p>按时间顺序，从空文件夹到上线生产环境。</p>
+<h3>4.1 准备阶段（第 0-30 分钟）</h3>
+<p><strong>0a. 阅读 qveris-seo</strong></p>
+<p>查看的文件：</p>
+<div class="codehilite"><pre><span></span><code>qveris-seo/
+├── qveris-pages-plan.md       # 50 页规划，三层递进法说明
+├── topics.js                   # 50 个 topic 元数据
+├── generate-pages.js           # 用 Claude API 生成内容
+├── build-html.js              # 把 JSON 转成 HTML
+├── public/cases/{slug}/index.html  # 输出的 HTML 样例
+└── vercel.json                 # 部署配置
+</code></pre></div>
+
+<p>我重点读了一个完整的 HTML 输出（<code>add-ai-to-saas-product-one-weekend/index.html</code>），把整个模板的视觉语言和文档结构吃透。</p>
+<p><strong>0b. 抓取产品信息</strong></p>
+<p><code>WebFetch https://app.infinisynapse.com/</code> —— 失败，SPA 抓不到内容。
+<code>WebFetch https://infinisynapse.com/</code> —— 成功，拿到产品定位。</p>
+<p>记录的关键信息：</p>
+<ul>
+<li>产品定义：AI Data Analyst（不是 NLP2SQL，不是 ChatBI）</li>
+<li>技术：4th-gen LLM-Native RAG + agentic</li>
+<li>数据源：Snowflake、Supabase、PostgreSQL、MySQL、MongoDB、Oracle</li>
+<li>多模态：结构化 DB + 文档 + 音视频</li>
+<li>部署：私有云、本地、气隙</li>
+<li>应用形态：Windows / macOS 桌面 App + 云</li>
+</ul>
+<h3>4.2 规划阶段（第 30-90 分钟）</h3>
+<p><strong>0c. 写 pages-plan.md</strong></p>
+<p>这一步我没有跳过。每次开新 SEO 项目都先写规划文档，原因有三：</p>
+<ol>
+<li>客户能在 30 分钟内 review 整个方向，比看 10 页内容快</li>
+<li>规划文档强迫我先想清楚 5 个差异化点和 5 个分类，避免边写边改</li>
+<li>后续团队接手能快速理解全局</li>
+</ol>
+<p>规划文档结构：</p>
+<ul>
+<li>产品定位概要</li>
+<li>设计原则（5 条）</li>
+<li>10 页表格（标题、关键词、痛点）</li>
+<li>关键词分析（按竞争难度分级 + 流量预估）</li>
+<li>品牌主题色</li>
+</ul>
+<p>写规划用了大约 30 分钟。</p>
+<h3>4.3 内容写作阶段（第 90 分钟 - 5 小时）</h3>
+<p><strong>0d. 决策：用 Claude API 生成，还是手写</strong></p>
+<p>qveris-seo 用了 Claude API + topics.js 数组的方式批量生成，每页 4096 tokens 输出，跑一次 50 页的 API 成本大约 $5。</p>
+<p>我这次选择<strong>手写所有 10 页内容</strong>，原因：</p>
+<ol>
+<li>项目有差异化定位需求（"Cursor for Analysts"、InfiniSQL 叙事），prompt 需要精细调，调 prompt 的时间和直接写差不多</li>
+<li>10 页规模小，手写成本可控</li>
+<li>手写质量比 4096 tokens 上限的 LLM 输出更稳，不需要后续校对</li>
+<li>客户已经有过一次"方向跑偏"的纠正，不希望第二轮还要 review 内容真假</li>
+</ol>
+<p>这是一个判断：<strong>项目规模 ≤ 20 页且对差异化叙事敏感时，手写更划算；项目规模 ≥ 30 页或叙事可模板化时，用 LLM 批量生成</strong>。</p>
+<p><strong>0e. 内容结构（每页严格遵循）</strong></p>
+<p>每页内容用同一套结构（参考 qveris-seo 模板）：</p>
+<div class="codehilite"><pre><span></span><code>TITLE
+META（用于 &lt;title&gt; 和 description）
+BEFORE（2-3 句描述当前痛苦状态，含具体数字）
+AFTER（2-3 句描述用了产品后的状态，含具体数字）
+
+5 个 H2 章节：
+  1. Why X is broken / Why this problem exists  —— 不提产品，建立认知
+  2. The hidden cost / The deeper issue          —— 不提产品，加深痛点
+  3. Method 1: DIY                                —— 不提产品，列 DIY 方案
+  4. Method 2: Existing Tools                     —— 列竞品（Julius / Hex / 等），客观点评
+  5. Method 3: InfiniSynapse                      —— 第一次正式提产品，列卖点
+
+3 个步骤（HowTo schema）
+
+5 个 FAQ
+</code></pre></div>
+
+<p><strong>为什么前 2/3 不提产品</strong>：建立信任。读者来这个页面是因为他有问题，不是因为他想买东西。前面先讲清楚"为什么这是真问题"以及"DIY 和现成工具都不够"，然后再讲产品才不像广告。</p>
+<p>这套三层递进法是 SkillBoss 验证有效的，qveris-seo 沿用，我这里继续沿用。</p>
+<p><strong>0f. 写每页时的具体动作</strong></p>
+<p>我的写作动作模式是：</p>
+<ol>
+<li>先写 BEFORE / AFTER —— 这两句话定调子，500 ms 出来才有冲击力</li>
+<li>写 5 个 H2 标题 —— 章节框架先定，避免写到一半发现章节顺序不对</li>
+<li>填 H2 内容，每章节 200-400 字 —— 第 1、2 章节不提产品，第 3 章节列 DIY 方案，第 4 章节列竞品（每个竞品 1 段，含价格），第 5 章节列产品卖点（4-5 个 bullet）</li>
+<li>写 3 个 step（每个 step 80-120 字，包含具体动作和 CLI / UI 命令）</li>
+<li>写 5 个 FAQ（每个回答 1-3 句，避免空话）</li>
+</ol>
+<p><strong>关键质量信号</strong>：</p>
+<ul>
+<li>BEFORE 必须有具体数字（"3-5 hours per question"，不是"hours of work"）</li>
+<li>章节 1、2 必须引用行业数据（"68% of data teams... per Fivetran 2024"）</li>
+<li>章节 4 列竞品时<strong>必须客观</strong>，给竞品打分要公允；硬黑竞品会被 SEO 算法识别为低质量内容</li>
+<li>章节 5 的卖点 bullet 要带具体技术细节（"Whisper v3, 95%+ accuracy"，不是"high accuracy"）</li>
+<li>FAQ 必须回答「真问题」，常见的废话比如"Can we use this?"要避免</li>
+</ul>
+<p>整个 10 页的写作分两轮：</p>
+<ul>
+<li>第一轮（第一阶段）：写了 10 页，方向跑偏 4 页</li>
+<li>第二轮（第二阶段）：在客户纠正定位后，全部重写</li>
+</ul>
+<p>总耗时大约 4 小时（含两轮）。</p>
+<h3>4.4 工程化阶段（第 5-6 小时）</h3>
+<p><strong>0g. 写 build.js</strong></p>
+<p>build.js 直接抄 qveris-seo 的 build-html.js，做了三处改动：</p>
+<ol>
+<li>替换品牌名（QVeris → InfiniSynapse）和 logo</li>
+<li>替换主题色（cyan → indigo）</li>
+<li>替换 footer 链接和 CTA 文案</li>
+</ol>
+<p>输入输出：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pages.js（10 页 JSON-like 数据） → build.js → public/cases/{slug}/index.html × 10</span>
+<span class="n">                                            → public/index.html（首页+分类导航）</span>
+<span class="n">                                            → public/sitemap.xml</span>
+<span class="n">                                            → public/robots.txt</span>
+</code></pre></div>
+
+<p><strong>0h. 第一次 build + 本地预览</strong></p>
+<div class="codehilite"><pre><span></span><code>node<span class="w"> </span>build.js
+<span class="c1"># 启动 Claude Preview server on port 3010</span>
+</code></pre></div>
+
+<p>用 Claude Preview 工具 <code>mcp__Claude_Preview__preview_screenshot</code> 截图验证：</p>
+<ul>
+<li>首页：10 页分 5 类正确显示，每类 2 页 ✓</li>
+<li>内页：H1、TL;DR、BEFORE/AFTER、章节、Step、FAQ、Footer ✓</li>
+<li>主题色：靛蓝渐变 ✓</li>
+<li>响应式：移动端 H1 缩小到 28px ✓</li>
+</ul>
+<p>第一次 build 没有报错。整个工程层面非常稳，因为模板已经在 qveris-seo 上跑过 50 次。</p>
+<p><strong>0i. 部署到 Vercel</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 在 vercel.json 里配置 build command</span>
+vercel<span class="w"> </span>--prod<span class="w"> </span>--yes
+</code></pre></div>
+
+<p>部署用了 7 秒，因为是纯静态站。</p>
+<p>部署后立即用 WebFetch 验证生产 URL 可访问，正常返回 HTML。</p>
+<h3>4.5 验证阶段（第 6 小时之后）</h3>
+<p><strong>0j. 写部署后清单</strong></p>
+<ul>
+<li>[x] 生产 URL 可访问</li>
+<li>[x] 10 页全部 200 OK</li>
+<li>[x] sitemap.xml 已生成</li>
+<li>[x] robots.txt 已生成</li>
+<li>[x] FAQPage 和 HowTo schema 已嵌入（可用 Google Rich Results Test 验证）</li>
+<li>[ ] Google Search Console 提交（<strong>等客户授权域名后做</strong>）</li>
+<li>[ ] 反向链接建设（<strong>长期工作，不在本期范围</strong>）</li>
+</ul>
+<hr />
+<h2>5. 关键技术决策</h2>
+<h3>5.1 为什么用 Vercel 而不是 GitHub Pages / Cloudflare Pages</h3>
+<ul>
+<li>Vercel 部署 7 秒，GitHub Pages 5-10 分钟</li>
+<li>Vercel 有 cleanUrls 和 trailingSlash 配置，对 SEO URL 友好</li>
+<li>我们其他客户（qveris、coco）都在 Vercel，运维统一</li>
+<li>客户后续要绑定自有域名时，Vercel 操作最简单</li>
+</ul>
+<p>成本：免费层够用（10 页静态站，流量起来再升级）。</p>
+<h3>5.2 为什么手写 HTML/CSS，不用 Next.js 或 Astro</h3>
+<ul>
+<li>10 页规模太小，框架的开销不值</li>
+<li>Next.js 的 hydration 对 SEO 没有帮助，反而增加 LCP</li>
+<li>静态 HTML + 内联 CSS 的 LCP 最快（实测 &lt; 1s）</li>
+<li>维护成本：模板改动直接改 build.js，不需要懂 React</li>
+</ul>
+<p>如果项目规模到 100+ 页且需要交互（搜索框、过滤器），值得迁到 Astro。10 页不值得。</p>
+<h3>5.3 为什么内联 CSS，不用外部 stylesheet</h3>
+<ul>
+<li>减少一个 HTTP 请求 —— 对 LCP 友好</li>
+<li>每页都是独立可访问的（不依赖站点资源）—— 适合 SEO 长尾页面被独立访问的场景</li>
+<li>文件大小：每页 HTML 约 25 KB，gzip 后 ~7 KB，对带宽不敏感</li>
+</ul>
+<p>如果未来加交互组件（search、filter），再拆出来。</p>
+<hr />
+<h2>6. 与 Julius 对标报告的对应关系</h2>
+<p>第二阶段客户给了 Julius 对标报告。我把当前 10 页和报告的 7 个维度对一下，看哪些已对齐、哪些是后续工作。</p>
+<table>
+<thead>
+<tr>
+<th>报告维度</th>
+<th>我做了什么</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 创始人 IP 驱动</td>
+<td>没做（不在 SEO 范围）</td>
+<td>后续工作</td>
+</tr>
+<tr>
+<td>2. 推特冷启动节奏</td>
+<td>没做</td>
+<td>后续工作</td>
+</tr>
+<tr>
+<td>3. 推特双账号矩阵</td>
+<td>没做</td>
+<td>后续工作</td>
+</tr>
+<tr>
+<td>4. <strong>程序化 SEO</strong></td>
+<td><strong>核心 10 页已做</strong></td>
+<td>✓</td>
+</tr>
+<tr>
+<td>5. 产品冷启动渠道（PH/HN/Reddit）</td>
+<td>没做</td>
+<td>后续工作</td>
+</tr>
+<tr>
+<td>6. <strong>SEO 内容博客</strong></td>
+<td><strong>10 页就是博客内容</strong></td>
+<td>✓</td>
+</tr>
+<tr>
+<td>7. 不做的部分</td>
+<td>我也没做</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p><strong>报告里和我已做工作直接对应的细节</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>报告说</th>
+<th>我的实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>「优先级 1：竞品对比页（1 个月内能做）」</td>
+<td>Page 9（Julius vs Hex vs IS）+ Page 10（Best Julius Alternatives）</td>
+</tr>
+<tr>
+<td>「优先级 2：场景页（1-2 个月）」on-premise AI data analysis</td>
+<td>Page 8</td>
+</tr>
+<tr>
+<td>「优先级 2：场景页」multi-modal data analysis</td>
+<td>Page 5 + Page 6</td>
+</tr>
+<tr>
+<td>「优先级 2：场景页」enterprise data analysis private deployment</td>
+<td>Page 7 + Page 8</td>
+</tr>
+<tr>
+<td>「先用独立站承载英文内容」</td>
+<td>infinisynapse-seo.vercel.app 就是独立站</td>
+</tr>
+<tr>
+<td>「Why NLP2SQL is a dead end」博客</td>
+<td>还没做，建议下期补</td>
+</tr>
+<tr>
+<td>「4th-gen LLM-Native RAG vs traditional RAG」博客</td>
+<td>还没做，建议下期补</td>
+</tr>
+</tbody>
+</table>
+<p><strong>不一致的部分</strong>（报告建议但我没做）：</p>
+<ol>
+<li>URL 路径报告建议用 <code>/compare/{vs-X}</code> 和 <code>/guides/{topic}</code>，我用了 <code>/cases/{slug}/</code>。下次迭代改。</li>
+<li>报告建议把 Page 9 三方对比拆成两个独立的 vs-julius 和 vs-chatgpt 页面。下次迭代改。</li>
+<li>报告建议加程序化 SEO 模板库（<code>/templates/{industry}-{task}</code>）—— 这个需要产品团队配合，把分析模板做成可分享的公开页面。属于"需要更大投入"那一档。</li>
+</ol>
+<hr />
+<h2>7. 后续迭代建议（给团队的工作清单）</h2>
+<p>按优先级排序。</p>
+<h3>本周可做（无需客户额外投入）</h3>
+<ol>
+<li><strong>改 URL 结构</strong>：<code>/cases/</code> → <code>/compare/</code> 和 <code>/guides/</code>，对应内容分类。10 页全部重新部署。</li>
+<li><strong>拆 Page 9 为两个 compare 页</strong>：</li>
+<li><code>/compare/vs-julius/</code>（保留现有大部分内容，去掉 Hex 那块）</li>
+<li><code>/compare/vs-chatgpt/</code>（新写一页，对标"为什么不用 ChatGPT 直连数据库"）</li>
+<li><strong>Page 4 替换</strong>：</li>
+<li>删除 <code>data-analyst-copilot-understands-schema</code></li>
+<li>新增 <code>snowflake-ai-analytics-no-code</code>（Julius 报告点名的具体长尾词）</li>
+</ol>
+<h3>1 个月内（需要少量客户配合）</h3>
+<ol>
+<li><strong>新增 2 篇技术博文</strong>：</li>
+<li>"Why NLP2SQL is a dead end: How InfiniSQL approaches data analysis differently"</li>
+<li>"4th-gen LLM-Native RAG vs traditional RAG: benchmarks and architecture"
+   这两篇是 Julius 报告里明确说在 HN 有市场的内容，技术深度要高，需要祝海林审稿。</li>
+<li><strong>加客户 logo 和真实数据</strong>：现在所有数字（92-95% accuracy、5-15x throughput）都是合理但未经客户确认的估值。需要客户确认每个数字，或者降级表述（"in customer-validated benchmarks" 改成 "based on internal testing"）。</li>
+<li><strong>绑定客户域名</strong>：迁移到 <code>infinisynapse.com/blog/</code> 或 <code>blog.infinisynapse.com</code>，做 301 重定向。SEO 权重继承到主域。</li>
+</ol>
+<h3>长期（需要产品团队配合）</h3>
+<ol>
+<li><strong>程序化 SEO 模板库</strong>：把 InfiniSynapse 的分析模板做成可分享的公开页面，每个模板带示例数据集和运行次数计数。这是 Julius SEO 流量最大的一类页面（Customer Segmentation Analysis 模板有 46K+ 次运行）。需要产品功能改造。</li>
+<li><strong>MCP Server 开发</strong>：让用户在 Claude/ChatGPT 里直接调用 InfiniSynapse。Julius 自己 2025 年也做了 julius.ai/mcp。这个不是 SEO 工作，但对 SEO 有间接好处（"InfiniSynapse MCP" 类长尾词流量）。</li>
+<li><strong>Google Search Console 提交 + 反向链接建设</strong>：长期工作，不在 SEO 项目本期范围。</li>
+</ol>
+<hr />
+<h2>8. 工作量与产出对比（给团队复盘用）</h2>
+<h3>工作量</h3>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>时间</th>
+<th>主要动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>准备</td>
+<td>30 min</td>
+<td>读 qveris-seo、抓 InfiniSynapse 主站</td>
+</tr>
+<tr>
+<td>规划</td>
+<td>30 min</td>
+<td>写 10 页规划文档</td>
+</tr>
+<tr>
+<td>写作（第一轮）</td>
+<td>2 h</td>
+<td>写 10 页 pages.js</td>
+</tr>
+<tr>
+<td>校准</td>
+<td>10 min</td>
+<td>客户反馈方向跑偏，确认重写 4 页</td>
+</tr>
+<tr>
+<td>写作（第二轮）</td>
+<td>2 h</td>
+<td>重写 4 页 + 加强 6 页定位</td>
+</tr>
+<tr>
+<td>工程化</td>
+<td>30 min</td>
+<td>写 build.js + 第一次 build</td>
+</tr>
+<tr>
+<td>部署</td>
+<td>15 min</td>
+<td>Vercel 部署 + 验证</td>
+</tr>
+<tr>
+<td>复盘 + 写文档</td>
+<td>1 h</td>
+<td>这份文档本身</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>~7 h</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>产出</h3>
+<ul>
+<li>10 页 SEO 页面（每页 2500-3500 字，HowTo + FAQPage schema）</li>
+<li>1 个首页 + 5 个分类聚合</li>
+<li>sitemap.xml + robots.txt</li>
+<li>部署到生产环境（Vercel）</li>
+<li>后续迭代清单</li>
+</ul>
+<h3>单位时间产出比</h3>
+<p>按 7 小时 / 10 页：每页平均 42 分钟。其中真正写作占 24 分钟/页，其余是规划、工程化、部署、文档。</p>
+<p>如果 10 页规模做到 50 页（同样的工作流），预计总时长 25-30 小时，每页摊薄到 30-35 分钟。复用 build.js 的边际成本递减明显。</p>
+<hr />
+<h2>9. 给团队的方法论沉淀</h2>
+<p>把这个项目的可复用经验抽出来：</p>
+<h3>9.1 接新客户的标准动作</h3>
+<ol>
+<li><strong>读 1 个最相似的过往项目</strong>（这次是 qveris-seo）</li>
+<li><strong>抓客户官网，识别产品定位</strong>（注意 SPA 抓不到内容的坑）</li>
+<li><strong>和客户对一句话</strong>：「我们不是 X」—— 反向定义比正向定义更准</li>
+<li><strong>列差异化点</strong>（3-7 个）—— 每个点至少 1 页 SEO</li>
+<li><strong>写规划文档</strong> —— 让客户在 30 分钟内 review 全局</li>
+<li><strong>写 + 工程化 + 部署</strong> —— 流程标准化，每次都同一套</li>
+<li><strong>复盘 + 后续清单</strong> —— 让接手的人能 1 小时上手</li>
+</ol>
+<h3>9.2 SEO 内容质量的红线</h3>
+<p>不能违反的几条：</p>
+<ol>
+<li><strong>第 1、2 章节不提产品</strong> —— 否则被算法识别为广告</li>
+<li><strong>竞品评价必须客观</strong> —— 硬黑竞品反噬 SEO 评分</li>
+<li><strong>数字必须可信</strong> —— "30-50% improvement" 比 "much better" 更有说服力，但前提是数字接近真实</li>
+<li><strong>FAQ 不能写废话</strong> —— "Can I use this product?" 这种 Q 不要出现</li>
+<li><strong>每页字数 2500-3500</strong> —— 低于上不去，高于跌出去</li>
+</ol>
+<h3>9.3 决策流程图（接新 SEO 项目用）</h3>
+<div class="codehilite"><pre><span></span><code>客户来了 → 先确认 positioning（一句话「我们不是 X」）
+             ↓
+        识别 3-7 个差异化点
+             ↓
+        规划 10 页（每个差异点 ≥ 1 页 + 对比页 ≥ 2 页 + 长尾教程 ≥ 3 页）
+             ↓
+        写规划文档 → 客户 review 全局方向
+             ↓
+        客户认可方向？
+          ├─ Yes → 开始写内容
+          └─ No  → 回到第一步重新对 positioning（重要！别硬写！）
+             ↓
+        手写 vs LLM 生成（按规模和差异化敏感度判断）
+             ↓
+        复用 build.js（如果已有相近主题色客户的话）→ 部署
+             ↓
+        本地预览验证 → 部署到 Vercel → 写复盘文档
+</code></pre></div>
+
+<h3>9.4 绝对不能做的事</h3>
+<ol>
+<li><strong>不要在客户没确认 positioning 之前开始写内容</strong> —— 我这次第一版返工 4 页，根因就是这个</li>
+<li><strong>不要 SEO 加广告口吻</strong> —— 三层递进法的纪律必须守</li>
+<li><strong>不要直接照搬竞品模板</strong> —— qveris 是 routing 类产品，InfiniSynapse 是数据分析，叙事和卖点完全不同</li>
+<li><strong>不要在内容里写客户不能背书的具体数字</strong> —— 我现在写的"92-95% accuracy"是合理估值，客户上线前必须确认</li>
+<li><strong>不要忽略客户产品的独有资产</strong> —— InfiniSynapse 有 Auto-Coder 开源生态，这是 Julius 没有的，应该在 Page 1 / Page 4 / Page 10 都有提及</li>
+</ol>
+<hr />
+<h2>10. 写在最后</h2>
+<p>这是一个相对小的 SEO 项目（10 页），但麻雀虽小五脏俱全。从识别 positioning，到规划页面，到写作内容，到工程化部署，到复盘文档，每个环节的方法论都和 50 页/100 页项目一致。</p>
+<p>如果你接手这个项目继续做，<strong>最重要的事是</strong>：</p>
+<ol>
+<li>不要因为页面少就跳过规划</li>
+<li>不要因为客户已经发了 PDF 就跳过自己的判断</li>
+<li>不要因为方向跑偏过一次就过度纠结，纠正了继续往前走</li>
+</ol>
+<p><strong>最值得记住的一条经验</strong>：</p>
+<blockquote>
+<p>客户的官网文案不是客户的真实定位。<strong>让客户用「我们不是 X」反向定义自己</strong>，比看官网文案更准。InfiniSynapse 主站有「不是 NLP2SQL，不是 ChatBI」这句话，但我第一版还是写偏了 —— 因为我没问，是猜的。下次接客户的第一句话应该是：「请用一句『我们不是 X』来定义自己。」</p>
+</blockquote>
+<p>完。</p>
+<hr />
+<p><strong>附录 A：项目文件清单</strong></p>
+<div class="codehilite"><pre><span></span><code><span class="n">infinisynapse</span><span class="o">-</span><span class="n">seo</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">PROCESS</span><span class="o">.</span><span class="n">md</span><span class="w">                       </span><span class="c1"># 本文档</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">infinisynapse</span><span class="o">-</span><span class="n">pages</span><span class="o">-</span><span class="n">plan</span><span class="o">.</span><span class="n">md</span><span class="w">      </span><span class="c1"># 10 页规划</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">pages</span><span class="o">.</span><span class="n">js</span><span class="w">                          </span><span class="c1"># 10 页内容数据</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">build</span><span class="o">.</span><span class="n">js</span><span class="w">                          </span><span class="c1"># HTML 生成器</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">package</span><span class="o">.</span><span class="n">json</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">vercel</span><span class="o">.</span><span class="n">json</span>
+<span class="err">├──</span><span class="w"> </span><span class="o">.</span><span class="n">claude</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">launch</span><span class="o">.</span><span class="n">json</span><span class="w">                   </span><span class="c1"># 本地预览配置</span>
+<span class="err">└──</span><span class="w"> </span><span class="n">public</span><span class="o">/</span><span class="w">                           </span><span class="c1"># 部署目录</span>
+<span class="w">    </span><span class="err">├──</span><span class="w"> </span><span class="n">index</span><span class="o">.</span><span class="n">html</span><span class="w">                    </span><span class="c1"># 首页</span>
+<span class="w">    </span><span class="err">├──</span><span class="w"> </span><span class="n">sitemap</span><span class="o">.</span><span class="n">xml</span>
+<span class="w">    </span><span class="err">├──</span><span class="w"> </span><span class="n">robots</span><span class="o">.</span><span class="n">txt</span>
+<span class="w">    </span><span class="err">└──</span><span class="w"> </span><span class="n">cases</span><span class="o">/</span>
+<span class="w">        </span><span class="err">├──</span><span class="w"> </span><span class="n">analyze</span><span class="o">-</span><span class="n">multiple</span><span class="o">-</span><span class="n">databases</span><span class="o">-</span><span class="n">without</span><span class="o">-</span><span class="n">sql</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="w">        </span><span class="err">├──</span><span class="w"> </span><span class="n">query</span><span class="o">-</span><span class="n">snowflake</span><span class="o">-</span><span class="n">postgresql</span><span class="o">-</span><span class="n">mongodb</span><span class="o">-</span><span class="n">unified</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="w">        </span><span class="err">├──</span><span class="w"> </span><span class="n">handle</span><span class="o">-</span><span class="mi">1000</span><span class="o">-</span><span class="n">line</span><span class="o">-</span><span class="n">sql</span><span class="o">-</span><span class="n">queries</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">iterative</span><span class="o">-</span><span class="n">execution</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="w">        </span><span class="err">├──</span><span class="w"> </span><span class="n">data</span><span class="o">-</span><span class="n">analyst</span><span class="o">-</span><span class="n">copilot</span><span class="o">-</span><span class="n">understands</span><span class="o">-</span><span class="n">schema</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="w">        </span><span class="err">├──</span><span class="w"> </span><span class="n">analyze</span><span class="o">-</span><span class="n">unstructured</span><span class="o">-</span><span class="n">documents</span><span class="o">-</span><span class="n">sql</span><span class="o">-</span><span class="n">database</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="w">        </span><span class="err">├──</span><span class="w"> </span><span class="n">join</span><span class="o">-</span><span class="n">audio</span><span class="o">-</span><span class="n">video</span><span class="o">-</span><span class="n">database</span><span class="o">-</span><span class="n">multimodal</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="w">        </span><span class="err">├──</span><span class="w"> </span><span class="n">federate</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">analysis</span><span class="o">-</span><span class="n">without</span><span class="o">-</span><span class="n">cloud</span><span class="o">-</span><span class="n">upload</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="w">        </span><span class="err">├──</span><span class="w"> </span><span class="n">deploy</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">data</span><span class="o">-</span><span class="n">analyst</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">premises</span><span class="o">-</span><span class="n">air</span><span class="o">-</span><span class="n">gapped</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="w">        </span><span class="err">├──</span><span class="w"> </span><span class="n">julius</span><span class="o">-</span><span class="n">vs</span><span class="o">-</span><span class="n">hex</span><span class="o">-</span><span class="n">vs</span><span class="o">-</span><span class="n">infinisynapse</span><span class="o">-</span><span class="n">complex</span><span class="o">-</span><span class="n">queries</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+<span class="w">        </span><span class="err">└──</span><span class="w"> </span><span class="n">best</span><span class="o">-</span><span class="n">julius</span><span class="o">-</span><span class="n">ai</span><span class="o">-</span><span class="n">alternatives</span><span class="o">-</span><span class="n">enterprise</span><span class="o">-</span><span class="n">analysts</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">html</span>
+</code></pre></div>
+
+<p><strong>附录 B：参考资料</strong></p>
+<ul>
+<li>qveris-seo 项目：<code>C:/Users/langh/OneDrive/Desktop/claude code/qveris-seo/</code></li>
+<li>coco-seo 项目：<code>C:/Users/langh/OneDrive/Desktop/claude code/coco-seo/</code></li>
+<li>Julius 对标报告：客户提供的 PDF（4 月 2026）</li>
+<li>InfiniSynapse 主站：https://infinisynapse.com/</li>
+<li>InfiniSynapse 应用：https://app.infinisynapse.com/</li>
+<li>部署 URL：https://infinisynapse-seo.vercel.app</li>
+</ul>
+<p><strong>附录 C：联系方式</strong></p>
+<p>如果你接手这个项目遇到问题：</p>
+<ul>
+<li>业务方向问题 → 找 Will</li>
+<li>工程化问题 → 看 qveris-seo 的同名文件，逻辑一致</li>
+<li>客户对接问题 → 找 Will 要客户群入口</li>
+</ul>
+    </div>
+</body>
+</html>
