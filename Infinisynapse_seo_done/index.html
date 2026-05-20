@@ -1,115 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InfiniSynapse Resources — AI Data Analyst Guides for Enterprise Teams</title>
-  <meta name="description" content="Practical guides for natural-language data analytics, multi-source federation, multi-modal analysis, and enterprise AI deployment.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfiniSynapse Resources | AI Data Analysis Guides</title>
+  <meta name="description" content="Explore InfiniSynapse resources on AI data analysis, SQL workflows, Excel methods, analytics software, and enterprise-ready guides for modern data teams.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="InfiniSynapse Resources | AI Data Analysis Guides">
+  <meta property="og:description" content="Explore InfiniSynapse resources on AI data analysis, SQL workflows, Excel methods, analytics software, and enterprise-ready guides for modern data teams.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://infinisynapse.com/use-cases/index.html">
+  <meta property="og:image" content="https://infinisynapse.com/og/Infinisynapse_og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="InfiniSynapse Resources | AI Data Analysis Guides">
+  <meta name="twitter:description" content="Explore InfiniSynapse resources on AI data analysis, SQL workflows, Excel methods, analytics software, and enterprise-ready guides for modern data teams.">
+  <meta name="twitter:image" content="https://infinisynapse.com/og/Infinisynapse_og.png">
+
+  <link rel="canonical" href="https://infinisynapse.com/use-cases/index.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0A0E1A;color:rgba(255,255,255,0.82);-webkit-font-smoothing:antialiased}
-    ::selection{background:rgba(124,155,255,0.3)}
-    a{text-decoration:none}
-    .nav{background:rgba(10,14,26,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06);padding:14px 0;position:sticky;top:0;z-index:50}
-    .nav-inner{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
-    .nav-logo{display:flex;align-items:center;gap:10px}
-    .nav-logo-mark{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,#7C9BFF,#5B7FFF,#3D5FE0);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#0A0E1A}
-    .nav-logo span{font-size:16px;font-weight:600;color:rgba(255,255,255,0.97)}
-    .nav-cta{background:linear-gradient(135deg,#B5C6FF,#7C9BFF,#5B7FFF);color:#0A0E1A;padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#FFFFFF;color:#1F2937;-webkit-font-smoothing:antialiased;line-height:1.5}
+    ::selection{background:rgba(91,91,255,0.2)}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;height:auto}
+
+    .skip-link{position:absolute;left:24px;top:-48px;background:#0A0A0A;color:#FFFFFF;padding:10px 14px;border-radius:10px;z-index:100;transition:top .2s}
+    .skip-link:focus{top:16px}
+
+    .nav{background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);border-bottom:1px solid #E5E7EB;padding:14px 0;position:sticky;top:0;z-index:50}
+    .nav-inner{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .nav-logo{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;color:#0A0A0A}
+    .nav-logo-mark{height:28px;display:flex;align-items:center}
+    .nav-logo-mark img{height:28px;width:auto;display:block}
+    .nav-cta{background:#0A0A0A;color:#FFFFFF;padding:9px 20px;border-radius:24px;font-size:13px;font-weight:700;transition:background .2s,transform .2s}
+    .nav-cta:hover{background:#1F2937;transform:translateY(-1px)}
+
     .container{max-width:1080px;margin:0 auto;padding:0 24px}
-    .hero{padding:72px 0 56px;text-align:center}
-    .hero h1{font-size:2.8rem;font-weight:500;letter-spacing:-0.03em;color:rgba(255,255,255,0.97);margin-bottom:16px}
-    .hero h1 em{font-style:normal;background:linear-gradient(135deg,#B5C6FF,#7C9BFF,#5B7FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .hero p{color:rgba(255,255,255,0.5);font-size:17px;max-width:600px;margin:0 auto 36px;line-height:1.6}
-    .stats{display:flex;justify-content:center;gap:56px}
-    .stat-num{font-size:36px;font-weight:600;background:linear-gradient(135deg,#B5C6FF,#5B7FFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .stat-label{font-size:12px;color:rgba(255,255,255,0.3);margin-top:4px;text-transform:uppercase;letter-spacing:1.5px}
-    .idx-section{margin:48px 0}
-    .idx-section h2{font-size:20px;font-weight:600;color:rgba(255,255,255,0.9);border-bottom:1px solid rgba(255,255,255,0.06);padding-bottom:10px;margin-bottom:20px;display:flex;align-items:center}
-    .cat-count{background:rgba(124,155,255,0.12);color:#B5C6FF;font-size:13px;padding:3px 11px;border-radius:12px;margin-left:10px;font-weight:500}
-    .card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .page-card{display:block;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:18px 20px;transition:all 0.2s;min-height:160px}
-    .page-card:hover{border-color:rgba(124,155,255,0.3);transform:translateY(-2px);background:rgba(124,155,255,0.04)}
-    .page-card-cat{font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
-    .page-card-title{font-size:15px;font-weight:600;color:rgba(255,255,255,0.92);line-height:1.4;margin-bottom:8px}
-    .page-card-meta{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5}
-    footer{background:#060912;border-top:1px solid rgba(255,255,255,0.04);padding:36px 0;text-align:center;font-size:13px;color:rgba(255,255,255,0.3);margin-top:64px}
-    footer a{color:#7C9BFF}
-    @media(max-width:768px){.hero h1{font-size:2rem}.card-grid{grid-template-columns:1fr}.stats{gap:32px}}
+    .hero{padding:72px 0 48px;text-align:center}
+    .hero h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;color:#0A0A0A;margin-bottom:16px;line-height:1.08}
+    .hero h1 em{font-style:normal;color:#5B5BFF}
+    .hero p{color:#4B5563;font-size:17px;max-width:660px;margin:0 auto 36px;line-height:1.65}
+    .stats{display:flex;justify-content:center;gap:56px;flex-wrap:wrap}
+    .stat-num{font-size:36px;font-weight:800;color:#0A0A0A;letter-spacing:-0.03em}
+    .stat-label{font-size:12px;color:#6B7280;margin-top:4px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+
+    .section-header{display:flex;align-items:baseline;gap:12px;margin:34px 0 22px;padding-bottom:14px;border-bottom:1px solid #E5E7EB}
+    .section-header h2{font-size:24px;font-weight:800;color:#0A0A0A;letter-spacing:-0.02em}
+    .section-eyebrow{background:rgba(91,91,255,0.1);color:#5B5BFF;font-size:13px;padding:3px 11px;border-radius:12px;font-weight:700}
+
+    .seo-intro{margin:6px 0 36px}
+    .seo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .seo-block{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:16px;padding:22px;transition:border-color .2s,box-shadow .2s,transform .2s}
+    .seo-block:hover{border-color:rgba(91,91,255,.35);box-shadow:0 10px 28px rgba(91,91,255,.08);transform:translateY(-2px)}
+    .seo-block h3{font-size:17px;font-weight:800;color:#0A0A0A;line-height:1.4;margin-bottom:10px;letter-spacing:-0.01em}
+    .seo-block p{font-size:14px;line-height:1.75;color:#4B5563}
+
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-bottom:32px}
+    .page-card{position:relative;display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #E5E7EB;border-radius:16px;padding:22px 22px 20px;transition:border-color .2s,box-shadow .2s,transform .2s;min-height:210px}
+    .page-card:hover{border-color:#5B5BFF;transform:translateY(-3px);box-shadow:0 12px 28px rgba(91,91,255,0.1)}
+    .page-card:focus-visible{outline:3px solid rgba(91,91,255,.35);outline-offset:3px}
+    .page-card-tag{align-self:flex-start;background:rgba(91,91,255,0.08);color:#5B5BFF;font-size:11px;font-weight:800;padding:4px 11px;border-radius:14px;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:14px;border:1px solid rgba(91,91,255,0.18)}
+    .page-card-title{font-size:16px;font-weight:800;color:#0A0A0A;line-height:1.45;margin-bottom:10px;letter-spacing:-0.01em}
+    .page-card-meta{font-size:13.5px;color:#6B7280;line-height:1.65;flex:1}
+    .page-card-cta{margin-top:14px;padding-top:14px;border-top:1px solid #F3F4F6;font-size:13px;color:#5B5BFF;font-weight:800;transition:transform .2s}
+    .page-card:hover .page-card-cta{transform:translateX(4px)}
+
+    footer{background:#F9FAFB;border-top:1px solid #E5E7EB;padding:36px 0;text-align:center;font-size:13px;color:#6B7280;margin-top:64px}
+    footer a{color:#5B5BFF;font-weight:700}
+
+    @media(max-width:768px){
+      .hero{padding:56px 0 38px}
+      .stats{gap:28px}
+      .seo-grid,.card-grid{grid-template-columns:1fr}
+      .section-header{align-items:flex-start;flex-direction:column;gap:8px}
+    }
   </style>
 </head>
 <body>
-  <nav class="nav"><div class="nav-inner">
-    <a href="https://infinisynapse.com" class="nav-logo">
-      <span class="nav-logo-mark">i</span>
-      <span>InfiniSynapse</span>
-    </a>
-    <a href="https://app.infinisynapse.com" class="nav-cta">Get Started</a>
-  </div></nav>
-  <div class="container">
-    <div class="hero">
-      <h1>InfiniSynapse <em>Resources</em></h1>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+        <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse logo"></span>
+        <span>InfiniSynapse</span>
+      </a>
+      <a href="https://app.infinisynapse.com" class="nav-cta">Get Started</a>
+    </div>
+  </nav>
+
+  <main id="main-content" class="container">
+    <section class="hero" aria-labelledby="page-title">
+      <h1 id="page-title">InfiniSynapse <em>Resources</em></h1>
       <p>Practical guides for natural-language data analytics, multi-source federation, multi-modal analysis, and enterprise AI deployment.</p>
-      <div class="stats">
+      <div class="stats" aria-label="Resource library statistics">
         <div><div class="stat-num">5</div><div class="stat-label">Guides</div></div>
         <div><div class="stat-num">5</div><div class="stat-label">Topics</div></div>
         <div><div class="stat-num">40+</div><div class="stat-label">Connectors</div></div>
       </div>
-    </div>
-    <div class="idx-section">
-      <h2>sql-data-analysis-with-ai <span class="cat-count">1</span></h2>
+    </section>
+
+    <section class="seo-intro" aria-labelledby="resources-overview">
+      <div class="section-header">
+        <h2 id="resources-overview">Practical AI data analysis resources</h2>
+        <span class="section-eyebrow">Overview</span>
+      </div>
+      <div class="seo-grid">
+        <article class="seo-block">
+          <h3>AI data analysis guides for modern teams</h3>
+          <p>Browse practical resources for teams using AI to speed up analysis, reduce manual SQL work, and turn business questions into faster answers.</p>
+        </article>
+        <article class="seo-block">
+          <h3>Learn SQL, Excel, and reporting workflows</h3>
+          <p>Find step-by-step guides covering SQL analysis, Excel workflows, reporting tools, and core data analysis techniques used in real business settings.</p>
+        </article>
+        <article class="seo-block">
+          <h3>Compare analytics software and AI tools</h3>
+          <p>Review expert guides that compare analytics platforms, AI data tools, and enterprise-ready options for scaling data analysis in 2026.</p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="all-guides">
+      <div class="section-header">
+        <h2 id="all-guides">All guides</h2>
+        <span class="section-eyebrow">5</span>
+      </div>
       <div class="card-grid">
         <a href="./sql-data-analysis-with-ai/index.html" class="page-card">
-          <div class="page-card-cat">sql-data-analysis-with-ai</div>
-          <div class="page-card-title">SQL Data Analysis with AI: From Question to Insight in Seconds</div>
-          <div class="page-card-meta">A practical guide to modern data analysis using SQL, the AI agents that now generate, validate, and run queries on your ...</div>
+          <span class="page-card-tag">SQL · AI</span>
+          <h3 class="page-card-title">SQL Data Analysis with AI: From Question to Insight in Seconds</h3>
+          <p class="page-card-meta">A practical guide to modern data analysis using SQL, the AI agents that now generate, validate, and run queries on your warehouse.</p>
+          <span class="page-card-cta">Read guide →</span>
         </a>
-      </div>
-    </div>
-<div class="idx-section">
-      <h2>how-to-add-data-analysis-in-excel <span class="cat-count">1</span></h2>
-      <div class="card-grid">
+
         <a href="./how-to-add-data-analysis-in-excel/index.html" class="page-card">
-          <div class="page-card-cat">how-to-add-data-analysis-in-excel</div>
-          <div class="page-card-title">How to Add Data Analysis in Excel: Step-by-Step Guide for 2026</div>
-          <div class="page-card-meta">A complete tutorial on how to add data analysis in Excel using the built-in Analysis ToolPak — plus an honest look at when this Excel...</div>
+          <span class="page-card-tag">Excel</span>
+          <h3 class="page-card-title">How to Add Data Analysis in Excel: Step-by-Step Guide for 2026</h3>
+          <p class="page-card-meta">A complete tutorial on how to add data analysis in Excel using the built-in Analysis ToolPak — plus an honest look at when this Excel approach hits its ceiling.</p>
+          <span class="page-card-cta">Read guide →</span>
         </a>
-      </div>
-    </div>
-<div class="idx-section">
-      <h2>data-analysis-techniques<span class="cat-count">1</span></h2>
-      <div class="card-grid">
+
         <a href="./data-analysis-techniques/index.html" class="page-card">
-          <div class="page-card-cat">data-analysis-techniques</div>
-          <div class="page-card-title">Data Analysis Techniques: A Complete Guide with Examples</div>
-          <div class="page-card-meta">The data analysis methods that drive business decisions, the data analysis examples that show them in action, and the modern ways of data analysis ...</div>
+          <span class="page-card-tag">Techniques</span>
+          <h3 class="page-card-title">Data Analysis Techniques: A Complete Guide with Examples</h3>
+          <p class="page-card-meta">The data analysis methods that drive business decisions, the data analysis examples that show them in action, and the modern ways of analysis.</p>
+          <span class="page-card-cta">Read guide →</span>
         </a>
 
-      </div>
-    </div>
-<div class="idx-section">
-      <h2>best-data-analysis-software <span class="cat-count">1</span></h2>
-      <div class="card-grid">
         <a href="./best-data-analysis-software/index.html" class="page-card">
-          <div class="page-card-cat">best-data-analysis-software</div>
-          <div class="page-card-title">Best Data Analysis Software for Reporting and Insights in 2026</div>
-          <div class="page-card-meta">Eight leading platforms ranked by capability across data analysis and reporting, AI features, multi-source connectivity, and scale ...</div>
+          <span class="page-card-tag">Software</span>
+          <h3 class="page-card-title">Best Data Analysis Software for Reporting and Insights in 2026</h3>
+          <p class="page-card-meta">Eight leading platforms ranked by capability across data analysis and reporting, AI features, multi-source connectivity, and scale.</p>
+          <span class="page-card-cta">Read guide →</span>
         </a>
 
-      </div>
-    </div>
-<div class="idx-section">
-      <h2>best-ai-tools-for-data-analysis <span class="cat-count">1</span></h2>
-      <div class="card-grid">
         <a href="./best-ai-tools-for-data-analysis/index.html" class="page-card">
-          <div class="page-card-cat">best-ai-tools-for-data-analysis</div>
-          <div class="page-card-title">Best AI Tools for Data Analysis in 2026: A Buyer's Guide</div>
-          <div class="page-card-meta">A practitioner's guide to AI agents for data analysis, NL2SQL utilities, and full AI data analysts — and how to pick the one that fits your data, your stack, and your team....</div>
+          <span class="page-card-tag">AI Tools</span>
+          <h3 class="page-card-title">Best AI Tools for Data Analysis in 2026: A Buyer's Guide</h3>
+          <p class="page-card-meta">A practitioner's guide to AI agents for data analysis, NL2SQL utilities, and full AI data analysts — and how to pick the one that fits your team.</p>
+          <span class="page-card-cta">Read guide →</span>
         </a>
 
+        <a href="./nl2sql/index.html" class="page-card">
+          <span class="page-card-tag">Explained</span>
+          <h3 class="page-card-title">What is NL2SQL? Natural Language to SQL Explained for 2026</h3>
+          <p class="page-card-meta">NL2SQL turns plain English questions into SQL queries. See how it works in 2026, real enterprise accuracy benchmarks, and how to evaluate the right tool.</p>
+          <span class="page-card-cta">Read guide →</span>
+        </a>
+
+         <a href="./infinisynapse-vs-vanna-ai/index.html" class="page-card">
+          <span class="page-card-tag">AI Tools</span>
+          <h3 class="page-card-title">InfiniSynapse vs Vanna AI: NL2SQL Comparison 2026</h3>
+          <p class="page-card-meta">InfiniSynapse vs Vanna AI compared on accuracy, multi-source support, complex query handling, pricing, and deployment. Honest verdict on which NL2SQL tool fits.</p>
+          <span class="page-card-cta">Read guide →</span>
+        </a>
+
+        <a href="./infinisynapse-vs-text2sql/index.html" class="page-card">
+          <span class="page-card-tag">AI Tools</span>
+          <h3 class="page-card-title">InfiniSynapse vs Text2SQL.ai: AI SQL Generator Compared</h3>
+          <p class="page-card-meta">InfiniSynapse vs Text2SQL.ai compared on pricing, query accuracy, integrations, and enterprise scale. Honest pick for your team in 2026 — with verdict.</p>
+          <span class="page-card-cta">Read guide →</span>
+        </a>
+
+         <a href="./best-nl2sql-tools-2026/index.html" class="page-card">
+          <span class="page-card-tag">AI Tools</span>
+          <h3 class="page-card-title">Best NL2SQL Tools 2026: 7 Ranked AI SQL Generators</h3>
+          <p class="page-card-meta">The 7 best NL2SQL tools of 2026, ranked on accuracy, multi-source support, pricing, and enterprise readiness — with honest verdicts and a published rubric.</p>
+          <span class="page-card-cta">Read guide →</span>
+        </a>
       </div>
-    </div>
-  </div>
-  <footer><div class="container">&copy; 2026 <a href="https://infinisynapse.com">InfiniSynapse</a>. All rights reserved. · Multi-source · Multi-modal · On-prem ready</div></footer>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">&copy; 2026 <a href="https://infinisynapse.com">InfiniSynapse</a>. All rights reserved. · Multi-source · Multi-modal · On-prem ready</div>
+  </footer>
 </body>
 </html>
