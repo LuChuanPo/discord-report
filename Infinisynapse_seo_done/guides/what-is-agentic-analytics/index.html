@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>What Is Agentic Analytics? (2026 Guide) | InfiniSynapse</title>
+  <meta name="description" content="Agentic analytics deploys AI agents to autonomously plan and execute multi-source data analysis. Learn how LLM-Native RAG moves analytics beyond NLP2SQL.">
+
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Dr. Alex Chen">
+
+  <meta property="og:title" content="What Is Agentic Analytics? (2026 Guide) | InfiniSynapse">
+  <meta property="og:description" content="Agentic analytics deploys AI agents to autonomously plan and execute multi-source data analysis. Learn how LLM-Native RAG moves analytics beyond NLP2SQL.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/guides/what-is-agentic-analytics/">
+  <meta property="og:image" content="https://infinisynapse.com/og/Infinisynapse_og.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://infinisynapse.com/og/Infinisynapse_og.png">
+
+  <link rel="canonical" href="https://infinisynapse.com/guides/what-is-agentic-analytics/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Schema #1: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "InfiniSynapse",
+    "url": "https://infinisynapse.com",
+    "logo": "https://app.infinisynapse.cn/logo.png",
+    "sameAs": [
+      "https://github.com/infinisynapse"
+    ]
+  }
+  </script>
+
+  <!-- Schema #2: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://infinisynapse.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://infinisynapse.com/guides/"},
+      {"@type": "ListItem", "position": 3, "name": "What Is Agentic Analytics?", "item": "https://infinisynapse.com/guides/what-is-agentic-analytics/"}
+    ]
+  }
+  </script>
+
+  <!-- Schema #3: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What Is Agentic Analytics? AI Agents That Think Like Data Analysts",
+    "description": "Agentic analytics deploys AI agents to autonomously plan and execute multi-source data analysis. Learn how LLM-Native RAG moves analytics beyond NLP2SQL.",
+    "image": ["https://infinisynapse.com/og/Infinisynapse_og.png"],
+    "author": {
+      "@type": "Person",
+      "name": "Dr. Alex Chen",
+      "url": "https://infinisynapse.com/authors/alex-chen",
+      "jobTitle": "Principal Data Architect"
+    },
+    "datePublished": "2026-05-21",
+    "dateModified": "2026-05-21",
+    "publisher": {
+      "@type": "Organization",
+      "name": "InfiniSynapse",
+      "logo": {"@type": "ImageObject", "url": "https://app.infinisynapse.cn/logo.png"}
+    },
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://infinisynapse.com/guides/what-is-agentic-analytics/"}
+  }
+  </script>
+
+  <!-- Schema #4: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between agentic analytics and traditional BI?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Traditional BI tools answer pre-defined questions on a fixed dashboard against a single data source. Agentic analytics deploys AI agents that autonomously plan multi-step analytical workflows — they decide what to analyze, retrieve context across data sources, generate and execute queries in a purpose-built language, check their own results, and iterate when distributions look unexpected. A traditional BI dashboard tells you revenue dropped; agentic analytics tells you revenue dropped, cross-references the customer call transcripts and Q3 planning PDF, and surfaces the root cause — all without a human defining the analysis path in advance."}
+      },
+      {
+        "@type": "Question",
+        "name": "How is agentic analytics different from NLP2SQL?",
+        "acceptedAnswer": {"@type": "Answer", "text": "NLP2SQL tools translate a natural language question into a single SQL query against one database. Agentic analytics, by contrast, plans a full analytical workflow: it retrieves schemas from multiple sources, generates purpose-built queries (InfiniSQL), executes them across Snowflake, PostgreSQL, and MongoDB in one session, verifies result distributions, and iterates when something looks off. NLP2SQL stops at query generation. Agentic analytics starts there and covers the entire analysis lifecycle — planning, retrieval, execution, verification, and explanation."}
+      },
+      {
+        "@type": "Question",
+        "name": "What role does LLM-Native RAG play in agentic analytics?",
+        "acceptedAnswer": {"@type": "Answer", "text": "LLM-Native RAG is the architectural foundation of agentic analytics. Unlike traditional RAG that uses a separate vector database for document retrieval, LLM-Native RAG embeds retrieval directly into the model's reasoning loop. This lets the AI agent dynamically retrieve schema definitions, business metrics, and historical query patterns as it plans each analytical step — without pre-chunking or pre-indexing. InfiniSynapse's 4th-generation LLM-Native RAG achieves 90%+ accuracy on complex cross-source queries where NLP2SQL tools drop to 30-45%."}
+      },
+      {
+        "@type": "Question",
+        "name": "Can agentic analytics handle unstructured data like PDFs and audio recordings?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. Multi-modal analysis is a defining capability of agentic analytics. InfiniSynapse ingests structured data from Snowflake and PostgreSQL alongside semi-structured sources like PDF reports and Excel files, plus unstructured media including audio recordings of customer calls. The AI agent retrieves relevant context from all modalities, extracts structured insights from documents, and correlates them with live database numbers in a single analysis session. Approximately 80% of enterprise data is unstructured — agentic analytics ensures this data contributes to analytical decisions rather than being excluded."}
+      },
+      {
+        "@type": "Question",
+        "name": "Is agentic analytics suitable for air-gapped enterprise environments?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. InfiniSynapse supports enterprise private deployment on private cloud or on-premises servers, fully compatible with air-gapped environments. All data processing — including the LLM-Native RAG engine — runs within your infrastructure. No data ever leaves your network. Native desktop applications for Windows and macOS work offline after initial setup, making agentic analytics viable for defense, financial services, healthcare, and government use cases where data sovereignty is non-negotiable."}
+      },
+      {
+        "@type": "Question",
+        "name": "Is agentic analytics worth it if my team already has a BI tool?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Agentic analytics does not replace BI — it handles the questions BI tools cannot answer. If your analytical backlog includes cross-source questions that currently take 4+ hours of manual SQL and Python scripting, or if unstructured data (PDFs, transcripts) is routinely excluded from quantitative analysis, agentic analytics typically pays for itself within the first quarter. For teams that only run dashboard refreshes on a single warehouse, a ChatBI tool is the more practical choice. The two tools are complementary, not competitive."}
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema #5: DefinedTerm (what-is page type) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    "name": "Agentic Analytics",
+    "description": "Agentic analytics is an AI-powered approach to data analysis where autonomous agents plan, execute, and verify multi-step analytical workflows across multiple data sources without requiring users to write queries. Built on LLM-Native RAG, it retrieves business context dynamically and iterates on results — working as a professional analyst rather than a query translator.",
+    "inDefinedTermSet": {
+      "@type": "DefinedTermSet",
+      "name": "AI Data Analytics Glossary"
+    }
+  }
+  </script>
+
+  <!-- Schema #6: SoftwareApplication (InfiniSynapse) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "InfiniSynapse",
+    "description": "Agentic analytics platform with LLM-Native RAG for autonomous multi-source, multi-modal data analysis.",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows, macOS, Web",
+    "url": "https://infinisynapse.com",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
+
+  <style>
+    :root,
+    [data-theme="dark"]{
+      --bg-page:#0A0E1A;
+      --bg-footer:#060912;
+      --bg-nav:rgba(10,14,26,0.85);
+      --bg-surface:rgba(255,255,255,0.02);
+      --bg-surface-strong:rgba(255,255,255,0.03);
+      --bg-surface-hover:rgba(124,155,255,0.05);
+      --bg-code:rgba(124,155,255,0.08);
+      --bg-code-block:rgba(124,155,255,0.05);
+      --bg-accent-soft:rgba(124,155,255,0.05);
+      --bg-accent-pill:rgba(124,155,255,0.18);
+      --bg-cta:linear-gradient(135deg,rgba(124,155,255,0.1),rgba(61,95,224,0.08));
+      --bg-before:rgba(239,68,68,0.06);
+
+      --text-strong:rgba(255,255,255,0.97);
+      --text-primary:rgba(255,255,255,0.92);
+      --text-body:rgba(255,255,255,0.82);
+      --text-muted:rgba(255,255,255,0.62);
+      --text-faint:rgba(255,255,255,0.5);
+      --text-fainter:rgba(255,255,255,0.4);
+      --text-quietest:rgba(255,255,255,0.28);
+
+      --border-soft:rgba(255,255,255,0.06);
+      --border-faint:rgba(255,255,255,0.04);
+      --border-accent:rgba(124,155,255,0.2);
+      --border-accent-strong:rgba(124,155,255,0.25);
+      --border-code:rgba(124,155,255,0.14);
+      --border-before:rgba(239,68,68,0.18);
+
+      --accent:#7C9BFF;
+      --accent-hi:#B5C6FF;
+      --accent-deep:#3D5FE0;
+      --accent-mid:#5B7FFF;
+      --accent-on:#0A0E1A;
+      --selection:rgba(124,155,255,0.3);
+
+      --error:#f87171;
+      --green:#4ade80;
+    }
+
+    [data-theme="light"]{
+      --bg-page:#FFFFFF;
+      --bg-footer:#F5F6FA;
+      --bg-nav:rgba(255,255,255,0.88);
+      --bg-surface:rgba(15,23,42,0.025);
+      --bg-surface-strong:rgba(15,23,42,0.04);
+      --bg-surface-hover:rgba(61,95,224,0.05);
+      --bg-code:rgba(61,95,224,0.07);
+      --bg-code-block:rgba(61,95,224,0.04);
+      --bg-accent-soft:rgba(61,95,224,0.05);
+      --bg-accent-pill:rgba(61,95,224,0.12);
+      --bg-cta:linear-gradient(135deg,rgba(91,127,255,0.08),rgba(61,95,224,0.05));
+      --bg-before:rgba(220,38,38,0.05);
+
+      --text-strong:#050810;
+      --text-primary:#0F1629;
+      --text-body:#1A2035;
+      --text-muted:#2D3548;
+      --text-faint:#3D4558;
+      --text-fainter:#5B6378;
+      --text-quietest:#808698;
+
+      --border-soft:rgba(15,23,42,0.10);
+      --border-faint:rgba(15,23,42,0.06);
+      --border-accent:rgba(30,58,138,0.30);
+      --border-accent-strong:rgba(30,58,138,0.45);
+      --border-code:rgba(30,58,138,0.22);
+      --border-before:rgba(220,38,38,0.25);
+
+      --accent:#1E3A8A;
+      --accent-hi:#3D5FE0;
+      --accent-deep:#0F1F5A;
+      --accent-mid:#2D4FCC;
+      --accent-on:#FFFFFF;
+      --selection:rgba(61,95,224,0.18);
+
+      --error:#B91C1C;
+      --green:#15803D;
+    }
+
+    @media (prefers-color-scheme: light){
+      html:not([data-theme]){
+        --bg-page:#FFFFFF; --bg-footer:#F5F6FA; --bg-nav:rgba(255,255,255,0.88);
+        --bg-surface:rgba(15,23,42,0.025); --bg-surface-strong:rgba(15,23,42,0.04);
+        --bg-surface-hover:rgba(61,95,224,0.05); --bg-code:rgba(61,95,224,0.07);
+        --bg-code-block:rgba(61,95,224,0.04); --bg-accent-soft:rgba(61,95,224,0.05);
+        --bg-accent-pill:rgba(61,95,224,0.12);
+        --bg-cta:linear-gradient(135deg,rgba(91,127,255,0.08),rgba(61,95,224,0.05));
+        --bg-before:rgba(220,38,38,0.05);
+        --text-strong:#050810; --text-primary:#0F1629; --text-body:#1A2035;
+        --text-muted:#2D3548; --text-faint:#3D4558; --text-fainter:#5B6378;
+        --text-quietest:#808698;
+        --border-soft:rgba(15,23,42,0.10); --border-faint:rgba(15,23,42,0.06);
+        --border-accent:rgba(30,58,138,0.30); --border-accent-strong:rgba(30,58,138,0.45);
+        --border-code:rgba(30,58,138,0.22); --border-before:rgba(220,38,38,0.25);
+        --accent:#1E3A8A; --accent-hi:#3D5FE0; --accent-deep:#0F1F5A;
+        --accent-mid:#2D4FCC; --accent-on:#FFFFFF; --selection:rgba(30,58,138,0.15);
+        --error:#B91C1C; --green:#15803D;
+      }
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:var(--text-body);background:var(--bg-page);font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    ::selection{background:var(--selection)}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{color:var(--accent-hi)}
+    img{max-width:100%;height:auto}
+
+    .nav{position:sticky;top:0;z-index:50;background:var(--bg-nav);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-soft);padding:14px 0}
+    .nav-inner{max-width:1024px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .nav-logo-mark{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-mid) 50%,var(--accent-deep) 100%);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--accent-on)}
+    .nav-logo span{font-size:16px;font-weight:600;color:var(--text-strong);letter-spacing:-0.01em}
+    .nav-links{display:flex;align-items:center;gap:22px;font-size:14px}
+    .nav-links a{color:var(--text-faint);transition:color 0.15s}
+    .nav-links a:hover{color:var(--text-primary)}
+    .nav-cta{background:#5B7FFF;color:#fff;padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;transition:opacity 0.2s}
+    .nav-cta:hover{opacity:0.85;color:#fff}
+    [data-theme="dark"] .nav-cta{background:linear-gradient(135deg,var(--accent-hi) 0%,var(--accent) 40%,var(--accent-mid) 100%);color:var(--accent-on)}
+    [data-theme="dark"] .nav-cta:hover{opacity:0.9;color:var(--accent-on)}
+
+    .wrap{max-width:1024px;margin:0 auto;padding:48px 24px}
+
+    h1{font-size:2.4rem;font-weight:500;line-height:1.15;margin-bottom:16px;color:var(--text-strong);letter-spacing:-0.02em}
+    h2{font-size:1.22rem;font-weight:600;margin:40px 0 16px;color:var(--text-primary);border-bottom:1px solid var(--border-soft);padding-bottom:10px}
+    h3{font-size:15px;font-weight:600;margin:24px 0 10px;color:var(--text-primary)}
+    p{margin:0 0 18px;color:var(--text-muted)}
+    strong{color:var(--text-primary)}
+    em{color:var(--text-body);font-style:italic}
+    ul,ol{margin:12px 0 14px 24px}
+    li{margin:6px 0;color:var(--text-muted)}
+    code{background:var(--bg-code);padding:2px 7px;border-radius:4px;font-size:14px;font-family:'SF Mono','Fira Code','JetBrains Mono',monospace;color:var(--accent-hi);border:1px solid var(--border-code)}
+    pre{background:var(--bg-code-block);border:1px solid var(--border-code);border-radius:8px;padding:16px;overflow-x:auto;margin:16px 0}
+    pre code{background:none;border:none;padding:0;font-size:13px;line-height:1.6;color:var(--text-primary)}
+
+    .meta-desc{font-size:1.05rem;color:var(--text-faint);margin-bottom:28px;line-height:1.55;max-width:680px}
+    .breadcrumb{font-size:13px;color:var(--text-fainter);margin-bottom:20px}
+    .breadcrumb a{color:var(--accent)}
+    .breadcrumb a:hover{color:var(--accent-hi)}
+    .breadcrumb span{margin:0 6px}
+    .badge{display:inline-block;font-size:12px;font-weight:500;padding:4px 12px;border-radius:20px;margin-right:8px;margin-bottom:14px}
+    .badge-client{background:var(--bg-accent-pill);color:var(--accent);border:1px solid var(--border-accent-strong)}
+    .badge-cat{background:var(--bg-surface);color:var(--text-faint);border:1px solid var(--border-soft)}
+
+    .author-meta{display:flex;align-items:center;gap:14px;padding:16px 0;margin:0 0 24px;border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);flex-wrap:wrap}
+    .author-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-deep));display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--accent-on);flex-shrink:0}
+    .author-info{flex:1;min-width:200px}
+    .author-info a{font-weight:600;color:var(--text-primary)}
+    .author-bio{font-size:13px;color:var(--text-fainter);margin:2px 0 0}
+    .dates{font-size:12px;color:var(--text-fainter);display:flex;flex-direction:column;gap:2px;text-align:right}
+
+    .toc{background:var(--bg-surface);border:1px solid var(--border-soft);border-radius:10px;padding:16px 20px;margin:0 0 32px}
+    .toc-label{font-size:12px;font-weight:600;color:var(--text-faint);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+    .toc ul{margin:0;padding-left:18px;font-size:14.5px}
+    .toc a{color:var(--text-muted)}
+    .toc a:hover{color:var(--accent-hi)}
+
+    .tldr{background:var(--bg-accent-soft);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:16px 20px;margin:0 0 28px}
+    .tldr-label{font-size:12px;font-weight:600;color:var(--accent);margin-bottom:8px;text-transform:uppercase;letter-spacing:1.5px}
+    .tldr ul{margin:0;padding-left:18px;font-size:14.5px}
+    .tldr li{color:var(--text-muted);margin:4px 0}
+
+    .snippet-answer{background:var(--bg-surface);border-left:3px solid var(--accent-hi);padding:14px 18px;border-radius:0 8px 8px 0;font-size:15.5px;color:var(--text-primary)}
+
+    .ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0 8px}
+    .ba-card{padding:18px;border-radius:10px}
+    .ba-before{background:var(--bg-before);border:1px solid var(--border-before)}
+    .ba-after{background:var(--bg-accent-soft);border:1px solid var(--border-accent)}
+    .ba-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px}
+    .ba-before .ba-label{color:var(--error)}
+    .ba-after .ba-label{color:var(--accent)}
+    .ba-text{font-size:14.5px;color:var(--text-muted);line-height:1.65}
+
+    .step-box{background:var(--bg-surface);border:1px solid var(--border-soft);border-radius:10px;padding:18px;margin:12px 0;transition:border-color 0.2s}
+    .step-box:hover{border-color:var(--border-accent-strong)}
+    .step-num{display:inline-flex;width:26px;height:26px;background:linear-gradient(135deg,var(--accent),var(--accent-deep));color:var(--accent-on);border-radius:50%;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-right:10px;vertical-align:middle}
+    .step-box strong{display:inline;vertical-align:middle}
+
+    .viz{margin:32px 0;padding:24px;background:var(--bg-surface);border:1px solid var(--border-soft);border-radius:12px}
+    .viz img, .viz svg{width:100%;height:auto;display:block}
+    .viz-caption{margin-top:12px;font-size:13px;color:var(--text-faint);text-align:center;font-style:italic}
+
+    .compare-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:14.5px}
+    .compare-table th, .compare-table td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--border-soft)}
+    .compare-table th{background:var(--bg-surface-strong);color:var(--text-primary);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
+    .compare-table td{color:var(--text-muted)}
+
+    .connector-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+    .connector-tag{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--bg-surface);border:1px solid var(--border-soft);border-radius:8px;font-size:13px;color:var(--text-muted);transition:border-color 0.2s}
+
+    .cta-box{background:var(--bg-cta);border:1px solid var(--border-accent);text-align:center;padding:36px;border-radius:14px;margin:44px 0}
+    .cta-box h3{color:var(--text-strong);margin:0 0 8px;font-size:20px;font-weight:600}
+    .cta-box p{color:var(--text-faint);margin:0 0 20px}
+    .cta-btn{display:inline-block;background:linear-gradient(135deg,var(--accent-hi) 0%,var(--accent) 40%,var(--accent-mid) 100%);color:var(--accent-on);padding:12px 32px;border-radius:24px;font-weight:600;font-size:15px;transition:all 0.2s}
+    .cta-btn:hover{opacity:0.9;transform:translateY(-1px);color:var(--accent-on)}
+    .cta-btn-sm{display:inline-block;background:linear-gradient(135deg,var(--accent-hi) 0%,var(--accent) 40%,var(--accent-mid) 100%);color:var(--accent-on);padding:8px 20px;border-radius:24px;font-weight:600;font-size:13px;transition:all 0.2s;text-decoration:none}
+    .cta-btn-sm:hover{opacity:0.9;color:var(--accent-on)}
+
+    .faq-item{border-bottom:1px solid var(--border-soft);padding:18px 0}
+    .faq-q{font-weight:600;font-size:16px;color:var(--text-primary);cursor:pointer}
+    .faq-a{margin-top:8px;color:var(--text-faint);font-size:14.5px;line-height:1.65}
+
+    .methodology{background:var(--bg-surface);border:1px solid var(--border-soft);border-radius:10px;padding:20px 24px;margin:32px 0;font-size:14px;color:var(--text-faint)}
+    .methodology h2{font-size:14px;border:none;padding:0;margin:0 0 12px;color:var(--text-primary);text-transform:uppercase;letter-spacing:1px}
+    .methodology p{margin:6px 0;font-size:13.5px}
+
+    .related{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+    .related a{display:block;padding:14px;background:var(--bg-surface);border:1px solid var(--border-soft);border-radius:10px;text-decoration:none;color:var(--accent);font-size:14px;font-weight:500;transition:all 0.2s;line-height:1.45}
+    .related a:hover{background:var(--bg-surface-hover);border-color:var(--border-accent-strong)}
+
+    .footer{background:var(--bg-footer);border-top:1px solid var(--border-faint);padding:48px 24px}
+    .footer-inner{max-width:1024px;margin:0 auto}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+    .footer h4{font-size:12px;font-weight:600;color:var(--text-faint);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
+    .footer-links{display:flex;flex-direction:column;gap:10px;font-size:14px}
+    .footer-links a{color:var(--text-fainter);text-decoration:none;transition:color 0.15s}
+    .footer-links a:hover{color:var(--text-primary)}
+    .footer-bottom{border-top:1px solid var(--border-faint);padding-top:24px;display:flex;justify-content:space-between;font-size:13px;color:var(--text-quietest)}
+
+    @media(max-width:720px){
+      .ba-grid{grid-template-columns:1fr}
+      .related{grid-template-columns:1fr}
+      .connector-grid{grid-template-columns:repeat(2,1fr)}
+      h1{font-size:1.75rem}
+      .footer-grid{grid-template-columns:1fr 1fr}
+      .nav-links a:not(.nav-cta){display:none}
+      .wrap{padding:32px 20px}
+      .author-meta{flex-direction:column;align-items:flex-start}
+      .dates{text-align:left}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BLOCK 2: NAVIGATION -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="https://infinisynapse.com" class="nav-logo">
+        <img src="https://app.infinisynapse.cn/logo.png" alt="InfiniSynapse Logo" width="26" height="26">
+        <span>InfiniSynapse</span>
+      </a>
+      <div class="nav-links">
+        <a href="https://infinisynapse.com/#vision">Vision</a>
+        <a href="https://infinisynapse.com/#features">Features</a>
+        <a href="https://infinisynapse.com/tools">Agent Tools</a>
+        <a href="https://infinisynapse.com/en/docs">Docs</a>
+        <a href="https://infinisynapse.com/en/blog">Blog</a>
+        <a href="https://app.infinisynapse.cn" class="nav-cta">Try Online</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrap">
+
+    <!-- BLOCK 3: BREADCRUMB -->
+    <nav class="breadcrumb">
+      <a href="https://infinisynapse.com/">Home</a><span>›</span>
+      <a href="https://infinisynapse.com/guides/">Guides</a><span>›</span>
+      What Is Agentic Analytics?
+    </nav>
+
+    <!-- BLOCK 4: BADGES -->
+    <div>
+      <span class="badge badge-client">InfiniSynapse</span>
+      <span class="badge badge-cat">Concept Guide</span>
+    </div>
+
+    <!-- BLOCK 5: H1 -->
+    <h1>What Is Agentic Analytics? AI Agents That Think Like Data Analysts</h1>
+
+    <!-- BLOCK 6: META SUBTITLE -->
+    <p class="meta-desc">Agentic analytics is not a faster BI dashboard. It is an autonomous AI agent that plans multi-step analytical workflows, retrieves context across Snowflake, PostgreSQL, and PDFs, then generates, executes, and verifies purpose-built queries — working as a professional analyst rather than a passive query tool.</p>
+
+    <!-- BLOCK 8: TABLE OF CONTENTS -->
+    <nav class="toc">
+      <div class="toc-label">Contents</div>
+      <ul>
+        <li><a href="#definition">What is agentic analytics?</a></li>
+        <li><a href="#how-it-works">How agentic analytics works: the 4-phase autonomous analysis loop</a></li>
+        <li><a href="#why-matters">Why agentic analytics matters: three problems it solves</a></li>
+        <li><a href="#comparison">Agentic analytics vs. traditional analytics tools</a></li>
+        <li><a href="#capabilities">Key capabilities that make analytics truly agentic</a></li>
+        <li><a href="#when-to-use">When to use agentic analytics (and when not to)</a></li>
+        <li><a href="#get-started">How to get started with agentic analytics</a></li>
+      </ul>
+    </nav>
+
+    <!-- BLOCK 9: TL;DR -->
+    <div class="tldr">
+      <div class="tldr-label">TL;DR</div>
+      <ul>
+        <li><strong>Problem:</strong> Traditional BI and NLP2SQL tools answer pre-defined questions on one data source at a time. When your question spans Snowflake, MongoDB, and a quarterly planning PDF, an analyst spends 6-12 hours on manual cross-source reconciliation — and most such questions go unasked. Unstructured data (80% of enterprise information) is entirely excluded from quantitative analysis.</li>
+        <li><strong>Solution:</strong> Agentic analytics deploys AI agents powered by 4th-generation LLM-Native RAG. The agent plans its own analysis path, retrieves schemas and business context from every connected source, generates executable queries in a purpose-built language (InfiniSQL), checks its own results, and iterates — all without a human writing a single line of SQL.</li>
+        <li><strong>Result:</strong> Cross-source analytical questions that took days are answered in minutes. Analysis coverage expands from structured databases to your full data estate. Every answer comes with auditable source traces. All processing runs inside your infrastructure through enterprise private deployment.</li>
+      </ul>
+    </div>
+
+    <!-- BLOCK 10: FEATURED SNIPPET CAPTURE -->
+    <h2 id="definition">What is agentic analytics?</h2>
+    <p class="snippet-answer"><strong>Agentic analytics is an AI-powered approach to data analysis where autonomous agents plan, execute, and verify multi-step analytical workflows across multiple data sources — structured databases, documents, audio, and video — without requiring users to write queries.</strong> Built on LLM-Native RAG, the agent retrieves business context dynamically during analysis, interprets schema meanings the way a human analyst would, and iterates when result distributions look unexpected. It does not translate a question into one SQL statement — it reasons about what to analyze and how.</p>
+
+    <p>To understand what makes analytics agentic, consider what it is not. A traditional BI dashboard answers a fixed set of questions: "What was revenue by region last quarter?" The question is pre-configured, the data source is pre-defined, and the SQL was written months ago. A ChatBI tool expands this slightly by letting you type questions in plain English — but behind the scenes, it still converts your question into one SQL query against one semantic model on one database.</p>
+
+    <p><strong>Agentic analytics breaks every link in that chain.</strong> The AI agent is not a translator — it is a planner. It receives a question like "Show me revenue growth by region from Snowflake, correlate it with the regional strategy outlined in the Q3 planning PDF, and flag any regions where customer sentiment from recorded calls contradicts the revenue trend." The agent then:</p>
+
+    <ul>
+      <li><strong>Plans:</strong> Decomposes the question into sub-tasks: retrieve revenue data, extract regional strategy from PDF, analyze call transcripts for sentiment, cross-reference all three.</li>
+      <li><strong>Retrieves:</strong> Uses LLM-Native RAG to pull relevant schemas from Snowflake, text passages from the PDF, and sentiment patterns from transcripts — all within the model's reasoning loop.</li>
+      <li><strong>Executes:</strong> Generates InfiniSQL queries optimized for LLM generation and human audit, runs them against live data at each source, and federates results in memory.</li>
+      <li><strong>Verifies:</strong> Checks result distributions against expectations. If revenue for a region is flat but sentiment is sharply negative, the agent flags the anomaly and re-checks the data — the same judgment call a senior analyst makes.</li>
+    </ul>
+
+    <!-- BLOCK 11: BEFORE / AFTER -->
+    <div class="ba-grid">
+      <div class="ba-card ba-before">
+        <div class="ba-label">Before</div>
+        <div class="ba-text">
+          <p>"Show me which customer segments drove the Q2 revenue dip, and whether it correlates with the product issues mentioned in support call transcripts."</p>
+          <p style="margin-top:8px">Export revenue tables from Snowflake. Pull customer segments from MongoDB. Manually read through call transcripts for relevant mentions. 8 hours later, you have a partial answer. The transcripts went unanalyzed because there were 3,000 of them. The VP needed this yesterday.</p>
+        </div>
+      </div>
+      <div class="ba-card ba-after">
+        <div class="ba-label">After — with agentic analytics (InfiniSynapse)</div>
+        <div class="ba-text">
+          <p>Same question, typed in plain English. The AI agent plans a three-source analysis: Snowflake (revenue), MongoDB (segments), and audio transcripts (sentiment).</p>
+          <p style="margin-top:8px">LLM-Native RAG retrieves schemas and relevant transcript passages without pre-indexing. InfiniSQL generates federated queries. The agent detects that sentiment in the Enterprise segment dropped sharply two weeks before revenue declined — and cites the specific call transcripts. Complete analysis in under 4 minutes, with every data point traceable to its source.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOCK 12: BODY H2s -->
+
+    <!-- H2 #2: How it works -->
+    <h2 id="how-it-works">How agentic analytics works: the 4-phase autonomous analysis loop</h2>
+
+    <p>Agentic analytics is built on a foundational architecture that separates it from every preceding approach to AI-assisted data work. The core is a four-phase loop that mirrors how a senior data analyst thinks.</p>
+
+    <div class="viz">
+      <svg viewBox="0 0 800 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+        <defs>
+          <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="var(--accent)"/></marker>
+        </defs>
+        <text x="400" y="26" text-anchor="middle" fill="var(--text-primary)" font-size="14" font-weight="600">The Agentic Analytics Loop — Continuous Planning, Retrieval, Execution, Verification</text>
+
+        <!-- Phase 1: Plan -->
+        <rect x="300" y="50" width="200" height="52" rx="10" fill="var(--bg-accent-soft)" stroke="var(--border-accent)" stroke-width="1.5"/>
+        <text x="400" y="73" text-anchor="middle" fill="var(--accent-hi)" font-size="13" font-weight="600">Phase 1: Plan</text>
+        <text x="400" y="93" text-anchor="middle" fill="var(--text-muted)" font-size="11">Decompose question into sub-tasks</text>
+
+        <!-- Arrow down -->
+        <line x1="400" y1="102" x2="400" y2="130" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+        <!-- Phase 2: Retrieve -->
+        <rect x="300" y="132" width="200" height="52" rx="10" fill="var(--bg-accent-soft)" stroke="var(--border-accent)" stroke-width="1.5"/>
+        <text x="400" y="155" text-anchor="middle" fill="var(--accent-hi)" font-size="13" font-weight="600">Phase 2: Retrieve</text>
+        <text x="400" y="175" text-anchor="middle" fill="var(--text-muted)" font-size="11">LLM-Native RAG gathers schemas & context</text>
+
+        <!-- Arrow down -->
+        <line x1="400" y1="184" x2="400" y2="212" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+        <!-- Phase 3: Execute -->
+        <rect x="300" y="214" width="200" height="52" rx="10" fill="var(--bg-accent-soft)" stroke="var(--border-accent)" stroke-width="1.5"/>
+        <text x="400" y="237" text-anchor="middle" fill="var(--accent-hi)" font-size="13" font-weight="600">Phase 3: Execute</text>
+        <text x="400" y="257" text-anchor="middle" fill="var(--text-muted)" font-size="11">Generate InfiniSQL, federate across sources</text>
+
+        <!-- Arrow down -->
+        <line x1="400" y1="266" x2="400" y2="294" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+        <!-- Phase 4: Verify -->
+        <rect x="300" y="296" width="200" height="52" rx="10" fill="var(--bg-accent-soft)" stroke="var(--border-accent)" stroke-width="1.5"/>
+        <text x="400" y="319" text-anchor="middle" fill="var(--accent-hi)" font-size="13" font-weight="600">Phase 4: Verify & Iterate</text>
+        <text x="400" y="339" text-anchor="middle" fill="var(--text-muted)" font-size="11">Check distributions, re-query if needed</text>
+
+        <!-- Loop back arrow on the right side -->
+        <path d="M 500 322 Q 560 322 560 200 Q 560 76 500 76" fill="none" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrowhead)" stroke-dasharray="5,3"/>
+        <text x="570" y="200" fill="var(--text-faint)" font-size="10" transform="rotate(90,570,200)">Iterate until answer is right</text>
+
+        <!-- Left side: data sources -->
+        <rect x="40" y="50" width="160" height="18" rx="4" fill="var(--bg-surface)" stroke="var(--border-soft)" stroke-width="0.5"/>
+        <text x="120" y="63" text-anchor="middle" fill="var(--text-fainter)" font-size="9">Snowflake · PostgreSQL · MySQL</text>
+        <rect x="40" y="74" width="160" height="18" rx="4" fill="var(--bg-surface)" stroke="var(--border-soft)" stroke-width="0.5"/>
+        <text x="120" y="87" text-anchor="middle" fill="var(--text-fainter)" font-size="9">MongoDB · Redis · SQL Server</text>
+        <rect x="40" y="98" width="160" height="18" rx="4" fill="var(--bg-surface)" stroke="var(--border-soft)" stroke-width="0.5"/>
+        <text x="120" y="111" text-anchor="middle" fill="var(--text-fainter)" font-size="9">PDF · CSV · Audio Transcripts</text>
+
+        <!-- Lines from sources to Phase 2 -->
+        <line x1="200" y1="90" x2="298" y2="158" stroke="var(--text-quietest)" stroke-width="0.8" stroke-dasharray="3,3"/>
+      </svg>
+      <div class="viz-caption">Figure 1: The four-phase autonomous analysis loop that defines agentic analytics. Unlike NLP2SQL tools that stop at query generation, the agentic loop includes planning, dynamic retrieval, federated execution, and iterative verification — with continuous self-correction.</div>
+    </div>
+
+    <p>This four-phase loop runs inside InfiniSynapse's LLM-Native RAG engine — a 4th-generation retrieval architecture that embeds the retrieval step directly into the model's reasoning rather than treating it as a separate pre-processing step.</p>
+
+    <p><strong>The architectural significance:</strong> In traditional RAG (Gen 1-2), a separate vector database retrieves document chunks, then feeds them to the LLM. The LLM has no control over what gets retrieved. In Gen 3 Agentic RAG, the LLM calls retrieval tools — but through external tool calls that add latency and failure points. In Gen 4 LLM-Native RAG (2025-2026), retrieval is a first-class operation inside the model. The agent decides what context it needs <em>as it reasons</em>, retrieves exactly that, and continues. No external vector store. No pre-chunking. No tool-call roundtrips.</p>
+
+    <p>This architectural difference is why InfiniSynapse achieves 90%+ accuracy on cross-source analytical queries spanning 200-1,200 equivalent SQL lines, while NLP2SQL tools drop to 30-45% (Source: 2026 Q1 internal benchmark, n=50 customer queries).</p>
+
+    <!-- H2 #3: Why it matters -->
+    <h2 id="why-matters">Why agentic analytics matters: three problems it solves</h2>
+
+    <p>Enterprise analytics has three structural problems that compound as data volume and source count grow. Agentic analytics addresses all three in ways that no earlier technology could.</p>
+
+    <h3>Problem 1: Cross-source query blindness</h3>
+    <p>Your revenue transactions live in Snowflake. Customer segments live in MongoDB. Campaign performance lives in PostgreSQL. When a VP asks "Which campaigns drove the highest-value new customers last quarter?", the analyst opens three tools, exports three CSVs, writes a Python script to join them, and hopes the date formats match. Most such questions go unasked because the friction is too high — the cost is 6-12 analyst-hours per cross-source question.</p>
+    <p><strong>How agentic analytics solves it:</strong> The AI agent connects to all three sources with one-click authorization. It retrieves schemas from each, understands the join keys, generates federated InfiniSQL queries that execute at each source, and returns a unified result. The agent does not need you to pre-define the semantic model — it discovers relationships dynamically.</p>
+
+    <h3>Problem 2: Unstructured data exclusion</h3>
+    <p>Approximately 80% of enterprise data is unstructured — PDF reports, Excel spreadsheets, Confluence pages, email threads, audio recordings of customer calls, video transcripts of product demos. Traditional BI tools and NLP2SQL approaches completely ignore this data because it does not fit in a relational schema. The result: qualitative signals that could explain quantitative trends are systematically excluded from analysis.</p>
+    <p><strong>How agentic analytics solves it:</strong> Multi-modal ingestion lets the AI agent extract structured insights from a PDF budget report, correlate them with live Snowflake numbers, and reference specific passages from a customer call transcript — all in one analysis session. The agent treats a Confluence document the same way it treats a database table: as a source of analyzable evidence.</p>
+
+    <h3>Problem 3: Security constraints that block AI adoption</h3>
+    <p>Financial services firms, healthcare providers, defense agencies, and government bodies cannot send raw data to a cloud AI API. Their compliance frameworks (SOC 2, HIPAA, ITAR, FedRAMP) require data to stay within their infrastructure. This has blocked most AI analytics adoption in regulated industries — the tools exist, but the deployment model does not fit.</p>
+    <p><strong>How agentic analytics solves it:</strong> InfiniSynapse's LLM-Native RAG engine runs entirely within the customer's infrastructure. Enterprise private deployment on private cloud or on-premises servers. Native Windows and macOS desktop applications that work offline after initial setup. All data processing — retrieval, query generation, execution, and verification — happens inside your network boundary.</p>
+
+    <!-- Visualization: Data silos problem -->
+    <div class="viz">
+      <svg viewBox="0 0 740 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+        <text x="370" y="22" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="600">Enterprise Data Silos — The Gap Agentic Analytics Closes</text>
+
+        <!-- Silo boxes -->
+        <rect x="30" y="50" width="150" height="70" rx="6" fill="var(--bg-before)" stroke="var(--border-before)" stroke-width="1"/>
+        <text x="105" y="78" text-anchor="middle" fill="var(--text-primary)" font-size="11" font-weight="600">Structured DBs</text>
+        <text x="105" y="98" text-anchor="middle" fill="var(--text-fainter)" font-size="9">Snowflake · Postgres</text>
+        <text x="105" y="112" text-anchor="middle" fill="var(--text-fainter)" font-size="9">MySQL · Oracle</text>
+
+        <rect x="210" y="50" width="150" height="70" rx="6" fill="var(--bg-before)" stroke="var(--border-before)" stroke-width="1"/>
+        <text x="285" y="78" text-anchor="middle" fill="var(--text-primary)" font-size="11" font-weight="600">NoSQL & Cache</text>
+        <text x="285" y="98" text-anchor="middle" fill="var(--text-fainter)" font-size="9">MongoDB · Redis</text>
+        <text x="285" y="112" text-anchor="middle" fill="var(--text-fainter)" font-size="9">ClickHouse</text>
+
+        <rect x="390" y="50" width="150" height="70" rx="6" fill="var(--bg-before)" stroke="var(--border-before)" stroke-width="1"/>
+        <text x="465" y="78" text-anchor="middle" fill="var(--text-primary)" font-size="11" font-weight="600">Documents</text>
+        <text x="465" y="98" text-anchor="middle" fill="var(--text-fainter)" font-size="9">PDF · Excel · CSV</text>
+        <text x="465" y="112" text-anchor="middle" fill="var(--text-fainter)" font-size="9">Confluence</text>
+
+        <rect x="570" y="50" width="150" height="70" rx="6" fill="var(--bg-before)" stroke="var(--border-before)" stroke-width="1"/>
+        <text x="645" y="78" text-anchor="middle" fill="var(--text-primary)" font-size="11" font-weight="600">Unstructured</text>
+        <text x="645" y="98" text-anchor="middle" fill="var(--text-fainter)" font-size="9">Audio · Video · Images</text>
+        <text x="645" y="112" text-anchor="middle" fill="var(--text-fainter)" font-size="9">Slack · Email</text>
+
+        <!-- Agentic Analytics layer below -->
+        <rect x="100" y="150" width="540" height="50" rx="8" fill="var(--bg-accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+        <text x="370" y="172" text-anchor="middle" fill="var(--accent-hi)" font-size="12" font-weight="600">Agentic Analytics — Cross-Source, Multi-Modal Joint Analysis</text>
+        <text x="370" y="190" text-anchor="middle" fill="var(--text-faint)" font-size="10">One question. One analysis session. Every data source. No SQL required.</text>
+
+        <!-- Down arrows -->
+        <line x1="105" y1="120" x2="250" y2="148" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4,2"/>
+        <line x1="285" y1="120" x2="320" y2="148" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4,2"/>
+        <line x1="465" y1="120" x2="430" y2="148" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4,2"/>
+        <line x1="645" y1="120" x2="530" y2="148" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4,2"/>
+      </svg>
+      <div class="viz-caption">Figure 2: Enterprise data is permanently fragmented across structured databases, NoSQL stores, documents, and unstructured media. Agentic analytics treats this diversity as a feature rather than a limitation — connecting to all sources in one analysis session.</div>
+    </div>
+
+    <!-- H2 #4: Comparison -->
+    <h2 id="comparison">Agentic analytics vs. traditional analytics tools</h2>
+
+    <p>The term "analytics" covers everything from a SQL query to a dashboard refresh to an AI agent reasoning about root causes. Here is how agentic analytics compares to the approaches your team is likely using today.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Traditional BI</th>
+          <th>NLP2SQL</th>
+          <th>ChatBI</th>
+          <th>Agentic Analytics</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>How you interact</strong></td>
+          <td>Pre-built dashboards</td>
+          <td>Type a question, get one SQL query</td>
+          <td>Type a question against a semantic model</td>
+          <td>Ask a question — the agent plans its own analysis</td>
+        </tr>
+        <tr>
+          <td><strong>Data sources per analysis</strong></td>
+          <td>1 (the dashboard's data source)</td>
+          <td>1 (the connected database)</td>
+          <td>1 (the semantic model's warehouse)</td>
+          <td>Unlimited — federated across structured, NoSQL, and document sources</td>
+        </tr>
+        <tr>
+          <td><strong>Handles unstructured data</strong></td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Yes — PDF, audio, video, images, email</td>
+        </tr>
+        <tr>
+          <td><strong>Self-verification</strong></td>
+          <td>N/A (fixed queries don't change)</td>
+          <td>No — if the SQL is wrong, the answer is silently wrong</td>
+          <td>Limited — relies on semantic model completeness</td>
+          <td>Yes — checks result distributions and re-queries when unexpected</td>
+        </tr>
+        <tr>
+          <td><strong>Accuracy on 500+ line SQL</strong></td>
+          <td>N/A (manual writing)</td>
+          <td>30-45%</td>
+          <td>45-65%</td>
+          <td>90%+ <span style="color:var(--green)">&#10003;</span></td>
+        </tr>
+        <tr>
+          <td><strong>Audit trail</strong></td>
+          <td>Manual review</td>
+          <td>Generated SQL only</td>
+          <td>Semantic model mapping</td>
+          <td>Full trace: schemas retrieved → queries generated → results verified</td>
+        </tr>
+        <tr>
+          <td><strong>Deployment</strong></td>
+          <td>Cloud / on-prem</td>
+          <td>Cloud API</td>
+          <td>Cloud / on-prem</td>
+          <td>Cloud, private cloud, on-prem, or fully air-gapped desktop</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The key architectural distinction: Traditional BI, NLP2SQL, and ChatBI are all <strong>query-centric</strong> — their job is to translate your input into a database query and return the result. Agentic analytics is <strong>goal-centric</strong> — its job is to answer your analytical question, and it decides what queries to run, in what order, across which sources, to produce that answer. Query generation is one step in a four-phase loop, not the end product.</p>
+
+    <!-- H2 #5: Key capabilities -->
+    <h2 id="capabilities">Key capabilities that make analytics truly agentic</h2>
+
+    <p>Not every AI analytics feature qualifies as "agentic." Here are the specific capabilities that separate an agentic AI analytics platform from a query tool with an AI sticker on it.</p>
+
+    <h3>Autonomous analysis planning</h3>
+    <p>The agent receives a high-level analytical goal — "explain the Q2 revenue dip" — and decomposes it into investigatory sub-tasks. It decides which data sources to query, in what order, and what follow-up questions to ask based on intermediate results. This is not prompt engineering from the user's side. The user states the goal; the agent builds the analysis plan.</p>
+
+    <h3>LLM-Native RAG retrieval</h3>
+    <p>Unlike traditional RAG that uses a separate vector database, LLM-Native RAG embeds retrieval into the model's reasoning loop. The agent retrieves schema definitions, metric formulas, and sample data distributions exactly when it needs them — not before it starts reasoning. This means no pre-chunking, no pre-indexing, and no stale context. The agent understands your database structure the way a human analyst would: by exploring it.</p>
+
+    <h3>Multi-modal data unification</h3>
+    <p>The agent treats structured database tables, semi-structured PDFs and Excel files, and unstructured audio and video as equally valid data sources. It extracts structured insights from a PDF the same way it queries a Snowflake table. It finds relevant passages in customer call transcripts and correlates them with revenue data — all in one session, without intermediate exports or glue scripts.</p>
+
+    <h3>Iterative self-verification</h3>
+    <p>After executing a query, the agent checks the result distribution against expectations. If a result looks anomalous — revenue flat but customer sentiment sharply negative — the agent flags the discrepancy, formulates a follow-up hypothesis, and re-queries. This is the step NLP2SQL tools skip entirely: they generate one query and return one result, with no check on whether the answer makes sense. Agentic analytics treats verification as a first-class phase of the analysis loop.</p>
+
+    <h3>Full audit traceability</h3>
+    <p>Every answer comes with a complete trace: which schemas were retrieved, which queries were generated, against which sources they executed, what results they returned, and what verification checks were applied. A human analyst — or a compliance auditor — can review every step. This is critical for regulated industries where "the AI said so" is not an acceptable answer.</p>
+
+    <div class="viz">
+      <svg viewBox="0 0 740 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+        <text x="370" y="22" text-anchor="middle" fill="var(--text-primary)" font-size="13" font-weight="600">What Makes Analytics "Agentic" — Five Defining Capabilities</text>
+
+        <!-- Capability bars -->
+        <rect x="20" y="45" width="160" height="18" rx="3" fill="var(--bg-accent-pill)"/>
+        <text x="100" y="57" text-anchor="middle" fill="var(--accent)" font-size="9" font-weight="600">1. Autonomous Planning</text>
+        <rect x="185" y="45" width="535" height="18" rx="3" fill="var(--bg-surface)" stroke="var(--border-soft)" stroke-width="0.5"/>
+        <rect x="185" y="45" width="500" height="18" rx="3" fill="var(--accent)" opacity="0.6"/>
+        <text x="700" y="57" text-anchor="middle" fill="var(--text-fainter)" font-size="8">Agentic</text>
+        <text x="690" y="57" text-anchor="middle" fill="var(--text-fainter)" font-size="8">&#10003;</text>
+
+        <rect x="20" y="68" width="160" height="18" rx="3" fill="var(--bg-accent-pill)"/>
+        <text x="100" y="80" text-anchor="middle" fill="var(--accent)" font-size="9" font-weight="600">2. LLM-Native RAG</text>
+        <rect x="185" y="68" width="535" height="18" rx="3" fill="var(--bg-surface)" stroke="var(--border-soft)" stroke-width="0.5"/>
+        <rect x="185" y="68" width="500" height="18" rx="3" fill="var(--accent)" opacity="0.6"/>
+
+        <rect x="20" y="91" width="160" height="18" rx="3" fill="var(--bg-accent-pill)"/>
+        <text x="100" y="103" text-anchor="middle" fill="var(--accent)" font-size="9" font-weight="600">3. Multi-Modal Data</text>
+        <rect x="185" y="91" width="535" height="18" rx="3" fill="var(--bg-surface)" stroke="var(--border-soft)" stroke-width="0.5"/>
+        <rect x="185" y="91" width="480" height="18" rx="3" fill="var(--accent)" opacity="0.55"/>
+
+        <rect x="20" y="114" width="160" height="18" rx="3" fill="var(--bg-accent-pill)"/>
+        <text x="100" y="126" text-anchor="middle" fill="var(--accent)" font-size="9" font-weight="600">4. Self-Verification</text>
+        <rect x="185" y="114" width="535" height="18" rx="3" fill="var(--bg-surface)" stroke="var(--border-soft)" stroke-width="0.5"/>
+        <rect x="185" y="114" width="500" height="18" rx="3" fill="var(--accent)" opacity="0.6"/>
+
+        <rect x="20" y="137" width="160" height="18" rx="3" fill="var(--bg-accent-pill)"/>
+        <text x="100" y="149" text-anchor="middle" fill="var(--accent)" font-size="9" font-weight="600">5. Audit Traceability</text>
+        <rect x="185" y="137" width="535" height="18" rx="3" fill="var(--bg-surface)" stroke="var(--border-soft)" stroke-width="0.5"/>
+        <rect x="185" y="137" width="490" height="18" rx="3" fill="var(--accent)" opacity="0.55"/>
+
+        <!-- Comparison lines at bottom -->
+        <line x1="250" y1="170" x2="250" y2="185" stroke="var(--text-quietest)" stroke-width="0.5"/>
+        <line x1="450" y1="170" x2="450" y2="185" stroke="var(--text-quietest)" stroke-width="0.5"/>
+        <line x1="670" y1="170" x2="670" y2="185" stroke="var(--text-quietest)" stroke-width="0.5"/>
+        <text x="250" y="195" text-anchor="middle" fill="var(--text-fainter)" font-size="8">NLP2SQL</text>
+        <text x="450" y="195" text-anchor="middle" fill="var(--text-fainter)" font-size="8">ChatBI</text>
+        <text x="670" y="195" text-anchor="middle" fill="var(--text-fainter)" font-size="8">Agentic</text>
+      </svg>
+      <div class="viz-caption">Figure 3: Five capabilities that define agentic analytics. Traditional NLP2SQL tools achieve 1-2 of these at partial depth. Only agentic platforms implement all five as core architectural features.</div>
+    </div>
+
+    <!-- H2 #6: When to use -->
+    <h2 id="when-to-use">When to use agentic analytics (and when not to)</h2>
+
+    <p>Agentic analytics is not a universal replacement for every analytics tool your team owns. It is purpose-built for a specific class of analytical problems that current tools cannot solve. Here is the honest assessment.</p>
+
+    <p><strong>Good fit:</strong></p>
+    <ul>
+      <li>Your analytical backlog includes cross-source questions that currently require exporting data from 3+ systems and stitching results in Python.</li>
+      <li>You have unstructured data — PDF reports, call transcripts, Confluence documents — that contains analytical signal but is systematically excluded from quantitative analysis because no practical tool can include it.</li>
+      <li>Your security or compliance framework prohibits sending raw data to cloud AI APIs, and you need an on-premises or air-gapped deployment.</li>
+      <li>Your team spends more than 30% of analytical time on data retrieval, query writing, and cross-source reconciliation rather than interpretation.</li>
+      <li>Your analysts are asking complex, multi-part questions that do not map cleanly to a single SQL statement — questions that require investigation, not just retrieval.</li>
+    </ul>
+
+    <p><strong>Bad fit:</strong></p>
+    <ul>
+      <li>All your data lives in a single, well-governed data warehouse, and your analytical questions are primarily dashboard refreshes with known dimensions. A ChatBI tool on top of your semantic model is simpler and cheaper.</li>
+      <li>Your team consists entirely of senior data engineers who have built mature internal tooling that already federates across your data sources. The marginal gain from agentic automation is smaller — though the unstructured data capability may still shift the calculus.</li>
+      <li>Your organization cannot install desktop software or deploy containers (InfiniSynapse requires a local runtime for its LLM-Native RAG engine to meet the air-gap guarantee).</li>
+      <li>Your analytical questions are simple single-table lookups ("show me sales by product last month"). The agentic loop adds unnecessary overhead for these cases.</li>
+    </ul>
+
+    <p><strong>The rule of thumb:</strong> if cross-source analytical questions are going unasked because the manual effort to answer them is too high, agentic analytics will pay for itself in the first quarter of use. If your current toolset already answers every question your team has, you do not need it.</p>
+
+    <!-- H2 #7: How to get started -->
+    <h2 id="get-started">How to get started with agentic analytics</h2>
+
+    <p>Moving from traditional BI or NLP2SQL tools to agentic analytics does not require a data platform migration or a rebuild of your analytics stack. Here is the path from zero to your first autonomous analysis.</p>
+
+    <div class="step-box">
+      <span class="step-num">1</span>
+      <strong>Connect your data sources — no migration required</strong>
+      <p>Install InfiniSynapse on Windows or macOS, or deploy to your private cloud. Use one-click authorization to connect Snowflake, PostgreSQL, MySQL, MongoDB, Redis, or any of the nine supported database types. Upload PDFs, Excel files, CSVs, or audio transcripts. InfiniSynapse queries data at the source — nothing is migrated, copied, or uploaded to a third party. For air-gapped environments, use the offline installer.</p>
+    </div>
+    <div class="step-box">
+      <span class="step-num">2</span>
+      <strong>Ask your first multi-source analytical question</strong>
+      <p>Type a question in natural language that spans two or more sources. For example: "Show me monthly revenue trends from Snowflake broken down by customer segment from MongoDB. For any segment where Q2 2026 declined by more than 10% vs. Q1, analyze our recent support call transcripts to identify potential root causes." The AI agent plans its approach, retrieves schemas via LLM-Native RAG, generates and executes InfiniSQL queries, and returns results with full source traces.</p>
+    </div>
+    <div class="step-box">
+      <span class="step-num">3</span>
+      <strong>Review, iterate, and expand coverage</strong>
+      <p>Every result comes with auditable traces — inspect the schemas retrieved, queries generated, and verification checks applied. Refine your question, add more data sources, or include unstructured documents for multi-modal joint analysis. As your team gains confidence in the agent's reasoning, expand coverage to more data sources and more complex analytical workflows. Export results or share via the native desktop interface.</p>
+    </div>
+
+    <!-- BLOCK 15: CTA -->
+    <div class="cta-box">
+      <h3>Ready to see agentic analytics in action?</h3>
+      <p>Connect your databases in minutes. Run your first autonomous cross-source analysis today — no SQL, no glue scripts, no data migration.</p>
+      <a href="https://app.infinisynapse.cn" class="cta-btn">Try Online Now →</a>
+    </div>
+
+    <!-- BLOCK 16: FAQ -->
+    <h2>FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between agentic analytics and traditional BI?</div>
+      <div class="faq-a">
+        <p>Traditional BI tools answer pre-defined questions on a fixed dashboard against a single data source. Agentic analytics deploys AI agents that autonomously plan multi-step analytical workflows — they decide what to analyze, retrieve context across data sources, generate and execute queries in a purpose-built language, check their own results, and iterate when distributions look unexpected. A traditional BI dashboard tells you revenue dropped; agentic analytics tells you revenue dropped, cross-references the customer call transcripts and Q3 planning PDF, and surfaces the root cause — all without a human defining the analysis path in advance.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How is agentic analytics different from NLP2SQL?</div>
+      <div class="faq-a">
+        <p>NLP2SQL tools translate a natural language question into a single SQL query against one database. Agentic analytics, by contrast, plans a full analytical workflow: it retrieves schemas from multiple sources, generates purpose-built queries (InfiniSQL), executes them across Snowflake, PostgreSQL, and MongoDB in one session, verifies result distributions, and iterates when something looks off. NLP2SQL stops at query generation. Agentic analytics starts there and covers the entire analysis lifecycle — planning, retrieval, execution, verification, and explanation.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What role does LLM-Native RAG play in agentic analytics?</div>
+      <div class="faq-a">
+        <p>LLM-Native RAG is the architectural foundation of agentic analytics. Unlike traditional RAG that uses a separate vector database for document retrieval, LLM-Native RAG embeds retrieval directly into the model's reasoning loop. This lets the AI agent dynamically retrieve schema definitions, business metrics, and historical query patterns as it plans each analytical step — without pre-chunking or pre-indexing. InfiniSynapse's 4th-generation LLM-Native RAG achieves 90%+ accuracy on complex cross-source queries where NLP2SQL tools drop to 30-45%.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can agentic analytics handle unstructured data like PDFs and audio recordings?</div>
+      <div class="faq-a">
+        <p>Yes. Multi-modal analysis is a defining capability of agentic analytics. InfiniSynapse ingests structured data from Snowflake and PostgreSQL alongside semi-structured sources like PDF reports and Excel files, plus unstructured media including audio recordings of customer calls. The AI agent retrieves relevant context from all modalities, extracts structured insights from documents, and correlates them with live database numbers in a single analysis session. Approximately 80% of enterprise data is unstructured — agentic analytics ensures this data contributes to analytical decisions rather than being excluded.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is agentic analytics suitable for air-gapped enterprise environments?</div>
+      <div class="faq-a">
+        <p>Yes. InfiniSynapse supports enterprise private deployment on private cloud or on-premises servers, fully compatible with air-gapped environments. All data processing — including the LLM-Native RAG engine — runs within your infrastructure. No data ever leaves your network. Native desktop applications for Windows and macOS work offline after initial setup, making agentic analytics viable for defense, financial services, healthcare, and government use cases where data sovereignty is non-negotiable.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is agentic analytics worth it if my team already has a BI tool?</div>
+      <div class="faq-a">
+        <p>Agentic analytics does not replace BI — it handles the questions BI tools cannot answer. If your analytical backlog includes cross-source questions that currently take 4+ hours of manual SQL and Python scripting, or if unstructured data (PDFs, transcripts) is routinely excluded from quantitative analysis, agentic analytics typically pays for itself within the first quarter. For teams that only run dashboard refreshes on a single warehouse, a ChatBI tool is the more practical choice. The two tools are complementary, not competitive.</p>
+      </div>
+    </div>
+
+    <!-- BLOCK 17: METHODOLOGY -->
+    <div class="methodology">
+      <h2>About this guide</h2>
+      <p><strong>Last updated:</strong> 2026-05-21</p>
+      <p><strong>Methodology:</strong> This guide is based on 12 years of enterprise data infrastructure experience, analysis of the 2025-2026 agentic AI analytics market, and direct testing of InfiniSynapse against NLP2SQL and ChatBI tools on a benchmark of 50 cross-source analytical queries ranging from 50 to 1,200 SQL-line equivalents. The four-phase analysis loop framework described here reflects the architectural consensus emerging in the 2025-2026 generation of agentic analytics platforms.</p>
+      <p><strong>Conflict of interest:</strong> This guide was written by the InfiniSynapse team. Accuracy benchmark data is drawn from internal testing and is documented for reader reproduction. Feature comparisons are based on publicly available documentation as of May 2026. The "bad fit" section includes honest scenarios where agentic analytics is not the right choice.</p>
+      <p><strong>Update cadence:</strong> This guide is reviewed quarterly. Data source connectors, accuracy figures, and competitive landscape references are refreshed as new versions are released.</p>
+    </div>
+
+    <!-- BLOCK 18: RELATED GUIDES -->
+    <h2>Related Guides</h2>
+    <div class="related">
+      <a href="../what-is-agentic-data-analysis/index.html">What Is Agentic Data Analysis? How Agentic Analytics Transforms Enterprise Data Work in 2026</a>
+      <a href="../agentic-analytics-vs-traditional-bi/index.html">Agentic Analytics vs Traditional BI: Why Dashboards Are No Longer Enough</a>
+      <a href="../chatbi-vs-agentic-analytics/index.html">ChatBI vs Agentic Analytics: Why Query Translation Isn't Analysis</a>
+      <a href="../rag-data-analysis/index.html">RAG Data Analysis: How LLM-Native RAG Transforms Analytics in 2026</a>
+      <a href="../breaking-data-silos/index.html">Breaking Data Silos: Why Your Analytics Should Query Data Where It Lives</a>
+      <a href="../nlp2sql-alternative/index.html">NLP2SQL Alternative: AI That Actually Analyzes</a>
+    </div>
+
+  </div>
+
+  <!-- BLOCK 19: FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div style="font-size:18px;font-weight:600;color:var(--text-primary);margin-bottom:12px">InfiniSynapse</div>
+          <p style="font-size:14px;color:var(--text-fainter);max-width:300px;margin-bottom:16px;line-height:1.6">Professional AI-powered data analysis tool. Not NLP2SQL. Not ChatBI. Agentic analytics with LLM-Native RAG for autonomous multi-source, multi-modal analysis.</p>
+          <a href="https://app.infinisynapse.cn" class="cta-btn-sm">Try Online →</a>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <div class="footer-links">
+            <a href="https://infinisynapse.com/#features">Features</a>
+            <a href="https://infinisynapse.com/tools">Agent Tools</a>
+            <a href="https://infinisynapse.com/download">Download</a>
+            <a href="https://infinisynapse.com/book-demo">Book a Demo</a>
+          </div>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <div class="footer-links">
+            <a href="https://infinisynapse.com/en/docs">Documentation</a>
+            <a href="https://infinisynapse.com/en/blog">Blog</a>
+            <a href="https://infinisynapse.com/guides/">Guides</a>
+          </div>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <div class="footer-links">
+            <a href="https://infinisynapse.com/#contact">Contact</a>
+            <a href="https://infinisynapse.com/careers">Careers</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+        <span>Direct connection to global databases — instant data insights</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

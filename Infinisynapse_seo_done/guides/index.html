@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InfiniSynapse Guides | Agentic Analytics & AI Data Analysis</title>
+  <meta name="description" content="Explore InfiniSynapse guides on agentic analytics, RAG data analysis, breaking data silos, and comparisons vs ChatBI, NLP2SQL, Tableau, Power BI, Looker, ThoughtSpot, and traditional BI.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="InfiniSynapse Guides | Agentic Analytics & AI Data Analysis">
+  <meta property="og:description" content="Explore InfiniSynapse guides on agentic analytics, RAG data analysis, and AI-powered analytics alternatives for 2026.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://infinisynapse.com/use-cases/index.html">
+  <meta property="og:image" content="https://infinisynapse.com/og/Infinisynapse_og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="InfiniSynapse Guides | Agentic Analytics & AI Data Analysis">
+  <meta name="twitter:description" content="Explore InfiniSynapse guides on agentic analytics, RAG data analysis, and AI-powered analytics alternatives for 2026.">
+  <meta name="twitter:image" content="https://infinisynapse.com/og/Infinisynapse_og.png">
+
+  <link rel="canonical" href="https://infinisynapse.com/use-cases/index.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#FFFFFF;color:#1F2937;-webkit-font-smoothing:antialiased;line-height:1.5}
+    ::selection{background:rgba(91,91,255,0.2)}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;height:auto}
+
+    .skip-link{position:absolute;left:24px;top:-48px;background:#0A0A0A;color:#FFFFFF;padding:10px 14px;border-radius:10px;z-index:100;transition:top .2s}
+    .skip-link:focus{top:16px}
+
+    .nav{background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);border-bottom:1px solid #E5E7EB;padding:14px 0;position:sticky;top:0;z-index:50}
+    .nav-inner{max-width:1080px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .nav-logo{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;color:#0A0A0A}
+    .nav-logo-mark{height:28px;display:flex;align-items:center}
+    .nav-logo-mark img{height:28px;width:auto;display:block}
+    .nav-cta{background:#0A0A0A;color:#FFFFFF;padding:9px 20px;border-radius:24px;font-size:13px;font-weight:700;transition:background .2s,transform .2s}
+    .nav-cta:hover{background:#1F2937;transform:translateY(-1px)}
+
+    .container{max-width:1080px;margin:0 auto;padding:0 24px}
+    .hero{padding:72px 0 48px;text-align:center}
+    .hero h1{font-size:clamp(2rem,5vw,2.8rem);font-weight:800;letter-spacing:-0.04em;color:#0A0A0A;margin-bottom:16px;line-height:1.08}
+    .hero h1 em{font-style:normal;color:#5B5BFF}
+    .hero p{color:#4B5563;font-size:17px;max-width:660px;margin:0 auto 36px;line-height:1.65}
+    .stats{display:flex;justify-content:center;gap:56px;flex-wrap:wrap}
+    .stat-num{font-size:36px;font-weight:800;color:#0A0A0A;letter-spacing:-0.03em}
+    .stat-label{font-size:12px;color:#6B7280;margin-top:4px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+
+    .section-header{display:flex;align-items:baseline;gap:12px;margin:34px 0 22px;padding-bottom:14px;border-bottom:1px solid #E5E7EB}
+    .section-header h2{font-size:24px;font-weight:800;color:#0A0A0A;letter-spacing:-0.02em}
+    .section-eyebrow{background:rgba(91,91,255,0.1);color:#5B5BFF;font-size:13px;padding:3px 11px;border-radius:12px;font-weight:700}
+
+    .seo-intro{margin:6px 0 36px}
+    .seo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .seo-block{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:16px;padding:22px;transition:border-color .2s,box-shadow .2s,transform .2s}
+    .seo-block:hover{border-color:rgba(91,91,255,.35);box-shadow:0 10px 28px rgba(91,91,255,.08);transform:translateY(-2px)}
+    .seo-block h3{font-size:17px;font-weight:800;color:#0A0A0A;line-height:1.4;margin-bottom:10px;letter-spacing:-0.01em}
+    .seo-block p{font-size:14px;line-height:1.75;color:#4B5563}
+
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-bottom:32px}
+    .page-card{position:relative;display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #E5E7EB;border-radius:16px;padding:22px 22px 20px;transition:border-color .2s,box-shadow .2s,transform .2s;min-height:210px}
+    .page-card:hover{border-color:#5B5BFF;transform:translateY(-3px);box-shadow:0 12px 28px rgba(91,91,255,0.1)}
+    .page-card:focus-visible{outline:3px solid rgba(91,91,255,.35);outline-offset:3px}
+    .page-card-tag{align-self:flex-start;background:rgba(91,91,255,0.08);color:#5B5BFF;font-size:11px;font-weight:800;padding:4px 11px;border-radius:14px;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:14px;border:1px solid rgba(91,91,255,0.18)}
+    .page-card-title{font-size:16px;font-weight:800;color:#0A0A0A;line-height:1.45;margin-bottom:10px;letter-spacing:-0.01em}
+    .page-card-meta{font-size:13.5px;color:#6B7280;line-height:1.65;flex:1}
+    .page-card-cta{margin-top:14px;padding-top:14px;border-top:1px solid #F3F4F6;font-size:13px;color:#5B5BFF;font-weight:800;transition:transform .2s}
+    .page-card:hover .page-card-cta{transform:translateX(4px)}
+
+    footer{background:#F9FAFB;border-top:1px solid #E5E7EB;padding:36px 0;text-align:center;font-size:13px;color:#6B7280;margin-top:64px}
+    footer a{color:#5B5BFF;font-weight:700}
+
+    @media(max-width:768px){
+      .hero{padding:56px 0 38px}
+      .stats{gap:28px}
+      .seo-grid,.card-grid{grid-template-columns:1fr}
+      .section-header{align-items:flex-start;flex-direction:column;gap:8px}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+        <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse logo"></span>
+        <span>InfiniSynapse</span>
+      </a>
+      <a href="https://app.infinisynapse.com" class="nav-cta">Get Started</a>
+    </div>
+  </nav>
+
+  <main id="main-content" class="container">
+    <section class="hero" aria-labelledby="page-title">
+      <h1 id="page-title">InfiniSynapse <em>Guides</em></h1>
+      <p>In-depth guides on agentic analytics, LLM-Native RAG, breaking data silos, and head-to-head comparisons with ChatBI, NLP2SQL, Tableau, Power BI, Looker, ThoughtSpot, and traditional BI.</p>
+      <div class="stats" aria-label="Guide library statistics">
+        <div><div class="stat-num">15</div><div class="stat-label">Guides</div></div>
+        <div><div class="stat-num">15</div><div class="stat-label">Topics</div></div>
+        <div><div class="stat-num">10+</div><div class="stat-label">Comparisons</div></div>
+      </div>
+    </section>
+
+    <section class="seo-intro" aria-labelledby="resources-overview">
+      <div class="section-header">
+        <h2 id="resources-overview">Agentic analytics resources for modern data teams</h2>
+        <span class="section-eyebrow">Overview</span>
+      </div>
+      <div class="seo-grid">
+        <article class="seo-block">
+          <h3>Learn what agentic analytics is and how it works</h3>
+          <p>Understand the shift from traditional BI dashboards to AI agents that explore data, generate SQL, and answer unscripted questions in real time across multiple databases.</p>
+        </article>
+        <article class="seo-block">
+          <h3>Compare analytics platforms and AI alternatives</h3>
+          <p>Head-to-head comparisons of agentic analytics vs ChatBI, NLP2SQL, Text-to-SQL, Tableau AI, Power BI Copilot, Looker, ThoughtSpot, and traditional BI — updated for 2026.</p>
+        </article>
+        <article class="seo-block">
+          <h3>Explore LLM-Native RAG and federated analysis</h3>
+          <p>Technical deep-dives on retrieval augmented generation for databases, breaking data silos without ETL, and cross-source federated query architectures.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- GUIDES -->
+    <section aria-labelledby="guides">
+      <div class="section-header">
+        <h2 id="guides">Guides & Explainers</h2>
+        <span class="section-eyebrow">4</span>
+      </div>
+      <div class="card-grid">
+        <a href="./what-is-agentic-analytics/index.html" class="page-card">
+          <span class="page-card-tag">Guide</span>
+          <h3 class="page-card-title">What Is Agentic Analytics? AI Agents That Think Like Data Analysts</h3>
+          <p class="page-card-meta">How LLM-powered AI agents autonomously explore data, discover schemas, generate SQL, and return answers with source-level lineage — no pre-built dashboards required.</p>
+          <span class="page-card-cta">Read guide →</span>
+        </a>
+
+        <a href="./what-is-agentic-data-analysis/index.html" class="page-card">
+          <span class="page-card-tag">Guide</span>
+          <h3 class="page-card-title">What Is Agentic Data Analysis? The End of Dashboard-Only Analytics</h3>
+          <p class="page-card-meta">How AI agents reason through analytical questions across structured and unstructured data, turning natural language into federated queries with full audit trails.</p>
+          <span class="page-card-cta">Read guide →</span>
+        </a>
+
+        <a href="./rag-data-analysis/index.html" class="page-card">
+          <span class="page-card-tag">RAG · AI</span>
+          <h3 class="page-card-title">RAG Data Analysis: How LLM-Native RAG Transforms Analytics in 2026</h3>
+          <p class="page-card-meta">How retrieval augmented generation gives AI agents real-time database schema awareness — generating accurate SQL without fine-tuning, semantic models, or ETL pipelines.</p>
+          <span class="page-card-cta">Read guide →</span>
+        </a>
+
+        <a href="./breaking-data-silos/index.html" class="page-card">
+          <span class="page-card-tag">Architecture</span>
+          <h3 class="page-card-title">Breaking Data Silos: Beyond ETL — Federated Analysis in 2026</h3>
+          <p class="page-card-meta">Why federated query architecture is replacing ETL-based consolidation. Query across PostgreSQL, Snowflake, MySQL, and MongoDB without moving a single row of data.</p>
+          <span class="page-card-cta">Read guide →</span>
+        </a>
+
+        <a href="./sql-data-analysis-with-ai/index.html" class="page-card">
+          <span class="page-card-tag">Architecture</span>
+          <h3 class="page-card-title">SQL Data Analysis with AI: From Questions to Insights (2026)</h3>
+          <p class="page-card-meta">Discover how SQL data analysis with AI transforms how you query databases. Ask questions in plain English and get instant insights without complex queries.</p>
+          <span class="page-card-cta">Read guide →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- COMPARISONS & ALTERNATIVES -->
+    <section aria-labelledby="comparisons">
+      <div class="section-header">
+        <h2 id="comparisons">Comparisons & Alternatives</h2>
+        <span class="section-eyebrow">10</span>
+      </div>
+      <div class="card-grid">
+        <a href="./agentic-analytics-vs-traditional-bi/index.html" class="page-card">
+          <span class="page-card-tag">Comparison</span>
+          <h3 class="page-card-title">Agentic Analytics vs Traditional BI: Why Dashboards Are No Longer Enough</h3>
+          <p class="page-card-meta">AI agents that reason across databases vs dashboards that answer pre-defined questions. A 7-dimension comparison of setup time, cross-source capability, and iteration speed.</p>
+          <span class="page-card-cta">Compare →</span>
+        </a>
+
+        <a href="./chatbi-vs-agentic-analytics/index.html" class="page-card">
+          <span class="page-card-tag">Comparison</span>
+          <h3 class="page-card-title">ChatBI vs Agentic Analytics: Why Query Translation Isn't Analysis</h3>
+          <p class="page-card-meta">ChatBI translates natural language to SQL. Agentic analytics reasons through data. Understand the architectural gap that separates question-answering from real analysis.</p>
+          <span class="page-card-cta">Compare →</span>
+        </a>
+
+        <a href="./chatbi-alternative/index.html" class="page-card">
+          <span class="page-card-tag">Alternative</span>
+          <h3 class="page-card-title">ChatBI Alternative: Beyond Metrics Q&A</h3>
+          <p class="page-card-meta">An AI agent that understands business context, explores data autonomously, and answers complex questions that ChatBI's pre-modeled approach cannot reach.</p>
+          <span class="page-card-cta">Learn more →</span>
+        </a>
+
+        <a href="./nlp2sql-alternative/index.html" class="page-card">
+          <span class="page-card-tag">Alternative</span>
+          <h3 class="page-card-title">NLP2SQL Alternative: AI That Actually Analyzes</h3>
+          <p class="page-card-meta">NLP2SQL maps language to queries. InfiniSynapse reasons through data with real-time schema awareness — no pre-built semantic models, no column-name guesswork.</p>
+          <span class="page-card-cta">Learn more →</span>
+        </a>
+
+        <a href="./text-to-sql-alternative/index.html" class="page-card">
+          <span class="page-card-tag">Alternative</span>
+          <h3 class="page-card-title">Text-to-SQL Alternative: Beyond Query Translation to Real Analysis</h3>
+          <p class="page-card-meta">Text-to-SQL guesses column names from training data. Agentic analytics reads your live database schema — correct JOINs on real tables, every single query.</p>
+          <span class="page-card-cta">Learn more →</span>
+        </a>
+
+        <a href="./bi-chatbot-alternative/index.html" class="page-card">
+          <span class="page-card-tag">Alternative</span>
+          <h3 class="page-card-title">BI Chatbot Alternative: AI That Analyzes, Not Just Answers</h3>
+          <p class="page-card-meta">BI chatbots answer pre-modeled questions within dashboard constraints. An AI agent that explores, joins, and reasons across all your data sources — no dashboards required.</p>
+          <span class="page-card-cta">Learn more →</span>
+        </a>
+
+        <a href="./tableau-ai-alternative/index.html" class="page-card">
+          <span class="page-card-tag">Alternative</span>
+          <h3 class="page-card-title">Tableau AI Alternative: Agentic Analytics for Modern Data Teams</h3>
+          <p class="page-card-meta">Tableau AI adds natural language to existing dashboards. Agentic analytics replaces the dashboard bottleneck with on-demand analysis across all connected sources.</p>
+          <span class="page-card-cta">Learn more →</span>
+        </a>
+
+        <a href="./power-bi-copilot-alternative/index.html" class="page-card">
+          <span class="page-card-tag">Alternative</span>
+          <h3 class="page-card-title">Power BI Copilot Alternative: Agentic BI for the AI Era</h3>
+          <p class="page-card-meta">Power BI Copilot helps you build charts faster. An AI agent skips the chart-building step entirely — ask a question, get an answer with full source lineage.</p>
+          <span class="page-card-cta">Learn more →</span>
+        </a>
+
+        <a href="./looker-alternative/index.html" class="page-card">
+          <span class="page-card-tag">Alternative</span>
+          <h3 class="page-card-title">Looker Alternative: Agentic Analytics Without the Semantic Layer</h3>
+          <p class="page-card-meta">Looker's LookML requires months of semantic modeling. Agentic analytics discovers schemas at query time and answers complex questions on day one — no modeling required.</p>
+          <span class="page-card-cta">Learn more →</span>
+        </a>
+
+        <a href="./thoughtspot-alternative/index.html" class="page-card">
+          <span class="page-card-tag">Alternative</span>
+          <h3 class="page-card-title">ThoughtSpot Alternative: Agentic Analytics for Ad-Hoc Analysis</h3>
+          <p class="page-card-meta">ThoughtSpot searches within pre-indexed data models. Agentic analytics reasons across live databases without indexing, pre-aggregation, or pre-built search schemas.</p>
+          <span class="page-card-cta">Learn more →</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">&copy; 2026 <a href="https://infinisynapse.com">InfiniSynapse</a>. All rights reserved. &middot; Multi-source &middot; Multi-modal &middot; On-prem ready</div>
+  </footer>
+</body>
+</html>
