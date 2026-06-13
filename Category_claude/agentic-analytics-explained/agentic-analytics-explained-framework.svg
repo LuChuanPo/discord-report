@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Four generations of analytics: from static reports to agentic analytics</title>
+  <desc id="desc">Timeline of four analytics generations: static reports answered by a reporting team, self-service BI answered by analysts, conversational BI answered by a tool within modeled metrics, and agentic analytics answered by an agent with a reviewable plan and evidence trail.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+
+  <text x="100" y="116" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">From dashboards to agents</text>
+  <text x="100" y="156" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">Four generations of analytics — and who does the answering</text>
+
+  <!-- Timeline spine -->
+  <line x1="100" y1="252" x2="1100" y2="252" stroke="#D9DEE8" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="220" cy="252" r="10" fill="#9CA3AF"/>
+  <circle cx="480" cy="252" r="10" fill="#6366F1"/>
+  <circle cx="740" cy="252" r="10" fill="#0EA5E9"/>
+  <circle cx="1000" cy="252" r="12" fill="#5B5BFF"/>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Gen 1 -->
+    <rect x="100" y="290" width="240" height="200" rx="16" fill="#F9FAFB" stroke="#E5E7EB"/>
+    <text x="120" y="326" fill="#6B7280" font-size="14" font-weight="800">GEN 1</text>
+    <text x="120" y="356" fill="#111827" font-size="20" font-weight="800">Static reports</text>
+    <text x="120" y="386" fill="#6B7280" font-size="14">answered by: reporting team</text>
+    <text x="120" y="410" fill="#6B7280" font-size="14">scope: fixed, quarterly</text>
+    <text x="120" y="434" fill="#6B7280" font-size="14">latency: days to weeks</text>
+    <text x="120" y="458" fill="#6B7280" font-size="14">trust: owner sign-off</text>
+
+    <!-- Gen 2 -->
+    <rect x="360" y="290" width="240" height="200" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="380" y="326" fill="#4338CA" font-size="14" font-weight="800">GEN 2</text>
+    <text x="380" y="356" fill="#111827" font-size="20" font-weight="800">Self-service BI</text>
+    <text x="380" y="386" fill="#6B7280" font-size="14">answered by: analysts</text>
+    <text x="380" y="410" fill="#6B7280" font-size="14">scope: what got dashboarded</text>
+    <text x="380" y="434" fill="#6B7280" font-size="14">latency: hours to days</text>
+    <text x="380" y="458" fill="#6B7280" font-size="14">trust: analyst reputation</text>
+
+    <!-- Gen 3 -->
+    <rect x="620" y="290" width="240" height="200" rx="16" fill="#F0F9FF" stroke="#BAE6FD"/>
+    <text x="640" y="326" fill="#0369A1" font-size="14" font-weight="800">GEN 3</text>
+    <text x="640" y="356" fill="#111827" font-size="20" font-weight="800">Conversational BI</text>
+    <text x="640" y="386" fill="#6B7280" font-size="14">answered by: the tool</text>
+    <text x="640" y="410" fill="#6B7280" font-size="14">scope: modeled metrics only</text>
+    <text x="640" y="434" fill="#6B7280" font-size="14">latency: seconds, if modeled</text>
+    <text x="640" y="458" fill="#6B7280" font-size="14">trust: semantic layer</text>
+
+    <!-- Gen 4 -->
+    <rect x="880" y="290" width="240" height="200" rx="16" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="2"/>
+    <text x="900" y="326" fill="#6D28D9" font-size="14" font-weight="800">GEN 4 — NOW</text>
+    <text x="900" y="356" fill="#111827" font-size="20" font-weight="800">Agentic analytics</text>
+    <text x="900" y="386" fill="#6B7280" font-size="14">answered by: the agent</text>
+    <text x="900" y="410" fill="#6B7280" font-size="14">scope: open-ended, multi-source</text>
+    <text x="900" y="434" fill="#6B7280" font-size="14">latency: minutes, verified</text>
+    <text x="900" y="458" fill="#6B7280" font-size="14">trust: evidence trail</text>
+
+    <!-- Era labels -->
+    <text x="220" y="232" fill="#9CA3AF" font-size="14" font-weight="700" text-anchor="middle">reports era</text>
+    <text x="480" y="232" fill="#4338CA" font-size="14" font-weight="700" text-anchor="middle">dashboards</text>
+    <text x="740" y="232" fill="#0369A1" font-size="14" font-weight="700" text-anchor="middle">ChatBI / copilots</text>
+    <text x="1000" y="232" fill="#5B5BFF" font-size="14" font-weight="700" text-anchor="middle">plan · execute · verify</text>
+
+    <!-- Shift annotation -->
+    <text x="100" y="536" fill="#6B7280" font-size="16">Each generation moves the answer closer to the asker — generation 4 hands the whole workflow to a reviewable agent.</text>
+  </g>
+
+  <text x="100" y="568" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="18">InfiniSynapse — enterprise AI data analyst</text>
+</svg>

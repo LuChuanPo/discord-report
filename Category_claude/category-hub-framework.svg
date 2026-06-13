@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Data agent topic cluster map: six layers from definition to reference</title>
+  <desc id="desc">Cluster map of twelve data agent guides arranged in six layers: define, architect, operate, compare, trust, and reference, flowing from category education to tool evaluation.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+
+  <text x="100" y="110" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800">How the data agent cluster fits together</text>
+  <text x="100" y="148" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Six layers, twelve guides — from first definition to shared vocabulary</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Layer 1: Define -->
+    <rect x="100" y="178" width="158" height="52" rx="12" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="118" y="203" fill="#4338CA" font-size="14" font-weight="800">1 · DEFINE</text>
+    <text x="118" y="221" fill="#6B7280" font-size="12">why now · what it is</text>
+    <rect x="286" y="178" width="260" height="52" rx="12" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="304" y="209" fill="#111827" font-size="15" font-weight="700">Data Agent Manifesto</text>
+    <rect x="566" y="178" width="260" height="52" rx="12" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="584" y="209" fill="#111827" font-size="15" font-weight="700">What Is a Data Agent?</text>
+
+    <!-- Layer 2: Architect -->
+    <rect x="100" y="242" width="158" height="52" rx="12" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="118" y="267" fill="#6D28D9" font-size="14" font-weight="800">2 · ARCHITECT</text>
+    <text x="118" y="285" fill="#6B7280" font-size="12">stack · context layer</text>
+    <rect x="286" y="242" width="260" height="52" rx="12" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="304" y="273" fill="#111827" font-size="15" font-weight="700">AI-Native Data Platform</text>
+    <rect x="566" y="242" width="260" height="52" rx="12" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="584" y="273" fill="#111827" font-size="15" font-weight="700">AI Agent Memory for Data</text>
+
+    <!-- Layer 3: Operate -->
+    <rect x="100" y="306" width="158" height="52" rx="12" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="118" y="331" fill="#047857" font-size="14" font-weight="800">3 · OPERATE</text>
+    <text x="118" y="349" fill="#6B7280" font-size="12">workflow · autonomy</text>
+    <rect x="286" y="306" width="260" height="52" rx="12" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="304" y="337" fill="#111827" font-size="15" font-weight="700">Agentic Analytics Explained</text>
+    <rect x="566" y="306" width="260" height="52" rx="12" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="584" y="337" fill="#111827" font-size="15" font-weight="700">Autonomous Data Agent</text>
+    <rect x="846" y="306" width="254" height="52" rx="12" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="864" y="337" fill="#111827" font-size="15" font-weight="700">AI Data Analyst Explained</text>
+
+    <!-- Layer 4: Compare -->
+    <rect x="100" y="370" width="158" height="52" rx="12" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="118" y="395" fill="#B45309" font-size="14" font-weight="800">4 · COMPARE</text>
+    <text x="118" y="413" fill="#6B7280" font-size="12">vs what you have</text>
+    <rect x="286" y="370" width="260" height="52" rx="12" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="304" y="401" fill="#111827" font-size="15" font-weight="700">Data Agent vs AI Copilot</text>
+    <rect x="566" y="370" width="300" height="52" rx="12" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="584" y="401" fill="#111827" font-size="15" font-weight="700">AI-Native vs Augmented Analytics</text>
+
+    <!-- Layer 5: Trust -->
+    <rect x="100" y="434" width="158" height="52" rx="12" fill="#FDF2F8" stroke="#FBCFE8"/>
+    <text x="118" y="459" fill="#BE185D" font-size="14" font-weight="800">5 · TRUST</text>
+    <text x="118" y="477" fill="#6B7280" font-size="12">audit · governance</text>
+    <rect x="286" y="434" width="300" height="52" rx="12" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="304" y="465" fill="#111827" font-size="15" font-weight="700">Explainable AI Data Analysis</text>
+
+    <!-- Layer 6: Reference -->
+    <rect x="100" y="498" width="158" height="52" rx="12" fill="#EFF6FF" stroke="#BFDBFE"/>
+    <text x="118" y="523" fill="#1D4ED8" font-size="14" font-weight="800">6 · REFERENCE</text>
+    <text x="118" y="541" fill="#6B7280" font-size="12">vocabulary · hiring</text>
+    <rect x="286" y="498" width="260" height="52" rx="12" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="304" y="529" fill="#111827" font-size="15" font-weight="700">Data Agent Glossary 2026</text>
+    <rect x="566" y="498" width="300" height="52" rx="12" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="584" y="529" fill="#111827" font-size="15" font-weight="700">AI Data Analyst Job Description</text>
+
+    <!-- Flow arrow down the left side of layer pills -->
+    <path d="M179 230v6M179 294v6M179 358v6M179 422v6M179 486v6" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Right-side funnel annotation -->
+    <rect x="900" y="178" width="200" height="116" rx="12" fill="#F8FAFC" stroke="#E5E7EB"/>
+    <text x="918" y="206" fill="#6B7280" font-size="13" font-weight="800">FUNNEL</text>
+    <text x="918" y="230" fill="#4B5563" font-size="13">Layers 1-2 · learn (TOFU)</text>
+    <text x="918" y="252" fill="#4B5563" font-size="13">Layers 3-4 · evaluate (MOFU)</text>
+    <text x="918" y="274" fill="#4B5563" font-size="13">Layers 5-6 · decide and align</text>
+
+    <rect x="900" y="370" width="200" height="180" rx="12" fill="#F8FAFC" stroke="#E5E7EB"/>
+    <text x="918" y="398" fill="#6B7280" font-size="13" font-weight="800">READING PATHS</text>
+    <text x="918" y="422" fill="#4B5563" font-size="13">Evaluator: 1 → 4 → 5</text>
+    <text x="918" y="444" fill="#4B5563" font-size="13">Architect: 2 → 3 → 5</text>
+    <text x="918" y="466" fill="#4B5563" font-size="13">Practitioner: 3 → 6</text>
+    <text x="918" y="496" fill="#9CA3AF" font-size="12">Each path is a four-page</text>
+    <text x="918" y="514" fill="#9CA3AF" font-size="12">sequence on the hub.</text>
+  </g>
+
+  <text x="100" y="572" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="15">InfiniSynapse — enterprise AI data analyst · infinisynapse.com/Category</text>
+</svg>

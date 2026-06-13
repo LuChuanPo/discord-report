@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>What Is a Data Agent? Definition | InfiniSynapse</title>
+  <meta name="description" content="What is a data agent? Clear definition, architecture, real examples, and a practical checklist to tell data agents apart from AI assistants and copilots.">
+  <meta name="keywords" content="what is a data agent, data agent definition, data agent vs ai assistant">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/Category/what-is-a-data-agent">
+
+  <meta property="og:title" content="What Is a Data Agent? Definition">
+  <meta property="og:description" content="What is a data agent? Clear definition, architecture, real examples, and a practical checklist to tell data agents apart from AI assistants and copilots.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/Category/what-is-a-data-agent">
+  <meta property="og:image" content="https://infinisynapse.com/Category/what-is-a-data-agent/what-is-a-data-agent-framework.svg">
+  <meta property="og:image:alt" content="Diagram of the five-stage data agent loop: context, plan, execute, verify, explain.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="What Is a Data Agent? Definition">
+  <meta name="twitter:description" content="What is a data agent? Clear definition, architecture, real examples, and a practical checklist to tell data agents apart from AI assistants and copilots.">
+  <meta name="twitter:image" content="https://infinisynapse.com/Category/what-is-a-data-agent/what-is-a-data-agent-framework.svg">
+  <meta name="twitter:image:alt" content="Diagram of the five-stage data agent loop: context, plan, execute, verify, explain.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Schema #1: Organization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "InfiniSynapse",
+  "url": "https://infinisynapse.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://infinisynapse.com/logo.png",
+    "caption": "InfiniSynapse AI data analyst logo",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": [
+    "https://x.com/InfiniSynapse"
+  ]
+}
+  </script>
+
+  <!-- Schema #2: BreadcrumbList -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://infinisynapse.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Category",
+      "item": "https://infinisynapse.com/Category"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "What Is a Data Agent? Definition, Examples, and AI Assistant Differences",
+      "item": "https://infinisynapse.com/Category/what-is-a-data-agent"
+    }
+  ]
+}
+  </script>
+
+  <!-- Schema #3: Article -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Is a Data Agent? Definition, Examples, and AI Assistant Differences",
+  "description": "What is a data agent? Clear definition, architecture, real examples, and a practical checklist to tell data agents apart from AI assistants and copilots.",
+  "image": "https://infinisynapse.com/Category/what-is-a-data-agent/what-is-a-data-agent-framework.svg",
+  "datePublished": "2026-06-11",
+  "dateModified": "2026-06-12",
+  "author": {
+    "@type": "Organization",
+    "name": "InfiniSynapse Research"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "InfiniSynapse",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://infinisynapse.com/logo.png",
+      "width": 512,
+      "height": 512
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://infinisynapse.com/Category/what-is-a-data-agent"
+  },
+  "hasDefinedTerm": {
+    "@type": "DefinedTerm",
+    "name": "data agent",
+    "description": "A data agent is an AI system that plans, executes, checks, and explains data analysis tasks using connected sources, business context, and governed execution tools."
+  }
+}
+  </script>
+
+  <!-- Schema #4: FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a data agent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A data agent is an AI system that plans, executes, checks, and explains data analysis tasks using connected data sources and business context. It differs from a chat assistant because it owns a governed workflow: it retrieves schema and metric definitions, runs queries, validates results, and returns an answer with an evidence trail."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between a data agent and an AI assistant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An AI assistant responds inside a conversation and leaves execution to you. A data agent owns the workflow: it plans the analysis, queries permissioned sources, checks intermediate results, and delivers an explainable output. The practical test is workflow ownership: who runs the queries, and who verifies the result."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a data agent always write SQL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A data agent may generate SQL, an intermediate representation such as InfiniSQL, API calls, file operations, or document retrievals depending on the task. SQL is one execution path among several, which is why text-to-SQL accuracy alone does not measure agent quality."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is a data agent different from ChatBI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ChatBI answers questions about metrics that were already modeled in a BI semantic layer. A data agent can work on open-ended questions: it retrieves business context, joins data across systems, and produces analysis that was never pre-built as a dashboard or metric."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are data agents safe to use on production data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They can be, with guardrails. Run agents on read-only credentials, review the plan before execution, and require an evidence trail for every result. Frameworks such as the NIST AI Risk Management Framework give teams a structure for governing this class of system."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What data sources can a data agent connect to?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Typical connections include cloud warehouses such as Snowflake, databases such as PostgreSQL and MySQL, uploaded files such as CSV and Excel, document knowledge bases, and web sources. InfiniSynapse, for example, supports cross-source analysis across databases and files without a prior ETL migration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who should use a data agent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Data teams that want fewer repetitive query requests, business owners who need answers without waiting on analyst backlogs, and analysts who want to spend time on judgment instead of data retrieval. Teams without any connected data sources or basic metric definitions should fix that foundation first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I evaluate a data agent before buying?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Score candidates on eight dimensions: business context quality, schema retrieval, planning transparency, execution safety, result verification, explainability, memory, and deployment control. Run the same three real business questions through each candidate and compare evidence trails, not demo videos."
+      }
+    }
+  ]
+}
+  </script>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    a{color:#5B5BFF;text-decoration:none}
+    a:hover{color:#111827}
+    .nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+    .nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+    .nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+    .nav-logo-mark{height:26px;display:flex;align-items:center}
+    .nav-logo-mark img{height:26px;width:auto;display:block}
+    .nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+    .nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap;transition:color 0.15s}
+    .nav-menu a:hover{color:#111827}
+    .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+    .nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap;box-shadow:none;transition:background 0.15s,border-color 0.15s,transform 0.15s}
+    a.nav-btn:hover{color:#111827;border-color:#C7CEDA;transform:translateY(-1px)}
+    .nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+    .nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+    .nav-btn-primary:hover{color:#FFFFFF}
+    .nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+    .nav-btn-dark:hover{color:#FFFFFF}
+    .nav-icon{width:17px;height:17px;flex:0 0 auto}
+    .nav-chevron{width:15px;height:15px;flex:0 0 auto}
+    .wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+    .breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+    .breadcrumb a{color:#6B7280}
+    .badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+    .badge-client{background:#EEF2FF;color:#4338CA}
+    .badge-cat{background:#ECFDF5;color:#047857}
+    h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+    h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+    h3{font-size:21px;color:#111827;margin:24px 0 8px}
+    p{margin:0 0 16px}
+    ul,ol{padding-left:22px;margin:0 0 18px}
+    li{margin:6px 0}
+    .meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+    .author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+    .info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+    .info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+    .disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+    .toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+    .toc{background:#F9FAFB}
+    .toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+    .tldr{background:#F8FAFC}
+    .snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+    .definition{background:#ECFDF5;border-color:#BBF7D0}
+    .feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+    table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+    th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+    th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+    td{color:#4B5563}
+    .quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+    .cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+    .cta-btn:hover{background:#1F2937;color:#FFFFFF}
+    .faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+    .faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+    .faq-a{color:#4B5563}
+    .methodology{background:#F9FAFB;color:#4B5563}
+    .refs li{font-size:13.5px;color:#4B5563}
+    .related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+    .related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+    .stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+    .stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+    .stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+    .panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+    .panel h3{margin-top:0}
+    .panel-good{background:#F0FDF4;border-color:#BBF7D0}
+    .panel-bad{background:#FEF2F2;border-color:#FECACA}
+    .footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+    .footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{color:#6B7280;font-size:14px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+    @media(max-width:1280px){.nav-inner{max-width:1180px;column-gap:24px}.nav-menu{gap:18px}.nav-menu a,.nav-btn{font-size:14px}.nav-btn{min-height:36px;padding:0 12px}.nav-btn-primary,.nav-btn-dark{padding:0 14px}}
+    @media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}.nav-logo{width:100%;justify-content:center}.nav-menu,.nav-actions{justify-content:center;flex-wrap:wrap}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}table{font-size:14px}.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark">
+        <img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse">
+      </span>
+      <span>InfiniSynapse</span>
+    </a>
+
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+          <path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12S9.8 18.6 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        EN
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Book Demo
+      </a>
+
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+      <a href="https://infinisynapse.com/Category">Category</a><span>&gt;</span>
+      what is a data agent
+    </nav>
+
+    <div>
+      <span class="badge badge-client">InfiniSynapse</span>
+      <span class="badge badge-cat">Definition</span>
+    </div>
+
+    <h1>What Is a Data Agent? Definition, Examples, and AI Assistant Differences</h1>
+    <p class="meta-desc">A plain-English guide to the data agent category: what these systems actually do, how the plan-execute-verify loop works, and a checklist your team can use to separate real agents from rebranded chat assistants.</p>
+
+    <div class="author-grid">
+      <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+      <div class="info-card"><strong>Published</strong>2026-06-11 · Last verified 2026-06-12 · Next review 2026-09-12</div>
+      <div class="info-card"><strong>Evidence base</strong>Academic agent research (ReAct, BIRD, 2025 data agent surveys), NIST AI RMF, vendor documentation, and InfiniSynapse product documentation.</div>
+    </div>
+
+    <div class="disclosure">
+      <strong>Disclosure:</strong> This page is published by InfiniSynapse, which builds an enterprise AI data analyst. We use InfiniSynapse as a worked example where relevant, but the definitions, comparison tables, and evaluation checklist are written so you can apply them to any vendor — including against us.
+    </div>
+
+    <nav class="toc" aria-label="Table of contents">
+      <div class="toc-label">Contents</div>
+      <ul>
+        <li><a href="#answer">Direct answer</a></li>
+        <li><a href="#definition">Definition</a></li>
+        <li><a href="#how-it-works">How a data agent works</a></li>
+        <li><a href="#why-now">Why data agents exist now</a></li>
+        <li><a href="#data-agent-vs-ai-assistant">Data agent vs AI assistant, copilot, and ChatBI</a></li>
+        <li><a href="#types">Types of data agents</a></li>
+        <li><a href="#example">A concrete example</a></li>
+        <li><a href="#when-to-use">When to use one — and when not to</a></li>
+        <li><a href="#get-started">How to get started</a></li>
+        <li><a href="#checklist">Evaluation checklist</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#methodology">Methodology</a></li>
+        <li><a href="#references">Sources and references</a></li>
+      </ul>
+    </nav>
+
+    <div class="tldr">
+      <div class="tldr-label">TL;DR</div>
+      <ul>
+        <li>A data agent <strong>owns an analysis workflow</strong>: it plans steps, retrieves business context, runs queries across sources, checks its own output, and returns an answer with evidence. An assistant only suggests; an agent executes.</li>
+        <li>The category exists because raw text-to-SQL is not enough. On the <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">BIRD benchmark</a>, human engineers reach 92.96% execution accuracy and models still trail that bar — agents close the gap with context retrieval and self-verification, not bigger prompts.</li>
+        <li>Before buying anything in this category, score candidates on eight dimensions — context, schema retrieval, planning, execution safety, verification, explainability, memory, deployment — using the <a href="#checklist">checklist below</a>.</li>
+      </ul>
+    </div>
+
+    <h2 id="answer">Direct answer: what is a data agent</h2>
+    <div class="snippet-answer">A data agent is an AI system that completes data analysis work end to end: it plans the analysis steps, retrieves business context and schema, queries connected sources, checks intermediate results, and delivers an explained answer or artifact. Unlike a general AI assistant, a data agent is connected to data systems, governed definitions, and execution tools — and it leaves an evidence trail you can audit.</div>
+
+    <h2 id="definition">Definition</h2>
+    <div class="definition"><dfn>data agent</dfn>: A data agent is an AI system that plans, executes, checks, and explains data analysis tasks using connected sources, business context, and governed execution tools. Unlike a chat assistant, it owns the workflow from question to verified result.</div>
+
+    <p>The term sits inside a broader shift in how large language models are deployed. Anthropic's engineering guide <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Building Effective Agents</a> draws the line at autonomy: agents are systems where the model directs its own process and tool usage, rather than following a fixed script.</p>
+    <p>Applied to analytics, that means the system decides which tables to inspect, which queries to run, and when its own answer needs another check. Two academic surveys published in 2025 — <a href="https://arxiv.org/abs/2509.23988" target="_blank" rel="noopener">LLM/Agent-as-Data-Analyst</a> and <a href="https://arxiv.org/html/2510.23587v1" target="_blank" rel="noopener">A Survey of Data Agents</a> — now treat data agents as a distinct research category with its own architectures and failure modes.</p>
+
+    <h2 id="how-it-works">How a data agent works: the five-stage loop</h2>
+    <p>Every credible data agent runs some version of the same loop. The stages matter more than the branding, because each stage is where a specific class of error gets caught — or doesn't.</p>
+
+    <img class="feature-img" src="what-is-a-data-agent-framework.svg" alt="Five-stage data agent loop diagram: understand intent and retrieve context, plan, execute, verify, explain, with a self-correction arrow from verify back to plan" width="1200" height="630" loading="lazy">
+
+    <h3>Stage 1: Understand the intent and retrieve context</h3>
+    <p>The agent maps your question to business meaning: which metric definition applies, which tables hold the data, and what past analyses established. Systems like InfiniSynapse do this with retrieval over a knowledge base — data dictionaries, metric definitions, prior cases — plus schema retrieval over connected databases.</p>
+    <p>This stage is where most non-agent tools silently fail. A model that does not know your company defines "active user" as 30-day rolling will confidently compute the 7-day version.</p>
+
+    <h3>Stage 2: Plan before executing</h3>
+    <p>Instead of firing a query immediately, the agent drafts an analysis plan: data sources, join keys, dimensions, time windows, and the output format. In InfiniSynapse this is an explicit Plan mode — you review and adjust the plan before anything runs.</p>
+    <p>The pattern has academic roots: the <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">ReAct paper (2022)</a> showed that interleaving reasoning steps with actions measurably reduces error versus direct generation.</p>
+
+    <h3>Stage 3: Execute across sources</h3>
+    <p>The agent runs the plan: SQL against warehouses, an intermediate representation such as InfiniSQL for cross-source work, file reads for CSV and Excel, document retrieval, or web lookups. Execution happens inside whatever permissions you granted — read-only credentials are the sane default.</p>
+
+    <h3>Stage 4: Verify the result</h3>
+    <p>A professional analyst sanity-checks numbers before sending them; an agent must do the same. Typical checks include row-count plausibility, null-rate inspection, cross-validation of a metric against a second computation path, and re-running ambiguous steps.</p>
+    <p>This is the stage that separates a <a href="https://infinisynapse.com/Category/autonomous-data-agent">self-correcting autonomous agent</a> from a one-shot query generator.</p>
+
+    <h3>Stage 5: Explain and deliver</h3>
+    <p>The output is not just a number — it is the number plus the plan, the queries, the sources, and the caveats. That evidence trail is what makes the result reviewable, and it is the core argument of <a href="https://infinisynapse.com/Category/explainable-ai-data-analysis">explainable AI data analysis</a>.</p>
+
+    <p class="quote">The fastest way to tell an agent from an assistant: ask who ran the query, then ask for the evidence trail.</p>
+
+    <h2 id="why-now">Why data agents exist now</h2>
+    <p>Three forces created this category, and all three are measurable rather than hype.</p>
+
+    <div class="stat-grid">
+      <div class="stat"><div class="num">92.96%</div><div class="lab">Human engineer execution accuracy on the BIRD text-to-SQL benchmark — the bar that single-shot SQL generation still has not reached, which is why agents add context and verification loops. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">Source: BIRD</a></div></div>
+      <div class="stat"><div class="num">2022</div><div class="lab">The ReAct pattern formalized the reason-act loop that modern agents are built on, replacing single-pass generation with stepwise tool use. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">Source: arXiv 2210.03629</a></div></div>
+      <div class="stat"><div class="num">2025</div><div class="lab">The year data agents became a named research category, with at least two dedicated academic surveys cataloging architectures and failure modes. <a href="https://arxiv.org/abs/2509.23988" target="_blank" rel="noopener">Source: arXiv 2509.23988</a></div></div>
+    </div>
+
+    <h3>Force 1: Text-to-SQL plateaued below the trust threshold</h3>
+    <p>Benchmarks like Spider and BIRD made the gap visible: models generate plausible SQL, but plausible is not the same as correct against messy production schemas. Closing the last gap requires business context and result verification — agent capabilities, not bigger models alone.</p>
+
+    <h3>Force 2: Enterprise questions are cross-source by default</h3>
+    <p>Real questions look like "compare e-commerce revenue across two platforms and match customers via phone number from a CRM export." That spans two databases and a file — outside what any single-warehouse ChatBI tool can touch without an ETL project first.</p>
+
+    <h3>Force 3: Analysis demand outgrew analyst supply</h3>
+    <p>Analyst backlogs are the default state of most data teams: routine pulls and "quick questions" crowd out actual analysis work. Agents absorb the repetitive layer so human analysts keep the judgment layer — the argument we make at length in the <a href="https://infinisynapse.com/Category/data-agent-manifesto">Data Agent Manifesto</a>.</p>
+
+    <h2 id="data-agent-vs-ai-assistant">Data agent vs AI assistant, copilot, and ChatBI</h2>
+    <p>These four terms get used interchangeably in marketing, and they should not be. The table below is the unbundled version; the deeper treatment is in our <a href="https://infinisynapse.com/Category/data-agent-vs-ai-copilot">data agent vs AI copilot comparison</a>.</p>
+
+    <table>
+      <thead>
+        <tr><th>Dimension</th><th>AI assistant</th><th>Analytics copilot</th><th>ChatBI</th><th>Data agent</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Core job</strong></td><td>Answer prompts, draft text</td><td>Suggest queries and chart summaries</td><td>Answer questions on pre-modeled metrics</td><td>Complete a multi-step analysis end to end</td></tr>
+        <tr><td><strong>Workflow ownership</strong></td><td>You own everything</td><td>You drive, it assists</td><td>Tool answers, within the semantic layer</td><td>Agent plans and executes; you review</td></tr>
+        <tr><td><strong>Data access</strong></td><td>None by default</td><td>The tool you embedded it in</td><td>BI-connected sources only</td><td>Databases, files, documents, web</td></tr>
+        <tr><td><strong>Business context</strong></td><td>Whatever you paste in</td><td>Limited to app context</td><td>The pre-built semantic model</td><td>Knowledge base + schema retrieval (RAG)</td></tr>
+        <tr><td><strong>Open-ended questions</strong></td><td>Talks about them, can't query</td><td>Only inside its host tool</td><td>Fails outside modeled metrics</td><td>Designed for them</td></tr>
+        <tr><td><strong>Typical failure</strong></td><td>Hallucinated numbers</td><td>Suggestion accepted unchecked</td><td>"Metric not found"</td><td>Bad plan — which is why plan review exists</td></tr>
+      </tbody>
+    </table>
+
+    <h3>The quick test: who owns the workflow?</h3>
+    <p>Ask one question of any tool in a demo: "Can it run the analysis itself, on my real sources, and show me how it got the answer?" If the honest answer is no, you are looking at an assistant or a copilot — useful, but a different category with different limits.</p>
+
+    <h2 id="types">Types of data agents</h2>
+    <p>The category is not monolithic. Most products cluster into four functional types, and many platforms combine several.</p>
+
+    <table>
+      <thead>
+        <tr><th>Type</th><th>What it does</th><th>Typical trigger</th><th>Example task</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Query agent</strong></td><td>Turns a question into a verified query against one source</td><td>Ad-hoc user question</td><td>"What was March revenue by region?"</td></tr>
+        <tr><td><strong>Analysis agent</strong></td><td>Plans multi-step, cross-source analysis with verification</td><td>Open-ended business question</td><td>"Why did repeat purchases drop in East China?"</td></tr>
+        <tr><td><strong>Workflow agent</strong></td><td>Produces artifacts: reports, spreadsheets, decks, collected web data</td><td>Recurring deliverable</td><td>Weekly competitor-price report from web + internal data</td></tr>
+        <tr><td><strong>Monitoring agent</strong></td><td>Watches metrics and explains anomalies when they fire</td><td>Threshold or schedule</td><td>"Alert me when conversion drops 10%, with a first-pass diagnosis"</td></tr>
+      </tbody>
+    </table>
+
+    <p>InfiniSynapse spans the first three types in one system — query, analysis, and artifact production — and extends execution through an <a href="https://infinisynapse.com/tools">agent tool market</a> covering spreadsheet editing, document generation, and browser automation.</p>
+
+    <h2 id="example">A concrete example: one question, three sources</h2>
+    <p>Here is a task documented in InfiniSynapse's product materials, useful because it is exactly the shape of question that breaks non-agent tools:</p>
+    <p class="quote">"Using phone number as the key, find the highest-spending customers across the JD and Tmall platforms, match their real names from a CSV file, and chart the ranking."</p>
+    <p>An agent handles this as one workflow: retrieve schema from both platform databases, plan the cross-source join on phone number, aggregate spend per customer, match names from the uploaded CSV, verify the join produced sane row counts, and render the chart. The traditional alternative is an ETL project — migrate sources into one warehouse, standardize fields, write the join, then visualize — measured in days rather than minutes.</p>
+    <p>Note what made this work: not a smarter SQL generator, but workflow ownership across heterogeneous sources. That architectural difference is the subject of our <a href="https://infinisynapse.com/Category/ai-native-data-platform">AI-native data platform guide</a>.</p>
+
+    <h2 id="when-to-use">When to use a data agent — and when not to</h2>
+    <div class="grid-2">
+      <div class="panel panel-good">
+        <h3>Good fit</h3>
+        <ul>
+          <li>Questions that span databases, files, and documents</li>
+          <li>Open-ended "why did X change?" investigations</li>
+          <li>Teams with an analyst backlog of routine pulls</li>
+          <li>Organizations that can grant governed, read-only access</li>
+          <li>Workflows that need a reviewable evidence trail</li>
+        </ul>
+      </div>
+      <div class="panel panel-bad">
+        <h3>Wrong tool for the job</h3>
+        <ul>
+          <li>A fixed dashboard viewed daily — classic BI is cheaper and faster</li>
+          <li>No connected data sources yet — fix connectivity first</li>
+          <li>No agreed metric definitions — an agent will faithfully automate your ambiguity</li>
+          <li>Sub-second operational queries inside an app — that is a database problem</li>
+          <li>One-person teams with one spreadsheet — use the spreadsheet</li>
+        </ul>
+      </div>
+    </div>
+    <p>The honest version of this section is a vendor admission: an agent amplifies the data foundation you already have. If metric ownership is contested in your company, resolve that before piloting any tool in this category, including ours.</p>
+
+    <h2 id="get-started">How to get started: a five-step pilot</h2>
+    <ol>
+      <li><strong>Pick three real questions</strong> your team answered manually last quarter — one single-source, one cross-source, one open-ended "why" question. You should end up with questions whose correct answers you already know.</li>
+      <li><strong>Connect one or two sources read-only.</strong> A warehouse plus a CSV export is enough to test cross-source behavior. You should see the agent retrieve schema without manual table descriptions.</li>
+      <li><strong>Seed minimal context.</strong> Add your top 10 metric definitions and a data dictionary page to the knowledge base — the memory layer matters more than model choice, as we argue in <a href="https://infinisynapse.com/Category/data-agent-memory-explained">AI agent memory for data</a>. You should see definitions cited back in the agent's plans.</li>
+        <li><strong>Run the three questions and review plans before execution.</strong> Score each run on plan quality, correctness against your known answers, and the usefulness of the evidence trail.</li>
+      <li><strong>Compare against your checklist, not the demo.</strong> Use the <a href="#checklist">eight-dimension checklist below</a> across every candidate, and weigh deployment requirements — cloud, private cloud, or air-gapped — before anyone falls in love with a UI.</li>
+    </ol>
+
+    <h2 id="checklist">The eight-dimension evaluation checklist</h2>
+    <p>This is the rubric we recommend for any data agent evaluation, ours included. Score each dimension 1-5 from your own pilot runs.</p>
+    <table>
+      <thead>
+        <tr><th>Dimension</th><th>Question to ask</th><th>What good looks like</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>1. Business context</strong></td><td>Does it know our metric definitions?</td><td>Cites your definitions in its plan, flags ambiguous terms</td></tr>
+        <tr><td><strong>2. Schema retrieval</strong></td><td>Can it find the right tables unaided?</td><td>Correct tables and join keys on first attempt in most runs</td></tr>
+        <tr><td><strong>3. Planning transparency</strong></td><td>Can we see and edit the plan before it runs?</td><td>Explicit, editable plan; no silent execution</td></tr>
+        <tr><td><strong>4. Execution safety</strong></td><td>What permissions does it actually need?</td><td>Read-only by default, scoped credentials, query logs</td></tr>
+        <tr><td><strong>5. Verification</strong></td><td>Does it check its own output?</td><td>Sanity checks visible in the trail; flags low-confidence results</td></tr>
+        <tr><td><strong>6. Explainability</strong></td><td>Can a reviewer reconstruct the answer?</td><td>Plan + queries + sources attached to every number</td></tr>
+        <tr><td><strong>7. Memory</strong></td><td>Does it improve from corrections?</td><td>Corrected definitions persist to future analyses</td></tr>
+        <tr><td><strong>8. Deployment control</strong></td><td>Can it run where our data must live?</td><td>Private cloud or on-premises option; data stays in your boundary</td></tr>
+      </tbody>
+    </table>
+    <p>Dimensions 4, 5, and 6 map directly onto the govern-map-measure-manage structure of the <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a>, which is a useful shared language when your security team joins the evaluation.</p>
+
+    <h3>Who should care about this category</h3>
+    <ul>
+      <li><strong>Data teams</strong> drowning in routine requests — agents absorb the repetitive layer, and the <a href="https://infinisynapse.com/Category/ai-data-analyst-explained">AI data analyst guide</a> covers what changes day to day.</li>
+      <li><strong>Business leaders</strong> who need answers this week, not after the next sprint.</li>
+      <li><strong>IT and security teams</strong> who will rightly ask about permissions, audit trails, and deployment boundaries before anything touches production.</li>
+    </ul>
+
+    <h3>When InfiniSynapse is not the right fit</h3>
+    <p>InfiniSynapse is built for teams with real multi-source analysis needs and governance requirements. If you only need a static dashboard, have no connected sources, or have not assigned metric ownership, start with classic BI or a data governance effort — a data agent would automate the confusion rather than fix it.</p>
+
+    <div class="cta-box">
+      <h3>Run the three-question test on your own data</h3>
+      <p>Connect a database or upload a file, ask one cross-source question, and review the plan, result, chart, and evidence trail. That single run tells you more than any feature list — including this page.</p>
+      <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+    </div>
+
+    <h2 id="faq">FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is a data agent?</div>
+      <div class="faq-a">A data agent is an AI system that plans, executes, checks, and explains data analysis tasks using connected data sources and business context. It differs from a chat assistant because it owns a governed workflow: it retrieves schema and metric definitions, runs queries, validates results, and returns an answer with an evidence trail.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between a data agent and an AI assistant?</div>
+      <div class="faq-a">An AI assistant responds inside a conversation and leaves execution to you. A data agent owns the workflow: it plans the analysis, queries permissioned sources, checks intermediate results, and delivers an explainable output. The practical test is workflow ownership: who runs the queries, and who verifies the result.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does a data agent always write SQL?</div>
+      <div class="faq-a">No. A data agent may generate SQL, an intermediate representation such as InfiniSQL, API calls, file operations, or document retrievals depending on the task. SQL is one execution path among several, which is why text-to-SQL accuracy alone does not measure agent quality.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How is a data agent different from ChatBI?</div>
+      <div class="faq-a">ChatBI answers questions about metrics that were already modeled in a BI semantic layer. A data agent can work on open-ended questions: it retrieves business context, joins data across systems, and produces analysis that was never pre-built as a dashboard or metric.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Are data agents safe to use on production data?</div>
+      <div class="faq-a">They can be, with guardrails. Run agents on read-only credentials, review the plan before execution, and require an evidence trail for every result. Frameworks such as the NIST AI Risk Management Framework give teams a structure for governing this class of system.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What data sources can a data agent connect to?</div>
+      <div class="faq-a">Typical connections include cloud warehouses such as Snowflake, databases such as PostgreSQL and MySQL, uploaded files such as CSV and Excel, document knowledge bases, and web sources. InfiniSynapse, for example, supports cross-source analysis across databases and files without a prior ETL migration.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Who should use a data agent?</div>
+      <div class="faq-a">Data teams that want fewer repetitive query requests, business owners who need answers without waiting on analyst backlogs, and analysts who want to spend time on judgment instead of data retrieval. Teams without any connected data sources or basic metric definitions should fix that foundation first.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I evaluate a data agent before buying?</div>
+      <div class="faq-a">Score candidates on eight dimensions: business context quality, schema retrieval, planning transparency, execution safety, result verification, explainability, memory, and deployment control. Run the same three real business questions through each candidate and compare evidence trails, not demo videos.</div>
+    </div>
+
+    <div class="methodology" id="methodology">
+      <h2>Methodology and review notes</h2>
+      <p><strong>Last updated:</strong> 2026-06-12 · <strong>Next scheduled review:</strong> 2026-09-12</p>
+      <p>Definitions on this page are grounded in published agent research (ReAct, the 2025 data agent surveys), public benchmarks (BIRD), governance frameworks (NIST AI RMF), and vendor documentation. Product capabilities attributed to InfiniSynapse come from InfiniSynapse product documentation; the cross-source example is a documented product demonstration, not an independent benchmark.</p>
+      <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells in the data agent category. To reduce bias, the page includes a vendor-neutral evaluation checklist, explicit cases where simpler tools win, and external sources for every numeric claim.</p>
+      <p><strong>Update cadence:</strong> Reviewed every 90 days for terminology, source links, benchmark figures, and schema consistency.</p>
+    </div>
+
+    <h2 id="references">Sources and references</h2>
+    <ol class="refs">
+      <li><strong>[Independent]</strong> BIRD-SQL: A Big Bench for Large-Scale Database Grounded Text-to-SQL Evaluation. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">BIRD benchmark leaderboard</a>.</li>
+      <li><strong>[Independent]</strong> Yao et al. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arXiv 2210.03629</a>.</li>
+      <li><strong>[Vendor]</strong> Anthropic (2024). Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+      <li><strong>[Independent]</strong> NIST. AI Risk Management Framework (AI RMF 1.0, 2023). <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+      <li><strong>[Independent]</strong> A Survey of Data Agents: Emerging Paradigm or Overstated Hype? (2025). <a href="https://arxiv.org/html/2510.23587v1" target="_blank" rel="noopener">arXiv 2510.23587</a>.</li>
+      <li><strong>[Independent]</strong> LLM/Agent-as-Data-Analyst: A Survey (2025). <a href="https://arxiv.org/abs/2509.23988" target="_blank" rel="noopener">arXiv 2509.23988</a>.</li>
+      <li><strong>[Independent]</strong> Gartner. Augmented Analytics market category. <a href="https://www.gartner.com/reviews/market/augmented-analytics" target="_blank" rel="noopener">gartner.com/reviews/market/augmented-analytics</a>.</li>
+      <li><strong>[Vendor]</strong> Microsoft Learn. What is Microsoft 365 Copilot? <a href="https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-overview" target="_blank" rel="noopener">learn.microsoft.com</a>.</li>
+    </ol>
+
+    <h2>Related guides</h2>
+    <div class="related">
+      <a href="https://infinisynapse.com/Category/data-agent-manifesto">Data Agent Manifesto: Why Data Agents Matter</a>
+      <a href="https://infinisynapse.com/Category/data-agent-vs-ai-copilot">Data Agent vs AI Copilot: Which Fits Your Team?</a>
+      <a href="https://infinisynapse.com/Category/agentic-analytics-explained">Agentic Analytics Explained</a>
+      <a href="https://infinisynapse.com/Category/ai-native-data-platform">AI-Native Data Platform: Architecture Guide</a>
+      <a href="https://infinisynapse.com/Category/autonomous-data-agent">Autonomous Data Agent: Safeguards and Self-Correction</a>
+      <a href="https://infinisynapse.com/Category/explainable-ai-data-analysis">Explainable AI Data Analysis</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+          <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+          <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <div class="footer-links">
+            <a href="https://infinisynapse.com/#features">Features</a>
+            <a href="https://infinisynapse.com/tools">Tools Market</a>
+            <a href="https://app.infinisynapse.com/">Try Online</a>
+            <a href="https://infinisynapse.com/download">Download</a>
+          </div>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <div class="footer-links">
+            <a href="https://infinisynapse.com/en/docs">Documentation</a>
+            <a href="https://infinisynapse.com/en/blog">Blog</a>
+            <a href="https://infinisynapse.com/Category">Category Hub</a>
+          </div>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <div class="footer-links">
+            <a href="https://infinisynapse.com/#contact">Contact</a>
+            <a href="https://infinisynapse.com/careers">Careers</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+        <span>From question to insight, in seconds.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

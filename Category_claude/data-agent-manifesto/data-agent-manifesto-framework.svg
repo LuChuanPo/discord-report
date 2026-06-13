@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">The shift from the dashboard era to the agent era</title>
+  <desc id="desc">Two-column diagram contrasting the dashboard era with the agent era: tickets, analyst queues, and pre-built views on the left; the plan, execute, verify, explain loop with evidence trails on the right, contrasted on who asks, latency, trust, analyst role, and scope.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+
+  <text x="100" y="116" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">From dashboards to data agents</text>
+  <text x="100" y="156" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">The shift: who asks, who queries, and what you trust</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Left panel: dashboard era -->
+    <rect x="100" y="196" width="470" height="334" rx="16" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="124" y="230" fill="#B45309" font-size="16" font-weight="800">DASHBOARD ERA</text>
+
+    <!-- mini flow: ticket pipeline -->
+    <rect x="124" y="250" width="118" height="56" rx="10" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="183" y="283" fill="#111827" font-size="14" font-weight="600" text-anchor="middle">New question</text>
+    <rect x="272" y="250" width="118" height="56" rx="10" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="331" y="283" fill="#111827" font-size="14" font-weight="600" text-anchor="middle">Ticket queue</text>
+    <rect x="420" y="250" width="118" height="56" rx="10" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="479" y="283" fill="#111827" font-size="14" font-weight="600" text-anchor="middle">Pre-built view</text>
+    <path d="M246 278h12" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M253 271l9 7-9 7" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M394 278h12" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M401 271l9 7-9 7" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="124" y="346" font-size="16"><tspan fill="#111827" font-weight="700">Who asks:</tspan><tspan fill="#6B7280"> a dashboard seat + a ticket</tspan></text>
+    <text x="124" y="382" font-size="16"><tspan fill="#111827" font-weight="700">Latency:</tspan><tspan fill="#6B7280"> days to weeks in the queue</tspan></text>
+    <text x="124" y="418" font-size="16"><tspan fill="#111827" font-weight="700">Trust:</tspan><tspan fill="#6B7280"> the person who built the view</tspan></text>
+    <text x="124" y="454" font-size="16"><tspan fill="#111827" font-weight="700">Analyst:</tspan><tspan fill="#6B7280"> query producer, report builder</tspan></text>
+    <text x="124" y="490" font-size="16"><tspan fill="#111827" font-weight="700">Scope:</tspan><tspan fill="#6B7280"> sources modeled into the BI stack</tspan></text>
+
+    <!-- Center shift arrow -->
+    <path d="M578 363h28" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M598 352l14 11-14 11" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Right panel: agent era -->
+    <rect x="630" y="196" width="470" height="334" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="654" y="230" fill="#4338CA" font-size="16" font-weight="800">AGENT ERA</text>
+
+    <!-- mini flow: agent loop with evidence trail -->
+    <rect x="654" y="250" width="86" height="56" rx="10" fill="#FFFFFF" stroke="#C7D2FE"/>
+    <text x="697" y="283" fill="#111827" font-size="14" font-weight="600" text-anchor="middle">Plan</text>
+    <rect x="764" y="250" width="86" height="56" rx="10" fill="#FFFFFF" stroke="#C7D2FE"/>
+    <text x="807" y="283" fill="#111827" font-size="14" font-weight="600" text-anchor="middle">Execute</text>
+    <rect x="874" y="250" width="86" height="56" rx="10" fill="#FFFFFF" stroke="#C7D2FE"/>
+    <text x="917" y="283" fill="#111827" font-size="14" font-weight="600" text-anchor="middle">Verify</text>
+    <rect x="984" y="250" width="86" height="56" rx="10" fill="#FFFFFF" stroke="#C7D2FE"/>
+    <text x="1027" y="283" fill="#111827" font-size="14" font-weight="600" text-anchor="middle">Explain</text>
+    <path d="M746 271l10 7-10 7" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M856 271l10 7-10 7" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M966 271l10 7-10 7" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <text x="654" y="346" font-size="16"><tspan fill="#111827" font-weight="700">Who asks:</tspan><tspan fill="#6B7280"> anyone with a business question</tspan></text>
+    <text x="654" y="382" font-size="16"><tspan fill="#111827" font-weight="700">Latency:</tspan><tspan fill="#6B7280"> minutes, plus human plan review</tspan></text>
+    <text x="654" y="418" font-size="16"><tspan fill="#111827" font-weight="700">Trust:</tspan><tspan fill="#6B7280"> evidence trail on every answer</tspan></text>
+    <text x="654" y="454" font-size="16"><tspan fill="#111827" font-weight="700">Analyst:</tspan><tspan fill="#6B7280"> question framer, plan reviewer</tspan></text>
+    <text x="654" y="490" font-size="16"><tspan fill="#111827" font-weight="700">Scope:</tspan><tspan fill="#6B7280"> warehouses · DBs · files · docs · web</tspan></text>
+  </g>
+
+  <text x="100" y="560" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="18">InfiniSynapse — enterprise AI data analyst</text>
+</svg>

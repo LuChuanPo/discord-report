@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Augmented analytics vs AI-native analytics architectures</title>
+  <desc id="desc">Side-by-side architecture comparison: augmented analytics on the left, with AI features for data prep, auto insights, and explanations assisting a human-driven BI loop; AI-native analytics on the right, where an agent loop retrieves context, plans, executes, and verifies, with re-planning on failed checks and the human reviewing the plan and evidence trail.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+
+  <text x="100" y="116" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">Augmented vs AI-native analytics</text>
+  <text x="100" y="156" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">The dividing line is workflow ownership, not the AI feature count</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Left panel: augmented -->
+    <rect x="100" y="196" width="470" height="334" rx="16" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="124" y="230" fill="#B45309" font-size="16" font-weight="800">AUGMENTED ANALYTICS</text>
+    <text x="124" y="254" fill="#6B7280" font-size="14">AI features assist inside your BI loop</text>
+
+    <rect x="124" y="274" width="422" height="146" rx="12" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="148" y="306" fill="#111827" font-size="17" font-weight="800">You drive the BI tool</text>
+    <text x="148" y="334" fill="#6B7280" font-size="14">frame → explore → judge, every step</text>
+    <text x="148" y="360" fill="#6B7280" font-size="13">Scope: metrics modeled in the tool</text>
+    <text x="148" y="382" fill="#6B7280" font-size="13">Trust: the semantic model</text>
+
+    <!-- assist chips with dashed arrows up -->
+    <rect x="124" y="452" width="126" height="54" rx="10" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="187" y="483" fill="#6D28D9" font-size="12.5" font-weight="700" text-anchor="middle">AI data prep</text>
+    <rect x="272" y="452" width="126" height="54" rx="10" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="335" y="483" fill="#6D28D9" font-size="12.5" font-weight="700" text-anchor="middle">auto insights</text>
+    <rect x="420" y="452" width="126" height="54" rx="10" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="483" y="483" fill="#6D28D9" font-size="12.5" font-weight="700" text-anchor="middle">explanations</text>
+    <path d="M187 448V432" stroke="#F59E0B" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"/>
+    <path d="M180 434l7-8 7 8" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M335 448V432" stroke="#F59E0B" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"/>
+    <path d="M328 434l7-8 7 8" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M483 448V432" stroke="#F59E0B" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"/>
+    <path d="M476 434l7-8 7 8" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- vs badge -->
+    <circle cx="600" cy="363" r="24" fill="#5B5BFF"/>
+    <text x="600" y="370" fill="#FFFFFF" font-size="18" font-weight="800" text-anchor="middle">vs</text>
+
+    <!-- Right panel: AI-native -->
+    <rect x="630" y="196" width="470" height="334" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="654" y="230" fill="#4338CA" font-size="16" font-weight="800">AI-NATIVE ANALYTICS</text>
+    <text x="654" y="254" fill="#6B7280" font-size="14">an agent loop owns the workflow</text>
+
+    <!-- agent loop 2x2 -->
+    <rect x="654" y="274" width="200" height="58" rx="10" fill="#FFFFFF" stroke="#C7D2FE"/>
+    <text x="670" y="298" fill="#111827" font-size="15" font-weight="700">Retrieve context</text>
+    <text x="670" y="318" fill="#6B7280" font-size="12">knowledge base + schema</text>
+    <rect x="876" y="274" width="200" height="58" rx="10" fill="#FFFFFF" stroke="#C7D2FE"/>
+    <text x="892" y="298" fill="#111827" font-size="15" font-weight="700">Plan</text>
+    <text x="892" y="318" fill="#6B7280" font-size="12">sources · joins · windows</text>
+    <rect x="876" y="364" width="200" height="58" rx="10" fill="#FFFFFF" stroke="#C7D2FE"/>
+    <text x="892" y="388" fill="#111827" font-size="15" font-weight="700">Execute</text>
+    <text x="892" y="408" fill="#6B7280" font-size="12">across DBs &amp; files</text>
+    <rect x="654" y="364" width="200" height="58" rx="10" fill="#FFFFFF" stroke="#C7D2FE"/>
+    <text x="670" y="388" fill="#111827" font-size="15" font-weight="700">Verify</text>
+    <text x="670" y="408" fill="#6B7280" font-size="12">row counts · re-compute</text>
+
+    <!-- loop arrows -->
+    <path d="M858 303h10" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M862 296l9 7-9 7" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M976 336v12" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M969 344l7 9 7-9" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M872 393h-10" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M868 386l-9 7 9 7" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- re-plan dashed feedback -->
+    <path d="M754 364v-14h176v-8" stroke="#F59E0B" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round" fill="none"/>
+    <path d="M923 344l7-8 7 8" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="772" y="344" fill="#B45309" font-size="12" font-weight="700">re-plan on failed check</text>
+
+    <!-- human review chip -->
+    <rect x="654" y="452" width="422" height="54" rx="10" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="865" y="485" fill="#B45309" font-size="14" font-weight="700" text-anchor="middle">You: review the plan · audit the evidence trail</text>
+  </g>
+
+  <text x="100" y="560" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="18">InfiniSynapse — enterprise AI data analyst</text>
+</svg>

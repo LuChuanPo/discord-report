@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">How a data agent works: the five-stage loop</title>
+  <desc id="desc">Five stages of a data agent workflow: understand intent and retrieve context, plan, execute across sources, verify results, explain and deliver, with a self-correction arrow from verify back to plan.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+
+  <text x="100" y="116" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">How a data agent works</text>
+  <text x="100" y="156" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">The five-stage loop: plan, execute, verify, explain</text>
+
+  <!-- Stage boxes row 1 -->
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Stage 1 -->
+    <rect x="100" y="208" width="300" height="128" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="122" y="246" fill="#4338CA" font-size="15" font-weight="800">STAGE 1</text>
+    <text x="122" y="278" fill="#111827" font-size="22" font-weight="800">Understand &amp; retrieve</text>
+    <text x="122" y="306" fill="#6B7280" font-size="15">metric definitions · schema · prior cases</text>
+
+    <!-- Stage 2 -->
+    <rect x="450" y="208" width="300" height="128" rx="16" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="472" y="246" fill="#6D28D9" font-size="15" font-weight="800">STAGE 2</text>
+    <text x="472" y="278" fill="#111827" font-size="22" font-weight="800">Plan</text>
+    <text x="472" y="306" fill="#6B7280" font-size="15">sources · joins · windows · you review</text>
+
+    <!-- Stage 3 -->
+    <rect x="800" y="208" width="300" height="128" rx="16" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="822" y="246" fill="#047857" font-size="15" font-weight="800">STAGE 3</text>
+    <text x="822" y="278" fill="#111827" font-size="22" font-weight="800">Execute</text>
+    <text x="822" y="306" fill="#6B7280" font-size="15">SQL · InfiniSQL · files · documents · web</text>
+
+    <!-- Arrows row 1 -->
+    <path d="M404 272h40" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M436 262l12 10-12 10" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M754 272h40" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M786 262l12 10-12 10" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Stage 4 -->
+    <rect x="450" y="396" width="300" height="128" rx="16" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="472" y="434" fill="#B45309" font-size="15" font-weight="800">STAGE 4</text>
+    <text x="472" y="466" fill="#111827" font-size="22" font-weight="800">Verify</text>
+    <text x="472" y="494" fill="#6B7280" font-size="15">row counts · null rates · cross-checks</text>
+
+    <!-- Stage 5 -->
+    <rect x="800" y="396" width="300" height="128" rx="16" fill="#FDF2F8" stroke="#FBCFE8"/>
+    <text x="822" y="434" fill="#BE185D" font-size="15" font-weight="800">STAGE 5</text>
+    <text x="822" y="466" fill="#111827" font-size="22" font-weight="800">Explain &amp; deliver</text>
+    <text x="822" y="494" fill="#6B7280" font-size="15">answer + plan + queries + sources</text>
+
+    <!-- Arrow stage 3 down to stage 4 -->
+    <path d="M950 340v22c0 10-8 18-18 18H772c-10 0-18 8-18 18v0" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <path d="M744 386l10 12 10-12" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <line x1="754" y1="398" x2="754" y2="380" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+
+    <!-- Arrow stage 4 to stage 5 -->
+    <path d="M754 460h40" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M786 450l12 10-12 10" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Self-correction arrow: verify back to plan -->
+    <path d="M450 460H320c-14 0-26-12-26-26V362c0-14 12-26 26-26h130" stroke="#F59E0B" stroke-width="5" stroke-dasharray="10 8" fill="none" stroke-linecap="round"/>
+    <path d="M438 326l14 10-14 10" stroke="#F59E0B" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="120" y="442" fill="#B45309" font-size="15" font-weight="700">self-correction:</text>
+    <text x="120" y="464" fill="#B45309" font-size="15" font-weight="700">failed check sends the</text>
+    <text x="120" y="486" fill="#B45309" font-size="15" font-weight="700">agent back to re-plan</text>
+  </g>
+
+  <text x="100" y="560" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="18">InfiniSynapse — enterprise AI data analyst</text>
+</svg>
