@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Indexed Pages Summary - InfiniSynapse</title>
+  <title>InfiniSynapse SEO Indexed Pages</title>
   <style>
     :root {
       --ink: #1f2933;
@@ -213,16 +213,34 @@
       font-size: 12.5px;
     }
 
+    @media (max-width: 760px) {
+      .page {
+        margin: 0;
+        padding: 24px 18px 32px;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+
     @media print {
       body {
         background: #ffffff;
       }
+
       .page {
         margin: 0;
         max-width: none;
         box-shadow: none;
         border: 0;
       }
+
       tbody tr:hover {
         background: inherit;
       }
@@ -232,145 +250,236 @@
 <body>
   <main class="page">
     <p class="kicker">Google Search Console Indexed URL Summary</p>
-    <h1>InfiniSynapse 已收录页面汇总：/guides/ 与 /use-cases/ 路径</h1>
-    <p class="subtitle">数据来源：用户提供的 GSC 已编入索引页面截图；仅保留 URL 路径中包含 <strong>/guides/</strong> 或 <strong>/use-cases/</strong> 的页面。</p>
+    <h1>InfiniSynapse SEO 已收录页面统计：只记录 /guides/ 和 /use-cases/ URL</h1>
+    <p class="subtitle">数据来源：用户提供的 GSC 已编入索引页面截图。此表只保留 URL 路径中包含 <strong>/guides/</strong> 或 <strong>/use-cases/</strong> 的页面，并按截图中的精确 URL 记录。</p>
 
     <section class="summary" aria-label="summary">
       <div class="metric">
-        <b>15</b>
-        <span>已收录目标页面总数</span>
+        <b>28</b>
+        <span>已收录目标 URL 总数</span>
       </div>
       <div class="metric">
-        <b>7</b>
+        <b>16</b>
         <span>/guides/ 页面</span>
       </div>
       <div class="metric">
-        <b>8</b>
+        <b>12</b>
         <span>/use-cases/ 页面</span>
       </div>
     </section>
 
     <table>
-      <caption>Table 1. Indexed pages whose paths contain /guides/ or /use-cases/.</caption>
+      <caption>Table 1. Indexed URLs whose paths contain /guides/ or /use-cases/.</caption>
       <thead>
         <tr>
           <th class="rank">#</th>
-          <th class="type">Path Type</th>
-          <th>Indexed URL</th>
-          <th>Page Topic</th>
-          <th class="date">Last Crawl Date</th>
+          <th class="type">路径类型</th>
+          <th>已收录 URL</th>
+          <th>页面主题</th>
+          <th class="date">上次抓取日期</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="rank">1</td>
           <td class="type"><span class="pill guide">Guides</span></td>
+          <td class="url"><a href="https://infinisynapse.com/guides/agentic-analytics-vs-traditional-bi">https://infinisynapse.com/guides/agentic-analytics-vs-traditional-bi</a></td>
+          <td class="topic">Agentic analytics vs traditional BI</td>
+          <td class="date">2026-06-12</td>
+        </tr>
+        <tr>
+          <td class="rank">2</td>
+          <td class="type"><span class="pill guide">Guides</span></td>
+          <td class="url"><a href="https://infinisynapse.com/guides/chatbi-alternative">https://infinisynapse.com/guides/chatbi-alternative</a></td>
+          <td class="topic">ChatBI alternative</td>
+          <td class="date">2026-06-12</td>
+        </tr>
+        <tr>
+          <td class="rank">3</td>
+          <td class="type"><span class="pill case">Use Cases</span></td>
+          <td class="url"><a href="https://infinisynapse.com/use-cases/infinisynapse-vs-vanna-ai">https://infinisynapse.com/use-cases/infinisynapse-vs-vanna-ai</a></td>
+          <td class="topic">InfiniSynapse vs Vanna AI</td>
+          <td class="date">2026-06-09</td>
+        </tr>
+        <tr>
+          <td class="rank">4</td>
+          <td class="type"><span class="pill case">Use Cases</span></td>
+          <td class="url"><a href="https://infinisynapse.com/use-cases/best-data-analysis-software">https://infinisynapse.com/use-cases/best-data-analysis-software</a></td>
+          <td class="topic">Best data analysis software</td>
+          <td class="date">2026-06-09</td>
+        </tr>
+        <tr>
+          <td class="rank">5</td>
+          <td class="type"><span class="pill case">Use Cases</span></td>
+          <td class="url"><a href="https://infinisynapse.com/use-cases/best-nl2sql-tools-2026">https://infinisynapse.com/use-cases/best-nl2sql-tools-2026</a></td>
+          <td class="topic">Best NL2SQL tools 2026</td>
+          <td class="date">2026-06-09</td>
+        </tr>
+        <tr>
+          <td class="rank">6</td>
+          <td class="type"><span class="pill case">Use Cases</span></td>
+          <td class="url"><a href="https://infinisynapse.com/use-cases/best-ai-tools-for-data-analysis">https://infinisynapse.com/use-cases/best-ai-tools-for-data-analysis</a></td>
+          <td class="topic">Best AI tools for data analysis</td>
+          <td class="date">2026-06-09</td>
+        </tr>
+        <tr>
+          <td class="rank">7</td>
+          <td class="type"><span class="pill guide">Guides</span></td>
+          <td class="url"><a href="https://infinisynapse.com/guides/tableau-ai-alternative">https://infinisynapse.com/guides/tableau-ai-alternative</a></td>
+          <td class="topic">Tableau AI alternative</td>
+          <td class="date">2026-06-09</td>
+        </tr>
+        <tr>
+          <td class="rank">8</td>
+          <td class="type"><span class="pill guide">Guides</span></td>
+          <td class="url"><a href="https://infinisynapse.com/guides/bi-chatbot-alternative">https://infinisynapse.com/guides/bi-chatbot-alternative</a></td>
+          <td class="topic">BI chatbot alternative</td>
+          <td class="date">2026-06-09</td>
+        </tr>
+        <tr>
+          <td class="rank">9</td>
+          <td class="type"><span class="pill guide">Guides</span></td>
+          <td class="url"><a href="https://infinisynapse.com/guides/chatbi-vs-agentic-analytics">https://infinisynapse.com/guides/chatbi-vs-agentic-analytics</a></td>
+          <td class="topic">ChatBI vs agentic analytics</td>
+          <td class="date">2026-06-07</td>
+        </tr>
+        <tr>
+          <td class="rank">10</td>
+          <td class="type"><span class="pill guide">Guides</span></td>
+          <td class="url"><a href="https://infinisynapse.com/guides/sql-data-analysis-with-ai">https://infinisynapse.com/guides/sql-data-analysis-with-ai</a></td>
+          <td class="topic">SQL data analysis with AI</td>
+          <td class="date">2026-06-06</td>
+        </tr>
+        <tr>
+          <td class="rank">11</td>
+          <td class="type"><span class="pill guide">Guides</span></td>
+          <td class="url"><a href="https://infinisynapse.com/guides/index.html">https://infinisynapse.com/guides/index.html</a></td>
+          <td class="topic">Guides index</td>
+          <td class="date">2026-06-05</td>
+        </tr>
+        <tr>
+          <td class="rank">12</td>
+          <td class="type"><span class="pill case">Use Cases</span></td>
+          <td class="url"><a href="https://infinisynapse.com/use-cases/sql-data-analysis-with-ai/index.html">https://infinisynapse.com/use-cases/sql-data-analysis-with-ai/index.html</a></td>
+          <td class="topic">SQL data analysis with AI</td>
+          <td class="date">2026-06-04</td>
+        </tr>
+        <tr>
+          <td class="rank">13</td>
+          <td class="type"><span class="pill guide">Guides</span></td>
+          <td class="url"><a href="https://infinisynapse.com/guides/nlp2sql-alternative">https://infinisynapse.com/guides/nlp2sql-alternative</a></td>
+          <td class="topic">NLP2SQL alternative</td>
+          <td class="date">2026-06-03</td>
+        </tr>
+        <tr>
+          <td class="rank">14</td>
+          <td class="type"><span class="pill guide">Guides</span></td>
+          <td class="url"><a href="https://infinisynapse.com/guides/what-is-agentic-data-analysis">https://infinisynapse.com/guides/what-is-agentic-data-analysis</a></td>
+          <td class="topic">What is agentic data analysis</td>
+          <td class="date">2026-06-03</td>
+        </tr>
+        <tr>
+          <td class="rank">15</td>
+          <td class="type"><span class="pill guide">Guides</span></td>
+          <td class="url"><a href="https://infinisynapse.com/guides/breaking-data-silos">https://infinisynapse.com/guides/breaking-data-silos</a></td>
+          <td class="topic">Breaking data silos</td>
+          <td class="date">2026-06-03</td>
+        </tr>
+        <tr>
+          <td class="rank">16</td>
+          <td class="type"><span class="pill guide">Guides</span></td>
+          <td class="url"><a href="https://infinisynapse.com/guides/what-is-agentic-analytics">https://infinisynapse.com/guides/what-is-agentic-analytics</a></td>
+          <td class="topic">What is agentic analytics</td>
+          <td class="date">2026-06-03</td>
+        </tr>
+        <tr>
+          <td class="rank">17</td>
+          <td class="type"><span class="pill guide">Guides</span></td>
+          <td class="url"><a href="https://infinisynapse.com/guides/thoughtspot-alternative">https://infinisynapse.com/guides/thoughtspot-alternative</a></td>
+          <td class="topic">ThoughtSpot alternative</td>
+          <td class="date">2026-06-03</td>
+        </tr>
+        <tr>
+          <td class="rank">18</td>
+          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/looker-alternative">https://infinisynapse.com/guides/looker-alternative</a></td>
           <td class="topic">Looker alternative</td>
           <td class="date">2026-06-02</td>
         </tr>
         <tr>
-          <td class="rank">2</td>
+          <td class="rank">19</td>
           <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/power-bi-copilot-alternative">https://infinisynapse.com/guides/power-bi-copilot-alternative</a></td>
           <td class="topic">Power BI Copilot alternative</td>
           <td class="date">2026-06-02</td>
         </tr>
         <tr>
-          <td class="rank">3</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
-          <td class="url"><a href="https://infinisynapse.com/guides/bi-chatbot-alternative">https://infinisynapse.com/guides/bi-chatbot-alternative</a></td>
-          <td class="topic">BI chatbot alternative</td>
-          <td class="date">2026-06-02</td>
-        </tr>
-        <tr>
-          <td class="rank">4</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
-          <td class="url"><a href="https://infinisynapse.com/guides/tableau-ai-alternative">https://infinisynapse.com/guides/tableau-ai-alternative</a></td>
-          <td class="topic">Tableau AI alternative</td>
-          <td class="date">2026-06-02</td>
-        </tr>
-        <tr>
-          <td class="rank">5</td>
+          <td class="rank">20</td>
           <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/text-to-sql-alternative">https://infinisynapse.com/guides/text-to-sql-alternative</a></td>
           <td class="topic">Text-to-SQL alternative</td>
           <td class="date">2026-06-02</td>
         </tr>
         <tr>
-          <td class="rank">6</td>
+          <td class="rank">21</td>
           <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/rag-data-analysis">https://infinisynapse.com/guides/rag-data-analysis</a></td>
           <td class="topic">RAG data analysis</td>
           <td class="date">2026-06-02</td>
         </tr>
         <tr>
-          <td class="rank">7</td>
+          <td class="rank">22</td>
           <td class="type"><span class="pill case">Use Cases</span></td>
           <td class="url"><a href="https://infinisynapse.com/use-cases/how-to-add-data-analysis-in-excel/index.html">https://infinisynapse.com/use-cases/how-to-add-data-analysis-in-excel/index.html</a></td>
-          <td class="topic">Add data analysis in Excel</td>
+          <td class="topic">How to add data analysis in Excel</td>
           <td class="date">2026-06-01</td>
         </tr>
         <tr>
-          <td class="rank">8</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
-          <td class="url"><a href="https://infinisynapse.com/guides/sql-data-analysis-with-ai">https://infinisynapse.com/guides/sql-data-analysis-with-ai</a></td>
-          <td class="topic">SQL data analysis with AI</td>
-          <td class="date">2026-06-01</td>
-        </tr>
-        <tr>
-          <td class="rank">9</td>
+          <td class="rank">23</td>
           <td class="type"><span class="pill case">Use Cases</span></td>
           <td class="url"><a href="https://infinisynapse.com/use-cases/data-analysis-techniques/index.html">https://infinisynapse.com/use-cases/data-analysis-techniques/index.html</a></td>
           <td class="topic">Data analysis techniques</td>
           <td class="date">2026-06-01</td>
         </tr>
         <tr>
-          <td class="rank">10</td>
+          <td class="rank">24</td>
           <td class="type"><span class="pill case">Use Cases</span></td>
           <td class="url"><a href="https://infinisynapse.com/use-cases/infinisynapse-vs-text2sql/index.html">https://infinisynapse.com/use-cases/infinisynapse-vs-text2sql/index.html</a></td>
           <td class="topic">InfiniSynapse vs Text2SQL</td>
           <td class="date">2026-06-01</td>
         </tr>
         <tr>
-          <td class="rank">11</td>
+          <td class="rank">25</td>
           <td class="type"><span class="pill case">Use Cases</span></td>
           <td class="url"><a href="https://infinisynapse.com/use-cases/infinisynapse-vs-vanna-ai/index.html">https://infinisynapse.com/use-cases/infinisynapse-vs-vanna-ai/index.html</a></td>
           <td class="topic">InfiniSynapse vs Vanna AI</td>
           <td class="date">2026-06-01</td>
         </tr>
         <tr>
-          <td class="rank">12</td>
+          <td class="rank">26</td>
           <td class="type"><span class="pill case">Use Cases</span></td>
           <td class="url"><a href="https://infinisynapse.com/use-cases/nl2sql/index.html">https://infinisynapse.com/use-cases/nl2sql/index.html</a></td>
           <td class="topic">NL2SQL</td>
           <td class="date">2026-06-01</td>
         </tr>
         <tr>
-          <td class="rank">13</td>
+          <td class="rank">27</td>
           <td class="type"><span class="pill case">Use Cases</span></td>
           <td class="url"><a href="https://infinisynapse.com/use-cases/best-data-analysis-software/index.html">https://infinisynapse.com/use-cases/best-data-analysis-software/index.html</a></td>
           <td class="topic">Best data analysis software</td>
           <td class="date">2026-06-01</td>
         </tr>
         <tr>
-          <td class="rank">14</td>
+          <td class="rank">28</td>
           <td class="type"><span class="pill case">Use Cases</span></td>
           <td class="url"><a href="https://infinisynapse.com/use-cases/best-ai-tools-for-data-analysis/index.html">https://infinisynapse.com/use-cases/best-ai-tools-for-data-analysis/index.html</a></td>
           <td class="topic">Best AI tools for data analysis</td>
           <td class="date">2026-06-01</td>
         </tr>
-        <tr>
-          <td class="rank">15</td>
-          <td class="type"><span class="pill case">Use Cases</span></td>
-          <td class="url"><a href="https://infinisynapse.com/use-cases/sql-data-analysis-with-ai/index.html">https://infinisynapse.com/use-cases/sql-data-analysis-with-ai/index.html</a></td>
-          <td class="topic">SQL data analysis with AI</td>
-          <td class="date">2026-05-15</td>
-        </tr>
       </tbody>
     </table>
 
-    <p class="footnote">Note. Dates are normalized from the GSC screenshots, e.g., “2026年6月2日” is shown as “2026-06-02”.</p>
+    <p class="footnote">注：日期已从截图中的中文日期统一为 YYYY-MM-DD 格式；同一主题如果在 GSC 中出现了不同 URL，会按截图中的精确 URL 分开记录。</p>
   </main>
 </body>
 </html>
