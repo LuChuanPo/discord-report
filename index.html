@@ -3,420 +3,257 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InfiniSynapse SEO Indexed Pages</title>
+  <title>InfiniSynapse SEO Data 26.6.12-26.6.16</title>
   <style>
-    :root {
-      --ink: #1f2933;
-      --muted: #5b6776;
-      --rule: #c8d1dc;
-      --rule-strong: #8594a7;
-      --paper: #ffffff;
-      --wash: #f4f7fb;
-      --header: #24364b;
-      --header-2: #304a67;
-      --accent: #1f5f99;
-      --guide: #e9f1f8;
-      --case: #eef5ef;
-    }
-
     * {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      background: #edf1f6;
-      color: var(--ink);
-      font-family: "Times New Roman", "Songti SC", SimSun, serif;
-      line-height: 1.45;
-    }
-
-    .page {
-      max-width: 1180px;
-      margin: 36px auto;
-      padding: 42px 48px 52px;
-      background: var(--paper);
-      box-shadow: 0 18px 42px rgba(21, 38, 61, 0.12);
-      border: 1px solid #dce3eb;
-    }
-
-    .kicker {
-      margin: 0 0 8px;
-      color: var(--accent);
+      background: #ffffff;
+      color: #000000;
       font-family: Arial, "Microsoft YaHei", sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
     }
 
-    h1 {
-      margin: 0;
-      color: #111827;
-      font-size: 28px;
-      line-height: 1.2;
-      font-weight: 700;
-      letter-spacing: 0;
-    }
-
-    .subtitle {
-      margin: 12px 0 26px;
-      color: var(--muted);
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      font-size: 14px;
-    }
-
-    .summary {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin: 0 0 24px;
-    }
-
-    .metric {
-      border: 1px solid var(--rule);
-      border-top: 4px solid var(--header-2);
-      padding: 14px 16px;
-      background: #fbfcfe;
-    }
-
-    .metric b {
-      display: block;
-      color: #111827;
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      font-size: 25px;
-      line-height: 1.1;
-    }
-
-    .metric span {
-      color: var(--muted);
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      font-size: 13px;
+    .sheet {
+      width: 100%;
+      padding: 0 6px 24px;
+      overflow-x: auto;
     }
 
     table {
       width: 100%;
+      min-width: 1160px;
       border-collapse: collapse;
-      border-top: 2px solid var(--rule-strong);
-      border-bottom: 2px solid var(--rule-strong);
-      font-size: 15px;
+      table-layout: fixed;
     }
 
-    caption {
-      caption-side: top;
-      padding: 0 0 10px;
-      color: #111827;
-      font-size: 16px;
-      font-weight: 700;
-      text-align: left;
+    col.url {
+      width: 63%;
     }
 
-    thead th {
-      background: linear-gradient(180deg, var(--header), var(--header-2));
+    col.keyword {
+      width: 23%;
+    }
+
+    col.number {
+      width: 7%;
+    }
+
+    th,
+    td {
+      border: 1px solid #000000;
+      padding: 2px 6px;
+      vertical-align: middle;
+      font-size: 25px;
+      line-height: 1.12;
+      background: #ffffff;
+    }
+
+    .title {
+      height: 48px;
+      border-top-color: #d9d9d9;
+      border-left-color: #d9d9d9;
+      border-right-color: #d9d9d9;
+      color: #000000;
+      font-size: 27px;
+      font-weight: 400;
+      text-align: center;
+      background: #ffffff;
+    }
+
+    thead .header th {
+      background: #4d93d3;
       color: #ffffff;
-      border-right: 1px solid rgba(255, 255, 255, 0.18);
-      padding: 11px 12px;
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      font-size: 13px;
+      font-family: SimSun, "Microsoft YaHei", sans-serif;
+      font-size: 29px;
       font-weight: 700;
       text-align: left;
-    }
-
-    thead th:last-child {
-      border-right: 0;
-    }
-
-    tbody td {
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--rule);
-      vertical-align: top;
-    }
-
-    tbody tr:nth-child(even) {
-      background: var(--wash);
-    }
-
-    tbody tr:hover {
-      background: #eaf1f8;
-    }
-
-    .rank {
-      width: 48px;
-      text-align: center;
-      color: #374151;
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      font-weight: 700;
-    }
-
-    .type {
-      width: 105px;
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .pill {
-      display: inline-block;
-      min-width: 76px;
-      padding: 4px 8px;
-      border-radius: 4px;
-      text-align: center;
-      border: 1px solid var(--rule);
-    }
-
-    .pill.guide {
-      background: var(--guide);
-      color: #1f5f99;
-    }
-
-    .pill.case {
-      background: var(--case);
-      color: #256047;
-    }
-
-    .url {
-      font-family: "Consolas", "Courier New", monospace;
-      font-size: 13.5px;
-      word-break: break-all;
-      color: #1f2933;
-    }
-
-    .url a {
-      color: #1f5f99;
-      text-decoration: none;
-    }
-
-    .url a:hover {
-      text-decoration: underline;
-    }
-
-    .topic {
-      color: #111827;
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .date {
-      width: 130px;
-      color: #374151;
-      font-family: Arial, "Microsoft YaHei", sans-serif;
       white-space: nowrap;
     }
 
-    .footnote {
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-family: Arial, "Microsoft YaHei", sans-serif;
-      font-size: 12.5px;
+    td.url {
+      overflow-wrap: anywhere;
+    }
+
+    td.url a {
+      color: #0000ee;
+      text-decoration: underline;
+    }
+
+    td.keyword {
+      color: #000000;
+    }
+
+    td.num {
+      text-align: right;
+      white-space: nowrap;
     }
 
     @media (max-width: 760px) {
-      .page {
-        margin: 0;
-        padding: 24px 18px 32px;
+      .sheet {
+        padding: 0 0 18px;
       }
 
-      .summary {
-        grid-template-columns: 1fr;
+      th,
+      td {
+        font-size: 18px;
       }
 
-      table {
-        display: block;
-        overflow-x: auto;
+      .title {
+        font-size: 22px;
+      }
+
+      thead .header th {
+        font-size: 22px;
       }
     }
 
     @media print {
-      body {
-        background: #ffffff;
-      }
-
-      .page {
-        margin: 0;
-        max-width: none;
-        box-shadow: none;
-        border: 0;
-      }
-
-      tbody tr:hover {
-        background: inherit;
+      .sheet {
+        padding: 0;
       }
     }
   </style>
 </head>
 <body>
-  <main class="page">
-    <p class="kicker">Google Search Console Indexed URL Summary</p>
-    <h1>InfiniSynapse SEO 已收录页面统计：只记录 /guides/ 和 /use-cases/ URL</h1>
-    <p class="subtitle">数据来源：用户提供的 GSC 已编入索引页面截图。此表只保留 URL 路径中包含 <strong>/guides/</strong> 或 <strong>/use-cases/</strong> 的页面，并按截图中的精确 URL 记录。</p>
-
-    <section class="summary" aria-label="summary">
-      <div class="metric">
-        <b>19</b>
-        <span>已收录目标 URL 总数</span>
-      </div>
-      <div class="metric">
-        <b>15</b>
-        <span>/guides/ 页面</span>
-      </div>
-      <div class="metric">
-        <b>4</b>
-        <span>/use-cases/ 页面</span>
-      </div>
-    </section>
-
+  <main class="sheet">
     <table>
-      <caption>Table 1. Indexed URLs whose paths contain /guides/ or /use-cases/.</caption>
+      <colgroup>
+        <col class="url">
+        <col class="keyword">
+        <col class="number">
+        <col class="number">
+      </colgroup>
       <thead>
         <tr>
-          <th class="rank">#</th>
-          <th class="type">路径类型</th>
-          <th>已收录 URL</th>
-          <th>页面主题</th>
-          <th class="date">上次抓取日期</th>
+          <th class="title" colspan="4">26.6.12-26.6.16（截止到6.16）</th>
+        </tr>
+        <tr class="header">
+          <th>网页链接</th>
+          <th>关键词</th>
+          <th>印象数</th>
+          <th>点击数</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td class="rank">1</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/agentic-analytics-vs-traditional-bi">https://infinisynapse.com/guides/agentic-analytics-vs-traditional-bi</a></td>
-          <td class="topic">Agentic analytics vs traditional BI</td>
-          <td class="date">2026-06-12</td>
+          <td class="keyword">agentic analytics vs traditional BI</td>
+          <td class="num">337</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">2</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/chatbi-alternative">https://infinisynapse.com/guides/chatbi-alternative</a></td>
-          <td class="topic">ChatBI alternative</td>
-          <td class="date">2026-06-12</td>
+          <td class="keyword">chatbi alternative</td>
+          <td class="num">53</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">3</td>
-          <td class="type"><span class="pill case">Use Cases</span></td>
           <td class="url"><a href="https://infinisynapse.com/use-cases/infinisynapse-vs-vanna-ai">https://infinisynapse.com/use-cases/infinisynapse-vs-vanna-ai</a></td>
-          <td class="topic">InfiniSynapse vs Vanna AI</td>
-          <td class="date">2026-06-09</td>
+          <td class="keyword">infinisynapse vs vanna ai</td>
+          <td class="num">29</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">4</td>
-          <td class="type"><span class="pill case">Use Cases</span></td>
           <td class="url"><a href="https://infinisynapse.com/use-cases/best-data-analysis-software">https://infinisynapse.com/use-cases/best-data-analysis-software</a></td>
-          <td class="topic">Best data analysis software</td>
-          <td class="date">2026-06-09</td>
+          <td class="keyword">best data analysis software</td>
+          <td class="num">97</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">5</td>
-          <td class="type"><span class="pill case">Use Cases</span></td>
           <td class="url"><a href="https://infinisynapse.com/use-cases/best-nl2sql-tools-2026">https://infinisynapse.com/use-cases/best-nl2sql-tools-2026</a></td>
-          <td class="topic">Best NL2SQL tools 2026</td>
-          <td class="date">2026-06-09</td>
+          <td class="keyword">best nl2sql tools 2026</td>
+          <td class="num">1</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">6</td>
-          <td class="type"><span class="pill case">Use Cases</span></td>
           <td class="url"><a href="https://infinisynapse.com/use-cases/best-ai-tools-for-data-analysis">https://infinisynapse.com/use-cases/best-ai-tools-for-data-analysis</a></td>
-          <td class="topic">Best AI tools for data analysis</td>
-          <td class="date">2026-06-09</td>
+          <td class="keyword">best ai tools for data analysis</td>
+          <td class="num">57</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">7</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/tableau-ai-alternative">https://infinisynapse.com/guides/tableau-ai-alternative</a></td>
-          <td class="topic">Tableau AI alternative</td>
-          <td class="date">2026-06-09</td>
+          <td class="keyword">tableau ai alternative</td>
+          <td class="num">104</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">8</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/bi-chatbot-alternative">https://infinisynapse.com/guides/bi-chatbot-alternative</a></td>
-          <td class="topic">BI chatbot alternative</td>
-          <td class="date">2026-06-09</td>
+          <td class="keyword">bi chatbot alternative</td>
+          <td class="num">68</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">9</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/chatbi-vs-agentic-analytics">https://infinisynapse.com/guides/chatbi-vs-agentic-analytics</a></td>
-          <td class="topic">ChatBI vs agentic analytics</td>
-          <td class="date">2026-06-07</td>
+          <td class="keyword">chatbi vs agentic analytics</td>
+          <td class="num">4</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">10</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/sql-data-analysis-with-ai">https://infinisynapse.com/guides/sql-data-analysis-with-ai</a></td>
-          <td class="topic">SQL data analysis with AI</td>
-          <td class="date">2026-06-06</td>
+          <td class="keyword">sql data analysis with ai</td>
+          <td class="num">181</td>
+          <td class="num">1</td>
         </tr>
         <tr>
-          <td class="rank">11</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/nlp2sql-alternative">https://infinisynapse.com/guides/nlp2sql-alternative</a></td>
-          <td class="topic">NLP2SQL alternative</td>
-          <td class="date">2026-06-03</td>
+          <td class="keyword">nlp2sql alternative</td>
+          <td class="num">117</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">12</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/what-is-agentic-data-analysis">https://infinisynapse.com/guides/what-is-agentic-data-analysis</a></td>
-          <td class="topic">What is agentic data analysis</td>
-          <td class="date">2026-06-03</td>
+          <td class="keyword">what is agentic data analysis</td>
+          <td class="num">40</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">13</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/breaking-data-silos">https://infinisynapse.com/guides/breaking-data-silos</a></td>
-          <td class="topic">Breaking data silos</td>
-          <td class="date">2026-06-03</td>
+          <td class="keyword">breaking data silos</td>
+          <td class="num">207</td>
+          <td class="num">1</td>
         </tr>
         <tr>
-          <td class="rank">14</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/what-is-agentic-analytics">https://infinisynapse.com/guides/what-is-agentic-analytics</a></td>
-          <td class="topic">What is agentic analytics</td>
-          <td class="date">2026-06-03</td>
+          <td class="keyword">what is agentic analytics</td>
+          <td class="num">13</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">15</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/thoughtspot-alternative">https://infinisynapse.com/guides/thoughtspot-alternative</a></td>
-          <td class="topic">ThoughtSpot alternative</td>
-          <td class="date">2026-06-03</td>
+          <td class="keyword">thoughtspot alternative</td>
+          <td class="num">315</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">16</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/looker-alternative">https://infinisynapse.com/guides/looker-alternative</a></td>
-          <td class="topic">Looker alternative</td>
-          <td class="date">2026-06-02</td>
+          <td class="keyword">looker alternative</td>
+          <td class="num">269</td>
+          <td class="num">0</td>
         </tr>
         <tr>
-          <td class="rank">17</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/power-bi-copilot-alternative">https://infinisynapse.com/guides/power-bi-copilot-alternative</a></td>
-          <td class="topic">Power BI Copilot alternative</td>
-          <td class="date">2026-06-02</td>
+          <td class="keyword">power bi copilot alternative</td>
+          <td class="num">213</td>
+          <td class="num">1</td>
         </tr>
         <tr>
-          <td class="rank">18</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/text-to-sql-alternative">https://infinisynapse.com/guides/text-to-sql-alternative</a></td>
-          <td class="topic">Text-to-SQL alternative</td>
-          <td class="date">2026-06-02</td>
+          <td class="keyword">text to sql alternative</td>
+          <td class="num">203</td>
+          <td class="num">3</td>
         </tr>
         <tr>
-          <td class="rank">19</td>
-          <td class="type"><span class="pill guide">Guides</span></td>
           <td class="url"><a href="https://infinisynapse.com/guides/rag-data-analysis">https://infinisynapse.com/guides/rag-data-analysis</a></td>
-          <td class="topic">RAG data analysis</td>
-          <td class="date">2026-06-02</td>
+          <td class="keyword">rag data analysis</td>
+          <td class="num">461</td>
+          <td class="num">0</td>
         </tr>
       </tbody>
     </table>
-
-    <p class="footnote">注：日期已从截图中的中文日期统一为 YYYY-MM-DD 格式；本表按最新截图记录 19 个已编入索引的 /guides/ 和 /use-cases/ 页面。</p>
   </main>
 </body>
 </html>

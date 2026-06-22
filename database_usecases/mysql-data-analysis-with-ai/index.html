@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MySQL Data Analysis with AI: 5-Stage Guide | InfiniSynapse</title>
+  <meta name="description" content="MySQL data analysis with AI turns plain-English questions into verified queries through five stages: context, plan review, execution, checks, and delivery.">
+  <meta name="keywords" content="mysql data analysis with ai, ai mysql analysis, mysql ai agent, ai sql for mysql">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/blog/mysql-data-analysis-with-ai">
+
+  <meta property="og:title" content="MySQL Data Analysis with AI: 5-Stage Guide">
+  <meta property="og:description" content="MySQL data analysis with AI turns plain-English questions into verified queries through five stages: context, plan review, execution, checks, and delivery.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/blog/mysql-data-analysis-with-ai">
+  <meta property="og:image" content="https://infinisynapse.com/blog/mysql-data-analysis-with-ai/mysql-data-analysis-with-ai-framework.svg">
+  <meta property="og:image:alt" content="Five-stage flow of MySQL data analysis with AI: context retrieval, plan review, execution, verification, delivery, with re-plan loop.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="MySQL Data Analysis with AI: 5-Stage Guide">
+  <meta name="twitter:description" content="MySQL data analysis with AI turns plain-English questions into verified queries through five stages: context, plan review, execution, checks, and delivery.">
+  <meta name="twitter:image" content="https://infinisynapse.com/blog/mysql-data-analysis-with-ai/mysql-data-analysis-with-ai-framework.svg">
+  <meta name="twitter:image:alt" content="Five-stage flow of MySQL data analysis with AI: context retrieval, plan review, execution, verification, delivery, with re-plan loop.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Schema #1: Organization -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","caption":"InfiniSynapse AI data analyst logo","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}
+  </script>
+
+  <!-- Schema #2: BreadcrumbList -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/blog"},{"@type":"ListItem","position":3,"name":"MySQL Data Analysis with AI: From Plain English to Verified Query in Five Stages","item":"https://infinisynapse.com/blog/mysql-data-analysis-with-ai"}]}
+  </script>
+
+  <!-- Schema #3: Article -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"MySQL Data Analysis with AI: From Plain English to Verified Query in Five Stages","description":"MySQL data analysis with AI turns plain-English questions into verified queries through five stages: context, plan review, execution, checks, and delivery.","image":"https://infinisynapse.com/blog/mysql-data-analysis-with-ai/mysql-data-analysis-with-ai-framework.svg","datePublished":"2026-06-15","dateModified":"2026-06-15","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/blog/mysql-data-analysis-with-ai"}}
+  </script>
+
+  <!-- Schema #4: FAQPage -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How does AI analyze MySQL data?","acceptedAnswer":{"@type":"Answer","text":"An AI agent analyzes MySQL data in five stages: it retrieves business context from a bound knowledge base, drafts an analysis plan for you to review, runs SQL against your MySQL connection with read-only credentials, verifies the result with row counts and second-path checks, and delivers an answer with the queries it actually ran and the sources it cited."}},
+{"@type":"Question","name":"Can AI write SQL for MySQL accurately?","acceptedAnswer":{"@type":"Answer","text":"Accuracy depends on context, not just the model. On the BIRD text-to-SQL benchmark, human engineers reach 92.96% execution accuracy and models still trail. Closing the gap on real MySQL schemas requires a bound knowledge base of metric definitions, schema retrieval, and a plan-review step before execution — generation alone is not enough."}},
+{"@type":"Question","name":"Is it safe to give an AI access to my MySQL database?","acceptedAnswer":{"@type":"Answer","text":"With guardrails, yes. The pattern is a read-only MySQL user scoped to specific schemas, plan review before execution, full query logging, and an evidence trail attached to every answer. The NIST AI Risk Management Framework gives your security team a shared structure for approving this class of tool against MySQL."}},
+{"@type":"Question","name":"Can the AI join MySQL with other databases?","acceptedAnswer":{"@type":"Answer","text":"Yes, with the right agent. InfiniSynapse documents support for joining MySQL with PostgreSQL, Snowflake, Supabase, S3, and uploaded CSV or Excel files in one request, without an ETL prerequisite. A documented demo joins e-commerce platform tables across two databases with a phone-number CSV from CRM."}},
+{"@type":"Question","name":"Do I need to model my MySQL schema before using AI?","acceptedAnswer":{"@type":"Answer","text":"You do not need a full semantic-layer model, but you do need a knowledge base. The minimum is your top ten metric definitions, a one-page data dictionary, and three analysis playbooks. Without these, even a strong agent will faithfully automate whatever ambiguity is already in your MySQL column names."}},
+{"@type":"Question","name":"How does AI handle MySQL gotchas like ENUM and JSON columns?","acceptedAnswer":{"@type":"Answer","text":"The agent reads MySQL information_schema during schema retrieval, so it sees ENUM value lists, JSON column types, and collation settings. When the knowledge base attaches business meaning to an ENUM like orders.status, the agent uses that meaning in its plan instead of guessing. Without that binding, the agent falls back to literal column values."}},
+{"@type":"Question","name":"What is Plan mode in MySQL AI analysis?","acceptedAnswer":{"@type":"Answer","text":"Plan mode is the explicit user-review step before any SQL hits MySQL. The agent shows the sources it will read, the joins it will write, the time window it will use, and the output it will produce. You edit or approve. Plan mode is the safety mechanism that turns an AI agent into a tool your security team will sign off on."}},
+{"@type":"Question","name":"Can the AI write data back to MySQL?","acceptedAnswer":{"@type":"Answer","text":"By default, no. The recommended setup is read-only credentials, and the agent has no write path. Write-back is possible with explicit non-read-only credentials and a separate approval workflow, but for most MySQL analysis use cases the answer is read-only by design. Write paths should be reviewed by your security team before enabling."}}
+]}
+  </script>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    a{color:#5B5BFF;text-decoration:none}
+    a:hover{color:#111827}
+    .nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+    .nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+    .nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+    .nav-logo-mark{height:26px;display:flex;align-items:center}
+    .nav-logo-mark img{height:26px;width:auto;display:block}
+    .nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+    .nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap;transition:color 0.15s}
+    .nav-menu a:hover{color:#111827}
+    .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+    .nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap;box-shadow:none;transition:background 0.15s,border-color 0.15s,transform 0.15s}
+    a.nav-btn:hover{color:#111827;border-color:#C7CEDA;transform:translateY(-1px)}
+    .nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+    .nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+    .nav-btn-primary:hover{color:#FFFFFF}
+    .nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+    .nav-btn-dark:hover{color:#FFFFFF}
+    .nav-icon{width:17px;height:17px;flex:0 0 auto}
+    .nav-chevron{width:15px;height:15px;flex:0 0 auto}
+    .wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+    .breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+    .breadcrumb a{color:#6B7280}
+    .badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+    .badge-client{background:#EEF2FF;color:#4338CA}
+    .badge-cat{background:#ECFDF5;color:#047857}
+    h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+    h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+    h3{font-size:21px;color:#111827;margin:24px 0 8px}
+    p{margin:0 0 16px}
+    ul,ol{padding-left:22px;margin:0 0 18px}
+    li{margin:6px 0}
+    code{background:#F3F4F6;padding:2px 6px;border-radius:5px;font-size:14px;color:#0A0A0A;font-family:'SF Mono',Menlo,Consolas,monospace}
+    pre{background:#0F172A;color:#E2E8F0;padding:16px 18px;border-radius:10px;overflow-x:auto;font-size:13.5px;line-height:1.6;margin:14px 0;font-family:'SF Mono',Menlo,Consolas,monospace}
+    pre code{background:transparent;color:#E2E8F0;padding:0}
+    .meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+    .author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+    .info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+    .info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+    .disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+    .toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+    .toc{background:#F9FAFB}
+    .toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+    .tldr{background:#F8FAFC}
+    .snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+    .definition{background:#ECFDF5;border-color:#BBF7D0}
+    .feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+    table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+    th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+    th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+    td{color:#4B5563}
+    .quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+    .cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+    .cta-btn:hover{background:#1F2937;color:#FFFFFF}
+    .faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+    .faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+    .faq-a{color:#4B5563}
+    .methodology{background:#F9FAFB;color:#4B5563}
+    .refs li{font-size:13.5px;color:#4B5563}
+    .related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+    .related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+    .stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+    .stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+    .stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+    .panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+    .panel h3{margin-top:0}
+    .panel-good{background:#F0FDF4;border-color:#BBF7D0}
+    .panel-bad{background:#FEF2F2;border-color:#FECACA}
+    .footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+    .footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{color:#6B7280;font-size:14px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+    @media(max-width:1280px){.nav-inner{max-width:1180px;column-gap:24px}.nav-menu{gap:18px}.nav-menu a,.nav-btn{font-size:14px}.nav-btn{min-height:36px;padding:0 12px}.nav-btn-primary,.nav-btn-dark{padding:0 14px}}
+    @media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}.nav-logo{width:100%;justify-content:center}.nav-menu,.nav-actions{justify-content:center;flex-wrap:wrap}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}table{font-size:14px}.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12S9.8 18.6 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        EN
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Book Demo
+      </a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/blog">Blog</a><span>&gt;</span>
+    mysql data analysis with ai
+  </nav>
+
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Workflow Guide</span>
+  </div>
+
+  <h1>MySQL Data Analysis with AI: From Plain English to Verified Query in Five Stages</h1>
+  <p class="meta-desc">A worked walkthrough of MySQL data analysis with AI: the five-stage agent loop applied to a real e-commerce schema, with the SQL the agent actually writes and the checks that catch its mistakes.</p>
+
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-15 · Last verified 2026-06-15 · Next review 2026-09-15</div>
+    <div class="info-card"><strong>Evidence base</strong>MySQL documentation, BIRD/Spider text-to-SQL benchmarks, Anthropic agent guidance, ReAct paper, NIST AI RMF, EU AI Act.</div>
+  </div>
+
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, which builds the AI database query agent used in the worked example. We chose this product because we know its loop in detail; the five-stage pattern itself applies to any agent following the documented ReAct-style reason-act loop, and the limits we name apply to ours.
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer</a></li>
+      <li><a href="#what-it-means">What "analysis with AI" actually means for MySQL</a></li>
+      <li><a href="#worked">Worked example: a real MySQL e-commerce question</a></li>
+      <li><a href="#five-stages">The five-stage MySQL AI workflow</a></li>
+      <li><a href="#bound-kb">Bound knowledge base for MySQL — the part that changes everything</a></li>
+      <li><a href="#plan-mode">Plan mode in 60 seconds</a></li>
+      <li><a href="#cross-source">Joining MySQL with other sources in one query</a></li>
+      <li><a href="#gotchas">MySQL-specific gotchas the agent handles</a></li>
+      <li><a href="#limits">Honest limits</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>MySQL data analysis with AI is <strong>not autocomplete in Workbench</strong>. The agent owns context retrieval, plan review, SQL execution, verification, and explanation as one loop.</li>
+      <li>The five stages: <strong>context retrieval, plan review, execution, verification, delivery</strong>. Each catches a different class of error — and the plan-review stage is the one your security team will actually care about.</li>
+      <li>Without a bound knowledge base, even a strong agent guesses your definitions. Our <a href="https://infinisynapse.com/blog/ai-database-query">pillar guide</a> covers why this is the moat under the moat.</li>
+    </ul>
+  </div>
+
+  <h2 id="answer">Direct answer: what MySQL data analysis with AI does</h2>
+  <div class="snippet-answer">MySQL data analysis with AI is a plain-English question executed end to end by an agent against your MySQL connection. The agent retrieves business context, drafts a reviewable plan, runs read-only SQL, verifies the result with row counts and second-path checks, and delivers an answer with the queries and sources it used.</div>
+
+  <h2 id="what-it-means">What "analysis with AI" actually means for MySQL</h2>
+  <p>The phrase covers three very different things in vendor marketing. The first is autocomplete inside MySQL Workbench — a model finishes your SELECT for you. The second is a chat box that calls one text-to-SQL request per turn. Neither owns the workflow.</p>
+  <p>The third — and the one this page is about — is an agent loop. The agent decides which MySQL tables to read, when to ask its knowledge base for a definition, when its own output needs another check, and what to show you for approval. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Anthropic frames this</a> as a system that directs its own processes and tool usage rather than following a fixed script.</p>
+  <p>That distinction is the entire reason this category exists. A text-to-SQL feature gives you SQL. A MySQL AI agent gives you an answer, the SQL it ran to get there, the checks it ran on the result, and the business definitions it relied on. For the buyer-side comparison, see our <a href="https://infinisynapse.com/blog/mysql-data-analysis-tools">MySQL data analysis tools guide</a>.</p>
+
+  <img class="feature-img" src="mysql-data-analysis-with-ai-framework.svg" alt="A five-stage flow for MySQL data analysis with AI: context retrieval from a bound knowledge base, plan review by the user, execution against MySQL with JOIN annotation, verification of row counts and nulls, and a delivered answer with evidence trail" width="1200" height="630" loading="lazy">
+
+  <h2 id="worked">Worked example: a real MySQL e-commerce question</h2>
+  <p>The schema below is the e-commerce shape we have seen in dozens of MySQL deployments. Five tables — <code>orders</code>, <code>customers</code>, <code>order_items</code>, <code>products</code>, <code>channels</code> — with the foreign keys you would expect.</p>
+
+  <table>
+    <thead>
+      <tr><th>Table</th><th>Key columns</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>orders</code></td><td><code>order_id</code>, <code>customer_id</code>, <code>channel_id</code>, <code>status</code>, <code>order_ts</code>, <code>region_code</code></td><td><code>status</code> ENUM: 'P', 'F', 'R', 'X'</td></tr>
+      <tr><td><code>customers</code></td><td><code>customer_id</code>, <code>phone_hash</code>, <code>signup_ts</code>, <code>region_code</code></td><td>region_code is the customer's billing region</td></tr>
+      <tr><td><code>order_items</code></td><td><code>order_id</code>, <code>product_id</code>, <code>qty</code>, <code>line_revenue</code></td><td>line_revenue is post-discount</td></tr>
+      <tr><td><code>products</code></td><td><code>product_id</code>, <code>sku</code>, <code>category</code>, <code>list_price</code></td><td>category as JSON for tag arrays</td></tr>
+      <tr><td><code>channels</code></td><td><code>channel_id</code>, <code>name</code>, <code>type</code></td><td>type: 'web' | 'app' | 'partner'</td></tr>
+    </tbody>
+  </table>
+
+  <p>The question your team types into the agent:</p>
+  <p class="quote">"Why did East China repeat purchases drop 18% last quarter?"</p>
+  <p>No SQL. No table names. The agent does the rest in five stages.</p>
+
+  <h2 id="five-stages">The five-stage MySQL AI workflow</h2>
+
+  <table>
+    <thead>
+      <tr><th>Stage</th><th>What the agent does</th><th>What you review</th><th>Failure caught</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>1. Context</strong></td><td>Retrieves "repeat purchase = 2nd order within 90 days," the <code>orders.status</code> dictionary, and the East China region-code mapping from the bound KB</td><td>Which definitions the agent loaded</td><td>Agent guessing your metric</td></tr>
+      <tr><td><strong>2. Plan</strong></td><td>Drafts join across orders + customers, filters region_code, defines 90-day window, computes Q-over-Q delta</td><td>Sources, joins, time window, output shape</td><td>Wrong table or wrong window</td></tr>
+      <tr><td><strong>3. Execute</strong></td><td>Runs read-only SQL against MySQL with status='F' filter, JOIN, GROUP BY region</td><td>The exact SQL the agent ran</td><td>SQL the plan did not promise</td></tr>
+      <tr><td><strong>4. Verify</strong></td><td>Checks row counts, null rates, and a second-path metric calculation</td><td>The verification report</td><td>Silent data quality issues</td></tr>
+      <tr><td><strong>5. Deliver</strong></td><td>Returns the answer, the chart, the plan, the SQL, the KB citations, and any caveats</td><td>The full evidence trail</td><td>Confident answers with no provenance</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Stage 1 — context retrieval, with pseudo-output</h3>
+  <p>The agent does not look at MySQL first. It queries the bound knowledge base. The retrieved facts shape every downstream stage.</p>
+  <pre><code>retrieve("repeat purchase definition")
+→ "A repeat purchase is a customer's second status='F' order
+   placed within 90 days of their first."
+retrieve("orders.status enum")
+→ "P=pending, F=finalized, R=refunded, X=cancelled"
+retrieve("East China region codes")
+→ "CN-31, CN-32, CN-33, CN-34"</code></pre>
+
+  <h3>Stage 2 — plan, in human words</h3>
+  <p>The agent shows you the plan in plain language, not SQL, and waits.</p>
+  <pre><code>PLAN
+1. Filter orders to status='F' and region_code IN (CN-31..CN-34)
+2. Define "repeat" = 2nd F order within 90 days of first F order per customer
+3. Compare Q1 vs Q2 repeat counts and repeat rate
+4. Break down by channels.type to find which channel moved
+5. Output: table + bar chart, row count + Q-over-Q delta</code></pre>
+  <p>You spot one thing: you want the breakdown by <code>channels.name</code>, not <code>channels.type</code>. You edit. The agent re-plans only that step.</p>
+
+  <h3>Stage 3 — the SQL the agent actually writes</h3>
+  <pre><code>SELECT c.region_code, ch.name AS channel_name,
+       COUNT(DISTINCT o.customer_id) AS repeat_customers
+FROM orders o
+JOIN customers c ON c.customer_id = o.customer_id
+JOIN channels ch ON ch.channel_id = o.channel_id
+JOIN (
+  SELECT customer_id, MIN(order_ts) AS first_ts
+  FROM orders WHERE status = 'F' GROUP BY customer_id
+) f ON f.customer_id = o.customer_id
+WHERE o.status = 'F'
+  AND c.region_code IN ('CN-31','CN-32','CN-33','CN-34')
+  AND o.order_ts BETWEEN f.first_ts + INTERVAL 1 DAY
+                      AND f.first_ts + INTERVAL 90 DAY
+  AND o.order_ts &gt;= '2026-01-01'
+GROUP BY c.region_code, ch.name;</code></pre>
+
+  <h3>Stage 4 — verification before you see the number</h3>
+  <p>The agent self-checks the result before delivery. A failed check triggers a re-plan, not a confident wrong answer.</p>
+  <pre><code>VERIFY
+- rows returned: 14,238
+- null rate on channel_name: 0.4% (within tolerance)
+- second-path check: repeat_rate via customer cohort = 11.7% (matches)
+- Q-over-Q delta: -18.2%  ✓ consistent with the question</code></pre>
+
+  <h3>Stage 5 — what gets delivered</h3>
+  <p>The agent returns the answer with the audit trail. You see the chart, the SQL, the definitions cited, and the row counts. Anyone reviewing this number can re-run the same SQL by hand and reproduce it.</p>
+
+  <h2 id="bound-kb">Bound knowledge base for MySQL — the part that changes everything</h2>
+  <p>The single biggest determinant of MySQL AI quality is not the model. It is whether the agent's MySQL connection is paired with a curated knowledge base. The agent retrieves from this KB <em>as a tool call</em> before it runs SQL.</p>
+
+  <p>Consider a concrete MySQL telemetry case. Suppose <code>events.metric_key</code> contains values like <code>download:tool:windows:x64:agent_excel</code>. Against an unbound MySQL connection, the agent counts rows by <code>metric_key</code> and reports raw values — accurate but uninterpretable. Against a connection bound to a KB that defines <code>agent_excel = Office workflow automation demand</code>, the agent computes the same counts <em>and</em> explains the cluster as Office workflow automation demand, separating computed facts from interpretation.</p>
+
+  <table>
+    <thead>
+      <tr><th>Layer</th><th>What it answers for MySQL</th><th>What breaks without it</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>MySQL database</strong></td><td>Row-level facts: what was sold, when, to whom</td><td>Nothing — but the numbers stand alone, unexplained</td></tr>
+      <tr><td><strong>Bound knowledge base</strong></td><td>What the rows mean: which ENUM values are valid, what "repeat" means, which region codes map to East China</td><td>The agent guesses; ambiguous fields get computed wrong silently</td></tr>
+      <tr><td><strong>Agent loop</strong></td><td>How to combine MySQL facts with retrieved meaning across the five stages</td><td>Single-shot SQL with no verification or self-correction</td></tr>
+    </tbody>
+  </table>
+
+  <p class="quote">The database tells the agent what happened. The bound knowledge base tells the agent what it means.</p>
+
+  <h2 id="plan-mode">Plan mode in 60 seconds</h2>
+  <p>Plan mode is the explicit user-review checkpoint between stage 2 and stage 3. It is the smallest possible safety mechanism that meaningfully changes what your security team will sign off on.</p>
+
+  <p>What you see: the sources the agent will read, the joins it will write, the time window, the output shape. What you do: approve, edit a step, or reject. What the agent does: re-plans only the edited steps; never executes against MySQL until you approve. This is a direct application of the <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">ReAct pattern</a> — interleaving reasoning steps with actions reduces error against single-shot generation.</p>
+
+  <p>Plan mode also documents your changes. The final evidence trail shows the original plan and the edits, so a reviewer can see what the agent proposed and what the human caught.</p>
+
+  <h2 id="cross-source">Joining MySQL with other sources in one query</h2>
+  <p>Pure-MySQL questions are the easy case. The questions that actually break tools are the ones that span MySQL plus a CSV plus a Supabase user table.</p>
+
+  <p>Extend the worked example: "Match the East China repeat-purchase customers to their CRM phone numbers from <code>customers.csv</code>, then check whether their <code>auth.users</code> records in our Supabase project show the same signup region." The agent retrieves schema from MySQL, ingests the CSV, queries Supabase, joins on <code>phone_hash</code>, and returns the cross-source view in one request — without ETL.</p>
+
+  <p>This is a documented InfiniSynapse capability across MySQL, PostgreSQL, Snowflake, Supabase, and S3, plus uploaded CSV and Excel files. The relevant intermediate representation, InfiniSQL, connects to a multi-source execution layer rather than forcing every source into one warehouse first. For the Supabase side specifically, see our <a href="https://infinisynapse.com/blog/supabase-data-analysis-with-ai">Supabase data analysis with AI</a> guide.</p>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="num">92.96%</div><div class="lab">Human engineer execution accuracy on the BIRD text-to-SQL benchmark — the bar that single-shot SQL still trails, which is why MySQL AI workflows add context and verification. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">Source: BIRD</a></div></div>
+    <div class="stat"><div class="num">5</div><div class="lab">Connected source types InfiniSynapse documents for MySQL cross-source joins: PostgreSQL, Snowflake, Supabase, S3, and CSV/Excel — without ETL prerequisites.</div></div>
+    <div class="stat"><div class="num">2024</div><div class="lab">EU AI Act entered into force, raising the bar for evidence trails on automated MySQL analysis. <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">Source: European Commission</a></div></div>
+  </div>
+
+  <h2 id="gotchas">MySQL-specific gotchas the agent handles</h2>
+
+  <h3>Collation and charset edge cases</h3>
+  <p>MySQL's default collation has changed across versions, and case-insensitive collations like <code>utf8mb4_0900_ai_ci</code> can make <code>'East'</code> and <code>'east'</code> match in a JOIN. The agent reads <code>information_schema.columns</code> during stage 1 and flags collation mismatches in the plan instead of producing a quietly wrong join.</p>
+
+  <h3>NULL handling</h3>
+  <p>MySQL treats <code>NULL</code> as not-equal-to-anything-including-itself. An agent that writes <code>WHERE channel_id = NULL</code> instead of <code>IS NULL</code> will silently return zero rows. The verification step in stage 4 catches this by flagging unexpected zero-row results before delivery.</p>
+
+  <h3>ENUM interpretation</h3>
+  <p>An ENUM like <code>orders.status</code> with values <code>'P','F','R','X'</code> is meaningless without a dictionary. The bound KB attaches <code>F=finalized</code> so the agent does not have to guess. Without the KB, the agent will frequently guess "F=failed" — exactly inverting your revenue number.</p>
+
+  <h3>JSON columns</h3>
+  <p>MySQL JSON columns store nested data the agent must query with <code>JSON_EXTRACT</code> or the <code>-&gt;&gt;</code> operator. The agent reads the JSON shape during schema retrieval and produces the right extraction syntax instead of treating the column as opaque text.</p>
+
+  <h3>Timezone columns</h3>
+  <p>MySQL stores <code>DATETIME</code> without a timezone and <code>TIMESTAMP</code> with implicit server-zone conversion. Cross-region analysis goes wrong fast when one table uses each. The agent flags mixed temporal types in the plan and asks which zone to normalize to.</p>
+
+  <h2 id="limits">Honest limits</h2>
+
+  <div class="grid-2">
+    <div class="panel panel-good">
+      <h3>Where MySQL + AI works well</h3>
+      <ul>
+        <li>Cross-source questions that mix MySQL with files and other databases</li>
+        <li>"Why did X change?" investigations with no pre-built dashboard</li>
+        <li>Teams that can grant scoped, read-only MySQL credentials</li>
+        <li>Schemas with at least a one-page data dictionary you can seed</li>
+        <li>Outputs that need reviewable evidence trails</li>
+      </ul>
+    </div>
+    <div class="panel panel-bad">
+      <h3>What the agent cannot do</h3>
+      <ul>
+        <li>Fix metric definitions you have not seeded — the agent automates ambiguity</li>
+        <li>Write to MySQL by default — write-back is opt-in with separate credentials</li>
+        <li>Replace a DBA's intuition on a billion-row MySQL table or fragile indexes</li>
+        <li>Work if your read-only credentials are over- or under-scoped</li>
+        <li>Substitute for a dashboard your finance team reads every Monday</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>These limits are not pessimism. They are the contract your team needs before you put an agent in front of MySQL. Governance frameworks like the <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a> exist precisely so your security team can sign off on the boundary.</p>
+
+  <div class="cta-box">
+    <h3>Run the five-stage workflow on your MySQL</h3>
+    <p>Connect a MySQL source read-only, seed your top ten metric definitions into the knowledge base, and ask one real question from last quarter's backlog. Review the plan, the SQL the agent ran, and the KB citations.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">How does AI analyze MySQL data?</div><div class="faq-a">An AI agent analyzes MySQL data in five stages: it retrieves business context from a bound knowledge base, drafts an analysis plan for you to review, runs SQL against your MySQL connection with read-only credentials, verifies the result with row counts and second-path checks, and delivers an answer with the queries it actually ran and the sources it cited.</div></div>
+  <div class="faq-item"><div class="faq-q">Can AI write SQL for MySQL accurately?</div><div class="faq-a">Accuracy depends on context, not just the model. On the BIRD text-to-SQL benchmark, human engineers reach 92.96% execution accuracy and models still trail. Closing the gap on real MySQL schemas requires a bound knowledge base of metric definitions, schema retrieval, and a plan-review step before execution — generation alone is not enough.</div></div>
+  <div class="faq-item"><div class="faq-q">Is it safe to give an AI access to my MySQL database?</div><div class="faq-a">With guardrails, yes. The pattern is a read-only MySQL user scoped to specific schemas, plan review before execution, full query logging, and an evidence trail attached to every answer. The NIST AI Risk Management Framework gives your security team a shared structure for approving this class of tool against MySQL.</div></div>
+  <div class="faq-item"><div class="faq-q">Can the AI join MySQL with other databases?</div><div class="faq-a">Yes, with the right agent. InfiniSynapse documents support for joining MySQL with PostgreSQL, Snowflake, Supabase, S3, and uploaded CSV or Excel files in one request, without an ETL prerequisite. A documented demo joins e-commerce platform tables across two databases with a phone-number CSV from CRM.</div></div>
+  <div class="faq-item"><div class="faq-q">Do I need to model my MySQL schema before using AI?</div><div class="faq-a">You do not need a full semantic-layer model, but you do need a knowledge base. The minimum is your top ten metric definitions, a one-page data dictionary, and three analysis playbooks. Without these, even a strong agent will faithfully automate whatever ambiguity is already in your MySQL column names.</div></div>
+  <div class="faq-item"><div class="faq-q">How does AI handle MySQL gotchas like ENUM and JSON columns?</div><div class="faq-a">The agent reads MySQL information_schema during schema retrieval, so it sees ENUM value lists, JSON column types, and collation settings. When the knowledge base attaches business meaning to an ENUM like orders.status, the agent uses that meaning in its plan instead of guessing. Without that binding, the agent falls back to literal column values.</div></div>
+  <div class="faq-item"><div class="faq-q">What is Plan mode in MySQL AI analysis?</div><div class="faq-a">Plan mode is the explicit user-review step before any SQL hits MySQL. The agent shows the sources it will read, the joins it will write, the time window it will use, and the output it will produce. You edit or approve. Plan mode is the safety mechanism that turns an AI agent into a tool your security team will sign off on.</div></div>
+  <div class="faq-item"><div class="faq-q">Can the AI write data back to MySQL?</div><div class="faq-a">By default, no. The recommended setup is read-only credentials, and the agent has no write path. Write-back is possible with explicit non-read-only credentials and a separate approval workflow, but for most MySQL analysis use cases the answer is read-only by design. Write paths should be reviewed by your security team before enabling.</div></div>
+
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-15 · <strong>Next scheduled review:</strong> 2026-09-15</p>
+    <p>The five-stage loop reflects InfiniSynapse product behavior and the broader ReAct-style reason-act pattern documented in agent research. The worked example uses a representative MySQL e-commerce schema rather than a customer's real data. Benchmark figures come from the BIRD and Spider public leaderboards. Cross-source examples reference documented InfiniSynapse product demonstrations, not independent benchmarks.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells in the AI database query category. To reduce bias, we name the cases where the agent fails — empty knowledge base, write-back, large-table DBA intuition, dashboard replacement — and link to vendor-neutral governance frameworks.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for terminology, source links, benchmark figures, and MySQL behavior changes across new server versions.</p>
+  </div>
+
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> MySQL official documentation. <a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener">dev.mysql.com/doc</a>.</li>
+    <li><strong>[Independent]</strong> BIRD text-to-SQL benchmark — human accuracy 92.96%. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+    <li><strong>[Independent]</strong> Yu et al. Spider text-to-SQL benchmark. <a href="https://yale-lily.github.io/spider" target="_blank" rel="noopener">yale-lily.github.io/spider</a>.</li>
+    <li><strong>[Independent]</strong> Yao et al. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arXiv 2210.03629</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic (2024). Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Independent]</strong> Wikipedia. Retrieval-augmented generation. <a href="https://en.wikipedia.org/wiki/Retrieval-augmented_generation" target="_blank" rel="noopener">en.wikipedia.org/wiki/Retrieval-augmented_generation</a>.</li>
+    <li><strong>[Independent]</strong> NIST AI Risk Management Framework 1.0 (2023). <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> European Commission. EU AI Act entered into force 2024-08-01. <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">EU AI Act</a>.</li>
+  </ol>
+
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/blog/ai-database-query">AI database query: the pillar guide</a>
+    <a href="https://infinisynapse.com/blog/mysql-data-analysis-tools">MySQL data analysis tools</a>
+    <a href="https://infinisynapse.com/blog/data-analyst-snowflake-with-ai">Data analyst Snowflake with AI</a>
+    <a href="https://infinisynapse.com/blog/supabase-data-analysis-with-ai">Supabase data analysis with AI</a>
+    <a href="https://infinisynapse.com/Category/what-is-a-data-agent">What is a data agent?</a>
+    <a href="https://infinisynapse.com/Category/explainable-ai-data-analysis">Explainable AI data analysis</a>
+    <a href="https://infinisynapse.com/Category/data-agent-memory-explained">Data agent memory explained</a>
+    <a href="https://infinisynapse.com/Category/ai-native-data-platform">AI-native data platform</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">How an AI database query works</title>
+  <desc id="desc">A plain-English question flows through context retrieval and schema retrieval into a reviewable plan, then executes across MySQL, Snowflake, Supabase, and S3, returning a verified result with an evidence trail.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+  <text x="100" y="110" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800">How an AI database query works</text>
+  <text x="100" y="148" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Plain English in, verified cross-source answer out</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Step 1: Question -->
+    <rect x="90" y="200" width="240" height="92" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="110" y="232" fill="#4338CA" font-size="13" font-weight="800">PLAIN ENGLISH</text>
+    <text x="110" y="258" fill="#111827" font-size="17" font-weight="800">Your question</text>
+    <text x="110" y="280" fill="#6B7280" font-size="13">"top customers by revenue"</text>
+
+    <!-- Step 2: Context -->
+    <rect x="370" y="170" width="240" height="78" rx="14" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="388" y="198" fill="#6D28D9" font-size="12" font-weight="800">CONTEXT (RAG)</text>
+    <text x="388" y="222" fill="#111827" font-size="16" font-weight="800">Knowledge base</text>
+    <text x="388" y="240" fill="#6B7280" font-size="12">definitions · playbooks</text>
+
+    <rect x="370" y="258" width="240" height="78" rx="14" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="388" y="286" fill="#6D28D9" font-size="12" font-weight="800">SCHEMA RETRIEVAL</text>
+    <text x="388" y="310" fill="#111827" font-size="16" font-weight="800">Tables · joins</text>
+    <text x="388" y="328" fill="#6B7280" font-size="12">across every source</text>
+
+    <!-- Step 3: Plan -->
+    <rect x="650" y="200" width="200" height="92" rx="16" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="668" y="232" fill="#047857" font-size="13" font-weight="800">YOU REVIEW</text>
+    <text x="668" y="258" fill="#111827" font-size="17" font-weight="800">The plan</text>
+    <text x="668" y="280" fill="#6B7280" font-size="13">sources · joins · windows</text>
+
+    <!-- Arrows row 1 -->
+    <path d="M334 248h32" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M358 240l10 8-10 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M614 246h32" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M638 238l10 8-10 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Step 4: Execute across DBs -->
+    <rect x="890" y="170" width="200" height="180" rx="16" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="908" y="198" fill="#B45309" font-size="13" font-weight="800">EXECUTE ACROSS</text>
+    <rect x="908" y="212" width="164" height="26" rx="6" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="918" y="230" fill="#111827" font-size="13" font-weight="700">MySQL · PostgreSQL</text>
+    <rect x="908" y="244" width="164" height="26" rx="6" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="918" y="262" fill="#111827" font-size="13" font-weight="700">Snowflake</text>
+    <rect x="908" y="276" width="164" height="26" rx="6" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="918" y="294" fill="#111827" font-size="13" font-weight="700">Supabase · S3</text>
+    <rect x="908" y="308" width="164" height="26" rx="6" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="918" y="326" fill="#111827" font-size="13" font-weight="700">CSV · Excel files</text>
+
+    <path d="M854 246h28" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M874 238l10 8-10 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Step 5: Verify -->
+    <rect x="650" y="380" width="200" height="80" rx="16" fill="#FDF2F8" stroke="#FBCFE8"/>
+    <text x="668" y="408" fill="#BE185D" font-size="13" font-weight="800">VERIFY</text>
+    <text x="668" y="432" fill="#111827" font-size="16" font-weight="800">Row counts · checks</text>
+    <text x="668" y="450" fill="#6B7280" font-size="13">low confidence flagged</text>
+
+    <!-- Step 6: Evidence trail -->
+    <rect x="370" y="380" width="240" height="80" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="388" y="408" fill="#4338CA" font-size="13" font-weight="800">DELIVER + EXPLAIN</text>
+    <text x="388" y="432" fill="#111827" font-size="16" font-weight="800">Answer + chart</text>
+    <text x="388" y="450" fill="#6B7280" font-size="13">plan · queries · sources</text>
+
+    <!-- Arrows row 2: execute → verify → deliver -->
+    <path d="M990 358v6c0 8-7 16-16 16H854" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M866 412l-10-8 10-8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <line x1="850" y1="404" x2="866" y2="404" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+
+    <path d="M650 420H614" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M626 412l-10 8 10 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Self-correction dashed arrow back to plan -->
+    <path d="M750 380V340c0-12-10-22-22-22h-22" stroke="#F59E0B" stroke-width="4" stroke-dasharray="9 7" fill="none" stroke-linecap="round"/>
+    <text x="700" y="364" fill="#B45309" font-size="12" font-weight="700">re-plan</text>
+  </g>
+
+  <text x="100" y="552" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="16">InfiniSynapse — enterprise AI data analyst</text>
+</svg>

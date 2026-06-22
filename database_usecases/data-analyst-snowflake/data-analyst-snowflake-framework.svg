@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">The Snowflake data analyst tool stack in 2026</title>
+  <desc id="desc">A four-layer view of the Snowflake data analyst stack: query editor at the foundation, transformation with dbt, BI delivery, and an AI augmentation layer at the top. Each layer lists its tools and the responsibility it covers.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+  <text x="100" y="110" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="800">The Snowflake data analyst stack</text>
+  <text x="100" y="146" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700">Four layers of tools, one role that owns them end to end</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Layer 4: AI augmentation (top) -->
+    <rect x="90" y="190" width="1020" height="78" rx="14" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="110" y="218" fill="#6D28D9" font-size="12" font-weight="800">LAYER 4 · AI AUGMENTATION</text>
+    <text x="110" y="245" fill="#111827" font-size="17" font-weight="800">Plan-mode agent on top of Snowflake</text>
+    <text x="110" y="262" fill="#6B7280" font-size="13">InfiniSynapse · Snowflake Cortex · custom LLM tooling — absorb the routine pull queue</text>
+    <rect x="900" y="206" width="190" height="44" rx="8" fill="#FFFFFF" stroke="#DDD6FE"/>
+    <text x="918" y="232" fill="#6D28D9" font-size="13" font-weight="700">analyst reviews plans</text>
+
+    <!-- Layer 3: BI delivery -->
+    <rect x="90" y="280" width="1020" height="78" rx="14" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="110" y="308" fill="#047857" font-size="12" font-weight="800">LAYER 3 · BI DELIVERY</text>
+    <text x="110" y="335" fill="#111827" font-size="17" font-weight="800">Dashboards on agreed metrics</text>
+    <text x="110" y="352" fill="#6B7280" font-size="13">Tableau · Looker · Hex · Sigma — connected to certified Snowflake views</text>
+    <rect x="900" y="296" width="190" height="44" rx="8" fill="#FFFFFF" stroke="#BBF7D0"/>
+    <text x="918" y="322" fill="#047857" font-size="13" font-weight="700">monitored daily</text>
+
+    <!-- Layer 2: Transformation -->
+    <rect x="90" y="370" width="1020" height="78" rx="14" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="110" y="398" fill="#B45309" font-size="12" font-weight="800">LAYER 2 · TRANSFORMATION</text>
+    <text x="110" y="425" fill="#111827" font-size="17" font-weight="800">Semantic layer and models</text>
+    <text x="110" y="442" fill="#6B7280" font-size="13">dbt · Coalesce · SQLMesh — version the business logic, document each model</text>
+    <rect x="900" y="386" width="190" height="44" rx="8" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="918" y="412" fill="#B45309" font-size="13" font-weight="700">tested in CI</text>
+
+    <!-- Layer 1: Query editor + Snowflake -->
+    <rect x="90" y="460" width="1020" height="98" rx="14" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="110" y="488" fill="#4338CA" font-size="12" font-weight="800">LAYER 1 · QUERY · WAREHOUSE · GOVERNANCE</text>
+    <text x="110" y="515" fill="#111827" font-size="17" font-weight="800">Snowflake itself</text>
+    <text x="110" y="534" fill="#6B7280" font-size="13">Snowsight · DBeaver · DataGrip — micro-partitions, virtual warehouses, roles and grants</text>
+    <rect x="900" y="476" width="190" height="64" rx="8" fill="#FFFFFF" stroke="#C7D2FE"/>
+    <text x="918" y="500" fill="#4338CA" font-size="13" font-weight="700">USE WAREHOUSE</text>
+    <text x="918" y="520" fill="#4338CA" font-size="13" font-weight="700">USE ROLE</text>
+
+    <!-- Vertical arrow on left, layer-up -->
+    <path d="M68 540V210" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M60 222l8-12 8 12" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="32" y="380" fill="#6B7280" font-size="12" font-weight="700" transform="rotate(-90 32 380)">analyst climbs the stack</text>
+  </g>
+
+  <text x="100" y="600" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="14">InfiniSynapse — enterprise AI data analyst on Snowflake</text>
+</svg>

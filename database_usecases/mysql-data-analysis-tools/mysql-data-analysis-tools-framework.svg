@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="titleA descA">
+  <title id="titleA">Five categories of MySQL data analysis tools</title>
+  <descA id="descA">A 2x3 mapping of MySQL data analysis tool categories: native SQL clients, self-service BI dashboards, notebook analytics, ELT plus semantic layer, and AI database query agents, each marked against open-ended questions and cross-source joins.</descA>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+  <text x="100" y="110" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="800">Five categories of MySQL data analysis tools</text>
+  <text x="100" y="148" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Pick by question shape, source spread, and governance need</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Card 1: Native SQL clients -->
+    <rect x="90" y="190" width="320" height="160" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="110" y="222" fill="#4338CA" font-size="13" font-weight="800">CATEGORY 1</text>
+    <text x="110" y="252" fill="#0A0A0A" font-size="20" font-weight="800">Native SQL clients</text>
+    <text x="110" y="278" fill="#6B7280" font-size="13">MySQL Workbench, DBeaver</text>
+    <text x="110" y="306" fill="#111827" font-size="12" font-weight="700">Open-ended Qs</text>
+    <text x="232" y="306" fill="#DC2626" font-size="14" font-weight="800">low</text>
+    <text x="110" y="328" fill="#111827" font-size="12" font-weight="700">Cross-source</text>
+    <text x="232" y="328" fill="#DC2626" font-size="14" font-weight="800">none</text>
+
+    <!-- Card 2: BI dashboards -->
+    <rect x="440" y="190" width="320" height="160" rx="16" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="460" y="222" fill="#047857" font-size="13" font-weight="800">CATEGORY 2</text>
+    <text x="460" y="252" fill="#0A0A0A" font-size="20" font-weight="800">BI dashboards</text>
+    <text x="460" y="278" fill="#6B7280" font-size="13">Tableau, Looker, Metabase, Superset</text>
+    <text x="460" y="306" fill="#111827" font-size="12" font-weight="700">Open-ended Qs</text>
+    <text x="582" y="306" fill="#D97706" font-size="14" font-weight="800">medium</text>
+    <text x="460" y="328" fill="#111827" font-size="12" font-weight="700">Cross-source</text>
+    <text x="582" y="328" fill="#D97706" font-size="14" font-weight="800">partial</text>
+
+    <!-- Card 3: Notebooks -->
+    <rect x="790" y="190" width="320" height="160" rx="16" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="810" y="222" fill="#B45309" font-size="13" font-weight="800">CATEGORY 3</text>
+    <text x="810" y="252" fill="#0A0A0A" font-size="20" font-weight="800">Notebooks + Python</text>
+    <text x="810" y="278" fill="#6B7280" font-size="13">Jupyter, pandas, mysql-connector</text>
+    <text x="810" y="306" fill="#111827" font-size="12" font-weight="700">Open-ended Qs</text>
+    <text x="932" y="306" fill="#047857" font-size="14" font-weight="800">high</text>
+    <text x="810" y="328" fill="#111827" font-size="12" font-weight="700">Cross-source</text>
+    <text x="932" y="328" fill="#D97706" font-size="14" font-weight="800">manual</text>
+
+    <!-- Card 4: ELT + semantic -->
+    <rect x="90" y="378" width="320" height="160" rx="16" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="110" y="410" fill="#6D28D9" font-size="13" font-weight="800">CATEGORY 4</text>
+    <text x="110" y="440" fill="#0A0A0A" font-size="20" font-weight="800">ELT + semantic layer</text>
+    <text x="110" y="466" fill="#6B7280" font-size="13">dbt + downstream BI</text>
+    <text x="110" y="494" fill="#111827" font-size="12" font-weight="700">Open-ended Qs</text>
+    <text x="232" y="494" fill="#D97706" font-size="14" font-weight="800">medium</text>
+    <text x="110" y="516" fill="#111827" font-size="12" font-weight="700">Cross-source</text>
+    <text x="232" y="516" fill="#047857" font-size="14" font-weight="800">modeled</text>
+
+    <!-- Card 5: AI agents -->
+    <rect x="440" y="378" width="670" height="160" rx="16" fill="#FDF2F8" stroke="#FBCFE8"/>
+    <text x="460" y="410" fill="#BE185D" font-size="13" font-weight="800">CATEGORY 5 — WHERE INFINISYNAPSE FITS</text>
+    <text x="460" y="440" fill="#0A0A0A" font-size="20" font-weight="800">AI database query agents</text>
+    <text x="460" y="466" fill="#6B7280" font-size="13">Plain English in, plan-reviewed SQL out, knowledge base bound to each source</text>
+    <text x="460" y="494" fill="#111827" font-size="12" font-weight="700">Open-ended Qs</text>
+    <text x="582" y="494" fill="#047857" font-size="14" font-weight="800">high</text>
+    <text x="700" y="494" fill="#111827" font-size="12" font-weight="700">Cross-source</text>
+    <text x="822" y="494" fill="#047857" font-size="14" font-weight="800">native, no ETL</text>
+    <text x="460" y="516" fill="#111827" font-size="12" font-weight="700">Business context</text>
+    <text x="582" y="516" fill="#047857" font-size="14" font-weight="800">retrieved from bound KB</text>
+  </g>
+
+  <text x="100" y="565" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="14">InfiniSynapse — enterprise AI data analyst · bound knowledge base for MySQL</text>
+</svg>

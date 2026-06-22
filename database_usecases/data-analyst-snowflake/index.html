@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Data Analyst Snowflake: 2026 Role + Tools | InfiniSynapse</title>
+  <meta name="description" content="A working guide to the data analyst Snowflake role in 2026: day-to-day workflow, the tool stack from query editor to dbt, and where AI augmentation slots in.">
+  <meta name="keywords" content="data analyst snowflake, snowflake data analyst, snowflake analyst tools, snowflake role">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/blog/data-analyst-snowflake">
+
+  <meta property="og:title" content="Data Analyst Snowflake: 2026 Role + Tools">
+  <meta property="og:description" content="A working guide to the data analyst Snowflake role in 2026: day-to-day workflow, the tool stack from query editor to dbt, and where AI augmentation slots in.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/blog/data-analyst-snowflake">
+  <meta property="og:image" content="https://infinisynapse.com/blog/data-analyst-snowflake/data-analyst-snowflake-framework.svg">
+  <meta property="og:image:alt" content="A four-layer view of the Snowflake data analyst stack: Snowflake itself at the foundation, transformation with dbt, BI delivery, and AI augmentation on top.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Data Analyst Snowflake: 2026 Role + Tools">
+  <meta name="twitter:description" content="A working guide to the data analyst Snowflake role in 2026: day-to-day workflow, the tool stack from query editor to dbt, and where AI augmentation slots in.">
+  <meta name="twitter:image" content="https://infinisynapse.com/blog/data-analyst-snowflake/data-analyst-snowflake-framework.svg">
+  <meta name="twitter:image:alt" content="A four-layer view of the Snowflake data analyst stack: Snowflake itself at the foundation, transformation with dbt, BI delivery, and AI augmentation on top.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Schema #1: Organization -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","caption":"InfiniSynapse AI data analyst logo","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}
+  </script>
+
+  <!-- Schema #2: BreadcrumbList -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/blog"},{"@type":"ListItem","position":3,"name":"The Snowflake Data Analyst Role in 2026: Workflow, Tools, and the AI Augmentation Question","item":"https://infinisynapse.com/blog/data-analyst-snowflake"}]}
+  </script>
+
+  <!-- Schema #3: Article -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"The Snowflake Data Analyst Role in 2026: Workflow, Tools, and the AI Augmentation Question","description":"A working guide to the data analyst Snowflake role in 2026: day-to-day workflow, the tool stack from query editor to dbt, and where AI augmentation slots in.","image":"https://infinisynapse.com/blog/data-analyst-snowflake/data-analyst-snowflake-framework.svg","datePublished":"2026-06-15","dateModified":"2026-06-15","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/blog/data-analyst-snowflake"}}
+  </script>
+
+  <!-- Schema #4: FAQPage -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What does a Snowflake data analyst do?","acceptedAnswer":{"@type":"Answer","text":"A Snowflake data analyst owns the path from a business question to a trusted number on Snowflake. That covers writing SQL against Snowflake views, tuning queries with the query profile, watching virtual warehouse spend, designing dbt models that encode metric definitions, delivering dashboards in Tableau or Looker, and explaining results to stakeholders."}},
+{"@type":"Question","name":"What tools do Snowflake data analysts use?","acceptedAnswer":{"@type":"Answer","text":"The typical stack has four layers. Snowflake itself with Snowsight, DBeaver, or DataGrip for query work. A transformation layer such as dbt or Coalesce for the semantic model. A BI layer such as Tableau, Looker, Hex, or Sigma for delivery. And an AI augmentation layer where agents like InfiniSynapse or Snowflake Cortex handle the routine pull queue under analyst review."}},
+{"@type":"Question","name":"Do you need dbt experience to be a Snowflake analyst?","acceptedAnswer":{"@type":"Answer","text":"For senior roles, yes in most teams. dbt has become the default way to version business logic on Snowflake — metric definitions, dimension tables, slowly changing dimensions. Junior analysts can be hired without dbt and pick it up on the job, but reading and editing existing dbt models is a near-universal Snowflake analyst skill in 2026."}},
+{"@type":"Question","name":"How is Snowflake analysis different from BigQuery analysis?","acceptedAnswer":{"@type":"Answer","text":"The SQL dialect overlaps, but the cost and tuning model differs. Snowflake separates compute (virtual warehouses) from storage and bills by warehouse-second, so analysts watch warehouse size, auto-suspend, and query queueing. BigQuery bills per byte scanned by default, so the same analyst on BigQuery focuses on partition pruning and slot management instead."}},
+{"@type":"Question","name":"What skills should a Snowflake analyst learn next?","acceptedAnswer":{"@type":"Answer","text":"In 2026 the highest-impact additions are dbt model authorship, the Snowflake query profile, role and grant hygiene, semi-structured data with VARIANT and ARRAY, and oversight of AI agents that write SQL on your warehouse. The last one is new and not yet covered in most job postings, but it shows up fast once a team adopts an agent."}},
+{"@type":"Question","name":"Is AI replacing Snowflake data analysts?","acceptedAnswer":{"@type":"Answer","text":"The US Bureau of Labor Statistics still projects qualitative growth for data scientist and analyst roles, and a credible reading of agent capability today is task automation, not role replacement. AI absorbs ad-hoc pulls and dashboard updates. The analyst spends more time on definitions, plan review, and stakeholder framing — work that does not collapse into one prompt."}},
+{"@type":"Question","name":"How long does it take to become a Snowflake data analyst?","acceptedAnswer":{"@type":"Answer","text":"With strong SQL and one production database under your belt, expect three to six months of focused work to hit a junior Snowflake analyst bar. Add dbt and one BI tool. Add basic Snowflake account hygiene — roles, warehouses, query history. Hands-on time on a real account beats every course, because Snowflake-specific habits only stick when you watch your own queries in the query history."}}
+]}
+  </script>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    a{color:#5B5BFF;text-decoration:none}
+    a:hover{color:#111827}
+    .nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+    .nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+    .nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+    .nav-logo-mark{height:26px;display:flex;align-items:center}
+    .nav-logo-mark img{height:26px;width:auto;display:block}
+    .nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+    .nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap;transition:color 0.15s}
+    .nav-menu a:hover{color:#111827}
+    .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+    .nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap;box-shadow:none;transition:background 0.15s,border-color 0.15s,transform 0.15s}
+    a.nav-btn:hover{color:#111827;border-color:#C7CEDA;transform:translateY(-1px)}
+    .nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+    .nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+    .nav-btn-primary:hover{color:#FFFFFF}
+    .nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+    .nav-btn-dark:hover{color:#FFFFFF}
+    .nav-icon{width:17px;height:17px;flex:0 0 auto}
+    .nav-chevron{width:15px;height:15px;flex:0 0 auto}
+    .wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+    .breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+    .breadcrumb a{color:#6B7280}
+    .badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+    .badge-client{background:#EEF2FF;color:#4338CA}
+    .badge-cat{background:#ECFDF5;color:#047857}
+    h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+    h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+    h3{font-size:21px;color:#111827;margin:24px 0 8px}
+    p{margin:0 0 16px}
+    ul,ol{padding-left:22px;margin:0 0 18px}
+    li{margin:6px 0}
+    .meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+    .author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+    .info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+    .info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+    .disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+    .toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+    .toc{background:#F9FAFB}
+    .toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+    .tldr{background:#F8FAFC}
+    .snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+    .definition{background:#ECFDF5;border-color:#BBF7D0}
+    .feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+    table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+    th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+    th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+    td{color:#4B5563}
+    .quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+    .cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+    .cta-btn:hover{background:#1F2937;color:#FFFFFF}
+    .faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+    .faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+    .faq-a{color:#4B5563}
+    .methodology{background:#F9FAFB;color:#4B5563}
+    .refs li{font-size:13.5px;color:#4B5563}
+    .related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+    .related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+    .stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+    .stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+    .stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+    .panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+    .panel h3{margin-top:0}
+    .panel-good{background:#F0FDF4;border-color:#BBF7D0}
+    .panel-bad{background:#FEF2F2;border-color:#FECACA}
+    .footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+    .footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{color:#6B7280;font-size:14px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+    @media(max-width:1280px){.nav-inner{max-width:1180px;column-gap:24px}.nav-menu{gap:18px}.nav-menu a,.nav-btn{font-size:14px}.nav-btn{min-height:36px;padding:0 12px}.nav-btn-primary,.nav-btn-dark{padding:0 14px}}
+    @media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}.nav-logo{width:100%;justify-content:center}.nav-menu,.nav-actions{justify-content:center;flex-wrap:wrap}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}table{font-size:14px}.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12S9.8 18.6 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        EN
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Book Demo
+      </a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/blog">Blog</a><span>&gt;</span>
+    data analyst snowflake
+  </nav>
+
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Role Guide</span>
+  </div>
+
+  <h1>The Snowflake Data Analyst Role in 2026: Workflow, Tools, and the AI Augmentation Question</h1>
+  <p class="meta-desc">A field guide to the data analyst Snowflake role: what you actually own, the four-layer tool stack you live in, the Snowflake-specific skills hiring managers screen for, and where AI now slots in.</p>
+
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, data architecture and analyst experience team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-15 · Last verified 2026-06-15 · Next review 2026-09-15</div>
+    <div class="info-card"><strong>Evidence base</strong>Snowflake official documentation, dbt documentation, BLS data scientists outlook, NIST AI RMF, BIRD benchmark, Anthropic agent guidance.</div>
+  </div>
+
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, which builds an enterprise AI data analyst that runs on Snowflake among other sources. The role guide below is vendor-neutral. InfiniSynapse appears as one option in the AI augmentation layer, alongside Snowflake Cortex and custom tooling. Skip our product whenever a different tool fits your team better.
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer</a></li>
+      <li><a href="#definition">What a Snowflake data analyst is</a></li>
+      <li><a href="#owns">What a Snowflake data analyst actually owns</a></li>
+      <li><a href="#day">A day in the role</a></li>
+      <li><a href="#stack">The Snowflake analyst tool stack</a></li>
+      <li><a href="#skills">Snowflake-specific skills hiring managers screen for</a></li>
+      <li><a href="#ai">Where AI augmentation slots in</a></li>
+      <li><a href="#hire">Hiring vs tooling up first</a></li>
+      <li><a href="#salary">Salary and market notes</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>A <strong>Snowflake data analyst</strong> owns the path from a business question to a trusted number on Snowflake — query work, semantic-layer authorship in dbt, BI delivery, and now plan-review for AI agents writing SQL on the warehouse.</li>
+      <li>The 2026 stack has four layers: <strong>Snowflake itself</strong>, transformation with <a href="https://www.getdbt.com/" target="_blank" rel="noopener">dbt</a>, BI in Tableau or Looker, and an AI augmentation layer on top.</li>
+      <li>AI does not vacate the role. It absorbs the routine pull queue. The analyst's center of gravity moves toward definitions, plan oversight, and stakeholder framing — the work that does not collapse into one prompt.</li>
+    </ul>
+  </div>
+
+  <h2 id="answer">Direct answer: what a Snowflake data analyst does</h2>
+  <div class="snippet-answer">A Snowflake data analyst turns business questions into trusted numbers on a Snowflake account. The job spans writing SQL, tuning queries against the query profile, designing dbt models, delivering dashboards in Tableau or Looker, watching virtual warehouse spend, and reviewing the plans AI agents now propose against your warehouse.</div>
+
+  <h2 id="definition">What a Snowflake data analyst is</h2>
+  <div class="definition"><dfn>Snowflake data analyst</dfn>: a data analyst whose primary working surface is a <a href="https://www.snowflake.com/" target="_blank" rel="noopener">Snowflake</a> account — querying, modeling with dbt, monitoring virtual warehouse cost, and shipping insight to dashboards and stakeholders.</div>
+
+  <p>The role is not "SQL writer who happens to use Snowflake." Snowflake's separation of storage from compute, its micro-partition file layout, and its role-based access model shape day-to-day decisions in ways a Postgres or BigQuery analyst would not recognize.</p>
+  <p>If your team uses Snowflake, your analyst job description includes warehouse cost awareness, role context discipline, and query profile literacy. These are the habits that distinguish a Snowflake analyst from a generic SQL analyst.</p>
+
+  <img class="feature-img" src="data-analyst-snowflake-framework.svg" alt="A four-layer view of the Snowflake data analyst stack: Snowflake itself at the foundation with Snowsight, DBeaver, and DataGrip, transformation with dbt, BI delivery with Tableau and Looker, and an AI augmentation layer on top with InfiniSynapse and Snowflake Cortex" width="1200" height="630" loading="lazy">
+
+  <h2 id="owns">What a Snowflake data analyst actually owns</h2>
+  <p>Walk into a Snowflake team and you will find an analyst with five live responsibilities. None of them are "write SQL." All of them are downstream of writing SQL.</p>
+
+  <h3>1. Warehouse and query cost awareness</h3>
+  <p>Snowflake bills by virtual warehouse second. The analyst picks the warehouse size for the workload, watches auto-suspend, and reads the <a href="https://docs.snowflake.com/" target="_blank" rel="noopener">Snowflake query history</a> for runaway queries on the team's account.</p>
+  <p>This is a Snowflake-specific habit. Move the same analyst to BigQuery and the cost lever switches to bytes scanned and slot allocation, not warehouse seconds.</p>
+
+  <h3>2. Role and grant hygiene</h3>
+  <p>Snowflake uses role-based access control, and the role context is inherited from the active session. A junior analyst's first incident is usually a query that ran under <code>ACCOUNTADMIN</code> by mistake. The senior analyst's job is to make that incident hard to repeat.</p>
+
+  <h3>3. Semantic-layer design with dbt</h3>
+  <p>The analyst authors dbt models that encode metric definitions — what counts as an active account, how MRR rolls up, which timestamp wins in event reconciliation. The dbt model is the single place where the team agrees what each number means.</p>
+
+  <h3>4. Dashboard delivery and review</h3>
+  <p>Tableau, Looker, Hex, and Sigma sit on top of certified Snowflake views. The analyst owns the contract between the view and the dashboard: which fields are stable, which are deprecated, what changed since the last sprint.</p>
+
+  <h3>5. Plan review for AI agents</h3>
+  <p>This responsibility is new in 2026. When an AI agent writes SQL on your Snowflake account, the analyst reads its plan before execution — join keys, time windows, warehouse selection, role context. The skill is closer to code review than to writing queries yourself.</p>
+
+  <h2 id="day">A day in the role: an actual Snowflake analyst Tuesday</h2>
+  <p>To make the role concrete, here is a realistic Tuesday for a mid-level Snowflake analyst at a 200-person SaaS company.</p>
+
+  <h3>09:15 — Ad-hoc request from RevOps</h3>
+  <p>Slack ping from RevOps: "Why did EMEA expansion ARR drop last month?" You open Snowsight, switch to the <code>ANALYST_ROLE</code>, set <code>USE WAREHOUSE ANALYST_WH</code>, and run a few exploratory queries against <code>dim_arr</code>.</p>
+  <p>You spot a billing-cycle artifact — three EMEA accounts renewed on a 90-day cycle that landed in May not April. You answer in the thread with the query, the source dbt model, and a one-line caveat.</p>
+
+  <h3>11:00 — dbt model fix</h3>
+  <p>A finance review last Friday flagged a definition mismatch on net retention. You open the <code>fct_net_retention</code> dbt model, find the cohort window is off by a day at the month boundary, push a fix on a branch, and add a test that catches future drift.</p>
+  <p>The CI run takes 12 minutes against a smaller warehouse. While it runs, you sip coffee and read a runaway query alert from Snowflake's resource monitor.</p>
+
+  <h3>13:30 — Query tuning on the marketing dashboard</h3>
+  <p>The marketing dashboard's first paint creeps from 4 seconds to 18 seconds over a week. You pull the query into Snowsight, open the query profile, and find the join order changed after a recent dimension reload. You add a clustering key on the campaign date column. The first paint drops back to 5 seconds. You note the change in the runbook.</p>
+
+  <h3>15:00 — Stakeholder explanation</h3>
+  <p>A product manager asks why the activation rate on the dashboard does not match the one in the all-hands deck. You walk through the two definitions — the dashboard uses a 7-day window, the deck uses 14 — and propose deprecating one of them.</p>
+  <p>This is where the role is most underrated. Half your value as a Snowflake analyst comes from making the right disagreement visible.</p>
+
+  <h3>16:30 — Reviewing an AI agent's plan</h3>
+  <p>A teammate ran an agent against your Snowflake account to draft a churn investigation. The plan suggests joining <code>fct_subscriptions</code> with <code>dim_account</code> on <code>email</code>. You catch that the team's canonical key is <code>account_id</code>, not email, comment on the plan, and the agent re-plans.</p>
+  <p>Five minutes of plan review saved you an hour of explaining a wrong number to leadership.</p>
+
+  <h2 id="stack">The Snowflake analyst tool stack</h2>
+  <p>The honest version of the stack has four layers. Pick one tool per layer that fits your team, not the trendiest brand.</p>
+
+  <table>
+    <thead>
+      <tr><th>Layer</th><th>Tools</th><th>What it solves</th><th>Tradeoff</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Query editor</strong></td><td>Snowsight, DBeaver, DataGrip, VS Code with SQL extensions</td><td>Where you actually write and run SQL against Snowflake</td><td>Snowsight is free and Snowflake-native; third-party editors give better diffs and version control hooks</td></tr>
+      <tr><td><strong>Transformation</strong></td><td><a href="https://www.getdbt.com/" target="_blank" rel="noopener">dbt</a>, Coalesce, SQLMesh</td><td>Versioned business logic — metric definitions, dimension tables</td><td>dbt is the default; Coalesce adds visual model authorship; SQLMesh emphasizes virtual environments</td></tr>
+      <tr><td><strong>BI delivery</strong></td><td><a href="https://www.tableau.com/" target="_blank" rel="noopener">Tableau</a>, <a href="https://cloud.google.com/looker" target="_blank" rel="noopener">Looker</a>, Hex, Sigma</td><td>Daily dashboards on agreed metrics</td><td>Tableau is the visualization workhorse; Looker enforces the semantic layer harder; Hex blurs notebook and dashboard</td></tr>
+      <tr><td><strong>AI augmentation</strong></td><td>InfiniSynapse, Snowflake Cortex, custom LLM tooling</td><td>Absorbs the routine ad-hoc pull queue and supports investigations</td><td>Cortex is tightly coupled to Snowflake; InfiniSynapse adds cross-source joins beyond Snowflake; custom tooling demands engineering capacity</td></tr>
+    </tbody>
+  </table>
+
+  <p>An analyst whose entire stack is Snowsight and Tableau is missing the transformation layer. An analyst with no AI augmentation layer in 2026 is still functional, but they will see one show up in their JD within twelve months.</p>
+
+  <h2 id="skills">Snowflake-specific skills hiring managers screen for</h2>
+  <p>Generic SQL is table stakes. Hiring managers running a Snowflake interview screen for the habits below. The skill names below match the question patterns you will hear in a 2026 loop.</p>
+
+  <table>
+    <thead>
+      <tr><th>Skill</th><th>What it looks like in practice</th><th>How interviewers probe</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>SQL proficiency</strong></td><td>Window functions, CTEs, semi-structured access with VARIANT and ARRAY</td><td>"Flatten this nested event payload and compute a 7-day rolling active count."</td></tr>
+      <tr><td><strong>dbt model authorship</strong></td><td>Reading and editing existing models, writing tests, using <code>ref</code> and <code>source</code> correctly</td><td>"Walk me through the last dbt model you wrote or fixed."</td></tr>
+      <tr><td><strong>Micro-partition awareness</strong></td><td>Understanding how Snowflake stores data and why a clustering key sometimes matters</td><td>"Why did this query slow down after we backfilled a year of history?"</td></tr>
+      <tr><td><strong>Role and grant hygiene</strong></td><td>Knowing your active role, switching with <code>USE ROLE</code>, never running ad-hoc as <code>ACCOUNTADMIN</code></td><td>"Show me how you check your role context before a destructive query."</td></tr>
+      <tr><td><strong>Query profile reading</strong></td><td>Interpreting the Snowflake query profile to find spill-to-disk and bad join orders</td><td>"Open this profile and tell me what went wrong."</td></tr>
+      <tr><td><strong>Warehouse cost monitoring</strong></td><td>Watching warehouse credit usage, picking the right size, tuning auto-suspend</td><td>"How do you decide whether to size up or split a workload across warehouses?"</td></tr>
+      <tr><td><strong>Stakeholder framing</strong></td><td>Turning ambiguous business questions into precise, answerable queries</td><td>"Tell me about a time you pushed back on a question and reshaped it."</td></tr>
+      <tr><td><strong>AI workflow oversight</strong></td><td>Reading an agent's plan, catching wrong joins, deciding when to override</td><td>"What would you change in this AI-generated SQL before running it on production?"</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="ai">Where AI augmentation slots in</h2>
+  <p>You cannot honestly write a Snowflake analyst guide in 2026 without addressing the AI question head on. Here is the unvarnished version.</p>
+
+  <p>The pull queue on a typical Snowflake team is dominated by ad-hoc questions that have an answer on the warehouse but no dashboard yet. Routine pulls are what burn through analyst hours. They are also the category where AI agents now perform well — not because the SQL is hard, but because most ad-hoc requests need a definition lookup, two tables, a window, and a chart.</p>
+
+  <p>An agent like the one described in our <a href="https://infinisynapse.com/blog/ai-database-query">AI database query pillar</a> handles that shape of work under analyst review. The agent retrieves your dbt model documentation, drafts a plan, runs SQL against your Snowflake warehouse with a scoped role, and surfaces the result with an evidence trail. The analyst reviews the plan, not the SQL.</p>
+
+  <h3>The honest tradeoff</h3>
+  <p>AI does not replace judgment. It absorbs the routine. <a href="https://www.bls.gov/ooh/math/data-scientists.htm" target="_blank" rel="noopener">The US Bureau of Labor Statistics</a> still projects qualitative growth for data scientist and analyst roles. A credible read of 2026 agent capability is task automation, not role substitution — and even that comes with new oversight work for the analyst.</p>
+
+  <p>The shift looks like this. Less time on first-draft SQL for routine questions. More time on metric definitions, plan review, and stakeholder framing. The Anthropic agent guidance describes this pattern as <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">a system that directs its own processes under human review</a>, which is exactly the model a Snowflake analyst now applies to their own warehouse.</p>
+
+  <h3>What honest AI augmentation does not do</h3>
+  <ul>
+    <li>It does not write your metric definitions. You still own that.</li>
+    <li>It does not understand your stakeholders. Plan review depends on context only humans have.</li>
+    <li>It does not pick the right warehouse size on its own — the analyst still names the cost-versus-latency tradeoff.</li>
+  </ul>
+
+  <p>For the AI-augmented workflow on Snowflake specifically — what the analyst's day actually looks like with an agent in the loop — read the sibling guide on <a href="https://infinisynapse.com/blog/data-analyst-snowflake-with-ai">data analyst Snowflake with AI</a>.</p>
+
+  <h2 id="hire">Hiring vs tooling up first</h2>
+  <p>A common 2026 question for engineering leaders: do I hire another Snowflake analyst or buy an AI agent on top of the analyst I already have? The honest answer is that they are not substitutes.</p>
+
+  <div class="grid-2">
+    <div class="panel panel-good">
+      <h3>Hire first when</h3>
+      <ul>
+        <li>You have no one who owns metric definitions or dbt models</li>
+        <li>Your warehouse cost is unmonitored and quarterly bills surprise finance</li>
+        <li>You have no semantic layer — dashboards reference raw tables</li>
+        <li>Stakeholders cannot tell which number to trust</li>
+        <li>You do not yet have a reproducible way to certify a new metric</li>
+      </ul>
+    </div>
+    <div class="panel panel-bad">
+      <h3>Tool up first when</h3>
+      <ul>
+        <li>Your analyst is drowning in routine ad-hoc pulls, not strategic work</li>
+        <li>Definitions exist but stakeholders self-serve poorly because the BI tool is too rigid</li>
+        <li>You need cross-source analysis on Snowflake plus other databases without an ETL project</li>
+        <li>Audit pressure is rising and you need plans, queries, and sources on every answer</li>
+        <li>You can grant scoped, read-only credentials for an agent to test</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>If both columns describe you, hire the analyst first. AI augmentation amplifies a well-defined role. It does not invent one.</p>
+
+  <h3>Cost shape of each path</h3>
+  <p>The honest comparison is below. Numbers are illustrative ranges, not quotes.</p>
+
+  <table>
+    <thead>
+      <tr><th>Path</th><th>Up-front cost</th><th>Time to first value</th><th>Where it breaks</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Hire one Snowflake analyst</strong></td><td>Salary + benefits + ramp</td><td>2-3 months to productive</td><td>Single point of failure; one person cannot scale to every ad-hoc pull</td></tr>
+      <tr><td><strong>Add AI augmentation on existing analyst</strong></td><td>Tool subscription + setup time</td><td>2-4 weeks if definitions exist</td><td>Definitions and roles must already be clean; bad inputs in, bad answers out</td></tr>
+      <tr><td><strong>Both — hire and tool up</strong></td><td>Salary plus tool</td><td>3-4 months to compounded value</td><td>Coordination cost if the analyst is not given time to own the agent's knowledge base</td></tr>
+      <tr><td><strong>Outsource to an agency</strong></td><td>Per-project fees</td><td>Days, but per project</td><td>No accumulation of internal knowledge; every quarter starts over</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="salary">Salary and market notes</h2>
+  <p>The honest version: salary data for the Snowflake analyst role specifically is fragmented across job-board scrapers, vendor surveys, and recruiter LinkedIn posts. We avoid citing any single source as authoritative here.</p>
+
+  <p>What the <a href="https://www.bls.gov/ooh/math/data-scientists.htm" target="_blank" rel="noopener">US Bureau of Labor Statistics</a> says directionally about the broader data scientist and data analyst families is qualitative growth — much faster than average, driven by demand across industries. That is the only number worth quoting on a page like this, because anything else risks looking precise without being accurate.</p>
+
+  <p>For role-specific compensation, your three honest sources are recent offers your network has seen, the salary band your own recruiters use, and aggregated reports from major recruiting firms in your region. Cross-check before quoting any single number to a candidate.</p>
+
+  <h2 id="why-snowflake">Why hire a Snowflake analyst specifically</h2>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="num">4 layers</div><div class="lab">From query editor to AI augmentation — the stack a 2026 Snowflake analyst is expected to span, not specialize in one slice. <a href="https://docs.snowflake.com/" target="_blank" rel="noopener">Source: Snowflake docs</a></div></div>
+    <div class="stat"><div class="num">92.96%</div><div class="lab">Human engineer execution accuracy on the BIRD text-to-SQL benchmark — the bar AI still has not cleared, which is why a human analyst stays in the loop. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">Source: BIRD</a></div></div>
+    <div class="stat"><div class="num">2024</div><div class="lab">The EU AI Act entered into force in August 2024 — raising the bar for evidence trails on any automated analytics on a Snowflake account. <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">Source: European Commission</a></div></div>
+  </div>
+
+  <p>A Snowflake-fluent analyst is the human who pairs with the agent. Without the analyst, no one owns definitions, no one reviews plans, no one explains the number to the CFO. The agent generates faster — the analyst makes the answer trustworthy.</p>
+
+  <div class="cta-box">
+    <h3>See what an AI agent looks like under a Snowflake analyst's review</h3>
+    <p>Connect a Snowflake account read-only, ask one real business question, and watch the plan, queries, and evidence trail before anything runs. The point is not to replace the analyst — it is to give the analyst a faster ad-hoc pull queue. Pair this with the sibling guide on the AI-augmented Snowflake workflow.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What does a Snowflake data analyst do?</div><div class="faq-a">A Snowflake data analyst owns the path from a business question to a trusted number on Snowflake. That covers writing SQL against Snowflake views, tuning queries with the query profile, watching virtual warehouse spend, designing dbt models that encode metric definitions, delivering dashboards in Tableau or Looker, and explaining results to stakeholders.</div></div>
+  <div class="faq-item"><div class="faq-q">What tools do Snowflake data analysts use?</div><div class="faq-a">The typical stack has four layers. Snowflake itself with Snowsight, DBeaver, or DataGrip for query work. A transformation layer such as dbt or Coalesce for the semantic model. A BI layer such as Tableau, Looker, Hex, or Sigma for delivery. And an AI augmentation layer where agents like InfiniSynapse or Snowflake Cortex handle the routine pull queue under analyst review.</div></div>
+  <div class="faq-item"><div class="faq-q">Do you need dbt experience to be a Snowflake analyst?</div><div class="faq-a">For senior roles, yes in most teams. dbt has become the default way to version business logic on Snowflake — metric definitions, dimension tables, slowly changing dimensions. Junior analysts can be hired without dbt and pick it up on the job, but reading and editing existing dbt models is a near-universal Snowflake analyst skill in 2026.</div></div>
+  <div class="faq-item"><div class="faq-q">How is Snowflake analysis different from BigQuery analysis?</div><div class="faq-a">The SQL dialect overlaps, but the cost and tuning model differs. Snowflake separates compute (virtual warehouses) from storage and bills by warehouse-second, so analysts watch warehouse size, auto-suspend, and query queueing. BigQuery bills per byte scanned by default, so the same analyst on BigQuery focuses on partition pruning and slot management instead.</div></div>
+  <div class="faq-item"><div class="faq-q">What skills should a Snowflake analyst learn next?</div><div class="faq-a">In 2026 the highest-impact additions are dbt model authorship, the Snowflake query profile, role and grant hygiene, semi-structured data with VARIANT and ARRAY, and oversight of AI agents that write SQL on your warehouse. The last one is new and not yet covered in most job postings, but it shows up fast once a team adopts an agent.</div></div>
+  <div class="faq-item"><div class="faq-q">Is AI replacing Snowflake data analysts?</div><div class="faq-a">The US Bureau of Labor Statistics still projects qualitative growth for data scientist and analyst roles, and a credible reading of agent capability today is task automation, not role replacement. AI absorbs ad-hoc pulls and dashboard updates. The analyst spends more time on definitions, plan review, and stakeholder framing — work that does not collapse into one prompt.</div></div>
+  <div class="faq-item"><div class="faq-q">How long does it take to become a Snowflake data analyst?</div><div class="faq-a">With strong SQL and one production database under your belt, expect three to six months of focused work to hit a junior Snowflake analyst bar. Add dbt and one BI tool. Add basic Snowflake account hygiene — roles, warehouses, query history. Hands-on time on a real account beats every course, because Snowflake-specific habits only stick when you watch your own queries in the query history.</div></div>
+
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-15 · <strong>Next scheduled review:</strong> 2026-09-15</p>
+    <p>The role definition, day-in-the-life walkthrough, and skill matrix on this page are synthesized from Snowflake official documentation, dbt documentation, the BLS data scientists outlook, public benchmark literature (BIRD, Spider), governance frameworks (NIST AI RMF, EU AI Act, ISO/IEC 42001), and the InfiniSynapse research team's hands-on work alongside Snowflake analyst teams.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this page and competes in the AI augmentation layer described in the stack section. To reduce bias, the page names alternative tools at every layer, lists explicit cases where hiring beats tooling up, and avoids citing any single salary number we could not independently verify.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for tool-name changes, Snowflake feature updates, dbt model patterns, and AI augmentation behavior on real warehouses.</p>
+  </div>
+
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> Snowflake. Official documentation. <a href="https://docs.snowflake.com/" target="_blank" rel="noopener">docs.snowflake.com</a>.</li>
+    <li><strong>[Vendor]</strong> Snowflake. Product overview. <a href="https://www.snowflake.com/" target="_blank" rel="noopener">snowflake.com</a>.</li>
+    <li><strong>[Vendor]</strong> dbt Labs. dbt documentation and product. <a href="https://www.getdbt.com/" target="_blank" rel="noopener">getdbt.com</a>.</li>
+    <li><strong>[Independent]</strong> US Bureau of Labor Statistics. Data Scientists occupational outlook. <a href="https://www.bls.gov/ooh/math/data-scientists.htm" target="_blank" rel="noopener">bls.gov/ooh/math/data-scientists.htm</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL benchmark. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic (2024). Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Independent]</strong> NIST. AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> European Commission. Regulatory framework on AI. <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">EU AI Act</a>.</li>
+  </ol>
+
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/blog/ai-database-query">AI database query: the 2026 practical guide</a>
+    <a href="https://infinisynapse.com/blog/data-analyst-snowflake-with-ai">Data analyst Snowflake with AI</a>
+    <a href="https://infinisynapse.com/blog/mysql-data-analysis-tools">MySQL data analysis tools</a>
+    <a href="https://infinisynapse.com/blog/mysql-data-analysis-with-ai">MySQL data analysis with AI</a>
+    <a href="https://infinisynapse.com/blog/supabase-data-analysis-tools">Supabase data analysis tools</a>
+    <a href="https://infinisynapse.com/blog/supabase-data-analysis-with-ai">Supabase data analysis with AI</a>
+    <a href="https://infinisynapse.com/Category/ai-data-analyst-explained">AI data analyst explained</a>
+    <a href="https://infinisynapse.com/Category/ai-data-analyst-job-description">AI data analyst job description</a>
+    <a href="https://infinisynapse.com/Category/what-is-a-data-agent">What is a data agent?</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

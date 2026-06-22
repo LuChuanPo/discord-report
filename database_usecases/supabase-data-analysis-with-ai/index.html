@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Supabase Data Analysis with AI: Step-by-Step | InfiniSynapse</title>
+  <meta name="description" content="See how AI does Supabase data analysis end to end: cross-source joins with S3 and CSV, plus writing the result back to a Supabase table with plan review.">
+  <meta name="keywords" content="supabase data analysis with ai, supabase ai agent, supabase write back, ai sql supabase">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/blog/supabase-data-analysis-with-ai">
+
+  <meta property="og:title" content="Supabase Data Analysis with AI: Step-by-Step">
+  <meta property="og:description" content="See how AI does Supabase data analysis end to end: cross-source joins with S3 and CSV, plus writing the result back to a Supabase table with plan review.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/blog/supabase-data-analysis-with-ai">
+  <meta property="og:image" content="https://infinisynapse.com/blog/supabase-data-analysis-with-ai/supabase-data-analysis-with-ai-framework.svg">
+  <meta property="og:image:alt" content="Workflow diagram showing AI Supabase data analysis: question, plan review, cross-source execution across Supabase, S3, and CSV, verification, explanation, and the write-back loop that inserts a verified analysis result into a Supabase table.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Supabase Data Analysis with AI: Step-by-Step">
+  <meta name="twitter:description" content="See how AI does Supabase data analysis end to end: cross-source joins with S3 and CSV, plus writing the result back to a Supabase table with plan review.">
+  <meta name="twitter:image" content="https://infinisynapse.com/blog/supabase-data-analysis-with-ai/supabase-data-analysis-with-ai-framework.svg">
+  <meta name="twitter:image:alt" content="Workflow diagram showing AI Supabase data analysis: question, plan review, cross-source execution across Supabase, S3, and CSV, verification, explanation, and the write-back loop that inserts a verified analysis result into a Supabase table.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Schema #1: Organization -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","caption":"InfiniSynapse AI data analyst logo","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}
+  </script>
+
+  <!-- Schema #2: BreadcrumbList -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/blog"},{"@type":"ListItem","position":3,"name":"Supabase Data Analysis with AI: From Cross-Source Question to Result Written Back to Supabase","item":"https://infinisynapse.com/blog/supabase-data-analysis-with-ai"}]}
+  </script>
+
+  <!-- Schema #3: Article -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Supabase Data Analysis with AI: From Cross-Source Question to Result Written Back to Supabase","description":"See how AI does Supabase data analysis end to end: cross-source joins with S3 and CSV, plus writing the result back to a Supabase table with plan review.","image":"https://infinisynapse.com/blog/supabase-data-analysis-with-ai/supabase-data-analysis-with-ai-framework.svg","datePublished":"2026-06-15","dateModified":"2026-06-15","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/blog/supabase-data-analysis-with-ai"}}
+  </script>
+
+  <!-- Schema #4: FAQPage -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How does AI analyze Supabase data?","acceptedAnswer":{"@type":"Answer","text":"An AI agent connects to your Supabase Postgres, retrieves business context from a bound knowledge base and schema from connected tables, drafts a plan you review, runs SQL across Supabase and any other sources, verifies the result, and delivers an answer with the queries it ran. The shape is plan, execute, verify, explain — not one-shot SQL generation."}},
+{"@type":"Question","name":"Can AI write back to Supabase tables?","acceptedAnswer":{"@type":"Answer","text":"Yes, when you grant non-read-only credentials and approve the plan. InfiniSynapse demonstrates this on Supabase: after producing an analysis report, the agent can write the result back as a Supabase table, auto-detecting the schema, creating or matching the target table, normalizing the data, and confirming the write. Most AI SQL tools are read-only by design."}},
+{"@type":"Question","name":"Is it safe to give an AI agent access to Supabase?","acceptedAnswer":{"@type":"Answer","text":"With guardrails, yes. The pattern is a dedicated read-only role for analysis, a separate write role for the write-back step, Row-Level Security policies intact, plan review before any execution, and query logging on every run. The NIST AI Risk Management Framework gives your security team a shared structure for approving this class of tool."}},
+{"@type":"Question","name":"Can AI join Supabase data with S3 files?","acceptedAnswer":{"@type":"Answer","text":"Yes. InfiniSynapse documents Supabase and S3 as two of several connectable sources, with cross-source analysis handled inside one question. The agent reads schema from Supabase tables, lists or scans S3 objects, plans the join, runs both reads, and combines the results. There is no ETL prerequisite for this shape of analysis."}},
+{"@type":"Question","name":"Does AI respect Supabase Row-Level Security?","acceptedAnswer":{"@type":"Answer","text":"It depends on the role you give it. If the agent connects with a role that has RLS policies, every query runs under those policies — the agent cannot bypass them. If you grant a service role for broader analysis, RLS is bypassed by design; reserve that pattern for analytics-only schemas. Match the connection role to the data sensitivity."}},
+{"@type":"Question","name":"How accurate is AI on Supabase queries?","acceptedAnswer":{"@type":"Answer","text":"Accuracy depends more on context than on raw SQL generation. On the BIRD text-to-SQL benchmark, human engineers reach 92.96% execution accuracy and models still trail that bar. AI agents close the gap by retrieving metric definitions from a bound knowledge base, planning before executing, and verifying results — so the workflow, not the model, drives correctness."}},
+{"@type":"Question","name":"Will an AI agent break my Supabase project?","acceptedAnswer":{"@type":"Answer","text":"A correctly configured agent will not. Use a read-only role by default. Reserve write permissions for explicit write-back steps with plan review. Watch query logs for unexpected patterns. Test on a staging Supabase project first. The risks are the same as giving any analyst read access — they are well understood and well controlled."}}
+]}
+  </script>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    a{color:#5B5BFF;text-decoration:none}
+    a:hover{color:#111827}
+    .nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+    .nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+    .nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+    .nav-logo-mark{height:26px;display:flex;align-items:center}
+    .nav-logo-mark img{height:26px;width:auto;display:block}
+    .nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+    .nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap;transition:color 0.15s}
+    .nav-menu a:hover{color:#111827}
+    .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+    .nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap;box-shadow:none;transition:background 0.15s,border-color 0.15s,transform 0.15s}
+    a.nav-btn:hover{color:#111827;border-color:#C7CEDA;transform:translateY(-1px)}
+    .nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+    .nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+    .nav-btn-primary:hover{color:#FFFFFF}
+    .nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+    .nav-btn-dark:hover{color:#FFFFFF}
+    .nav-icon{width:17px;height:17px;flex:0 0 auto}
+    .nav-chevron{width:15px;height:15px;flex:0 0 auto}
+    .wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+    .breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+    .breadcrumb a{color:#6B7280}
+    .badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+    .badge-client{background:#EEF2FF;color:#4338CA}
+    .badge-cat{background:#ECFDF5;color:#047857}
+    h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+    h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+    h3{font-size:21px;color:#111827;margin:24px 0 8px}
+    p{margin:0 0 16px}
+    ul,ol{padding-left:22px;margin:0 0 18px}
+    li{margin:6px 0}
+    .meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+    .author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+    .info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+    .info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+    .disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+    .toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+    .toc{background:#F9FAFB}
+    .toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+    .tldr{background:#F8FAFC}
+    .snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+    .definition{background:#ECFDF5;border-color:#BBF7D0}
+    .feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+    table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+    th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+    th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+    td{color:#4B5563}
+    .quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+    .cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+    .cta-btn:hover{background:#1F2937;color:#FFFFFF}
+    .faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+    .faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+    .faq-a{color:#4B5563}
+    .methodology{background:#F9FAFB;color:#4B5563}
+    .refs li{font-size:13.5px;color:#4B5563}
+    .related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+    .related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+    .stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+    .stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+    .stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+    .panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+    .panel h3{margin-top:0}
+    .panel-good{background:#F0FDF4;border-color:#BBF7D0}
+    .panel-bad{background:#FEF2F2;border-color:#FECACA}
+    code{background:#F3F4F6;border-radius:6px;padding:1px 6px;font-size:14px;color:#3E2EDB;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+    .footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+    .footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{color:#6B7280;font-size:14px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+    @media(max-width:1280px){.nav-inner{max-width:1180px;column-gap:24px}.nav-menu{gap:18px}.nav-menu a,.nav-btn{font-size:14px}.nav-btn{min-height:36px;padding:0 12px}.nav-btn-primary,.nav-btn-dark{padding:0 14px}}
+    @media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}.nav-logo{width:100%;justify-content:center}.nav-menu,.nav-actions{justify-content:center;flex-wrap:wrap}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}table{font-size:14px}.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12S9.8 18.6 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        EN
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Book Demo
+      </a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/blog">Blog</a><span>&gt;</span>
+    supabase data analysis with ai
+  </nav>
+
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Workflow Guide</span>
+  </div>
+
+  <h1>Supabase Data Analysis with AI: From Cross-Source Question to Result Written Back to Supabase</h1>
+  <p class="meta-desc">A working walkthrough of AI data analysis on Supabase — cross-source joins with S3 and CSV, knowledge-base grounded plans, and writing the verified result back into a Supabase table.</p>
+
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-15 · Last verified 2026-06-15 · Next review 2026-09-15</div>
+    <div class="info-card"><strong>Evidence base</strong>InfiniSynapse Supabase demonstration, Supabase docs, BIRD benchmark, ReAct paper, NIST AI RMF.</div>
+  </div>
+
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, an enterprise AI data analyst that connects to Supabase as one of several data sources. The worked examples below are documented InfiniSynapse demonstrations. We mark the honest limits — most importantly, the write-back step requires non-read-only credentials and human plan approval.
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer</a></li>
+      <li><a href="#shape">What AI data analysis on Supabase looks like</a></li>
+      <li><a href="#example1">Worked example 1: cross-source channel attribution</a></li>
+      <li><a href="#example2">Worked example 2: analyze user feedback and write back to Supabase</a></li>
+      <li><a href="#kb">Knowledge base bound to Supabase</a></li>
+      <li><a href="#plan-mode">Plan mode on Supabase — why review matters more for writes</a></li>
+      <li><a href="#patterns">Cross-source patterns that just work</a></li>
+      <li><a href="#gotchas">Supabase-specific gotchas</a></li>
+      <li><a href="#limits">Honest limits</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>AI data analysis on Supabase runs a four-stage loop — <strong>plan, execute, verify, explain</strong> — on top of your project's Postgres, with the agent retrieving business context before SQL.</li>
+      <li>The cross-source angle is the unlock: Supabase + S3 + CSV in one question, no ETL prerequisite.</li>
+      <li>The unusual capability is <strong>write-back</strong>. An analysis result becomes a Supabase table the agent creates, normalizes, and inserts into — with your plan approval. See the <a href="https://infinisynapse.com/blog/ai-database-query">AI database query pillar</a> for the underlying pattern.</li>
+    </ul>
+  </div>
+
+  <h2 id="answer">Direct answer: what does AI data analysis on Supabase actually do?</h2>
+  <div class="snippet-answer">Supabase data analysis with AI uses an agent that connects to your Supabase Postgres, retrieves business context from a bound knowledge base, plans the analysis, runs SQL across Supabase and any other connected sources, verifies the result, and either delivers the answer or writes it back to a Supabase table when you approve.</div>
+
+  <h2 id="shape">What AI data analysis on Supabase looks like</h2>
+  <p>You connect your Supabase project once — host, port, database, user, password from the project settings — with a role scoped to what the agent should see. From that point on, you ask questions in plain English instead of writing SQL.</p>
+
+  <p>The agent runs a four-stage loop borrowed from the agent research literature, especially the <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">ReAct pattern</a> and Anthropic's <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Building Effective Agents</a> guidance:</p>
+
+  <ol>
+    <li><strong>Plan.</strong> The agent retrieves business context and Supabase schema, then drafts a query plan you can review and edit before anything runs.</li>
+    <li><strong>Execute.</strong> Once approved, the agent runs SQL against your Supabase tables plus any other sources in the same request — S3, CSVs, other Postgres or warehouses.</li>
+    <li><strong>Verify.</strong> The agent sanity-checks results — row counts, null rates, second-path metric validation — and flags low-confidence outputs.</li>
+    <li><strong>Explain.</strong> You get an answer plus the plan, the queries that ran, the sources pulled, and any caveats.</li>
+  </ol>
+
+  <img class="feature-img" src="supabase-data-analysis-with-ai-framework.svg" alt="Workflow diagram showing AI Supabase data analysis: a plain-English question flows through plan review, then cross-source execution against Supabase, S3, and CSV, then verification and an explanation, with a second cycle that writes the verified result back into a Supabase table the agent created or matched" width="1200" height="630" loading="lazy">
+
+  <h2 id="example1">Worked example 1: cross-source channel attribution on Supabase</h2>
+  <p>Imagine a SaaS startup running on Supabase. Auth and app data live in Supabase (<code>auth.users</code>, <code>public.profiles</code>, <code>public.events</code>). Marketing analytics logs land in S3 as daily JSON. The marketing channel cost CSV lives in a Google Drive folder synced to disk.</p>
+
+  <p>The product manager asks:</p>
+  <p class="quote">"Which marketing channels are bringing users who actually activate within seven days, and what is the cost per activated user by channel for the last 30 days?"</p>
+
+  <h3>Stage 1: Plan</h3>
+  <p>The agent retrieves from the knowledge base that "activate" means at least three <code>public.events</code> with <code>event_type IN ('project_created','member_invited','data_connected')</code> in the user's first seven days. It retrieves Supabase schema for <code>auth.users</code> and <code>public.events</code>, lists the S3 log prefix, and notes the cost CSV columns. The plan: join Supabase users to S3 first-touch logs on email, classify channel from the log, count activations per user from <code>public.events</code>, join channel costs from the CSV, return a table.</p>
+
+  <h3>Stage 2: Execute</h3>
+  <p>You approve the plan. The agent runs three queries: a Supabase SQL pull of new users and their activation events, an S3 read of the marketing log, and a read of the channel cost CSV. The cross-source join happens in the execution layer; you do not write the join yourself.</p>
+
+  <h3>Stage 3: Verify</h3>
+  <p>The agent checks that the user count matches a sanity query against <code>auth.users</code> for the date range, confirms no channel is missing a cost row, and flags that 4.2% of users could not be matched to a first-touch log — it surfaces this rather than silently dropping them.</p>
+
+  <h3>Stage 4: Explain</h3>
+  <p>You get a table: channel, new users, activated users, activation rate, channel cost, cost per activated user. Underneath, the plan, the three queries, and the source list. The PM forwards the row that matters to finance with the evidence trail attached.</p>
+
+  <h2 id="example2">Worked example 2: analyze user feedback, then write the report back to Supabase</h2>
+  <p>This is the documented InfiniSynapse demonstration that motivates this page — and the capability you will not find in most AI SQL tools.</p>
+
+  <p>Setup: feedback data lives in <code>public.feedback</code> in your Supabase project, and additional support tickets are exported daily to S3 as Parquet. You want a recurring monthly analysis whose output is itself a Supabase table other parts of your application can read.</p>
+
+  <h3>Step 1: Ask for the analysis</h3>
+  <p class="quote">"Please analyze user feedback from these sources and produce a monthly summary report — top themes, sentiment, and example quotes."</p>
+  <p>The agent retrieves Supabase schema, lists the S3 prefix, plans the analysis, asks for plan approval, and runs. It returns a structured report: themes, sentiment scores, counts, example quotes. So far this is normal AI data analysis.</p>
+
+  <h3>Step 2: Ask the agent to write it back</h3>
+  <p class="quote">"Please write this analysis report into the Supabase database."</p>
+  <p>This is where the workflow diverges from read-only AI SQL tools. The agent:</p>
+  <ol>
+    <li><strong>Auto-detects the result schema</strong> — columns for theme, sentiment_score, mention_count, example_quote, period_start, period_end.</li>
+    <li><strong>Checks for a target table</strong> in Supabase. If <code>public.feedback_monthly_summary</code> exists with a matching schema, the agent prepares an upsert. If it does not exist, the agent proposes a CREATE TABLE statement and the column types it chose.</li>
+    <li><strong>Asks you to approve the write.</strong> Read-only credentials are not enough at this step; the agent needs the write role you granted explicitly for write-back, and the plan you see lists every column and the row count it intends to insert.</li>
+    <li><strong>Normalizes the data</strong> — converts sentiment from the model's labels to numeric scores, casts dates to <code>timestamptz</code>, escapes quote text — and runs the INSERT or upsert.</li>
+    <li><strong>Confirms the write</strong> with a count query against the target table, surfaced as part of the explain step.</li>
+  </ol>
+
+  <p>The result: a Supabase table populated by an AI agent from a cross-source analysis. Your dashboard tool, your app, or your next agent question can read it like any other table.</p>
+
+  <h3>Why this is rare</h3>
+  <p>Most AI SQL features stop at the read. Write operations introduce schema risk, idempotency risk, and security risk that vendors avoid. InfiniSynapse handles them by combining schema auto-detection, plan review, scoped write roles, and a verification step. This is the data-migration-between-data-sources angle — data flows between formats and stores without manual export, import, or transform scripts.</p>
+
+  <h2 id="kb">Knowledge base bound to Supabase — definitions on rails</h2>
+  <p>The single biggest source of AI SQL errors is not bad query generation. It is the agent guessing what your metric means. For a Supabase project, the bound knowledge base fixes this.</p>
+
+  <p>Each Supabase connection in InfiniSynapse pairs with a curated knowledge base of business definitions, dictionary entries, and analysis playbooks. Examples for the SaaS scenario:</p>
+  <ul>
+    <li>"Activation" is at least three <code>public.events</code> with specific <code>event_type</code> values in the first seven days.</li>
+    <li><code>auth.users.email</code> is the join key against external first-touch logs.</li>
+    <li>"Free tier" is a profile with <code>plan_id IS NULL</code> or <code>plan_id = 'free'</code>.</li>
+    <li>The marketing channel taxonomy lists 11 canonical values; anything else is "other."</li>
+  </ul>
+
+  <p>The agent retrieves from this knowledge base as a tool call <strong>before</strong> running SQL. The database tells the agent what happened. The knowledge base tells the agent what those facts mean. <a href="https://en.wikipedia.org/wiki/Retrieval-augmented_generation" target="_blank" rel="noopener">Retrieval-augmented generation</a> is the underlying primitive — applied to business semantics, not general knowledge.</p>
+
+  <table>
+    <thead>
+      <tr><th>Without KB binding</th><th>With KB binding</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Agent guesses "active user" = a recent login</td><td>Agent uses your defined event-based activation criterion</td></tr>
+      <tr><td>Channel names vary between queries</td><td>Agent normalizes to your 11 canonical channels</td></tr>
+      <tr><td>"Last 30 days" silently rolls timezone differently each run</td><td>Agent applies your defined timezone and boundary rule</td></tr>
+      <tr><td>RLS policies surprise the agent</td><td>KB notes which schemas have RLS and what role the agent is using</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="plan-mode">Plan mode on Supabase — why review matters more for writes</h2>
+  <p>InfiniSynapse surfaces every analysis as a plan you can read and edit before execution. For read-only Supabase queries the plan is a safety check. For write-back queries it is the safety check.</p>
+
+  <p>What you see in plan mode for the write-back step:</p>
+  <ul>
+    <li>The target schema and table name — created or matched</li>
+    <li>The column types the agent picked, with reasoning</li>
+    <li>The INSERT or upsert pattern, including conflict targets</li>
+    <li>The expected row count</li>
+    <li>The role the agent will use — the one with write permissions on this specific schema</li>
+  </ul>
+
+  <p>Approval is binary. Reject and the agent revises. Approve and it writes. Either way the plan, the queries, the row count, and the result land in the audit trail.</p>
+
+  <h2 id="patterns">Cross-source patterns that just work</h2>
+  <p>The combinations Supabase teams ask about most often.</p>
+
+  <table>
+    <thead>
+      <tr><th>Pattern</th><th>Sources</th><th>What the agent does</th><th>Where it shines</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Supabase + S3</strong></td><td>App DB + object storage logs</td><td>Joins event logs in S3 to user identity in Supabase</td><td>Product analytics that outgrew Studio reports</td></tr>
+      <tr><td><strong>Supabase + external Postgres</strong></td><td>App DB + ops or finance DB</td><td>Cross-database joins on shared business keys</td><td>Customer lifecycle analysis across systems</td></tr>
+      <tr><td><strong>Supabase + CSV</strong></td><td>App DB + uploaded sales or marketing file</td><td>Joins the uploaded file against Supabase tables in one question</td><td>Ad-hoc business questions that need an offline data source</td></tr>
+      <tr><td><strong>Supabase + Snowflake</strong></td><td>App DB + warehouse</td><td>Pulls warehouse aggregates and joins to app data</td><td>Hybrid product + data team setups</td></tr>
+      <tr><td><strong>Supabase + Supabase</strong></td><td>Two Supabase projects</td><td>Multi-tenant or staging-vs-prod comparisons</td><td>Investigating differences between environments</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="gotchas">Supabase-specific gotchas the agent has to handle</h2>
+  <p>Supabase is Postgres with extras. The extras matter.</p>
+
+  <h3>Row-Level Security</h3>
+  <p>RLS policies apply to whichever role the agent connects with. If the agent role has RLS enabled, the agent sees only what that role can see — by design. Set this up before running the agent on data with user-level access controls.</p>
+
+  <h3>Auth schema vs public schema</h3>
+  <p>The <code>auth.users</code> table is owned by Supabase and has its own access rules. The agent should usually join to your <code>public.profiles</code> rather than read <code>auth.users</code> directly, except when computing user-cohort metrics where the auth signup time matters.</p>
+
+  <h3>JSONB columns</h3>
+  <p>Supabase apps lean heavily on JSONB. The agent has to understand which JSON keys are stable and which are not. The knowledge base is where you tell it.</p>
+
+  <h3>Realtime channels</h3>
+  <p>Supabase realtime is a websocket subscription pattern, not a queryable table. Agent analysis ignores realtime channels and reads the underlying tables directly. Surface this so analysts do not expect "live stream" results.</p>
+
+  <h3>Encrypted columns</h3>
+  <p>If you use <code>pgcrypto</code>-encrypted columns, the agent's role needs decrypt access for those columns to be analyzable. Otherwise the agent sees opaque bytea and will flag the column as unreadable.</p>
+
+  <h2 id="limits">Honest limits</h2>
+  <div class="grid-2">
+    <div class="panel panel-good">
+      <h3>Where the AI workflow shines</h3>
+      <ul>
+        <li>Open-ended Supabase questions with no pre-built dashboard</li>
+        <li>Cross-source joins against S3, CSV, or external databases</li>
+        <li>Recurring analyses that should land back in a Supabase table</li>
+        <li>Investigations that need an evidence trail for review</li>
+        <li>Teams with at least the top ten metric definitions written down</li>
+      </ul>
+    </div>
+    <div class="panel panel-bad">
+      <h3>Where it is the wrong tool</h3>
+      <ul>
+        <li>Fixed daily dashboards — a BI tool is cheaper and faster</li>
+        <li>Sub-second app queries that the application itself should issue</li>
+        <li>Teams with no agreed metric definitions — the agent will faithfully automate the ambiguity</li>
+        <li>Schema design and migrations — that is Supabase Studio's job</li>
+        <li>Write-back at scale without human review — do not skip the plan</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="num">92.96%</div><div class="lab">Human engineer execution accuracy on the BIRD text-to-SQL benchmark — the bar models still trail, which is why AI agents add context, planning, and verification rather than relying on one-shot SQL. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">Source: BIRD</a></div></div>
+    <div class="stat"><div class="num">4</div><div class="lab">Stages in every AI Supabase analysis: plan, execute, verify, explain — the loop derived from the ReAct agent pattern. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">Source: arXiv 2210.03629</a></div></div>
+    <div class="stat"><div class="num">2</div><div class="lab">Roles you typically grant on Supabase — one read-only role for analysis, one scoped write role for explicit write-back. The split keeps the audit trail clean. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">Source: NIST AI RMF</a></div></div>
+  </div>
+
+  <h2>Adoption: a one-week Supabase pilot</h2>
+  <ol>
+    <li><strong>Connect Supabase read-only</strong> with a role limited to the schemas you want analyzed. Confirm the agent retrieves schema without you describing tables.</li>
+    <li><strong>Seed the knowledge base</strong> with your top ten metric definitions and the canonical values for any business taxonomy. Confirm the agent cites them back in plan mode.</li>
+    <li><strong>Run three questions you know the answer to.</strong> One single-source, one cross-source, one open-ended "why." Score the plans, the answers, and the evidence trail.</li>
+    <li><strong>Add a second source.</strong> An S3 bucket or a CSV. Re-run the cross-source question end to end and watch the join happen at the execution layer.</li>
+    <li><strong>Try one write-back</strong> in a staging Supabase project. Approve the plan, watch the agent create or match the target table, and verify the row count. Only after this works do you wire write-back to production.</li>
+  </ol>
+
+  <div class="cta-box">
+    <h3>Try AI data analysis on your own Supabase project</h3>
+    <p>Connect Supabase, ask one cross-source question, and review the plan, queries, result, and evidence trail. If you want to see the write-back loop, ask the agent to materialize the result as a new Supabase table — review the plan first.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+
+  <h2>Related InfiniSynapse pages</h2>
+  <p>For the broader pattern see the <a href="https://infinisynapse.com/blog/ai-database-query">AI database query pillar</a>. For the tool landscape around Supabase analytics see <a href="https://infinisynapse.com/blog/supabase-data-analysis-tools">Supabase data analysis tools</a>. Adjacent stacks: <a href="https://infinisynapse.com/blog/mysql-data-analysis-tools">MySQL data analysis tools</a>, <a href="https://infinisynapse.com/blog/mysql-data-analysis-with-ai">MySQL data analysis with AI</a>, <a href="https://infinisynapse.com/blog/data-analyst-snowflake">data analyst Snowflake</a>, and <a href="https://infinisynapse.com/blog/data-analyst-snowflake-with-ai">data analyst Snowflake with AI</a>. Concept pages: <a href="https://infinisynapse.com/Category/what-is-a-data-agent">what is a data agent</a>, <a href="https://infinisynapse.com/Category/data-agent-memory-explained">data agent memory explained</a>, and <a href="https://infinisynapse.com/Category/explainable-ai-data-analysis">explainable AI data analysis</a>.</p>
+
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">How does AI analyze Supabase data?</div><div class="faq-a">An AI agent connects to your Supabase Postgres, retrieves business context from a bound knowledge base and schema from connected tables, drafts a plan you review, runs SQL across Supabase and any other sources, verifies the result, and delivers an answer with the queries it ran. The shape is plan, execute, verify, explain — not one-shot SQL generation.</div></div>
+  <div class="faq-item"><div class="faq-q">Can AI write back to Supabase tables?</div><div class="faq-a">Yes, when you grant non-read-only credentials and approve the plan. InfiniSynapse demonstrates this on Supabase: after producing an analysis report, the agent can write the result back as a Supabase table, auto-detecting the schema, creating or matching the target table, normalizing the data, and confirming the write. Most AI SQL tools are read-only by design.</div></div>
+  <div class="faq-item"><div class="faq-q">Is it safe to give an AI agent access to Supabase?</div><div class="faq-a">With guardrails, yes. The pattern is a dedicated read-only role for analysis, a separate write role for the write-back step, Row-Level Security policies intact, plan review before any execution, and query logging on every run. The NIST AI Risk Management Framework gives your security team a shared structure for approving this class of tool.</div></div>
+  <div class="faq-item"><div class="faq-q">Can AI join Supabase data with S3 files?</div><div class="faq-a">Yes. InfiniSynapse documents Supabase and S3 as two of several connectable sources, with cross-source analysis handled inside one question. The agent reads schema from Supabase tables, lists or scans S3 objects, plans the join, runs both reads, and combines the results. There is no ETL prerequisite for this shape of analysis.</div></div>
+  <div class="faq-item"><div class="faq-q">Does AI respect Supabase Row-Level Security?</div><div class="faq-a">It depends on the role you give it. If the agent connects with a role that has RLS policies, every query runs under those policies — the agent cannot bypass them. If you grant a service role for broader analysis, RLS is bypassed by design; reserve that pattern for analytics-only schemas. Match the connection role to the data sensitivity.</div></div>
+  <div class="faq-item"><div class="faq-q">How accurate is AI on Supabase queries?</div><div class="faq-a">Accuracy depends more on context than on raw SQL generation. On the BIRD text-to-SQL benchmark, human engineers reach 92.96% execution accuracy and models still trail that bar. AI agents close the gap by retrieving metric definitions from a bound knowledge base, planning before executing, and verifying results — so the workflow, not the model, drives correctness.</div></div>
+  <div class="faq-item"><div class="faq-q">Will an AI agent break my Supabase project?</div><div class="faq-a">A correctly configured agent will not. Use a read-only role by default. Reserve write permissions for explicit write-back steps with plan review. Watch query logs for unexpected patterns. Test on a staging Supabase project first. The risks are the same as giving any analyst read access — they are well understood and well controlled.</div></div>
+
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-15 · <strong>Next scheduled review:</strong> 2026-09-15</p>
+    <p>The worked examples on this page are based on documented InfiniSynapse demonstrations using Supabase and S3 as connectable data sources. Stage names follow the ReAct pattern from the academic agent literature. Accuracy claims trace to the BIRD text-to-SQL benchmark; governance guidance traces to the NIST AI Risk Management Framework and the EU AI Act.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and is the vendor demonstrated. To reduce bias, the page calls out cases where AI agents are the wrong tool, separates the write-back step as a higher-risk operation that needs explicit human review, and lists Supabase-specific gotchas the agent must handle rather than glossing over them.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for terminology, source links, and Supabase feature changes.</p>
+  </div>
+
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> Supabase. Official documentation. <a href="https://supabase.com/docs" target="_blank" rel="noopener">supabase.com/docs</a>.</li>
+    <li><strong>[Vendor]</strong> Supabase. Product site. <a href="https://supabase.com/" target="_blank" rel="noopener">supabase.com</a>.</li>
+    <li><strong>[Independent]</strong> Yao et al. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arXiv 2210.03629</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic (2024). Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL: A Big Bench for Large-Scale Database Grounded Text-to-SQL Evaluation. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">BIRD benchmark</a>.</li>
+    <li><strong>[Independent]</strong> Wikipedia. Retrieval-augmented generation. <a href="https://en.wikipedia.org/wiki/Retrieval-augmented_generation" target="_blank" rel="noopener">en.wikipedia.org/wiki/Retrieval-augmented_generation</a>.</li>
+    <li><strong>[Independent]</strong> NIST. AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> A Survey of Data Agents (2025). <a href="https://arxiv.org/html/2510.23587v1" target="_blank" rel="noopener">arXiv 2510.23587</a>.</li>
+  </ol>
+
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/blog/ai-database-query">AI database query pillar guide</a>
+    <a href="https://infinisynapse.com/blog/supabase-data-analysis-tools">Supabase data analysis tools</a>
+    <a href="https://infinisynapse.com/blog/mysql-data-analysis-tools">MySQL data analysis tools</a>
+    <a href="https://infinisynapse.com/blog/mysql-data-analysis-with-ai">MySQL data analysis with AI</a>
+    <a href="https://infinisynapse.com/blog/data-analyst-snowflake">Data analyst Snowflake</a>
+    <a href="https://infinisynapse.com/blog/data-analyst-snowflake-with-ai">Data analyst Snowflake with AI</a>
+    <a href="https://infinisynapse.com/Category/what-is-a-data-agent">What is a data agent?</a>
+    <a href="https://infinisynapse.com/Category/explainable-ai-data-analysis">Explainable AI data analysis</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
