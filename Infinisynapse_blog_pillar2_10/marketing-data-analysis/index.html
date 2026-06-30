@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing Data Analysis: 2026 Methods, Tools, and AI</title>
+  <meta name="description" content="A working playbook for marketing data analysis in 2026 — sources, eight weekly questions, attribution choices, the tool ladder, and where AI agents fit.">
+  <meta name="keywords" content="marketing data analysis, marketing analytics with ai, marketing analysis examples">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/marketing-data-analysis">
+  <meta property="og:title" content="Marketing Data Analysis in 2026: The Working Playbook">
+  <meta property="og:description" content="A working playbook for marketing data analysis in 2026 — sources, eight weekly questions, attribution choices, the tool ladder, and where AI agents fit.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/marketing-data-analysis">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/marketing-data-analysis/marketing-data-analysis-framework.svg">
+  <meta property="og:image:alt" content="Marketing data analysis flow — sources (ads, GA4, CRM, warehouse) feed eight recurring questions analysts answer with SQL, BI, and an AI data agent.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Marketing Data Analysis in 2026: The Working Playbook">
+  <meta name="twitter:description" content="A working playbook for marketing data analysis in 2026 — sources, eight weekly questions, attribution choices, the tool ladder, and where AI agents fit.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/marketing-data-analysis/marketing-data-analysis-framework.svg">
+  <meta name="twitter:image:alt" content="Marketing data analysis flow — sources (ads, GA4, CRM, warehouse) feed eight recurring questions analysts answer with SQL, BI, and an AI data agent.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"Marketing Data Analysis in 2026: The Working Playbook","item":"https://infinisynapse.com/en/blog/marketing-data-analysis"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Marketing Data Analysis in 2026: The Working Playbook","description":"A working playbook for marketing data analysis in 2026 — sources, eight weekly questions, attribution choices, the tool ladder, and where AI agents fit.","image":"https://infinisynapse.com/en/blog/marketing-data-analysis/marketing-data-analysis-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/marketing-data-analysis"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is marketing data analysis?","acceptedAnswer":{"@type":"Answer","text":"Marketing data analysis is the practice of combining ad platform data, web and product analytics, CRM data, and warehouse data to answer recurring questions about cost, retention, attribution, and channel mix. The work runs from spreadsheets at one end of the maturity curve to a warehouse-plus-BI-plus-AI-agent stack at the other end. The set of weekly questions stays roughly the same across team sizes; only the tooling and depth of analysis change."}},{"@type":"Question","name":"What data sources do marketing teams analyze?","acceptedAnswer":{"@type":"Answer","text":"Four classes of source: ad platforms (Google Ads, Meta, LinkedIn, TikTok, programmatic), web and product analytics (predominantly GA4 with some Mixpanel and PostHog), CRM systems (HubSpot, Salesforce, B2C CRMs), and the warehouse (Snowflake, BigQuery, Redshift, or Postgres). The warehouse is the reconciled ground truth where other sources land through ELT."}},{"@type":"Question","name":"Which attribution model should I use in 2026?","acceptedAnswer":{"@type":"Answer","text":"Pick one as the primary number you report and budget on, then run a second as a monthly sanity check, then run incrementality tests on major channels at least once per quarter. Last-touch is simple and biased but auditable. GA4 data-driven attribution is the default inside GA4. Marketing mix modeling fits a privacy-eroded environment. Incrementality is the most credible but operationally expensive."}},{"@type":"Question","name":"What tools do marketing teams use for data analysis?","acceptedAnswer":{"@type":"Answer","text":"The tool ladder runs from spreadsheets plus platform UIs for solo founders, to BigQuery plus GA4 export plus a notebook for a single analyst, to a full warehouse plus Fivetran plus dbt plus BI stack for a team, with AI data agents now layering on top for ad-hoc analysis. Each rung adds a tool only when the rung below it has run out of headroom."}},{"@type":"Question","name":"How does AI help with marketing data analysis?","acceptedAnswer":{"@type":"Answer","text":"AI data agents answer the ad-hoc question the dashboard does not — anomaly investigation when CAC spikes, cross-source attribution audits when GA4 and the warehouse disagree, and open-ended exploration for non-analyst marketers. The pattern is to let the dashboard cover the recurring 80% and let the agent handle the 20% where pre-built panels do not fit."}},{"@type":"Question","name":"What are the main marketing data analysis examples?","acceptedAnswer":{"@type":"Answer","text":"Eight recurring examples cover most weekly work: CAC by channel, blended payback, retention by cohort, attribution audit, creative performance, funnel diagnostics, LTV by segment, and channel mix versus forecast. Each of the eight produces a chart and a small set of follow-up questions the analyst either answers in SQL or routes to an AI agent if exploration is needed."}},{"@type":"Question","name":"What should a marketing analysis dashboard contain?","acceptedAnswer":{"@type":"Answer","text":"A working marketing dashboard has six standing panels: spend and CAC by channel with a 4-week trailing average overlay, new customer counts by acquisition channel with a forecast line, retention curves by cohort, a creative leaderboard ranked by ROAS, funnel diagnostics with channel and device splits, and channel mix versus plan as a stacked bar. The dashboard ends there — questions outside these six belong in an analyst session."}}]}</script>
+  <style>*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:#5B5BFF;text-decoration:none}
+a:hover{color:#111827}
+.nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+.nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+.nav-logo-mark{height:26px;display:flex;align-items:center}
+.nav-logo-mark img{height:26px;width:auto;display:block}
+.nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+.nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+.nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap}
+.nav-menu a:hover{color:#111827}
+.nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+.nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap}
+.nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+.nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+.nav-btn-primary:hover{color:#FFFFFF}
+.nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+.nav-btn-dark:hover{color:#FFFFFF}
+.wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+.breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+.breadcrumb a{color:#6B7280}
+.badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+.badge-client{background:#EEF2FF;color:#4338CA}
+.badge-cat{background:#ECFDF5;color:#047857}
+h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+h3{font-size:21px;color:#111827;margin:24px 0 8px}
+p{margin:0 0 16px}
+ul,ol{padding-left:22px;margin:0 0 18px}
+li{margin:6px 0}
+code{background:#F3F4F6;border-radius:4px;padding:2px 6px;font-family:Consolas,Menlo,monospace;font-size:14px}
+pre{background:#0F172A;color:#E5E7EB;border-radius:10px;padding:16px 18px;overflow-x:auto;margin:14px 0;font-size:14px;line-height:1.55}
+pre code{background:transparent;color:inherit;padding:0;font-size:14px}
+.meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+.author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+.info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+.info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+.disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+.toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+.toc{background:#F9FAFB}
+.toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+.tldr{background:#F8FAFC}
+.snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+.feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+td{color:#4B5563}
+.quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+.cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+.cta-btn:hover{background:#1F2937;color:#FFFFFF}
+.faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+.faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+.faq-a{color:#4B5563}
+.methodology{background:#F9FAFB;color:#4B5563}
+.refs li{font-size:13.5px;color:#4B5563}
+.related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+.related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+.stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+.stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+.stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+.panel h3{margin-top:0}
+.panel-good{background:#F0FDF4;border-color:#BBF7D0}
+.panel-bad{background:#FEF2F2;border-color:#FECACA}
+.footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+.footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+.footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.footer-links{display:grid;gap:8px}
+.footer-links a{color:#6B7280;font-size:14px}
+.footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+@media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">EN</span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">Book Demo</a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">Login</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    marketing data analysis
+  </nav>
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Methods Guide</span>
+  </div>
+  <h1>Marketing Data Analysis in 2026: The Working Playbook</h1>
+  <p class="meta-desc">A working playbook for marketing data analysis — sources, the eight questions teams answer weekly, attribution choices, tooling ladder, and where an AI data analyst fits the stack.</p>
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 · Last verified 2026-06-28 · Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>Google Analytics 4 documentation, Meta and Google Ads reporting APIs, dbt and warehouse vendor docs, MMM and incrementality research literature, and field examples across SaaS and ecommerce teams.</div>
+  </div>
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, which sells an AI data analyst used by marketing teams. The playbook is written to apply whether or not you use our product, and links to external sources for every methodology claim.
+  </div>
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer: what marketing data analysis covers</a></li>
+      <li><a href="#sources">The four source classes every marketing stack pulls from</a></li>
+      <li><a href="#questions">The eight weekly questions analysts answer</a></li>
+      <li><a href="#attribution">Attribution choices in 2026</a></li>
+      <li><a href="#tools">The tool ladder for marketing analysis</a></li>
+      <li><a href="#ai-fit">Where an AI data agent earns the seat</a></li>
+      <li><a href="#dashboard">What a working marketing analysis dashboard contains</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>Marketing data analysis in 2026 means analyzing data across four source classes: ad platforms, web/product analytics (mostly GA4), the CRM, and the warehouse.</li>
+      <li>Eight questions take up most of an analyst's week — CAC by channel, blended payback, retention by cohort, attribution audit, creative performance, funnel diagnostics, LTV by segment, and channel mix vs forecast.</li>
+      <li>Attribution choice (last-touch, data-driven, MMM, incrementality) is a policy decision, not a tool choice — pick one primary model and run the others as sanity checks.</li>
+      <li>The tool ladder runs from spreadsheets to GA4 BigQuery export to a warehouse plus dbt plus BI, with AI data agents now layering on top for ad-hoc questions.</li>
+      <li>AI data agents shine on the open-ended "why did CAC spike in week 14?" question that does not fit a dashboard — connect the warehouse, bind a small knowledge base of business definitions, and ask in plain English.</li>
+    </ul>
+  </div>
+  <div class="snippet-answer">Marketing data analysis is the practice of combining ad platforms, web and product analytics, the CRM, and the warehouse to answer a recurring set of weekly questions — CAC, payback, retention, attribution, creative performance, funnel, LTV, and channel mix. The eight questions take up most analyst time. Tooling runs from spreadsheets to warehouse-plus-BI, with AI data agents now handling open-ended exploration.</div>
+  <img class="feature-img" src="marketing-data-analysis-framework.svg" alt="Marketing data analysis flow — sources (ads, GA4, CRM, warehouse) feed eight recurring questions analysts answer with SQL, BI, and an AI data agent." width="1200" height="630" loading="lazy">
+
+  <h2 id="sources">The four source classes every marketing stack pulls from</h2>
+<p>Four classes of source feed marketing analysis — covering them sets the ceiling for what an analyst can answer:</p>
+  <ul>
+    <li><strong>Ad platforms.</strong> Google Ads, Meta Ads, LinkedIn, TikTok, programmatic. Costs, impressions, clicks, conversions reported by the platform. Pulled via the platform API or an ELT vendor like Fivetran or Airbyte.</li>
+    <li><strong>Web and product analytics.</strong> Predominantly Google Analytics 4, with some teams running Mixpanel, Amplitude, or PostHog. Sessions, events, conversions, and channel groupings.</li>
+    <li><strong>CRM.</strong> HubSpot, Salesforce, or a B2C CRM. Lead and opportunity data, deal stage transitions, customer lifecycle attributes.</li>
+    <li><strong>Warehouse.</strong> Snowflake, BigQuery, Redshift, or a Postgres data warehouse. The reconciled view — every other source lands here through ELT and is modeled with dbt or a transformation layer.</li>
+  </ul>
+  <p>The warehouse is the analytical ground truth. Spreadsheets and platform UIs are points of friction the team graduates from once cross-source questions become weekly.</p>
+
+  <h2 id="questions">The eight weekly questions analysts actually answer</h2>
+<table>
+    <thead><tr><th>Question</th><th>What it measures</th><th>Where the data sits</th></tr></thead>
+    <tbody>
+      <tr><td>CAC by channel</td><td>Spend / new customers, weekly, by channel</td><td>Ad platforms + warehouse customer table</td></tr>
+      <tr><td>Blended payback</td><td>Days to recover CAC from gross margin</td><td>Warehouse — orders, COGS, customers</td></tr>
+      <tr><td>Retention by cohort</td><td>% of cohort still active at week N</td><td>Warehouse — events or orders</td></tr>
+      <tr><td>Attribution audit</td><td>Same conversions, three models — sanity gap</td><td>GA4 BigQuery export + warehouse</td></tr>
+      <tr><td>Creative performance</td><td>Top creatives by ROAS, normalized by spend</td><td>Ad platforms + warehouse</td></tr>
+      <tr><td>Funnel diagnostics</td><td>Step-by-step drop-off, segmented</td><td>GA4 / product analytics</td></tr>
+      <tr><td>LTV by segment</td><td>90 / 180 / 365 day LTV by acquisition channel</td><td>Warehouse — orders, customers, channel</td></tr>
+      <tr><td>Channel mix vs forecast</td><td>Actual vs planned spend share, by channel</td><td>Spreadsheet plan + ad platforms</td></tr>
+    </tbody>
+  </table>
+  <p>Eight questions cover the working week of most marketing analysts. The remaining time goes to ad-hoc exploration — "why did paid social CPM jump on Tuesday?" — which is exactly where <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query agents</a> earn their seat.</p>
+
+  <h2 id="attribution">Attribution choices in 2026 — pick one, run others as sanity checks</h2>
+<p>Attribution is a policy decision the team owns, not a tool default. Four credible models in 2026, none of which is the universal answer:</p>
+  <ul>
+    <li><strong>Last-touch.</strong> Simple, biased, but auditable. Still useful as a fallback comparison.</li>
+    <li><strong>Data-driven (DDA).</strong> GA4 default, machine-learned attribution. Convenient inside GA4, opaque outside it.</li>
+    <li><strong>Marketing Mix Modeling (MMM).</strong> Top-down regression across spend and outcome time series. Best when privacy changes have eroded tracking. Slower iteration; quarterly cadence.</li>
+    <li><strong>Incrementality testing.</strong> Holdout-based geo or audience tests. Most credible but operationally expensive.</li>
+  </ul>
+  <p>The working policy: pick one model as the primary number you report and budget on, run a second as a monthly sanity check, and run an incrementality test on each major channel at least once a quarter. The <a href="https://www.gartner.com/" target="_blank" rel="noopener">analyst literature</a> and platform documentation both back this pattern; the only argument is which one is primary.</p>
+
+  <h2 id="tools">The tool ladder — spreadsheets to warehouse to AI agent</h2>
+<table>
+    <thead><tr><th>Rung</th><th>Stack</th><th>When you stay there</th><th>When you graduate</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Spreadsheet + platform UI</td><td>Solo founder, two channels</td><td>Three+ channels or a real product analytics tool</td></tr>
+      <tr><td>2</td><td>BigQuery + GA4 export + a notebook</td><td>One analyst, GA4 questions dominate</td><td>The CRM and warehouse have to talk</td></tr>
+      <tr><td>3</td><td>Snowflake/BigQuery + Fivetran + dbt + BI</td><td>Team of 3–8, cross-source weekly</td><td>Ad-hoc questions outpace the dashboard backlog</td></tr>
+      <tr><td>4</td><td>Stack 3 + an AI data agent</td><td>Open-ended questions you cannot pre-model</td><td>You are already here — read the <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-with-ai">PostgreSQL AI data analysis guide</a> for the connection setup pattern</td></tr>
+    </tbody>
+  </table>
+  <p>Each rung adds a tool only when the rung below it has run out of headroom. Skipping rungs is the most common over-engineering mistake.</p>
+
+  <h2 id="ai-fit">Where an AI data agent earns the seat in a marketing stack</h2>
+<p>The dashboard answers the questions you already knew to ask. An AI data agent answers the question you did not know to ask until you saw the dashboard drift. Three concrete patterns:</p>
+  <h3>1. Mid-week anomaly investigation</h3>
+  <p>CAC on paid social spiked 22% on Tuesday. The dashboard shows the spike but not the cause. An <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst</a> with the warehouse connected and a marketing knowledge base bound can break it down by campaign, creative, audience, and landing page in one prompt — minutes instead of a half-day query session.</p>
+  <h3>2. Cross-source attribution audit</h3>
+  <p>The number GA4 reports and the number the warehouse reports disagree by 8%. The agent can quantify the gap, identify the join key where the mismatch lives, and surface the rows that fall on only one side. The output is an evidence trail — plan, SQL, results — the analyst can defend.</p>
+  <h3>3. New-question onboarding for non-analyst marketers</h3>
+  <p>A growth marketer wants to ask "which creatives drove the highest LTV cohort, not just the highest ROAS?" Without an agent, that becomes a BI ticket. With an agent and a bound knowledge base, it becomes a conversation that ends with a chart.</p>
+  <p>The pattern is not "replace the dashboard" — the pattern is "let the dashboard answer the recurring 80% and let the agent answer the ad-hoc 20% where dashboards cannot be pre-built". See <a href="https://infinisynapse.com/en/blog/agentic-analytics-explained">agentic analytics explained</a> for the deeper category framing.</p>
+
+  <h2 id="dashboard">What a working marketing analysis dashboard contains</h2>
+<p>A dashboard is the standing answer to questions the team already knows to ask. A working marketing dashboard has six standing panels:</p>
+  <ol>
+    <li><strong>Spend and CAC by channel</strong>, week-over-week, with a 4-week trailing average overlay.</li>
+    <li><strong>New customer counts</strong>, segmented by acquisition channel, with a forecast line.</li>
+    <li><strong>Retention curves</strong> by acquisition cohort, 4-week trailing.</li>
+    <li><strong>Creative leaderboard</strong>, ranked by ROAS within the last 14 days, with a minimum spend filter.</li>
+    <li><strong>Funnel diagnostics</strong>, top to bottom, with channel and device splits.</li>
+    <li><strong>Channel mix vs plan</strong>, current week, as a stacked bar.</li>
+  </ol>
+  <p>The dashboard ends there. Questions outside these six belong in an analyst session or an AI agent prompt, not in a permanent panel.</p>
+  <div class="quote">A working dashboard is short. The agent handles the long tail.</div>
+  <div class="cta-box">
+    <h3>Ask an open-ended marketing question across your warehouse</h3>
+    <p>Connect Snowflake, BigQuery, or Postgres read-only. Bind a small knowledge base of business definitions — what "active customer" means, which status equals a paid conversion. Then ask one question the dashboard does not answer.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What is marketing data analysis?</div><div class="faq-a">Marketing data analysis is the practice of combining ad platform data, web and product analytics, CRM data, and warehouse data to answer recurring questions about cost, retention, attribution, and channel mix. The work runs from spreadsheets at one end of the maturity curve to a warehouse-plus-BI-plus-AI-agent stack at the other end. The set of weekly questions stays roughly the same across team sizes; only the tooling and depth of analysis change.</div></div>
+  <div class="faq-item"><div class="faq-q">What data sources do marketing teams analyze?</div><div class="faq-a">Four classes of source: ad platforms (Google Ads, Meta, LinkedIn, TikTok, programmatic), web and product analytics (predominantly GA4 with some Mixpanel and PostHog), CRM systems (HubSpot, Salesforce, B2C CRMs), and the warehouse (Snowflake, BigQuery, Redshift, or Postgres). The warehouse is the reconciled ground truth where other sources land through ELT.</div></div>
+  <div class="faq-item"><div class="faq-q">Which attribution model should I use in 2026?</div><div class="faq-a">Pick one as the primary number you report and budget on, then run a second as a monthly sanity check, then run incrementality tests on major channels at least once per quarter. Last-touch is simple and biased but auditable. GA4 data-driven attribution is the default inside GA4. Marketing mix modeling fits a privacy-eroded environment. Incrementality is the most credible but operationally expensive.</div></div>
+  <div class="faq-item"><div class="faq-q">What tools do marketing teams use for data analysis?</div><div class="faq-a">The tool ladder runs from spreadsheets plus platform UIs for solo founders, to BigQuery plus GA4 export plus a notebook for a single analyst, to a full warehouse plus Fivetran plus dbt plus BI stack for a team, with AI data agents now layering on top for ad-hoc analysis. Each rung adds a tool only when the rung below it has run out of headroom.</div></div>
+  <div class="faq-item"><div class="faq-q">How does AI help with marketing data analysis?</div><div class="faq-a">AI data agents answer the ad-hoc question the dashboard does not — anomaly investigation when CAC spikes, cross-source attribution audits when GA4 and the warehouse disagree, and open-ended exploration for non-analyst marketers. The pattern is to let the dashboard cover the recurring 80% and let the agent handle the 20% where pre-built panels do not fit.</div></div>
+  <div class="faq-item"><div class="faq-q">What are the main marketing data analysis examples?</div><div class="faq-a">Eight recurring examples cover most weekly work: CAC by channel, blended payback, retention by cohort, attribution audit, creative performance, funnel diagnostics, LTV by segment, and channel mix versus forecast. Each of the eight produces a chart and a small set of follow-up questions the analyst either answers in SQL or routes to an AI agent if exploration is needed.</div></div>
+  <div class="faq-item"><div class="faq-q">What should a marketing analysis dashboard contain?</div><div class="faq-a">A working marketing dashboard has six standing panels: spend and CAC by channel with a 4-week trailing average overlay, new customer counts by acquisition channel with a forecast line, retention curves by cohort, a creative leaderboard ranked by ROAS, funnel diagnostics with channel and device splits, and channel mix versus plan as a stacked bar. The dashboard ends there — questions outside these six belong in an analyst session.</div></div>
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 · <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>This playbook synthesizes Google Analytics 4 official documentation, ad platform reporting reference docs, the dbt analytics engineering guide, marketing mix modeling literature, and field experience across marketing teams that operate on Snowflake, BigQuery, and Postgres warehouses. The eight-question pattern and tool ladder reflect observed practice across more than a dozen teams rather than vendor marketing.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells an enterprise AI data analyst. To reduce bias, the page leads with the topic itself, treats InfiniSynapse as one option among many, and links to external sources for every numeric claim.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for accuracy and link health.</p>
+  </div>
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> Google. Google Analytics 4 documentation. <a href="https://support.google.com/analytics/answer/10089681" target="_blank" rel="noopener">support.google.com/analytics</a>.</li>
+    <li><strong>[Vendor]</strong> Google. GA4 BigQuery export schema. <a href="https://support.google.com/analytics/answer/7029846" target="_blank" rel="noopener">support.google.com/analytics/answer/7029846</a>.</li>
+    <li><strong>[Vendor]</strong> dbt Labs. Analytics engineering guide. <a href="https://docs.getdbt.com/" target="_blank" rel="noopener">docs.getdbt.com</a>.</li>
+    <li><strong>[Vendor]</strong> Meta. Marketing API reference. <a href="https://developers.facebook.com/docs/marketing-apis" target="_blank" rel="noopener">developers.facebook.com/docs/marketing-apis</a>.</li>
+    <li><strong>[Independent]</strong> Yao et al. ReAct: Synergizing Reasoning and Acting in Language Models. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arxiv.org/abs/2210.03629</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic. Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Standard]</strong> NIST. AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL benchmark. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+  </ol>
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query pillar guide</a>
+    <a href="https://infinisynapse.com/en/blog/ecommerce-data-analysis">Ecommerce data analysis</a>
+    <a href="https://infinisynapse.com/en/blog/saas-data-platform">SaaS data platform architecture</a>
+    <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-with-ai">PostgreSQL data analysis with AI</a>
+    <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst explained</a>
+    <a href="https://infinisynapse.com/en/blog/agentic-analytics-explained">Agentic analytics explained</a>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

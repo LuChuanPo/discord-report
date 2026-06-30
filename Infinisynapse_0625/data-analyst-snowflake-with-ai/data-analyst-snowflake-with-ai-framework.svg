@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">The AI-augmented Snowflake analyst workflow</title>
+  <desc id="desc">A Snowflake analyst's workflow with an AI agent: a business question is paired with the bound knowledge base, the agent drafts a plan including the virtual warehouse choice, the analyst reviews and edits, the agent executes against Snowflake plus cross-warehouse sources, and the result returns with an evidence trail.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+  <text x="100" y="110" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="800">Snowflake analyst + AI agent loop</text>
+  <text x="100" y="146" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700">Plan-review on the warehouse, evidence trail on every answer</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Step 1: Question -->
+    <rect x="90" y="200" width="220" height="92" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="110" y="232" fill="#4338CA" font-size="13" font-weight="800">PLAIN ENGLISH</text>
+    <text x="110" y="258" fill="#111827" font-size="17" font-weight="800">Business question</text>
+    <text x="110" y="280" fill="#6B7280" font-size="13">"why did EMEA ARR dip?"</text>
+
+    <!-- Step 2: KB binding (Snowflake-specific) -->
+    <rect x="350" y="170" width="220" height="78" rx="14" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="368" y="198" fill="#6D28D9" font-size="12" font-weight="800">BOUND KB · SNOWFLAKE</text>
+    <text x="368" y="222" fill="#111827" font-size="16" font-weight="800">dbt docs · metric defs</text>
+    <text x="368" y="240" fill="#6B7280" font-size="12">ARR window, EMEA region</text>
+
+    <rect x="350" y="258" width="220" height="78" rx="14" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="368" y="286" fill="#6D28D9" font-size="12" font-weight="800">SCHEMA RETRIEVAL</text>
+    <text x="368" y="310" fill="#111827" font-size="16" font-weight="800">fct_subscriptions</text>
+    <text x="368" y="328" fill="#6B7280" font-size="12">dim_account · dim_arr</text>
+
+    <!-- Step 3: Plan (analyst reviews) -->
+    <rect x="610" y="200" width="220" height="92" rx="16" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="628" y="232" fill="#047857" font-size="13" font-weight="800">ANALYST REVIEWS</text>
+    <text x="628" y="258" fill="#111827" font-size="17" font-weight="800">Plan + warehouse</text>
+    <text x="628" y="280" fill="#6B7280" font-size="13">join keys · ANALYST_WH</text>
+
+    <!-- Arrows row 1 -->
+    <path d="M314 248h32" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M338 240l10 8-10 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M574 246h32" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M598 238l10 8-10 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Step 4: Execute (Snowflake + cross-warehouse) -->
+    <rect x="870" y="170" width="220" height="180" rx="16" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="888" y="198" fill="#B45309" font-size="13" font-weight="800">EXECUTE</text>
+    <rect x="888" y="212" width="184" height="26" rx="6" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="898" y="230" fill="#111827" font-size="13" font-weight="700">Snowflake warehouse</text>
+    <rect x="888" y="244" width="184" height="26" rx="6" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="898" y="262" fill="#111827" font-size="13" font-weight="700">Supabase · PostgreSQL</text>
+    <rect x="888" y="276" width="184" height="26" rx="6" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="898" y="294" fill="#111827" font-size="13" font-weight="700">CSV · Excel</text>
+    <rect x="888" y="308" width="184" height="26" rx="6" fill="#FFFFFF" stroke="#FDE68A"/>
+    <text x="898" y="326" fill="#111827" font-size="13" font-weight="700">query_tag annotated</text>
+
+    <path d="M834 246h28" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M854 238l10 8-10 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Step 5: Verify (time-travel option) -->
+    <rect x="610" y="380" width="220" height="80" rx="16" fill="#FDF2F8" stroke="#FBCFE8"/>
+    <text x="628" y="408" fill="#BE185D" font-size="13" font-weight="800">VERIFY</text>
+    <text x="628" y="432" fill="#111827" font-size="16" font-weight="800">Row counts · time-travel</text>
+    <text x="628" y="450" fill="#6B7280" font-size="13">flags low confidence</text>
+
+    <!-- Step 6: Evidence trail -->
+    <rect x="350" y="380" width="220" height="80" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="368" y="408" fill="#4338CA" font-size="13" font-weight="800">EVIDENCE TRAIL</text>
+    <text x="368" y="432" fill="#111827" font-size="16" font-weight="800">Plan · SQL · sources</text>
+    <text x="368" y="450" fill="#6B7280" font-size="13">delivered to stakeholder</text>
+
+    <!-- Arrows row 2 -->
+    <path d="M980 358v6c0 8-7 16-16 16H834" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <path d="M846 412l-10-8 10-8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <line x1="830" y1="404" x2="846" y2="404" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+
+    <path d="M610 420H574" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M586 412l-10 8 10 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Re-plan dashed arrow -->
+    <path d="M720 380V340c0-12-10-22-22-22h-22" stroke="#F59E0B" stroke-width="4" stroke-dasharray="9 7" fill="none" stroke-linecap="round"/>
+    <text x="670" y="364" fill="#B45309" font-size="12" font-weight="700">re-plan</text>
+
+    <!-- Analyst figure -->
+    <rect x="90" y="380" width="220" height="80" rx="16" fill="#FFFFFF" stroke="#D9DEE8"/>
+    <text x="110" y="408" fill="#0B1220" font-size="13" font-weight="800">ANALYST</text>
+    <text x="110" y="432" fill="#111827" font-size="16" font-weight="800">Reviews · ships</text>
+    <text x="110" y="450" fill="#6B7280" font-size="13">judgment in the loop</text>
+    <path d="M310 420h32" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M334 412l10 8-10 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <text x="100" y="552" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="14">InfiniSynapse — the AI data analyst paired with your Snowflake account</text>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Business intelligence vs data science vs data analytics</title>
+  <desc id="desc">A clean map showing BI as descriptive dashboards on agreed metrics, data science as predictive ML and exploration, and data analytics as the middle layer, with AI data agents bridging dashboards and ad hoc questions.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+  <text x="100" y="110" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="800">Business intelligence vs data science vs data analytics</text>
+  <text x="100" y="148" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Three roles, three time horizons, one bridge built by AI data agents</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- BI -->
+    <rect x="90" y="200" width="320" height="220" rx="18" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="110" y="234" fill="#4338CA" font-size="14" font-weight="800">BUSINESS INTELLIGENCE</text>
+    <text x="110" y="266" fill="#111827" font-size="22" font-weight="800">What happened?</text>
+    <text x="110" y="294" fill="#374151" font-size="14">Descriptive · backward-looking</text>
+    <text x="110" y="316" fill="#374151" font-size="14">Agreed metrics, shared dashboards</text>
+    <text x="110" y="338" fill="#374151" font-size="14">Audience: execs, operators</text>
+    <text x="110" y="360" fill="#374151" font-size="14">Tools: Tableau, Power BI, Looker,</text>
+    <text x="110" y="378" fill="#374151" font-size="14">Metabase, Superset</text>
+    <text x="110" y="404" fill="#6B7280" font-size="13">Time horizon: yesterday → this week</text>
+
+    <!-- Data Analytics -->
+    <rect x="440" y="200" width="320" height="220" rx="18" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="460" y="234" fill="#6D28D9" font-size="14" font-weight="800">DATA ANALYTICS</text>
+    <text x="460" y="266" fill="#111827" font-size="22" font-weight="800">Why did it happen?</text>
+    <text x="460" y="294" fill="#374151" font-size="14">Diagnostic · cohort & funnel work</text>
+    <text x="460" y="316" fill="#374151" font-size="14">SQL, Python, A/B test reads</text>
+    <text x="460" y="338" fill="#374151" font-size="14">Audience: PMs, growth, ops</text>
+    <text x="460" y="360" fill="#374151" font-size="14">Tools: SQL clients, notebooks,</text>
+    <text x="460" y="378" fill="#374151" font-size="14">dbt, Mode, AI data agents</text>
+    <text x="460" y="404" fill="#6B7280" font-size="13">Time horizon: last quarter → now</text>
+
+    <!-- Data Science -->
+    <rect x="790" y="200" width="320" height="220" rx="18" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="810" y="234" fill="#047857" font-size="14" font-weight="800">DATA SCIENCE</text>
+    <text x="810" y="266" fill="#111827" font-size="22" font-weight="800">What will happen?</text>
+    <text x="810" y="294" fill="#374151" font-size="14">Predictive · ML, statistics</text>
+    <text x="810" y="316" fill="#374151" font-size="14">Forecasting, recommenders, NLP</text>
+    <text x="810" y="338" fill="#374151" font-size="14">Audience: product, research</text>
+    <text x="810" y="360" fill="#374151" font-size="14">Tools: Python, R, Jupyter,</text>
+    <text x="810" y="378" fill="#374151" font-size="14">scikit-learn, PyTorch, MLflow</text>
+    <text x="810" y="404" fill="#6B7280" font-size="13">Time horizon: next week → next year</text>
+
+    <!-- Arrows -->
+    <path d="M414 310h22" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M764 310h22" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- Bridge band: AI data agents -->
+    <rect x="90" y="450" width="1020" height="100" rx="16" fill="#F9FAFB" stroke="#E5E7EB"/>
+    <text x="110" y="482" fill="#111827" font-size="15" font-weight="800">AI DATA AGENTS — THE BRIDGE BETWEEN DASHBOARDS AND AD HOC QUESTIONS</text>
+    <g font-size="14" fill="#374151" font-weight="600">
+      <text x="110" y="510">Retrieve business context · plan analysis · run SQL across sources · verify · explain</text>
+      <text x="110" y="534">Use BI for the known, data science for the modeled future, agents for everything in between</text>
+    </g>
+  </g>
+
+  <text x="100" y="576" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="16">InfiniSynapse — enterprise AI data analyst</text>
+</svg>

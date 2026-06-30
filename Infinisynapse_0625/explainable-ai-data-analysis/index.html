@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Explainable AI Data Analysis Guide | InfiniSynapse</title>
+  <meta name="description" content="Explainable AI data analysis guide for analytics leaders. Learn how transparent AI analytics, audit trails, and source checks reduce risk in production.">
+  <meta name="keywords" content="explainable ai data analysis, transparent ai analytics, audit trail ai">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/Category/explainable-ai-data-analysis">
+
+  <meta property="og:title" content="Explainable AI Data Analysis Guide">
+  <meta property="og:description" content="Explainable AI data analysis guide for analytics leaders. Learn how transparent AI analytics, audit trails, and source checks reduce risk in production.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/Category/explainable-ai-data-analysis">
+  <meta property="og:image" content="https://infinisynapse.com/Category/explainable-ai-data-analysis/explainable-ai-data-analysis-framework.svg">
+  <meta property="og:image:alt" content="Anatomy of an evidence trail: seven components from question to decision in explainable AI data analysis.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Explainable AI Data Analysis Guide">
+  <meta name="twitter:description" content="Explainable AI data analysis guide for analytics leaders. Learn how transparent AI analytics, audit trails, and source checks reduce risk in production.">
+  <meta name="twitter:image" content="https://infinisynapse.com/Category/explainable-ai-data-analysis/explainable-ai-data-analysis-framework.svg">
+  <meta name="twitter:image:alt" content="Anatomy of an evidence trail: seven components from question to decision in explainable AI data analysis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Schema #1: Organization -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "InfiniSynapse",
+  "url": "https://infinisynapse.com",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://infinisynapse.com/logo.png",
+    "caption": "InfiniSynapse AI data analyst logo",
+    "width": 512,
+    "height": 512
+  },
+  "sameAs": [
+    "https://x.com/InfiniSynapse"
+  ]
+}
+  </script>
+
+  <!-- Schema #2: BreadcrumbList -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://infinisynapse.com"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Category",
+      "item": "https://infinisynapse.com/Category"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Explainable AI Data Analysis: Audit Trails for Trustworthy Analytics",
+      "item": "https://infinisynapse.com/Category/explainable-ai-data-analysis"
+    }
+  ]
+}
+  </script>
+
+  <!-- Schema #3: Article -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Explainable AI Data Analysis: Audit Trails for Trustworthy Analytics",
+  "description": "Explainable AI data analysis guide for analytics leaders. Learn how transparent AI analytics, audit trails, and source checks reduce risk in production.",
+  "image": "https://infinisynapse.com/Category/explainable-ai-data-analysis/explainable-ai-data-analysis-framework.svg",
+  "datePublished": "2026-06-11",
+  "dateModified": "2026-06-12",
+  "author": {
+    "@type": "Organization",
+    "name": "InfiniSynapse Research"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "InfiniSynapse",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://infinisynapse.com/logo.png",
+      "width": 512,
+      "height": 512
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://infinisynapse.com/Category/explainable-ai-data-analysis"
+  },
+  "hasDefinedTerm": {
+    "@type": "DefinedTerm",
+    "name": "explainable ai data analysis",
+    "description": "Explainable AI data analysis is an analytics practice where AI-generated results include the interpreted question, retrieved context, analysis plan, executed queries, intermediate checks, cited sources, and stated limits."
+  }
+}
+  </script>
+
+  <!-- Schema #4: FAQPage -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is explainable AI data analysis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Explainable AI data analysis is an analytics practice where every AI-generated result includes its evidence trail: the interpreted question, retrieved business context, the analysis plan, executed queries, intermediate checks, cited sources, and stated caveats. The goal is that a reviewer can reconstruct the number without re-running the work, which makes AI output usable in finance reviews, compliance audits, and board decisions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is workflow explainability different from classic explainable AI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Classic explainable AI interprets model internals: which features drove a prediction, often using techniques cataloged in toolkits such as AI Explainability 360. Workflow explainability explains the analysis process instead: which definitions, sources, queries, and checks produced a number. Analytics teams need the second kind, because the risk lives in wrong joins and stale metric definitions, not in neuron weights."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What should an AI audit trail contain?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A complete audit trail for AI analysis contains seven components: the question as the system interpreted it, the context it retrieved, the plan it proposed, the queries it executed verbatim, the intermediate checks it ran, the sources behind each figure, and the caveats that bound the answer. If any component is missing, a reviewer must re-run the work to trust it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the EU AI Act require explainable analytics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The EU AI Act entered into force on 2024-08-01, with obligations phasing in through 2026-2027, and it raises transparency and documentation expectations for AI systems used in consequential decisions. Whether a specific analytics deployment falls in scope depends on its use case and risk class, so treat this page as direction of travel and confirm obligations with your counsel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is transparent AI analytics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Transparent AI analytics is analytics where you can inspect how the system chose sources, interpreted definitions, transformed data, and produced its summary. In practice it means plan review before execution, verbatim query logs, source citations on every number, and visible confidence flags. Transparency is the property; the evidence trail is the artifact that delivers it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can explainability compensate for lower accuracy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, you need both, but explainability changes the cost of the errors that remain. On the BIRD benchmark, human engineers reach 92.96% execution accuracy and models still trail that bar, so some AI mistakes are inevitable. A reviewable trail turns those mistakes from silent wrong decisions into cheap catches during plan review or result verification."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does InfiniSynapse implement explainable analysis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "InfiniSynapse runs a plan-first workflow: the agent drafts an analysis plan, you review or adjust it, and execution starts only after approval. Context comes from a governed knowledge base of data dictionaries, metric definitions, analysis playbooks, and past cases, and every plan and result stays reviewable. This is vendor information; apply the same checklist to any tool, including ours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I test a vendor's explainability claims?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Run one real cross-source question in a pilot and apply the eight-question checklist on this page: plan visibility, verbatim query logs, per-number sources, replay, confidence flags, persisted corrections, access control, and auditor export. Score what you can see in the product, not what the sales deck promises. A vendor that cannot show a trail in a demo will not produce one in an audit."
+      }
+    }
+  ]
+}
+  </script>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    a{color:#5B5BFF;text-decoration:none}
+    a:hover{color:#111827}
+    .nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+    .nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+    .nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+    .nav-logo-mark{height:26px;display:flex;align-items:center}
+    .nav-logo-mark img{height:26px;width:auto;display:block}
+    .nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+    .nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap;transition:color 0.15s}
+    .nav-menu a:hover{color:#111827}
+    .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+    .nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap;box-shadow:none;transition:background 0.15s,border-color 0.15s,transform 0.15s}
+    a.nav-btn:hover{color:#111827;border-color:#C7CEDA;transform:translateY(-1px)}
+    .nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+    .nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+    .nav-btn-primary:hover{color:#FFFFFF}
+    .nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+    .nav-btn-dark:hover{color:#FFFFFF}
+    .nav-icon{width:17px;height:17px;flex:0 0 auto}
+    .nav-chevron{width:15px;height:15px;flex:0 0 auto}
+    .wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+    .breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+    .breadcrumb a{color:#6B7280}
+    .badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+    .badge-client{background:#EEF2FF;color:#4338CA}
+    .badge-cat{background:#ECFDF5;color:#047857}
+    h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+    h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+    h3{font-size:21px;color:#111827;margin:24px 0 8px}
+    p{margin:0 0 16px}
+    ul,ol{padding-left:22px;margin:0 0 18px}
+    li{margin:6px 0}
+    .meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+    .author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+    .info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+    .info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+    .disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+    .toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+    .toc{background:#F9FAFB}
+    .toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+    .tldr{background:#F8FAFC}
+    .snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+    .definition{background:#ECFDF5;border-color:#BBF7D0}
+    .feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+    table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+    th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+    th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+    td{color:#4B5563}
+    .quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+    .cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+    .cta-btn:hover{background:#1F2937;color:#FFFFFF}
+    .faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+    .faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+    .faq-a{color:#4B5563}
+    .methodology{background:#F9FAFB;color:#4B5563}
+    .refs li{font-size:13.5px;color:#4B5563}
+    .related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+    .related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+    .stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+    .stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+    .stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+    .panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+    .panel h3{margin-top:0}
+    .panel-good{background:#F0FDF4;border-color:#BBF7D0}
+    .panel-bad{background:#FEF2F2;border-color:#FECACA}
+    .footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+    .footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{color:#6B7280;font-size:14px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+    @media(max-width:1280px){.nav-inner{max-width:1180px;column-gap:24px}.nav-menu{gap:18px}.nav-menu a,.nav-btn{font-size:14px}.nav-btn{min-height:36px;padding:0 12px}.nav-btn-primary,.nav-btn-dark{padding:0 14px}}
+    @media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}.nav-logo{width:100%;justify-content:center}.nav-menu,.nav-actions{justify-content:center;flex-wrap:wrap}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}table{font-size:14px}.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark">
+        <img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse">
+      </span>
+      <span>InfiniSynapse</span>
+    </a>
+
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+          <path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12S9.8 18.6 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        EN
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/>
+          <path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Book Demo
+      </a>
+
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+      <a href="https://infinisynapse.com/Category">Category</a><span>&gt;</span>
+      explainable ai data analysis
+    </nav>
+
+    <div>
+      <span class="badge badge-client">InfiniSynapse</span>
+      <span class="badge badge-cat">Trust Guide</span>
+    </div>
+
+    <h1>Explainable AI Data Analysis: Audit Trails for Trustworthy Analytics</h1>
+    <p class="meta-desc">A working guide to evidence trails in AI-driven analytics: why a correct number you cannot reconstruct is still a liability, the seven components every trail needs, and an eight-question checklist for scoring any tool — including ours.</p>
+
+    <div class="author-grid">
+      <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+      <div class="info-card"><strong>Published</strong>2026-06-11 · Last verified 2026-06-12 · Next review 2026-09-12</div>
+      <div class="info-card"><strong>Evidence base</strong>Explainability research (Wikipedia XAI, IBM Research, AI Explainability 360), regulatory texts (EU AI Act, NIST AI RMF, ISO/IEC 42001), public benchmarks (BIRD), and InfiniSynapse product documentation.</div>
+    </div>
+
+    <div class="disclosure">
+      <strong>Disclosure:</strong> This page is published by InfiniSynapse, which builds an enterprise AI data analyst and sells in this category. We use InfiniSynapse Plan mode as the worked example, but the evidence-trail anatomy, the checklist, and the trust stack are written so you can score any vendor — including against us.
+    </div>
+
+    <nav class="toc" aria-label="Table of contents">
+      <div class="toc-label">Contents</div>
+      <ul>
+        <li><a href="#answer">Direct answer</a></li>
+        <li><a href="#definition">Definition</a></li>
+        <li><a href="#why-right-is-not-enough">Why a right answer is not enough</a></li>
+        <li><a href="#xai-background">XAI background, applied to analytics</a></li>
+        <li><a href="#evidence-trail">Anatomy of an evidence trail</a></li>
+        <li><a href="#regulation">The regulatory direction of travel</a></li>
+        <li><a href="#checklist">Explainability checklist for evaluating tools</a></li>
+        <li><a href="#accuracy">Explainability vs accuracy: you need both</a></li>
+        <li><a href="#trust-stack">The trust stack</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#methodology">Methodology</a></li>
+        <li><a href="#references">Sources and references</a></li>
+      </ul>
+    </nav>
+
+    <div class="tldr">
+      <div class="tldr-label">TL;DR</div>
+      <ul>
+        <li>Explainability in analytics is <strong>workflow explainability</strong> — the plan, the queries, the sources, and the checks — not the neuron-level model interpretation that classic <a href="https://en.wikipedia.org/wiki/Explainable_artificial_intelligence" target="_blank" rel="noopener">XAI research</a> studies. Buy for the first kind; do not let vendors sell you the second.</li>
+        <li>Regulation is already moving: the <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">EU AI Act</a> entered into force on 2024-08-01 with obligations phasing in through 2026-2027, and NIST AI RMF plus ISO/IEC 42001 give your governance team a shared structure today.</li>
+        <li>Accuracy alone will not protect you. On the <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">BIRD benchmark</a>, human engineers reach 92.96% execution accuracy and models still trail it — evidence trails make the remaining failures cheap to catch. Score tools with the <a href="#checklist">eight-question checklist below</a>.</li>
+      </ul>
+    </div>
+
+    <h2 id="answer">Direct answer: what explainable AI data analysis means</h2>
+    <div class="snippet-answer">Explainable AI data analysis is an approach where every AI-generated result ships with its evidence trail: the question as interpreted, the context retrieved, the plan, the queries executed, the checks performed, the sources cited, and the caveats. A reviewer can reconstruct the number without re-running the work, which makes the result usable in audits and board decisions.</div>
+
+    <h2 id="definition">Definition</h2>
+    <div class="definition"><dfn>explainable ai data analysis</dfn>: Explainable AI data analysis is an analytics practice where AI-generated results include the interpreted question, retrieved context, analysis plan, executed queries, intermediate checks, cited sources, and stated limits. Unlike model-level XAI, it explains the workflow that produced a number, so a human reviewer can verify or reject it.</div>
+
+    <h2 id="why-right-is-not-enough">Why a right answer is not enough</h2>
+    <p>Imagine your AI tool reports that Q1 churn was 4.2%, and the number happens to be correct. If you cannot show which tables it queried, which churn definition it applied, and what it checked, that number still fails the three reviews that matter.</p>
+    <p>In a finance review, the controller asks for the calculation path before signing off. In a compliance audit, the auditor asks who ran what against which data, and "the AI did it" is not an accepted answer.</p>
+    <p>In a board deck, one unexplainable figure poisons the rest. The first time a director catches a number nobody can reconstruct, every later number from the same pipeline gets re-litigated.</p>
+
+    <p class="quote">A number you cannot reconstruct is not an asset. It is a liability with good formatting.</p>
+
+    <div class="stat-grid">
+      <div class="stat"><div class="num">2024-08-01</div><div class="lab">The date the EU AI Act entered into force, with obligations phasing in through 2026-2027 — transparency and documentation duties arrive on a schedule, not by surprise. <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">Source: European Commission</a></div></div>
+      <div class="stat"><div class="num">92.96%</div><div class="lab">Human engineer execution accuracy on the BIRD text-to-SQL benchmark; models trail this bar, so AI-generated analysis still produces errors that only review can catch. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">Source: BIRD</a></div></div>
+      <div class="stat"><div class="num">7</div><div class="lab">Components in a complete evidence trail — interpreted question, context, plan, queries, checks, sources, caveats — as mapped in the <a href="#evidence-trail">anatomy table below</a>.</div></div>
+    </div>
+
+    <p>The teams adopting this standard are not doing it for elegance. They are doing it because AI now produces numbers faster than humans can independently re-derive them, so review has to move from re-computation to trail inspection.</p>
+
+    <h2 id="xai-background">XAI background, applied to analytics</h2>
+    <p>Explainable AI is an established research field. The <a href="https://en.wikipedia.org/wiki/Explainable_artificial_intelligence" target="_blank" rel="noopener">Wikipedia overview of XAI</a> describes methods for making model predictions interpretable, <a href="https://research.ibm.com/topics/explainable-ai" target="_blank" rel="noopener">IBM Research</a> maintains an active explainability program, and the open-source <a href="https://ai-explainability-360.org/" target="_blank" rel="noopener">AI Explainability 360 toolkit</a> packages dozens of these techniques.</p>
+    <p>Almost all of that work targets one question: why did the model predict this? It explains feature attributions, decision boundaries, and training behavior — model internals.</p>
+
+    <h3>Analytics needs a different kind of explanation</h3>
+    <p>When an AI data analyst reports last quarter's churn, the dangerous failure is rarely inside the language model's weights. It is a wrong join key, a stale metric definition, a silently empty table, or a time window that excluded the last three days.</p>
+    <p>So the explanation analytics teams need is workflow explainability: explain the plan, the queries, the sources, and the checks — not neuron weights. This distinction is the core argument of this page, and it changes what you should demand in procurement.</p>
+
+    <table>
+      <thead>
+        <tr><th>Dimension</th><th>Model explainability (classic XAI)</th><th>Workflow explainability (analytics)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Question answered</strong></td><td>Why did the model predict this?</td><td>How was this number produced?</td></tr>
+        <tr><td><strong>Object explained</strong></td><td>Feature attributions, weights, decision paths</td><td>Plan, queries, sources, checks, caveats</td></tr>
+        <tr><td><strong>Typical audience</strong></td><td>ML engineers, model risk teams</td><td>Analysts, controllers, auditors, executives</td></tr>
+        <tr><td><strong>Typical failure caught</strong></td><td>Biased or spurious feature reliance</td><td>Wrong join, stale definition, missing data</td></tr>
+        <tr><td><strong>Tooling</strong></td><td>Toolkits such as AI Explainability 360</td><td>Plan review, query logs, evidence trails</td></tr>
+        <tr><td><strong>What to buy</strong></td><td>Relevant if you ship ML models</td><td>Required for any AI-generated analysis</td></tr>
+      </tbody>
+    </table>
+
+    <p>Both kinds matter in the right context, and they are complements rather than rivals. But if a vendor answers your explainability question with a saliency-map slide, they answered the wrong question.</p>
+
+    <h2 id="evidence-trail">Anatomy of an evidence trail</h2>
+    <p>An evidence trail is the artifact that makes AI analysis reviewable. The complete version has seven components, and each one exists to kill a specific reviewer question before it gets asked.</p>
+
+    <img class="feature-img" src="explainable-ai-data-analysis-framework.svg" alt="Anatomy of an evidence trail diagram: seven components flowing from question to decision — interpreted question, context retrieved, plan, queries executed, intermediate checks, sources cited, caveats" width="1200" height="630" loading="lazy">
+
+    <table>
+      <thead>
+        <tr><th>Component</th><th>What it answers</th><th>Reviewer question it kills</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>1. Question as interpreted</strong></td><td>How the system restated your question, including the metric definition it applied</td><td>"Did it even understand what I asked?"</td></tr>
+        <tr><td><strong>2. Context retrieved</strong></td><td>Which data dictionaries, metric definitions, and past cases informed the work</td><td>"Is this our definition of active user, or the model's guess?"</td></tr>
+        <tr><td><strong>3. The plan</strong></td><td>Sources, join keys, filters, time windows, and output format — before execution</td><td>"Would I have designed this analysis the same way?"</td></tr>
+        <tr><td><strong>4. Queries executed</strong></td><td>The verbatim queries and operations that actually ran</td><td>"What exactly touched the data, and with what permissions?"</td></tr>
+        <tr><td><strong>5. Intermediate checks</strong></td><td>Row counts, null rates, and cross-computations the system ran on its own output</td><td>"Was this sanity-checked, or is it a first draft?"</td></tr>
+        <tr><td><strong>6. Sources cited</strong></td><td>Which tables, files, and documents back each figure in the answer</td><td>"Can I trace this number to a system of record?"</td></tr>
+        <tr><td><strong>7. Caveats</strong></td><td>Data freshness, assumptions, exclusions, and known gaps</td><td>"What would make this number wrong tomorrow?"</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Worked example: Plan mode in InfiniSynapse</h3>
+    <p>Here is how the seven components map to a shipping product — InfiniSynapse, so the disclosure at the top of this page applies. The point of the example is the mapping, not the brand; run any vendor through the same rows.</p>
+    <p>Components 1 and 2 come from retrieval: InfiniSynapse recalls business knowledge and schema from a governed knowledge base built on data dictionaries, metric definitions, analysis playbooks, and past cases. Component 3 is Plan mode itself — the agent drafts an analysis plan, you review or adjust it, and only then does it execute.</p>
+    <p>Components 4 through 7 come from execution and delivery: queries run through an intermediate representation called InfiniSQL that connects to a multi-source execution layer, and every plan and result remains reviewable afterward. In a documented demo, this covers a cross-source case — joining JD and Tmall platform data with a CSV file by phone number — without an ETL project first.</p>
+    <p>What this does not solve: a trail records the workflow, but it cannot fix contested metric ownership or missing source data. If two departments disagree on what churn means, the trail will faithfully document the disagreement.</p>
+
+    <h2 id="regulation">The regulatory direction of travel</h2>
+    <p>You do not need to be a lawyer to read the direction: documentation and transparency expectations for AI systems are rising on a published schedule. This section describes that direction; it is not legal advice, and your counsel should map specific obligations.</p>
+
+    <table>
+      <thead>
+        <tr><th>Framework</th><th>Status</th><th>What it asks of AI-driven analytics</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong><a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">EU AI Act</a></strong></td><td>Entered into force 2024-08-01; obligations phasing in through 2026-2027</td><td>Risk-based duties including transparency and documentation for in-scope systems; scope depends on use case and risk class</td></tr>
+        <tr><td><strong><a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF 1.0</a></strong></td><td>Published 2023; voluntary</td><td>A govern-map-measure-manage structure; evidence trails are the artifact that the measure and manage functions inspect</td></tr>
+        <tr><td><strong><a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">ISO/IEC 42001:2023</a></strong></td><td>Published 2023; certifiable management standard</td><td>An AI management system with documented processes — auditors will ask how analysis outputs are produced and reviewed</td></tr>
+      </tbody>
+    </table>
+
+    <p>The practical takeaway is sequencing. Teams that adopt evidence trails now treat future compliance reviews as an export task; teams that bolt explainability on later will retrofit it under deadline.</p>
+    <p>There is also a softer force in the same direction: internal AI governance committees increasingly use these three frameworks as their rubric. Showing up to that committee with reviewable trails is the difference between a fast approval and a pilot freeze.</p>
+
+    <h2 id="checklist">Explainability checklist for evaluating tools</h2>
+    <p>Use these eight questions in any pilot of an AI analytics tool. Score from what you can see in the product during a real run — not from the vendor's architecture slide.</p>
+
+    <table>
+      <thead>
+        <tr><th>#</th><th>Question</th><th>Pass looks like</th><th>Red flag</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>1</strong></td><td>Can a reviewer see the plan before execution?</td><td>Explicit, editable plan; nothing runs silently</td><td>Answers appear with no visible intermediate steps</td></tr>
+        <tr><td><strong>2</strong></td><td>Are queries logged verbatim?</td><td>Exact queries and operations, copyable, per run</td><td>A paraphrase like "queried the sales table"</td></tr>
+        <tr><td><strong>3</strong></td><td>Are sources attached to every number?</td><td>Each figure traces to tables, files, or documents</td><td>Citations only on the final summary, or none</td></tr>
+        <tr><td><strong>4</strong></td><td>Can you replay an analysis?</td><td>Re-run the same plan on demand and compare results</td><td>Results are one-off chat outputs with no rerun path</td></tr>
+        <tr><td><strong>5</strong></td><td>Is low confidence flagged?</td><td>The system marks ambiguous terms and uncertain results</td><td>Uniform confidence on every answer</td></tr>
+        <tr><td><strong>6</strong></td><td>Are corrections persisted?</td><td>A fixed definition applies to all future analyses</td><td>You re-explain the same correction every session</td></tr>
+        <tr><td><strong>7</strong></td><td>Who can access trails?</td><td>Role-based access; reviewers see trails without edit rights</td><td>Trails visible only to the person who asked</td></tr>
+        <tr><td><strong>8</strong></td><td>Can trails be exported for auditors?</td><td>Plans, queries, and checks export in a portable format</td><td>Evidence lives only inside the vendor UI</td></tr>
+      </tbody>
+    </table>
+
+    <p>Questions 1-3 test transparency, 4-6 test whether explainability survives contact with daily use, and 7-8 test whether it survives contact with your auditor. A tool can pass the first three in a demo and still fail the last five in production.</p>
+
+    <h2 id="accuracy">Explainability vs accuracy: you need both</h2>
+    <p>Some buyers treat explainability and accuracy as a trade-off. The benchmark data says you do not get to choose, because no current system is accurate enough to skip review.</p>
+    <p>On the <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">BIRD text-to-SQL benchmark</a>, human engineers reach 92.96% execution accuracy and models still trail that bar. Even the humans are wrong about 7% of the time — which is exactly why professional analysis has always shipped with workpapers.</p>
+    <p>What trails change is the unit economics of error. A wrong number with no trail costs a re-derivation, an escalation, and sometimes a bad decision; a wrong number with a trail costs one reviewer minute at the plan stage or one failed check at verification.</p>
+    <p>This is also where explainability connects to autonomy and memory. An <a href="https://infinisynapse.com/Category/autonomous-data-agent">autonomous data agent</a> can only be trusted with scoped independence because its checks and escalations are visible in the trail, and an agent's <a href="https://infinisynapse.com/Category/data-agent-memory-explained">memory layer</a> turns each reviewed correction into a permanent improvement instead of a repeated conversation.</p>
+    <p>The two properties compound: verification raises accuracy, and the recorded verification is itself explainability. Systems built on the agent loop described in <a href="https://infinisynapse.com/Category/what-is-a-data-agent">our data agent definition guide</a> get both from the same architecture — which is the definition of agents that <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">Anthropic's Building Effective Agents</a> uses: models directing their own process and tool usage, observably.</p>
+
+    <h2 id="trust-stack">The trust stack: four levels of explainable analytics</h2>
+    <p>Not every team needs the top level on day one. Use this ladder to state where you are, and where your risk profile says you need to be.</p>
+
+    <table>
+      <thead>
+        <tr><th>Level</th><th>What you get</th><th>Reviewer effort</th><th>Fit</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>L1 · Black-box answer</strong></td><td>A number or summary, no visible workings</td><td>Full re-derivation — trust or redo</td><td>Throwaway exploration only; never decisions</td></tr>
+        <tr><td><strong>L2 · Cited answer</strong></td><td>Answer plus named sources for the figures</td><td>Spot-check sources; logic still opaque</td><td>Low-stakes internal questions</td></tr>
+        <tr><td><strong>L3 · Reviewable plan</strong></td><td>Plan, queries, and checks visible and approvable before execution</td><td>Minutes per analysis, at the plan stage</td><td>Recurring business reporting, MOFU pilots</td></tr>
+        <tr><td><strong>L4 · Replayable workflow</strong></td><td>Full trail plus rerun, export, access control, and persisted corrections</td><td>Near zero per run; effort moves to governance</td><td>Finance, compliance, regulated decisions</td></tr>
+      </tbody>
+    </table>
+
+    <div class="grid-2">
+      <div class="panel panel-good">
+        <h3>Who should adopt L3-L4 now</h3>
+        <ul>
+          <li>Teams whose AI numbers reach finance reviews or board decks</li>
+          <li>Organizations in scope for EU AI Act obligations through 2026-2027</li>
+          <li>Companies running internal AI governance reviews on NIST AI RMF or ISO/IEC 42001 lines</li>
+          <li>Anyone giving an agent cross-source access to production data</li>
+        </ul>
+      </div>
+      <div class="panel panel-bad">
+        <h3>Where L1-L2 is honestly fine</h3>
+        <ul>
+          <li>Personal exploration where you will re-verify anything you act on</li>
+          <li>Brainstorming over public or synthetic data</li>
+          <li>Single-spreadsheet questions a human can re-check in minutes</li>
+          <li>Prototypes that will never feed a decision of record</li>
+        </ul>
+      </div>
+    </div>
+
+    <p>One honest caveat: trails add review surface, and a team that rubber-stamps every plan gets L1 trust at L4 cost. Pair the tooling with a norm that someone actually reads the plan on consequential analyses — the same discipline argued in our <a href="https://infinisynapse.com/Category/agentic-analytics-explained">agentic analytics guide</a>.</p>
+
+    <div class="cta-box">
+      <h3>Inspect a real evidence trail on your own data</h3>
+      <p>Connect a database or upload a file, ask one question you already know the answer to, and review the plan, the queries, the checks, and the caveats before the result. Then apply the eight-question checklist — to us first.</p>
+      <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+    </div>
+
+    <h2 id="faq">FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is explainable AI data analysis?</div>
+      <div class="faq-a">Explainable AI data analysis is an analytics practice where every AI-generated result includes its evidence trail: the interpreted question, retrieved business context, the analysis plan, executed queries, intermediate checks, cited sources, and stated caveats. The goal is that a reviewer can reconstruct the number without re-running the work, which makes AI output usable in finance reviews, compliance audits, and board decisions.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How is workflow explainability different from classic explainable AI?</div>
+      <div class="faq-a">Classic explainable AI interprets model internals: which features drove a prediction, often using techniques cataloged in toolkits such as AI Explainability 360. Workflow explainability explains the analysis process instead: which definitions, sources, queries, and checks produced a number. Analytics teams need the second kind, because the risk lives in wrong joins and stale metric definitions, not in neuron weights.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What should an AI audit trail contain?</div>
+      <div class="faq-a">A complete audit trail for AI analysis contains seven components: the question as the system interpreted it, the context it retrieved, the plan it proposed, the queries it executed verbatim, the intermediate checks it ran, the sources behind each figure, and the caveats that bound the answer. If any component is missing, a reviewer must re-run the work to trust it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does the EU AI Act require explainable analytics?</div>
+      <div class="faq-a">The EU AI Act entered into force on 2024-08-01, with obligations phasing in through 2026-2027, and it raises transparency and documentation expectations for AI systems used in consequential decisions. Whether a specific analytics deployment falls in scope depends on its use case and risk class, so treat this page as direction of travel and confirm obligations with your counsel.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is transparent AI analytics?</div>
+      <div class="faq-a">Transparent AI analytics is analytics where you can inspect how the system chose sources, interpreted definitions, transformed data, and produced its summary. In practice it means plan review before execution, verbatim query logs, source citations on every number, and visible confidence flags. Transparency is the property; the evidence trail is the artifact that delivers it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can explainability compensate for lower accuracy?</div>
+      <div class="faq-a">No, you need both, but explainability changes the cost of the errors that remain. On the BIRD benchmark, human engineers reach 92.96% execution accuracy and models still trail that bar, so some AI mistakes are inevitable. A reviewable trail turns those mistakes from silent wrong decisions into cheap catches during plan review or result verification.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How does InfiniSynapse implement explainable analysis?</div>
+      <div class="faq-a">InfiniSynapse runs a plan-first workflow: the agent drafts an analysis plan, you review or adjust it, and execution starts only after approval. Context comes from a governed knowledge base of data dictionaries, metric definitions, analysis playbooks, and past cases, and every plan and result stays reviewable. This is vendor information; apply the same checklist to any tool, including ours.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I test a vendor's explainability claims?</div>
+      <div class="faq-a">Run one real cross-source question in a pilot and apply the eight-question checklist on this page: plan visibility, verbatim query logs, per-number sources, replay, confidence flags, persisted corrections, access control, and auditor export. Score what you can see in the product, not what the sales deck promises. A vendor that cannot show a trail in a demo will not produce one in an audit.</div>
+    </div>
+
+    <div class="methodology" id="methodology">
+      <h2>Methodology and review notes</h2>
+      <p><strong>Last updated:</strong> 2026-06-12 · <strong>Next scheduled review:</strong> 2026-09-12</p>
+      <p>The evidence-trail anatomy, checklist, and trust stack on this page are original frameworks built from explainability research (Wikipedia XAI, IBM Research, AI Explainability 360), governance frameworks (EU AI Act, NIST AI RMF 1.0, ISO/IEC 42001:2023), the BIRD benchmark, and published agent research. Product capabilities attributed to InfiniSynapse come from InfiniSynapse product documentation; the cross-source example is a documented product demonstration, not an independent benchmark.</p>
+      <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells in the explainable analytics category. To reduce bias, the checklist and trust stack are vendor-neutral, the regulatory section avoids legal claims, and the page names cases where lower trust levels are honestly sufficient.</p>
+      <p><strong>Update cadence:</strong> Reviewed every 90 days for regulatory dates, source links, benchmark figures, and schema consistency.</p>
+    </div>
+
+    <h2 id="references">Sources and references</h2>
+    <ol class="refs">
+      <li><strong>[Independent]</strong> Wikipedia. Explainable artificial intelligence. <a href="https://en.wikipedia.org/wiki/Explainable_artificial_intelligence" target="_blank" rel="noopener">en.wikipedia.org/wiki/Explainable_artificial_intelligence</a>.</li>
+      <li><strong>[Independent]</strong> IBM Research. Explainable AI topic. <a href="https://research.ibm.com/topics/explainable-ai" target="_blank" rel="noopener">research.ibm.com/topics/explainable-ai</a>.</li>
+      <li><strong>[Independent]</strong> AI Explainability 360 open-source toolkit. <a href="https://ai-explainability-360.org/" target="_blank" rel="noopener">ai-explainability-360.org</a>.</li>
+      <li><strong>[Independent]</strong> European Commission. Regulatory framework on AI (EU AI Act, in force 2024-08-01). <a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener">digital-strategy.ec.europa.eu</a>.</li>
+      <li><strong>[Independent]</strong> NIST. AI Risk Management Framework (AI RMF 1.0, 2023). <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+      <li><strong>[Independent]</strong> ISO. ISO/IEC 42001:2023 — AI management systems. <a href="https://www.iso.org/standard/42001" target="_blank" rel="noopener">iso.org/standard/42001</a>.</li>
+      <li><strong>[Independent]</strong> BIRD-SQL: A Big Bench for Large-Scale Database Grounded Text-to-SQL Evaluation. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+      <li><strong>[Vendor]</strong> Anthropic (2024). Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    </ol>
+
+    <h2>Related guides</h2>
+    <div class="related">
+      <a href="../what-is-a-data-agent/index.html">What Is a Data Agent? Definition and Examples</a>
+      <a href="../autonomous-data-agent/index.html">Autonomous Data Agent: Safeguards and Self-Correction</a>
+      <a href="../data-agent-memory-explained/index.html">AI Agent Memory for Data: What to Seed First</a>
+      <a href="../agentic-analytics-explained/index.html">Agentic Analytics Explained</a>
+      <a href="../data-agent-vs-ai-copilot/index.html">Data Agent vs AI Copilot: Which Fits Your Team?</a>
+      <a href="../index.html">Data Agent Category Hub</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+          <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+          <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <div class="footer-links">
+            <a href="https://infinisynapse.com/#features">Features</a>
+            <a href="https://infinisynapse.com/tools">Tools Market</a>
+            <a href="https://app.infinisynapse.com/">Try Online</a>
+            <a href="https://infinisynapse.com/download">Download</a>
+          </div>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <div class="footer-links">
+            <a href="https://infinisynapse.com/en/docs">Documentation</a>
+            <a href="https://infinisynapse.com/en/blog">Blog</a>
+            <a href="https://infinisynapse.com/Category">Category Hub</a>
+          </div>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <div class="footer-links">
+            <a href="https://infinisynapse.com/#contact">Contact</a>
+            <a href="https://infinisynapse.com/careers">Careers</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+        <span>From question to insight, in seconds.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

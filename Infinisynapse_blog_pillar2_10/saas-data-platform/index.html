@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaaS Data Platform: 2026 Architecture and Stack</title>
+  <meta name="description" content="A SaaS data platform architecture in 2026 — sources, ELT, warehouse, dbt, BI, reverse-ETL, AI agents, and the SaaS metrics driving the schema choices.">
+  <meta name="keywords" content="saas data platform, saas data architecture, saas analytics stack, saas platform examples">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/saas-data-platform">
+  <meta property="og:title" content="SaaS Data Platform in 2026: Architecture, Stack, Tradeoffs">
+  <meta property="og:description" content="A SaaS data platform architecture in 2026 — sources, ELT, warehouse, dbt, BI, reverse-ETL, AI agents, and the SaaS metrics driving the schema choices.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/saas-data-platform">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/saas-data-platform/saas-data-platform-framework.svg">
+  <meta property="og:image:alt" content="SaaS data platform architecture — product DB, Stripe, Segment, Zendesk feed ELT into a warehouse, dbt models surface MRR cohorts, BI and an AI data agent serve answers.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="SaaS Data Platform in 2026: Architecture, Stack, Tradeoffs">
+  <meta name="twitter:description" content="A SaaS data platform architecture in 2026 — sources, ELT, warehouse, dbt, BI, reverse-ETL, AI agents, and the SaaS metrics driving the schema choices.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/saas-data-platform/saas-data-platform-framework.svg">
+  <meta name="twitter:image:alt" content="SaaS data platform architecture — product DB, Stripe, Segment, Zendesk feed ELT into a warehouse, dbt models surface MRR cohorts, BI and an AI data agent serve answers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"SaaS Data Platform in 2026: Architecture, Stack, Tradeoffs","item":"https://infinisynapse.com/en/blog/saas-data-platform"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"SaaS Data Platform in 2026: Architecture, Stack, Tradeoffs","description":"A SaaS data platform architecture in 2026 — sources, ELT, warehouse, dbt, BI, reverse-ETL, AI agents, and the SaaS metrics driving the schema choices.","image":"https://infinisynapse.com/en/blog/saas-data-platform/saas-data-platform-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/saas-data-platform"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a SaaS data platform?","acceptedAnswer":{"@type":"Answer","text":"A SaaS data platform is the set of systems a SaaS company uses to bring data from its operational tools into a single analytical layer, model it for business use, and serve it through dashboards, reverse-ETL syncs, and AI data agents. In 2026 the dominant pattern has six source classes, an ELT loader, a cloud warehouse, a dbt model layer organized into staging-intermediate-marts, and three serving surfaces."}},{"@type":"Question","name":"What are the main components of a SaaS data platform architecture?","acceptedAnswer":{"@type":"Answer","text":"Six components: sources (product DB, payments, product analytics, CRM, support, marketing), an ELT loader (Fivetran, Airbyte, Stitch, Hevo, or a vendor-native export), a cloud warehouse (Snowflake, BigQuery, Databricks, managed Postgres, or Redshift), a dbt model layer, a BI serving surface, a reverse-ETL serving surface, and an AI data agent for ad-hoc analysis. Each component has a clear job and is independently replaceable."}},{"@type":"Question","name":"Which warehouse should a SaaS team pick?","acceptedAnswer":{"@type":"Answer","text":"Snowflake fits mid-market and enterprise SaaS with mixed data scale. BigQuery fits GCP-resident teams and pairs natively with GA4 BigQuery export. Databricks SQL fits teams with heavy ML and lakehouse needs. Managed Postgres warehouses like Neon, Supabase, or Aurora fit early-stage SaaS under 100GB. Redshift remains a credible AWS-bound choice. Pick by stage, cloud, and workload mix."}},{"@type":"Question","name":"What does the dbt model layer look like in a SaaS data platform?","acceptedAnswer":{"@type":"Answer","text":"Three folders, each with a different contract. Staging — one model per source table, cleaned and renamed, no joins. Intermediate — joins and pre-aggregations reused across marts, not exposed to BI. Marts — one model per business concept, the tables BI and the AI agent point at. Tests live alongside models at every layer — unique keys on staging, not-null on intermediate, accepted values on marts."}},{"@type":"Question","name":"What is reverse-ETL in a SaaS data platform?","acceptedAnswer":{"@type":"Answer","text":"Reverse-ETL is the practice of pushing modeled data from the warehouse back into operational tools. Hightouch, Census, and built-in warehouse syncs are the common vendors. The job is to make warehouse-derived enrichments — account health scores, lifecycle segments, account tier — available in the CRM, in customer.io, and in the product itself so go-to-market teams act on them."}},{"@type":"Question","name":"How does an AI data agent fit a SaaS data platform?","acceptedAnswer":{"@type":"Answer","text":"The AI data agent connects to the warehouse read-only, reads a bound business glossary of SaaS metric definitions, and answers ad-hoc questions in plain English with a plan, SQL, result, and verification step. The job is the question the dashboard does not pre-build — anomaly investigation when MRR drifts, cross-source reconciliation when payments and product DB disagree, and new-question onboarding for non-analyst stakeholders."}},{"@type":"Question","name":"What SaaS metrics drive the schema design?","acceptedAnswer":{"@type":"Answer","text":"MRR, net revenue retention, logo churn rate, CAC payback period, and active accounts (DAU/MAU and similar) are the five metrics that anchor the mart layer. Each metric has a canonical definition in the business glossary, sourced from a specific set of tables, and surfaced through a mart model. The glossary entries are what an AI agent retrieves before drafting SQL — the agent and the dbt marts share the same definition source."}}]}</script>
+  <style>*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:#5B5BFF;text-decoration:none}
+a:hover{color:#111827}
+.nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+.nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+.nav-logo-mark{height:26px;display:flex;align-items:center}
+.nav-logo-mark img{height:26px;width:auto;display:block}
+.nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+.nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+.nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap}
+.nav-menu a:hover{color:#111827}
+.nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+.nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap}
+.nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+.nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+.nav-btn-primary:hover{color:#FFFFFF}
+.nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+.nav-btn-dark:hover{color:#FFFFFF}
+.wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+.breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+.breadcrumb a{color:#6B7280}
+.badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+.badge-client{background:#EEF2FF;color:#4338CA}
+.badge-cat{background:#ECFDF5;color:#047857}
+h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+h3{font-size:21px;color:#111827;margin:24px 0 8px}
+p{margin:0 0 16px}
+ul,ol{padding-left:22px;margin:0 0 18px}
+li{margin:6px 0}
+code{background:#F3F4F6;border-radius:4px;padding:2px 6px;font-family:Consolas,Menlo,monospace;font-size:14px}
+pre{background:#0F172A;color:#E5E7EB;border-radius:10px;padding:16px 18px;overflow-x:auto;margin:14px 0;font-size:14px;line-height:1.55}
+pre code{background:transparent;color:inherit;padding:0;font-size:14px}
+.meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+.author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+.info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+.info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+.disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+.toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+.toc{background:#F9FAFB}
+.toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+.tldr{background:#F8FAFC}
+.snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+.feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+td{color:#4B5563}
+.quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+.cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+.cta-btn:hover{background:#1F2937;color:#FFFFFF}
+.faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+.faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+.faq-a{color:#4B5563}
+.methodology{background:#F9FAFB;color:#4B5563}
+.refs li{font-size:13.5px;color:#4B5563}
+.related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+.related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+.stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+.stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+.stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+.panel h3{margin-top:0}
+.panel-good{background:#F0FDF4;border-color:#BBF7D0}
+.panel-bad{background:#FEF2F2;border-color:#FECACA}
+.footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+.footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+.footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.footer-links{display:grid;gap:8px}
+.footer-links a{color:#6B7280;font-size:14px}
+.footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+@media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">EN</span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">Book Demo</a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">Login</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    saas data platform
+  </nav>
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Architecture Guide</span>
+  </div>
+  <h1>SaaS Data Platform in 2026: Architecture, Stack, Tradeoffs</h1>
+  <p class="meta-desc">A SaaS data platform architecture for 2026 — sources, the ELT layer, warehouse, dbt, BI, reverse-ETL, AI agents, and the metrics that drive the schema choices.</p>
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 · Last verified 2026-06-28 · Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>dbt analytics engineering documentation, Snowflake and BigQuery architecture references, Stripe and Segment vendor docs, public SaaS benchmark reports from OpenView and ChartMogul, and field experience across SaaS data teams.</div>
+  </div>
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, which sells an enterprise AI data analyst used by SaaS data teams. The architecture is written to apply whether or not you use our product — the source list, warehouse choices, and dbt patterns are vendor-neutral.
+  </div>
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer: what a SaaS data platform contains</a></li>
+      <li><a href="#sources">The six source classes a SaaS company pulls from</a></li>
+      <li><a href="#elt">ELT vs ETL — which one for a SaaS stack</a></li>
+      <li><a href="#warehouse">Warehouse choice for a SaaS data platform</a></li>
+      <li><a href="#dbt">The dbt model layer — three folders, three jobs</a></li>
+      <li><a href="#serving">Serving — BI, reverse-ETL, and the AI data agent</a></li>
+      <li><a href="#metrics">The SaaS metrics that drive the schema</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>A SaaS data platform in 2026 has six source classes (product DB, payments, product analytics, CRM, support, marketing), an ELT loader, a warehouse, a dbt layer, and three serving surfaces — BI, reverse-ETL, and an AI data agent.</li>
+      <li>ELT (extract-load-transform) beats ETL for most SaaS stacks because the warehouse compute is now cheap enough to land raw data and model in dbt.</li>
+      <li>Snowflake, BigQuery, and Databricks are the dominant warehouse choices in 2026; for early-stage SaaS, a managed Postgres warehouse like Neon or Supabase is a credible starting point.</li>
+      <li>dbt models organize into three folders — staging (clean and rename), intermediate (join and pre-aggregate), and marts (the questions the business asks). Each folder has its own job.</li>
+      <li>The serving layer includes BI for standing dashboards, reverse-ETL to push enriched audiences back into operational tools, and an AI data agent for ad-hoc analysis that does not fit a dashboard.</li>
+    </ul>
+  </div>
+  <div class="snippet-answer">A SaaS data platform in 2026 has six source classes (product DB, payments, product analytics, CRM, support, marketing), an ELT loader, a warehouse (Snowflake, BigQuery, Databricks, or managed Postgres for early-stage), a dbt model layer organized into staging, intermediate, and marts, and three serving surfaces — BI, reverse-ETL, and an AI data agent. SaaS metrics drive the schema.</div>
+  <img class="feature-img" src="saas-data-platform-framework.svg" alt="SaaS data platform architecture — product DB, Stripe, Segment, Zendesk feed ELT into a warehouse, dbt models surface MRR cohorts, BI and an AI data agent serve answers." width="1200" height="630" loading="lazy">
+
+  <h2 id="sources">The six source classes a SaaS company pulls from</h2>
+<ul>
+    <li><strong>Product database.</strong> Postgres, MySQL, or whatever the application runs on. Users, accounts, plans, usage events.</li>
+    <li><strong>Payments.</strong> Stripe (most common), Chargebee, or a billing-aware payments vendor. Subscriptions, invoices, charges, refunds.</li>
+    <li><strong>Product analytics.</strong> Segment plus a downstream like Amplitude, Mixpanel, or PostHog; or directly to the warehouse via Snowplow or Rudderstack.</li>
+    <li><strong>CRM.</strong> HubSpot or Salesforce. Companies, contacts, opportunities, deal stages, owner assignments.</li>
+    <li><strong>Customer support.</strong> Zendesk, Intercom, or Front. Tickets, conversations, response times, CSAT.</li>
+    <li><strong>Marketing.</strong> Ad platforms, email and lifecycle vendors (Customer.io, Klaviyo, Iterable), social and content tools.</li>
+  </ul>
+  <p>The six classes cover 95% of a typical SaaS schema. Edge sources (a billing exception system, a finance ERP, a contracts vault) land in the warehouse via a manual export or a custom connector when they show up.</p>
+
+  <h2 id="elt">ELT vs ETL — which one for a SaaS stack in 2026</h2>
+<p>The architectural decision in 2026 is mostly settled: ELT wins for SaaS stacks. The warehouse compute is now cheap enough to land raw data, model it inside the warehouse, and skip the transform-in-flight machinery ETL pipelines used to need.</p>
+  <table>
+    <thead><tr><th>Step</th><th>ETL (legacy)</th><th>ELT (modern SaaS default)</th></tr></thead>
+    <tbody>
+      <tr><td>Extract</td><td>Same</td><td>Same — connector pulls from source</td></tr>
+      <tr><td>Transform</td><td>Inside the pipeline tool</td><td>Inside the warehouse, via dbt</td></tr>
+      <tr><td>Load</td><td>Pre-modeled data into the warehouse</td><td>Raw data into the warehouse, then model</td></tr>
+      <tr><td>Best for</td><td>Tightly bounded sources, regulated transforms</td><td>Most SaaS use cases — flexible modeling, easier debugging</td></tr>
+    </tbody>
+  </table>
+  <p>Vendors in this category include Fivetran, Airbyte, Stitch, Hevo, and the source's own warehouse-export feature (e.g., Stripe Data Pipeline to Snowflake). See the companion <a href="https://infinisynapse.com/en/blog/data-integration-platforms-supporting-snowflake-bigquery-redshift">data integration platforms guide</a> for vendor-by-vendor tradeoffs.</p>
+
+  <h2 id="warehouse">Warehouse choice for a SaaS data platform</h2>
+<table>
+    <thead><tr><th>Warehouse</th><th>Best fit</th><th>Tradeoff</th></tr></thead>
+    <tbody>
+      <tr><td>Snowflake</td><td>Mid-market and enterprise SaaS, mixed data scale</td><td>Operating cost grows fast without governance</td></tr>
+      <tr><td>BigQuery</td><td>GCP-resident teams, GA4 BigQuery export native</td><td>Schema management and IAM model take learning</td></tr>
+      <tr><td>Databricks SQL</td><td>SaaS teams with heavy ML and lakehouse needs</td><td>Higher learning curve for a pure analytics team</td></tr>
+      <tr><td>Managed Postgres (Neon, Supabase, Aurora)</td><td>Early-stage SaaS, &lt; 100GB warehouse</td><td>Eventually outgrown when concurrency and partitioning matter</td></tr>
+      <tr><td>Redshift</td><td>AWS-bound teams with long-running data engineering</td><td>Newer warehouses now win head-to-head benchmarks on most SaaS workloads</td></tr>
+    </tbody>
+  </table>
+  <p>The early-stage answer for a SaaS data team is rarely Snowflake on day one. Start with a managed Postgres data warehouse, model in dbt, and promote to a column-store warehouse when concurrency or scan size demands it.</p>
+
+  <h2 id="dbt">The dbt model layer — three folders, three jobs</h2>
+<p>The conventional dbt model layout in 2026 has three folders, each with a different job:</p>
+  <ol>
+    <li><strong>staging</strong> — one model per source table. Clean, rename, cast types. No joins. The contract is "this is the canonical shape of a single source's data."</li>
+    <li><strong>intermediate</strong> — joins and pre-aggregations that are reused across marts. Not exposed to BI. The contract is "this is the canonical join shape across sources."</li>
+    <li><strong>marts</strong> — the questions the business asks. One model per business concept (mart_mrr, mart_active_customers, mart_account_health). These are the tables BI and the AI agent point at.</li>
+  </ol>
+  <p>Tests live alongside the models — unique key tests on staging, not-null tests on intermediate, accepted-values tests on marts. The <a href="https://docs.getdbt.com/" target="_blank" rel="noopener">dbt docs</a> walk the canonical pattern.</p>
+
+  <h2 id="serving">Serving — BI, reverse-ETL, and the AI data agent</h2>
+<p>Three serving surfaces share the mart layer:</p>
+  <ul>
+    <li><strong>BI.</strong> Looker, Metabase, Tableau, Power BI, or Hex/Mode for analyst notebooks. The job is standing dashboards on agreed metrics — MRR, churn cohorts, payback period, NRR.</li>
+    <li><strong>Reverse-ETL.</strong> Hightouch, Census, or built-in operational sync. The job is pushing enriched audiences and account scores back into the CRM, customer.io, and the product itself.</li>
+    <li><strong>AI data agent.</strong> InfiniSynapse or a peer connected to the warehouse with read-only role and a bound business glossary. The job is the ad-hoc question the dashboard cannot answer — anomaly investigation, cross-source reconciliation, new-question onboarding.</li>
+  </ul>
+  <p>The three are complementary. A BI dashboard answers "what is happening". Reverse-ETL acts on what is happening. The agent investigates why what is happening is happening. See <a href="https://infinisynapse.com/en/blog/ai-native-data-platform">AI-native data platform</a> for the deeper framing.</p>
+
+  <h2 id="metrics">The SaaS metrics that drive the schema</h2>
+<table>
+    <thead><tr><th>Metric</th><th>Definition</th><th>Source tables</th></tr></thead>
+    <tbody>
+      <tr><td>MRR</td><td>Sum of recurring subscription value per month</td><td>Stripe subscriptions + invoices, product DB plan table</td></tr>
+      <tr><td>Net revenue retention</td><td>(Starting MRR + Expansion - Churn - Contraction) / Starting MRR</td><td>Stripe MRR by cohort</td></tr>
+      <tr><td>Logo churn rate</td><td>Customers lost / starting customers, by month</td><td>Product DB + Stripe</td></tr>
+      <tr><td>CAC payback period</td><td>CAC / (ARPU Ã— gross margin)</td><td>Marketing spend + Stripe MRR + product DB</td></tr>
+      <tr><td>DAU/MAU and active accounts</td><td>Unique accounts active in window</td><td>Product analytics + product DB</td></tr>
+    </tbody>
+  </table>
+  <p>The metric definitions become the canonical entries in the bound business glossary. The agent retrieves these before drafting SQL, which is how it stays aligned with the dbt mart definitions across analyst sessions.</p>
+  <div class="quote">A SaaS data platform is not its warehouse — it is the contract between the dbt marts, the BI dashboards, the reverse-ETL syncs, and the business glossary the agent reads.</div>
+  <div class="cta-box">
+    <h3>Ask an open-ended question across your SaaS data warehouse</h3>
+    <p>Connect Snowflake, BigQuery, Postgres, or another warehouse read-only. Seed a SaaS business glossary — what counts as an active account, which plan transitions count as expansion. Then ask one question the dashboard does not answer and watch the plan, SQL, and verification step return.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What is a SaaS data platform?</div><div class="faq-a">A SaaS data platform is the set of systems a SaaS company uses to bring data from its operational tools into a single analytical layer, model it for business use, and serve it through dashboards, reverse-ETL syncs, and AI data agents. In 2026 the dominant pattern has six source classes, an ELT loader, a cloud warehouse, a dbt model layer organized into staging-intermediate-marts, and three serving surfaces.</div></div>
+  <div class="faq-item"><div class="faq-q">What are the main components of a SaaS data platform architecture?</div><div class="faq-a">Six components: sources (product DB, payments, product analytics, CRM, support, marketing), an ELT loader (Fivetran, Airbyte, Stitch, Hevo, or a vendor-native export), a cloud warehouse (Snowflake, BigQuery, Databricks, managed Postgres, or Redshift), a dbt model layer, a BI serving surface, a reverse-ETL serving surface, and an AI data agent for ad-hoc analysis. Each component has a clear job and is independently replaceable.</div></div>
+  <div class="faq-item"><div class="faq-q">Which warehouse should a SaaS team pick?</div><div class="faq-a">Snowflake fits mid-market and enterprise SaaS with mixed data scale. BigQuery fits GCP-resident teams and pairs natively with GA4 BigQuery export. Databricks SQL fits teams with heavy ML and lakehouse needs. Managed Postgres warehouses like Neon, Supabase, or Aurora fit early-stage SaaS under 100GB. Redshift remains a credible AWS-bound choice. Pick by stage, cloud, and workload mix.</div></div>
+  <div class="faq-item"><div class="faq-q">What does the dbt model layer look like in a SaaS data platform?</div><div class="faq-a">Three folders, each with a different contract. Staging — one model per source table, cleaned and renamed, no joins. Intermediate — joins and pre-aggregations reused across marts, not exposed to BI. Marts — one model per business concept, the tables BI and the AI agent point at. Tests live alongside models at every layer — unique keys on staging, not-null on intermediate, accepted values on marts.</div></div>
+  <div class="faq-item"><div class="faq-q">What is reverse-ETL in a SaaS data platform?</div><div class="faq-a">Reverse-ETL is the practice of pushing modeled data from the warehouse back into operational tools. Hightouch, Census, and built-in warehouse syncs are the common vendors. The job is to make warehouse-derived enrichments — account health scores, lifecycle segments, account tier — available in the CRM, in customer.io, and in the product itself so go-to-market teams act on them.</div></div>
+  <div class="faq-item"><div class="faq-q">How does an AI data agent fit a SaaS data platform?</div><div class="faq-a">The AI data agent connects to the warehouse read-only, reads a bound business glossary of SaaS metric definitions, and answers ad-hoc questions in plain English with a plan, SQL, result, and verification step. The job is the question the dashboard does not pre-build — anomaly investigation when MRR drifts, cross-source reconciliation when payments and product DB disagree, and new-question onboarding for non-analyst stakeholders.</div></div>
+  <div class="faq-item"><div class="faq-q">What SaaS metrics drive the schema design?</div><div class="faq-a">MRR, net revenue retention, logo churn rate, CAC payback period, and active accounts (DAU/MAU and similar) are the five metrics that anchor the mart layer. Each metric has a canonical definition in the business glossary, sourced from a specific set of tables, and surfaced through a mart model. The glossary entries are what an AI agent retrieves before drafting SQL — the agent and the dbt marts share the same definition source.</div></div>
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 · <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>This architecture guide synthesizes dbt analytics engineering documentation, Snowflake and BigQuery vendor architecture references, Stripe and Segment integration docs, public SaaS benchmark reports from OpenView and ChartMogul, and field experience across SaaS data teams at stages from seed to growth. The six-source list, three-folder dbt layout, and three-serving-surface pattern reflect observed practice rather than vendor positioning.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells an enterprise AI data analyst. To reduce bias, the page leads with the topic itself, treats InfiniSynapse as one option among many, and links to external sources for every numeric claim.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for accuracy and link health.</p>
+  </div>
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> dbt Labs. Analytics engineering guide. <a href="https://docs.getdbt.com/" target="_blank" rel="noopener">docs.getdbt.com</a>.</li>
+    <li><strong>[Vendor]</strong> Snowflake. Architecture documentation. <a href="https://docs.snowflake.com/en/user-guide/intro-key-concepts" target="_blank" rel="noopener">docs.snowflake.com</a>.</li>
+    <li><strong>[Vendor]</strong> Google. BigQuery architecture reference. <a href="https://cloud.google.com/bigquery/docs/introduction" target="_blank" rel="noopener">cloud.google.com/bigquery/docs</a>.</li>
+    <li><strong>[Vendor]</strong> Stripe. Data Pipeline for Snowflake. <a href="https://stripe.com/docs/stripe-data" target="_blank" rel="noopener">stripe.com/docs/stripe-data</a>.</li>
+    <li><strong>[Independent]</strong> OpenView Partners. SaaS benchmarks report. <a href="https://openviewpartners.com/" target="_blank" rel="noopener">openviewpartners.com</a>.</li>
+    <li><strong>[Independent]</strong> Yao et al. ReAct: Synergizing Reasoning and Acting in Language Models. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arxiv.org/abs/2210.03629</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic. Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Standard]</strong> NIST. AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL benchmark. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+  </ol>
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query pillar guide</a>
+    <a href="https://infinisynapse.com/en/blog/marketing-data-analysis">Marketing data analysis playbook</a>
+    <a href="https://infinisynapse.com/en/blog/data-integration-platforms-supporting-snowflake-bigquery-redshift">Data integration platforms</a>
+    <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-with-ai">PostgreSQL data analysis with AI</a>
+    <a href="https://infinisynapse.com/en/blog/ai-native-data-platform">AI-native data platform</a>
+    <a href="https://infinisynapse.com/en/blog/what-is-a-data-agent">What is a data agent</a>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

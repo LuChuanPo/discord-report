@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Science for Product Managers: 2026 Working Guide</title>
+  <meta name="description" content="A data science guide for product managers in 2026 — funnel, cohort, A/B reading, opportunity sizing, when to write SQL, and when to ask an AI data agent.">
+  <meta name="keywords" content="data science for product managers, data analysis for product managers, product manager data skills">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/data-science-for-product-managers">
+  <meta property="og:title" content="Data Science for Product Managers in 2026: A Working Guide">
+  <meta property="og:description" content="A data science guide for product managers in 2026 — funnel, cohort, A/B reading, opportunity sizing, when to write SQL, and when to ask an AI data agent.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/data-science-for-product-managers">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/data-science-for-product-managers/data-science-for-product-managers-framework.svg">
+  <meta property="og:image:alt" content="Data science skills for product managers — funnel, cohort, A/B reading, opportunity sizing — with when to SQL and when to ask an AI agent.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Data Science for Product Managers in 2026: A Working Guide">
+  <meta name="twitter:description" content="A data science guide for product managers in 2026 — funnel, cohort, A/B reading, opportunity sizing, when to write SQL, and when to ask an AI data agent.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/data-science-for-product-managers/data-science-for-product-managers-framework.svg">
+  <meta name="twitter:image:alt" content="Data science skills for product managers — funnel, cohort, A/B reading, opportunity sizing — with when to SQL and when to ask an AI agent.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"Data Science for Product Managers in 2026: A Working Guide","item":"https://infinisynapse.com/en/blog/data-science-for-product-managers"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Data Science for Product Managers in 2026: A Working Guide","description":"A data science guide for product managers in 2026 — funnel, cohort, A/B reading, opportunity sizing, when to write SQL, and when to ask an AI data agent.","image":"https://infinisynapse.com/en/blog/data-science-for-product-managers/data-science-for-product-managers-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/data-science-for-product-managers"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What data science skills should a product manager have?","acceptedAnswer":{"@type":"Answer","text":"Five skills ranked by frequency: funnel analysis (daily) for step-to-step conversion and drop-off diagnosis, cohort retention (weekly) for reading curves by signup or feature cohort, A/B test reading (weekly to monthly) for understanding significance and avoiding common pitfalls, ad-hoc data querying (weekly) via SQL or an AI agent, and opportunity sizing (quarterly) for market sizing and ROI estimation on roadmap bets."}},{"@type":"Question","name":"Do product managers need to know SQL?","acceptedAnswer":{"@type":"Answer","text":"Yes for the questions you defend yourself — the SQL you can read and re-derive in a meeting is the SQL you can be challenged on. No for every open-ended ad-hoc question — that work shifts to AI data agents in 2026 because the volume of questions a PM produces exceeds what a PM can type. The pair-up is the modern shape: SQL fluency for defendable analysis, agent for exploration."}},{"@type":"Question","name":"How should a PM read an A/B test result?","acceptedAnswer":{"@type":"Answer","text":"Avoid four common failures: peeking before reaching the pre-registered sample size, which inflates false positives; sample ratio mismatch where treatment and control deviate from 50/50 signaling broken randomization; switching to a downstream metric after the test runs; and reading week 1 lift that reverses by week 4 due to novelty effects. Always check the assignment split before reading the primary metric."}},{"@type":"Question","name":"How do AI data agents help product managers?","acceptedAnswer":{"@type":"Answer","text":"The daily volume of ad-hoc questions a PM produces — anomaly spikes, cohort comparisons, segment breakdowns, cross-table joins — is exactly what AI data agents handle fastest. Connect the agent to your warehouse read-only, seed a small business glossary of event names and metric definitions, and ask in plain English. The agent returns a plan, SQL, result, and verification step the PM can defend or push back on."}},{"@type":"Question","name":"What is the difference between funnel analysis and cohort retention?","acceptedAnswer":{"@type":"Answer","text":"A funnel measures step-to-step conversion within a single session or short window — how users move from session start to a target event. A cohort retention curve measures the share of a group of users (typically a signup cohort) still active at week N. Funnel diagnoses where users drop off in a flow; cohort retention diagnoses whether the product has lasting value for users who arrive."}},{"@type":"Question","name":"What tools should a PM use for data analysis?","acceptedAnswer":{"@type":"Answer","text":"Six tools cover most PM data work: a product analytics platform like Amplitude or Mixpanel or PostHog or Heap for funnel and cohort questions, warehouse read-only access to Snowflake or BigQuery or Postgres for source-of-truth questions, a BI tool like Looker or Metabase or Tableau for saved analyses, an A/B testing platform like Statsig or Optimizely or GrowthBook, an AI data agent for ad-hoc questions, and a spreadsheet for opportunity sizing."}},{"@type":"Question","name":"When should a PM write SQL versus ask an AI agent?","acceptedAnswer":{"@type":"Answer","text":"Write SQL when you are defending a number to the team, when the query will repeat weekly and deserves a saved dashboard, and when you are learning what a join looks like and the typing is the lesson. Ask the AI agent when the question is exploratory, when it crosses three or more tables, and when you need an evidence trail with plan plus SQL plus verification step for a board or stakeholder review."}}]}</script>
+  <style>*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:#5B5BFF;text-decoration:none}
+a:hover{color:#111827}
+.nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+.nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+.nav-logo-mark{height:26px;display:flex;align-items:center}
+.nav-logo-mark img{height:26px;width:auto;display:block}
+.nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+.nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+.nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap}
+.nav-menu a:hover{color:#111827}
+.nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+.nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap}
+.nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+.nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+.nav-btn-primary:hover{color:#FFFFFF}
+.nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+.nav-btn-dark:hover{color:#FFFFFF}
+.wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+.breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+.breadcrumb a{color:#6B7280}
+.badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+.badge-client{background:#EEF2FF;color:#4338CA}
+.badge-cat{background:#ECFDF5;color:#047857}
+h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+h3{font-size:21px;color:#111827;margin:24px 0 8px}
+p{margin:0 0 16px}
+ul,ol{padding-left:22px;margin:0 0 18px}
+li{margin:6px 0}
+code{background:#F3F4F6;border-radius:4px;padding:2px 6px;font-family:Consolas,Menlo,monospace;font-size:14px}
+pre{background:#0F172A;color:#E5E7EB;border-radius:10px;padding:16px 18px;overflow-x:auto;margin:14px 0;font-size:14px;line-height:1.55}
+pre code{background:transparent;color:inherit;padding:0;font-size:14px}
+.meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+.author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+.info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+.info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+.disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+.toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+.toc{background:#F9FAFB}
+.toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+.tldr{background:#F8FAFC}
+.snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+.feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+td{color:#4B5563}
+.quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+.cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+.cta-btn:hover{background:#1F2937;color:#FFFFFF}
+.faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+.faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+.faq-a{color:#4B5563}
+.methodology{background:#F9FAFB;color:#4B5563}
+.refs li{font-size:13.5px;color:#4B5563}
+.related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+.related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+.stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+.stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+.stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+.panel h3{margin-top:0}
+.panel-good{background:#F0FDF4;border-color:#BBF7D0}
+.panel-bad{background:#FEF2F2;border-color:#FECACA}
+.footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+.footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+.footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.footer-links{display:grid;gap:8px}
+.footer-links a{color:#6B7280;font-size:14px}
+.footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+@media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">EN</span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">Book Demo</a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">Login</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    data science for product managers
+  </nav>
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Skills Guide</span>
+  </div>
+  <h1>Data Science for Product Managers in 2026: A Working Guide</h1>
+  <p class="meta-desc">A working data science guide for product managers in 2026 — funnel, cohort, A/B reading, opportunity sizing, when to write SQL, and when to ask an AI data agent.</p>
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 · Last verified 2026-06-28 · Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>Product analytics vendor documentation from Amplitude and Mixpanel, A/B testing literature (Kohavi et al.), public product management benchmark studies, BLS data scientists occupational outlook, and field experience with PM and data teams.</div>
+  </div>
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, an AI data analyst PMs use to answer questions without filing analyst tickets. The skills checklist and workflow are written to apply whether or not the PM uses our product.
+  </div>
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer: what data science skills a PM needs</a></li>
+      <li><a href="#skills">The five PM data science skills, ranked by use frequency</a></li>
+      <li><a href="#funnel">Funnel analysis the PM way</a></li>
+      <li><a href="#cohort">Cohort retention reading</a></li>
+      <li><a href="#ab">A/B test reading without misreading</a></li>
+      <li><a href="#sql-or-agent">When a PM should write SQL vs ask an agent</a></li>
+      <li><a href="#tools">The tools a PM actually needs</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>PMs do not need to be data scientists — but the best ones are fluent in five skills: funnel analysis, cohort retention, A/B test reading, opportunity sizing, and ad-hoc data querying.</li>
+      <li>Funnel analysis is the daily skill — measuring step-to-step conversion, segmenting by user properties, and spotting which step degraded.</li>
+      <li>Cohort retention is the weekly skill — reading curves to evaluate channel quality, feature impact, and product-market fit signal.</li>
+      <li>A/B test reading is the most error-prone skill — peeking before significance, reading the wrong metric, ignoring SRM (sample ratio mismatch) are the common failure modes.</li>
+      <li>In 2026 PMs increasingly use AI data agents to ask warehouse questions without filing analyst tickets — write SQL when the question is yours to defend, ask the agent when the question is exploratory.</li>
+    </ul>
+  </div>
+  <div class="snippet-answer">A PM needs five data science skills: funnel analysis, cohort retention, A/B test reading, opportunity sizing, and ad-hoc data querying. Funnel is daily, cohort is weekly, A/B reading is the most error-prone, opportunity sizing is the rarest but highest-stakes. Write SQL when the question is yours to defend; ask an AI data agent when the question is exploratory or cross-source.</div>
+  <img class="feature-img" src="data-science-for-product-managers-framework.svg" alt="Data science skills for product managers — funnel, cohort, A/B reading, opportunity sizing — with when to SQL and when to ask an AI agent." width="1200" height="630" loading="lazy">
+
+  <h2 id="skills">The five PM data science skills, ranked by use frequency</h2>
+<table>
+    <thead><tr><th>Skill</th><th>Frequency</th><th>What it covers</th></tr></thead>
+    <tbody>
+      <tr><td>Funnel analysis</td><td>Daily</td><td>Step-to-step conversion, segmentation, drop-off diagnosis</td></tr>
+      <tr><td>Cohort retention</td><td>Weekly</td><td>Curves by signup or feature cohort, lifetime trends</td></tr>
+      <tr><td>A/B test reading</td><td>Weekly–monthly</td><td>Significance, power, SRM, metric choice, peeking</td></tr>
+      <tr><td>Ad-hoc data querying</td><td>Weekly</td><td>SQL or AI-agent-driven exploration of warehouse data</td></tr>
+      <tr><td>Opportunity sizing</td><td>Quarterly</td><td>Market sizing, TAM/SAM, ROI estimation for a roadmap bet</td></tr>
+    </tbody>
+  </table>
+  <p>The frequency ranking is what to invest in first — funnel and cohort beat A/B test reading on the volume curve, but A/B test reading is the most expensive to do badly.</p>
+
+  <h2 id="funnel">Funnel analysis the PM way — what to ask, what to ignore</h2>
+<p>Funnel analysis answers "where do people drop off". For PMs, three questions matter:</p>
+  <ul>
+    <li><strong>Which step has the biggest absolute drop?</strong> The bottleneck is usually the step that loses the most users in absolute count — not the step with the lowest percentage conversion.</li>
+    <li><strong>Does the funnel shape change by segment?</strong> Mobile vs desktop, country, channel, time of day. A flat overall funnel often hides a fixable segment-specific drop.</li>
+    <li><strong>Did the drop change over time?</strong> Compare last week to the same week four weeks ago. A new drop is more actionable than a permanent one.</li>
+  </ul>
+  <p>What to ignore: vanity conversion rate published by competitors. Funnels are defined differently across products; cross-product comparison is mostly noise. The most useful comparison is your funnel against your funnel last quarter.</p>
+
+  <h2 id="cohort">Cohort retention reading — three traps</h2>
+<p>A cohort retention curve plots the share of a signup cohort still active at week N. Three reading traps to avoid:</p>
+  <ul>
+    <li><strong>The curve flattens — declare PMF too early.</strong> Curves flatten because the worst users have churned. Look at absolute counts, not just percentages.</li>
+    <li><strong>Compare cohorts at different ages.</strong> A 2-month-old cohort is not comparable to a 12-month-old cohort. Align week-N for week-N.</li>
+    <li><strong>Conflate signup cohort with feature cohort.</strong> "Users who first used feature X" is a feature cohort. "Users who signed up in March" is a signup cohort. They answer different questions.</li>
+  </ul>
+  <p>The PM job is reading the curves, not generating them. The data team produces the curves; the PM defends the interpretation in the roadmap conversation.</p>
+
+  <h2 id="ab">A/B test reading without misreading — the four common failures</h2>
+<table>
+    <thead><tr><th>Failure mode</th><th>What happens</th><th>Fix</th></tr></thead>
+    <tbody>
+      <tr><td>Peeking before significance</td><td>Stopping at the first "p &lt; 0.05" inflates false positives</td><td>Pre-register sample size; use sequential testing if you must peek</td></tr>
+      <tr><td>Sample Ratio Mismatch (SRM)</td><td>Treatment/control split deviates from 50/50; randomization is broken</td><td>Always check the assignment split before reading the metric</td></tr>
+      <tr><td>Wrong primary metric</td><td>"It moved a downstream metric" tempts after-the-fact metric switching</td><td>Pre-commit the primary metric; secondary metrics are diagnostic only</td></tr>
+      <tr><td>Novelty effect</td><td>Treatment lift in week 1 reverses by week 4 as users adjust</td><td>Run long enough to cover the adjustment period</td></tr>
+    </tbody>
+  </table>
+  <p>The PM does not run the math — the data team does. The PM owns the test design and the post-test decision. The literature to start with is Ron Kohavi's <a href="https://exp-platform.com/" target="_blank" rel="noopener">experimentation platform research</a>; the failure modes above are documented there in painful detail.</p>
+
+  <h2 id="sql-or-agent">When a PM should write SQL vs ask an AI agent</h2>
+<table>
+    <thead><tr><th>Scenario</th><th>Write SQL</th><th>Ask the AI agent</th></tr></thead>
+    <tbody>
+      <tr><td>You are defending a number to the team</td><td>Yes — own the query</td><td>—</td></tr>
+      <tr><td>You are exploring an open-ended question</td><td>—</td><td>Yes — agent drafts, you read</td></tr>
+      <tr><td>The question crosses 3+ tables</td><td>—</td><td>Yes — agent handles the joins</td></tr>
+      <tr><td>You will repeat this query weekly</td><td>Yes — turn it into a saved dashboard</td><td>—</td></tr>
+      <tr><td>You need an evidence trail for the board</td><td>—</td><td>Yes — agent returns plan + SQL + verification</td></tr>
+      <tr><td>You are learning what a join looks like</td><td>Yes — typing it is the lesson</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p>The rule of thumb: SQL is the PM skill that survives the AI shift, but the daily volume of ad-hoc questions a PM produces is exactly what an <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst</a> handles fastest. PMs that pair the two ship more.</p>
+
+  <h2 id="tools">The tools a PM actually needs</h2>
+<ul>
+    <li><strong>Product analytics (one).</strong> Amplitude, Mixpanel, PostHog, or Heap. The default surface for funnel and cohort questions.</li>
+    <li><strong>Warehouse access.</strong> Read-only credentials to Snowflake, BigQuery, Redshift, or Postgres. Not optional — the warehouse is the source of truth for the questions product analytics cannot answer.</li>
+    <li><strong>A BI tool.</strong> Looker, Metabase, Tableau, Power BI, or Hex. Where saved analyses live.</li>
+    <li><strong>An A/B testing platform.</strong> Statsig, Optimizely, GrowthBook, or LaunchDarkly. The default surface for experimentation.</li>
+    <li><strong>An AI data agent.</strong> The ad-hoc question pile a PM produces is exactly what an <a href="https://infinisynapse.com/en/blog/what-is-a-data-agent">AI data agent</a> handles — connect read-only and ask in plain English.</li>
+    <li><strong>A spreadsheet.</strong> For opportunity sizing, ROI estimates, and one-off chart polish for a deck.</li>
+  </ul>
+  <div class="quote">A PM that can read a funnel, read a cohort, read an A/B test, and ask an agent has 80% of the data science skill the job requires.</div>
+  <div class="cta-box">
+    <h3>Ask a PM-shaped question across your product warehouse</h3>
+    <p>Connect Snowflake, BigQuery, Postgres, or the warehouse where your product events land. Seed a small business glossary of event names and metric definitions. Then ask one open-ended product question and review the plan, SQL, and verification step.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What data science skills should a product manager have?</div><div class="faq-a">Five skills ranked by frequency: funnel analysis (daily) for step-to-step conversion and drop-off diagnosis, cohort retention (weekly) for reading curves by signup or feature cohort, A/B test reading (weekly to monthly) for understanding significance and avoiding common pitfalls, ad-hoc data querying (weekly) via SQL or an AI agent, and opportunity sizing (quarterly) for market sizing and ROI estimation on roadmap bets.</div></div>
+  <div class="faq-item"><div class="faq-q">Do product managers need to know SQL?</div><div class="faq-a">Yes for the questions you defend yourself — the SQL you can read and re-derive in a meeting is the SQL you can be challenged on. No for every open-ended ad-hoc question — that work shifts to AI data agents in 2026 because the volume of questions a PM produces exceeds what a PM can type. The pair-up is the modern shape: SQL fluency for defendable analysis, agent for exploration.</div></div>
+  <div class="faq-item"><div class="faq-q">How should a PM read an A/B test result?</div><div class="faq-a">Avoid four common failures: peeking before reaching the pre-registered sample size, which inflates false positives; sample ratio mismatch where treatment and control deviate from 50/50 signaling broken randomization; switching to a downstream metric after the test runs; and reading week 1 lift that reverses by week 4 due to novelty effects. Always check the assignment split before reading the primary metric.</div></div>
+  <div class="faq-item"><div class="faq-q">How do AI data agents help product managers?</div><div class="faq-a">The daily volume of ad-hoc questions a PM produces — anomaly spikes, cohort comparisons, segment breakdowns, cross-table joins — is exactly what AI data agents handle fastest. Connect the agent to your warehouse read-only, seed a small business glossary of event names and metric definitions, and ask in plain English. The agent returns a plan, SQL, result, and verification step the PM can defend or push back on.</div></div>
+  <div class="faq-item"><div class="faq-q">What is the difference between funnel analysis and cohort retention?</div><div class="faq-a">A funnel measures step-to-step conversion within a single session or short window — how users move from session start to a target event. A cohort retention curve measures the share of a group of users (typically a signup cohort) still active at week N. Funnel diagnoses where users drop off in a flow; cohort retention diagnoses whether the product has lasting value for users who arrive.</div></div>
+  <div class="faq-item"><div class="faq-q">What tools should a PM use for data analysis?</div><div class="faq-a">Six tools cover most PM data work: a product analytics platform like Amplitude or Mixpanel or PostHog or Heap for funnel and cohort questions, warehouse read-only access to Snowflake or BigQuery or Postgres for source-of-truth questions, a BI tool like Looker or Metabase or Tableau for saved analyses, an A/B testing platform like Statsig or Optimizely or GrowthBook, an AI data agent for ad-hoc questions, and a spreadsheet for opportunity sizing.</div></div>
+  <div class="faq-item"><div class="faq-q">When should a PM write SQL versus ask an AI agent?</div><div class="faq-a">Write SQL when you are defending a number to the team, when the query will repeat weekly and deserves a saved dashboard, and when you are learning what a join looks like and the typing is the lesson. Ask the AI agent when the question is exploratory, when it crosses three or more tables, and when you need an evidence trail with plan plus SQL plus verification step for a board or stakeholder review.</div></div>
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 · <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>This skills guide synthesizes product analytics vendor documentation from Amplitude and Mixpanel, A/B testing research from Ron Kohavi and the Microsoft Experimentation Platform team, public product management benchmark studies, the BLS data scientists occupational outlook, and field experience with PMs and data teams across SaaS and consumer products. The five-skill ranking and SQL-vs-agent rubric reflect observed practice across PM organizations.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells an enterprise AI data analyst. To reduce bias, the page leads with the topic itself, treats InfiniSynapse as one option among many, and links to external sources for every numeric claim.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for accuracy and link health.</p>
+  </div>
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> Amplitude. Product analytics documentation. <a href="https://help.amplitude.com/" target="_blank" rel="noopener">help.amplitude.com</a>.</li>
+    <li><strong>[Vendor]</strong> Mixpanel. Product analytics reference. <a href="https://help.mixpanel.com/" target="_blank" rel="noopener">help.mixpanel.com</a>.</li>
+    <li><strong>[Independent]</strong> Kohavi et al. Experimentation Platform research. <a href="https://exp-platform.com/" target="_blank" rel="noopener">exp-platform.com</a>.</li>
+    <li><strong>[Standard]</strong> US Bureau of Labor Statistics. Data Scientists occupational outlook. <a href="https://www.bls.gov/ooh/math/data-scientists.htm" target="_blank" rel="noopener">bls.gov/ooh/math/data-scientists</a>.</li>
+    <li><strong>[Vendor]</strong> Statsig. Experimentation platform documentation. <a href="https://docs.statsig.com/" target="_blank" rel="noopener">docs.statsig.com</a>.</li>
+    <li><strong>[Independent]</strong> Yao et al. ReAct: Synergizing Reasoning and Acting in Language Models. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arxiv.org/abs/2210.03629</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic. Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Standard]</strong> NIST. AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL benchmark. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+  </ol>
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query pillar guide</a>
+    <a href="https://infinisynapse.com/en/blog/sql-for-data-analysis">SQL for data analysis</a>
+    <a href="https://infinisynapse.com/en/blog/business-intelligence-vs-data-science">BI vs data science</a>
+    <a href="https://infinisynapse.com/en/blog/chatgpt-for-data-analysis">ChatGPT for data analysis</a>
+    <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst explained</a>
+    <a href="https://infinisynapse.com/en/blog/what-is-a-data-agent">What is a data agent</a>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

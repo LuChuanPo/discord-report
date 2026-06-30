@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analysis in Logistics: 2026 Methods and AI</title>
+  <meta name="description" content="Data analysis in logistics 2026 — OTIF, dwell time, cost per shipment, carrier scorecards, TMS/WMS/telematics sources, where AI data agents change workflow.">
+  <meta name="keywords" content="data analysis in logistics, logistics data analysis with ai, logistics analytics tools">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/data-analysis-in-logistics">
+  <meta property="og:title" content="Data Analysis in Logistics in 2026: Methods, Sources, and AI">
+  <meta property="og:description" content="Data analysis in logistics 2026 — OTIF, dwell time, cost per shipment, carrier scorecards, TMS/WMS/telematics sources, where AI data agents change workflow.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/data-analysis-in-logistics">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/data-analysis-in-logistics/data-analysis-in-logistics-framework.svg">
+  <meta property="og:image:alt" content="Logistics data analysis flow — TMS, WMS, telematics, EDI feed OTIF, dwell time, cost per shipment, route deviation, carrier scorecards, with AI data agent for ad-hoc.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Data Analysis in Logistics in 2026: Methods, Sources, and AI">
+  <meta name="twitter:description" content="Data analysis in logistics 2026 — OTIF, dwell time, cost per shipment, carrier scorecards, TMS/WMS/telematics sources, where AI data agents change workflow.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/data-analysis-in-logistics/data-analysis-in-logistics-framework.svg">
+  <meta name="twitter:image:alt" content="Logistics data analysis flow — TMS, WMS, telematics, EDI feed OTIF, dwell time, cost per shipment, route deviation, carrier scorecards, with AI data agent for ad-hoc.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"Data Analysis in Logistics in 2026: Methods, Sources, and AI","item":"https://infinisynapse.com/en/blog/data-analysis-in-logistics"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Data Analysis in Logistics in 2026: Methods, Sources, and AI","description":"Data analysis in logistics 2026 — OTIF, dwell time, cost per shipment, carrier scorecards, TMS/WMS/telematics sources, where AI data agents change workflow.","image":"https://infinisynapse.com/en/blog/data-analysis-in-logistics/data-analysis-in-logistics-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/data-analysis-in-logistics"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is data analysis in logistics?","acceptedAnswer":{"@type":"Answer","text":"Data analysis in logistics is the practice of combining transportation management system data, warehouse management system data, telematics feeds, and EDI message data to track on-time performance, cost, carrier quality, and operational exceptions. The work centers on a small set of anchor metrics — OTIF, dwell time, cost per shipment, route deviation, carrier scorecard, and exception rate — that are segmented across lanes, carriers, and customers."}},{"@type":"Question","name":"What data sources do logistics teams analyze?","acceptedAnswer":{"@type":"Answer","text":"Four source classes: transportation management systems like Oracle TMS, Blue Yonder, MercuryGate, FreightPath, Project44, or Shipwell; warehouse management systems like Manhattan, SAP EWM, HighJump, or Fishbowl; telematics platforms like Samsara, Geotab, or Motive; and EDI message data including the 204 load tender, 214 carrier status, 210 invoice, 856 advance ship notice, and 990 response to tender. The warehouse is the reconciled layer."}},{"@type":"Question","name":"What is OTIF in logistics analytics?","acceptedAnswer":{"@type":"Answer","text":"OTIF stands for on-time, in-full and is the most weighted logistics KPI for shippers because major retailers penalize it directly through chargebacks. OTIF decomposes into the on-time delivery rate (shipments delivered within the agreed window divided by total shipments) multiplied by the in-full rate (shipments delivered with the full ordered quantity divided by total shipments). The analytical work concentrates in the failure modes by lane, carrier, and customer."}},{"@type":"Question","name":"What metrics do logistics data teams track weekly?","acceptedAnswer":{"@type":"Answer","text":"Six metrics anchor most weekly work: OTIF, dwell time, cost per shipment, route deviation, carrier scorecard, and exception rate. Each is segmented across lanes, carriers, customers, and time windows. The remaining analytical time goes to investigating drift in any of the six — for example, a dwell-time spike at a specific distribution center on a specific day, or a carrier scorecard slipping over the last 90 days."}},{"@type":"Question","name":"What tools do logistics teams use for data analysis?","acceptedAnswer":{"@type":"Answer","text":"The tool ladder runs from TMS-native dashboards plus Excel for small fleets, to a warehouse plus ELT plus BI for 3PLs and shippers with three to ten carriers, to a full enterprise stack with telematics and EDI integration plus dbt for shippers with twenty or more carriers, with AI data agents now layering on top for ad-hoc anomaly investigation and cross-system queries that span TMS, WMS, telematics, and EDI."}},{"@type":"Question","name":"How do AI data agents help logistics data analysis?","acceptedAnswer":{"@type":"Answer","text":"Three concrete patterns: dwell-time spike triage where the agent decomposes a spike by dock door, shift, carrier, and appointment in minutes instead of half a day; carrier scorecard deep dives joining TMS, EDI, and telematics to identify whether a carrier slip is concentrated or general; and ad-hoc cost-to-serve questions that operations managers raise without filing a BI ticket. The agent handles the cross-system joins logistics analysis is dominated by."}},{"@type":"Question","name":"What are common data analysis examples in logistics?","acceptedAnswer":{"@type":"Answer","text":"Examples include dwell-time spike triage at a distribution center, carrier scorecard deep dives over the last 90 days, cost-to-serve analysis for top customers, lane-level OTIF investigation when a retailer chargeback arrives, exception rate trending by EDI 214 status code, route deviation root cause analysis from telematics, and tender acceptance rate trending by carrier. Each example sits under one of the six anchor metrics."}}]}</script>
+  <style>*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:#5B5BFF;text-decoration:none}
+a:hover{color:#111827}
+.nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+.nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+.nav-logo-mark{height:26px;display:flex;align-items:center}
+.nav-logo-mark img{height:26px;width:auto;display:block}
+.nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+.nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+.nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap}
+.nav-menu a:hover{color:#111827}
+.nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+.nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap}
+.nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+.nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+.nav-btn-primary:hover{color:#FFFFFF}
+.nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+.nav-btn-dark:hover{color:#FFFFFF}
+.wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+.breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+.breadcrumb a{color:#6B7280}
+.badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+.badge-client{background:#EEF2FF;color:#4338CA}
+.badge-cat{background:#ECFDF5;color:#047857}
+h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+h3{font-size:21px;color:#111827;margin:24px 0 8px}
+p{margin:0 0 16px}
+ul,ol{padding-left:22px;margin:0 0 18px}
+li{margin:6px 0}
+code{background:#F3F4F6;border-radius:4px;padding:2px 6px;font-family:Consolas,Menlo,monospace;font-size:14px}
+pre{background:#0F172A;color:#E5E7EB;border-radius:10px;padding:16px 18px;overflow-x:auto;margin:14px 0;font-size:14px;line-height:1.55}
+pre code{background:transparent;color:inherit;padding:0;font-size:14px}
+.meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+.author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+.info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+.info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+.disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+.toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+.toc{background:#F9FAFB}
+.toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+.tldr{background:#F8FAFC}
+.snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+.feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+td{color:#4B5563}
+.quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+.cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+.cta-btn:hover{background:#1F2937;color:#FFFFFF}
+.faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+.faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+.faq-a{color:#4B5563}
+.methodology{background:#F9FAFB;color:#4B5563}
+.refs li{font-size:13.5px;color:#4B5563}
+.related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+.related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+.stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+.stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+.stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+.panel h3{margin-top:0}
+.panel-good{background:#F0FDF4;border-color:#BBF7D0}
+.panel-bad{background:#FEF2F2;border-color:#FECACA}
+.footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+.footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+.footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.footer-links{display:grid;gap:8px}
+.footer-links a{color:#6B7280;font-size:14px}
+.footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+@media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">EN</span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">Book Demo</a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">Login</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    data analysis in logistics
+  </nav>
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Methods Guide</span>
+  </div>
+  <h1>Data Analysis in Logistics in 2026: Methods, Sources, and AI</h1>
+  <p class="meta-desc">Data analysis in logistics in 2026 — OTIF, dwell, cost per shipment, carrier scorecards, TMS/WMS/telematics sources, and where AI data agents change workflow.</p>
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 · Last verified 2026-06-28 · Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>TMS and WMS vendor documentation, telematics platform references (Samsara, Geotab), DCSA EDI standards, public logistics analytics studies, and field experience across 3PL and shipper data teams.</div>
+  </div>
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, an AI data analyst used by some logistics and supply chain teams. The methods, metric tree, and tool ladder apply regardless of which analytics platform you pick.
+  </div>
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer: what logistics data analysis covers</a></li>
+      <li><a href="#sources">The four source classes a logistics stack pulls from</a></li>
+      <li><a href="#metrics">The six metrics that anchor the work</a></li>
+      <li><a href="#otif">OTIF and the underlying decomposition</a></li>
+      <li><a href="#examples">Examples — three weekly questions</a></li>
+      <li><a href="#tools">Tool ladder for logistics analytics</a></li>
+      <li><a href="#ai-fit">Where AI data agents earn the seat</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>Logistics data analysis combines TMS (transportation management system), WMS (warehouse management system), telematics, and EDI message data to answer recurring questions about on-time performance, cost, and carrier quality.</li>
+      <li>Six metrics anchor most weekly work: OTIF (on-time, in-full), dwell time, cost per shipment, route deviation, carrier scorecard, and exception rate.</li>
+      <li>OTIF decomposes into on-time delivery rate × in-full rate; the failures concentrate by lane, carrier, and shipper-of-record — segmenting the failure mode is the analytical work.</li>
+      <li>Tooling runs from TMS-native dashboards to a warehouse plus BI plus dbt, with AI data agents now handling ad-hoc anomaly investigation on top.</li>
+      <li>AI agents help with three recurring patterns: dwell-time spike triage, carrier scorecard root cause analysis, and what-if questions across lanes and carriers.</li>
+    </ul>
+  </div>
+  <div class="snippet-answer">Logistics data analysis combines TMS, WMS, telematics, and EDI data to track six anchor metrics — OTIF, dwell time, cost per shipment, route deviation, carrier scorecard, exception rate — and answer recurring questions about on-time performance, cost, and carrier quality. Tooling runs from TMS dashboards to a warehouse-plus-BI stack, with AI agents handling ad-hoc anomaly triage on top.</div>
+  <img class="feature-img" src="data-analysis-in-logistics-framework.svg" alt="Logistics data analysis flow — TMS, WMS, telematics, EDI feed OTIF, dwell time, cost per shipment, route deviation, carrier scorecards, with AI data agent for ad-hoc." width="1200" height="630" loading="lazy">
+
+  <h2 id="sources">The four source classes a logistics stack pulls from</h2>
+<ul>
+    <li><strong>Transportation Management System (TMS).</strong> Oracle TMS, Blue Yonder, MercuryGate, FreightPath, Project44 (visibility), Shipwell. Loads, shipments, lanes, carriers, costs.</li>
+    <li><strong>Warehouse Management System (WMS).</strong> Manhattan, SAP EWM, HighJump, Fishbowl. Inbound, outbound, putaway, picking, packing, dock-to-stock time.</li>
+    <li><strong>Telematics.</strong> Samsara, Geotab, Motive (formerly KeepTruckin). Vehicle GPS, dwell, harsh-braking events, idle time, driver hours.</li>
+    <li><strong>EDI message data.</strong> 204 (load tender), 214 (carrier status), 210 (invoice), 856 (advance ship notice), 990 (response to tender). The communication layer between shippers, carriers, and 3PLs.</li>
+  </ul>
+  <p>The warehouse — Snowflake, BigQuery, Redshift, or Postgres data warehouse — is where these four land via ELT and are modeled together. Without that, every question becomes a cross-system query the team writes by hand.</p>
+
+  <h2 id="metrics">The six metrics that anchor most weekly work</h2>
+<table>
+    <thead><tr><th>Metric</th><th>Definition</th><th>Primary source</th></tr></thead>
+    <tbody>
+      <tr><td>OTIF</td><td>On-time delivery rate × in-full rate, by lane and customer</td><td>TMS + EDI 214 + EDI 210</td></tr>
+      <tr><td>Dwell time</td><td>Time at origin or destination beyond the appointment window</td><td>Telematics + TMS appointment</td></tr>
+      <tr><td>Cost per shipment</td><td>Total cost (line haul + accessorials + fuel) per shipment, by lane</td><td>TMS + EDI 210</td></tr>
+      <tr><td>Route deviation</td><td>Distance or time variance vs the planned route</td><td>Telematics</td></tr>
+      <tr><td>Carrier scorecard</td><td>OTIF + claims rate + cost variance + tender acceptance, monthly</td><td>TMS + WMS + EDI</td></tr>
+      <tr><td>Exception rate</td><td>Share of shipments with status code anomaly</td><td>EDI 214 + TMS</td></tr>
+    </tbody>
+  </table>
+  <p>Most weekly work is repeating these six segmentations along lane, carrier, customer, and time. The remaining work is investigating drift in any of the six.</p>
+
+  <h2 id="otif">OTIF — the underlying decomposition</h2>
+<p>OTIF is the most weighted logistics KPI for shippers because retailers penalize it directly. The decomposition is simple but the analytical work concentrates in the failure modes:</p>
+  <pre><code>OTIF = on-time delivery rate × in-full rate
+on-time delivery rate = shipments delivered within delivery window / total shipments
+in-full rate = shipments delivered with full quantity / total shipments</code></pre>
+  <p>Two SQL examples on a typical schema:</p>
+  <pre><code>-- On-time delivery rate by carrier, last 4 weeks
+SELECT carrier_id,
+       COUNT(*) AS shipments,
+       SUM(CASE WHEN actual_delivery &lt;= delivery_window_end THEN 1 ELSE 0 END) * 1.0 / COUNT(*) AS on_time_rate
+FROM shipments
+WHERE pickup_date &gt;= CURRENT_DATE - INTERVAL '28 day'
+GROUP BY carrier_id
+ORDER BY on_time_rate DESC;</code></pre>
+  <pre><code>-- In-full failure top causes, last 4 weeks
+SELECT failure_reason, COUNT(*) AS occurrences
+FROM shipment_exceptions
+WHERE exception_type = 'short_shipment'
+  AND pickup_date &gt;= CURRENT_DATE - INTERVAL '28 day'
+GROUP BY failure_reason
+ORDER BY occurrences DESC
+LIMIT 10;</code></pre>
+  <p>The analytical pattern is the same across logistics metrics: a top-line rate, a segmentation by carrier or lane, and a drill into failure reasons. See the <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-tools">PostgreSQL data analysis tools guide</a> for the dialect-specific syntax on date arithmetic.</p>
+
+  <h2 id="examples">Three weekly questions and how the answer comes together</h2>
+<h3>1. "Why did dwell time spike at the Atlanta DC on Wednesday?"</h3>
+  <p>The dashboard shows the spike. The analyst joins telematics (when trucks arrived) to TMS appointments (when they were scheduled) to WMS receiving events (when actually unloaded). The driver of the spike is usually one of: missed appointment, dock-door congestion, labor shortfall on receiving. The output is a ranked list of candidate causes with the underlying SQL.</p>
+  <h3>2. "Which carriers are getting worse this quarter?"</h3>
+  <p>Carrier scorecard, last 90 days vs prior 90 days, delta on OTIF, claims rate, cost variance, tender acceptance. The carriers with the biggest negative delta on two or more dimensions are the ones to renegotiate or remove.</p>
+  <h3>3. "What is the cost-to-serve for our top 10 customers?"</h3>
+  <p>Cost per shipment × shipments per period × customer, plus accessorial charges allocated by customer. Combined with revenue per customer and gross margin, this surfaces customers where the freight cost exceeds the contribution.</p>
+
+  <h2 id="tools">Tool ladder for logistics analytics</h2>
+<table>
+    <thead><tr><th>Rung</th><th>Stack</th><th>When you stay</th><th>When you graduate</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>TMS-native dashboards + Excel</td><td>Small fleet, single carrier</td><td>Cross-system questions become weekly</td></tr>
+      <tr><td>2</td><td>Warehouse + ELT (TMS + WMS) + BI</td><td>3PL or shipper with 3–10 carriers and dozens of lanes</td><td>Ad-hoc questions outpace dashboard build</td></tr>
+      <tr><td>3</td><td>Stack 2 + telematics + EDI integration + dbt</td><td>Enterprise shipper, 20+ carriers, regulated retail customers</td><td>Operations managers need on-demand answers without analyst tickets</td></tr>
+      <tr><td>4</td><td>Stack 3 + AI data agent</td><td>Open-ended questions on cost-to-serve, lane mix, carrier risk</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="ai-fit">Where AI data agents earn the seat in logistics analytics</h2>
+<p>Three patterns where an <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst</a> changes the workflow:</p>
+  <ul>
+    <li><strong>Dwell-time spike triage.</strong> When dwell spikes at a DC, the agent decomposes by dock door, shift, carrier, appointment vs walk-in, and returns the candidates with the SQL it ran. 20 minutes instead of half a day.</li>
+    <li><strong>Carrier scorecard deep dive.</strong> A scorecard panel shows a carrier slipping. The agent joins TMS + EDI + telematics, returns the lane-level breakdown, and identifies whether the slip is concentrated in two lanes or general. This is the input to the next negotiation.</li>
+    <li><strong>Cost-to-serve and customer questions.</strong> Letting the operations analyst translate questions into BI tickets. The "I just need to check one thing" question pile is the highest-yield place to add an AI data agent — the alternative is a five-day BI ticket cycle.</li>
+  </ul>
+  <p>The pattern is the same as other domains: dashboards answer the standing 80%, the agent answers the ad-hoc 20%. See <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query</a> for the connection setup and <a href="https://infinisynapse.com/en/blog/data-agent-memory-explained">database + knowledge base binding</a> for why a bound business glossary matters in logistics where carrier and lane definitions vary by customer.</p>
+  <div class="quote">Logistics analysis is a join problem. The agent earns its seat by handling joins across TMS, WMS, telematics, and EDI without an analyst writing each one by hand.</div>
+  <div class="cta-box">
+    <h3>Ask an open-ended logistics question across your warehouse</h3>
+    <p>Connect Snowflake, BigQuery, Postgres, or another warehouse where your TMS, WMS, telematics, and EDI feeds land. Seed a small business glossary — what counts as an exception, which appointment window applies. Then ask one question the dashboard does not answer.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What is data analysis in logistics?</div><div class="faq-a">Data analysis in logistics is the practice of combining transportation management system data, warehouse management system data, telematics feeds, and EDI message data to track on-time performance, cost, carrier quality, and operational exceptions. The work centers on a small set of anchor metrics — OTIF, dwell time, cost per shipment, route deviation, carrier scorecard, and exception rate — that are segmented across lanes, carriers, and customers.</div></div>
+  <div class="faq-item"><div class="faq-q">What data sources do logistics teams analyze?</div><div class="faq-a">Four source classes: transportation management systems like Oracle TMS, Blue Yonder, MercuryGate, FreightPath, Project44, or Shipwell; warehouse management systems like Manhattan, SAP EWM, HighJump, or Fishbowl; telematics platforms like Samsara, Geotab, or Motive; and EDI message data including the 204 load tender, 214 carrier status, 210 invoice, 856 advance ship notice, and 990 response to tender. The warehouse is the reconciled layer.</div></div>
+  <div class="faq-item"><div class="faq-q">What is OTIF in logistics analytics?</div><div class="faq-a">OTIF stands for on-time, in-full and is the most weighted logistics KPI for shippers because major retailers penalize it directly through chargebacks. OTIF decomposes into the on-time delivery rate (shipments delivered within the agreed window divided by total shipments) multiplied by the in-full rate (shipments delivered with the full ordered quantity divided by total shipments). The analytical work concentrates in the failure modes by lane, carrier, and customer.</div></div>
+  <div class="faq-item"><div class="faq-q">What metrics do logistics data teams track weekly?</div><div class="faq-a">Six metrics anchor most weekly work: OTIF, dwell time, cost per shipment, route deviation, carrier scorecard, and exception rate. Each is segmented across lanes, carriers, customers, and time windows. The remaining analytical time goes to investigating drift in any of the six — for example, a dwell-time spike at a specific distribution center on a specific day, or a carrier scorecard slipping over the last 90 days.</div></div>
+  <div class="faq-item"><div class="faq-q">What tools do logistics teams use for data analysis?</div><div class="faq-a">The tool ladder runs from TMS-native dashboards plus Excel for small fleets, to a warehouse plus ELT plus BI for 3PLs and shippers with three to ten carriers, to a full enterprise stack with telematics and EDI integration plus dbt for shippers with twenty or more carriers, with AI data agents now layering on top for ad-hoc anomaly investigation and cross-system queries that span TMS, WMS, telematics, and EDI.</div></div>
+  <div class="faq-item"><div class="faq-q">How do AI data agents help logistics data analysis?</div><div class="faq-a">Three concrete patterns: dwell-time spike triage where the agent decomposes a spike by dock door, shift, carrier, and appointment in minutes instead of half a day; carrier scorecard deep dives joining TMS, EDI, and telematics to identify whether a carrier slip is concentrated or general; and ad-hoc cost-to-serve questions that operations managers raise without filing a BI ticket. The agent handles the cross-system joins logistics analysis is dominated by.</div></div>
+  <div class="faq-item"><div class="faq-q">What are common data analysis examples in logistics?</div><div class="faq-a">Examples include dwell-time spike triage at a distribution center, carrier scorecard deep dives over the last 90 days, cost-to-serve analysis for top customers, lane-level OTIF investigation when a retailer chargeback arrives, exception rate trending by EDI 214 status code, route deviation root cause analysis from telematics, and tender acceptance rate trending by carrier. Each example sits under one of the six anchor metrics.</div></div>
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 · <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>This methods guide synthesizes TMS and WMS vendor documentation, telematics platform references from Samsara and Geotab, DCSA EDI standards, public logistics analytics studies from Gartner and McKinsey, and field experience across operating 3PL and shipper data teams. The six-metric anchor, OTIF decomposition, and tool ladder reflect observed practice across more than a dozen logistics teams.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells an enterprise AI data analyst. To reduce bias, the page leads with the topic itself, treats InfiniSynapse as one option among many, and links to external sources for every numeric claim.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for accuracy and link health.</p>
+  </div>
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> Samsara. Fleet telematics documentation. <a href="https://www.samsara.com/products/" target="_blank" rel="noopener">samsara.com/products</a>.</li>
+    <li><strong>[Vendor]</strong> Geotab. Telematics reference. <a href="https://www.geotab.com/" target="_blank" rel="noopener">geotab.com</a>.</li>
+    <li><strong>[Vendor]</strong> Project44. Visibility platform documentation. <a href="https://www.project44.com/" target="_blank" rel="noopener">project44.com</a>.</li>
+    <li><strong>[Standard]</strong> DCSA. EDI standards reference. <a href="https://dcsa.org/" target="_blank" rel="noopener">dcsa.org</a>.</li>
+    <li><strong>[Independent]</strong> MIT Center for Transportation and Logistics. Research portal. <a href="https://ctl.mit.edu/" target="_blank" rel="noopener">ctl.mit.edu</a>.</li>
+    <li><strong>[Independent]</strong> Yao et al. ReAct: Synergizing Reasoning and Acting in Language Models. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arxiv.org/abs/2210.03629</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic. Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Standard]</strong> NIST. AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL benchmark. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+  </ol>
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/data-science-in-supply-chain">Data science in supply chain</a>
+    <a href="https://infinisynapse.com/en/blog/ai-in-data-center-operations">AI in data center operations</a>
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query pillar guide</a>
+    <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-with-ai">PostgreSQL data analysis with AI</a>
+    <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst explained</a>
+    <a href="https://infinisynapse.com/en/blog/data-agent-memory-explained">Database + knowledge base binding</a>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

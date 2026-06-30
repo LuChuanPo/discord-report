@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Data Science in Supply Chain: five working areas</title>
+  <desc id="desc">A 2026 working map of data science in supply chain — five surrounding areas (demand forecasting, inventory optimization, supplier risk scoring, route optimization, ad-hoc planning analysis) around a central planning loop powered by a warehouse and an AI data agent.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+  <text x="100" y="110" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="800">Data Science in Supply Chain — five working areas</text>
+  <text x="100" y="146" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700">From the forecast to the dispatch board, with an AI data agent on the warehouse</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Center node -->
+    <circle cx="600" cy="370" r="92" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="2"/>
+    <text x="600" y="358" text-anchor="middle" fill="#6D28D9" font-size="13" font-weight="800">CORE</text>
+    <text x="600" y="382" text-anchor="middle" fill="#111827" font-size="18" font-weight="800">Planning loop</text>
+    <text x="600" y="404" text-anchor="middle" fill="#6B7280" font-size="13">warehouse + KB</text>
+
+    <!-- Area 1 Demand forecasting -->
+    <rect x="80" y="200" width="240" height="120" rx="14" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="100" y="228" fill="#4338CA" font-size="12" font-weight="800">AREA 1</text>
+    <text x="100" y="252" fill="#111827" font-size="18" font-weight="800">Demand forecasting</text>
+    <text x="100" y="278" fill="#6B7280" font-size="13">SKU baselines + promo lift</text>
+    <text x="100" y="298" fill="#6B7280" font-size="13">bias-adjusted figures</text>
+
+    <!-- Area 2 Inventory -->
+    <rect x="350" y="200" width="240" height="120" rx="14" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="370" y="228" fill="#047857" font-size="12" font-weight="800">AREA 2</text>
+    <text x="370" y="252" fill="#111827" font-size="18" font-weight="800">Inventory optimization</text>
+    <text x="370" y="278" fill="#6B7280" font-size="13">safety stock by SKU-DC cluster</text>
+    <text x="370" y="298" fill="#6B7280" font-size="13">reorder points + targets</text>
+
+    <!-- Area 3 Supplier risk -->
+    <rect x="620" y="200" width="240" height="120" rx="14" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="640" y="228" fill="#B45309" font-size="12" font-weight="800">AREA 3</text>
+    <text x="640" y="252" fill="#111827" font-size="18" font-weight="800">Supplier risk scoring</text>
+    <text x="640" y="278" fill="#6B7280" font-size="13">OTIF + credit + concentration</text>
+    <text x="640" y="298" fill="#6B7280" font-size="13">quarterly action list</text>
+
+    <!-- Area 4 Route -->
+    <rect x="890" y="200" width="240" height="120" rx="14" fill="#FEE2E2" stroke="#FECACA"/>
+    <text x="910" y="228" fill="#B91C1C" font-size="12" font-weight="800">AREA 4</text>
+    <text x="910" y="252" fill="#111827" font-size="18" font-weight="800">Route &amp; load optimization</text>
+    <text x="910" y="278" fill="#6B7280" font-size="13">solver-based dispatch plan</text>
+    <text x="910" y="298" fill="#6B7280" font-size="13">capacity + time windows</text>
+
+    <!-- Area 5 Ad-hoc / AI agent -->
+    <rect x="350" y="430" width="500" height="120" rx="14" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="370" y="458" fill="#6D28D9" font-size="12" font-weight="800">AREA 5 · AI DATA AGENT</text>
+    <text x="370" y="484" fill="#111827" font-size="18" font-weight="800">Ad-hoc planning analysis</text>
+    <text x="370" y="510" fill="#6B7280" font-size="13">plain-English question → plan → SQL → verify → evidence</text>
+    <text x="370" y="530" fill="#6B7280" font-size="13">"why did the southern DC miss service last week?"</text>
+
+    <!-- connectors to center -->
+    <path d="M320 280 L520 350" stroke="#C7D2FE" stroke-width="3"/>
+    <path d="M470 320 L560 350" stroke="#BBF7D0" stroke-width="3"/>
+    <path d="M720 320 L640 350" stroke="#FDE68A" stroke-width="3"/>
+    <path d="M890 280 L680 350" stroke="#FECACA" stroke-width="3"/>
+    <path d="M600 462 L600 430" stroke="#DDD6FE" stroke-width="3"/>
+  </g>
+
+  <text x="100" y="566" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="15">InfiniSynapse — enterprise AI data analyst · 2026 supply chain practitioner guide</text>
+</svg>

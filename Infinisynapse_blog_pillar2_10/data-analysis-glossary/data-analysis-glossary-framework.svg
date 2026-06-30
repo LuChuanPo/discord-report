@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Data analysis glossary structure</title>
+  <desc id="desc">Forty terms across SQL, statistics, BI and reporting, data engineering, and AI agents — each with a one-sentence definition and a worked example.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+  <text x="100" y="110" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800">Data analysis glossary 2026</text>
+  <text x="100" y="148" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">40 terms · 5 groups · worked examples</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="90" y="200" width="300" height="180" rx="18" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="110" y="234" fill="#4338CA" font-size="14" font-weight="800">GROUP 1-2</text>
+    <text x="110" y="262" fill="#111827" font-size="20" font-weight="800">SQL + statistics</text>
+    <text x="110" y="296" fill="#6B7280" font-size="14">JOIN, CTE, window, p-value, SRM, NTILE</text>
+    <rect x="450" y="200" width="300" height="180" rx="18" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="470" y="234" fill="#6D28D9" font-size="14" font-weight="800">GROUP 3-4</text>
+    <text x="470" y="262" fill="#111827" font-size="20" font-weight="800">BI + engineering</text>
+    <text x="470" y="296" fill="#6B7280" font-size="14">semantic layer, ELT, dbt, lakehouse</text>
+    <rect x="810" y="200" width="300" height="180" rx="18" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="830" y="234" fill="#047857" font-size="14" font-weight="800">GROUP 5</text>
+    <text x="830" y="262" fill="#111827" font-size="20" font-weight="800">AI agents</text>
+    <text x="830" y="296" fill="#6B7280" font-size="14">data agent, RAG, plan mode, evidence trail</text>
+    <path d="M394 290h50" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M422 280l14 10-14 10" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M754 290h50" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M782 280l14 10-14 10" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <rect x="90" y="416" width="1020" height="120" rx="16" fill="#F9FAFB" stroke="#E5E7EB"/>
+    <text x="110" y="448" fill="#111827" font-size="15" font-weight="800">HOW TO USE THE GLOSSARY</text>
+    <text x="110" y="476" fill="#374151" font-size="14" font-weight="600">Onboarding new hires · settling meeting arguments · vocabulary calibration before reviews</text>
+    <text x="110" y="500" fill="#374151" font-size="14" font-weight="600">Bookmark the page — updates every 90 days as AI-agent vocabulary moves fastest</text>
+  </g>
+  <text x="100" y="562" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="16">InfiniSynapse — enterprise AI data analyst</text>
+</svg>

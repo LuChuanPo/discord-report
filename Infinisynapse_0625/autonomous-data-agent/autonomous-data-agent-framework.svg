@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">The five levels of data agent autonomy</title>
+  <desc id="desc">Autonomy spectrum with five levels from left to right: L0 suggest-only, L1 execute with approval, L2 execute and report, L3 scheduled autonomous, L4 fully autonomous, with a rising risk gradient from minimal to high and InfiniSynapse Plan mode marked at L1 to L2. Self-correction note: failed verification checks send the agent back to re-plan.</desc>
+  <defs>
+    <linearGradient id="riskGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6EE7B7"/>
+      <stop offset="0.5" stop-color="#FCD34D"/>
+      <stop offset="1" stop-color="#F9A8D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+
+  <text x="100" y="116" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">The five levels of data agent autonomy</text>
+  <text x="100" y="156" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">Who initiates, who approves — match the level to the task, not the hype</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Plan mode bracket over L1-L2 -->
+    <text x="497" y="214" fill="#B45309" font-size="15" font-weight="700" text-anchor="middle">InfiniSynapse Plan mode</text>
+    <rect x="295" y="222" width="405" height="180" rx="14" fill="none" stroke="#F59E0B" stroke-width="3" stroke-dasharray="10 8"/>
+
+    <!-- L0 -->
+    <rect x="100" y="232" width="180" height="160" rx="16" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="116" y="260" fill="#047857" font-size="15" font-weight="800">L0</text>
+    <text x="116" y="288" fill="#111827" font-size="16" font-weight="800">Suggest-only</text>
+    <text x="116" y="336" fill="#6B7280" font-size="13">drafts queries for you;</text>
+    <text x="116" y="356" fill="#6B7280" font-size="13">you run every step</text>
+    <text x="116" y="380" fill="#047857" font-size="13" font-weight="700">risk: minimal</text>
+
+    <!-- L1 -->
+    <rect x="305" y="232" width="180" height="160" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="321" y="260" fill="#4338CA" font-size="15" font-weight="800">L1</text>
+    <text x="321" y="288" fill="#111827" font-size="16" font-weight="800">Execute with</text>
+    <text x="321" y="308" fill="#111827" font-size="16" font-weight="800">approval</text>
+    <text x="321" y="336" fill="#6B7280" font-size="13">you approve each</text>
+    <text x="321" y="356" fill="#6B7280" font-size="13">plan before it runs</text>
+    <text x="321" y="380" fill="#4338CA" font-size="13" font-weight="700">risk: low</text>
+
+    <!-- L2 -->
+    <rect x="510" y="232" width="180" height="160" rx="16" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="526" y="260" fill="#6D28D9" font-size="15" font-weight="800">L2</text>
+    <text x="526" y="288" fill="#111827" font-size="16" font-weight="800">Execute &amp;</text>
+    <text x="526" y="308" fill="#111827" font-size="16" font-weight="800">report</text>
+    <text x="526" y="336" fill="#6B7280" font-size="13">agent runs; you</text>
+    <text x="526" y="356" fill="#6B7280" font-size="13">review the output</text>
+    <text x="526" y="380" fill="#6D28D9" font-size="13" font-weight="700">risk: moderate</text>
+
+    <!-- L3 -->
+    <rect x="715" y="232" width="180" height="160" rx="16" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="731" y="260" fill="#B45309" font-size="15" font-weight="800">L3</text>
+    <text x="731" y="288" fill="#111827" font-size="16" font-weight="800">Scheduled</text>
+    <text x="731" y="308" fill="#111827" font-size="16" font-weight="800">autonomous</text>
+    <text x="731" y="336" fill="#6B7280" font-size="13">runs on schedule;</text>
+    <text x="731" y="356" fill="#6B7280" font-size="13">exceptions reviewed</text>
+    <text x="731" y="380" fill="#B45309" font-size="13" font-weight="700">risk: elevated</text>
+
+    <!-- L4 -->
+    <rect x="920" y="232" width="180" height="160" rx="16" fill="#FDF2F8" stroke="#FBCFE8"/>
+    <text x="936" y="260" fill="#BE185D" font-size="15" font-weight="800">L4</text>
+    <text x="936" y="288" fill="#111827" font-size="16" font-weight="800">Fully</text>
+    <text x="936" y="308" fill="#111827" font-size="16" font-weight="800">autonomous</text>
+    <text x="936" y="336" fill="#6B7280" font-size="13">no human checkpoint;</text>
+    <text x="936" y="356" fill="#6B7280" font-size="13">rarely justified</text>
+    <text x="936" y="380" fill="#BE185D" font-size="13" font-weight="700">risk: high</text>
+
+    <!-- chevrons between levels -->
+    <path d="M286 304l12 8-12 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M491 304l12 8-12 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M696 304l12 8-12 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M901 304l12 8-12 8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- risk gradient -->
+    <rect x="100" y="424" width="1000" height="14" rx="7" fill="url(#riskGrad)"/>
+    <text x="100" y="462" fill="#047857" font-size="14" font-weight="700">minimal risk</text>
+    <text x="1100" y="462" fill="#BE185D" font-size="14" font-weight="700" text-anchor="end">high risk</text>
+
+    <!-- self-correction note -->
+    <text x="100" y="504" fill="#6B7280" font-size="15"><tspan fill="#B45309" font-weight="700">Self-correcting at every supervised level:</tspan> failed checks — row counts, null rates, second-path recompute — send the agent back to re-plan.</text>
+  </g>
+
+  <text x="100" y="560" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="18">InfiniSynapse — enterprise AI data analyst</text>
+</svg>

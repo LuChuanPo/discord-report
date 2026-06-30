@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Julius AI workflow</title>
+  <desc id="desc">Upload a spreadsheet, ask a question, receive a chart and summary; limits compared to a warehouse-connected data agent.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+  <text x="100" y="110" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800">Julius AI: upload â†’ ask â†’ chart</text>
+  <text x="100" y="148" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Consumer-grade spreadsheet AI, not a team warehouse agent</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="90" y="200" width="300" height="180" rx="18" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="110" y="234" fill="#4338CA" font-size="14" font-weight="800">STEP 1 Â· UPLOAD</text>
+    <text x="110" y="262" fill="#111827" font-size="20" font-weight="800">Drop a CSV or Excel</text>
+    <text x="110" y="296" fill="#6B7280" font-size="14">one file at a time Â· sandboxed Python</text>
+    <rect x="450" y="200" width="300" height="180" rx="18" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="470" y="234" fill="#6D28D9" font-size="14" font-weight="800">STEP 2 Â· ASK</text>
+    <text x="470" y="262" fill="#111827" font-size="20" font-weight="800">Plain-English prompt</text>
+    <text x="470" y="296" fill="#6B7280" font-size="14">example prompts lower the barrier</text>
+    <rect x="810" y="200" width="300" height="180" rx="18" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="830" y="234" fill="#047857" font-size="14" font-weight="800">STEP 3 Â· CHART</text>
+    <text x="830" y="262" fill="#111827" font-size="20" font-weight="800">Polished output</text>
+    <text x="830" y="296" fill="#6B7280" font-size="14">chart + summary + PDF export</text>
+    <path d="M394 290h50" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M422 280l14 10-14 10" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M754 290h50" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M782 280l14 10-14 10" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <rect x="90" y="416" width="1020" height="120" rx="16" fill="#F9FAFB" stroke="#E5E7EB"/>
+    <text x="110" y="448" fill="#111827" font-size="15" font-weight="800">WHERE IT STOPS</text>
+    <text x="110" y="476" fill="#374151" font-size="14" font-weight="600">Single-file orientation Â· no live warehouse Â· no bound business glossary across sessions</text>
+    <text x="110" y="500" fill="#374151" font-size="14" font-weight="600">No team audit trail Â· no separate verification query on each answer</text>
+  </g>
+  <text x="100" y="562" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="16">InfiniSynapse — enterprise AI data analyst</text>
+</svg>

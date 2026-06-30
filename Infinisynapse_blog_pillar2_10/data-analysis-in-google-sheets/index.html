@@ -1,0 +1,455 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Data Analysis in Google Sheets: 2026 Hands-On Guide</title>
+  <meta name="description" content="Practical guide to data analysis in Google Sheets: formulas, pivot tables, Apps Script, Connected Sheets to BigQuery, Gemini in Sheets, and where to graduate.">
+  <meta name="keywords" content="data analysis in google sheets, google sheets data analysis tools, gemini in sheets">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/data-analysis-in-google-sheets">
+
+  <meta property="og:title" content="Data Analysis in Google Sheets: 2026 Hands-On Guide">
+  <meta property="og:description" content="Practical guide to data analysis in Google Sheets: formulas, pivot tables, Apps Script, Connected Sheets to BigQuery, Gemini in Sheets, and where to graduate.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/data-analysis-in-google-sheets">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/data-analysis-in-google-sheets/data-analysis-in-google-sheets-framework.svg">
+  <meta property="og:image:alt" content="Five layers of data analysis in Google Sheets â€” formulas, pivot tables, Apps Script automation, Connected Sheets to BigQuery, and Gemini in Sheets â€” around a sample workbook.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Data Analysis in Google Sheets: 2026 Hands-On Guide">
+  <meta name="twitter:description" content="Practical guide to data analysis in Google Sheets: formulas, pivot tables, Apps Script, Connected Sheets to BigQuery, Gemini in Sheets, and where to graduate.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/data-analysis-in-google-sheets/data-analysis-in-google-sheets-framework.svg">
+  <meta name="twitter:image:alt" content="Five layers of data analysis in Google Sheets â€” formulas, pivot tables, Apps Script automation, Connected Sheets to BigQuery, and Gemini in Sheets â€” around a sample workbook.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Schema #1: Organization -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","caption":"InfiniSynapse AI data analyst logo","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}
+  </script>
+
+  <!-- Schema #2: BreadcrumbList -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"Data Analysis in Google Sheets: A 2026 Hands-On Guide for Analysts","item":"https://infinisynapse.com/en/blog/data-analysis-in-google-sheets"}]}
+  </script>
+
+  <!-- Schema #3: Article -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Data Analysis in Google Sheets: A 2026 Hands-On Guide for Analysts","description":"Practical guide to data analysis in Google Sheets: formulas, pivot tables, Apps Script, Connected Sheets to BigQuery, Gemini in Sheets, and where to graduate.","image":"https://infinisynapse.com/en/blog/data-analysis-in-google-sheets/data-analysis-in-google-sheets-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/data-analysis-in-google-sheets"}}
+  </script>
+
+  <!-- Schema #4: FAQPage -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is Google Sheets good for data analysis?","acceptedAnswer":{"@type":"Answer","text":"Yes, Google Sheets is a solid analysis surface for datasets that fit comfortably under a few hundred thousand rows, where collaboration matters more than raw speed, and where the analyst is willing to write formulas or use pivot tables. It is a poor fit when you need to join tables across multiple production databases or when row counts climb into the millions."}},
+{"@type":"Question","name":"What are the most useful Google Sheets formulas for data analysis?","acceptedAnswer":{"@type":"Answer","text":"The short list every analyst uses: QUERY for SQL-style filtering and aggregation, ARRAYFORMULA for column-wide calculations, XLOOKUP for joins, SUMIFS and COUNTIFS for grouped totals, IFERROR for guarding against bad inputs, and REGEXEXTRACT for parsing strings. Pair them with named ranges and you cover most ad hoc analytics work."}},
+{"@type":"Question","name":"How does Connected Sheets to BigQuery work?","acceptedAnswer":{"@type":"Answer","text":"Connected Sheets lets you query a BigQuery table directly from Google Sheets without exporting the data. You see a preview of the warehouse table, then build pivot tables, charts, and formulas that push down to BigQuery for the heavy work. It is how analysts on a Google stack work with billion-row tables from inside a familiar spreadsheet."}},
+{"@type":"Question","name":"What can Gemini in Sheets actually do?","acceptedAnswer":{"@type":"Answer","text":"Gemini in Sheets adds a side panel that drafts formulas, explains existing ones, summarises a sheet, and suggests charts from a selection. It is genuinely useful for unblocking on syntax. It is not a substitute for an analyst that knows the business â€” the suggestions are only as good as the column names and headers you feed it."}},
+{"@type":"Question","name":"When should I automate data analysis with Apps Script?","acceptedAnswer":{"@type":"Answer","text":"Reach for Apps Script when the same manual step happens more than three times a week. Typical wins: a nightly trigger that pulls an API endpoint into a tab, a custom function that wraps a vendor lookup, an onEdit handler that timestamps row changes, and a weekly digest emailed from a summary tab. It is JavaScript with native bindings to Sheets, Gmail, and Drive."}},
+{"@type":"Question","name":"When should I graduate from Google Sheets to a data agent or warehouse?","acceptedAnswer":{"@type":"Answer","text":"Graduate when any of these is true: your workbook is over five tabs of import logic, the same number is calculated in three places with different results, your row count regularly trips the import limit, or stakeholders ask cross-source questions that need a join to a production database. At that point the sheet has become an unmaintained ETL pipeline."}},
+{"@type":"Question","name":"Can I connect Google Sheets to a database for analysis?","acceptedAnswer":{"@type":"Answer","text":"Yes, three common paths. First, Connected Sheets to BigQuery for native warehouse access. Second, Apps Script with a JDBC connector to MySQL or PostgreSQL for direct reads. Third, a data agent that connects to the database and writes results back to a tab. The third path keeps business definitions outside the spreadsheet, which protects the dashboard from drifting formulas."}},
+{"@type":"Question","name":"What are realistic Google Sheets data analysis examples?","acceptedAnswer":{"@type":"Answer","text":"Three honest examples: a weekly revenue summary that pulls a CSV from a BI export and pivots by region, a marketing UTM tag audit that uses REGEXEXTRACT to parse URLs, and a finance reconciliation that joins a bank export against an invoice list with XLOOKUP. None of these need a warehouse. All three reward clean column names and documented sources."}}
+]}
+  </script>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    a{color:#5B5BFF;text-decoration:none}
+    a:hover{color:#111827}
+    .nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+    .nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+    .nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+    .nav-logo-mark{height:26px;display:flex;align-items:center}
+    .nav-logo-mark img{height:26px;width:auto;display:block}
+    .nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+    .nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap;transition:color 0.15s}
+    .nav-menu a:hover{color:#111827}
+    .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+    .nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap;box-shadow:none;transition:background 0.15s,border-color 0.15s,transform 0.15s}
+    a.nav-btn:hover{color:#111827;border-color:#C7CEDA;transform:translateY(-1px)}
+    .nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+    .nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+    .nav-btn-primary:hover{color:#FFFFFF}
+    .nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+    .nav-btn-dark:hover{color:#FFFFFF}
+    .nav-icon{width:17px;height:17px;flex:0 0 auto}
+    .nav-chevron{width:15px;height:15px;flex:0 0 auto}
+    .wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+    .breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+    .breadcrumb a{color:#6B7280}
+    .badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+    .badge-client{background:#EEF2FF;color:#4338CA}
+    .badge-cat{background:#ECFDF5;color:#047857}
+    h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+    h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+    h3{font-size:21px;color:#111827;margin:24px 0 8px}
+    p{margin:0 0 16px}
+    ul,ol{padding-left:22px;margin:0 0 18px}
+    li{margin:6px 0}
+    .meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+    .author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+    .info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+    .info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+    .disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+    .toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+    .toc{background:#F9FAFB}
+    .toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+    .tldr{background:#F8FAFC}
+    .snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+    .definition{background:#ECFDF5;border-color:#BBF7D0}
+    .feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+    table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+    th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+    th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+    td{color:#4B5563}
+    .quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+    .cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+    .cta-btn:hover{background:#1F2937;color:#FFFFFF}
+    .faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+    .faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+    .faq-a{color:#4B5563}
+    .methodology{background:#F9FAFB;color:#4B5563}
+    .refs li{font-size:13.5px;color:#4B5563}
+    .related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+    .related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+    .stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+    .stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+    .stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+    .panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+    .panel h3{margin-top:0}
+    .panel-good{background:#F0FDF4;border-color:#BBF7D0}
+    .panel-bad{background:#FEF2F2;border-color:#FECACA}
+    .footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+    .footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{color:#6B7280;font-size:14px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+    code{background:#F3F4F6;border:1px solid #E5E7EB;border-radius:4px;padding:1px 6px;font-family:Consolas,Monaco,monospace;font-size:14px;color:#1F2937}
+    pre{background:#0F172A;color:#E2E8F0;padding:16px 18px;border-radius:10px;overflow-x:auto;margin:16px 0;font-family:Consolas,Monaco,monospace;font-size:13.5px;line-height:1.55}
+    @media(max-width:1280px){.nav-inner{max-width:1180px;column-gap:24px}.nav-menu{gap:18px}.nav-menu a,.nav-btn{font-size:14px}.nav-btn{min-height:36px;padding:0 12px}.nav-btn-primary,.nav-btn-dark{padding:0 14px}}
+    @media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}.nav-logo{width:100%;justify-content:center}.nav-menu,.nav-actions{justify-content:center;flex-wrap:wrap}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}table{font-size:14px}.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12S9.8 18.6 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        EN
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Book Demo
+      </a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    data analysis in google sheets
+  </nav>
+
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Practical Guide</span>
+  </div>
+
+  <h1>Data Analysis in Google Sheets: A 2026 Hands-On Guide for Analysts</h1>
+  <p class="meta-desc">A working analyst's tour of Google Sheets in 2026 â€” the formulas that pay rent, pivot tables that survive review, Apps Script automation, Connected Sheets to BigQuery, Gemini in Sheets, and an honest line for when to graduate to a data agent.</p>
+
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, analytics and platform team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 Â· Last verified 2026-06-28 Â· Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>Google Workspace documentation, Apps Script reference, Connected Sheets to BigQuery docs, Gemini in Workspace notes, BIRD benchmark, NIST AI RMF.</div>
+  </div>
+
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, which builds an AI data analyst that connects to databases, files, and warehouses. The Sheets workflows below are vendor-neutral and the graduation criteria are written so you can apply them to any analytics tool â€” including ours.
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer</a></li>
+      <li><a href="#sample">A sample workbook to work from</a></li>
+      <li><a href="#formulas">Formulas every analyst keeps in muscle memory</a></li>
+      <li><a href="#pivots">Pivot tables that survive review</a></li>
+      <li><a href="#apps-script">Apps Script: automate the boring half</a></li>
+      <li><a href="#connected">Connected Sheets to BigQuery</a></li>
+      <li><a href="#gemini">Gemini in Sheets, and where it stops</a></li>
+      <li><a href="#examples">Three Google Sheets data analysis examples</a></li>
+      <li><a href="#graduate">When to graduate to a data agent</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>Google Sheets handles real analysis up to a few hundred thousand rows when you stick to a tight set of formulas: <code>QUERY</code>, <code>ARRAYFORMULA</code>, <code>XLOOKUP</code>, <code>SUMIFS</code>, <code>REGEXEXTRACT</code>.</li>
+      <li>Pivot tables, named ranges, and a "raw â†’ staging â†’ reporting" tab pattern carry most working analyst workflows.</li>
+      <li>Apps Script automates the repeat work: triggers, custom functions, and email digests. Connected Sheets pushes the heavy joins down to BigQuery without leaving the spreadsheet.</li>
+      <li>Gemini in Sheets drafts formulas and explanations. It does not know your business â€” it knows your headers.</li>
+      <li>Graduate to a data agent when the workbook becomes an unmaintained ETL pipeline or when stakeholders start asking cross-source questions.</li>
+    </ul>
+  </div>
+
+  <h2 id="answer">Direct answer: how do you do data analysis in Google Sheets in 2026?</h2>
+  <div class="snippet-answer">Data analysis in Google Sheets in 2026 means a tight stack: a handful of formulas (QUERY, ARRAYFORMULA, XLOOKUP, SUMIFS, REGEXEXTRACT), pivot tables with disciplined column names, Apps Script for repeating work, Connected Sheets for BigQuery-scale tables, and Gemini in Sheets for formula assistance. Graduate to a data agent when the workbook starts replacing a pipeline.</div>
+
+  <h2 id="sample">A sample workbook to work from</h2>
+  <p>The examples below assume one Google Sheet with three tabs. <code>raw_orders</code> is a CSV exported from your order system: an <code>order_id</code>, an <code>order_date</code>, a <code>customer_id</code>, a <code>region</code>, a <code>product_sku</code>, a <code>units</code>, and an <code>amount_usd</code>. <code>raw_customers</code> is an export with <code>customer_id</code>, <code>signup_date</code>, <code>plan_tier</code>, and <code>utm_source</code>. <code>staging</code> and <code>report</code> tabs are where the work happens.</p>
+  <p>This three-tab pattern â€” raw, staging, report â€” is the single highest-return habit in spreadsheet analysis. It means a reviewer can trust that the raw tab was never edited, that the staging tab shows exactly which transforms were applied, and that the report tab is what executives actually see. Many of the worst spreadsheet incidents in the wild come from analysts editing the raw export in place and then losing the original.</p>
+
+  <img class="feature-img" src="data-analysis-in-google-sheets-framework.svg" alt="Diagram of five layers of data analysis in Google Sheets â€” formulas, pivot tables, Apps Script automation, Connected Sheets to BigQuery, and Gemini in Sheets â€” arranged around a sample three-tab workbook" width="1200" height="630" loading="lazy">
+
+  <h2 id="formulas">Formulas every analyst keeps in muscle memory</h2>
+
+  <h3>QUERY â€” the SQL inside Sheets</h3>
+  <p>The single most useful formula in <a href="https://support.google.com/docs/answer/6280499" target="_blank" rel="noopener">Google Sheets</a> is <code>QUERY</code>. It runs a Google Visualization API query â€” close enough to SQL â€” over a range and returns the result inline. A revenue-by-region rollup looks like this:</p>
+  <pre>=QUERY(raw_orders!A:G,
+  "SELECT D, SUM(G)
+   WHERE A IS NOT NULL
+   GROUP BY D
+   ORDER BY SUM(G) DESC
+   LABEL SUM(G) 'revenue_usd'", 1)</pre>
+  <p>One formula replaces a pivot table for a known shape and recalculates whenever the raw data updates. Pair it with a date filter on <code>B</code> (<code>order_date</code>) and you have a working weekly revenue tab.</p>
+
+  <h3>ARRAYFORMULA â€” apply once, fill the column</h3>
+  <p>Manual drag-fill breaks the moment someone inserts a row. <code>ARRAYFORMULA</code> applies a formula across an entire column once. To compute <code>amount_per_unit</code> for every order:</p>
+  <pre>=ARRAYFORMULA(IF(F2:F="", "", G2:G / F2:F))</pre>
+
+  <h3>XLOOKUP â€” joins without the VLOOKUP pain</h3>
+  <p><code>XLOOKUP</code> replaced <code>VLOOKUP</code> for a reason: it returns from columns to the left of the lookup key, handles exact and fuzzy matches cleanly, and accepts a default for missing rows. Bring <code>plan_tier</code> from <code>raw_customers</code> into <code>raw_orders</code>:</p>
+  <pre>=ARRAYFORMULA(XLOOKUP(C2:C, raw_customers!A:A, raw_customers!C:C, "unknown"))</pre>
+
+  <h3>SUMIFS, COUNTIFS, AVERAGEIFS â€” grouped aggregates</h3>
+  <p>When a pivot would be overkill, the <code>*IFS</code> family answers single-cell questions: "revenue from EU customers on plan_tier = pro in May 2026." They scan, they group, they return a number. Keep them in your <code>report</code> tab, not your <code>raw</code> tab, so you can edit thresholds without touching the source data.</p>
+
+  <h3>REGEXEXTRACT â€” parse the columns nobody designed</h3>
+  <p>UTM strings, log lines, free-text customer notes â€” they all show up. <code>REGEXEXTRACT(string, pattern)</code> grabs the substring you want. To pull a campaign name out of a UTM URL:</p>
+  <pre>=REGEXEXTRACT(A2, "utm_campaign=([^&amp;]+)")</pre>
+
+  <h3>IFERROR â€” guard the cell, not the chart</h3>
+  <p>Wrap any formula that touches user data with <code>IFERROR(formula, fallback)</code>. A blank cell or a stray text input should never propagate <code>#N/A</code> into the chart that the CFO reads on Monday morning.</p>
+
+  <h2 id="pivots">Pivot tables that survive review</h2>
+  <p>A pivot table in Google Sheets is fast to build and slow to defend if column names are sloppy. Three habits make pivots durable:</p>
+  <ol>
+    <li><strong>Name your columns once.</strong> Use <code>snake_case</code> headers in the raw tab. Never label two columns <code>amount</code>. Never put units in the header (<code>amount_usd</code>, not <code>amount $</code>).</li>
+    <li><strong>Anchor the pivot on the staging tab.</strong> Build pivots on a tab that selects from <code>raw_*</code> with one <code>QUERY</code>. When the raw data shape changes, you fix one formula, not five pivots.</li>
+    <li><strong>Document the calculated fields.</strong> A pivot's "Calculated field" lives invisibly inside the pivot. Re-create that math as a named function or note it in a <code>README</code> tab so the next analyst doesn't reverse-engineer it.</li>
+  </ol>
+  <p>For aggregations that need plain-English defense, an <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query agent</a> can run the same group-by against a live database and write back to a Sheet, giving you both the pivot and the SQL trail behind it.</p>
+
+  <h2 id="apps-script">Apps Script: automate the boring half</h2>
+  <p><a href="https://developers.google.com/apps-script" target="_blank" rel="noopener">Apps Script</a> is JavaScript with first-class bindings to Sheets, Gmail, Drive, and Calendar. It is the cheapest scheduler an analyst has access to. Four use cases pay for the learning curve:</p>
+  <ul>
+    <li><strong>Time-driven triggers.</strong> A nightly script that pulls an API endpoint with <code>UrlFetchApp</code> and writes rows into <code>raw_orders</code>. Set the trigger from the Apps Script editor under Triggers â†’ Add Trigger.</li>
+    <li><strong>Custom functions.</strong> Define a function called <code>NORMALIZE_REGION</code> and call it from a cell like a native formula. Good for opinionated text cleanup that lives in one place.</li>
+    <li><strong>onEdit handlers.</strong> Stamp <code>last_edited_at</code> in column H whenever a row in the staging tab changes. Reviewers love this.</li>
+    <li><strong>Email digests.</strong> A weekly job that reads the <code>report</code> tab, builds an HTML body, and sends to a Google Group. <code>MailApp.sendEmail</code> is two lines.</li>
+  </ul>
+  <p>A minimal example â€” log the active user every time the workbook is opened:</p>
+  <pre>function onOpen(e) {
+  const sheet = SpreadsheetApp.getActive().getSheetByName('audit_log');
+  sheet.appendRow([new Date(), Session.getActiveUser().getEmail()]);
+}</pre>
+  <p>Apps Script does have quotas â€” runtime per execution, daily email volume, URL fetch counts. For anything past a few thousand daily operations, move the job to a real scheduler.</p>
+
+  <h2 id="connected">Connected Sheets to BigQuery: spreadsheets at warehouse scale</h2>
+  <p><a href="https://cloud.google.com/connected-sheets/docs/overview" target="_blank" rel="noopener">Connected Sheets</a> lets you point Google Sheets at a BigQuery table and analyze it without exporting. The data stays in BigQuery; the pivot tables, charts, and formulas push their work down as queries. You read summaries inline, billions of rows behind the scenes.</p>
+  <p>The fit case is clear: the warehouse holds the source of truth, the analyst lives in Sheets, and exporting CSVs every Monday is the bottleneck. Connected Sheets closes the loop. The catch: pivot operations against a billion-row table burn slot time. Document the queries the workbook is firing so finance does not get a surprise BigQuery bill.</p>
+
+  <p>If your warehouse is Snowflake or Redshift instead of BigQuery, Connected Sheets does not apply directly â€” Google ships it for BigQuery only. A <a href="https://infinisynapse.com/en/blog/data-analyst-snowflake">data analyst Snowflake</a> walkthrough covers the equivalent path through a Snowflake connector or a data agent.</p>
+
+  <h2 id="gemini">Gemini in Sheets, and where it stops</h2>
+  <p><a href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">Gemini in Sheets</a> is the side panel that drafts formulas from plain English, explains formulas you didn't write, summarises a sheet, and suggests charts from a selection. For a working analyst, the three honest uses are:</p>
+  <ol>
+    <li><strong>Formula recall.</strong> "Write a QUERY that sums amount_usd by region for last 30 days." Faster than reading docs for the syntax of <code>WHERE A &gt;= today()-30</code>.</li>
+    <li><strong>Formula explanation.</strong> Paste a 200-character nested formula a teammate wrote and ask Gemini what it does. Saves an interrupt.</li>
+    <li><strong>Chart suggestions.</strong> Select a range, ask for the right chart, and it picks reasonable axes.</li>
+  </ol>
+  <p>Where it stops: Gemini reads your sheet, not your business. It does not know that <code>region = "APAC"</code> excludes Japan in your reporting, that <code>plan_tier = "pro"</code> includes legacy plans, or that May 2026's revenue was inflated by an internal test. That context lives in a knowledge base or a data dictionary, not in the headers. The same gap is why agentic analytics adds a retrieval layer â€” see <a href="https://infinisynapse.com/en/blog/agentic-analytics-explained">agentic analytics explained</a> for the structural argument.</p>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="num">5</div><div class="lab">Formulas that cover most working spreadsheet analysis: QUERY, ARRAYFORMULA, XLOOKUP, SUMIFS, REGEXEXTRACT.</div></div>
+    <div class="stat"><div class="num">10M</div><div class="lab">The current cell limit per Google Sheets workbook â€” beyond this, Connected Sheets or a warehouse becomes the only path. <a href="https://support.google.com/drive/answer/37603" target="_blank" rel="noopener">Source: Google</a></div></div>
+    <div class="stat"><div class="num">92.96%</div><div class="lab">Human engineer execution accuracy on the BIRD text-to-SQL benchmark. Models still trail this bar without context retrieval â€” a Gemini suggestion is a draft, not a verified result. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">Source: BIRD</a></div></div>
+  </div>
+
+  <h2 id="examples">Three Google Sheets data analysis examples</h2>
+  <p>Honest, vendor-neutral examples â€” none invented, all common in working analytics teams.</p>
+
+  <table>
+    <thead>
+      <tr><th>Example</th><th>Inputs</th><th>Key formulas / features</th><th>Output</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Weekly revenue summary</strong></td><td>CSV from BI export of orders</td><td><code>QUERY</code> by region and week, <code>ARRAYFORMULA</code> for unit conversion, sparkline chart per row</td><td>A one-tab report emailed Monday via Apps Script</td></tr>
+      <tr><td><strong>UTM audit</strong></td><td>Marketing landing-page click log</td><td><code>REGEXEXTRACT</code> for campaign and source, <code>COUNTIFS</code> for grouping, conditional formatting for malformed tags</td><td>List of mis-tagged URLs with the campaign owner cc'd</td></tr>
+      <tr><td><strong>Finance reconciliation</strong></td><td>Bank export + invoice list</td><td><code>XLOOKUP</code> by invoice id, <code>SUMIFS</code> for paid vs invoiced, <code>IFERROR</code> for missing entries</td><td>A two-column diff with mismatches at the top</td></tr>
+    </tbody>
+  </table>
+
+  <p class="quote">A spreadsheet is fine until two analysts disagree about a number on it. Then you need a definition outside the sheet.</p>
+
+  <h2 id="graduate">When to graduate to a data agent or warehouse</h2>
+  <p>Sheets stops being the right tool when one of these shows up:</p>
+  <ul>
+    <li><strong>Five-plus tabs of import logic.</strong> Your workbook is an ETL pipeline now. Pipelines need ownership and tests.</li>
+    <li><strong>The same number, three different places, three different answers.</strong> A signal that the metric definition lives nowhere in particular.</li>
+    <li><strong>Row counts that trip import.</strong> Once the export does not fit, the workbook becomes a sampled view â€” and samples lie about totals.</li>
+    <li><strong>Cross-source questions.</strong> "Compare last month's Stripe revenue against the Postgres order table" is a join across systems. That is a database question.</li>
+    <li><strong>Audit requirements.</strong> Regulated industries need evidence trails per result. A formula history does not satisfy that bar. The <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI RMF</a> gives a shared structure for what an evidence trail looks like.</li>
+  </ul>
+  <p>At that point the natural move is an <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst</a> â€” connect the warehouse and operational databases, define metrics in a knowledge base, and let the agent answer in plain English with the SQL and source rows attached. InfiniSynapse pairs each connected database with a curated knowledge base of business definitions, which is the <a href="https://infinisynapse.com/en/blog/what-is-a-data-agent">data agent</a> pattern designed exactly for this graduation moment.</p>
+
+  <div class="grid-2">
+    <div class="panel panel-good">
+      <h3>When Sheets is the right tool</h3>
+      <ul>
+        <li>One analyst, one workbook, agreed metrics</li>
+        <li>Data fits comfortably under a few hundred thousand rows</li>
+        <li>Collaboration matters more than raw speed</li>
+        <li>Stakeholders want a familiar surface, not a new BI tool</li>
+      </ul>
+    </div>
+    <div class="panel panel-bad">
+      <h3>When Sheets is not</h3>
+      <ul>
+        <li>Production data joins across two databases</li>
+        <li>Regulated workflows with audit needs</li>
+        <li>Workbook has become a brittle ETL pipeline</li>
+        <li>Different teams calculate the same metric differently</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>Move past spreadsheet ETL with an AI data analyst</h3>
+    <p>Connect your warehouse and operational databases read-only, seed a knowledge base with the metric definitions you currently re-derive in three tabs, and ask the same question you used to copy-paste from Sheets. Review the plan, the SQL, and the evidence trail before the answer is written back to a tab â€” your reviewer keeps Sheets, your business keeps the source of truth.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">Is Google Sheets good for data analysis?</div><div class="faq-a">Yes, Google Sheets is a solid analysis surface for datasets that fit comfortably under a few hundred thousand rows, where collaboration matters more than raw speed, and where the analyst is willing to write formulas or use pivot tables. It is a poor fit when you need to join tables across multiple production databases or when row counts climb into the millions.</div></div>
+  <div class="faq-item"><div class="faq-q">What are the most useful Google Sheets formulas for data analysis?</div><div class="faq-a">The short list every analyst uses: QUERY for SQL-style filtering and aggregation, ARRAYFORMULA for column-wide calculations, XLOOKUP for joins, SUMIFS and COUNTIFS for grouped totals, IFERROR for guarding against bad inputs, and REGEXEXTRACT for parsing strings. Pair them with named ranges and you cover most ad hoc analytics work.</div></div>
+  <div class="faq-item"><div class="faq-q">How does Connected Sheets to BigQuery work?</div><div class="faq-a">Connected Sheets lets you query a BigQuery table directly from Google Sheets without exporting the data. You see a preview of the warehouse table, then build pivot tables, charts, and formulas that push down to BigQuery for the heavy work. It is how analysts on a Google stack work with billion-row tables from inside a familiar spreadsheet.</div></div>
+  <div class="faq-item"><div class="faq-q">What can Gemini in Sheets actually do?</div><div class="faq-a">Gemini in Sheets adds a side panel that drafts formulas, explains existing ones, summarises a sheet, and suggests charts from a selection. It is genuinely useful for unblocking on syntax. It is not a substitute for an analyst that knows the business â€” the suggestions are only as good as the column names and headers you feed it.</div></div>
+  <div class="faq-item"><div class="faq-q">When should I automate data analysis with Apps Script?</div><div class="faq-a">Reach for Apps Script when the same manual step happens more than three times a week. Typical wins: a nightly trigger that pulls an API endpoint into a tab, a custom function that wraps a vendor lookup, an onEdit handler that timestamps row changes, and a weekly digest emailed from a summary tab. It is JavaScript with native bindings to Sheets, Gmail, and Drive.</div></div>
+  <div class="faq-item"><div class="faq-q">When should I graduate from Google Sheets to a data agent or warehouse?</div><div class="faq-a">Graduate when any of these is true: your workbook is over five tabs of import logic, the same number is calculated in three places with different results, your row count regularly trips the import limit, or stakeholders ask cross-source questions that need a join to a production database. At that point the sheet has become an unmaintained ETL pipeline.</div></div>
+  <div class="faq-item"><div class="faq-q">Can I connect Google Sheets to a database for analysis?</div><div class="faq-a">Yes, three common paths. First, Connected Sheets to BigQuery for native warehouse access. Second, Apps Script with a JDBC connector to MySQL or PostgreSQL for direct reads. Third, a data agent that connects to the database and writes results back to a tab. The third path keeps business definitions outside the spreadsheet, which protects the dashboard from drifting formulas.</div></div>
+  <div class="faq-item"><div class="faq-q">What are realistic Google Sheets data analysis examples?</div><div class="faq-a">Three honest examples: a weekly revenue summary that pulls a CSV from a BI export and pivots by region, a marketing UTM tag audit that uses REGEXEXTRACT to parse URLs, and a finance reconciliation that joins a bank export against an invoice list with XLOOKUP. None of these need a warehouse. All three reward clean column names and documented sources.</div></div>
+
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 Â· <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>The workflows on this page are grounded in vendor documentation (Google Workspace, Apps Script, Connected Sheets, Gemini in Workspace), public benchmarks (BIRD), governance frameworks (NIST AI RMF), and InfiniSynapse product documentation. The sample workbook is synthetic but mirrors the structure of an order plus customer dataset common in working analytics teams.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells a data agent that targets the graduation case at the end. To reduce bias, the page includes scenarios where Sheets is the right tool outright, an honest filter for when it is not, and external sources for every numeric or product claim.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for terminology, product changes, formula syntax updates, and schema consistency.</p>
+  </div>
+
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> Google. Google Sheets function list. <a href="https://support.google.com/docs/table/25273" target="_blank" rel="noopener">support.google.com/docs/table/25273</a>.</li>
+    <li><strong>[Vendor]</strong> Google. QUERY function documentation. <a href="https://support.google.com/docs/answer/3093343" target="_blank" rel="noopener">support.google.com/docs/answer/3093343</a>.</li>
+    <li><strong>[Vendor]</strong> Google. Apps Script reference. <a href="https://developers.google.com/apps-script" target="_blank" rel="noopener">developers.google.com/apps-script</a>.</li>
+    <li><strong>[Vendor]</strong> Google Cloud. Connected Sheets to BigQuery. <a href="https://cloud.google.com/connected-sheets/docs/overview" target="_blank" rel="noopener">cloud.google.com/connected-sheets</a>.</li>
+    <li><strong>[Vendor]</strong> Google Workspace. Gemini in Workspace overview. <a href="https://workspace.google.com/solutions/ai/" target="_blank" rel="noopener">workspace.google.com/solutions/ai</a>.</li>
+    <li><strong>[Vendor]</strong> Google. Files you can store in Google Drive â€” Sheets cell limit. <a href="https://support.google.com/drive/answer/37603" target="_blank" rel="noopener">support.google.com/drive/answer/37603</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL benchmark. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+    <li><strong>[Independent]</strong> NIST. AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+  </ol>
+
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query: pillar guide</a>
+    <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-tools">PostgreSQL data analysis tools</a>
+    <a href="https://infinisynapse.com/en/blog/mysql-data-analysis-tools">MySQL data analysis tools</a>
+    <a href="https://infinisynapse.com/en/blog/data-analyst-snowflake">Data analyst Snowflake</a>
+    <a href="https://infinisynapse.com/en/blog/supabase-data-analysis-tools">Supabase data analysis tools</a>
+    <a href="https://infinisynapse.com/en/blog/agentic-analytics-explained">Agentic analytics explained</a>
+    <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst explained</a>
+    <a href="https://infinisynapse.com/en/blog/what-is-a-data-agent">What is a data agent?</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

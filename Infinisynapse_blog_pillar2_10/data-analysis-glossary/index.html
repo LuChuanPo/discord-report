@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analysis Glossary 2026: Terms Explained with Examples</title>
+  <meta name="description" content="A 2026 data analysis glossary — 40 working terms across SQL, statistics, BI, engineering, and AI agents, each with a worked example and a deeper link.">
+  <meta name="keywords" content="data analysis glossary, data analytics glossary, data terms explained">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/data-analysis-glossary">
+  <meta property="og:title" content="Data Analysis Glossary in 2026: 40 Terms Explained">
+  <meta property="og:description" content="A 2026 data analysis glossary — 40 working terms across SQL, statistics, BI, engineering, and AI agents, each with a worked example and a deeper link.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/data-analysis-glossary">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/data-analysis-glossary/data-analysis-glossary-framework.svg">
+  <meta property="og:image:alt" content="Data analysis glossary — 40 terms grouped into SQL, statistics, BI, data engineering, and AI agents, each with a worked example.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Data Analysis Glossary in 2026: 40 Terms Explained">
+  <meta name="twitter:description" content="A 2026 data analysis glossary — 40 working terms across SQL, statistics, BI, engineering, and AI agents, each with a worked example and a deeper link.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/data-analysis-glossary/data-analysis-glossary-framework.svg">
+  <meta name="twitter:image:alt" content="Data analysis glossary — 40 terms grouped into SQL, statistics, BI, data engineering, and AI agents, each with a worked example.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"Data Analysis Glossary in 2026: 40 Terms Explained","item":"https://infinisynapse.com/en/blog/data-analysis-glossary"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Data Analysis Glossary in 2026: 40 Terms Explained","description":"A 2026 data analysis glossary — 40 working terms across SQL, statistics, BI, engineering, and AI agents, each with a worked example and a deeper link.","image":"https://infinisynapse.com/en/blog/data-analysis-glossary/data-analysis-glossary-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/data-analysis-glossary"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is included in this data analysis glossary?","acceptedAnswer":{"@type":"Answer","text":"Forty terms across five categories — SQL (GROUP BY, HAVING, JOIN, CTE, window function, UPSERT, NULLIF, MERGE), statistics (p-value, confidence interval, sample size, SRM, NTILE, cohort retention, segments, standard error), BI and reporting (semantic layer, dimension, measure, drill-down, slowly changing dimensions, fact and dim tables, star schema, YoY and WoW, OLAP cube), data engineering (ELT, dbt, CDC, reverse-ETL, data contract, lakehouse, schema drift, materialized view), and AI agents (data agent, NL2SQL, RAG, knowledge base binding, plan mode, verification step, evidence trail, agentic analytics)."}},{"@type":"Question","name":"Why does this glossary update every 90 days?","acceptedAnswer":{"@type":"Answer","text":"Vocabulary moves fast in data work. Terms like \"data lakehouse\" replaced parts of \"data warehouse\" between 2020 and 2023, \"agentic analytics\" entered common use in 2024 and 2025, and \"knowledge base binding\" emerged in 2025 and 2026. A 90-day refresh cadence keeps the glossary aligned with current vendor and academic usage rather than freezing the vocabulary at one moment in time."}},{"@type":"Question","name":"What is the difference between cohort and segment in data analysis?","acceptedAnswer":{"@type":"Answer","text":"A cohort groups records by the time they entered — March 2026 signups, users who first activated feature X this quarter, customers acquired through paid social in Q1. A segment groups records by an attribute — iOS users, customers in EMEA, accounts on the annual plan. Cohorts measure how things change over the entry timeline; segments measure how groups differ at a moment."}},{"@type":"Question","name":"What is a window function in SQL?","acceptedAnswer":{"@type":"Answer","text":"A window function computes a value over a window of related rows without collapsing them. The classic examples are RANK, ROW_NUMBER, SUM as a running total, and LAG or LEAD to access previous or next rows. Unlike GROUP BY which collapses rows into one per group, a window function keeps every row and attaches a computed value derived from its window."}},{"@type":"Question","name":"What is the difference between ELT and ETL?","acceptedAnswer":{"@type":"Answer","text":"ETL extracts data, transforms it inside the pipeline tool, and loads the modeled output into the warehouse. ELT extracts and loads raw data into the warehouse first, then transforms inside the warehouse — typically via dbt. The modern default for cloud warehouses like Snowflake, BigQuery, and Redshift is ELT because warehouse compute is now cheap enough to land raw data and model it in place."}},{"@type":"Question","name":"What does knowledge base binding mean for an AI data agent?","acceptedAnswer":{"@type":"Answer","text":"Knowledge base binding pairs a database connection with a curated layer of business definitions that an AI agent retrieves as a tool call before drafting SQL. The bound layer contains entries like \"active customer = ordered in last 90 days\", \"paid status = subscription_status IN (active, trialing)\", or \"MRR = sum of recurring subscription amounts excluding refunds\". The agent uses these definitions to ground its SQL in your team operational vocabulary."}},{"@type":"Question","name":"How is this glossary useful for onboarding a new analyst?","acceptedAnswer":{"@type":"Answer","text":"Send the link as part of week-one onboarding; ask the new analyst to flag any term they cannot define in one sentence after reading the table. Their flagged list becomes the agenda for a 30-minute calibration session with their manager or buddy. The glossary is opinionated — terms a working data analyst meets weekly in 2026 — so coverage maps closely to the vocabulary they will encounter in the first month."}}]}</script>
+  <style>*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:#5B5BFF;text-decoration:none}
+a:hover{color:#111827}
+.nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+.nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+.nav-logo-mark{height:26px;display:flex;align-items:center}
+.nav-logo-mark img{height:26px;width:auto;display:block}
+.nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+.nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+.nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap}
+.nav-menu a:hover{color:#111827}
+.nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+.nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap}
+.nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+.nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+.nav-btn-primary:hover{color:#FFFFFF}
+.nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+.nav-btn-dark:hover{color:#FFFFFF}
+.wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+.breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+.breadcrumb a{color:#6B7280}
+.badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+.badge-client{background:#EEF2FF;color:#4338CA}
+.badge-cat{background:#ECFDF5;color:#047857}
+h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+h3{font-size:21px;color:#111827;margin:24px 0 8px}
+p{margin:0 0 16px}
+ul,ol{padding-left:22px;margin:0 0 18px}
+li{margin:6px 0}
+code{background:#F3F4F6;border-radius:4px;padding:2px 6px;font-family:Consolas,Menlo,monospace;font-size:14px}
+pre{background:#0F172A;color:#E5E7EB;border-radius:10px;padding:16px 18px;overflow-x:auto;margin:14px 0;font-size:14px;line-height:1.55}
+pre code{background:transparent;color:inherit;padding:0;font-size:14px}
+.meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+.author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+.info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+.info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+.disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+.toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+.toc{background:#F9FAFB}
+.toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+.tldr{background:#F8FAFC}
+.snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+.feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+td{color:#4B5563}
+.quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+.cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+.cta-btn:hover{background:#1F2937;color:#FFFFFF}
+.faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+.faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+.faq-a{color:#4B5563}
+.methodology{background:#F9FAFB;color:#4B5563}
+.refs li{font-size:13.5px;color:#4B5563}
+.related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+.related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+.stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+.stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+.stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+.panel h3{margin-top:0}
+.panel-good{background:#F0FDF4;border-color:#BBF7D0}
+.panel-bad{background:#FEF2F2;border-color:#FECACA}
+.footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+.footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+.footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.footer-links{display:grid;gap:8px}
+.footer-links a{color:#6B7280;font-size:14px}
+.footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+@media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">EN</span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">Book Demo</a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">Login</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    data analysis glossary
+  </nav>
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Reference Guide</span>
+  </div>
+  <h1>Data Analysis Glossary in 2026: 40 Terms Explained</h1>
+  <p class="meta-desc">A 2026 data analysis glossary with 40 terms across SQL, statistics, BI, data engineering, and AI agents — each defined with a worked example and a deeper link.</p>
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 · Last verified 2026-06-28 · Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>Vendor documentation (PostgreSQL, MySQL, Snowflake, dbt), statistics references (Kohavi, Wasserstein), and field experience defining these terms across data teams.</div>
+  </div>
+  <div class="disclosure">
+    <strong>Disclosure:</strong> Published by InfiniSynapse, an AI data analyst. The glossary is vendor-neutral; InfiniSynapse appears only under the AI-agent category for completeness.
+  </div>
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer: how this glossary is organized</a></li>
+      <li><a href="#sql">SQL terms</a></li>
+      <li><a href="#stats">Statistics terms</a></li>
+      <li><a href="#bi">BI and reporting terms</a></li>
+      <li><a href="#eng">Data engineering terms</a></li>
+      <li><a href="#ai">AI agent terms</a></li>
+      <li><a href="#use">How to use this glossary</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>A working glossary of 40 data analysis terms, grouped into SQL, statistics, BI and reporting, data engineering, and AI agents.</li>
+      <li>Each term has a one-sentence definition, a one-sentence worked example, and where relevant, a link to a deeper guide.</li>
+      <li>The list is opinionated — terms a working data analyst meets weekly in 2026, not an exhaustive encyclopedia.</li>
+      <li>Use it to onboard a new hire, settle a meeting argument, or sanity-check vocabulary before a stakeholder review.</li>
+      <li>Bookmark the page; the glossary updates every 90 days as terms migrate (e.g., "data lakehouse" replacing parts of "data warehouse").</li>
+    </ul>
+  </div>
+  <div class="snippet-answer">This data analysis glossary covers 40 working terms in five groups — SQL, statistics, BI and reporting, data engineering, and AI agents. Each term gets a one-sentence definition, a worked example, and a link to a deeper guide. Designed to settle vocabulary in five minutes rather than be an encyclopedia.</div>
+  <img class="feature-img" src="data-analysis-glossary-framework.svg" alt="Data analysis glossary — 40 terms grouped into SQL, statistics, BI, data engineering, and AI agents, each with a worked example." width="1200" height="630" loading="lazy">
+
+  <h2 id="sql">SQL terms — the eight that come up daily</h2>
+<table>
+    <thead><tr><th>Term</th><th>Definition</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>GROUP BY</td><td>Collapse rows into one row per group, with aggregates over the rest</td><td><code>SELECT region, COUNT(*) FROM orders GROUP BY region</code></td></tr>
+      <tr><td>HAVING</td><td>Filter groups after aggregation; WHERE filters rows before</td><td><code>HAVING SUM(amount) &gt; 1000</code></td></tr>
+      <tr><td>INNER JOIN</td><td>Return only rows matched on both sides of the join key</td><td><code>orders o JOIN customers c ON c.id = o.customer_id</code></td></tr>
+      <tr><td>LEFT JOIN</td><td>Keep all rows from the left table; NULLs where right has no match</td><td>"customers who have not ordered" → LEFT JOIN with WHERE orders.id IS NULL</td></tr>
+      <tr><td>CTE</td><td>Named result set used in a later SELECT — readable multi-step logic</td><td><code>WITH monthly AS (...) SELECT * FROM monthly</code></td></tr>
+      <tr><td>Window function</td><td>Compute over a window of rows without collapsing — ranks, running totals</td><td><code>RANK() OVER (PARTITION BY region ORDER BY revenue DESC)</code></td></tr>
+      <tr><td>UPSERT / MERGE</td><td>Insert if new, update if existing, in one statement</td><td><code>MERGE INTO dim_customer USING src ON ... WHEN MATCHED THEN UPDATE</code></td></tr>
+      <tr><td>NULLIF</td><td>Guard divisions against zero by returning NULL when input matches</td><td><code>revenue / NULLIF(customers, 0)</code></td></tr>
+    </tbody>
+  </table>
+  <p>The deeper walkthrough is in <a href="https://infinisynapse.com/en/blog/sql-for-data-analysis">SQL for data analysis</a>.</p>
+
+  <h2 id="stats">Statistics terms — the eight an analyst needs in a stand-up</h2>
+<table>
+    <thead><tr><th>Term</th><th>Definition</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>p-value</td><td>Probability of seeing data this extreme if the null hypothesis is true</td><td>"p &lt; 0.05" is the conventional but flawed cutoff for significance</td></tr>
+      <tr><td>Confidence interval</td><td>Range that contains the parameter with stated confidence</td><td>95% CI for conversion rate: [3.2%, 3.7%]</td></tr>
+      <tr><td>Sample size / power</td><td>Number of observations needed to detect an effect of a given size</td><td>"We need 50,000 users per arm to detect a 1% lift at 80% power"</td></tr>
+      <tr><td>SRM</td><td>Sample Ratio Mismatch — assignment split deviates from intended</td><td>49.2% vs 50.8% might signal broken randomization</td></tr>
+      <tr><td>NTILE / quantile</td><td>Bucket rows into N equal-sized groups</td><td>Income quintiles via NTILE(5)</td></tr>
+      <tr><td>Cohort retention</td><td>Share of an entry cohort still active at time N</td><td>"% of signup cohort still active 90 days later"</td></tr>
+      <tr><td>Cohort vs segment</td><td>Cohort = same entry time; segment = same attribute</td><td>"March signups" vs "iOS users"</td></tr>
+      <tr><td>Standard error</td><td>Estimated standard deviation of a sample statistic</td><td>SE of mean = SD / sqrt(n)</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="bi">BI and reporting terms — the eight that anchor dashboards</h2>
+<table>
+    <thead><tr><th>Term</th><th>Definition</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Semantic layer</td><td>Shared business definitions of metrics across BI consumers</td><td>"Active customer = ordered in last 90 days"</td></tr>
+      <tr><td>Dimension / measure</td><td>Dimension = how you split; measure = what you sum or count</td><td>Dimension: region. Measure: revenue.</td></tr>
+      <tr><td>Drill-down</td><td>Move from aggregated view to constituent rows</td><td>Click a region's revenue → see orders by city</td></tr>
+      <tr><td>Slowly changing dimension</td><td>How dimension attributes change over time — Type 1 overwrite, Type 2 history</td><td>Customer plan history tracked Type 2 for cohort analysis</td></tr>
+      <tr><td>Fact / dim table</td><td>Fact = events with measures; Dim = descriptive attributes</td><td>orders (fact) joined to customers (dim)</td></tr>
+      <tr><td>Star schema</td><td>One fact table joined to multiple dimension tables</td><td>orders fact + customer / product / time dims</td></tr>
+      <tr><td>YoY / WoW</td><td>Year-over-year, week-over-week period comparison</td><td>"Revenue up 14% YoY"</td></tr>
+      <tr><td>OLAP cube</td><td>Pre-aggregated structure across dimensions</td><td>Modern equivalent: materialized aggregate tables</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="eng">Data engineering terms — the eight pipeline regulars</h2>
+<table>
+    <thead><tr><th>Term</th><th>Definition</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>ELT / ETL</td><td>Extract-Load-Transform vs Extract-Transform-Load</td><td>Modern default for cloud warehouses is ELT</td></tr>
+      <tr><td>dbt</td><td>Transformation framework — SQL models, tests, docs</td><td>dbt staging / intermediate / mart pattern</td></tr>
+      <tr><td>CDC</td><td>Change Data Capture — only the changed rows since last sync</td><td>Postgres logical replication feeding the warehouse</td></tr>
+      <tr><td>Reverse-ETL</td><td>Push warehouse data into operational tools like CRMs</td><td>Hightouch, Census syncing account scores to Salesforce</td></tr>
+      <tr><td>Data contract</td><td>Producer-consumer agreement on schema and SLA</td><td>"orders.id will not be reused; deletes are soft"</td></tr>
+      <tr><td>Lakehouse</td><td>Single platform combining warehouse and lake capabilities</td><td>Databricks Delta Lake</td></tr>
+      <tr><td>Schema drift</td><td>Source schema changes that break downstream models</td><td>New column added upstream; dbt staging absorbs it</td></tr>
+      <tr><td>Materialized view</td><td>Stored query result, refreshed on a schedule or trigger</td><td>Snowflake materialized view for repeatedly hit aggregates</td></tr>
+    </tbody>
+  </table>
+  <p>Deeper coverage in <a href="https://infinisynapse.com/en/blog/saas-data-platform">SaaS data platform</a> and <a href="https://infinisynapse.com/en/blog/data-integration-platforms-supporting-snowflake-bigquery-redshift">data integration platforms</a>.</p>
+
+  <h2 id="ai">AI agent terms — the eight that came into common use in 2025–2026</h2>
+<table>
+    <thead><tr><th>Term</th><th>Definition</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Data agent</td><td>AI agent that reads, queries, and reasons over structured data</td><td>Plans, runs SQL, verifies, returns evidence</td></tr>
+      <tr><td>NL2SQL</td><td>Natural language to SQL translation</td><td>"What was revenue last month?" → SELECT ... FROM orders</td></tr>
+      <tr><td>RAG</td><td>Retrieval-augmented generation — model retrieves context before answering</td><td>Agent retrieves business glossary before drafting SQL</td></tr>
+      <tr><td>Knowledge base binding</td><td>Pair database with curated business definitions an agent reads as tool</td><td>The differentiator described in <a href="https://infinisynapse.com/en/blog/data-agent-memory-explained">database + KB binding</a></td></tr>
+      <tr><td>Plan mode</td><td>Agent presents a plan for human review before executing</td><td>"I will join orders to customers on ... — approve?"</td></tr>
+      <tr><td>Verification step</td><td>Independent query that cross-checks the main result</td><td>Count rows two ways; surface a gap if they disagree</td></tr>
+      <tr><td>Evidence trail</td><td>Plan + code + result + verification + sources, stored together</td><td>The audit-grade artifact for regulated workflows</td></tr>
+      <tr><td>Agentic analytics</td><td>BI shifted from pre-modeled questions to planner-executor-verifier loops</td><td>Detailed in <a href="https://infinisynapse.com/en/blog/agentic-analytics-explained">agentic analytics explained</a></td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="use">How to use this glossary</h2>
+<ol>
+    <li><strong>Onboard a new hire.</strong> Send the link; ask them to flag terms they cannot define in one sentence after reading.</li>
+    <li><strong>Settle a meeting argument.</strong> "When you said cohort, did you mean signup cohort or feature cohort?" — point to the row.</li>
+    <li><strong>Sanity-check vocabulary before a review.</strong> Skim before a stakeholder meeting; calibrate to the audience.</li>
+    <li><strong>Bookmark the changes.</strong> The list updates every 90 days; the AI-agent section moves fastest.</li>
+  </ol>
+  <div class="quote">Glossaries do not stop arguments — they make them shorter.</div>
+  <div class="cta-box">
+    <h3>See agentic analytics terms in action</h3>
+    <p>Connect a small Postgres or MySQL database read-only. Seed a business glossary. Ask one question and watch which glossary entries show up in the answer trail — plan mode, RAG retrieval, knowledge base binding, verification step, evidence trail, all visible together.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What is included in this data analysis glossary?</div><div class="faq-a">Forty terms across five categories — SQL (GROUP BY, HAVING, JOIN, CTE, window function, UPSERT, NULLIF, MERGE), statistics (p-value, confidence interval, sample size, SRM, NTILE, cohort retention, segments, standard error), BI and reporting (semantic layer, dimension, measure, drill-down, slowly changing dimensions, fact and dim tables, star schema, YoY and WoW, OLAP cube), data engineering (ELT, dbt, CDC, reverse-ETL, data contract, lakehouse, schema drift, materialized view), and AI agents (data agent, NL2SQL, RAG, knowledge base binding, plan mode, verification step, evidence trail, agentic analytics).</div></div>
+  <div class="faq-item"><div class="faq-q">Why does this glossary update every 90 days?</div><div class="faq-a">Vocabulary moves fast in data work. Terms like "data lakehouse" replaced parts of "data warehouse" between 2020 and 2023, "agentic analytics" entered common use in 2024 and 2025, and "knowledge base binding" emerged in 2025 and 2026. A 90-day refresh cadence keeps the glossary aligned with current vendor and academic usage rather than freezing the vocabulary at one moment in time.</div></div>
+  <div class="faq-item"><div class="faq-q">What is the difference between cohort and segment in data analysis?</div><div class="faq-a">A cohort groups records by the time they entered — March 2026 signups, users who first activated feature X this quarter, customers acquired through paid social in Q1. A segment groups records by an attribute — iOS users, customers in EMEA, accounts on the annual plan. Cohorts measure how things change over the entry timeline; segments measure how groups differ at a moment.</div></div>
+  <div class="faq-item"><div class="faq-q">What is a window function in SQL?</div><div class="faq-a">A window function computes a value over a window of related rows without collapsing them. The classic examples are RANK, ROW_NUMBER, SUM as a running total, and LAG or LEAD to access previous or next rows. Unlike GROUP BY which collapses rows into one per group, a window function keeps every row and attaches a computed value derived from its window.</div></div>
+  <div class="faq-item"><div class="faq-q">What is the difference between ELT and ETL?</div><div class="faq-a">ETL extracts data, transforms it inside the pipeline tool, and loads the modeled output into the warehouse. ELT extracts and loads raw data into the warehouse first, then transforms inside the warehouse — typically via dbt. The modern default for cloud warehouses like Snowflake, BigQuery, and Redshift is ELT because warehouse compute is now cheap enough to land raw data and model it in place.</div></div>
+  <div class="faq-item"><div class="faq-q">What does knowledge base binding mean for an AI data agent?</div><div class="faq-a">Knowledge base binding pairs a database connection with a curated layer of business definitions that an AI agent retrieves as a tool call before drafting SQL. The bound layer contains entries like "active customer = ordered in last 90 days", "paid status = subscription_status IN (active, trialing)", or "MRR = sum of recurring subscription amounts excluding refunds". The agent uses these definitions to ground its SQL in your team operational vocabulary.</div></div>
+  <div class="faq-item"><div class="faq-q">How is this glossary useful for onboarding a new analyst?</div><div class="faq-a">Send the link as part of week-one onboarding; ask the new analyst to flag any term they cannot define in one sentence after reading the table. Their flagged list becomes the agenda for a 30-minute calibration session with their manager or buddy. The glossary is opinionated — terms a working data analyst meets weekly in 2026 — so coverage maps closely to the vocabulary they will encounter in the first month.</div></div>
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 · <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>This glossary draws on vendor documentation from PostgreSQL, MySQL, Snowflake, BigQuery, dbt Labs, and the major BI vendors; statistics references including Ron Kohavi experimentation literature and the American Statistical Association statement on p-values; AI agent research from Anthropic and the ReAct paper; and field experience defining these terms in onboarding and review settings across multiple data teams. The selection is opinionated toward terms used weekly in 2026.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells an enterprise AI data analyst. To reduce bias, the page leads with the topic itself, treats InfiniSynapse as one option among many, and links to external sources for every numeric claim.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for accuracy and link health.</p>
+  </div>
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> PostgreSQL. Documentation. <a href="https://www.postgresql.org/docs/" target="_blank" rel="noopener">postgresql.org/docs</a>.</li>
+    <li><strong>[Vendor]</strong> Snowflake. Documentation. <a href="https://docs.snowflake.com/" target="_blank" rel="noopener">docs.snowflake.com</a>.</li>
+    <li><strong>[Vendor]</strong> dbt Labs. Documentation. <a href="https://docs.getdbt.com/" target="_blank" rel="noopener">docs.getdbt.com</a>.</li>
+    <li><strong>[Independent]</strong> American Statistical Association. Statement on p-values. <a href="https://www.amstat.org/asa/files/pdfs/p-valuestatement.pdf" target="_blank" rel="noopener">amstat.org p-value statement</a>.</li>
+    <li><strong>[Independent]</strong> Yao et al. ReAct: Synergizing Reasoning and Acting in Language Models. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arxiv.org/abs/2210.03629</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic. Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Standard]</strong> NIST. AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL benchmark. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+  </ol>
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/sql-for-data-analysis">SQL for data analysis</a>
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query pillar guide</a>
+    <a href="https://infinisynapse.com/en/blog/saas-data-platform">SaaS data platform architecture</a>
+    <a href="https://infinisynapse.com/en/blog/data-integration-platforms-supporting-snowflake-bigquery-redshift">Data integration platforms</a>
+    <a href="https://infinisynapse.com/en/blog/data-agent-glossary-2026">Data agent glossary 2026</a>
+    <a href="https://infinisynapse.com/en/blog/agentic-analytics-explained">Agentic analytics explained</a>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

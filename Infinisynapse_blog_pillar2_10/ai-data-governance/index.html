@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AI Data Governance for Enterprise Analytics in 2026</title>
+  <meta name="description" content="AI data governance for enterprise analytics — access controls, data lineage, model risk, audit trail, and alignment with NIST AI RMF, ISO/IEC 42001, EU AI Act.">
+  <meta name="keywords" content="ai data governance, ai data governance framework, ai data governance tools, ai governance">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/ai-data-governance">
+
+  <meta property="og:title" content="AI Data Governance for Enterprise Analytics in 2026">
+  <meta property="og:description" content="AI data governance for enterprise analytics — access controls, data lineage, model risk, audit trail, and alignment with NIST AI RMF, ISO/IEC 42001, EU AI Act.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/ai-data-governance">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/ai-data-governance/ai-data-governance-framework.svg">
+  <meta property="og:image:alt" content="Five-pillar AI data governance framework: access control, data lineage, model risk, audit trail, and regulatory alignment around a central AI data agent.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="AI Data Governance for Enterprise Analytics in 2026">
+  <meta name="twitter:description" content="AI data governance for enterprise analytics — access controls, data lineage, model risk, audit trail, and alignment with NIST AI RMF, ISO/IEC 42001, EU AI Act.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/ai-data-governance/ai-data-governance-framework.svg">
+  <meta name="twitter:image:alt" content="Five-pillar AI data governance framework: access control, data lineage, model risk, audit trail, and regulatory alignment around a central AI data agent.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Schema #1: Organization -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","caption":"InfiniSynapse AI data analyst logo","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}
+  </script>
+
+  <!-- Schema #2: BreadcrumbList -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"AI Data Governance: A Practical Framework for Enterprise Analytics in 2026","item":"https://infinisynapse.com/en/blog/ai-data-governance"}]}
+  </script>
+
+  <!-- Schema #3: Article -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"AI Data Governance: A Practical Framework for Enterprise Analytics in 2026","description":"AI data governance for enterprise analytics — access controls, data lineage, model risk, audit trail, and alignment with NIST AI RMF, ISO/IEC 42001, EU AI Act.","image":"https://infinisynapse.com/en/blog/ai-data-governance/ai-data-governance-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/ai-data-governance"}}
+  </script>
+
+  <!-- Schema #4: FAQPage -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is AI data governance?","acceptedAnswer":{"@type":"Answer","text":"AI data governance is the set of policies, controls, and evidence practices that decide who can ask an AI system what, which data the system may read, how the result is verified, and how every step is recorded for audit. It extends classical data governance with model risk, prompt and tool-use logging, and alignment with NIST AI RMF, ISO/IEC 42001, and the EU AI Act."}},
+{"@type":"Question","name":"How is AI data governance different from data governance?","acceptedAnswer":{"@type":"Answer","text":"Data governance covers people, definitions, and data quality. AI data governance adds three layers: model-side risk such as hallucination and prompt injection, tool-use logging for every query and retrieval the agent performs, and explainability so a reviewer can replay the reasoning behind a result. You need both — AI governance does not replace data governance, it sits on top of it."}},
+{"@type":"Question","name":"What does an AI data governance framework include?","acceptedAnswer":{"@type":"Answer","text":"A working framework includes five pillars: access control with read-only roles and row-level security, data lineage from source to result, model risk management with verification loops, an audit trail that captures plan and SQL and sources, and regulatory alignment with NIST AI RMF, ISO/IEC 42001, and the EU AI Act. Each pillar maps to controls a security reviewer can sign off on."}},
+{"@type":"Question","name":"Which AI data governance tools should an enterprise evaluate?","acceptedAnswer":{"@type":"Answer","text":"Evaluate the categories rather than chasing vendor lists. You will need an identity and access layer, a data catalog with lineage, a model risk and evaluation tool, an immutable audit log, and an AI data agent that exposes plan and evidence. Some platforms cover several pillars; very few cover all five, so plan for integration work and a written control matrix."}},
+{"@type":"Question","name":"How does NIST AI RMF apply to an AI data agent?","acceptedAnswer":{"@type":"Answer","text":"The NIST AI Risk Management Framework gives you four functions — govern, map, measure, manage. For a data agent that means writing the policy of acceptable use, mapping every data source and tool the agent can call, measuring accuracy and hallucination on a held-out evaluation set, and managing residual risk with human review checkpoints before production runs."}},
+{"@type":"Question","name":"Does the EU AI Act regulate analytics AI agents?","acceptedAnswer":{"@type":"Answer","text":"The EU AI Act classifies systems by risk tier. Most enterprise analytics agents fall into the limited-risk or general-purpose AI category, but if outputs drive decisions about credit, hiring, or critical infrastructure the system can be classified as high-risk and inherit transparency, logging, and human oversight obligations. Treat the classification work as a governance task, not a legal afterthought."}},
+{"@type":"Question","name":"What audit trail must an AI data agent produce?","acceptedAnswer":{"@type":"Answer","text":"The audit trail must capture the user question, the retrieved business context, the plan the agent proposed, every SQL or tool call executed, the verification step, and the final result with sources. It must be replayable so a reviewer can rerun the analysis and reach the same answer. Without this, you cannot defend a number to a finance, security, or regulatory reviewer."}},
+{"@type":"Question","name":"How do I approve an AI data agent for production access to a warehouse?","acceptedAnswer":{"@type":"Answer","text":"Start with a written control matrix mapped to the five pillars. Grant a read-only role with scoped privileges, require plan review before execution on sensitive tables, log every query with pg_stat_statements or the equivalent, and run a 30-day shadow period where every result is reviewed before stakeholders see it. Promote permissions only after the shadow period shows acceptable accuracy and zero exfiltration."}}
+]}
+  </script>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    a{color:#5B5BFF;text-decoration:none}
+    a:hover{color:#111827}
+    .nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+    .nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+    .nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+    .nav-logo-mark{height:26px;display:flex;align-items:center}
+    .nav-logo-mark img{height:26px;width:auto;display:block}
+    .nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+    .nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap;transition:color 0.15s}
+    .nav-menu a:hover{color:#111827}
+    .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+    .nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap;box-shadow:none;transition:background 0.15s,border-color 0.15s,transform 0.15s}
+    a.nav-btn:hover{color:#111827;border-color:#C7CEDA;transform:translateY(-1px)}
+    .nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+    .nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+    .nav-btn-primary:hover{color:#FFFFFF}
+    .nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+    .nav-btn-dark:hover{color:#FFFFFF}
+    .nav-icon{width:17px;height:17px;flex:0 0 auto}
+    .nav-chevron{width:15px;height:15px;flex:0 0 auto}
+    .wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+    .breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+    .breadcrumb a{color:#6B7280}
+    .badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+    .badge-client{background:#EEF2FF;color:#4338CA}
+    .badge-cat{background:#ECFDF5;color:#047857}
+    h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+    h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+    h3{font-size:21px;color:#111827;margin:24px 0 8px}
+    p{margin:0 0 16px}
+    ul,ol{padding-left:22px;margin:0 0 18px}
+    li{margin:6px 0}
+    .meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+    .author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+    .info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+    .info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+    .disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+    .toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+    .toc{background:#F9FAFB}
+    .toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+    .tldr{background:#F8FAFC}
+    .snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+    .definition{background:#ECFDF5;border-color:#BBF7D0}
+    .feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+    table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+    th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+    th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+    td{color:#4B5563}
+    .quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+    .cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+    .cta-btn:hover{background:#1F2937;color:#FFFFFF}
+    .faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+    .faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+    .faq-a{color:#4B5563}
+    .methodology{background:#F9FAFB;color:#4B5563}
+    .refs li{font-size:13.5px;color:#4B5563}
+    .related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+    .related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+    .stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+    .stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+    .stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+    .panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+    .panel h3{margin-top:0}
+    .panel-good{background:#F0FDF4;border-color:#BBF7D0}
+    .panel-bad{background:#FEF2F2;border-color:#FECACA}
+    .footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+    .footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{color:#6B7280;font-size:14px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+    @media(max-width:1280px){.nav-inner{max-width:1180px;column-gap:24px}.nav-menu{gap:18px}.nav-menu a,.nav-btn{font-size:14px}.nav-btn{min-height:36px;padding:0 12px}.nav-btn-primary,.nav-btn-dark{padding:0 14px}}
+    @media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}.nav-logo{width:100%;justify-content:center}.nav-menu,.nav-actions{justify-content:center;flex-wrap:wrap}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}table{font-size:14px}.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12S9.8 18.6 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        EN
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Book Demo
+      </a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    ai data governance
+  </nav>
+
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Governance Guide</span>
+  </div>
+
+  <h1>AI Data Governance: A Practical Framework for Enterprise Analytics in 2026</h1>
+  <p class="meta-desc">A five-pillar framework for governing AI data agents in the enterprise — access control, data lineage, model risk, audit trail, and regulatory alignment with NIST AI RMF, ISO/IEC 42001, and the EU AI Act.</p>
+
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, security and data architecture team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 · Last verified 2026-06-28 · Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>NIST AI RMF 1.0, ISO/IEC 42001:2023, EU AI Act, BIRD benchmark, public security postmortems, InfiniSynapse deployment notes.</div>
+  </div>
+
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, which builds an enterprise AI data analyst that ships with database + knowledge base binding, Plan-mode review, and an evidence trail. We use our own product as one example, but the framework, control matrix, and checklist are written so a security team can apply them to any AI data agent — including ones that compete with us.
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer</a></li>
+      <li><a href="#what-is">What AI data governance actually means</a></li>
+      <li><a href="#why-now">Why now — the 2026 inflection point</a></li>
+      <li><a href="#framework">The five-pillar framework</a></li>
+      <li><a href="#standards">Mapping to NIST AI RMF, ISO/IEC 42001, EU AI Act</a></li>
+      <li><a href="#tools">AI data governance tools — categories that matter</a></li>
+      <li><a href="#checklist">Security team approval checklist</a></li>
+      <li><a href="#mistakes">Common AI data governance mistakes</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li><strong>AI data governance</strong> is data governance plus three new layers: model risk, tool-use logging, and explainability. You need both, not one or the other.</li>
+      <li>The working framework has <strong>five pillars</strong> — access control, data lineage, model risk, audit trail, and regulatory alignment.</li>
+      <li>Map each pillar to <strong>NIST AI RMF, ISO/IEC 42001, and the EU AI Act</strong> so a security or legal reviewer can sign off against a recognized standard, not a marketing page.</li>
+      <li>An AI data agent ready for enterprise use exposes its <strong>plan, queries, retrieved context, and verification step</strong> — not just an answer string.</li>
+      <li>Run a <strong>30-day shadow period</strong> before stakeholders see results. Promote permissions only when shadow accuracy and zero-exfiltration are confirmed.</li>
+    </ul>
+  </div>
+
+  <h2 id="answer">Direct answer: what does AI data governance for analytics require?</h2>
+  <div class="snippet-answer">AI data governance is the set of policies, controls, and evidence practices that decide who can ask an AI system what, which data the system may read, how the result is verified, and how every step is recorded for audit. It extends classical data governance with model risk, prompt and tool-use logging, and alignment with NIST AI RMF, ISO/IEC 42001, and the EU AI Act.</div>
+
+  <h2 id="what-is">What AI data governance actually means</h2>
+  <p>Most enterprise data teams already run a governance program: data definitions, owners, quality checks, access policies, retention rules. AI data governance is not a replacement — it is an additional layer that answers a different question. Classical governance asks <em>is this data correct and who can read it?</em> AI governance asks <em>can we trust what the system did with that data, and can we replay the reasoning?</em></p>
+  <p>The shift matters because an <a href="https://infinisynapse.com/en/blog/what-is-a-data-agent">AI data agent</a> does not behave like a BI dashboard. A dashboard reads pre-modeled metrics that an analyst already validated. An agent picks tables, joins them, writes SQL, and explains the result on the fly — every run can take a different path. Governance has to cover the path, not just the inputs.</p>
+
+  <h3>The three new layers AI governance adds</h3>
+  <ol>
+    <li><strong>Model risk.</strong> The agent can hallucinate, misread a schema, or be steered by prompt injection. You need evaluation sets and verification loops, not just unit tests on data.</li>
+    <li><strong>Tool-use logging.</strong> Every retrieval, every SQL query, every external API call the agent invokes must be captured with parameters and outputs. Without this you cannot reconstruct what happened.</li>
+    <li><strong>Explainability.</strong> A reviewer needs to read the plan, the queries, and the sources behind a result and reach the same conclusion. <a href="https://infinisynapse.com/en/blog/explainable-ai-data-analysis">Explainable AI data analysis</a> describes the artifacts the agent must publish.</li>
+  </ol>
+
+  <h2 id="why-now">Why now — the 2026 inflection point</h2>
+  <p>Three forces have pushed AI data governance from a research topic into a board-level requirement. The EU AI Act entered into force in August 2024 and its high-risk obligations kick in across 2026 and 2027. ISO published <a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">ISO/IEC 42001</a> in late 2023, giving organizations the first auditable AI management system standard. And the <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a> has become the de facto reference U.S. enterprises cite in security reviews.</p>
+  <p>At the same time, agentic analytics has moved from demo to deployment. Anthropic's writeup on <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">building effective agents</a> formalized the pattern of plan, tool use, and verification that most production AI data analysts now follow. Once an agent can write its own SQL against a production warehouse, governance stops being optional.</p>
+
+  <img class="feature-img" src="ai-data-governance-framework.svg" alt="Five-pillar AI data governance framework — access control, data lineage, model risk, audit trail, and regulatory alignment arranged around a central AI data agent that runs plan, query, verify, and explain steps" width="1200" height="630" loading="lazy">
+
+  <h2 id="framework">The five-pillar framework</h2>
+  <p>The framework below is the working pattern we apply with security and data architecture teams approving an AI data agent for warehouse access. Each pillar is a control surface, and each control surface maps to one or more clauses in NIST AI RMF and ISO/IEC 42001. Treat it as a starting matrix, not a final answer — your industry will add specifics.</p>
+
+  <h3>Pillar 1 — Access control</h3>
+  <p>The agent receives a scoped read-only role, not a human's credentials. Privileges are granted per schema, never per cluster. Row-level security policies that protect humans must also apply to the agent's role; if a salesperson cannot see the EU customers table, the agent acting on their behalf cannot either. Service accounts rotate keys on a fixed schedule, and the audit log captures every authentication.</p>
+
+  <h3>Pillar 2 — Data lineage</h3>
+  <p>Every result must carry its lineage: which sources were read, which tables and columns, which transformations were applied, and which rows formed the basis of the answer. Without lineage, a stakeholder cannot tell whether yesterday's revenue number used last week's exchange rate. A good agent captures lineage automatically because it issues the SQL itself.</p>
+
+  <h3>Pillar 3 — Model risk management</h3>
+  <p>Model risk is the new pillar. You measure it the same way you measure credit risk — with a written policy, an evaluation set, and a periodic review. The evaluation set should include known-answer questions, edge cases that exposed problems in prior runs, and prompt-injection probes. Public benchmarks such as <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">BIRD</a> and <a href="https://yale-lily.github.io/spider" target="_blank" rel="noopener">Spider</a> are useful for calibration but no substitute for your own enterprise eval set.</p>
+
+  <h3>Pillar 4 — Audit trail</h3>
+  <p>The audit trail must capture the user question, the retrieved business context, the plan the agent proposed, every SQL or tool call executed, the verification step, and the final result with sources. The trail must be immutable and replayable so a reviewer can rerun the analysis and reach the same answer. This is the artifact a finance or compliance reviewer asks for when challenging a number.</p>
+
+  <h3>Pillar 5 — Regulatory alignment</h3>
+  <p>The first four pillars are the controls; the fifth is the language you describe them in. Mapping your controls to NIST AI RMF, ISO/IEC 42001, and the EU AI Act lets a security reviewer recognize them. The mapping is also defensive — if a regulator asks how your AI analytics complies with the EU AI Act's logging requirements, you point to the audit trail pillar with the article citation already attached.</p>
+
+  <h2 id="standards">Mapping the five pillars to recognized standards</h2>
+
+  <table>
+    <thead>
+      <tr><th>Pillar</th><th>NIST AI RMF function</th><th>ISO/IEC 42001 clause area</th><th>EU AI Act relevance</th><th>Control artifact</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>1. Access control</strong></td><td>Manage</td><td>A.7 Resources, A.8 Operation</td><td>Article 10 data governance</td><td>Read-only role grants, RLS policies</td></tr>
+      <tr><td><strong>2. Data lineage</strong></td><td>Map, Measure</td><td>A.6 Planning, A.9 Performance</td><td>Article 12 record-keeping</td><td>Source-to-result lineage per query</td></tr>
+      <tr><td><strong>3. Model risk</strong></td><td>Measure, Manage</td><td>A.9 Performance evaluation</td><td>Article 15 accuracy and robustness</td><td>Eval set, hallucination report</td></tr>
+      <tr><td><strong>4. Audit trail</strong></td><td>Govern, Manage</td><td>A.8 Operation</td><td>Articles 12, 13 transparency</td><td>Replayable plan + queries + sources</td></tr>
+      <tr><td><strong>5. Regulatory alignment</strong></td><td>Govern</td><td>A.4 Leadership, A.5 Policies</td><td>All articles</td><td>Written control matrix, risk register</td></tr>
+    </tbody>
+  </table>
+
+  <p class="quote">A governance program is not the documents you wrote. It is the controls a reviewer can see running in production on a Tuesday afternoon.</p>
+
+  <h2 id="tools">AI data governance tools — categories that matter</h2>
+  <p>The tool landscape is noisy because vendors stretch the term "governance" to cover anything from a data catalog to a model registry to a prompt firewall. Treat the categories below as the buying map; each one covers one or two pillars but no single product covers all five.</p>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="num">5</div><div class="lab">Governance pillars an enterprise AI data agent must cover before it touches a production warehouse.</div></div>
+    <div class="stat"><div class="num">2024</div><div class="lab">The EU AI Act entered into force in August 2024; high-risk obligations apply across 2026-2027. <a href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener">Source: EU AI Act</a></div></div>
+    <div class="stat"><div class="num">42001</div><div class="lab">ISO/IEC 42001 is the first auditable AI management system standard, published in 2023. <a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">Source: ISO</a></div></div>
+  </div>
+
+  <h3>The five tool categories</h3>
+  <ul>
+    <li><strong>Identity and access</strong> — SSO, service accounts, role-based access control, row-level security. Covers Pillar 1.</li>
+    <li><strong>Data catalog with lineage</strong> — column-level lineage, ownership, definitions. Covers Pillars 1 and 2.</li>
+    <li><strong>Model risk and evaluation</strong> — eval harnesses, hallucination scoring, red-team probes, drift detection. Covers Pillar 3.</li>
+    <li><strong>Immutable audit log</strong> — append-only log of plan, queries, retrievals, and outputs, with replay. Covers Pillar 4.</li>
+    <li><strong>AI data agent with explainability built in</strong> — exposes its plan, runs verification loops, attaches sources to every result. The agent itself is part of the governance surface, not just a consumer of it.</li>
+  </ul>
+  <p>This is where <a href="https://infinisynapse.com/en/blog/ai-native-data-platform">AI-native platform design</a> diverges from bolt-on governance. A bolt-on approach wraps a black-box LLM with policies after the fact; an AI-native agent emits the artifacts a reviewer needs as a side effect of doing its job. InfiniSynapse's plan-mode and database + knowledge base binding are designed against this principle — the evidence is a primary output, not an afterthought.</p>
+
+  <h2 id="checklist">Security team approval checklist</h2>
+  <p>Use the checklist below when a business unit asks for production access for an AI data agent. It is the same checklist we run with customers evaluating <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query</a> systems against their warehouse.</p>
+
+  <table>
+    <thead>
+      <tr><th>Check</th><th>What to verify</th><th>Pass criterion</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Role scope</strong></td><td>Agent has a dedicated read-only role with grants per schema, not cluster-wide privileges</td><td>Grant matrix matches business need; no SUPERUSER</td></tr>
+      <tr><td><strong>RLS coverage</strong></td><td>Row-level policies that protect humans also protect the agent role</td><td>Spot-check on three sensitive tables passes</td></tr>
+      <tr><td><strong>Plan review</strong></td><td>Agent surfaces the plan and SQL before execution on sensitive tables</td><td>Plan-mode is on by default for the role</td></tr>
+      <tr><td><strong>Audit log</strong></td><td>Every query is logged with parameters, output count, and verification result</td><td>30 days of replayable logs available</td></tr>
+      <tr><td><strong>Eval set</strong></td><td>10-30 known-answer questions including edge cases and a prompt-injection probe</td><td>Eval accuracy meets agreed threshold</td></tr>
+      <tr><td><strong>Shadow period</strong></td><td>Results reviewed for 30 days before stakeholders see them</td><td>Zero exfiltration, agreed accuracy</td></tr>
+      <tr><td><strong>Knowledge base binding</strong></td><td>Business definitions are bound to the data source and retrieved before SQL</td><td>Sampled answers cite the right definitions</td></tr>
+      <tr><td><strong>Standards mapping</strong></td><td>Each control mapped to a NIST AI RMF function and ISO/IEC 42001 clause</td><td>Control matrix signed by security lead</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="mistakes">Common AI data governance mistakes (and how to avoid them)</h2>
+  <ul>
+    <li><strong>Treating AI governance as a copy of data governance.</strong> The two overlap but the model-risk, tool-use, and explainability layers are new. You need both programs running side by side.</li>
+    <li><strong>Granting cluster-wide privileges for convenience.</strong> A read-only role is not safe if it can read every schema. Scope by schema, then by table where it matters.</li>
+    <li><strong>Skipping the shadow period.</strong> Letting an agent's first thirty answers reach stakeholders without review is how confident-but-wrong numbers escape into board decks.</li>
+    <li><strong>Auditing only the final answer.</strong> A number without a plan, a query log, and a verification step is not auditable. The trail must include the path, not just the output.</li>
+    <li><strong>Believing a vendor that says "compliant with the EU AI Act".</strong> Compliance is a system-level property of how you deploy the tool, not an attribute of the tool itself. Ask for the control matrix.</li>
+    <li><strong>Bolting governance on after the fact.</strong> If the agent cannot emit a plan and an evidence trail, no amount of wrapping will produce one. Pick an agent that treats evidence as a first-class output.</li>
+  </ul>
+
+  <div class="grid-2">
+    <div class="panel panel-good">
+      <h3>When this framework applies</h3>
+      <ul>
+        <li>You are approving an AI data agent for warehouse or transactional database access</li>
+        <li>You need a control matrix mapped to recognized standards</li>
+        <li>Security, legal, or compliance reviewers must sign off before production</li>
+        <li>Stakeholders will quote results in board materials or regulatory filings</li>
+      </ul>
+    </div>
+    <div class="panel panel-bad">
+      <h3>When it is overkill</h3>
+      <ul>
+        <li>You are exploring an AI tool on a sandbox dataset with no production access</li>
+        <li>The agent only runs on synthetic or fully anonymized data</li>
+        <li>A single engineer is the only consumer of the output</li>
+        <li>No regulated industry obligations apply</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>See an AI data agent that ships with the evidence trail built in</h3>
+    <p>Connect a read-only role, bind a business knowledge base, and run a question with plan-mode on. Review the plan, the SQL, the verification, and the sources before the result reaches a stakeholder — exactly the artifacts your security team needs to approve production access.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What is AI data governance?</div><div class="faq-a">AI data governance is the set of policies, controls, and evidence practices that decide who can ask an AI system what, which data the system may read, how the result is verified, and how every step is recorded for audit. It extends classical data governance with model risk, prompt and tool-use logging, and alignment with NIST AI RMF, ISO/IEC 42001, and the EU AI Act.</div></div>
+  <div class="faq-item"><div class="faq-q">How is AI data governance different from data governance?</div><div class="faq-a">Data governance covers people, definitions, and data quality. AI data governance adds three layers: model-side risk such as hallucination and prompt injection, tool-use logging for every query and retrieval the agent performs, and explainability so a reviewer can replay the reasoning behind a result. You need both — AI governance does not replace data governance, it sits on top of it.</div></div>
+  <div class="faq-item"><div class="faq-q">What does an AI data governance framework include?</div><div class="faq-a">A working framework includes five pillars: access control with read-only roles and row-level security, data lineage from source to result, model risk management with verification loops, an audit trail that captures plan and SQL and sources, and regulatory alignment with NIST AI RMF, ISO/IEC 42001, and the EU AI Act. Each pillar maps to controls a security reviewer can sign off on.</div></div>
+  <div class="faq-item"><div class="faq-q">Which AI data governance tools should an enterprise evaluate?</div><div class="faq-a">Evaluate the categories rather than chasing vendor lists. You will need an identity and access layer, a data catalog with lineage, a model risk and evaluation tool, an immutable audit log, and an AI data agent that exposes plan and evidence. Some platforms cover several pillars; very few cover all five, so plan for integration work and a written control matrix.</div></div>
+  <div class="faq-item"><div class="faq-q">How does NIST AI RMF apply to an AI data agent?</div><div class="faq-a">The NIST AI Risk Management Framework gives you four functions — govern, map, measure, manage. For a data agent that means writing the policy of acceptable use, mapping every data source and tool the agent can call, measuring accuracy and hallucination on a held-out evaluation set, and managing residual risk with human review checkpoints before production runs.</div></div>
+  <div class="faq-item"><div class="faq-q">Does the EU AI Act regulate analytics AI agents?</div><div class="faq-a">The EU AI Act classifies systems by risk tier. Most enterprise analytics agents fall into the limited-risk or general-purpose AI category, but if outputs drive decisions about credit, hiring, or critical infrastructure the system can be classified as high-risk and inherit transparency, logging, and human oversight obligations. Treat the classification work as a governance task, not a legal afterthought.</div></div>
+  <div class="faq-item"><div class="faq-q">What audit trail must an AI data agent produce?</div><div class="faq-a">The audit trail must capture the user question, the retrieved business context, the plan the agent proposed, every SQL or tool call executed, the verification step, and the final result with sources. It must be replayable so a reviewer can rerun the analysis and reach the same answer. Without this, you cannot defend a number to a finance, security, or regulatory reviewer.</div></div>
+  <div class="faq-item"><div class="faq-q">How do I approve an AI data agent for production access to a warehouse?</div><div class="faq-a">Start with a written control matrix mapped to the five pillars. Grant a read-only role with scoped privileges, require plan review before execution on sensitive tables, log every query with pg_stat_statements or the equivalent, and run a 30-day shadow period where every result is reviewed before stakeholders see it. Promote permissions only after the shadow period shows acceptable accuracy and zero exfiltration.</div></div>
+
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 · <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>The five-pillar framework is grounded in the NIST AI Risk Management Framework 1.0, ISO/IEC 42001:2023 AI management system standard, the EU AI Act text, and operational experience from InfiniSynapse deployments at customers in regulated sectors. The control matrix mapping was reviewed against the published standard clause numbers and the EU AI Act articles cited in the table.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse sells an AI data analyst, and the checklist will benefit any vendor whose agent already exposes plan and evidence. To reduce bias, the framework is described in terms of artifacts a reviewer can verify — not vendor features — and every numeric or regulatory claim is cited to its primary source.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for standards updates, EU AI Act enforcement notes, and new evaluation benchmarks.</p>
+  </div>
+
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Standard]</strong> NIST. AI Risk Management Framework (AI RMF 1.0, 2023). <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Standard]</strong> ISO/IEC 42001:2023, Information technology — Artificial intelligence — Management system. <a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">iso.org/standard/81230</a>.</li>
+    <li><strong>[Regulation]</strong> European Parliament and Council. EU Artificial Intelligence Act (Regulation 2024/1689). <a href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener">artificialintelligenceact.eu</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL: A Big Bench for Large-Scale Database Grounded Text-to-SQL Evaluation. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+    <li><strong>[Independent]</strong> Spider text-to-SQL benchmark, Yale LILY group. <a href="https://yale-lily.github.io/spider" target="_blank" rel="noopener">yale-lily.github.io/spider</a>.</li>
+    <li><strong>[Vendor research]</strong> Anthropic. Building effective agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Reference]</strong> Wikipedia. Retrieval-augmented generation. <a href="https://en.wikipedia.org/wiki/Retrieval-augmented_generation" target="_blank" rel="noopener">en.wikipedia.org/wiki/Retrieval-augmented_generation</a>.</li>
+  </ol>
+
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/what-is-a-data-agent">What is a data agent?</a>
+    <a href="https://infinisynapse.com/en/blog/ai-native-data-platform">AI-native data platform</a>
+    <a href="https://infinisynapse.com/en/blog/explainable-ai-data-analysis">Explainable AI data analysis</a>
+    <a href="https://infinisynapse.com/en/blog/autonomous-data-agent">Autonomous data agent</a>
+    <a href="https://infinisynapse.com/en/blog/data-agent-vs-ai-copilot">Data agent vs AI copilot</a>
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query: the pillar guide</a>
+    <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-with-ai">PostgreSQL data analysis with AI</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecommerce Data Analysis: 2026 Methods, Tools, AI</title>
+  <meta name="description" content="A working playbook for ecommerce data analysis in 2026 — sources, RFM segmentation, cohort retention, funnel diagnostics, and where AI data agents fit.">
+  <meta name="keywords" content="ecommerce data analysis, ecommerce analytics with ai, ecommerce analysis examples">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/ecommerce-data-analysis">
+  <meta property="og:title" content="Ecommerce Data Analysis in 2026: The Working Playbook">
+  <meta property="og:description" content="A working playbook for ecommerce data analysis in 2026 — sources, RFM segmentation, cohort retention, funnel diagnostics, and where AI data agents fit.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/ecommerce-data-analysis">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/ecommerce-data-analysis/ecommerce-data-analysis-framework.svg">
+  <meta property="og:image:alt" content="Ecommerce data analysis flow — Shopify, GA4, ads, CRM, warehouse feed cohort retention, RFM segmentation, AOV trends, and funnel diagnostics, with AI agent on ad-hoc.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Ecommerce Data Analysis in 2026: The Working Playbook">
+  <meta name="twitter:description" content="A working playbook for ecommerce data analysis in 2026 — sources, RFM segmentation, cohort retention, funnel diagnostics, and where AI data agents fit.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/ecommerce-data-analysis/ecommerce-data-analysis-framework.svg">
+  <meta name="twitter:image:alt" content="Ecommerce data analysis flow — Shopify, GA4, ads, CRM, warehouse feed cohort retention, RFM segmentation, AOV trends, and funnel diagnostics, with AI agent on ad-hoc.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"Ecommerce Data Analysis in 2026: The Working Playbook","item":"https://infinisynapse.com/en/blog/ecommerce-data-analysis"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Ecommerce Data Analysis in 2026: The Working Playbook","description":"A working playbook for ecommerce data analysis in 2026 — sources, RFM segmentation, cohort retention, funnel diagnostics, and where AI data agents fit.","image":"https://infinisynapse.com/en/blog/ecommerce-data-analysis/ecommerce-data-analysis-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/ecommerce-data-analysis"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is ecommerce data analysis?","acceptedAnswer":{"@type":"Answer","text":"Ecommerce data analysis is the practice of combining storefront order data from Shopify or BigCommerce or Magento with GA4 web analytics, ad platform spend, email and SMS data, and the warehouse to answer recurring questions about revenue, AOV, conversion rate, repeat rate, LTV, and channel performance. The work is anchored to a metric tree where revenue at the top decomposes into the controllable inputs an operator can move."}},{"@type":"Question","name":"What data sources do ecommerce teams analyze?","acceptedAnswer":{"@type":"Answer","text":"Five source classes: the storefront platform itself (Shopify, BigCommerce, Magento, WooCommerce) for orders and line items, web and product analytics (predominantly GA4 with the BigQuery export turned on), ad platforms for spend and conversions, email and SMS platforms like Klaviyo for campaign performance, and the warehouse where everything reconciles through ELT and a dbt model layer."}},{"@type":"Question","name":"What is RFM segmentation in ecommerce?","acceptedAnswer":{"@type":"Answer","text":"RFM is a customer segmentation framework based on Recency (days since last order), Frequency (orders in the period), and Monetary value (spend in the period). Each customer gets a 1-to-5 score on each dimension, and combinations produce segments like Champions, Loyal, At-risk, Lost, and Potential. The segments become the unit of marketing addressability when piped into a CRM via reverse-ETL."}},{"@type":"Question","name":"What is the most important ecommerce retention metric?","acceptedAnswer":{"@type":"Answer","text":"Month-1 repeat rate — the share of a new-customer cohort that places a second order within 30 days of the first — is the single most predictive number for cohort LTV. Teams that anchor channel investment decisions on month-1 repeat rate rather than raw ROAS catch low-quality channels earlier and avoid the most common over-investment trap."}},{"@type":"Question","name":"What are common ecommerce data analysis examples?","acceptedAnswer":{"@type":"Answer","text":"Examples include cohort retention curves by acquisition channel, RFM segmentation feeding lifecycle marketing, funnel diagnostics from product view to checkout completion segmented by device and traffic source, basket analysis for cross-sell, attribution audits comparing GA4 and warehouse, and AOV decomposition by SKU and discount code. Each example sits under one node of the ecommerce metric tree."}},{"@type":"Question","name":"How do AI data agents help ecommerce data analysis?","acceptedAnswer":{"@type":"Answer","text":"AI data agents handle ad-hoc anomaly investigation, new-question onboarding for non-analyst merchants, and cross-source reconciliation work that does not fit a pre-built dashboard panel. The pattern is to let the dashboard cover the standing eighty percent of recurring questions and let the AI agent answer the twenty percent of ad-hoc questions where no dashboard exists yet."}},{"@type":"Question","name":"What does a working ecommerce dashboard contain?","acceptedAnswer":{"@type":"Answer","text":"A working ecommerce dashboard has six standing panels: revenue and revenue growth rate, AOV and AOV trend by channel and segment, conversion rate by device and traffic source, repeat purchase rate and 90-day retention, customer acquisition cost and LTV-to-CAC by channel, and a funnel diagnostic from session to order complete. The panels are the contract; the agent answers questions outside that contract."}}]}</script>
+  <style>*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:#5B5BFF;text-decoration:none}
+a:hover{color:#111827}
+.nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+.nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+.nav-logo-mark{height:26px;display:flex;align-items:center}
+.nav-logo-mark img{height:26px;width:auto;display:block}
+.nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+.nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+.nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap}
+.nav-menu a:hover{color:#111827}
+.nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+.nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap}
+.nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+.nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+.nav-btn-primary:hover{color:#FFFFFF}
+.nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+.nav-btn-dark:hover{color:#FFFFFF}
+.wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+.breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+.breadcrumb a{color:#6B7280}
+.badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+.badge-client{background:#EEF2FF;color:#4338CA}
+.badge-cat{background:#ECFDF5;color:#047857}
+h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+h3{font-size:21px;color:#111827;margin:24px 0 8px}
+p{margin:0 0 16px}
+ul,ol{padding-left:22px;margin:0 0 18px}
+li{margin:6px 0}
+code{background:#F3F4F6;border-radius:4px;padding:2px 6px;font-family:Consolas,Menlo,monospace;font-size:14px}
+pre{background:#0F172A;color:#E5E7EB;border-radius:10px;padding:16px 18px;overflow-x:auto;margin:14px 0;font-size:14px;line-height:1.55}
+pre code{background:transparent;color:inherit;padding:0;font-size:14px}
+.meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+.author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+.info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+.info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+.disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+.toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+.toc{background:#F9FAFB}
+.toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+.tldr{background:#F8FAFC}
+.snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+.feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+td{color:#4B5563}
+.quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+.cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+.cta-btn:hover{background:#1F2937;color:#FFFFFF}
+.faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+.faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+.faq-a{color:#4B5563}
+.methodology{background:#F9FAFB;color:#4B5563}
+.refs li{font-size:13.5px;color:#4B5563}
+.related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+.related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+.stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+.stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+.stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+.panel h3{margin-top:0}
+.panel-good{background:#F0FDF4;border-color:#BBF7D0}
+.panel-bad{background:#FEF2F2;border-color:#FECACA}
+.footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+.footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+.footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.footer-links{display:grid;gap:8px}
+.footer-links a{color:#6B7280;font-size:14px}
+.footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+@media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">EN</span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">Book Demo</a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">Login</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    ecommerce data analysis
+  </nav>
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Methods Guide</span>
+  </div>
+  <h1>Ecommerce Data Analysis in 2026: The Working Playbook</h1>
+  <p class="meta-desc">A working playbook for ecommerce data analysis in 2026 — sources from Shopify to GA4, RFM and cohort methods, the metric tree, tool ladder, and where AI agents earn the seat.</p>
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 · Last verified 2026-06-28 · Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>Shopify and BigCommerce analytics documentation, Google Analytics 4 reference, public ecommerce benchmark studies, dbt analytics engineering patterns, and field experience across operating ecommerce teams.</div>
+  </div>
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, an enterprise AI data analyst used by ecommerce teams. The playbook is written to apply whether or not you use our product — the metric tree, segmentation methods, and tooling ladder are vendor-neutral.
+  </div>
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer: what ecommerce data analysis covers</a></li>
+      <li><a href="#sources">Sources every ecommerce stack pulls from</a></li>
+      <li><a href="#tree">The ecommerce metric tree</a></li>
+      <li><a href="#rfm">RFM segmentation in five SQL steps</a></li>
+      <li><a href="#cohort">Cohort retention and repeat purchase analysis</a></li>
+      <li><a href="#funnel">Funnel diagnostics — top of catalog to checkout</a></li>
+      <li><a href="#tools">The tool ladder for ecommerce analytics</a></li>
+      <li><a href="#ai-fit">Where AI data agents earn the seat</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>Ecommerce data analysis combines Shopify or BigCommerce or Magento order data, GA4 web analytics, ad platform spend, and the warehouse — reconciled to a metric tree of revenue, AOV, conversion rate, repeat rate, and LTV.</li>
+      <li>RFM segmentation (recency, frequency, monetary value) is the most useful customer segmentation framework — five SQL steps from orders to a per-customer segment label.</li>
+      <li>Cohort retention measures the share of a signup cohort still active at week N; ecommerce teams plot this monthly and use it to evaluate channel quality.</li>
+      <li>Funnel diagnostics decompose the path from catalog view to checkout completion; the drop-off shape, segmented by device and channel, points to where investment matters.</li>
+      <li>AI data agents earn the seat on ad-hoc anomaly questions — "why did AOV drop on Wednesday?" — that do not fit pre-built dashboards. Connect the warehouse, bind a knowledge base of business definitions, ask in plain English.</li>
+    </ul>
+  </div>
+  <div class="snippet-answer">Ecommerce data analysis is the practice of combining order data from Shopify or BigCommerce or Magento with GA4 web analytics, ad platform data, and the warehouse to answer recurring questions about revenue, AOV, conversion rate, repeat rate, LTV, and channel performance. RFM segmentation and cohort retention are the two most useful framings. AI data agents add open-ended exploration on top.</div>
+  <img class="feature-img" src="ecommerce-data-analysis-framework.svg" alt="Ecommerce data analysis flow — Shopify, GA4, ads, CRM, warehouse feed cohort retention, RFM segmentation, AOV trends, and funnel diagnostics, with AI agent on ad-hoc." width="1200" height="630" loading="lazy">
+
+  <h2 id="sources">Sources every ecommerce stack pulls from</h2>
+<ul>
+    <li><strong>Storefront platform.</strong> Shopify (most common), BigCommerce, Magento, WooCommerce, or a custom storefront. Orders, line items, products, customers, refunds.</li>
+    <li><strong>Web and product analytics.</strong> GA4 with the BigQuery export turned on, supplemented by Hotjar or FullStory for qualitative session replay if needed.</li>
+    <li><strong>Ad platforms.</strong> Meta, Google, TikTok, Pinterest, programmatic — spend, impressions, clicks, attributed conversions.</li>
+    <li><strong>Email and SMS.</strong> Klaviyo, Postscript, or platform native — campaign sends, opens, clicks, attributed revenue.</li>
+    <li><strong>Warehouse.</strong> The reconciled view — Snowflake, BigQuery, Redshift, or a Postgres data warehouse via Fivetran or Hightouch reverse-ETL.</li>
+  </ul>
+  <p>The warehouse is where order data, web sessions, and ad spend land in canonical form, modeled by dbt or a transformation tool. Storefront UI exports are useful for spot checks; the warehouse is the ground truth for cross-cut analysis.</p>
+
+  <h2 id="tree">The ecommerce metric tree — revenue at the top, controllable inputs at the bottom</h2>
+<p>The metric tree decomposes revenue into the controllable inputs an ecommerce operator can move:</p>
+  <pre><code>Revenue
+  = Sessions × Conversion rate × AOV
+  = (Paid sessions + Organic sessions + Direct sessions) × CR × AOV
+  = ... where each session source has its own CR and AOV profile</code></pre>
+  <p>Below that, AOV decomposes into units per transaction × average unit price. Conversion rate decomposes into product-view-to-add-to-cart, add-to-cart-to-checkout, and checkout-to-completion. The tree is the contract — every dashboard panel, every analyst investigation, and every AI agent prompt should be traceable to one node in this tree.</p>
+  <h3>The five metrics that move a quarterly review</h3>
+  <ol>
+    <li><strong>Revenue and revenue growth rate</strong> (week, month, quarter)</li>
+    <li><strong>AOV and AOV trend</strong> by channel and customer segment</li>
+    <li><strong>Conversion rate</strong> by device and traffic source</li>
+    <li><strong>Repeat purchase rate</strong> and 90-day retention</li>
+    <li><strong>Customer acquisition cost and LTV-to-CAC</strong> by channel</li>
+  </ol>
+
+  <h2 id="rfm">RFM segmentation in five SQL steps</h2>
+<p>RFM is the most reliable customer segmentation framework for ecommerce — Recency (days since last order), Frequency (orders in the period), Monetary value (spend in the period). Five SQL steps from raw orders to a per-customer segment label:</p>
+  <pre><code>-- Step 1: per-customer base metrics over the last 365 days
+WITH base AS (
+  SELECT customer_id,
+         DATE_DIFF(CURRENT_DATE, MAX(order_date), DAY) AS recency_days,
+         COUNT(*) AS frequency,
+         SUM(total_amount) AS monetary
+  FROM orders
+  WHERE order_date &gt;= CURRENT_DATE - INTERVAL '365 day'
+  GROUP BY customer_id
+),
+-- Step 2: percentile buckets
+ranked AS (
+  SELECT customer_id,
+         NTILE(5) OVER (ORDER BY recency_days ASC)  AS r_score,
+         NTILE(5) OVER (ORDER BY frequency DESC)    AS f_score,
+         NTILE(5) OVER (ORDER BY monetary DESC)     AS m_score
+  FROM base
+)
+SELECT customer_id, r_score, f_score, m_score,
+       CASE
+         WHEN r_score &gt;= 4 AND f_score &gt;= 4 AND m_score &gt;= 4 THEN 'Champions'
+         WHEN r_score &gt;= 4 AND f_score &gt;= 3 THEN 'Loyal'
+         WHEN r_score &lt;= 2 AND f_score &gt;= 3 THEN 'At-risk'
+         WHEN r_score &lt;= 2 AND f_score &lt;= 2 THEN 'Lost'
+         ELSE 'Potential'
+       END AS segment
+FROM ranked;</code></pre>
+  <p>The segments become the unit of marketing addressability — Champions get loyalty offers, At-risk get reactivation, Lost get a final win-back. Wire the segment column into your CRM via reverse-ETL and you have closed the loop.</p>
+
+  <h2 id="cohort">Cohort retention and repeat purchase analysis</h2>
+<p>Cohort retention answers "of customers acquired in month M, what share placed an order in month M+N?" Three patterns ecommerce teams care about:</p>
+  <ul>
+    <li><strong>Month-1 repeat rate.</strong> The share of a new-customer cohort that buys again in the 30 days after first purchase. Single most predictive number for LTV.</li>
+    <li><strong>90-day retention.</strong> The share of a cohort active 90 days post-first-purchase. Smooth weekly noise; reveal channel quality.</li>
+    <li><strong>12-month LTV curve.</strong> Cumulative revenue per cohort across 12 months — the basis for the LTV/CAC ratio in board decks.</li>
+  </ul>
+  <p>Channels with high acquisition counts but low month-1 repeat rates are the most common over-investment trap. Read the cohort table before reading the ROAS dashboard, not after.</p>
+
+  <h2 id="funnel">Funnel diagnostics from catalog view to checkout completion</h2>
+<table>
+    <thead><tr><th>Step</th><th>Median CR (2026 benchmark)</th><th>Common failure mode</th></tr></thead>
+    <tbody>
+      <tr><td>Session → Product view</td><td>45–60%</td><td>Weak category navigation or homepage merchandising</td></tr>
+      <tr><td>Product view → Add to cart</td><td>8–12%</td><td>Price, stock, or social proof on the PDP</td></tr>
+      <tr><td>Add to cart → Checkout start</td><td>55–70%</td><td>Cart UX, shipping surprise, account-required wall</td></tr>
+      <tr><td>Checkout start → Order complete</td><td>50–65%</td><td>Payment failure, address validation, slow page</td></tr>
+    </tbody>
+  </table>
+  <p>Segment the funnel by device — mobile vs desktop — and by traffic source. Most ecommerce funnel work lives in the segmentation, not the headline numbers. The drop-off shape, not the absolute conversion rate, is the diagnostic.</p>
+
+  <h2 id="tools">The tool ladder for ecommerce analytics</h2>
+<table>
+    <thead><tr><th>Rung</th><th>Stack</th><th>When you stay</th><th>When you graduate</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Shopify reports + Google Analytics UI</td><td>Solo founder, single channel</td><td>You start asking cross-source questions</td></tr>
+      <tr><td>2</td><td>Google Sheets + GA4 + spreadsheet ROAS</td><td>Small team, ad spend &lt; $50k/mo</td><td>Spreadsheet drift becomes painful</td></tr>
+      <tr><td>3</td><td>Snowflake/BigQuery + Fivetran + dbt + Looker/Metabase</td><td>Team of 4–10, ad spend $50k–$1M/mo</td><td>Ad-hoc questions outpace the dashboard backlog</td></tr>
+      <tr><td>4</td><td>Stack 3 + an AI data agent</td><td>You can describe a question in plain English and want the SQL drafted, run, and verified for you</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p>The graduations are forced by question shape, not by ad spend size. A small team with complex cross-source questions belongs on rung 3 sooner than a large team selling one SKU.</p>
+
+  <h2 id="ai-fit">Where AI data agents earn the seat in ecommerce analytics</h2>
+<p>Three concrete patterns where an <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst</a> changes the workflow:</p>
+  <ul>
+    <li><strong>Anomaly investigation.</strong> AOV drops 8% on Wednesday. The dashboard shows the drop. The agent decomposes by SKU, channel, device, and discount code in one prompt, returns the four candidates that explain the drift, and shows the SQL it ran for each. Half-day query session becomes 15 minutes.</li>
+    <li><strong>New-question onboarding.</strong> A merchant asks "which products bought together drove the highest 90-day LTV?" — a question no dashboard pre-builds. The agent uses the bound knowledge base to map "bought together" to a basket join, "90-day LTV" to the cohort table, and produces a ranked list.</li>
+    <li><strong>Cross-source reconciliation.</strong> GA4 attributed revenue and warehouse paid revenue disagree by 6%. The agent quantifies the gap, points to the join key where it lives, and surfaces the rows on each side that should match and do not.</li>
+  </ul>
+  <p>The pattern is the same as elsewhere — dashboards answer the standing 80%, agents answer the ad-hoc 20%. Both belong in the stack; neither replaces the other. See the <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query pillar guide</a> for the connection pattern and read <a href="https://infinisynapse.com/en/blog/data-agent-memory-explained">database + knowledge base binding</a> for why the bound layer matters.</p>
+  <div class="cta-box">
+    <h3>Ask an open-ended ecommerce question across your warehouse</h3>
+    <p>Connect a Postgres, MySQL, BigQuery, or Snowflake warehouse read-only. Bind a small knowledge base of business definitions — what "active customer" means, which orders count, which channel groups roll up where. Then ask one question the dashboard does not answer.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What is ecommerce data analysis?</div><div class="faq-a">Ecommerce data analysis is the practice of combining storefront order data from Shopify or BigCommerce or Magento with GA4 web analytics, ad platform spend, email and SMS data, and the warehouse to answer recurring questions about revenue, AOV, conversion rate, repeat rate, LTV, and channel performance. The work is anchored to a metric tree where revenue at the top decomposes into the controllable inputs an operator can move.</div></div>
+  <div class="faq-item"><div class="faq-q">What data sources do ecommerce teams analyze?</div><div class="faq-a">Five source classes: the storefront platform itself (Shopify, BigCommerce, Magento, WooCommerce) for orders and line items, web and product analytics (predominantly GA4 with the BigQuery export turned on), ad platforms for spend and conversions, email and SMS platforms like Klaviyo for campaign performance, and the warehouse where everything reconciles through ELT and a dbt model layer.</div></div>
+  <div class="faq-item"><div class="faq-q">What is RFM segmentation in ecommerce?</div><div class="faq-a">RFM is a customer segmentation framework based on Recency (days since last order), Frequency (orders in the period), and Monetary value (spend in the period). Each customer gets a 1-to-5 score on each dimension, and combinations produce segments like Champions, Loyal, At-risk, Lost, and Potential. The segments become the unit of marketing addressability when piped into a CRM via reverse-ETL.</div></div>
+  <div class="faq-item"><div class="faq-q">What is the most important ecommerce retention metric?</div><div class="faq-a">Month-1 repeat rate — the share of a new-customer cohort that places a second order within 30 days of the first — is the single most predictive number for cohort LTV. Teams that anchor channel investment decisions on month-1 repeat rate rather than raw ROAS catch low-quality channels earlier and avoid the most common over-investment trap.</div></div>
+  <div class="faq-item"><div class="faq-q">What are common ecommerce data analysis examples?</div><div class="faq-a">Examples include cohort retention curves by acquisition channel, RFM segmentation feeding lifecycle marketing, funnel diagnostics from product view to checkout completion segmented by device and traffic source, basket analysis for cross-sell, attribution audits comparing GA4 and warehouse, and AOV decomposition by SKU and discount code. Each example sits under one node of the ecommerce metric tree.</div></div>
+  <div class="faq-item"><div class="faq-q">How do AI data agents help ecommerce data analysis?</div><div class="faq-a">AI data agents handle ad-hoc anomaly investigation, new-question onboarding for non-analyst merchants, and cross-source reconciliation work that does not fit a pre-built dashboard panel. The pattern is to let the dashboard cover the standing eighty percent of recurring questions and let the AI agent answer the twenty percent of ad-hoc questions where no dashboard exists yet.</div></div>
+  <div class="faq-item"><div class="faq-q">What does a working ecommerce dashboard contain?</div><div class="faq-a">A working ecommerce dashboard has six standing panels: revenue and revenue growth rate, AOV and AOV trend by channel and segment, conversion rate by device and traffic source, repeat purchase rate and 90-day retention, customer acquisition cost and LTV-to-CAC by channel, and a funnel diagnostic from session to order complete. The panels are the contract; the agent answers questions outside that contract.</div></div>
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 · <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>This playbook synthesizes Shopify and BigCommerce analytics documentation, Google Analytics 4 reference docs, the dbt analytics engineering guide, public ecommerce benchmark studies, and field experience across operating ecommerce teams running on Snowflake, BigQuery, and Postgres warehouses. The RFM SQL pattern, the cohort retention framing, and the tool ladder reflect observed practice across multiple teams.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells an enterprise AI data analyst. To reduce bias, the page leads with the topic itself, treats InfiniSynapse as one option among many, and links to external sources for every numeric claim.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for accuracy and link health.</p>
+  </div>
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> Shopify. Reports and analytics. <a href="https://help.shopify.com/en/manual/reports-and-analytics" target="_blank" rel="noopener">help.shopify.com/manual/reports-and-analytics</a>.</li>
+    <li><strong>[Vendor]</strong> Google. GA4 ecommerce events reference. <a href="https://developers.google.com/analytics/devguides/collection/ga4/reference/events" target="_blank" rel="noopener">developers.google.com/analytics/ga4</a>.</li>
+    <li><strong>[Vendor]</strong> dbt Labs. Analytics engineering guide. <a href="https://docs.getdbt.com/" target="_blank" rel="noopener">docs.getdbt.com</a>.</li>
+    <li><strong>[Vendor]</strong> Klaviyo. Reporting and analytics reference. <a href="https://help.klaviyo.com/" target="_blank" rel="noopener">help.klaviyo.com</a>.</li>
+    <li><strong>[Independent]</strong> Yao et al. ReAct: Synergizing Reasoning and Acting in Language Models. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arxiv.org/abs/2210.03629</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic. Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Standard]</strong> NIST. AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL benchmark. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+  </ol>
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query pillar guide</a>
+    <a href="https://infinisynapse.com/en/blog/marketing-data-analysis">Marketing data analysis playbook</a>
+    <a href="https://infinisynapse.com/en/blog/saas-data-platform">SaaS data platform architecture</a>
+    <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-with-ai">PostgreSQL data analysis with AI</a>
+    <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst explained</a>
+    <a href="https://infinisynapse.com/en/blog/data-agent-memory-explained">Database + knowledge base binding</a>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

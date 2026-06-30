@@ -1,0 +1,1 @@
+部署在路径https://infinisynapse.com/en/blog/xxx       不带斜杠,xxx就是文件夹名

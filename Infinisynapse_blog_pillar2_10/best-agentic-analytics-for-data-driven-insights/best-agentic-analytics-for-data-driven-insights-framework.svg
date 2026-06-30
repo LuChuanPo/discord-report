@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Agentic analytics evaluation framework</title>
+  <desc id="desc">Five evaluation criteria for picking the best agentic analytics for data-driven insights — knowledge base grounding, source coverage, evidence trail, audit and governance, and the planner-executor-verifier loop.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+  <text x="100" y="110" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800">Agentic analytics: five things to check before you buy</text>
+  <text x="100" y="148" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Planner → Executor → Verifier — over your data, with an evidence trail</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Center: planner-executor-verifier loop -->
+    <rect x="425" y="200" width="350" height="180" rx="18" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="445" y="234" fill="#6D28D9" font-size="14" font-weight="800">CORE LOOP</text>
+    <text x="445" y="262" fill="#111827" font-size="20" font-weight="800">Plan · Execute · Verify</text>
+    <text x="445" y="290" fill="#6B7280" font-size="14">Retrieve business context</text>
+    <text x="445" y="312" fill="#6B7280" font-size="14">Draft a reviewable plan</text>
+    <text x="445" y="334" fill="#6B7280" font-size="14">Run SQL, verify, explain</text>
+    <text x="445" y="362" fill="#6B7280" font-size="13">on your databases and files</text>
+
+    <!-- Criterion 1 - KB grounding (top left) -->
+    <rect x="90" y="200" width="290" height="80" rx="14" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="108" y="228" fill="#4338CA" font-size="12" font-weight="800">CRITERION 1</text>
+    <text x="108" y="252" fill="#111827" font-size="17" font-weight="800">Knowledge base grounding</text>
+    <text x="108" y="270" fill="#6B7280" font-size="13">business definitions a tool call away</text>
+
+    <!-- Criterion 2 - Source coverage (top right) -->
+    <rect x="820" y="200" width="290" height="80" rx="14" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="838" y="228" fill="#047857" font-size="12" font-weight="800">CRITERION 2</text>
+    <text x="838" y="252" fill="#111827" font-size="17" font-weight="800">Source coverage</text>
+    <text x="838" y="270" fill="#6B7280" font-size="13">Postgres · MySQL · Snowflake · files</text>
+
+    <!-- Criterion 3 - Evidence trail (bottom left) -->
+    <rect x="90" y="300" width="290" height="80" rx="14" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="108" y="328" fill="#92400E" font-size="12" font-weight="800">CRITERION 3</text>
+    <text x="108" y="352" fill="#111827" font-size="17" font-weight="800">Evidence trail</text>
+    <text x="108" y="370" fill="#6B7280" font-size="13">plan + queries + sources stored</text>
+
+    <!-- Criterion 4 - Audit (bottom right) -->
+    <rect x="820" y="300" width="290" height="80" rx="14" fill="#FCE7F3" stroke="#FBCFE8"/>
+    <text x="838" y="328" fill="#BE185D" font-size="12" font-weight="800">CRITERION 4</text>
+    <text x="838" y="352" fill="#111827" font-size="17" font-weight="800">Audit and governance</text>
+    <text x="838" y="370" fill="#6B7280" font-size="13">NIST AI RMF, EU AI Act ready</text>
+
+    <!-- Arrows linking criteria into the loop -->
+    <path d="M382 240h40" stroke="#9CA3AF" stroke-width="3" stroke-linecap="round"/>
+    <path d="M382 340h40" stroke="#9CA3AF" stroke-width="3" stroke-linecap="round"/>
+    <path d="M778 240h40" stroke="#9CA3AF" stroke-width="3" stroke-linecap="round" transform="translate(-2,0)"/>
+    <path d="M778 340h40" stroke="#9CA3AF" stroke-width="3" stroke-linecap="round" transform="translate(-2,0)"/>
+
+    <!-- Bottom band: the honest landscape -->
+    <rect x="90" y="416" width="1020" height="120" rx="16" fill="#F9FAFB" stroke="#E5E7EB"/>
+    <text x="110" y="448" fill="#111827" font-size="15" font-weight="800">THE HONEST 2026 LANDSCAPE</text>
+    <g font-size="14" fill="#374151" font-weight="600">
+      <text x="110" y="476">InfiniSynapse · Databricks Genie · ThoughtSpot Spotter · Snowflake Cortex Analyst</text>
+      <text x="110" y="500">Tableau Pulse · Power BI Copilot · Sigma AI · plus open-source agent frameworks</text>
+    </g>
+  </g>
+
+  <text x="100" y="562" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="16">InfiniSynapse — enterprise AI data analyst</text>
+</svg>

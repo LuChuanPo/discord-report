@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Data Agent: a domain-specific AI agent for structured data</title>
+  <desc id="desc">A data agent reads, queries, and reasons over structured data using five parts: a planner, a retriever bound to a business knowledge base, a SQL executor, a verifier, and a memory store — distinct from a generic AI agent and from plain NL2SQL.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+  <text x="100" y="110" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="800">Data Agent: a domain-specific AI agent for structured data</text>
+  <text x="100" y="148" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Five parts — planner, retriever, SQL executor, verifier, memory — bound to a knowledge base</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Planner -->
+    <rect x="90" y="200" width="200" height="160" rx="18" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="110" y="234" fill="#4338CA" font-size="13" font-weight="800">PART 1 · PLANNER</text>
+    <text x="110" y="262" fill="#111827" font-size="18" font-weight="800">Decide the steps</text>
+    <text x="110" y="288" fill="#6B7280" font-size="13">decompose the question</text>
+    <text x="110" y="308" fill="#6B7280" font-size="13">pick the next tool call</text>
+    <text x="110" y="328" fill="#6B7280" font-size="13">stop when verified</text>
+
+    <!-- Retriever -->
+    <rect x="310" y="200" width="200" height="160" rx="18" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="330" y="234" fill="#6D28D9" font-size="13" font-weight="800">PART 2 · RETRIEVER</text>
+    <text x="330" y="262" fill="#111827" font-size="18" font-weight="800">Pull business KB</text>
+    <text x="330" y="288" fill="#6B7280" font-size="13">definitions, metrics</text>
+    <text x="330" y="308" fill="#6B7280" font-size="13">schema, code maps</text>
+    <text x="330" y="328" fill="#6B7280" font-size="13">bound to each DB</text>
+
+    <!-- SQL Executor -->
+    <rect x="530" y="200" width="200" height="160" rx="18" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="550" y="234" fill="#047857" font-size="13" font-weight="800">PART 3 · EXECUTOR</text>
+    <text x="550" y="262" fill="#111827" font-size="18" font-weight="800">Run SQL safely</text>
+    <text x="550" y="288" fill="#6B7280" font-size="13">read-only role</text>
+    <text x="550" y="308" fill="#6B7280" font-size="13">cross-source joins</text>
+    <text x="550" y="328" fill="#6B7280" font-size="13">timeouts and limits</text>
+
+    <!-- Verifier -->
+    <rect x="750" y="200" width="200" height="160" rx="18" fill="#FFF7ED" stroke="#FED7AA"/>
+    <text x="770" y="234" fill="#C2410C" font-size="13" font-weight="800">PART 4 · VERIFIER</text>
+    <text x="770" y="262" fill="#111827" font-size="18" font-weight="800">Check the answer</text>
+    <text x="770" y="288" fill="#6B7280" font-size="13">row counts, units</text>
+    <text x="770" y="308" fill="#6B7280" font-size="13">sanity bounds</text>
+    <text x="770" y="328" fill="#6B7280" font-size="13">retry if off</text>
+
+    <!-- Memory -->
+    <rect x="970" y="200" width="140" height="160" rx="18" fill="#FEF2F2" stroke="#FECACA"/>
+    <text x="990" y="234" fill="#B91C1C" font-size="13" font-weight="800">PART 5 · MEMORY</text>
+    <text x="990" y="262" fill="#111827" font-size="18" font-weight="800">Remember</text>
+    <text x="990" y="288" fill="#6B7280" font-size="13">past queries</text>
+    <text x="990" y="308" fill="#6B7280" font-size="13">user prefs</text>
+    <text x="990" y="328" fill="#6B7280" font-size="13">evidence trail</text>
+
+    <!-- Connectors arrows between blocks -->
+    <path d="M294 280h12" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M514 280h12" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M734 280h12" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M954 280h12" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Bottom band -->
+    <rect x="90" y="416" width="1020" height="120" rx="16" fill="#F9FAFB" stroke="#E5E7EB"/>
+    <text x="110" y="448" fill="#111827" font-size="15" font-weight="800">WHAT MAKES A DATA AGENT DIFFERENT FROM A GENERIC AI AGENT</text>
+    <g font-size="14" fill="#374151" font-weight="600">
+      <text x="110" y="476">Domain: structured data only. Tools: SQL, retrievers, verifiers — not arbitrary web browsing.</text>
+      <text x="110" y="500">Output: an answer plus an evidence trail (plan, queries, sources) that a human can audit.</text>
+    </g>
+  </g>
+
+  <text x="100" y="562" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="16">InfiniSynapse — enterprise AI data analyst</text>
+</svg>

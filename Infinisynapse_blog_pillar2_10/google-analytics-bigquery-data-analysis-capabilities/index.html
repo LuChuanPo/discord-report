@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Analytics + BigQuery: 2026 Data Analysis Guide</title>
+  <meta name="description" content="Google Analytics + BigQuery data analysis in 2026 — what the export unlocks, schema basics, ten worked questions, and where AI data agents fit on top.">
+  <meta name="keywords" content="google analytics bigquery data analysis, ga4 bigquery analysis, ga4 bigquery export">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/google-analytics-bigquery-data-analysis-capabilities">
+  <meta property="og:title" content="Google Analytics with BigQuery in 2026: Data Analysis Capabilities">
+  <meta property="og:description" content="Google Analytics + BigQuery data analysis in 2026 — what the export unlocks, schema basics, ten worked questions, and where AI data agents fit on top.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/google-analytics-bigquery-data-analysis-capabilities">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/google-analytics-bigquery-data-analysis-capabilities/google-analytics-bigquery-data-analysis-capabilities-framework.svg">
+  <meta property="og:image:alt" content="GA4 BigQuery export flow — events table, unnesting steps, ten worked questions, with AI data agent overlay for ad-hoc analysis.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Google Analytics with BigQuery in 2026: Data Analysis Capabilities">
+  <meta name="twitter:description" content="Google Analytics + BigQuery data analysis in 2026 — what the export unlocks, schema basics, ten worked questions, and where AI data agents fit on top.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/google-analytics-bigquery-data-analysis-capabilities/google-analytics-bigquery-data-analysis-capabilities-framework.svg">
+  <meta name="twitter:image:alt" content="GA4 BigQuery export flow — events table, unnesting steps, ten worked questions, with AI data agent overlay for ad-hoc analysis.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"Google Analytics with BigQuery in 2026: Data Analysis Capabilities","item":"https://infinisynapse.com/en/blog/google-analytics-bigquery-data-analysis-capabilities"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Google Analytics with BigQuery in 2026: Data Analysis Capabilities","description":"Google Analytics + BigQuery data analysis in 2026 — what the export unlocks, schema basics, ten worked questions, and where AI data agents fit on top.","image":"https://infinisynapse.com/en/blog/google-analytics-bigquery-data-analysis-capabilities/google-analytics-bigquery-data-analysis-capabilities-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/google-analytics-bigquery-data-analysis-capabilities"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does the GA4 BigQuery export contain?","acceptedAnswer":{"@type":"Answer","text":"The GA4 BigQuery export lands one row per event in a daily partitioned table named events_YYYYMMDD inside a dataset called analytics_PROPERTY_ID. Each row contains the event date, event name, event timestamp in microseconds, the user pseudo identifier, a nested event_params array, a nested user_properties array, and structs for device, geo, traffic source, and ecommerce details. Streaming export to events_intraday_YYYYMMDD is also available."}},{"@type":"Question","name":"Why do GA4 BigQuery queries always use UNNEST?","acceptedAnswer":{"@type":"Answer","text":"The event_params and user_properties fields are arrays of key-value structs in BigQuery, which means a single event row holds multiple parameters at once. To read a specific parameter like page_location or engagement_time_msec, you UNNEST the array and filter by key, returning the value of the matching field type — string_value, int_value, double_value, or float_value. The pattern repeats in nearly every GA4 BigQuery query."}},{"@type":"Question","name":"How do I control BigQuery cost on GA4 datasets?","acceptedAnswer":{"@type":"Answer","text":"Four habits cover most cost control: always restrict the partition scan with _TABLE_SUFFIX BETWEEN dates in WHERE so BigQuery scans only the relevant days, project only the columns you actually need rather than SELECT *, materialize repeatedly-used daily aggregates into a separate table you query instead, and configure BI tool connectors for incremental refresh rather than full reload on each dashboard view."}},{"@type":"Question","name":"What questions does GA4 BigQuery export answer that the GA4 UI does not?","acceptedAnswer":{"@type":"Answer","text":"Three classes: event-level analysis that the UI aggregates away (per-user event sequences, custom funnel definitions with arbitrary steps); long retention windows beyond the GA4 UI thresholds; and cross-source joins where GA4 data sits next to CRM, payment, or other warehouse tables in BigQuery. The UI is for standing reports; the BigQuery export is for the analytical questions outside that envelope."}},{"@type":"Question","name":"How do I do funnel analysis in GA4 BigQuery?","acceptedAnswer":{"@type":"Answer","text":"Project the events you care about per user, use ROW_NUMBER OVER (PARTITION BY user_pseudo_id ORDER BY event_timestamp) to sequence them, and self-join or use LAG to find users who hit step N and then step N+1 within a time window. The shape repeats for each funnel step. Materializing per-user event sequences once and reusing them across funnel queries cuts the cost."}},{"@type":"Question","name":"How does an AI data agent help with GA4 BigQuery analysis?","acceptedAnswer":{"@type":"Answer","text":"Three patterns: drafting the UNNEST boilerplate from a plain-English question so the analyst reviews rather than types it, handling cross-property analysis when a team has three GA4 properties and wants the same question across all of them with UNION and renaming, and ad-hoc anomaly investigation where the agent picks the right segment splits and returns a chart with the SQL and a verification step."}},{"@type":"Question","name":"What is the GA4 BigQuery export schema?","acceptedAnswer":{"@type":"Answer","text":"The events table has event_date as a string in YYYYMMDD format, event_timestamp as INT64 microseconds since epoch, event_name as the event identifier including custom events, event_params as ARRAY STRUCT of key-value pairs, user_pseudo_id as the anonymous client identifier, user_properties as another ARRAY STRUCT, and nested STRUCTs for device, geo, traffic source, and ecommerce. Item-level purchase details sit in ARRAY items inside the ecommerce struct."}}]}</script>
+  <style>*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:#5B5BFF;text-decoration:none}
+a:hover{color:#111827}
+.nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+.nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+.nav-logo-mark{height:26px;display:flex;align-items:center}
+.nav-logo-mark img{height:26px;width:auto;display:block}
+.nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+.nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+.nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap}
+.nav-menu a:hover{color:#111827}
+.nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+.nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap}
+.nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+.nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+.nav-btn-primary:hover{color:#FFFFFF}
+.nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+.nav-btn-dark:hover{color:#FFFFFF}
+.wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+.breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+.breadcrumb a{color:#6B7280}
+.badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+.badge-client{background:#EEF2FF;color:#4338CA}
+.badge-cat{background:#ECFDF5;color:#047857}
+h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+h3{font-size:21px;color:#111827;margin:24px 0 8px}
+p{margin:0 0 16px}
+ul,ol{padding-left:22px;margin:0 0 18px}
+li{margin:6px 0}
+code{background:#F3F4F6;border-radius:4px;padding:2px 6px;font-family:Consolas,Menlo,monospace;font-size:14px}
+pre{background:#0F172A;color:#E5E7EB;border-radius:10px;padding:16px 18px;overflow-x:auto;margin:14px 0;font-size:14px;line-height:1.55}
+pre code{background:transparent;color:inherit;padding:0;font-size:14px}
+.meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+.author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+.info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+.info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+.disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+.toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+.toc{background:#F9FAFB}
+.toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+.tldr{background:#F8FAFC}
+.snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+.feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+td{color:#4B5563}
+.quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+.cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+.cta-btn:hover{background:#1F2937;color:#FFFFFF}
+.faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+.faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+.faq-a{color:#4B5563}
+.methodology{background:#F9FAFB;color:#4B5563}
+.refs li{font-size:13.5px;color:#4B5563}
+.related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+.related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+.stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+.stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+.stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+.panel h3{margin-top:0}
+.panel-good{background:#F0FDF4;border-color:#BBF7D0}
+.panel-bad{background:#FEF2F2;border-color:#FECACA}
+.footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+.footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+.footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.footer-links{display:grid;gap:8px}
+.footer-links a{color:#6B7280;font-size:14px}
+.footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+@media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">EN</span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">Book Demo</a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">Login</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    google analytics bigquery data analysis
+  </nav>
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Methods Guide</span>
+  </div>
+  <h1>Google Analytics with BigQuery in 2026: Data Analysis Capabilities</h1>
+  <p class="meta-desc">Google Analytics + BigQuery data analysis in 2026 — what the export unlocks, schema basics, ten worked questions, dialect quirks, and where AI data agents fit.</p>
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 · Last verified 2026-06-28 · Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>Google Analytics 4 BigQuery export documentation, BigQuery dialect reference, public GA4 schema guides, hands-on usage across SaaS and ecommerce teams in 2026.</div>
+  </div>
+  <div class="disclosure">
+    <strong>Disclosure:</strong> Published by InfiniSynapse, which sells an AI data analyst that connects to BigQuery including GA4 export datasets. The guide is vendor-neutral on the analysis methods.
+  </div>
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer: what the GA4 BigQuery export unlocks</a></li>
+      <li><a href="#schema">The GA4 BigQuery event table schema</a></li>
+      <li><a href="#unnest">The UNNEST pattern every query uses</a></li>
+      <li><a href="#questions">Ten worked questions</a></li>
+      <li><a href="#cost">BigQuery cost notes for GA4 work</a></li>
+      <li><a href="#ai">Where AI data agents fit on top</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>The GA4 BigQuery export lands one row per event in a partitioned events table — full event-level granularity that the GA4 UI does not expose.</li>
+      <li>Most analytical work involves UNNESTing event_params and user_properties arrays to reach the values you actually care about.</li>
+      <li>Ten worked questions cover most weekly use — DAU/MAU, retention curves, funnel analysis, attribution, channel performance, custom event rates, page-level engagement, scroll depth, search query analysis, and revenue by source.</li>
+      <li>BigQuery dialect quirks matter — DATE_TRUNC syntax, STRUCT and ARRAY handling, partitioned table scan billing.</li>
+      <li>AI data agents on top of GA4 BigQuery skip the UNNEST boilerplate for ad-hoc questions and emit a verification step appropriate for the dataset.</li>
+    </ul>
+  </div>
+  <div class="snippet-answer">GA4 BigQuery export lands one row per event in a partitioned table — full event-level data the GA4 UI hides. Most queries UNNEST event_params and user_properties to reach values. Ten patterns cover most work; BigQuery cost depends on partition scanning. AI data agents speed up ad-hoc work on top.</div>
+  <img class="feature-img" src="google-analytics-bigquery-data-analysis-capabilities-framework.svg" alt="GA4 BigQuery export flow — events table, unnesting steps, ten worked questions, with AI data agent overlay for ad-hoc analysis." width="1200" height="630" loading="lazy">
+
+  <h2 id="schema">The GA4 BigQuery event table schema</h2>
+<p>Each GA4 property linked to BigQuery exports to a dataset named <code>analytics_PROPERTY_ID</code>. Inside it, daily tables named <code>events_YYYYMMDD</code> hold one row per event. Streaming export (intraday) lands in <code>events_intraday_YYYYMMDD</code>.</p>
+  <table>
+    <thead><tr><th>Field</th><th>Type</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>event_date</td><td>STRING</td><td>Format YYYYMMDD</td></tr>
+      <tr><td>event_timestamp</td><td>INT64</td><td>Microseconds since epoch</td></tr>
+      <tr><td>event_name</td><td>STRING</td><td>page_view, purchase, custom_event_name, etc.</td></tr>
+      <tr><td>event_params</td><td>ARRAY&lt;STRUCT&gt;</td><td>Key-value pairs — needs UNNEST to read</td></tr>
+      <tr><td>user_pseudo_id</td><td>STRING</td><td>Anonymous client identifier</td></tr>
+      <tr><td>user_properties</td><td>ARRAY&lt;STRUCT&gt;</td><td>Set via setUserProperties — needs UNNEST</td></tr>
+      <tr><td>device, geo, traffic_source</td><td>STRUCT</td><td>Nested structs, accessed by dot notation</td></tr>
+      <tr><td>ecommerce, items</td><td>STRUCT, ARRAY</td><td>Purchase event details</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="unnest">The UNNEST pattern every GA4 query uses</h2>
+<pre><code>-- Extract a parameter value from event_params
+SELECT
+  event_date,
+  event_name,
+  (SELECT value.string_value FROM UNNEST(event_params)
+   WHERE key = 'page_location') AS page_location,
+  (SELECT value.int_value FROM UNNEST(event_params)
+   WHERE key = 'engagement_time_msec') AS engagement_ms
+FROM `project.analytics_PROPERTY_ID.events_*`
+WHERE _TABLE_SUFFIX BETWEEN '20260601' AND '20260628'
+  AND event_name = 'page_view';</code></pre>
+  <p>Three things to remember: <code>_TABLE_SUFFIX</code> is how you partition the date range, <code>(SELECT ... FROM UNNEST(...))</code> is the canonical extraction shape, and choosing the right <code>value.*</code> field type (string_value, int_value, double_value, float_value) matters for each parameter.</p>
+
+  <h2 id="questions">Ten worked questions on GA4 BigQuery</h2>
+<ol>
+    <li><strong>DAU / WAU / MAU.</strong> COUNT(DISTINCT user_pseudo_id) by day, week, month.</li>
+    <li><strong>Retention curve by signup cohort.</strong> First-seen date as cohort key; activity by week-N offset.</li>
+    <li><strong>Funnel analysis.</strong> Sequence event_name occurrences per user_pseudo_id with LAG or ROW_NUMBER OVER (PARTITION BY user_pseudo_id ORDER BY event_timestamp).</li>
+    <li><strong>Attribution audit.</strong> traffic_source.source / medium for the first session vs the converting session per user.</li>
+    <li><strong>Channel performance.</strong> Group by traffic_source.medium; aggregate conversions and revenue.</li>
+    <li><strong>Custom event rates.</strong> COUNT custom_event_name / COUNT page_view, by segment.</li>
+    <li><strong>Page-level engagement.</strong> UNNEST event_params for page_location and engagement_time_msec, AVG by page.</li>
+    <li><strong>Scroll depth analysis.</strong> Scroll event params (90%, 75%, 50%) by page.</li>
+    <li><strong>Search query analysis.</strong> Site search events, UNNEST for query parameter, rank by frequency.</li>
+    <li><strong>Revenue by source.</strong> Purchase events, ecommerce.purchase_revenue, by traffic_source.</li>
+  </ol>
+  <p>These ten cover the majority of weekly analyst work on a GA4 BigQuery dataset. The companion <a href="https://infinisynapse.com/en/blog/marketing-data-analysis">marketing data analysis playbook</a> explains how these feed business-level KPIs.</p>
+
+  <h2 id="cost">BigQuery cost notes for GA4 work</h2>
+<ul>
+    <li><strong>Partition scanning.</strong> Always use <code>_TABLE_SUFFIX BETWEEN</code> in your WHERE; without it, BigQuery scans every daily table from day 1.</li>
+    <li><strong>SELECT * costs.</strong> The GA4 events table is wide and nested. Project only the columns you need.</li>
+    <li><strong>Materialized aggregates.</strong> If you re-run the same daily aggregation many times, write the result to a separate table and query that.</li>
+    <li><strong>BI tool defaults.</strong> Tableau and Looker can issue large scans if connectors are not configured for incremental refresh.</li>
+  </ul>
+  <p>The <a href="https://cloud.google.com/bigquery/docs/best-practices-performance-overview" target="_blank" rel="noopener">BigQuery best practices documentation</a> spells out the cost model.</p>
+
+  <h2 id="ai">Where AI data agents fit on top of GA4 BigQuery</h2>
+<p>Three patterns where an <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst</a> earns the seat on a GA4 BigQuery dataset:</p>
+  <ul>
+    <li><strong>UNNEST boilerplate.</strong> Every GA4 query needs the UNNEST pattern. An agent drafts the SQL with the correct extraction shape from a plain-English question.</li>
+    <li><strong>Cross-property analysis.</strong> A team with three GA4 properties — main site, marketing site, app — runs the same question across all three datasets. The agent handles the UNION and renaming.</li>
+    <li><strong>Ad-hoc anomaly investigation.</strong> "Why did engagement drop on iOS Wednesday?" — the agent UNNESTs the right params, segments by device, and returns a chart with the SQL.</li>
+  </ul>
+  <p>See the <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query pillar guide</a> for the connection pattern and <a href="https://infinisynapse.com/en/blog/data-agent-memory-explained">database + knowledge base binding</a> for how to seed GA4 event definitions as bound context.</p>
+  <div class="quote">GA4 BigQuery hands you full event-level data — the UNNEST boilerplate is the friction. AI agents remove the friction without removing the analyst.</div>
+  <div class="cta-box">
+    <h3>Ask GA4-shaped questions across your BigQuery export</h3>
+    <p>Connect your GA4 BigQuery dataset read-only. Seed a small knowledge base of event definitions — what counts as engagement, which custom events drive conversion. Then ask one open-ended question and read the plan, UNNEST SQL, and verification step before deciding.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What does the GA4 BigQuery export contain?</div><div class="faq-a">The GA4 BigQuery export lands one row per event in a daily partitioned table named events_YYYYMMDD inside a dataset called analytics_PROPERTY_ID. Each row contains the event date, event name, event timestamp in microseconds, the user pseudo identifier, a nested event_params array, a nested user_properties array, and structs for device, geo, traffic source, and ecommerce details. Streaming export to events_intraday_YYYYMMDD is also available.</div></div>
+  <div class="faq-item"><div class="faq-q">Why do GA4 BigQuery queries always use UNNEST?</div><div class="faq-a">The event_params and user_properties fields are arrays of key-value structs in BigQuery, which means a single event row holds multiple parameters at once. To read a specific parameter like page_location or engagement_time_msec, you UNNEST the array and filter by key, returning the value of the matching field type — string_value, int_value, double_value, or float_value. The pattern repeats in nearly every GA4 BigQuery query.</div></div>
+  <div class="faq-item"><div class="faq-q">How do I control BigQuery cost on GA4 datasets?</div><div class="faq-a">Four habits cover most cost control: always restrict the partition scan with _TABLE_SUFFIX BETWEEN dates in WHERE so BigQuery scans only the relevant days, project only the columns you actually need rather than SELECT *, materialize repeatedly-used daily aggregates into a separate table you query instead, and configure BI tool connectors for incremental refresh rather than full reload on each dashboard view.</div></div>
+  <div class="faq-item"><div class="faq-q">What questions does GA4 BigQuery export answer that the GA4 UI does not?</div><div class="faq-a">Three classes: event-level analysis that the UI aggregates away (per-user event sequences, custom funnel definitions with arbitrary steps); long retention windows beyond the GA4 UI thresholds; and cross-source joins where GA4 data sits next to CRM, payment, or other warehouse tables in BigQuery. The UI is for standing reports; the BigQuery export is for the analytical questions outside that envelope.</div></div>
+  <div class="faq-item"><div class="faq-q">How do I do funnel analysis in GA4 BigQuery?</div><div class="faq-a">Project the events you care about per user, use ROW_NUMBER OVER (PARTITION BY user_pseudo_id ORDER BY event_timestamp) to sequence them, and self-join or use LAG to find users who hit step N and then step N+1 within a time window. The shape repeats for each funnel step. Materializing per-user event sequences once and reusing them across funnel queries cuts the cost.</div></div>
+  <div class="faq-item"><div class="faq-q">How does an AI data agent help with GA4 BigQuery analysis?</div><div class="faq-a">Three patterns: drafting the UNNEST boilerplate from a plain-English question so the analyst reviews rather than types it, handling cross-property analysis when a team has three GA4 properties and wants the same question across all of them with UNION and renaming, and ad-hoc anomaly investigation where the agent picks the right segment splits and returns a chart with the SQL and a verification step.</div></div>
+  <div class="faq-item"><div class="faq-q">What is the GA4 BigQuery export schema?</div><div class="faq-a">The events table has event_date as a string in YYYYMMDD format, event_timestamp as INT64 microseconds since epoch, event_name as the event identifier including custom events, event_params as ARRAY STRUCT of key-value pairs, user_pseudo_id as the anonymous client identifier, user_properties as another ARRAY STRUCT, and nested STRUCTs for device, geo, traffic source, and ecommerce. Item-level purchase details sit in ARRAY items inside the ecommerce struct.</div></div>
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 · <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>This methods guide synthesizes Google Analytics 4 BigQuery export official documentation, the BigQuery SQL dialect reference, public GA4 schema guides from Google, and hands-on usage across SaaS and ecommerce teams in 2026. The ten-question pattern and cost-control habits reflect observed practice rather than vendor positioning.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells an enterprise AI data analyst. To reduce bias, the page leads with the topic itself, treats InfiniSynapse as one option among many, and links to external sources for every numeric claim.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for accuracy and link health.</p>
+  </div>
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> Google. GA4 BigQuery export schema documentation. <a href="https://support.google.com/analytics/answer/7029846" target="_blank" rel="noopener">support.google.com/analytics/answer/7029846</a>.</li>
+    <li><strong>[Vendor]</strong> Google. BigQuery SQL reference. <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax" target="_blank" rel="noopener">cloud.google.com/bigquery/docs/reference/standard-sql</a>.</li>
+    <li><strong>[Vendor]</strong> Google. BigQuery cost best practices. <a href="https://cloud.google.com/bigquery/docs/best-practices-performance-overview" target="_blank" rel="noopener">cloud.google.com/bigquery/best-practices</a>.</li>
+    <li><strong>[Vendor]</strong> Google. GA4 events reference. <a href="https://developers.google.com/analytics/devguides/collection/ga4/reference/events" target="_blank" rel="noopener">developers.google.com/analytics/ga4/events</a>.</li>
+    <li><strong>[Independent]</strong> Yao et al. ReAct paper. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arxiv.org/abs/2210.03629</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic. Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Standard]</strong> NIST. AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL benchmark. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+  </ol>
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/marketing-data-analysis">Marketing data analysis playbook</a>
+    <a href="https://infinisynapse.com/en/blog/ecommerce-data-analysis">Ecommerce data analysis</a>
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query pillar guide</a>
+    <a href="https://infinisynapse.com/en/blog/data-analysis-in-google-sheets">Data analysis in Google Sheets</a>
+    <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst explained</a>
+    <a href="https://infinisynapse.com/en/blog/data-agent-memory-explained">Database + knowledge base binding</a>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

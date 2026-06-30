@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SQL for Data Analysis in 2026: Patterns + AI Workflow</title>
+  <meta name="description" content="SQL for data analysis in 2026: the query patterns analysts use daily — aggregation, window functions, CTEs, joins — and where AI agents fit the workflow.">
+  <meta name="keywords" content="sql for data analysis, sql analytics, window functions, ctes, sql with ai">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/sql-for-data-analysis">
+
+  <meta property="og:title" content="SQL for Data Analysis in 2026: Patterns + AI Workflow">
+  <meta property="og:description" content="SQL for data analysis in 2026: the query patterns analysts use daily — aggregation, window functions, CTEs, joins — and where AI agents fit the workflow.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/sql-for-data-analysis">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/sql-for-data-analysis/sql-for-data-analysis-framework.svg">
+  <meta property="og:image:alt" content="SQL for data analysis framework — four query pattern families (aggregation, joins, CTEs, window functions) feeding an AI agent that plans, runs, and verifies SQL.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="SQL for Data Analysis in 2026: Patterns + AI Workflow">
+  <meta name="twitter:description" content="SQL for data analysis in 2026: the query patterns analysts use daily — aggregation, window functions, CTEs, joins — and where AI agents fit the workflow.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/sql-for-data-analysis/sql-for-data-analysis-framework.svg">
+  <meta name="twitter:image:alt" content="SQL for data analysis framework — four query pattern families (aggregation, joins, CTEs, window functions) feeding an AI agent that plans, runs, and verifies SQL.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Schema #1: Organization -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","caption":"InfiniSynapse AI data analyst logo","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}
+  </script>
+
+  <!-- Schema #2: BreadcrumbList -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"SQL for Data Analysis in 2026: Patterns, Worked Examples, and Where AI Agents Fit","item":"https://infinisynapse.com/en/blog/sql-for-data-analysis"}]}
+  </script>
+
+  <!-- Schema #3: Article -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"SQL for Data Analysis in 2026: Patterns, Worked Examples, and Where AI Agents Fit","description":"SQL for data analysis in 2026: the query patterns analysts use daily — aggregation, window functions, CTEs, joins — and where AI agents fit the workflow.","image":"https://infinisynapse.com/en/blog/sql-for-data-analysis/sql-for-data-analysis-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/sql-for-data-analysis"}}
+  </script>
+
+  <!-- Schema #4: FAQPage -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What SQL skills matter most for data analysis?","acceptedAnswer":{"@type":"Answer","text":"Four families cover the majority of analyst work: filtering and aggregation with GROUP BY and HAVING, joins across fact and dimension tables, common table expressions for layered logic, and window functions for ranking, running totals, and period comparisons. If you are fluent in those four families on a real schema, you can handle most analytics requests without ever touching a stored procedure."}},
+{"@type":"Question","name":"Should I learn SQL if AI can write SQL for me?","acceptedAnswer":{"@type":"Answer","text":"Yes. AI agents draft SQL faster than a human, but the analyst still owns the question, the schema interpretation, and the verification of the result. Without SQL fluency you cannot read the agent plan, cannot spot a wrong join key, and cannot defend a number to a finance reviewer. Treat AI as a drafting partner and a second pair of eyes, not as a replacement for SQL literacy."}},
+{"@type":"Question","name":"What is the difference between a CTE and a subquery for analysis?","acceptedAnswer":{"@type":"Answer","text":"A subquery is inlined inside another query and is harder to read once nesting passes two levels. A common table expression names a result set and lets later steps reference it by name, which makes multi-step analysis readable and testable. For analytics work the rule of thumb is to reach for CTEs as soon as you need more than one transformation stage."}},
+{"@type":"Question","name":"When should I use a window function instead of a GROUP BY?","acceptedAnswer":{"@type":"Answer","text":"Use GROUP BY when you want to collapse rows into one row per group. Use a window function when you want to keep every row but attach a calculation that looks across a group, such as a running total, a rank within a partition, or the previous row value. The clue is the word per: per customer running revenue, rank per region, change from previous quarter."}},
+{"@type":"Question","name":"How do AI data agents change the SQL workflow for analysts?",
+"acceptedAnswer":{"@type":"Answer","text":"An AI data agent retrieves business context and schema, drafts a query plan, runs SQL, verifies the output, and returns an evidence trail. The analyst shifts from typing every join to reviewing plans, approving execution, and challenging anomalous numbers. This raises the throughput on routine asks and frees the analyst to invest time in framing harder questions."}},
+{"@type":"Question","name":"What are common SQL mistakes analysts make on real datasets?","acceptedAnswer":{"@type":"Answer","text":"The top three are: joining on keys that fan out and double-count rows, applying WHERE filters that silently drop NULLs you cared about, and grouping on a non-deterministic column when the dialect tolerates it. Each one produces a number that looks credible and is wrong. A review checklist plus a small set of saved sanity queries catches most of them before the dashboard ships."}},
+{"@type":"Question","name":"Do dialect differences matter for SQL analysis?","acceptedAnswer":{"@type":"Answer","text":"Yes for date arithmetic, string functions, and array handling, but less for the core analytical patterns. Aggregation, joins, CTEs, and window functions work across PostgreSQL, MySQL, Snowflake, BigQuery, and most warehouses with only syntax tweaks. Picking a primary dialect, then learning a small list of differences when you switch, is more efficient than memorizing every variation up front."}},
+{"@type":"Question","name":"How does InfiniSynapse use SQL behind the scenes?","acceptedAnswer":{"@type":"Answer","text":"InfiniSynapse is an enterprise AI data analyst that retrieves business context from a bound knowledge base, plans the analysis, generates SQL through its InfiniSQL component, executes against the connected source, and returns an answer with the plan, the query, and a verification step. The SQL is reviewable in the trace, which is the audit posture regulated teams require."}}
+]}
+  </script>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    a{color:#5B5BFF;text-decoration:none}
+    a:hover{color:#111827}
+    .nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+    .nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+    .nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+    .nav-logo-mark{height:26px;display:flex;align-items:center}
+    .nav-logo-mark img{height:26px;width:auto;display:block}
+    .nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+    .nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap;transition:color 0.15s}
+    .nav-menu a:hover{color:#111827}
+    .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+    .nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap;box-shadow:none;transition:background 0.15s,border-color 0.15s,transform 0.15s}
+    a.nav-btn:hover{color:#111827;border-color:#C7CEDA;transform:translateY(-1px)}
+    .nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+    .nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+    .nav-btn-primary:hover{color:#FFFFFF}
+    .nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+    .nav-btn-dark:hover{color:#FFFFFF}
+    .nav-icon{width:17px;height:17px;flex:0 0 auto}
+    .nav-chevron{width:15px;height:15px;flex:0 0 auto}
+    .wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+    .breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+    .breadcrumb a{color:#6B7280}
+    .badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+    .badge-client{background:#EEF2FF;color:#4338CA}
+    .badge-cat{background:#ECFDF5;color:#047857}
+    h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+    h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+    h3{font-size:21px;color:#111827;margin:24px 0 8px}
+    p{margin:0 0 16px}
+    ul,ol{padding-left:22px;margin:0 0 18px}
+    li{margin:6px 0}
+    .meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+    .author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+    .info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+    .info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+    .disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+    .toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+    .toc{background:#F9FAFB}
+    .toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+    .tldr{background:#F8FAFC}
+    .snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+    .definition{background:#ECFDF5;border-color:#BBF7D0}
+    .feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+    table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+    th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+    th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+    td{color:#4B5563}
+    code{background:#F3F4F6;border:1px solid #E5E7EB;border-radius:5px;padding:1px 6px;font-family:Consolas,'SF Mono',Menlo,monospace;font-size:14px;color:#111827}
+    pre{background:#0F172A;color:#E2E8F0;border-radius:10px;padding:16px 18px;overflow:auto;margin:14px 0;font-family:Consolas,'SF Mono',Menlo,monospace;font-size:13.5px;line-height:1.6}
+    pre code{background:transparent;border:0;padding:0;color:inherit;font-size:inherit}
+    .quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+    .cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+    .cta-btn:hover{background:#1F2937;color:#FFFFFF}
+    .faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+    .faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+    .faq-a{color:#4B5563}
+    .methodology{background:#F9FAFB;color:#4B5563}
+    .refs li{font-size:13.5px;color:#4B5563}
+    .related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+    .related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+    .stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+    .stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+    .stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+    .panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+    .panel h3{margin-top:0}
+    .panel-good{background:#F0FDF4;border-color:#BBF7D0}
+    .panel-bad{background:#FEF2F2;border-color:#FECACA}
+    .footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+    .footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{color:#6B7280;font-size:14px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+    @media(max-width:1280px){.nav-inner{max-width:1180px;column-gap:24px}.nav-menu{gap:18px}.nav-menu a,.nav-btn{font-size:14px}.nav-btn{min-height:36px;padding:0 12px}.nav-btn-primary,.nav-btn-dark{padding:0 14px}}
+    @media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}.nav-logo{width:100%;justify-content:center}.nav-menu,.nav-actions{justify-content:center;flex-wrap:wrap}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}table{font-size:14px}.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12S9.8 18.6 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        EN
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Book Demo
+      </a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    sql for data analysis
+  </nav>
+
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Practitioner Guide</span>
+  </div>
+
+  <h1>SQL for Data Analysis in 2026: Patterns, Worked Examples, and Where AI Agents Fit</h1>
+  <p class="meta-desc">A working analyst's guide to the SQL patterns that actually move the needle — aggregation, joins, CTEs, window functions — plus worked examples on a sample schema and an honest read on where AI agents change the workflow versus replace it.</p>
+
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, applied analytics team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 · Last verified 2026-06-28 · Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>PostgreSQL and MySQL official documentation, BIRD and Spider benchmarks, Anthropic agent research, NIST AI RMF, and worked examples on a public-style analytics schema.</div>
+  </div>
+
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, an enterprise AI data analyst that runs SQL across PostgreSQL, MySQL, Snowflake, Supabase, S3, and CSV sources. The SQL patterns and worked examples are written to be useful even if you never use our product — including for teams evaluating us against other options.
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer</a></li>
+      <li><a href="#why-sql">Why SQL is still the analyst's primary tool</a></li>
+      <li><a href="#schema">A sample analytics schema for the examples</a></li>
+      <li><a href="#patterns">The four query pattern families</a></li>
+      <li><a href="#examples">Worked examples on the sample schema</a></li>
+      <li><a href="#dialects">Dialect differences that matter for analysis</a></li>
+      <li><a href="#ai-fit">Where AI agents change the SQL workflow</a></li>
+      <li><a href="#mistakes">Common SQL mistakes on real datasets</a></li>
+      <li><a href="#workflow">A practical SQL-plus-AI workflow</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>SQL for data analysis boils down to <strong>four pattern families</strong>: aggregation with GROUP BY and HAVING, joins across fact and dimension tables, common table expressions for layered logic, and window functions for ranks, running totals, and period comparisons.</li>
+      <li>Worked examples on a small sample schema (customers, orders, products, events) cover monthly revenue by cohort, top-N per region, retention by signup month, and same-store growth — the four shapes most analyst tickets reduce to.</li>
+      <li>Dialect differences mostly hit date arithmetic, string functions, and array handling. The four core analytic patterns translate cleanly across PostgreSQL, MySQL, Snowflake, and BigQuery.</li>
+      <li>AI data agents shift the analyst's role from <em>typing every join</em> to <em>reviewing plans, approving execution, and challenging anomalies</em>. They augment the workflow on routine asks and stay out of the way for novel ones.</li>
+      <li>The new differentiator is <strong>database + knowledge base binding</strong>: pairing the schema with a curated set of business definitions an agent retrieves before drafting SQL.</li>
+    </ul>
+  </div>
+
+  <h2 id="answer">Direct answer: what SQL do analysts actually use?</h2>
+  <div class="snippet-answer">Most analyst SQL reduces to four pattern families: aggregation with GROUP BY and HAVING, joins across fact and dimension tables, common table expressions for readable multi-step logic, and window functions for ranks, running totals, and period comparisons. Fluency in those four on a real schema covers the majority of daily requests — and frames where AI agents augment the workflow without replacing analyst judgment.</div>
+
+  <h2 id="why-sql">Why SQL is still the analyst's primary tool in 2026</h2>
+  <p>Three forces keep SQL central to data analysis. First, the analytical warehouses analysts touch every day — PostgreSQL, MySQL, Snowflake, BigQuery, Databricks — all expose a SQL interface as the contract. Second, SQL is declarative: you describe the result you want, the engine plans the execution. That separation survived a generation of "SQL is dead" claims because writing readable queries scales better than writing imperative pipelines for analytical work. Third, every AI assistant that touches a database generates SQL under the hood. Reading the generated query is how an analyst confirms the answer is real.</p>
+  <p>The companion <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query pillar guide</a> covers the broader shift in how questions are asked of a database. This page stays on the SQL itself — what an analyst actually types, where each pattern earns its keep, and where an agent steps in to draft.</p>
+
+  <img class="feature-img" src="sql-for-data-analysis-framework.svg" alt="SQL for data analysis framework — four query pattern families (aggregation, joins, CTEs, window functions) feeding an AI agent that plans, runs, and verifies SQL" width="1200" height="630" loading="lazy">
+
+  <h2 id="schema">A sample analytics schema for the examples</h2>
+  <p>The worked examples below use a small e-commerce-style schema. Four tables, joinable by clear keys, broad enough to cover the patterns without becoming a textbook:</p>
+
+  <table>
+    <thead>
+      <tr><th>Table</th><th>Grain</th><th>Key columns</th><th>Typical analysis use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>customers</code></td><td>One row per customer</td><td><code>customer_id</code>, <code>signup_date</code>, <code>region</code></td><td>Cohorts, retention, segmentation</td></tr>
+      <tr><td><code>orders</code></td><td>One row per order</td><td><code>order_id</code>, <code>customer_id</code>, <code>order_date</code>, <code>total_amount</code></td><td>Revenue, AOV, repeat purchase</td></tr>
+      <tr><td><code>order_items</code></td><td>One row per item in an order</td><td><code>order_id</code>, <code>product_id</code>, <code>quantity</code>, <code>unit_price</code></td><td>Mix, category share, cross-sell</td></tr>
+      <tr><td><code>products</code></td><td>One row per product</td><td><code>product_id</code>, <code>category</code>, <code>cost</code></td><td>Margin, category rollups</td></tr>
+    </tbody>
+  </table>
+
+  <p>Two important properties of this schema show up in real datasets: <code>order_items</code> fans out from <code>orders</code> (one-to-many), and <code>customers</code> sometimes have no orders (left-join territory). Both will bite an unprepared analyst on the third example.</p>
+
+  <h2 id="patterns">The four query pattern families</h2>
+
+  <h3>Pattern 1 — Aggregation with GROUP BY and HAVING</h3>
+  <p>This is the workhorse. Roll up rows, summarize numeric columns, filter aggregates. The shape every analyst writes ten times a day:</p>
+<pre><code>SELECT region, COUNT(*) AS customers, SUM(total_amount) AS revenue
+FROM customers c
+JOIN orders o ON o.customer_id = c.customer_id
+WHERE o.order_date &gt;= DATE '2026-01-01'
+GROUP BY region
+HAVING SUM(total_amount) &gt; 100000
+ORDER BY revenue DESC;</code></pre>
+  <p>Two things to remember. WHERE filters rows before aggregation. HAVING filters groups after. Mix them up and you either lose rows you wanted or compute over rows you should have dropped.</p>
+
+  <h3>Pattern 2 — Joins across fact and dimension tables</h3>
+  <p>Analytics joins are usually between a fact table (orders, events) and one or more dimension tables (customers, products). Three rules cover most cases:</p>
+  <ul>
+    <li>Default to <code>INNER JOIN</code> when you only want matches in both.</li>
+    <li>Use <code>LEFT JOIN</code> when you need to preserve rows from one side and accept NULLs on the other — common with "customers who have not ordered yet".</li>
+    <li>Be loud about your join keys. If two tables can share <code>customer_id</code>, write the predicate explicitly and add a sanity COUNT before and after the join.</li>
+  </ul>
+<pre><code>-- Customers who signed up but never placed an order
+SELECT c.customer_id, c.signup_date
+FROM customers c
+LEFT JOIN orders o ON o.customer_id = c.customer_id
+WHERE o.order_id IS NULL;</code></pre>
+
+  <h3>Pattern 3 — Common table expressions (CTEs) for layered logic</h3>
+  <p>The moment an analytic question has two transformation stages, reach for a CTE. They name intermediate results, document intent, and survive code review better than nested subqueries.</p>
+<pre><code>WITH monthly_revenue AS (
+  SELECT DATE_TRUNC('month', order_date) AS month,
+         customer_id,
+         SUM(total_amount) AS rev
+  FROM orders
+  GROUP BY 1, 2
+),
+ranked AS (
+  SELECT month, customer_id, rev,
+         RANK() OVER (PARTITION BY month ORDER BY rev DESC) AS r
+  FROM monthly_revenue
+)
+SELECT month, customer_id, rev
+FROM ranked
+WHERE r &lt;= 10
+ORDER BY month, r;</code></pre>
+  <p>That query — top 10 customers by month — is also the first useful piece of evidence for picking a CTE over a subquery. Read the version with the CTE, then imagine the subquery version. The CTE wins on every dimension that matters to a reviewer.</p>
+
+  <h3>Pattern 4 — Window functions for ranks, running totals, and period comparisons</h3>
+  <p>Window functions look at a group of rows without collapsing them. Five shapes cover most needs:</p>
+
+  <table>
+    <thead>
+      <tr><th>Window function</th><th>Shape it answers</th><th>Example</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>RANK()</code> / <code>DENSE_RANK()</code></td><td>Top-N per group</td><td>Top 5 products per region</td></tr>
+      <tr><td><code>ROW_NUMBER()</code></td><td>First / latest per partition</td><td>First order per customer</td></tr>
+      <tr><td><code>SUM() OVER (... ORDER BY ...)</code></td><td>Running total</td><td>Cumulative revenue by month</td></tr>
+      <tr><td><code>LAG()</code> / <code>LEAD()</code></td><td>Compare to previous / next row</td><td>Month-over-month change</td></tr>
+      <tr><td><code>NTILE(n)</code></td><td>Bucket into n equal groups</td><td>Customer revenue deciles</td></tr>
+    </tbody>
+  </table>
+<pre><code>-- Month-over-month revenue change per region
+SELECT region, month, revenue,
+       revenue - LAG(revenue) OVER (PARTITION BY region ORDER BY month) AS mom_change
+FROM region_monthly_revenue;</code></pre>
+
+  <h2 id="examples">Four worked examples on the sample schema</h2>
+
+  <h3>Example A — Monthly revenue by signup cohort</h3>
+<pre><code>WITH cohorts AS (
+  SELECT customer_id, DATE_TRUNC('month', signup_date) AS cohort_month
+  FROM customers
+)
+SELECT c.cohort_month,
+       DATE_TRUNC('month', o.order_date) AS order_month,
+       SUM(o.total_amount) AS revenue
+FROM cohorts c
+JOIN orders o ON o.customer_id = c.customer_id
+GROUP BY 1, 2
+ORDER BY 1, 2;</code></pre>
+  <p>That output feeds a triangle-shaped cohort chart with months on both axes. The analyst's judgment call is choosing the cohort grain (signup month vs week vs quarter) and the value (revenue vs orders vs items).</p>
+
+  <h3>Example B — Top 5 products per region</h3>
+<pre><code>WITH product_region_rev AS (
+  SELECT c.region, p.product_id, p.category,
+         SUM(oi.quantity * oi.unit_price) AS rev
+  FROM customers c
+  JOIN orders o ON o.customer_id = c.customer_id
+  JOIN order_items oi ON oi.order_id = o.order_id
+  JOIN products p ON p.product_id = oi.product_id
+  GROUP BY 1, 2, 3
+)
+SELECT region, product_id, category, rev
+FROM (
+  SELECT region, product_id, category, rev,
+         RANK() OVER (PARTITION BY region ORDER BY rev DESC) AS r
+  FROM product_region_rev
+) ranked
+WHERE r &lt;= 5
+ORDER BY region, r;</code></pre>
+
+  <h3>Example C — Retention by signup month</h3>
+<pre><code>WITH first_order AS (
+  SELECT customer_id, MIN(order_date) AS first_order_date
+  FROM orders GROUP BY customer_id
+),
+joined AS (
+  SELECT c.customer_id,
+         DATE_TRUNC('month', c.signup_date) AS cohort_month,
+         f.first_order_date,
+         CASE WHEN f.first_order_date IS NULL THEN 0 ELSE 1 END AS converted
+  FROM customers c
+  LEFT JOIN first_order f ON f.customer_id = c.customer_id
+)
+SELECT cohort_month,
+       COUNT(*) AS signups,
+       SUM(converted) AS converted,
+       ROUND(100.0 * SUM(converted) / COUNT(*), 2) AS conversion_pct
+FROM joined
+GROUP BY cohort_month
+ORDER BY cohort_month;</code></pre>
+  <p>The <code>LEFT JOIN</code> is the load-bearing detail. Without it, customers who never ordered drop out of the COUNT and your conversion percentage inflates silently.</p>
+
+  <h3>Example D — Same-store growth using LAG</h3>
+<pre><code>WITH region_monthly AS (
+  SELECT c.region,
+         DATE_TRUNC('month', o.order_date) AS month,
+         SUM(o.total_amount) AS revenue
+  FROM customers c
+  JOIN orders o ON o.customer_id = c.customer_id
+  GROUP BY 1, 2
+)
+SELECT region, month, revenue,
+       LAG(revenue, 12) OVER (PARTITION BY region ORDER BY month) AS revenue_yoy,
+       ROUND(100.0 * (revenue - LAG(revenue, 12) OVER (PARTITION BY region ORDER BY month))
+                   / NULLIF(LAG(revenue, 12) OVER (PARTITION BY region ORDER BY month), 0), 2)
+         AS yoy_pct
+FROM region_monthly
+ORDER BY region, month;</code></pre>
+  <p><code>NULLIF</code> guards against divide-by-zero in the first 12 months where there is no prior-year value. Junior queries often forget that and crash the dashboard the day the chart renders the first month.</p>
+
+  <h2 id="dialects">Dialect differences that matter for SQL analysis</h2>
+
+  <table>
+    <thead>
+      <tr><th>Topic</th><th>PostgreSQL</th><th>MySQL</th><th>Snowflake / BigQuery</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Date truncation</td><td><code>DATE_TRUNC('month', x)</code></td><td><code>DATE_FORMAT(x, '%Y-%m-01')</code></td><td><code>DATE_TRUNC('month', x)</code> / <code>DATE_TRUNC(x, MONTH)</code></td></tr>
+      <tr><td>String concat</td><td><code>a || b</code></td><td><code>CONCAT(a, b)</code></td><td><code>a || b</code> / <code>CONCAT(a, b)</code></td></tr>
+      <tr><td>Top-N per group</td><td>Window + filter</td><td>Window + filter (8.0+)</td><td>Window + <code>QUALIFY</code></td></tr>
+      <tr><td>JSON path</td><td><code>j -&gt;&gt; 'key'</code></td><td><code>JSON_EXTRACT(j, '$.key')</code></td><td><code>j:key</code> / <code>JSON_VALUE</code></td></tr>
+      <tr><td>Boolean type</td><td>Native</td><td>Tinyint(1)</td><td>Native</td></tr>
+    </tbody>
+  </table>
+
+  <p>For deeper warehouse-specific patterns see the <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-tools">PostgreSQL data analysis tools guide</a>, the <a href="https://infinisynapse.com/en/blog/mysql-data-analysis-tools">MySQL data analysis tools guide</a>, and the <a href="https://infinisynapse.com/en/blog/data-analyst-snowflake">Snowflake data analyst guide</a>. Each one walks the dialect-specific edges.</p>
+
+  <h2 id="ai-fit">Where AI agents change the SQL workflow</h2>
+  <p>AI data agents do not erase SQL — they restructure the workflow around it. On the <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">BIRD benchmark</a>, human engineers reach 92.96% execution accuracy and large models trail by a wide margin without a retrieval and verification loop. That gap is why an agent is structured as a system that <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">dynamically directs its own processes and tool usage</a>, not a one-shot text-to-SQL prompt.</p>
+  <p>What the analyst actually does day-to-day shifts in three places:</p>
+
+  <table>
+    <thead>
+      <tr><th>Phase</th><th>Without an AI agent</th><th>With an AI agent</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Drafting</strong></td><td>Type the join, the GROUP BY, the window function from scratch</td><td>Describe the question; agent drafts a plan and the SQL</td></tr>
+      <tr><td><strong>Reviewing</strong></td><td>Self-review and a peer review of the SQL</td><td>Review the plan, the join keys, and the SQL the agent generated</td></tr>
+      <tr><td><strong>Verifying</strong></td><td>Spot-check the result; ad hoc sanity queries</td><td>The agent runs verification queries automatically; analyst challenges anomalies</td></tr>
+    </tbody>
+  </table>
+
+  <p>The <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst explained</a> page goes deeper on the role split. The <a href="https://infinisynapse.com/en/blog/ai-data-analyst-job-description">AI data analyst job description</a> page describes how teams hire for the new shape.</p>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="num">4</div><div class="lab">Query pattern families that cover most analyst SQL work: aggregation, joins, CTEs, window functions.</div></div>
+    <div class="stat"><div class="num">92.96%</div><div class="lab">Human engineer execution accuracy on the BIRD text-to-SQL benchmark — the bar agents are still working toward without retrieval and verification. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">Source: BIRD</a></div></div>
+    <div class="stat"><div class="num">3</div><div class="lab">Phases of the analyst workflow that shift with an AI agent in the loop: drafting, reviewing, verifying.</div></div>
+  </div>
+
+  <h3>What an analyst still owns end-to-end</h3>
+  <p>Three things stay with the human and will stay with the human for the next planning cycle: framing the question, choosing the grain (which counts as a customer, which orders count, which timezone), and defending the number. An agent can draft the SQL that answers "monthly active users by region" in seconds; an analyst still decides whether MAU means a logged-in session, an order placed, or an event fired.</p>
+
+  <h3>The knowledge base binding moat, briefly</h3>
+  <p>The newest differentiator inside the AI category is what InfiniSynapse calls <a href="https://infinisynapse.com/en/blog/data-agent-memory-explained">database + knowledge base binding</a>. Each connection is paired with a curated knowledge base of business definitions — what active customer means, which status codes represent a paid order, which keys roll up to which business cluster. The agent retrieves from the bound knowledge base as a tool call before drafting SQL, so the generated query is grounded in the team's actual definitions, not the model's prior.</p>
+
+  <h2 id="mistakes">Common SQL mistakes on real datasets</h2>
+  <ul>
+    <li><strong>Joining on keys that fan out and double-counting.</strong> Joining <code>orders</code> to <code>order_items</code> without remembering the one-to-many turns "revenue" into "revenue times items per order". Always check row count before and after a new join.</li>
+    <li><strong>Forgetting that WHERE drops NULLs.</strong> <code>WHERE status != 'cancelled'</code> silently excludes orders where status is NULL. Use <code>(status IS NULL OR status != 'cancelled')</code> if NULL means "not yet set".</li>
+    <li><strong>Grouping on a non-deterministic column.</strong> MySQL historically tolerated <code>SELECT</code> columns not in the GROUP BY; the result is whatever row the engine happened to pick. ANSI strict mode and modern MySQL reject this — turn it on.</li>
+    <li><strong>Using <code>SELECT *</code> in production analysis.</strong> The schema drifts, a new column appears, and the dashboard renders one extra column nobody documented. Name the columns.</li>
+    <li><strong>Skipping <code>NULLIF</code> in ratio metrics.</strong> Conversion rate without a guard divides by zero the first month a cohort has no signups. Wrap every divisor in <code>NULLIF(x, 0)</code> in analytical queries.</li>
+    <li><strong>Letting AI-generated SQL run without a plan review.</strong> A query without a documented plan, join-key choice, and verification step is a number you cannot defend in a stand-up. The <a href="https://infinisynapse.com/en/blog/explainable-ai-data-analysis">explainable AI data analysis</a> guide spells out what a complete evidence trail looks like.</li>
+  </ul>
+
+  <h2 id="workflow">A practical SQL-plus-AI workflow for 2026</h2>
+  <ol>
+    <li><strong>Frame the question in plain English.</strong> Define the metric, the time range, the segmentation. Write it down before any SQL.</li>
+    <li><strong>Ask the agent for a draft plan.</strong> Read the join keys it picked, the tables it touched, the assumptions it made about your business definitions.</li>
+    <li><strong>Approve or correct the plan.</strong> If a join key is wrong, push back before any SQL runs. Plan mode exists for this exact moment.</li>
+    <li><strong>Execute under a read-only role.</strong> Scoped grants protect production from a mistaken UPDATE the agent should never have generated in the first place.</li>
+    <li><strong>Review the SQL the agent ran.</strong> Not the answer — the SQL. Confirm WHERE clauses, GROUP BY columns, and any window partitions.</li>
+    <li><strong>Demand an evidence trail.</strong> Plan + SQL + result + verification queries + source list. If any of those is missing, the number is not defensible.</li>
+  </ol>
+
+  <p class="quote">SQL fluency stops being about typing speed and starts being about review judgment. Read the query, defend the join key, own the number.</p>
+
+  <div class="grid-2">
+    <div class="panel panel-good">
+      <h3>When this guide applies</h3>
+      <ul>
+        <li>You are an analyst sharpening day-to-day SQL pattern fluency</li>
+        <li>You are deciding which SQL patterns to teach a new hire first</li>
+        <li>You want a fair read on where AI agents fit a SQL-first workflow</li>
+      </ul>
+    </div>
+    <div class="panel panel-bad">
+      <h3>When it does not</h3>
+      <ul>
+        <li>You need a SQL syntax reference — read the official docs</li>
+        <li>You are tuning query plans on a single warehouse — read the engine guide</li>
+        <li>You have not picked a database yet — see the tool category guides instead</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>See SQL drafted, executed, and verified by an AI data analyst</h3>
+    <p>Connect a PostgreSQL, MySQL, Snowflake, or Supabase database read-only, seed a small knowledge base of business definitions, and ask one open-ended question. Watch the plan, the SQL, and the verification step before deciding whether agentic SQL belongs in your stack.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What SQL skills matter most for data analysis?</div><div class="faq-a">Four families cover the majority of analyst work: filtering and aggregation with GROUP BY and HAVING, joins across fact and dimension tables, common table expressions for layered logic, and window functions for ranking, running totals, and period comparisons. If you are fluent in those four families on a real schema, you can handle most analytics requests without ever touching a stored procedure.</div></div>
+  <div class="faq-item"><div class="faq-q">Should I learn SQL if AI can write SQL for me?</div><div class="faq-a">Yes. AI agents draft SQL faster than a human, but the analyst still owns the question, the schema interpretation, and the verification of the result. Without SQL fluency you cannot read the agent plan, cannot spot a wrong join key, and cannot defend a number to a finance reviewer. Treat AI as a drafting partner and a second pair of eyes, not as a replacement for SQL literacy.</div></div>
+  <div class="faq-item"><div class="faq-q">What is the difference between a CTE and a subquery for analysis?</div><div class="faq-a">A subquery is inlined inside another query and is harder to read once nesting passes two levels. A common table expression names a result set and lets later steps reference it by name, which makes multi-step analysis readable and testable. For analytics work the rule of thumb is to reach for CTEs as soon as you need more than one transformation stage.</div></div>
+  <div class="faq-item"><div class="faq-q">When should I use a window function instead of a GROUP BY?</div><div class="faq-a">Use GROUP BY when you want to collapse rows into one row per group. Use a window function when you want to keep every row but attach a calculation that looks across a group, such as a running total, a rank within a partition, or the previous row value. The clue is the word per: per customer running revenue, rank per region, change from previous quarter.</div></div>
+  <div class="faq-item"><div class="faq-q">How do AI data agents change the SQL workflow for analysts?</div><div class="faq-a">An AI data agent retrieves business context and schema, drafts a query plan, runs SQL, verifies the output, and returns an evidence trail. The analyst shifts from typing every join to reviewing plans, approving execution, and challenging anomalous numbers. This raises the throughput on routine asks and frees the analyst to invest time in framing harder questions.</div></div>
+  <div class="faq-item"><div class="faq-q">What are common SQL mistakes analysts make on real datasets?</div><div class="faq-a">The top three are: joining on keys that fan out and double-count rows, applying WHERE filters that silently drop NULLs you cared about, and grouping on a non-deterministic column when the dialect tolerates it. Each one produces a number that looks credible and is wrong. A review checklist plus a small set of saved sanity queries catches most of them before the dashboard ships.</div></div>
+  <div class="faq-item"><div class="faq-q">Do dialect differences matter for SQL analysis?</div><div class="faq-a">Yes for date arithmetic, string functions, and array handling, but less for the core analytical patterns. Aggregation, joins, CTEs, and window functions work across PostgreSQL, MySQL, Snowflake, BigQuery, and most warehouses with only syntax tweaks. Picking a primary dialect, then learning a small list of differences when you switch, is more efficient than memorizing every variation up front.</div></div>
+  <div class="faq-item"><div class="faq-q">How does InfiniSynapse use SQL behind the scenes?</div><div class="faq-a">InfiniSynapse is an enterprise AI data analyst that retrieves business context from a bound knowledge base, plans the analysis, generates SQL through its InfiniSQL component, executes against the connected source, and returns an answer with the plan, the query, and a verification step. The SQL is reviewable in the trace, which is the audit posture regulated teams require.</div></div>
+
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 · <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>The patterns and worked examples on this page are grounded in PostgreSQL and MySQL official documentation, public benchmarks (BIRD, Spider), Anthropic's published agent research, the NIST AI Risk Management Framework, and field experience running SQL across real analytics schemas. Examples were tested against PostgreSQL 16 and Snowflake; MySQL and BigQuery equivalents are noted where syntax diverges.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells an enterprise AI data analyst that generates SQL. To reduce bias, the page emphasizes patterns and worked examples first, treats AI agents as a workflow shift rather than a SQL replacement, and links to external benchmarks and standards for every numeric claim.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for syntax accuracy, dialect changes, benchmark figures, and schema consistency.</p>
+  </div>
+
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> The PostgreSQL Global Development Group. PostgreSQL documentation. <a href="https://www.postgresql.org/docs/" target="_blank" rel="noopener">postgresql.org/docs</a>.</li>
+    <li><strong>[Vendor]</strong> Oracle / MySQL. MySQL Reference Manual. <a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener">dev.mysql.com/doc</a>.</li>
+    <li><strong>[Vendor]</strong> Snowflake. SQL reference. <a href="https://docs.snowflake.com/" target="_blank" rel="noopener">docs.snowflake.com</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL: A Big Bench for Large-Scale Database Grounded Text-to-SQL Evaluation. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">BIRD benchmark</a>.</li>
+    <li><strong>[Independent]</strong> Yu et al. Spider: A large-scale human-labeled dataset for text-to-SQL. <a href="https://yale-lily.github.io/spider" target="_blank" rel="noopener">Spider benchmark</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic. Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Independent]</strong> Yao et al. ReAct: Synergizing Reasoning and Acting in Language Models. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arxiv.org/abs/2210.03629</a>.</li>
+    <li><strong>[Standard]</strong> NIST. AI Risk Management Framework (AI RMF 1.0, 2023). <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+  </ol>
+
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query: the pillar guide</a>
+    <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-tools">PostgreSQL data analysis tools</a>
+    <a href="https://infinisynapse.com/en/blog/mysql-data-analysis-tools">MySQL data analysis tools</a>
+    <a href="https://infinisynapse.com/en/blog/data-analyst-snowflake">Data analyst Snowflake</a>
+    <a href="https://infinisynapse.com/en/blog/supabase-data-analysis-tools">Supabase data analysis tools</a>
+    <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst explained</a>
+    <a href="https://infinisynapse.com/en/blog/ai-data-analyst-job-description">AI data analyst job description</a>
+    <a href="https://infinisynapse.com/en/blog/explainable-ai-data-analysis">Explainable AI data analysis</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

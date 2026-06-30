@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">The AI data analyst role: where the time goes</title>
+  <desc id="desc">Two stacked horizontal bars compare time allocation: a classic data analyst spends most time on data retrieval, cleaning, and joining; an AI-era data analyst spends most time on context curation, plan review, verification, and judgment. Labeled illustrative.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+
+  <text x="100" y="116" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">The AI data analyst role: where the time goes</text>
+  <text x="100" y="156" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">Classic analyst: retrieval-heavy. AI-era analyst: review- and judgment-heavy.</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Classic analyst bar -->
+    <text x="100" y="226" fill="#111827" font-size="22" font-weight="800">Classic data analyst</text>
+    <!-- segments across 1000px from x=100: 50% / 20% / 18% / 12% -->
+    <rect x="100" y="242" width="500" height="74" rx="10" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <rect x="604" y="242" width="200" height="74" rx="10" fill="#E0E7FF" stroke="#C7D2FE"/>
+    <rect x="808" y="242" width="176" height="74" rx="10" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <rect x="988" y="242" width="112" height="74" rx="10" fill="#FDF2F8" stroke="#FBCFE8"/>
+    <text x="118" y="274" fill="#4338CA" font-size="16" font-weight="800">Data retrieval &amp; queries</text>
+    <text x="118" y="298" fill="#6B7280" font-size="15">~50%</text>
+    <text x="620" y="274" fill="#4338CA" font-size="16" font-weight="800">Clean &amp; join</text>
+    <text x="620" y="298" fill="#6B7280" font-size="15">~20%</text>
+    <text x="824" y="274" fill="#047857" font-size="16" font-weight="800">Judgment</text>
+    <text x="824" y="298" fill="#6B7280" font-size="15">~18%</text>
+    <text x="1002" y="274" fill="#BE185D" font-size="16" font-weight="800">Comms</text>
+    <text x="1002" y="298" fill="#6B7280" font-size="15">~12%</text>
+
+    <!-- Shift arrow -->
+    <path d="M600 344v28" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M590 362l10 12 10-12" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="624" y="372" fill="#5B5BFF" font-size="17" font-weight="700">the agent absorbs retrieval; the analyst keeps judgment</text>
+
+    <!-- AI-era analyst bar -->
+    <text x="100" y="432" fill="#111827" font-size="22" font-weight="800">AI-era data analyst</text>
+    <!-- segments: 20% / 35% / 30% / 15% -->
+    <rect x="100" y="448" width="200" height="74" rx="10" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <rect x="304" y="448" width="350" height="74" rx="10" fill="#FEF3C7" stroke="#FDE68A"/>
+    <rect x="658" y="448" width="296" height="74" rx="10" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <rect x="958" y="448" width="142" height="74" rx="10" fill="#FDF2F8" stroke="#FBCFE8"/>
+    <text x="118" y="480" fill="#6D28D9" font-size="16" font-weight="800">Context curation</text>
+    <text x="118" y="504" fill="#6B7280" font-size="15">~20%</text>
+    <text x="322" y="480" fill="#B45309" font-size="16" font-weight="800">Plan review &amp; verification</text>
+    <text x="322" y="504" fill="#6B7280" font-size="15">~35%</text>
+    <text x="676" y="480" fill="#047857" font-size="16" font-weight="800">Analysis &amp; judgment</text>
+    <text x="676" y="504" fill="#6B7280" font-size="15">~30%</text>
+    <text x="972" y="480" fill="#BE185D" font-size="16" font-weight="800">Comms &amp;</text>
+    <text x="972" y="500" fill="#BE185D" font-size="16" font-weight="800">training</text>
+    <text x="972" y="518" fill="#6B7280" font-size="14">~15%</text>
+  </g>
+
+  <text x="100" y="560" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="18">Illustrative allocation, not survey data · InfiniSynapse — enterprise AI data analyst</text>
+</svg>

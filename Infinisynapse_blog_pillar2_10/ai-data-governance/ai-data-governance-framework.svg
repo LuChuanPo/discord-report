@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">AI data governance framework for enterprise analytics</title>
+  <desc id="desc">A five-pillar AI data governance framework for enterprise analytics — access control, data lineage, model risk, audit trail, and regulatory alignment — wrapped around a central AI data agent that connects to enterprise data sources.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+  <text x="100" y="106" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="36" font-weight="800">AI Data Governance — five pillars around the agent</text>
+  <text x="100" y="142" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700">Access · Lineage · Model risk · Audit trail · Regulatory alignment</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Center hub -->
+    <circle cx="600" cy="370" r="92" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="2"/>
+    <text x="600" y="358" text-anchor="middle" fill="#4338CA" font-size="13" font-weight="800">AI DATA AGENT</text>
+    <text x="600" y="382" text-anchor="middle" fill="#111827" font-size="17" font-weight="800">Plan → Query →</text>
+    <text x="600" y="404" text-anchor="middle" fill="#111827" font-size="17" font-weight="800">Verify → Explain</text>
+
+    <!-- Pillar 1: Access control -->
+    <rect x="80" y="200" width="220" height="120" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="100" y="232" fill="#4338CA" font-size="13" font-weight="800">PILLAR 1</text>
+    <text x="100" y="258" fill="#111827" font-size="18" font-weight="800">Access control</text>
+    <text x="100" y="282" fill="#374151" font-size="13">read-only role</text>
+    <text x="100" y="300" fill="#374151" font-size="13">row-level security</text>
+
+    <!-- Pillar 2: Lineage -->
+    <rect x="340" y="200" width="220" height="120" rx="16" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="360" y="232" fill="#047857" font-size="13" font-weight="800">PILLAR 2</text>
+    <text x="360" y="258" fill="#111827" font-size="18" font-weight="800">Data lineage</text>
+    <text x="360" y="282" fill="#374151" font-size="13">source → query → result</text>
+    <text x="360" y="300" fill="#374151" font-size="13">captured per answer</text>
+
+    <!-- Pillar 3: Model risk -->
+    <rect x="640" y="200" width="220" height="120" rx="16" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="660" y="232" fill="#92400E" font-size="13" font-weight="800">PILLAR 3</text>
+    <text x="660" y="258" fill="#111827" font-size="18" font-weight="800">Model risk</text>
+    <text x="660" y="282" fill="#374151" font-size="13">hallucination checks</text>
+    <text x="660" y="300" fill="#374151" font-size="13">eval + verification loop</text>
+
+    <!-- Pillar 4: Audit trail -->
+    <rect x="900" y="200" width="220" height="120" rx="16" fill="#FFE4E6" stroke="#FECDD3"/>
+    <text x="920" y="232" fill="#9F1239" font-size="13" font-weight="800">PILLAR 4</text>
+    <text x="920" y="258" fill="#111827" font-size="18" font-weight="800">Audit trail</text>
+    <text x="920" y="282" fill="#374151" font-size="13">plan + SQL + sources</text>
+    <text x="920" y="300" fill="#374151" font-size="13">replayable evidence</text>
+
+    <!-- Pillar 5 bottom: Regulatory alignment -->
+    <rect x="90" y="476" width="1020" height="76" rx="16" fill="#F9FAFB" stroke="#E5E7EB"/>
+    <text x="110" y="506" fill="#111827" font-size="15" font-weight="800">PILLAR 5 · REGULATORY ALIGNMENT</text>
+    <g font-size="14" font-weight="600" fill="#374151">
+      <text x="110" y="530">NIST AI RMF 1.0 · ISO/IEC 42001 AI management system · EU AI Act risk tiers · SOC 2 logging discipline</text>
+    </g>
+
+    <!-- connectors from pillars to center -->
+    <path d="M300 260 Q450 320 510 360" stroke="#C7D2FE" stroke-width="3" fill="none"/>
+    <path d="M450 320 Q500 340 525 350" stroke="#BBF7D0" stroke-width="3" fill="none"/>
+    <path d="M750 320 Q700 340 678 352" stroke="#FDE68A" stroke-width="3" fill="none"/>
+    <path d="M900 260 Q780 320 692 360" stroke="#FECDD3" stroke-width="3" fill="none"/>
+    <path d="M600 462 L600 476" stroke="#D1D5DB" stroke-width="3" fill="none"/>
+  </g>
+
+  <text x="100" y="586" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="15">InfiniSynapse — enterprise AI data analyst with database + knowledge base binding</text>
+</svg>

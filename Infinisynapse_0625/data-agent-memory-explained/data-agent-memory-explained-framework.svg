@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">The four memory types of a data agent</title>
+  <desc id="desc">Architecture diagram: four memory types — semantic, schema, procedural, episodic — feed LLM-Native RAG retrieval, which feeds the agent loop of plan, execute, verify, explain, with corrections written back from explain to episodic memory.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+
+  <text x="100" y="116" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">The four memory types of a data agent</text>
+  <text x="100" y="156" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">Retrieved per task by RAG — corrections written back after review</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Memory column -->
+    <rect x="100" y="196" width="300" height="70" rx="12" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="120" y="223" fill="#111827" font-size="16" font-weight="800">Semantic memory</text>
+    <text x="120" y="246" fill="#6B7280" font-size="13">metric definitions · business rules</text>
+
+    <rect x="100" y="275" width="300" height="70" rx="12" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="120" y="302" fill="#111827" font-size="16" font-weight="800">Schema memory</text>
+    <text x="120" y="325" fill="#6B7280" font-size="13">tables · fields · join keys</text>
+
+    <rect x="100" y="354" width="300" height="70" rx="12" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="120" y="381" fill="#111827" font-size="16" font-weight="800">Procedural memory</text>
+    <text x="120" y="404" fill="#6B7280" font-size="13">playbooks · query patterns</text>
+
+    <rect x="100" y="433" width="300" height="70" rx="12" fill="#FDF2F8" stroke="#FBCFE8"/>
+    <text x="120" y="460" fill="#111827" font-size="16" font-weight="800">Episodic memory</text>
+    <text x="120" y="483" fill="#6B7280" font-size="13">past analyses · corrections</text>
+
+    <!-- collector spine into RAG -->
+    <path d="M400 231h60M400 310h60M400 389h60M400 468h60" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M460 231v237" stroke="#5B5BFF" stroke-width="4" stroke-linecap="round"/>
+    <path d="M460 350h28" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M482 340l13 10-13 10" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- RAG box -->
+    <rect x="505" y="300" width="240" height="100" rx="14" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="529" y="334" fill="#111827" font-size="17" font-weight="800">LLM-Native RAG</text>
+    <text x="529" y="360" fill="#6B7280" font-size="13">retrieves only what</text>
+    <text x="529" y="380" fill="#6B7280" font-size="13">the task needs</text>
+
+    <!-- RAG to agent loop -->
+    <path d="M745 350h55V225h36" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <path d="M830 215l13 10-13 10" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Agent loop column -->
+    <rect x="860" y="196" width="240" height="58" rx="12" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="880" y="221" fill="#111827" font-size="16" font-weight="800">Plan</text>
+    <text x="880" y="241" fill="#6B7280" font-size="12.5">sources · joins · windows</text>
+
+    <rect x="860" y="280" width="240" height="58" rx="12" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="880" y="305" fill="#111827" font-size="16" font-weight="800">Execute</text>
+    <text x="880" y="325" fill="#6B7280" font-size="12.5">SQL · files · documents</text>
+
+    <rect x="860" y="364" width="240" height="58" rx="12" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="880" y="389" fill="#111827" font-size="16" font-weight="800">Verify</text>
+    <text x="880" y="409" fill="#6B7280" font-size="12.5">row counts · null rates</text>
+
+    <rect x="860" y="448" width="240" height="58" rx="12" fill="#FDF2F8" stroke="#FBCFE8"/>
+    <text x="880" y="473" fill="#111827" font-size="16" font-weight="800">Explain</text>
+    <text x="880" y="493" fill="#6B7280" font-size="12.5">answer + evidence trail</text>
+
+    <!-- loop arrows -->
+    <path d="M980 258v8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M973 264l7 9 7-9" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M980 342v8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M973 348l7 9 7-9" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M980 426v8" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M973 432l7 9 7-9" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- corrections written back -->
+    <path d="M980 506v20H250v-13" stroke="#F59E0B" stroke-width="4" stroke-dasharray="9 7" stroke-linecap="round" fill="none"/>
+    <path d="M243 511l7-8 7 8" stroke="#F59E0B" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <text x="615" y="548" fill="#B45309" font-size="14" font-weight="700" text-anchor="middle">corrections written back</text>
+  </g>
+
+  <text x="100" y="560" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="18">InfiniSynapse — enterprise AI data analyst</text>
+</svg>

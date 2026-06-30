@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Data Agent: Architecture, Use Cases, and Examples</title>
+  <meta name="description" content="A data agent is a domain-specific AI agent that reads, queries, and reasons over structured data. Architecture, use cases, and how it differs from NL2SQL today.">
+  <meta name="keywords" content="data agent, data agent architecture, data agent use cases, data agent vs ai agent">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/data-agent">
+
+  <meta property="og:title" content="Data Agent: Architecture, Use Cases, and Examples">
+  <meta property="og:description" content="A data agent is a domain-specific AI agent that reads, queries, and reasons over structured data. Architecture, use cases, and how it differs from NL2SQL today.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/data-agent">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/data-agent/data-agent-framework.svg">
+  <meta property="og:image:alt" content="The five parts of a data agent — planner, retriever bound to a business knowledge base, SQL executor, verifier, and memory — arranged in a left-to-right flow.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Data Agent: Architecture, Use Cases, and Examples">
+  <meta name="twitter:description" content="A data agent is a domain-specific AI agent that reads, queries, and reasons over structured data. Architecture, use cases, and how it differs from NL2SQL today.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/data-agent/data-agent-framework.svg">
+  <meta name="twitter:image:alt" content="The five parts of a data agent — planner, retriever bound to a business knowledge base, SQL executor, verifier, and memory — arranged in a left-to-right flow.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Schema #1: Organization -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","caption":"InfiniSynapse AI data analyst logo","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}
+  </script>
+
+  <!-- Schema #2: BreadcrumbList -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"What Is a Data Agent? Architecture, Use Cases, and How It Differs From NL2SQL","item":"https://infinisynapse.com/en/blog/data-agent"}]}
+  </script>
+
+  <!-- Schema #3: Article -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"What Is a Data Agent? Architecture, Use Cases, and How It Differs From NL2SQL","description":"A data agent is a domain-specific AI agent that reads, queries, and reasons over structured data. Architecture, use cases, and how it differs from NL2SQL today.","image":"https://infinisynapse.com/en/blog/data-agent/data-agent-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/data-agent"}}
+  </script>
+
+  <!-- Schema #4: FAQPage -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is a data agent in plain terms?","acceptedAnswer":{"@type":"Answer","text":"A data agent is a domain-specific AI agent that reads, queries, and reasons over structured data. It takes a plain-English question, retrieves business context and schema, plans an analysis, runs SQL against your databases and files, verifies the result, and returns an answer with an evidence trail you can audit."}},
+{"@type":"Question","name":"How is a data agent different from a generic AI agent?","acceptedAnswer":{"@type":"Answer","text":"A generic AI agent uses open-ended tools such as web browsing, file editing, or code execution. A data agent narrows the toolset to retrievers, SQL executors, and verifiers that act on structured data. The narrower scope lets it produce auditable numbers instead of plausible prose, which is what an analytics workflow needs."}},
+{"@type":"Question","name":"How is a data agent different from NL2SQL?","acceptedAnswer":{"@type":"Answer","text":"NL2SQL translates a sentence to a single SQL query in one pass. A data agent runs a loop: it plans, retrieves business definitions, drafts SQL, runs it, checks the output, and may rewrite or branch. NL2SQL is one tool inside a data agent — not a replacement for the agent itself."}},
+{"@type":"Question","name":"What are the main parts of a data agent architecture?","acceptedAnswer":{"@type":"Answer","text":"Five parts repeat across working systems: a planner that decomposes the question, a retriever that pulls business definitions and schema, a SQL executor that runs queries against connected sources, a verifier that checks units and bounds on the result, and a memory store that records the evidence trail."}},
+{"@type":"Question","name":"What use cases is a data agent good for?","acceptedAnswer":{"@type":"Answer","text":"Open-ended cross-source questions on enterprise data — funnel diagnostics, cohort retention, ad-hoc finance investigations, supply chain reconciliations, and product analytics on questions that were never modeled into a dashboard. It is a weak fit for steady metric monitoring, which BI tools already cover well."}},
+{"@type":"Question","name":"What use cases is a data agent a poor fit for?","acceptedAnswer":{"@type":"Answer","text":"A data agent is a poor fit for steady metric monitoring on agreed dashboards, for hard real-time decisioning inside an application, and for tasks where the question has no structured-data answer. Use a BI tool, an OLTP application path, or a generic AI agent for those problems instead."}},
+{"@type":"Question","name":"Do I need a knowledge base for a data agent?","acceptedAnswer":{"@type":"Answer","text":"Yes if you care about business correctness. The database tells the agent what happened, the knowledge base tells the agent what it means in business terms — which event counts as an active user, which status code means refunded, which keys link to which entity. Without that binding, the SQL is right and the answer is wrong."}},
+{"@type":"Question","name":"How do you govern a data agent in production?","acceptedAnswer":{"@type":"Answer","text":"Read-only roles with scoped grants, plan review before each execution, query logging, a stored evidence trail for every result, and a documented update cadence for the bound knowledge base. The NIST AI Risk Management Framework gives a shared structure security teams accept for approving this category."}}
+]}
+  </script>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    a{color:#5B5BFF;text-decoration:none}
+    a:hover{color:#111827}
+    .nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+    .nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+    .nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+    .nav-logo-mark{height:26px;display:flex;align-items:center}
+    .nav-logo-mark img{height:26px;width:auto;display:block}
+    .nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+    .nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap;transition:color 0.15s}
+    .nav-menu a:hover{color:#111827}
+    .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+    .nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap;box-shadow:none;transition:background 0.15s,border-color 0.15s,transform 0.15s}
+    a.nav-btn:hover{color:#111827;border-color:#C7CEDA;transform:translateY(-1px)}
+    .nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+    .nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+    .nav-btn-primary:hover{color:#FFFFFF}
+    .nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+    .nav-btn-dark:hover{color:#FFFFFF}
+    .nav-icon{width:17px;height:17px;flex:0 0 auto}
+    .nav-chevron{width:15px;height:15px;flex:0 0 auto}
+    .wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+    .breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+    .breadcrumb a{color:#6B7280}
+    .badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+    .badge-client{background:#EEF2FF;color:#4338CA}
+    .badge-cat{background:#ECFDF5;color:#047857}
+    h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+    h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+    h3{font-size:21px;color:#111827;margin:24px 0 8px}
+    p{margin:0 0 16px}
+    ul,ol{padding-left:22px;margin:0 0 18px}
+    li{margin:6px 0}
+    .meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+    .author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+    .info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+    .info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+    .disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+    .toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+    .toc{background:#F9FAFB}
+    .toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+    .tldr{background:#F8FAFC}
+    .snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+    .definition{background:#ECFDF5;border-color:#BBF7D0}
+    .feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+    table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+    th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+    th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+    td{color:#4B5563}
+    .quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+    .cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+    .cta-btn:hover{background:#1F2937;color:#FFFFFF}
+    .faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+    .faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+    .faq-a{color:#4B5563}
+    .methodology{background:#F9FAFB;color:#4B5563}
+    .refs li{font-size:13.5px;color:#4B5563}
+    .related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+    .related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+    .stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+    .stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+    .stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+    .panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+    .panel h3{margin-top:0}
+    .panel-good{background:#F0FDF4;border-color:#BBF7D0}
+    .panel-bad{background:#FEF2F2;border-color:#FECACA}
+    .footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+    .footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{color:#6B7280;font-size:14px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+    @media(max-width:1280px){.nav-inner{max-width:1180px;column-gap:24px}.nav-menu{gap:18px}.nav-menu a,.nav-btn{font-size:14px}.nav-btn{min-height:36px;padding:0 12px}.nav-btn-primary,.nav-btn-dark{padding:0 14px}}
+    @media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}.nav-logo{width:100%;justify-content:center}.nav-menu,.nav-actions{justify-content:center;flex-wrap:wrap}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}table{font-size:14px}.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12S9.8 18.6 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        EN
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Book Demo
+      </a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    data agent
+  </nav>
+
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Concept Guide</span>
+  </div>
+
+  <h1>What Is a Data Agent? Architecture, Use Cases, and How It Differs From NL2SQL</h1>
+  <p class="meta-desc">A working definition of the term — what a data agent is, what is inside one, what jobs it is good at, and where the line sits between a data agent, a generic AI agent, and plain NL2SQL.</p>
+
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 · Last verified 2026-06-28 · Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>Anthropic agent research, ReAct paper, BIRD and Spider benchmarks, NIST AI RMF, ISO/IEC 42001, vendor docs.</div>
+  </div>
+
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, which builds an enterprise data agent for structured analytics workloads. We mention InfiniSynapse where relevant, but the architecture sections, use case map, and decision rules are written so you can apply them to evaluate other vendors — including against us.
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer: what is a data agent?</a></li>
+      <li><a href="#why-now">Why the term emerged in 2024-2026</a></li>
+      <li><a href="#architecture">Data agent architecture: the five parts</a></li>
+      <li><a href="#vs-ai-agent">Data agent vs generic AI agent</a></li>
+      <li><a href="#vs-nl2sql">Data agent vs NL2SQL</a></li>
+      <li><a href="#use-cases">Data agent use cases that work today</a></li>
+      <li><a href="#poor-fit">Where a data agent is the wrong tool</a></li>
+      <li><a href="#governance">Production governance and guardrails</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>A <strong>data agent</strong> is a domain-specific AI agent that reads, queries, and reasons over structured data — databases, warehouses, and tabular files.</li>
+      <li>Inside it sit five parts: a <strong>planner</strong>, a <strong>retriever</strong> bound to a business knowledge base, a <strong>SQL executor</strong>, a <strong>verifier</strong>, and a <strong>memory</strong> store that holds the evidence trail.</li>
+      <li>A data agent is narrower than a generic AI agent (no web browsing, no code editing) and wider than NL2SQL (it loops, retrieves context, and checks itself).</li>
+      <li>It wins on open-ended cross-source questions; BI tools still win on agreed dashboards.</li>
+      <li>Production deployment hinges on read-only roles, plan review, evidence trails, and a bound knowledge base your team owns.</li>
+    </ul>
+  </div>
+
+  <h2 id="answer">Direct answer: what is a data agent?</h2>
+  <div class="snippet-answer">A data agent is a domain-specific AI agent that reads, queries, and reasons over structured data. It plans an analysis, retrieves business definitions and schema, runs SQL against connected databases and files, verifies the output, and returns an answer with an evidence trail. The tool surface is narrow on purpose so the output is auditable.</div>
+
+  <h2 id="why-now">Why the term "data agent" emerged in 2024-2026</h2>
+  <p>The phrase "data agent" started showing up in vendor materials around 2024 as a way to separate two things that earlier got blurred. One was the chatbot wrapper around NL2SQL — a single-shot translator that converts a sentence into one SQL query. The other was the agentic loop pattern described in the <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">ReAct paper</a>, where a model interleaves reasoning steps with tool calls and feedback. The data agent is the second pattern, scoped to structured data.</p>
+  <p>By 2026 the term is settling into a working definition that most practitioner-facing material now agrees on. The InfiniSynapse <a href="https://infinisynapse.com/en/blog/what-is-a-data-agent">what is a data agent</a> page on the Category cluster is the formal reference; this blog post is the cluster companion that focuses on use cases and architecture diagrams.</p>
+  <p>The shift mirrors how Anthropic's <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">building effective agents</a> note describes an agent: a system in which an LLM dynamically directs its own processes and tool usage. A data agent applies that idea to the structured-data domain, with tools that are narrower and audit needs that are higher than a general-purpose assistant.</p>
+
+  <img class="feature-img" src="data-agent-framework.svg" alt="Data agent architecture diagram showing five parts — planner, retriever bound to a business knowledge base, SQL executor, verifier, and memory — connected left to right with a band at the bottom listing what makes a data agent different from a generic AI agent" width="1200" height="630" loading="lazy">
+
+  <h2 id="architecture">Data agent architecture: the five parts</h2>
+  <p>Most working data agents in 2026 share the same five parts. Vendors name them differently — orchestrator, retriever, executor, judge, memory — but the roles are stable.</p>
+
+  <h3>1. Planner</h3>
+  <p>The planner decomposes a plain-English question into steps. For "show me Q2 revenue by region versus plan", the steps might be: identify which table holds bookings, look up how "region" maps to the customer table, look up how "plan" is defined, draft the SQL, run it, check the totals, and present the answer. The planner is where a data agent looks most like a junior analyst writing a one-page memo.</p>
+
+  <h3>2. Retriever (bound to a knowledge base)</h3>
+  <p>The retriever is the part most often missing from early NL2SQL systems. Before the agent writes a query it asks: what does this term mean here? Which event counts as a refund? Which status code maps to active? The answers live in a curated knowledge base that the operating team owns. InfiniSynapse calls this "database + knowledge base binding" and treats the binding as the central correctness mechanism, not a nice-to-have.</p>
+
+  <h3>3. SQL executor</h3>
+  <p>The executor runs SQL against connected sources — Postgres, MySQL, Snowflake, Supabase, S3 buckets, CSV files. In a working agent it operates with a read-only role, scoped grants, timeouts, and row limits. The executor also handles cross-source joins, which is the operational reason most ad-hoc questions are hard: the data lives in five places.</p>
+
+  <h3>4. Verifier</h3>
+  <p>The verifier checks the output before returning it. Did the row count fall to zero unexpectedly? Are the units consistent? Does the total match a sanity bound from the knowledge base? If something looks off the agent loops back through the planner. The verifier is what makes the output defensible to a finance reviewer rather than a fluent guess.</p>
+
+  <h3>5. Memory</h3>
+  <p>Memory holds two things. Short-term: the working state of the current investigation — past queries, intermediate results, branching decisions. Long-term: the evidence trail per finished question, plus team-level patterns the agent can reuse. The <a href="https://infinisynapse.com/en/blog/data-agent-memory-explained">data agent memory explained</a> page on the Category cluster goes deeper on the trade-offs.</p>
+
+  <h2 id="vs-ai-agent">Data agent vs generic AI agent</h2>
+  <p>The phrase "AI agent" covers a wider universe — coding assistants, browser automations, customer support routers, computer-use systems. A data agent is one specialization of that idea. Two differences matter most.</p>
+
+  <table>
+    <thead>
+      <tr><th>Dimension</th><th>Generic AI agent</th><th>Data agent</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Tool surface</strong></td><td>Open: web, files, code, shell, browsers</td><td>Narrow: retrievers, SQL, verifiers, charting</td></tr>
+      <tr><td><strong>Output type</strong></td><td>Prose, files, actions in other systems</td><td>Numbers, tables, charts with an evidence trail</td></tr>
+      <tr><td><strong>Correctness check</strong></td><td>Often external, often after the fact</td><td>In-loop verifier on units, bounds, row counts</td></tr>
+      <tr><td><strong>Audit posture</strong></td><td>Variable — depends on the task</td><td>High by default — finance and security review it</td></tr>
+      <tr><td><strong>Failure cost</strong></td><td>Often low (re-run, redo)</td><td>Often high (decisions made on the number)</td></tr>
+      <tr><td><strong>Knowledge base</strong></td><td>Optional, often general docs</td><td>Required, business-specific, bound per source</td></tr>
+    </tbody>
+  </table>
+
+  <p>The line is not philosophical. It is about which failure mode you are willing to absorb. A generic agent that hallucinates a stack trace is annoying; a data agent that hallucinates a revenue number is dangerous. The narrower tool surface and the in-loop verifier are how working data agents shift the failure cost down to the level a real analytics workflow needs.</p>
+
+  <h2 id="vs-nl2sql">Data agent vs NL2SQL</h2>
+  <p>NL2SQL — natural-language-to-SQL — is the older idea: take a sentence, return a query. Benchmarks like <a href="https://yale-lily.github.io/spider" target="_blank" rel="noopener">Spider</a> and <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">BIRD</a> measure how well models do this in isolation. On BIRD, human engineers reach 92.96% execution accuracy and models still trail that bar — which is why the field has shifted from "bigger NL2SQL model" to "wrap it in an agent that retrieves context and verifies".</p>
+
+  <p class="quote">NL2SQL is one tool inside a data agent. It is not a replacement for the agent itself.</p>
+
+  <p>A data agent that uses NL2SQL well does three things the bare model cannot. It pulls business definitions before drafting a query so "active customer" means what the business means. It runs the query and inspects the output rather than handing the SQL back as the answer. And it loops — if the row count is implausible the agent will branch, not stop. The companion piece on <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query</a> walks through the loop in code.</p>
+
+  <h2 id="use-cases">Data agent use cases that work today</h2>
+  <p>Five buckets cover most of the production deployments we see across the InfiniSynapse user base and public case material.</p>
+
+  <h3>Use case 1 — Funnel diagnostics and conversion investigations</h3>
+  <p>Product teams ask "where did sign-ups drop between Tuesday and Friday?" The agent retrieves the funnel definition from the bound knowledge base, runs cohort SQL across the events table, joins to the marketing source table, and surfaces the step where the drop happened. The answer comes with the SQL and the data slice so a PM can defend the conclusion in a meeting.</p>
+
+  <h3>Use case 2 — Cohort retention and lifecycle analysis</h3>
+  <p>"Show me 30-day retention for users who first signed up in Q2 versus Q1, split by acquisition channel." This is a question that almost never sits on a dashboard but always sits in a PM's head. A data agent answers it on demand; a BI tool needs an analyst to model the view first.</p>
+
+  <h3>Use case 3 — Finance reconciliations and variance explanations</h3>
+  <p>"Why did Q2 EMEA revenue come in 3% under plan?" The agent pulls the plan definition, runs the actuals query, joins to the customer table for the EMEA cut, and produces the deal-level list driving the variance. Finance teams accept this because the agent returns the queries and the rows behind each line — the evidence trail is the deliverable.</p>
+
+  <h3>Use case 4 — Supply chain and inventory questions</h3>
+  <p>"Which SKUs are at risk of stocking out in 14 days given the open POs?" The agent joins ERP inventory, open purchase orders, and sales velocity, applies the lead time rules from the knowledge base, and returns the at-risk list. This is the kind of question that used to require an analyst spinning up a notebook for two hours.</p>
+
+  <h3>Use case 5 — Ad-hoc executive questions across multiple sources</h3>
+  <p>"How does NPS correlate with renewal across the top 50 accounts last year?" The agent pulls NPS from one source, renewals from another, and the top-50 list from the CRM. The cross-source join is the work; the answer is the by-product. Companion guides on <a href="https://infinisynapse.com/en/blog/mysql-data-analysis-with-ai">MySQL data analysis with AI</a> and <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-with-ai">PostgreSQL data analysis with AI</a> show the same pattern on specific databases.</p>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="num">5</div><div class="lab">Working parts inside almost every production data agent: planner, retriever, executor, verifier, memory.</div></div>
+    <div class="stat"><div class="num">92.96%</div><div class="lab">Human engineer execution accuracy on the BIRD text-to-SQL benchmark. Models still trail this bar without context retrieval and verification loops. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">Source: BIRD</a></div></div>
+    <div class="stat"><div class="num">2024</div><div class="lab">The EU AI Act entered into force in August 2024 and raises evidence-trail expectations for automated analytics through 2026-2027. <a href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener">Source: EU AI Act portal</a></div></div>
+  </div>
+
+  <h2 id="poor-fit">Where a data agent is the wrong tool</h2>
+  <p>Three patterns recur in deployments that fail.</p>
+
+  <div class="grid-2">
+    <div class="panel panel-good">
+      <h3>Good fits</h3>
+      <ul>
+        <li>Open-ended, cross-source investigations</li>
+        <li>Questions that never made it onto a dashboard</li>
+        <li>Variance and root-cause analyses</li>
+        <li>One-off audit and reconciliation requests</li>
+        <li>Internal users who can read a plan and a SQL block</li>
+      </ul>
+    </div>
+    <div class="panel panel-bad">
+      <h3>Poor fits</h3>
+      <ul>
+        <li>Steady KPI monitoring — use a BI tool</li>
+        <li>Hard real-time decisions inside an application path</li>
+        <li>Customer-facing chat with arbitrary inputs</li>
+        <li>Questions whose answer is not in structured data</li>
+        <li>Environments without a maintained knowledge base</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>If your team has zero appetite for owning a knowledge base, a data agent will return SQL that runs and numbers that do not match the business. That is the most common reason a pilot stalls. See the <a href="https://infinisynapse.com/en/blog/data-agent-manifesto">data agent manifesto</a> for the long-form argument on why the knowledge base is the product.</p>
+
+  <h2 id="governance">Production governance and guardrails</h2>
+  <p>The four-line operational answer most security teams accept:</p>
+  <ol>
+    <li><strong>Read-only by default.</strong> The agent connects with a database role that has SELECT-only grants and scoped views. Promote to write only with a separate review.</li>
+    <li><strong>Plan review before execute.</strong> The agent emits a plan — questions, tables, joins, rationale — that a human can stop before any SQL fires. InfiniSynapse calls this "Plan mode"; other vendors have analogous features.</li>
+    <li><strong>Query logging end to end.</strong> Every query the agent runs gets logged with the prompt that triggered it, the retrieved context, and the verifier's verdict. This is the audit log a regulator or board reviewer asks for.</li>
+    <li><strong>Bound knowledge base with an owner.</strong> Someone on the data team owns the bound knowledge base, reviews changes, and signs off updates. The <a href="https://infinisynapse.com/en/blog/ai-data-analyst-job-description">AI data analyst job description</a> piece spells out who that owner is and what the role looks like.</li>
+  </ol>
+  <p>The <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">NIST AI Risk Management Framework</a> and <a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">ISO/IEC 42001</a> give a shared structure security teams accept when approving a data agent in regulated environments. Use them to frame the rollout, not to slow it down.</p>
+
+  <div class="cta-box">
+    <h3>See a working data agent on your own data</h3>
+    <p>InfiniSynapse runs the five-part pattern on Postgres, MySQL, Snowflake, Supabase, S3, and CSV out of the box. Connect a database read-only, seed a small knowledge base, and run one open-ended question — review the plan, the queries, and the evidence trail before deciding whether a data agent belongs in your stack.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What is a data agent in plain terms?</div><div class="faq-a">A data agent is a domain-specific AI agent that reads, queries, and reasons over structured data. It takes a plain-English question, retrieves business context and schema, plans an analysis, runs SQL against your databases and files, verifies the result, and returns an answer with an evidence trail you can audit.</div></div>
+  <div class="faq-item"><div class="faq-q">How is a data agent different from a generic AI agent?</div><div class="faq-a">A generic AI agent uses open-ended tools such as web browsing, file editing, or code execution. A data agent narrows the toolset to retrievers, SQL executors, and verifiers that act on structured data. The narrower scope lets it produce auditable numbers instead of plausible prose, which is what an analytics workflow needs.</div></div>
+  <div class="faq-item"><div class="faq-q">How is a data agent different from NL2SQL?</div><div class="faq-a">NL2SQL translates a sentence to a single SQL query in one pass. A data agent runs a loop: it plans, retrieves business definitions, drafts SQL, runs it, checks the output, and may rewrite or branch. NL2SQL is one tool inside a data agent — not a replacement for the agent itself.</div></div>
+  <div class="faq-item"><div class="faq-q">What are the main parts of a data agent architecture?</div><div class="faq-a">Five parts repeat across working systems: a planner that decomposes the question, a retriever that pulls business definitions and schema, a SQL executor that runs queries against connected sources, a verifier that checks units and bounds on the result, and a memory store that records the evidence trail.</div></div>
+  <div class="faq-item"><div class="faq-q">What use cases is a data agent good for?</div><div class="faq-a">Open-ended cross-source questions on enterprise data — funnel diagnostics, cohort retention, ad-hoc finance investigations, supply chain reconciliations, and product analytics on questions that were never modeled into a dashboard. It is a weak fit for steady metric monitoring, which BI tools already cover well.</div></div>
+  <div class="faq-item"><div class="faq-q">What use cases is a data agent a poor fit for?</div><div class="faq-a">A data agent is a poor fit for steady metric monitoring on agreed dashboards, for hard real-time decisioning inside an application, and for tasks where the question has no structured-data answer. Use a BI tool, an OLTP application path, or a generic AI agent for those problems instead.</div></div>
+  <div class="faq-item"><div class="faq-q">Do I need a knowledge base for a data agent?</div><div class="faq-a">Yes if you care about business correctness. The database tells the agent what happened, the knowledge base tells the agent what it means in business terms — which event counts as an active user, which status code means refunded, which keys link to which entity. Without that binding, the SQL is right and the answer is wrong.</div></div>
+  <div class="faq-item"><div class="faq-q">How do you govern a data agent in production?</div><div class="faq-a">Read-only roles with scoped grants, plan review before each execution, query logging, a stored evidence trail for every result, and a documented update cadence for the bound knowledge base. The NIST AI Risk Management Framework gives a shared structure security teams accept for approving this category.</div></div>
+
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 · <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>The architecture and use case sections on this page are grounded in vendor documentation (InfiniSynapse, other data agent vendors), public benchmarks (BIRD, Spider), agent research notes (Anthropic, ReAct), and governance frameworks (NIST AI RMF, ISO/IEC 42001, EU AI Act). The five-part architecture is a working consolidation across published systems; specific vendors may merge or split these parts.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells a data agent. To reduce bias, the page includes a section on poor fits, an honest filter for choosing between a data agent and a BI tool, and external sources for every numeric claim.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for terminology, product changes, benchmark figures, and schema consistency.</p>
+  </div>
+
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Independent]</strong> Yao et al. ReAct: Synergizing Reasoning and Acting in Language Models. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arxiv.org/abs/2210.03629</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic. Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL: A Big Bench for Large-Scale Database Grounded Text-to-SQL Evaluation. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+    <li><strong>[Independent]</strong> Spider: A Large-Scale Human-Labeled Dataset for Complex and Cross-Domain Semantic Parsing. <a href="https://yale-lily.github.io/spider" target="_blank" rel="noopener">yale-lily.github.io/spider</a>.</li>
+    <li><strong>[Independent]</strong> NIST. AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> ISO. ISO/IEC 42001 — AI management systems. <a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">iso.org/standard/81230</a>.</li>
+    <li><strong>[Independent]</strong> EU AI Act overview. <a href="https://artificialintelligenceact.eu/" target="_blank" rel="noopener">artificialintelligenceact.eu</a>.</li>
+    <li><strong>[Reference]</strong> Retrieval-augmented generation. <a href="https://en.wikipedia.org/wiki/Retrieval-augmented_generation" target="_blank" rel="noopener">en.wikipedia.org/wiki/Retrieval-augmented_generation</a>.</li>
+  </ol>
+
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/what-is-a-data-agent">What is a data agent? (Category)</a>
+    <a href="https://infinisynapse.com/en/blog/data-agent-manifesto">Data agent manifesto</a>
+    <a href="https://infinisynapse.com/en/blog/data-agent-memory-explained">Data agent memory explained</a>
+    <a href="https://infinisynapse.com/en/blog/autonomous-data-agent">Autonomous data agent</a>
+    <a href="https://infinisynapse.com/en/blog/data-agent-vs-ai-copilot">Data agent vs AI copilot</a>
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query</a>
+    <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-with-ai">PostgreSQL data analysis with AI</a>
+    <a href="https://infinisynapse.com/en/blog/mysql-data-analysis-with-ai">MySQL data analysis with AI</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

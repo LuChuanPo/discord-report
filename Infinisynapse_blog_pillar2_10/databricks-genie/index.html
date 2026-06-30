@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Databricks Genie: 2026 Guide and Honest Review</title>
+  <meta name="description" content="Databricks Genie explained in 2026 — what AI/BI Genie does, how rooms and Unity Catalog grounding work, where it shines, where it falls short, and alternatives.">
+  <meta name="keywords" content="databricks genie, databricks ai bi genie, databricks genie review, databricks genie alternatives">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/databricks-genie">
+  <meta property="og:title" content="Databricks Genie in 2026: What It Is, How It Works, and Where It Fits">
+  <meta property="og:description" content="Databricks Genie explained in 2026 — what AI/BI Genie does, how rooms and Unity Catalog grounding work, where it shines, where it falls short, and alternatives.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/databricks-genie">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/databricks-genie/databricks-genie-framework.svg">
+  <meta property="og:image:alt" content="Databricks Genie architecture diagram — Genie room receives a question, retrieves Unity Catalog metadata and instructions, generates SQL, returns answer with chart.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Databricks Genie in 2026: What It Is, How It Works, and Where It Fits">
+  <meta name="twitter:description" content="Databricks Genie explained in 2026 — what AI/BI Genie does, how rooms and Unity Catalog grounding work, where it shines, where it falls short, and alternatives.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/databricks-genie/databricks-genie-framework.svg">
+  <meta name="twitter:image:alt" content="Databricks Genie architecture diagram — Genie room receives a question, retrieves Unity Catalog metadata and instructions, generates SQL, returns answer with chart.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"Databricks Genie in 2026: What It Is, How It Works, and Where It Fits","item":"https://infinisynapse.com/en/blog/databricks-genie"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Databricks Genie in 2026: What It Is, How It Works, and Where It Fits","description":"Databricks Genie explained in 2026 — what AI/BI Genie does, how rooms and Unity Catalog grounding work, where it shines, where it falls short, and alternatives.","image":"https://infinisynapse.com/en/blog/databricks-genie/databricks-genie-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/databricks-genie"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Databricks Genie?","acceptedAnswer":{"@type":"Answer","text":"Databricks AI/BI Genie is a conversational analytics surface on the Databricks lakehouse. A user asks a question in plain English inside a curated room; Genie reads the curator instructions, Unity Catalog metadata, and saved example queries, generates SQL, and returns an answer with a chart. It is positioned as the natural-language entry point on top of Databricks SQL Warehouse and Unity Catalog."}},{"@type":"Question","name":"How does a Genie room work?","acceptedAnswer":{"@type":"Answer","text":"A room is a curated workspace where a data team selects tables from Unity Catalog, writes plain-English instructions about metrics and join keys, and adds three to five trusted example queries. When a user asks a question inside the room, Genie sees the instructions, the schema, and the examples as grounding context before drafting SQL. Quality is bounded by how well the room is curated."}},{"@type":"Question","name":"When should I pick Databricks Genie over a third-party data agent?","acceptedAnswer":{"@type":"Answer","text":"Pick Genie when your data lives in Databricks, Unity Catalog governance is already in place, and a data engineer or analytics engineer owns curation for each business audience. Genie inherits the lakehouse governance posture and reuses the same compute, which collapses procurement and operating overhead."}},{"@type":"Question","name":"Where does Databricks Genie fall short in 2026?","acceptedAnswer":{"@type":"Answer","text":"Four places: sources outside Databricks sit outside the room, each business audience needs its own curated room, quality degrades as questions drift away from saved examples, and the evidence trail is the SQL plus the result rather than a planner-executor-verifier separation some audit postures require. None of these are dealbreakers — they are honest tradeoffs."}},{"@type":"Question","name":"What is the difference between Databricks Genie and Snowflake Cortex Analyst?","acceptedAnswer":{"@type":"Answer","text":"Both are conversational analytics surfaces on a single warehouse — Genie on Databricks, Cortex Analyst on Snowflake. The architectures are similar in shape and the tradeoffs are similar in kind. Pick by which warehouse your data lives in today, since neither one ranges across cloud warehouse boundaries without help from a federation layer."}},{"@type":"Question","name":"Can Databricks Genie answer questions across Databricks and other sources?","acceptedAnswer":{"@type":"Answer","text":"Not natively. Genie operates inside a Databricks room and uses Unity Catalog tables. If your data spans Databricks plus a transactional PostgreSQL plus a few S3 prefixes, you either federate everything into Databricks first or use an external AI database query agent that connects to each source directly and answers across them."}},{"@type":"Question","name":"How do I curate a Genie room well?","acceptedAnswer":{"@type":"Answer","text":"Pick the audience first, then a tight set of three to seven tables, then write plain-English curator instructions that spell out metric definitions and preferred join keys, then add three to five trusted example queries the team already answers weekly. Open to a small pilot group, watch where SQL drifts, and refine instructions and examples for two weeks before broad rollout."}}]}</script>
+  <style>*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+a{color:#5B5BFF;text-decoration:none}
+a:hover{color:#111827}
+.nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+.nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+.nav-logo-mark{height:26px;display:flex;align-items:center}
+.nav-logo-mark img{height:26px;width:auto;display:block}
+.nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+.nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+.nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap}
+.nav-menu a:hover{color:#111827}
+.nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+.nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap}
+.nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+.nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+.nav-btn-primary:hover{color:#FFFFFF}
+.nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+.nav-btn-dark:hover{color:#FFFFFF}
+.wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+.breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+.breadcrumb a{color:#6B7280}
+.badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+.badge-client{background:#EEF2FF;color:#4338CA}
+.badge-cat{background:#ECFDF5;color:#047857}
+h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+h3{font-size:21px;color:#111827;margin:24px 0 8px}
+p{margin:0 0 16px}
+ul,ol{padding-left:22px;margin:0 0 18px}
+li{margin:6px 0}
+code{background:#F3F4F6;border-radius:4px;padding:2px 6px;font-family:Consolas,Menlo,monospace;font-size:14px}
+pre{background:#0F172A;color:#E5E7EB;border-radius:10px;padding:16px 18px;overflow-x:auto;margin:14px 0;font-size:14px;line-height:1.55}
+pre code{background:transparent;color:inherit;padding:0;font-size:14px}
+.meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+.author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+.info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+.info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+.disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+.toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+.toc{background:#F9FAFB}
+.toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+.tldr{background:#F8FAFC}
+.snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+.feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+td{color:#4B5563}
+.quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+.cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+.cta-btn:hover{background:#1F2937;color:#FFFFFF}
+.faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+.faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+.faq-a{color:#4B5563}
+.methodology{background:#F9FAFB;color:#4B5563}
+.refs li{font-size:13.5px;color:#4B5563}
+.related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+.related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+.stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+.stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+.stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+.panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+.panel h3{margin-top:0}
+.panel-good{background:#F0FDF4;border-color:#BBF7D0}
+.panel-bad{background:#FEF2F2;border-color:#FECACA}
+.footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+.footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+.footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.footer-links{display:grid;gap:8px}
+.footer-links a{color:#6B7280;font-size:14px}
+.footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+@media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}}</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">EN</span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">Book Demo</a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">Login</a>
+    </div>
+  </div>
+</nav>
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    databricks genie
+  </nav>
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Vendor Review</span>
+  </div>
+  <h1>Databricks Genie in 2026: What It Is, How It Works, and Where It Fits</h1>
+  <p class="meta-desc">A working guide to Databricks AI/BI Genie — the conversational analytics surface built on Unity Catalog. What it does, how rooms are set up, where it earns the seat, where teams move past it.</p>
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, product and data architecture team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 · Last verified 2026-06-28 · Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>Databricks official documentation on AI/BI Genie, public release notes, Unity Catalog reference, hands-on usage in 2026, and Databricks community examples.</div>
+  </div>
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, which sells an AI data analyst that competes with Databricks Genie on some workloads. The review notes both where Genie is the right call and where InfiniSynapse fits — written so you can use the rubric to evaluate either vendor.
+  </div>
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer: what is Databricks Genie?</a></li>
+      <li><a href="#architecture">Genie rooms, Unity Catalog, and how grounding works</a></li>
+      <li><a href="#setup">How to set up a Genie room</a></li>
+      <li><a href="#fit">Where Genie is the right pick</a></li>
+      <li><a href="#limits">Where Genie falls short in 2026</a></li>
+      <li><a href="#alternatives">Fair alternatives and when to pick them</a></li>
+      <li><a href="#rubric">A practical selection rubric</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>Databricks AI/BI Genie is a conversational analytics surface that lives on the Databricks lakehouse — users ask in plain English, Genie generates SQL against Unity Catalog tables, and a chart and answer come back.</li>
+      <li>Genie rooms are the unit of curation — a room is a curated set of tables, instructions, and example queries an analyst defines for a business audience.</li>
+      <li>Genie is a strong fit when your data lives in Databricks, Unity Catalog governance is in place, and a data team can curate rooms for each business audience.</li>
+      <li>It is weaker when sources sit outside Databricks, when the question class is open-ended exploration across a knowledge base of business definitions, or when audit-grade evidence trails are a procurement requirement.</li>
+      <li>Honest comparison points include Snowflake Cortex Analyst, ThoughtSpot Spotter, Tableau Pulse, and AI data analysts such as InfiniSynapse — each lands a different tradeoff between curation, openness, and source spread.</li>
+    </ul>
+  </div>
+  <div class="snippet-answer">Databricks AI/BI Genie is a conversational analytics surface on the Databricks lakehouse — users ask questions in plain English, Genie retrieves the room curator instructions plus Unity Catalog metadata, generates SQL against selected tables, and returns an answer with a chart. It works well on curated Databricks-resident data; it is weaker outside the lakehouse and on open-ended exploration.</div>
+  <img class="feature-img" src="databricks-genie-framework.svg" alt="Databricks Genie architecture diagram — Genie room receives a question, retrieves Unity Catalog metadata and instructions, generates SQL, returns answer with chart." width="1200" height="630" loading="lazy">
+
+  <h2 id="architecture">Genie rooms, Unity Catalog, and how grounding works</h2>
+<p>The unit of Genie is the <strong>room</strong>. A room is a curated workspace where a data team picks tables from <a href="https://docs.databricks.com/en/data-governance/unity-catalog/index.html" target="_blank" rel="noopener">Unity Catalog</a>, writes general instructions ("monthly revenue means net revenue, excluding refunds"), adds example SQL queries the team trusts, and optionally pins benchmark questions. When a user asks a question inside the room, Genie sees the curator's instructions, the schema metadata, and the saved examples as grounding context before it drafts SQL.</p>
+  <h3>The grounding stack</h3>
+  <ul>
+    <li><strong>Unity Catalog metadata</strong> — table names, column names, types, comments, lineage. The cleaner the catalog comments, the better Genie's SQL.</li>
+    <li><strong>Curator instructions</strong> — a free-text policy block where the room owner defines metrics, joins, filters, and conventions in plain English.</li>
+    <li><strong>Example SQL</strong> — saved queries the room owner attests are correct. Genie uses these as patterns when a similar question arrives.</li>
+    <li><strong>Benchmark questions</strong> — optional sample questions with expected answers, useful for regression testing as the underlying data changes.</li>
+  </ul>
+  <p>The pattern matches what other AI data tools call a <a href="https://infinisynapse.com/en/blog/data-agent-memory-explained">knowledge base binding</a>: pair the database with a curated layer of business definitions a model can retrieve before writing SQL.</p>
+
+  <h2 id="setup">How to set up a Genie room — five real steps</h2>
+<ol>
+    <li><strong>Pick the audience first.</strong> A room for finance leadership is not a room for marketing analysts. Audience determines the table set, the curator instructions, and the metric definitions.</li>
+    <li><strong>Curate the table set.</strong> Start with three to seven tables that answer 80% of the audience's questions. Resist adding the full catalog — Genie performs better on a tight set than a sprawling one.</li>
+    <li><strong>Write the curator instructions in plain English.</strong> Spell out which join keys to prefer, how status columns map to business states, what timezone to apply, and which rollup table is canonical for each metric.</li>
+    <li><strong>Add three to five trusted example queries.</strong> Pick the questions an analyst already answers weekly. These become the patterns Genie reaches for first.</li>
+    <li><strong>Iterate on real questions.</strong> Open the room to a small group, log the questions they ask, watch where Genie's SQL drifts, refine the instructions and add new examples. Plan for a two-week curation tail before broad rollout.</li>
+  </ol>
+  <p>The first three steps are where most failed rollouts skip — they open Genie on the full warehouse and ask the audience to discover what works, which produces low confidence and quick abandonment.</p>
+
+  <h2 id="fit">Where Databricks Genie is the right pick</h2>
+<p>Three signals point clearly to Genie:</p>
+  <ul>
+    <li><strong>Your data already lives in Databricks.</strong> Unity Catalog is the source of truth, Delta tables are the storage layer, and your analysts work in Databricks notebooks. Genie inherits the governance and connection model you already operate.</li>
+    <li><strong>You have an active data team to curate rooms.</strong> Genie's quality is bounded by the room curator's discipline. Without a data engineer or analytics engineer who owns the rooms, quality drifts.</li>
+    <li><strong>Your audience asks pattern-shaped questions.</strong> "Top X by Y this quarter" or "Trend of Z over the last 12 months" are exactly the shape Genie handles best — and exactly the shape good curator examples cover.</li>
+  </ul>
+  <p>The fit gets stronger when Databricks SQL Warehouse is already your serving layer for BI — Genie reuses the same compute and the same governance posture, which collapses procurement overhead.</p>
+
+  <h2 id="limits">Where Genie falls short in 2026</h2>
+<p>Genie's honest limits show up in four places:</p>
+  <table>
+    <thead><tr><th>Limit</th><th>What happens</th><th>What it implies</th></tr></thead>
+    <tbody>
+      <tr><td>Lakehouse-bound</td><td>Sources outside Databricks (a transactional PostgreSQL, a Snowflake share, an Excel attachment) sit outside the room</td><td>Cross-source questions need a federation layer or a different tool</td></tr>
+      <tr><td>Room curation cost</td><td>Each business audience needs its own curated room</td><td>The hidden cost is an ongoing analytics-engineering job, not a one-time setup</td></tr>
+      <tr><td>Open-ended exploration</td><td>Genie's quality compounds on questions near the saved examples and degrades as questions drift from them</td><td>For novel questions on a fresh dataset, the agent loop is shallower than a deeper data agent</td></tr>
+      <tr><td>Evidence trail depth</td><td>Genie shows the SQL it ran and the result</td><td>For audit-grade approval (NIST AI RMF aligned) some procurement teams want planner-executor-verifier separation and explicit verification queries on every result</td></tr>
+    </tbody>
+  </table>
+  <p>None of these are dealbreakers — they are honest tradeoffs the room owner inherits. A team that lives in Databricks and curates rooms well gets a lot of mileage. A team with split sources, no analytics engineer, or strict audit needs hits the limits faster.</p>
+
+  <h2 id="alternatives">Fair alternatives and when to pick them</h2>
+<table>
+    <thead><tr><th>Alternative</th><th>Best at</th><th>Tradeoff vs Genie</th></tr></thead>
+    <tbody>
+      <tr><td>Snowflake Cortex Analyst</td><td>Conversational analytics on Snowflake, with semantic model</td><td>Same shape as Genie on a different warehouse</td></tr>
+      <tr><td>ThoughtSpot Spotter</td><td>Long-running search-driven BI with chart suggestions</td><td>Stronger non-technical UX, separate governance footprint</td></tr>
+      <tr><td>Tableau Pulse / Power BI Copilot</td><td>Conversational layer over an existing semantic model</td><td>Reuses semantic model investment, deep BI integration</td></tr>
+      <tr><td><a href="https://infinisynapse.com/en/blog/what-is-a-data-agent">InfiniSynapse data agent</a></td><td>Cross-source analysis with a deeper agent loop and bound knowledge base</td><td>Adds a planner-executor-verifier pattern and source spread beyond a single warehouse</td></tr>
+    </tbody>
+  </table>
+  <p>If you live in Databricks, Genie is the path of least resistance. If your data spans Databricks plus PostgreSQL plus a few S3 prefixes, an external <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query agent</a> answers the cross-source questions Genie cannot reach. If your audience is non-technical and chart-driven, Spotter or Pulse may land better than a SQL-shaped surface.</p>
+
+  <h2 id="rubric">A practical selection rubric</h2>
+<p>Six questions to triage in a 30-minute review:</p>
+  <ol>
+    <li>What share of the data lives in Databricks today?</li>
+    <li>Who owns curation — is there a named analytics engineer per business audience?</li>
+    <li>What is the question class — pattern-shaped recurring asks, or open-ended exploration?</li>
+    <li>Is cross-source analysis on the roadmap in the next two quarters?</li>
+    <li>Does your audit posture require planner-executor-verifier separation?</li>
+    <li>Which BI surface owns the chart-rendering contract?</li>
+  </ol>
+  <p>Three or more "Databricks-only, curated, pattern-shaped" answers → Genie. Three or more "cross-source, open-ended, audit-deep" answers → an external data agent. Middle ground → run both in parallel for one quarter and let real usage decide.</p>
+  <div class="quote">Genie is excellent on the questions a curator has rehearsed and weaker on the questions nobody saw coming. Plan curation accordingly.</div>
+  <div class="cta-box">
+    <h3>Compare Databricks Genie to a cross-source AI data analyst</h3>
+    <p>Connect a Databricks lakehouse plus a second source (PostgreSQL, MySQL, Snowflake, S3, or CSV) read-only, seed a small knowledge base of business definitions, and ask one open-ended question that spans both sources. The plan, SQL, and verification step come back in the trace.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What is Databricks Genie?</div><div class="faq-a">Databricks AI/BI Genie is a conversational analytics surface on the Databricks lakehouse. A user asks a question in plain English inside a curated room; Genie reads the curator instructions, Unity Catalog metadata, and saved example queries, generates SQL, and returns an answer with a chart. It is positioned as the natural-language entry point on top of Databricks SQL Warehouse and Unity Catalog.</div></div>
+  <div class="faq-item"><div class="faq-q">How does a Genie room work?</div><div class="faq-a">A room is a curated workspace where a data team selects tables from Unity Catalog, writes plain-English instructions about metrics and join keys, and adds three to five trusted example queries. When a user asks a question inside the room, Genie sees the instructions, the schema, and the examples as grounding context before drafting SQL. Quality is bounded by how well the room is curated.</div></div>
+  <div class="faq-item"><div class="faq-q">When should I pick Databricks Genie over a third-party data agent?</div><div class="faq-a">Pick Genie when your data lives in Databricks, Unity Catalog governance is already in place, and a data engineer or analytics engineer owns curation for each business audience. Genie inherits the lakehouse governance posture and reuses the same compute, which collapses procurement and operating overhead.</div></div>
+  <div class="faq-item"><div class="faq-q">Where does Databricks Genie fall short in 2026?</div><div class="faq-a">Four places: sources outside Databricks sit outside the room, each business audience needs its own curated room, quality degrades as questions drift away from saved examples, and the evidence trail is the SQL plus the result rather than a planner-executor-verifier separation some audit postures require. None of these are dealbreakers — they are honest tradeoffs.</div></div>
+  <div class="faq-item"><div class="faq-q">What is the difference between Databricks Genie and Snowflake Cortex Analyst?</div><div class="faq-a">Both are conversational analytics surfaces on a single warehouse — Genie on Databricks, Cortex Analyst on Snowflake. The architectures are similar in shape and the tradeoffs are similar in kind. Pick by which warehouse your data lives in today, since neither one ranges across cloud warehouse boundaries without help from a federation layer.</div></div>
+  <div class="faq-item"><div class="faq-q">Can Databricks Genie answer questions across Databricks and other sources?</div><div class="faq-a">Not natively. Genie operates inside a Databricks room and uses Unity Catalog tables. If your data spans Databricks plus a transactional PostgreSQL plus a few S3 prefixes, you either federate everything into Databricks first or use an external AI database query agent that connects to each source directly and answers across them.</div></div>
+  <div class="faq-item"><div class="faq-q">How do I curate a Genie room well?</div><div class="faq-a">Pick the audience first, then a tight set of three to seven tables, then write plain-English curator instructions that spell out metric definitions and preferred join keys, then add three to five trusted example queries the team already answers weekly. Open to a small pilot group, watch where SQL drifts, and refine instructions and examples for two weeks before broad rollout.</div></div>
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 · <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>This guide was written by reviewing the Databricks AI/BI Genie official documentation, the Unity Catalog reference, public Databricks release notes through 2026-Q2, and field usage in real Genie rooms. The rubric and limits section reflect honest tradeoffs observed across multiple rollouts, not vendor marketing.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells an enterprise AI data analyst. To reduce bias, the page leads with the topic itself, treats InfiniSynapse as one option among many, and links to external sources for every numeric claim.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for accuracy and link health.</p>
+  </div>
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Vendor]</strong> Databricks. AI/BI Genie documentation. <a href="https://docs.databricks.com/en/genie/index.html" target="_blank" rel="noopener">docs.databricks.com/genie</a>.</li>
+    <li><strong>[Vendor]</strong> Databricks. Unity Catalog documentation. <a href="https://docs.databricks.com/en/data-governance/unity-catalog/index.html" target="_blank" rel="noopener">docs.databricks.com/unity-catalog</a>.</li>
+    <li><strong>[Vendor]</strong> Databricks. SQL Warehouse documentation. <a href="https://docs.databricks.com/en/compute/sql-warehouse/index.html" target="_blank" rel="noopener">docs.databricks.com/sql-warehouse</a>.</li>
+    <li><strong>[Independent]</strong> Yao et al. ReAct: Synergizing Reasoning and Acting in Language Models. <a href="https://arxiv.org/abs/2210.03629" target="_blank" rel="noopener">arxiv.org/abs/2210.03629</a>.</li>
+    <li><strong>[Vendor]</strong> Anthropic. Building Effective Agents. <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Standard]</strong> NIST. AI Risk Management Framework. <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL benchmark. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">bird-bench.github.io</a>.</li>
+    <li><strong>[Independent]</strong> Yu et al. Spider benchmark. <a href="https://yale-lily.github.io/spider" target="_blank" rel="noopener">yale-lily.github.io/spider</a>.</li>
+  </ol>
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query: the pillar guide</a>
+    <a href="https://infinisynapse.com/en/blog/data-analyst-snowflake-with-ai">Snowflake AI data analyst guide</a>
+    <a href="https://infinisynapse.com/en/blog/best-agentic-analytics-for-data-driven-insights">Best agentic analytics tools</a>
+    <a href="https://infinisynapse.com/en/blog/what-is-a-data-agent">What is a data agent</a>
+    <a href="https://infinisynapse.com/en/blog/ai-native-data-platform">AI-native data platform</a>
+    <a href="https://infinisynapse.com/en/blog/agentic-analytics-explained">Agentic analytics explained</a>
+  </div>
+</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

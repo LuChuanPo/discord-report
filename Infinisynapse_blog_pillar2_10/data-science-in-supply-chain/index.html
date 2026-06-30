@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Data Science in Supply Chain: 2026 Practitioner Guide</title>
+  <meta name="description" content="A 2026 working guide to data science in supply chain: demand forecasting, inventory optimization, supplier risk, route AI, tool stack and where agents fit.">
+  <meta name="keywords" content="data science in supply chain, supply chain data science tools, ai data analysis supply chain">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://infinisynapse.com/en/blog/data-science-in-supply-chain">
+
+  <meta property="og:title" content="Data Science in Supply Chain: 2026 Practitioner Guide">
+  <meta property="og:description" content="A 2026 working guide to data science in supply chain: demand forecasting, inventory optimization, supplier risk, route AI, tool stack and where agents fit.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://infinisynapse.com/en/blog/data-science-in-supply-chain">
+  <meta property="og:image" content="https://infinisynapse.com/en/blog/data-science-in-supply-chain/data-science-in-supply-chain-framework.svg">
+  <meta property="og:image:alt" content="Five working areas of data science in supply chain — demand forecasting, inventory optimization, supplier risk scoring, route optimization, and ad-hoc planning agents — around a central planning loop.">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@InfiniSynapse">
+  <meta name="twitter:title" content="Data Science in Supply Chain: 2026 Practitioner Guide">
+  <meta name="twitter:description" content="A 2026 working guide to data science in supply chain: demand forecasting, inventory optimization, supplier risk, route AI, tool stack and where agents fit.">
+  <meta name="twitter:image" content="https://infinisynapse.com/en/blog/data-science-in-supply-chain/data-science-in-supply-chain-framework.svg">
+  <meta name="twitter:image:alt" content="Five working areas of data science in supply chain — demand forecasting, inventory optimization, supplier risk scoring, route optimization, and ad-hoc planning agents — around a central planning loop.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Schema #1: Organization -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"InfiniSynapse","url":"https://infinisynapse.com","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","caption":"InfiniSynapse AI data analyst logo","width":512,"height":512},"sameAs":["https://x.com/InfiniSynapse"]}
+  </script>
+
+  <!-- Schema #2: BreadcrumbList -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://infinisynapse.com"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://infinisynapse.com/en/blog"},{"@type":"ListItem","position":3,"name":"Data Science in Supply Chain in 2026: Five Working Areas and Where AI Agents Fit","item":"https://infinisynapse.com/en/blog/data-science-in-supply-chain"}]}
+  </script>
+
+  <!-- Schema #3: Article -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Data Science in Supply Chain in 2026: Five Working Areas and Where AI Agents Fit","description":"A 2026 working guide to data science in supply chain: demand forecasting, inventory optimization, supplier risk, route AI, tool stack and where agents fit.","image":"https://infinisynapse.com/en/blog/data-science-in-supply-chain/data-science-in-supply-chain-framework.svg","datePublished":"2026-06-28","dateModified":"2026-06-28","author":{"@type":"Organization","name":"InfiniSynapse Research"},"publisher":{"@type":"Organization","name":"InfiniSynapse","logo":{"@type":"ImageObject","url":"https://infinisynapse.com/logo.png","width":512,"height":512}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://infinisynapse.com/en/blog/data-science-in-supply-chain"}}
+  </script>
+
+  <!-- Schema #4: FAQPage -->
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is data science in supply chain?","acceptedAnswer":{"@type":"Answer","text":"Data science in supply chain is the practice of applying statistical models, machine learning, and optimization to planning decisions — what to forecast, how much to hold, which supplier carries risk, which route to send a truck on. It covers five working areas: demand forecasting, inventory optimization, supplier risk scoring, route optimization, and ad-hoc planning analysis."}},
+{"@type":"Question","name":"What are the most useful data science in supply chain examples?","acceptedAnswer":{"@type":"Answer","text":"The four examples planners cite most often are SKU-level demand forecasts that beat a moving average, safety stock policies set by service-level rather than gut feel, supplier scorecards that combine on-time-in-full with financial signals, and route or load plans solved by an optimizer rather than by spreadsheet. The fifth — ad-hoc planning Q&A — is newer and is where AI agents now sit."}},
+{"@type":"Question","name":"What tools are used for data science in supply chain management?","acceptedAnswer":{"@type":"Answer","text":"The working stack usually includes Python for modeling, SQL on a warehouse such as Snowflake or BigQuery for prepared data, an optimization library or solver for inventory and routing, a planning system or ERP for execution, and increasingly an AI data agent for the ad-hoc questions that never made it into the planning system. No single vendor covers all five layers."}},
+{"@type":"Question","name":"Where does AI data analysis fit into supply chain work?","acceptedAnswer":{"@type":"Answer","text":"AI sits in two places: inside forecasting and optimization as the modeling layer, and on top of the warehouse as the answering layer. The answering layer is the newer of the two. An AI data agent connects to your warehouse, retrieves business definitions, plans the analysis, runs SQL, verifies the result, and returns an evidence trail you can defend in a planning meeting."}},
+{"@type":"Question","name":"Do I need a data science team to start?","acceptedAnswer":{"@type":"Answer","text":"You can start without a dedicated team for two of the five areas: a tuned forecasting model from a vendor, and an AI data agent for ad-hoc planning questions, deliver value without a hiring cycle. The other three — inventory optimization, supplier risk scoring, and route optimization — need either an internal modeler or a focused vendor, because the constraints are too company-specific to outsource blindly."}},
+{"@type":"Question","name":"How is supplier risk scoring built in practice?","acceptedAnswer":{"@type":"Answer","text":"A working supplier scorecard combines four signal families: operational performance (on-time-in-full, defect rate, lead time variance), financial health (credit and payment signals), concentration risk (share of spend and single-source flags), and geopolitical or weather exposure on shipping lanes. Scores roll up to a category review and a quarterly action list — not just a dashboard nobody opens."}},
+{"@type":"Question","name":"What is the difference between a planning system and an AI data agent?","acceptedAnswer":{"@type":"Answer","text":"A planning system holds the canonical plan and the execution data. An AI data agent answers questions about that data and the surrounding context. The planning system says what the plan is; the agent helps you investigate why an exception happened, what changed between two cycles, or which scenario to bring to the S&OP meeting. The two are complements."}},
+{"@type":"Question","name":"What does it look like when AI data analysis goes wrong in supply chain?","acceptedAnswer":{"@type":"Answer","text":"The two recurring failure modes are: an AI tool that generates SQL against your warehouse without retrieving business definitions, so it counts the wrong status codes, and an AI tool that has no verification step, so a one-off question becomes a number quoted at the next S&OP meeting with no evidence trail. Both are governance failures — the fix is plan review, read-only access, and a stored audit trail."}}
+]}
+  </script>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    a{color:#5B5BFF;text-decoration:none}
+    a:hover{color:#111827}
+    .nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+    .nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+    .nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+    .nav-logo-mark{height:26px;display:flex;align-items:center}
+    .nav-logo-mark img{height:26px;width:auto;display:block}
+    .nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+    .nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap;transition:color 0.15s}
+    .nav-menu a:hover{color:#111827}
+    .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+    .nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap;box-shadow:none;transition:background 0.15s,border-color 0.15s,transform 0.15s}
+    a.nav-btn:hover{color:#111827;border-color:#C7CEDA;transform:translateY(-1px)}
+    .nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+    .nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+    .nav-btn-primary:hover{color:#FFFFFF}
+    .nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+    .nav-btn-dark:hover{color:#FFFFFF}
+    .nav-icon{width:17px;height:17px;flex:0 0 auto}
+    .nav-chevron{width:15px;height:15px;flex:0 0 auto}
+    .wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+    .breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+    .breadcrumb a{color:#6B7280}
+    .badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+    .badge-client{background:#EEF2FF;color:#4338CA}
+    .badge-cat{background:#ECFDF5;color:#047857}
+    h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+    h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+    h3{font-size:21px;color:#111827;margin:24px 0 8px}
+    p{margin:0 0 16px}
+    ul,ol{padding-left:22px;margin:0 0 18px}
+    li{margin:6px 0}
+    .meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+    .author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+    .info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+    .info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+    .disclosure{font-size:13.5px;color:#92400E;background:#FEF3C7;border-left:3px solid #F59E0B;border-radius:0 8px 8px 0;padding:12px 16px;margin:0 0 28px;line-height:1.6}
+    .toc,.tldr,.snippet-answer,.definition,.methodology,.cta-box{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#FFFFFF}
+    .toc{background:#F9FAFB}
+    .toc-label,.tldr-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+    .tldr{background:#F8FAFC}
+    .snippet-answer{background:#F5F3FF;border-color:#DDD6FE}
+    .definition{background:#ECFDF5;border-color:#BBF7D0}
+    .feature-img{display:block;width:100%;height:auto;border:1px solid #E5E7EB;border-radius:14px;margin:22px 0;background:#F8FAFC}
+    table{width:100%;border-collapse:collapse;margin:18px 0;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden;display:table}
+    th,td{padding:13px 14px;border-bottom:1px solid #E5E7EB;text-align:left;vertical-align:top}
+    th{background:#F9FAFB;color:#111827;font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+    td{color:#4B5563}
+    .quote{font-size:18px;font-weight:700;color:#111827;border-left:4px solid #5B5BFF;padding:8px 0 8px 16px;margin:22px 0}
+    .cta-box{background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02));border-color:rgba(91,91,255,0.22)}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+    .cta-btn:hover{background:#1F2937;color:#FFFFFF}
+    .faq-item{border-bottom:1px solid #E5E7EB;padding:16px 0}
+    .faq-q{font-weight:800;color:#111827;margin-bottom:5px}
+    .faq-a{color:#4B5563}
+    .methodology{background:#F9FAFB;color:#4B5563}
+    .refs li{font-size:13.5px;color:#4B5563}
+    .related{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0 34px}
+    .related a{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:12px 14px;color:#5B5BFF;font-weight:700}
+    .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:18px 0}
+    .stat{border:1px solid #E5E7EB;border-radius:12px;padding:16px 18px;background:#F9FAFB}
+    .stat .num{font-size:28px;font-weight:800;color:#5B5BFF;line-height:1.2}
+    .stat .lab{font-size:13.5px;color:#6B7280;margin-top:4px;line-height:1.55}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+    .panel{border:1px solid #E5E7EB;border-radius:12px;padding:18px 20px;background:#FFFFFF}
+    .panel h3{margin-top:0}
+    .panel-good{background:#F0FDF4;border-color:#BBF7D0}
+    .panel-bad{background:#FEF2F2;border-color:#FECACA}
+    .footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+    .footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{color:#6B7280;font-size:14px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+    @media(max-width:1280px){.nav-inner{max-width:1180px;column-gap:24px}.nav-menu{gap:18px}.nav-menu a,.nav-btn{font-size:14px}.nav-btn{min-height:36px;padding:0 12px}.nav-btn-primary,.nav-btn-dark{padding:0 14px}}
+    @media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}.nav-logo{width:100%;justify-content:center}.nav-menu,.nav-actions{justify-content:center;flex-wrap:wrap}h1{font-size:40px}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.footer-grid{grid-template-columns:1fr}table{font-size:14px}.grid-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12S9.8 18.6 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        EN
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Book Demo
+      </a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    data science in supply chain
+  </nav>
+
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Supply Chain Guide</span>
+  </div>
+
+  <h1>Data Science in Supply Chain in 2026: Five Working Areas and Where AI Agents Fit</h1>
+  <p class="meta-desc">A practitioner's map of where data science actually shows up in supply chain — demand forecasting, inventory optimization, supplier risk scoring, route AI, and the new ad-hoc planning layer where AI data agents sit.</p>
+
+  <div class="author-grid">
+    <div class="info-card"><strong>Author</strong>InfiniSynapse Research, supply chain analytics review team</div>
+    <div class="info-card"><strong>Published</strong>2026-06-28 · Last verified 2026-06-28 · Next review 2026-09-28</div>
+    <div class="info-card"><strong>Evidence base</strong>MIT CTL publications, Gartner supply chain research, BLS data scientist outlook, NIST AI RMF, vendor docs (SAP IBP, Kinaxis, o9, Blue Yonder).</div>
+  </div>
+
+  <div class="disclosure">
+    <strong>Disclosure:</strong> This page is published by InfiniSynapse, which builds an enterprise AI data analyst that connects to the warehouses behind supply chain planning stacks. We describe InfiniSynapse where the ad-hoc planning layer is the topic, but the five working areas, scoring frameworks, and decision rules are written so planners can use them to evaluate any vendor — including against us.
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ul>
+      <li><a href="#answer">Direct answer</a></li>
+      <li><a href="#why-now">Why supply chain is a sweet spot for data science</a></li>
+      <li><a href="#five-areas">The five working areas of data science in supply chain</a></li>
+      <li><a href="#examples">Data science in supply chain examples</a></li>
+      <li><a href="#tools">Tools landscape: what each layer needs</a></li>
+      <li><a href="#ai-fit">Where AI data agents fit in the planning loop</a></li>
+      <li><a href="#decision">A decision rubric for adding a new layer</a></li>
+      <li><a href="#mistakes">Common mistakes when adding data science to supply chain</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#methodology">Methodology</a></li>
+      <li><a href="#references">Sources and references</a></li>
+    </ul>
+  </nav>
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR</div>
+    <ul>
+      <li>Data science in supply chain shows up in <strong>five working areas</strong>: demand forecasting, inventory optimization, supplier risk scoring, route and load optimization, and ad-hoc planning analysis.</li>
+      <li>Most teams get the first four from a vendor (planning suite, optimizer, scorecard tool) and own the fifth themselves — the questions that never made it into the planning system.</li>
+      <li>AI data agents are the new entrant for that fifth area. They connect to the warehouse behind the planning suite, retrieve business definitions, plan the analysis, run SQL, and return an answer with an evidence trail you can defend in S&amp;OP.</li>
+      <li>The two failure modes worth budgeting against are: a forecast that overfits last year's promos, and an AI tool that runs SQL without retrieving what the business actually means.</li>
+    </ul>
+  </div>
+
+  <h2 id="answer">Direct answer: where does data science fit in supply chain in 2026?</h2>
+  <div class="snippet-answer">Data science in supply chain sits in five working areas — demand forecasting, inventory optimization, supplier risk scoring, route optimization, and ad-hoc planning analysis. Vendors handle most of the first four. The fifth, where planners ask open-ended questions across the warehouse and the planning system, is where AI data agents now sit.</div>
+
+  <h2 id="why-now">Why supply chain is a sweet spot for data science in 2026</h2>
+  <p>Three forces meet in supply chain that exist almost nowhere else in the same combination. First, the data is dense and structured — every order, shipment, receipt, and inventory snapshot is recorded. Second, every decision is a constrained optimization with a clear cost function — too much inventory ties up working capital, too little loses revenue. Third, the planning cycle is short enough that a better model pays back fast. The U.S. <a href="https://www.bls.gov/ooh/math/data-scientists.htm" target="_blank" rel="noopener">Bureau of Labor Statistics</a> projects data scientist roles growing 36% from 2023 to 2033, and supply chain is one of the deepest hiring categories inside that growth.</p>
+  <p>That density is why a tooling map matters more than a tool ranking. The same warehouse table — say, <code>shipment_lines</code> — feeds a forecast, an inventory policy, a supplier scorecard, a routing solver, and a planner's ad-hoc question on a Tuesday morning. Each of those reads the same data through a different layer of the stack.</p>
+
+  <img class="feature-img" src="data-science-in-supply-chain-framework.svg" alt="Diagram of the five working areas of data science in supply chain — demand forecasting, inventory optimization, supplier risk scoring, route optimization, and ad-hoc planning analysis with an AI data agent — arranged around a central planning loop" width="1200" height="630" loading="lazy">
+
+  <h2 id="five-areas">The five working areas of data science in supply chain</h2>
+
+  <h3>Area 1 — Demand forecasting</h3>
+  <p>The oldest application and still the highest-ROI one. A modern demand forecast blends statistical baselines (exponential smoothing, ARIMA), machine learning models (gradient-boosted trees, deep models for long-tail SKUs), and exogenous signals — promotions, weather, macro indicators. The point of the model is not the lowest MAPE on paper; it is the lowest forecast bias on the SKUs that matter to working capital. Forecasting is also the layer where overfitting hurts most, because last year's promo plan rarely repeats verbatim.</p>
+
+  <h3>Area 2 — Inventory optimization</h3>
+  <p>Once the forecast exists, inventory optimization turns it into a policy: how much to hold at each node, at what reorder point, with what service-level target. The math is well known — newsvendor models, multi-echelon optimization — but the constraints are company-specific. The shift in 2026 is that more teams set inventory policy by SKU-location cluster rather than a single corporate service level, because the second approach pays for safety stock the customer never notices.</p>
+
+  <h3>Area 3 — Supplier risk scoring</h3>
+  <p>A working supplier scorecard combines four signal families: operational performance (on-time-in-full, defect rate, lead time variance), financial health (credit and payment signals), concentration risk (share of spend and single-source flags), and geopolitical or weather exposure on shipping lanes. The output is a category review and a quarterly action list — not a dashboard nobody opens. The hardest part is not the model; it is keeping the supplier master clean enough for the model to read.</p>
+
+  <h3>Area 4 — Route and load optimization</h3>
+  <p>The classical operations research domain. Vehicle routing problems, bin packing, and load consolidation all run through solvers — open source (OR-Tools) or commercial — that produce an executable plan for the dispatch team. The data science contribution sits in two places: feeding the solver with better demand and lead-time estimates, and post-running route deviations to find systemic issues (a lane that always runs 90 minutes late means the planned travel time is wrong).</p>
+
+  <h3>Area 5 — Ad-hoc planning analysis</h3>
+  <p>The newest area and the only one that targets open-ended questions directly. "Which categories drove the inventory build last quarter?" "Why did our southern DC miss service last week — was it a forecast miss or a transit issue?" "If supplier X goes down, which SKUs are exposed and for how long?" These questions never make it into the planning system. They are why a planner has 14 spreadsheets open at S&amp;OP. An <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query agent</a> sits exactly here — it takes the plain-English question, retrieves business context, runs SQL against the warehouse, verifies the answer, and delivers an evidence trail.</p>
+
+  <h2 id="examples">Data science in supply chain examples</h2>
+
+  <table>
+    <thead>
+      <tr><th>Working area</th><th>Concrete example</th><th>Typical input</th><th>Typical output</th><th>Owner</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>1. Demand forecasting</strong></td><td>Weekly SKU forecast across 40 DCs with promo lift</td><td>Order history, promo calendar, weather</td><td>Forecast + bias-adjusted figures</td><td>Demand planner</td></tr>
+      <tr><td><strong>2. Inventory optimization</strong></td><td>Safety stock policy by SKU-DC cluster, 95% target</td><td>Forecast, lead time distribution, holding cost</td><td>Reorder points and order-up-to levels</td><td>Inventory planner</td></tr>
+      <tr><td><strong>3. Supplier risk scoring</strong></td><td>Quarterly category scorecard with action list</td><td>OTIF, defect rate, credit signals, news feed</td><td>Risk tier + supplier actions</td><td>Procurement</td></tr>
+      <tr><td><strong>4. Route/load optimization</strong></td><td>Daily dispatch plan minimizing miles and wait time</td><td>Orders, vehicle capacity, time windows</td><td>Routes and load assignments</td><td>Dispatch / logistics</td></tr>
+      <tr><td><strong>5. Ad-hoc planning analysis</strong></td><td>"Why did the southern DC miss service last week?"</td><td>Warehouse data + planning system + KB</td><td>Plain-English answer + evidence trail</td><td>Planner / S&amp;OP lead</td></tr>
+    </tbody>
+  </table>
+
+  <p>Read the table by row, not by column. The five areas are answers to different questions and rarely sit on the same vendor. A planner who owns Area 5 well outperforms a peer who has only Areas 1 through 4, because the open-ended layer is where most exception management actually happens.</p>
+
+  <h2 id="tools">Tools landscape: what each layer needs in 2026</h2>
+
+  <h3>Planning suites and ERP modules</h3>
+  <p>SAP IBP, Kinaxis Maestro, o9, Blue Yonder, and Oracle SCM Planning anchor the canonical plan and the execution data. They are good at the structured planning loop and the integration with ERP. They are weaker at open-ended questions outside their data model and at cross-source joins to ad-hoc data (a CSV from a supplier, a tab from an analyst).</p>
+
+  <h3>Modeling stack</h3>
+  <p>Python (pandas, scikit-learn, statsforecast, prophet for forecasting; OR-Tools or commercial solvers for optimization), SQL on a warehouse such as <a href="https://docs.snowflake.com/" target="_blank" rel="noopener">Snowflake</a> or BigQuery, and a model registry (MLflow or vendor equivalent) for productionizing forecasts and risk scores. This stack is where the differentiating math lives.</p>
+
+  <h3>Warehouse and the answering layer</h3>
+  <p>The warehouse holds prepared planning data — shipment lines, inventory snapshots, supplier scorecards, route plans — typically modeled with dbt or vendor equivalents. On top of that warehouse sits the answering layer: a BI tool for known dashboards and increasingly an AI data agent for the questions that never made it onto a dashboard. The <a href="https://en.wikipedia.org/wiki/Retrieval-augmented_generation" target="_blank" rel="noopener">retrieval-augmented generation</a> pattern is what makes the agent layer different from a chatbot — it retrieves business definitions and schema before drafting SQL.</p>
+
+  <div class="stat-grid">
+    <div class="stat"><div class="num">5</div><div class="lab">Working areas of data science in supply chain. Most planning shops own three or four and bring in vendors or an AI agent for the rest.</div></div>
+    <div class="stat"><div class="num">36%</div><div class="lab">Projected growth in data scientist roles, 2023-2033 (U.S.). Supply chain is one of the deepest hiring lanes inside that figure. <a href="https://www.bls.gov/ooh/math/data-scientists.htm" target="_blank" rel="noopener">Source: BLS</a></div></div>
+    <div class="stat"><div class="num">92.96%</div><div class="lab">Human engineer execution accuracy on the BIRD text-to-SQL benchmark — the bar AI agents still trail without retrieval and verification. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">Source: BIRD</a></div></div>
+  </div>
+
+  <h2 id="ai-fit">Where AI data agents fit in the planning loop</h2>
+  <p>Areas 1 through 4 assume the planner already knows the question. Area 5 does not. That is the structural shift: an agent retrieves business context and warehouse schema, plans the analysis, runs SQL, verifies the output, and explains itself. Applied to supply chain, this is the difference between a chatbot that hallucinates supplier names and an analyst that hands you a defensible exception report ten minutes before the meeting. The <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">agent pattern</a> is a system that directs its own tool use, not a prompt that types SQL.</p>
+
+  <h3>The knowledge base binding contribution</h3>
+  <p>The newest differentiator inside Area 5 is <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-with-ai">database + knowledge base binding</a>. Each warehouse connection is paired with a curated knowledge base of business definitions — what "on-time" means at your company, which status codes denote a short ship, which SKU groups roll into the "core" category. The agent retrieves from the knowledge base as a tool call before running SQL. Without binding, an agent can correctly count <code>status='STO_PARTIAL'</code> rows but cannot explain that this status means a short ship that still counted as on-time for the customer.</p>
+
+  <p class="quote">A forecast that overfits last year's promos is a working-capital tax. A planning agent that does not retrieve business definitions is a credibility tax. Budget for both.</p>
+
+  <h2 id="decision">A decision rubric for adding a new layer</h2>
+  <ol>
+    <li><strong>What is the question shape?</strong> Recurring, modeled, executable → planning suite or solver. Cross-source, ad-hoc, defended in a meeting → AI data agent on the warehouse.</li>
+    <li><strong>Who owns the answer?</strong> If the planner owns it, the tool needs to give the planner an evidence trail they can read without a data scientist. If the data scientist owns it, the tool needs to produce models the planner can actually act on.</li>
+    <li><strong>What audit posture do you need?</strong> Low → a notebook is fine. Medium → version-controlled models and BI dashboards with reviewers. High (regulated, finance-reviewed, board-visible) → plan review per query, read-only credentials, stored audit trail. <a href="https://infinisynapse.com/en/blog/explainable-ai-data-analysis">Explainable AI data analysis</a> spells out what the trail must include.</li>
+    <li><strong>How fast does it pay back?</strong> Area 1 and Area 5 typically pay back inside a quarter. Areas 2 through 4 pay back inside two quarters if the warehouse is already clean.</li>
+  </ol>
+
+  <h2 id="mistakes">Common mistakes when adding data science to supply chain</h2>
+  <ul>
+    <li><strong>Treating MAPE as the goal.</strong> MAPE on aggregate looks fine while the SKUs that matter to working capital miss systematically. Track forecast bias by SKU-DC cluster, not just total MAPE.</li>
+    <li><strong>Setting one service level for the whole company.</strong> A 98% target on a $5 SKU costs the same as a 98% target on a $5,000 SKU. Differentiate by margin and substitutability.</li>
+    <li><strong>Building a supplier scorecard on a dirty supplier master.</strong> The model is fine; the upstream data is not. Spend the first month on master data, not on the algorithm.</li>
+    <li><strong>Running an AI tool against the warehouse without retrieval.</strong> An LLM that drafts SQL without retrieving business definitions will pick the wrong status codes. The fix is binding the database to a knowledge base, not a bigger prompt.</li>
+    <li><strong>Letting an AI-generated number reach S&amp;OP without an evidence trail.</strong> A number without a plan, a source, and a verification step is a number you cannot defend when finance asks how you got it.</li>
+  </ul>
+
+  <div class="grid-2">
+    <div class="panel panel-good">
+      <h3>When this guide applies</h3>
+      <ul>
+        <li>You are picking, extending, or auditing a supply chain analytics stack in 2026</li>
+        <li>You want a working-area map, not a vendor leaderboard</li>
+        <li>You need to defend a tool choice to finance, security, or operations leadership</li>
+      </ul>
+    </div>
+    <div class="panel panel-bad">
+      <h3>When it does not</h3>
+      <ul>
+        <li>You need a deep dive into one optimizer's tuning — that is a vendor topic</li>
+        <li>You are evaluating planning-suite contracts head-to-head — different post</li>
+        <li>You only need a one-time export of shipment data — a SQL client is enough</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-box">
+    <h3>See an AI data agent run on your planning warehouse</h3>
+    <p>Connect a warehouse read-only, seed a small supply chain knowledge base, and ask one open-ended question — a service miss, an inventory build, a supplier exposure. Review the plan, the queries, the verification, and the evidence trail before deciding whether Area 5 belongs in your stack.</p>
+    <a href="https://app.infinisynapse.com/" class="cta-btn">Try InfiniSynapse online</a>
+  </div>
+
+  <h2 id="faq">FAQ</h2>
+  <div class="faq-item"><div class="faq-q">What is data science in supply chain?</div><div class="faq-a">Data science in supply chain is the practice of applying statistical models, machine learning, and optimization to planning decisions — what to forecast, how much to hold, which supplier carries risk, which route to send a truck on. It covers five working areas: demand forecasting, inventory optimization, supplier risk scoring, route optimization, and ad-hoc planning analysis.</div></div>
+  <div class="faq-item"><div class="faq-q">What are the most useful data science in supply chain examples?</div><div class="faq-a">The four examples planners cite most often are SKU-level demand forecasts that beat a moving average, safety stock policies set by service-level rather than gut feel, supplier scorecards that combine on-time-in-full with financial signals, and route or load plans solved by an optimizer rather than by spreadsheet. The fifth — ad-hoc planning Q&amp;A — is newer and is where AI agents now sit.</div></div>
+  <div class="faq-item"><div class="faq-q">What tools are used for data science in supply chain management?</div><div class="faq-a">The working stack usually includes Python for modeling, SQL on a warehouse such as Snowflake or BigQuery for prepared data, an optimization library or solver for inventory and routing, a planning system or ERP for execution, and increasingly an AI data agent for the ad-hoc questions that never made it into the planning system. No single vendor covers all five layers.</div></div>
+  <div class="faq-item"><div class="faq-q">Where does AI data analysis fit into supply chain work?</div><div class="faq-a">AI sits in two places: inside forecasting and optimization as the modeling layer, and on top of the warehouse as the answering layer. The answering layer is the newer of the two. An AI data agent connects to your warehouse, retrieves business definitions, plans the analysis, runs SQL, verifies the result, and returns an evidence trail you can defend in a planning meeting.</div></div>
+  <div class="faq-item"><div class="faq-q">Do I need a data science team to start?</div><div class="faq-a">You can start without a dedicated team for two of the five areas: a tuned forecasting model from a vendor, and an AI data agent for ad-hoc planning questions, deliver value without a hiring cycle. The other three — inventory optimization, supplier risk scoring, and route optimization — need either an internal modeler or a focused vendor, because the constraints are too company-specific to outsource blindly.</div></div>
+  <div class="faq-item"><div class="faq-q">How is supplier risk scoring built in practice?</div><div class="faq-a">A working supplier scorecard combines four signal families: operational performance (on-time-in-full, defect rate, lead time variance), financial health (credit and payment signals), concentration risk (share of spend and single-source flags), and geopolitical or weather exposure on shipping lanes. Scores roll up to a category review and a quarterly action list — not just a dashboard nobody opens.</div></div>
+  <div class="faq-item"><div class="faq-q">What is the difference between a planning system and an AI data agent?</div><div class="faq-a">A planning system holds the canonical plan and the execution data. An AI data agent answers questions about that data and the surrounding context. The planning system says what the plan is; the agent helps you investigate why an exception happened, what changed between two cycles, or which scenario to bring to the S&amp;OP meeting. The two are complements.</div></div>
+  <div class="faq-item"><div class="faq-q">What does it look like when AI data analysis goes wrong in supply chain?</div><div class="faq-a">The two recurring failure modes are: an AI tool that generates SQL against your warehouse without retrieving business definitions, so it counts the wrong status codes, and an AI tool that has no verification step, so a one-off question becomes a number quoted at the next S&amp;OP meeting with no evidence trail. Both are governance failures — the fix is plan review, read-only access, and a stored audit trail.</div></div>
+
+  <div class="methodology" id="methodology">
+    <h2>Methodology and review notes</h2>
+    <p><strong>Last updated:</strong> 2026-06-28 · <strong>Next scheduled review:</strong> 2026-09-28</p>
+    <p>Working areas on this page are grounded in MIT Center for Transportation &amp; Logistics publications, public Gartner supply chain research, vendor documentation (SAP IBP, Kinaxis, o9, Blue Yonder, Oracle SCM Planning), open-source projects (Google OR-Tools, statsforecast), public benchmarks (BIRD), and the NIST AI Risk Management Framework. The five-area split is a working distinction; some products straddle two or three areas.</p>
+    <p><strong>Conflict of interest:</strong> InfiniSynapse publishes this guide and sells in Area 5 (ad-hoc planning analysis on the warehouse). To reduce bias, the page includes scenarios where Areas 1-4 win outright, a decision rubric that pushes against over-buying, and external sources for every numeric claim.</p>
+    <p><strong>Update cadence:</strong> Reviewed every 90 days for vendor changes, benchmark figures, and terminology.</p>
+  </div>
+
+  <h2 id="references">Sources and references</h2>
+  <ol class="refs">
+    <li><strong>[Independent]</strong> U.S. Bureau of Labor Statistics. Data Scientists occupational outlook. <a href="https://www.bls.gov/ooh/math/data-scientists.htm" target="_blank" rel="noopener">bls.gov/ooh/math/data-scientists.htm</a>.</li>
+    <li><strong>[Independent]</strong> BIRD-SQL: A Big Bench for Large-Scale Database Grounded Text-to-SQL Evaluation. <a href="https://bird-bench.github.io/" target="_blank" rel="noopener">BIRD benchmark</a>.</li>
+    <li><strong>[Independent]</strong> NIST. AI Risk Management Framework (AI RMF 1.0, 2023). <a href="https://www.nist.gov/itl/ai-risk-management-framework" target="_blank" rel="noopener">nist.gov/itl/ai-risk-management-framework</a>.</li>
+    <li><strong>[Independent]</strong> Anthropic. Building Effective Agents (research note). <a href="https://www.anthropic.com/research/building-effective-agents" target="_blank" rel="noopener">anthropic.com/research/building-effective-agents</a>.</li>
+    <li><strong>[Reference]</strong> Retrieval-augmented generation. <a href="https://en.wikipedia.org/wiki/Retrieval-augmented_generation" target="_blank" rel="noopener">Wikipedia entry</a>.</li>
+    <li><strong>[Vendor]</strong> Snowflake documentation. <a href="https://docs.snowflake.com/" target="_blank" rel="noopener">docs.snowflake.com</a>.</li>
+    <li><strong>[Independent]</strong> ISO/IEC 42001 — AI management system standard. <a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">iso.org/standard/81230.html</a>.</li>
+  </ol>
+
+  <h2>Related guides</h2>
+  <div class="related">
+    <a href="https://infinisynapse.com/en/blog/ai-database-query">AI database query: the pillar guide</a>
+    <a href="https://infinisynapse.com/en/blog/data-analyst-snowflake-with-ai">Snowflake data analyst with AI</a>
+    <a href="https://infinisynapse.com/en/blog/postgresql-data-analysis-with-ai">PostgreSQL data analysis with AI</a>
+    <a href="https://infinisynapse.com/en/blog/what-is-a-data-agent">What is a data agent?</a>
+    <a href="https://infinisynapse.com/en/blog/ai-data-analyst-explained">AI data analyst explained</a>
+    <a href="https://infinisynapse.com/en/blog/explainable-ai-data-analysis">Explainable AI data analysis</a>
+    <a href="https://infinisynapse.com/en/blog/agentic-analytics-explained">Agentic analytics explained</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

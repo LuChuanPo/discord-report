@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">The seven-step AI data analyst workflow</title>
+  <desc id="desc">Seven-step AI data analyst workflow: understand the question, metric definitions, find tables and fields, identify join keys, clean and aggregate, docs and web context, charts and conclusions. AI-executed steps shown in indigo, human-led gates in amber, each step listing what the AI does and what stays human.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+
+  <text x="100" y="116" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">What an AI data analyst does</text>
+  <text x="100" y="156" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">Seven steps, two owners: AI executes, you keep the judgment calls</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Legend -->
+    <rect x="790" y="128" width="18" height="18" rx="5" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="816" y="143" fill="#6B7280" font-size="14">AI-led step</text>
+    <rect x="920" y="128" width="18" height="18" rx="5" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="946" y="143" fill="#6B7280" font-size="14">human review gate</text>
+
+    <!-- Row 1 -->
+    <rect x="100" y="200" width="220" height="148" rx="16" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="120" y="230" fill="#B45309" font-size="14" font-weight="800">STEP 1</text>
+    <text x="120" y="258" fill="#111827" font-size="17" font-weight="800">Understand question</text>
+    <text x="120" y="290" fill="#4338CA" font-size="13">AI: parses intent &amp; metrics</text>
+    <text x="120" y="314" fill="#B45309" font-size="13">You: supply the stakes</text>
+
+    <rect x="350" y="200" width="220" height="148" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="370" y="230" fill="#4338CA" font-size="14" font-weight="800">STEP 2</text>
+    <text x="370" y="258" fill="#111827" font-size="17" font-weight="800">Metric definitions</text>
+    <text x="370" y="290" fill="#4338CA" font-size="13">AI: retrieves from KB</text>
+    <text x="370" y="314" fill="#B45309" font-size="13">You: arbitrate disputes</text>
+
+    <rect x="600" y="200" width="220" height="148" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="620" y="230" fill="#4338CA" font-size="14" font-weight="800">STEP 3</text>
+    <text x="620" y="258" fill="#111827" font-size="17" font-weight="800">Find tables &amp; fields</text>
+    <text x="620" y="290" fill="#4338CA" font-size="13">AI: schema retrieval</text>
+    <text x="620" y="314" fill="#B45309" font-size="13">You: spot-check sources</text>
+
+    <rect x="850" y="200" width="220" height="148" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="870" y="230" fill="#4338CA" font-size="14" font-weight="800">STEP 4</text>
+    <text x="870" y="258" fill="#111827" font-size="17" font-weight="800">Identify join keys</text>
+    <text x="870" y="290" fill="#4338CA" font-size="13">AI: proposes joins</text>
+    <text x="870" y="314" fill="#B45309" font-size="13">You: confirm messy keys</text>
+
+    <!-- Row 1 arrows -->
+    <path d="M324 274h12" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M330 266l10 8-10 8" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M574 274h12" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M580 266l10 8-10 8" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M824 274h12" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M830 266l10 8-10 8" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Wrap arrow step 4 to step 5 -->
+    <path d="M960 348v6c0 10-8 18-18 18H328c-10 0-18 8-18 18v2" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <path d="M300 380l10 12 10-12" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Row 2 -->
+    <rect x="200" y="396" width="220" height="148" rx="16" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="220" y="426" fill="#B45309" font-size="14" font-weight="800">STEP 5</text>
+    <text x="220" y="454" fill="#111827" font-size="17" font-weight="800">Clean &amp; aggregate</text>
+    <text x="220" y="486" fill="#4338CA" font-size="13">AI: executes the plan</text>
+    <text x="220" y="510" fill="#B45309" font-size="13">You: approve plan first</text>
+
+    <rect x="450" y="396" width="220" height="148" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="470" y="426" fill="#4338CA" font-size="14" font-weight="800">STEP 6</text>
+    <text x="470" y="454" fill="#111827" font-size="17" font-weight="800">Docs &amp; web context</text>
+    <text x="470" y="486" fill="#4338CA" font-size="13">AI: pulls docs + web</text>
+    <text x="470" y="510" fill="#B45309" font-size="13">You: judge credibility</text>
+
+    <rect x="700" y="396" width="220" height="148" rx="16" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="720" y="426" fill="#B45309" font-size="14" font-weight="800">STEP 7</text>
+    <text x="720" y="454" fill="#111827" font-size="17" font-weight="800">Charts &amp; conclusions</text>
+    <text x="720" y="486" fill="#4338CA" font-size="13">AI: drafts visuals + trail</text>
+    <text x="720" y="510" fill="#B45309" font-size="13">You: final judgment</text>
+
+    <!-- Row 2 arrows -->
+    <path d="M424 470h12" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M430 462l10 8-10 8" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M674 470h12" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round"/>
+    <path d="M680 462l10 8-10 8" stroke="#5B5BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <text x="100" y="560" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="18">InfiniSynapse — enterprise AI data analyst</text>
+</svg>

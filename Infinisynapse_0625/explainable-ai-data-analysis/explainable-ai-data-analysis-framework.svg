@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Anatomy of an evidence trail in explainable AI data analysis</title>
+  <desc id="desc">Seven components flowing from question to decision: question as interpreted, context retrieved, the plan, queries executed, intermediate checks, sources cited, and caveats, ending in a reviewable decision.</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="50" y="46" width="1100" height="538" rx="28" fill="#FFFFFF" stroke="#D9DEE8" stroke-width="2"/>
+
+  <text x="100" y="116" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="800">Anatomy of an evidence trail</text>
+  <text x="100" y="156" fill="#5B5BFF" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700">Seven components between a question and a defensible decision</text>
+
+  <g font-family="Inter, Arial, sans-serif">
+    <!-- Question pill -->
+    <rect x="100" y="206" width="150" height="96" rx="16" fill="#111827"/>
+    <text x="125" y="248" fill="#FFFFFF" font-size="19" font-weight="800">Question</text>
+    <text x="125" y="276" fill="#9CA3AF" font-size="13">"Why did churn rise?"</text>
+
+    <!-- Row 1: components 1-3 -->
+    <rect x="290" y="206" width="260" height="96" rx="16" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="310" y="238" fill="#4338CA" font-size="13" font-weight="800">1 · QUESTION AS INTERPRETED</text>
+    <text x="310" y="264" fill="#111827" font-size="17" font-weight="800">Restated intent</text>
+    <text x="310" y="288" fill="#6B7280" font-size="13">metric definition applied</text>
+
+    <rect x="590" y="206" width="260" height="96" rx="16" fill="#F5F3FF" stroke="#DDD6FE"/>
+    <text x="610" y="238" fill="#6D28D9" font-size="13" font-weight="800">2 · CONTEXT RETRIEVED</text>
+    <text x="610" y="264" fill="#111827" font-size="17" font-weight="800">Business knowledge</text>
+    <text x="610" y="288" fill="#6B7280" font-size="13">dictionaries · definitions · cases</text>
+
+    <rect x="890" y="206" width="210" height="96" rx="16" fill="#ECFDF5" stroke="#BBF7D0"/>
+    <text x="910" y="238" fill="#047857" font-size="13" font-weight="800">3 · THE PLAN</text>
+    <text x="910" y="264" fill="#111827" font-size="17" font-weight="800">Reviewable steps</text>
+    <text x="910" y="288" fill="#6B7280" font-size="13">sources · joins · windows</text>
+
+    <!-- Arrows row 1 -->
+    <path d="M252 254h26" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M270 245l10 9-10 9" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M552 254h26" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M570 245l10 9-10 9" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M852 254h26" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M870 245l10 9-10 9" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Connector from row 1 down to row 2 -->
+    <path d="M995 302v30c0 12-10 22-22 22H222c-12 0-22 10-22 22v18" stroke="#5B5BFF" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M190 384l10 12 10-12" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Row 2: components 4-7 -->
+    <rect x="100" y="402" width="230" height="96" rx="16" fill="#FEF3C7" stroke="#FDE68A"/>
+    <text x="120" y="434" fill="#B45309" font-size="13" font-weight="800">4 · QUERIES EXECUTED</text>
+    <text x="120" y="460" fill="#111827" font-size="17" font-weight="800">Verbatim log</text>
+    <text x="120" y="484" fill="#6B7280" font-size="13">exact SQL · operations</text>
+
+    <rect x="370" y="402" width="230" height="96" rx="16" fill="#FDF2F8" stroke="#FBCFE8"/>
+    <text x="390" y="434" fill="#BE185D" font-size="13" font-weight="800">5 · INTERMEDIATE CHECKS</text>
+    <text x="390" y="460" fill="#111827" font-size="17" font-weight="800">Self-verification</text>
+    <text x="390" y="484" fill="#6B7280" font-size="13">row counts · null rates</text>
+
+    <rect x="640" y="402" width="210" height="96" rx="16" fill="#EFF6FF" stroke="#BFDBFE"/>
+    <text x="660" y="434" fill="#1D4ED8" font-size="13" font-weight="800">6 · SOURCES CITED</text>
+    <text x="660" y="460" fill="#111827" font-size="17" font-weight="800">Per-number trace</text>
+    <text x="660" y="484" fill="#6B7280" font-size="13">tables · files · documents</text>
+
+    <rect x="890" y="402" width="210" height="96" rx="16" fill="#FEF2F2" stroke="#FECACA"/>
+    <text x="910" y="434" fill="#B91C1C" font-size="13" font-weight="800">7 · CAVEATS</text>
+    <text x="910" y="460" fill="#111827" font-size="17" font-weight="800">Stated limits</text>
+    <text x="910" y="484" fill="#6B7280" font-size="13">freshness · assumptions</text>
+
+    <!-- Arrows row 2 -->
+    <path d="M332 450h24" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M348 441l10 9-10 9" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M602 450h24" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M618 441l10 9-10 9" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M852 450h24" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M868 441l10 9-10 9" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Arrow down to decision -->
+    <path d="M995 498v10" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M985 504l10 12 10-12" stroke="#5B5BFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+
+    <!-- Decision pill -->
+    <rect x="500" y="524" width="600" height="40" rx="20" fill="#111827"/>
+    <text x="528" y="551" fill="#FFFFFF" font-size="17" font-weight="800">Decision a reviewer can reconstruct — without re-running the work</text>
+  </g>
+
+  <text x="100" y="560" fill="#6B7280" font-family="Inter, Arial, sans-serif" font-size="18">InfiniSynapse — enterprise AI data analyst</text>
+</svg>
