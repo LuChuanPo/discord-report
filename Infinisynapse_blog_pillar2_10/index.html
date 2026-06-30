@@ -1,661 +1,251 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>InfiniSynapse Data Analysis Library</title>
-    <meta
-      name="description"
-      content="A hub page linking to 30 InfiniSynapse articles about AI data analysis, analytics agents, BI workflows, data platforms, and industry use cases."
-    />
-    <style>
-      :root {
-        color-scheme: light;
-        --bg: #f6f7fb;
-        --panel: #ffffff;
-        --ink: #111827;
-        --muted: #5b6475;
-        --soft: #eef1f7;
-        --line: #dfe4ee;
-        --blue: #2563eb;
-        --cyan: #0891b2;
-        --green: #059669;
-        --pink: #db2777;
-        --amber: #d97706;
-        --shadow: 0 18px 50px rgba(17, 24, 39, 0.08);
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      * {
-        box-sizing: border-box;
-      }
+  <title>InfiniSynapse Data Analysis Blog Library</title>
+  <meta name="description" content="Browse 30 InfiniSynapse guides on AI data analysis, data agents, BI, SQL, spreadsheets, data platforms, governance, visualization, and industry analytics workflows.">
+  <meta name="robots" content="index, follow">
 
-      body {
-        margin: 0;
-        background:
-          linear-gradient(135deg, rgba(37, 99, 235, 0.08), transparent 34%),
-          linear-gradient(225deg, rgba(8, 145, 178, 0.08), transparent 32%),
-          var(--bg);
-        color: var(--ink);
-        font-family:
-          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          sans-serif;
-        line-height: 1.55;
-      }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;color:#1F2937;background:#FFFFFF;font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased}
+    a{color:#5B5BFF;text-decoration:none}
+    a:hover{color:#111827}
+    .nav{position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #EEF0F4;padding:12px 0}
+    .nav-inner{max-width:1320px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;column-gap:36px}
+    .nav-logo{display:flex;align-items:center;gap:9px;min-width:0}
+    .nav-logo-mark{height:26px;display:flex;align-items:center}
+    .nav-logo-mark img{height:26px;width:auto;display:block}
+    .nav-logo span{font-size:22px;font-weight:700;color:#0B1220;letter-spacing:-0.03em;line-height:1;white-space:nowrap}
+    .nav-menu{display:flex;align-items:center;justify-content:center;gap:24px;min-width:0;margin:0}
+    .nav-menu a{color:#344054;font-size:15px;font-weight:500;line-height:1;white-space:nowrap;transition:color 0.15s}
+    .nav-menu a:hover{color:#111827}
+    .nav-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;min-width:0}
+    .nav-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;padding:0 15px;border-radius:9px;border:1px solid #D9DEE8;background:#FFFFFF;color:#25314A;font-size:15px;font-weight:600;line-height:1;white-space:nowrap;box-shadow:none;transition:background 0.15s,border-color 0.15s,transform 0.15s}
+    a.nav-btn:hover{color:#111827;border-color:#C7CEDA;transform:translateY(-1px)}
+    .nav-btn-soft{background:#F4F5F7;border-color:#F4F5F7;cursor:default}
+    .nav-btn-primary{background:linear-gradient(135deg,#2459FF,#5337FF);border-color:transparent;color:#FFFFFF;padding:0 18px;box-shadow:0 7px 16px rgba(45,72,255,0.24)}
+    .nav-btn-primary:hover{color:#FFFFFF}
+    .nav-btn-dark{background:#000000;border-color:#000000;color:#FFFFFF;border-radius:999px;padding:0 18px}
+    .nav-btn-dark:hover{color:#FFFFFF}
+    .nav-icon{width:17px;height:17px;flex:0 0 auto}
+    .nav-chevron{width:15px;height:15px;flex:0 0 auto}
+    .wrap{max-width:1080px;margin:0 auto;padding:42px 24px 72px}
+    .breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#6B7280;font-size:13px;margin-bottom:22px}
+    .breadcrumb a{color:#6B7280}
+    .badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;margin:0 6px 14px 0;letter-spacing:.02em}
+    .badge-client{background:#EEF2FF;color:#4338CA}
+    .badge-cat{background:#ECFDF5;color:#047857}
+    h1{font-size:54px;line-height:1.05;letter-spacing:-0.02em;color:#0A0A0A;margin:10px 0 18px;font-weight:900}
+    h2{font-size:30px;line-height:1.25;letter-spacing:-0.01em;color:#111827;margin:42px 0 14px}
+    h3{font-size:21px;color:#111827;margin:0 0 8px}
+    p{margin:0 0 16px}
+    .meta-desc{font-size:19px;color:#4B5563;margin-bottom:20px}
+    .author-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 22px}
+    .info-card{padding:14px 16px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;font-size:13.5px;color:#6B7280}
+    .info-card strong{display:block;color:#111827;font-size:15px;margin-bottom:3px}
+    .toc{border-radius:12px;border:1px solid #E5E7EB;padding:20px 22px;margin:24px 0;background:#F9FAFB}
+    .toc-label{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#6B7280;margin-bottom:10px}
+    .search-box{width:100%;border:1px solid #D9DEE8;border-radius:10px;background:#FFFFFF;color:#111827;font:inherit;font-size:15px;padding:12px 14px;outline:none}
+    .search-box:focus{border-color:#5B5BFF;box-shadow:0 0 0 3px rgba(91,91,255,0.12)}
+    .hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0 34px}
+    .article-card{display:flex;flex-direction:column;min-height:218px;background:#FFFFFF;border:1px solid #E5E7EB;border-radius:10px;padding:18px 18px 16px;color:#1F2937;transition:border-color .15s,box-shadow .15s,transform .15s}
+    .article-card:hover{color:#1F2937;border-color:#C7CEDA;box-shadow:0 14px 30px rgba(17,24,39,.08);transform:translateY(-2px)}
+    .article-card:focus-visible{outline:3px solid rgba(91,91,255,.22);outline-offset:2px}
+    .article-card .kicker{display:inline-flex;width:max-content;border-radius:999px;background:#EEF2FF;color:#4338CA;padding:4px 9px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px}
+    .article-card h3{font-size:18px;line-height:1.28;letter-spacing:-.01em}
+    .article-card p{font-size:13.5px;color:#6B7280;line-height:1.58;margin:0}
+    .article-card .read{margin-top:auto;padding-top:16px;color:#5B5BFF;font-size:13.5px;font-weight:800}
+    .empty{display:none;border:1px dashed #E5E7EB;border-radius:12px;background:#F9FAFB;padding:22px;color:#6B7280;text-align:center}
+    .cta-box{border-radius:12px;border:1px solid rgba(91,91,255,0.22);padding:20px 22px;margin:24px 0;background:linear-gradient(135deg,rgba(91,91,255,0.08),rgba(91,91,255,0.02))}
+    .cta-btn{display:inline-flex;align-items:center;justify-content:center;background:#111827;color:#FFFFFF;border-radius:999px;padding:10px 20px;font-weight:800;margin-top:8px}
+    .cta-btn:hover{background:#1F2937;color:#FFFFFF}
+    .footer{background:#F9FAFB;border-top:1px solid #E5E7EB}
+    .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:22px}
+    .footer h4{color:#6B7280;font-size:12px;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .footer-links{display:grid;gap:8px}
+    .footer-links a{color:#6B7280;font-size:14px}
+    .footer-bottom{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid #E5E7EB;color:#9CA3AF;margin-top:24px;padding-top:18px;font-size:13px}
+    @media(max-width:1280px){.nav-inner{max-width:1180px;column-gap:24px}.nav-menu{gap:18px}.nav-menu a,.nav-btn{font-size:14px}.nav-btn{min-height:36px;padding:0 12px}.nav-btn-primary,.nav-btn-dark{padding:0 14px}}
+    @media(max-width:980px){.nav-inner{display:flex;flex-wrap:wrap;justify-content:center;row-gap:14px}.nav-logo{width:100%;justify-content:center}.nav-menu,.nav-actions{justify-content:center;flex-wrap:wrap}h1{font-size:40px}.hub-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.wrap{padding:28px 18px 54px}h1{font-size:34px}h2{font-size:25px}.hub-grid{grid-template-columns:1fr}.article-card{min-height:0}.footer-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://infinisynapse.com" class="nav-logo" aria-label="InfiniSynapse home">
+      <span class="nav-logo-mark"><img src="https://infinisynapse.com/logo.png" alt="InfiniSynapse"></span>
+      <span>InfiniSynapse</span>
+    </a>
+    <div class="nav-menu" aria-label="Primary navigation">
+      <a href="https://infinisynapse.com/#vision">Vision</a>
+      <a href="https://infinisynapse.com/#features">Features</a>
+      <a href="https://infinisynapse.com/tools">Agent Tools</a>
+      <a href="https://infinisynapse.com/en/docs">Docs</a>
+      <a href="https://infinisynapse.com/en/blog">Blog</a>
+      <a href="https://infinisynapse.com/#contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <span class="nav-btn nav-btn-soft" aria-label="Language selector placeholder">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12S9.8 18.6 12 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        EN
+        <svg class="nav-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <a href="https://infinisynapse.com/download" class="nav-btn">Download</a>
+      <a href="https://infinisynapse.com/book-demo" class="nav-btn nav-btn-primary">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 3v4M16 3v4M4 10h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Book Demo
+      </a>
+      <a href="https://app.infinisynapse.com/" class="nav-btn nav-btn-dark">Try Online</a>
+      <a href="https://app.infinisynapse.com/login" class="nav-btn">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
 
-      .wrap {
-        width: min(1180px, calc(100% - 40px));
-        margin: 0 auto;
-      }
+<div class="wrap">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="https://infinisynapse.com">Home</a><span>&gt;</span>
+    <a href="https://infinisynapse.com/en/blog">Blog</a><span>&gt;</span>
+    Data analysis library
+  </nav>
 
-      header {
-        padding: 34px 0 22px;
-      }
+  <div>
+    <span class="badge badge-client">InfiniSynapse</span>
+    <span class="badge badge-cat">Blog Hub</span>
+  </div>
 
-      .nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 18px;
-        margin-bottom: 38px;
-      }
+  <h1>Data Analysis Blog Library</h1>
+  <p class="meta-desc">A hub page for 30 InfiniSynapse articles on AI data analysis, data agents, BI workflows, SQL, spreadsheets, governance, visualization, and modern data platforms.</p>
 
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        min-width: 0;
-      }
+  <div class="author-grid">
+    <div class="info-card"><strong>Collection</strong>InfiniSynapse blog pillar 2.10</div>
+    <div class="info-card"><strong>Pages</strong>30 article pages linked from this hub</div>
+    <div class="info-card"><strong>Use</strong>Search by topic or open any card to jump to the article folder.</div>
+  </div>
 
-      .mark {
-        display: grid;
-        width: 42px;
-        height: 42px;
-        place-items: center;
-        border-radius: 8px;
-        background: linear-gradient(135deg, #2563eb, #0891b2 58%, #059669);
-        color: #ffffff;
-        font-weight: 800;
-        letter-spacing: 0;
-        box-shadow: 0 14px 34px rgba(37, 99, 235, 0.24);
-      }
+  <div class="toc" aria-label="Search articles">
+    <div class="toc-label">Find a page</div>
+    <input id="search" class="search-box" type="search" placeholder="Search by topic, tool, industry, or workflow..." autocomplete="off">
+  </div>
 
-      .brand strong {
-        display: block;
-        font-size: 15px;
-        letter-spacing: 0;
-      }
+  <h2>All guides</h2>
+  <div id="grid" class="hub-grid" aria-label="Article links">
+    <a class="article-card" href="ai-assisted-query-generation-sql-python-social-science-data-analysis/" data-text="AI Query Generation for SQL and Python in Research research social science sql python"><span class="kicker">Research</span><h3>AI Query Generation for SQL and Python in Research</h3><p>AI-assisted SQL and Python query generation for social science data analysis workflows.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="ai-data-governance/" data-text="AI Data Governance for Enterprise Analytics governance enterprise audit risk"><span class="kicker">Governance</span><h3>AI Data Governance for Enterprise Analytics in 2026</h3><p>Access controls, lineage, model risk, audit trails, and enterprise AI analytics governance.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="ai-database-agent-for-data-visualization/" data-text="AI Database Agent for Data Visualization charts agent database"><span class="kicker">Visualization</span><h3>AI Database Agent for Data Visualization: 2026 Guide</h3><p>How database agents connect to data and auto-generate charts as part of each answer.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="ai-in-data-center-operations/" data-text="AI in Data Center Operations aiops dcim cooling predictive maintenance"><span class="kicker">Operations</span><h3>AI in Data Center Operations: 2026 Practitioner Guide</h3><p>Predictive maintenance, cooling optimization, capacity planning, anomaly detection, and AIOps.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="ai-powered-crm-data-cleaning-deduplication-platforms/" data-text="AI CRM Data Cleaning Platforms deduplication salesforce hubspot"><span class="kicker">CRM</span><h3>AI CRM Data Cleaning Platforms 2026: Honest Picks</h3><p>Salesforce-native, HubSpot-native, third-party, and warehouse-side cleaning options.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="ai-to-clean-excel-data/" data-text="AI to Clean Excel Data spreadsheet cleaning checklist"><span class="kicker">Spreadsheets</span><h3>AI to Clean Excel Data: 2026 Methods and Tools</h3><p>What AI handles well in Excel cleaning, what to verify, and a working checklist.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="airtable-data-analysis/" data-text="Airtable Data Analysis api sync warehouse ai agents"><span class="kicker">Airtable</span><h3>Airtable Data Analysis: 2026 Methods, Tools, AI</h3><p>Native Airtable analysis, warehouse graduation points, API patterns, and AI agents.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="alternatives-to-chatgpt-for-data-analysis/" data-text="Alternatives to ChatGPT for Data Analysis bi copilots warehouse agents"><span class="kicker">Alternatives</span><h3>Alternatives to ChatGPT for Data Analysis 2026 Guide</h3><p>Warehouse-connected agents, BI copilots, lakehouse tools, and selection criteria.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="best-agentic-analytics-for-data-driven-insights/" data-text="Best Agentic Analytics for Data-Driven Insights platforms comparison"><span class="kicker">Agentic Analytics</span><h3>Best Agentic Analytics for Data-Driven Insights 2026</h3><p>Compare agentic analytics platforms for teams that need data-driven answers.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="best-ai-data-visualization-tools/" data-text="Best AI Data Visualization Tools charts bi dashboards"><span class="kicker">Visualization</span><h3>Best AI Data Visualization Tools in 2026: Honest Picks</h3><p>Chart generators, BI copilots, data agents, and how to pick by source and audience.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="business-intelligence-vs-data-science/" data-text="Business Intelligence vs Data Science BI ML dashboards predictive analytics"><span class="kicker">BI vs DS</span><h3>Business Intelligence vs Data Science: 2026 Guide</h3><p>Where dashboards, agreed metrics, predictive modeling, and ML workflows each fit.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="chatgpt-data-analysis-limit/" data-text="ChatGPT Data Analysis Limits file size warehouse memory"><span class="kicker">ChatGPT</span><h3>ChatGPT Data Analysis Limits in 2026: Where It Stops</h3><p>File caps, session memory, no warehouse access, and when teams move to data agents.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="chatgpt-for-data-analysis/" data-text="ChatGPT for Data Analysis tutorial csv excel prompts"><span class="kicker">Tutorial</span><h3>ChatGPT for Data Analysis: 2026 Practical Tutorial</h3><p>Upload files, run code, use prompt patterns, understand limits, and know when to switch.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="data-agent/" data-text="Data Agent architecture use cases nl2sql ai structured data"><span class="kicker">Data Agents</span><h3>Data Agent: Architecture, Use Cases, and Examples</h3><p>What a data agent is, how it reasons over structured data, and how it differs from NL2SQL.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="data-analysis-glossary/" data-text="Data Analysis Glossary sql statistics bi ai terms"><span class="kicker">Glossary</span><h3>Data Analysis Glossary 2026: Terms Explained with Examples</h3><p>Working terms across SQL, statistics, BI, engineering, and AI agents.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="data-analysis-in-google-sheets/" data-text="Data Analysis in Google Sheets formulas pivot tables bigquery gemini"><span class="kicker">Sheets</span><h3>Data Analysis in Google Sheets: 2026 Hands-On Guide</h3><p>Formulas, pivot tables, Apps Script, Connected Sheets, BigQuery, and AI-assisted analysis.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="data-analysis-in-logistics/" data-text="Data Analysis in Logistics otif dwell time carrier tms wms"><span class="kicker">Logistics</span><h3>Data Analysis in Logistics: 2026 Methods and AI</h3><p>OTIF, dwell time, shipment cost, carrier scorecards, TMS, WMS, and AI data agents.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="data-integration-platforms-supporting-snowflake-bigquery-redshift/" data-text="Data Integration Tools Snowflake BigQuery Redshift fivetran airbyte stitch"><span class="kicker">Integration</span><h3>Data Integration Tools: Snowflake, BigQuery, Redshift 2026</h3><p>A buyer guide to ELT and integration platforms for major cloud data warehouses.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="data-science-for-product-managers/" data-text="Data Science for Product Managers funnel cohort ab testing sql"><span class="kicker">Product</span><h3>Data Science for Product Managers: 2026 Working Guide</h3><p>Funnel, cohort, A/B reading, opportunity sizing, SQL, and AI agent usage for PMs.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="data-science-in-supply-chain/" data-text="Data Science in Supply Chain forecasting inventory supplier risk route ai"><span class="kicker">Supply Chain</span><h3>Data Science in Supply Chain: 2026 Practitioner Guide</h3><p>Forecasting, inventory optimization, supplier risk, route AI, and the supply chain stack.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="databricks-assistant-vs-genie/" data-text="Databricks Assistant vs Genie comparison unity catalog ai bi"><span class="kicker">Databricks</span><h3>Databricks Assistant vs Genie: 2026 Comparison Guide</h3><p>How the two Databricks AI surfaces differ by audience, scope, governance, and use case.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="databricks-data-analytics-platform/" data-text="Databricks Data Analytics Platform unity catalog sql warehouse delta lake"><span class="kicker">Lakehouse</span><h3>Databricks Data Analytics Platform: 2026 Review Guide</h3><p>Unity Catalog, SQL Warehouse, Delta Lake, AI/BI Genie, and the lakehouse analytics role.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="databricks-genie/" data-text="Databricks Genie AI BI unity catalog rooms alternatives"><span class="kicker">Databricks</span><h3>Databricks Genie: 2026 Guide and Honest Review</h3><p>What AI/BI Genie does, how grounding works, where it shines, and where it falls short.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="ecommerce-data-analysis/" data-text="Ecommerce Data Analysis rfm cohort retention funnel ai"><span class="kicker">Ecommerce</span><h3>Ecommerce Data Analysis: 2026 Methods, Tools, AI</h3><p>Sources, RFM segmentation, cohort retention, funnel diagnostics, and AI data agents.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="financial-services-data-analysis/" data-text="Financial Services Data Analysis regulation audit tooling ai agents"><span class="kicker">Finance</span><h3>Financial Services Data Analysis: 2026 Methods, AI</h3><p>Sources, regulation, recurring analyst questions, audit-grade tooling, and AI agents.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="google-analytics-bigquery-data-analysis-capabilities/" data-text="Google Analytics BigQuery GA4 Data Analysis export schema"><span class="kicker">GA4 + BigQuery</span><h3>Google Analytics + BigQuery: 2026 Data Analysis Guide</h3><p>What the export unlocks, schema basics, worked questions, and AI agents on top.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="julius-ai-data-analysis/" data-text="Julius AI Data Analysis review alternatives spreadsheets"><span class="kicker">Review</span><h3>Julius AI Data Analysis: 2026 Review and Alternatives</h3><p>Where Julius works well on spreadsheets, where it stops, and when to switch tools.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="marketing-data-analysis/" data-text="Marketing Data Analysis attribution sources weekly questions ai agents"><span class="kicker">Marketing</span><h3>Marketing Data Analysis: 2026 Methods, Tools, and AI</h3><p>Sources, weekly questions, attribution choices, the tool ladder, and AI agent workflows.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="saas-data-platform/" data-text="SaaS Data Platform architecture elt warehouse dbt bi reverse etl"><span class="kicker">SaaS</span><h3>SaaS Data Platform: 2026 Architecture and Stack</h3><p>Sources, ELT, warehouse, dbt, BI, reverse ETL, AI agents, and SaaS metric schemas.</p><span class="read">Read article -&gt;</span></a>
+    <a class="article-card" href="sql-for-data-analysis/" data-text="SQL for Data Analysis aggregation window functions ctes joins ai workflow"><span class="kicker">SQL</span><h3>SQL for Data Analysis in 2026: Patterns + AI Workflow</h3><p>Daily analyst query patterns: aggregation, window functions, CTEs, joins, and AI support.</p><span class="read">Read article -&gt;</span></a>
+  </div>
 
-      .brand span {
-        display: block;
-        color: var(--muted);
-        font-size: 13px;
-      }
+  <p id="empty" class="empty">No matching pages found. Try a broader keyword.</p>
 
-      .count {
-        display: inline-flex;
-        align-items: center;
-        min-height: 34px;
-        padding: 0 13px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.8);
-        color: var(--muted);
-        font-size: 13px;
-        font-weight: 650;
-      }
+  <div class="cta-box">
+    <h3>Explore the full InfiniSynapse blog</h3>
+    <p>This local hub links to the 30 generated article pages in this folder. Use the cards above to open each page directly.</p>
+    <a class="cta-btn" href="https://infinisynapse.com/en/blog">Visit Blog</a>
+  </div>
+</div>
 
-      .hero {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 360px;
-        gap: 36px;
-        align-items: end;
-      }
-
-      h1 {
-        max-width: 780px;
-        margin: 0;
-        font-size: clamp(38px, 6vw, 70px);
-        line-height: 0.98;
-        letter-spacing: 0;
-      }
-
-      .intro {
-        max-width: 720px;
-        margin: 20px 0 0;
-        color: var(--muted);
-        font-size: 17px;
-      }
-
-      .hero-panel {
-        position: relative;
-        overflow: hidden;
-        min-height: 230px;
-        border: 1px solid rgba(223, 228, 238, 0.85);
-        border-radius: 8px;
-        background:
-          linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.82)),
-          repeating-linear-gradient(0deg, rgba(37, 99, 235, 0.08) 0 1px, transparent 1px 28px),
-          repeating-linear-gradient(90deg, rgba(37, 99, 235, 0.08) 0 1px, transparent 1px 28px);
-        box-shadow: var(--shadow);
-      }
-
-      .nodes {
-        position: absolute;
-        inset: 22px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-      }
-
-      .node {
-        display: grid;
-        align-content: center;
-        gap: 6px;
-        min-height: 54px;
-        padding: 12px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #ffffff;
-        box-shadow: 0 10px 26px rgba(17, 24, 39, 0.06);
-      }
-
-      .node b {
-        font-size: 19px;
-        line-height: 1;
-      }
-
-      .node span {
-        color: var(--muted);
-        font-size: 11px;
-        font-weight: 650;
-        text-transform: uppercase;
-      }
-
-      .toolbar {
-        position: sticky;
-        top: 0;
-        z-index: 3;
-        padding: 18px 0;
-        margin-top: 16px;
-        background: rgba(246, 247, 251, 0.88);
-        backdrop-filter: blur(14px);
-        border-bottom: 1px solid rgba(223, 228, 238, 0.72);
-      }
-
-      .search {
-        width: 100%;
-        min-height: 48px;
-        padding: 0 16px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        outline: 0;
-        background: #ffffff;
-        color: var(--ink);
-        font: inherit;
-        box-shadow: 0 10px 26px rgba(17, 24, 39, 0.04);
-      }
-
-      .search:focus {
-        border-color: rgba(37, 99, 235, 0.75);
-        box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
-      }
-
-      main {
-        padding: 26px 0 64px;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
-      }
-
-      .card {
-        position: relative;
-        display: grid;
-        min-height: 238px;
-        padding: 22px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 12px 34px rgba(17, 24, 39, 0.05);
-        transition:
-          transform 160ms ease,
-          border-color 160ms ease,
-          box-shadow 160ms ease;
-      }
-
-      .card:hover {
-        transform: translateY(-3px);
-        border-color: rgba(37, 99, 235, 0.46);
-        box-shadow: 0 22px 48px rgba(17, 24, 39, 0.1);
-      }
-
-      .card:focus-visible {
-        outline: 4px solid rgba(37, 99, 235, 0.18);
-        outline-offset: 2px;
-      }
-
-      .card::before {
-        content: "";
-        position: absolute;
-        inset: 0 auto auto 0;
-        width: 100%;
-        height: 4px;
-        border-radius: 8px 8px 0 0;
-        background: var(--accent, var(--blue));
-      }
-
-      .tag {
-        display: inline-flex;
-        width: fit-content;
-        min-height: 28px;
-        align-items: center;
-        padding: 0 10px;
-        border-radius: 999px;
-        background: var(--soft);
-        color: var(--accent, var(--blue));
-        font-size: 12px;
-        font-weight: 750;
-      }
-
-      .card h2 {
-        margin: 18px 0 10px;
-        font-size: 22px;
-        line-height: 1.18;
-        letter-spacing: 0;
-      }
-
-      .card p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      .card-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        align-self: end;
-        margin-top: 22px;
-        color: var(--accent, var(--blue));
-        font-size: 13px;
-        font-weight: 750;
-      }
-
-      .arrow {
-        display: grid;
-        width: 30px;
-        height: 30px;
-        place-items: center;
-        border-radius: 999px;
-        background: color-mix(in srgb, var(--accent, var(--blue)) 12%, white);
-      }
-
-      .empty {
-        display: none;
-        padding: 30px;
-        border: 1px dashed var(--line);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.78);
-        color: var(--muted);
-        text-align: center;
-      }
-
-      footer {
-        padding: 28px 0 42px;
-        border-top: 1px solid var(--line);
-        color: var(--muted);
-        font-size: 13px;
-      }
-
-      @media (max-width: 980px) {
-        .hero {
-          grid-template-columns: 1fr;
-        }
-
-        .hero-panel {
-          min-height: 190px;
-        }
-
-        .grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-      }
-
-      @media (max-width: 640px) {
-        .wrap {
-          width: min(100% - 28px, 1180px);
-        }
-
-        header {
-          padding-top: 22px;
-        }
-
-        .nav {
-          align-items: flex-start;
-          flex-direction: column;
-          margin-bottom: 28px;
-        }
-
-        .nodes {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .grid {
-          grid-template-columns: 1fr;
-        }
-
-        .card {
-          min-height: 210px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="wrap">
-        <nav class="nav" aria-label="Hub">
-          <a class="brand" href="./" aria-label="InfiniSynapse data analysis library home">
-            <span class="mark">IS</span>
-            <span>
-              <strong>InfiniSynapse</strong>
-              <span>Data analysis library</span>
-            </span>
-          </a>
-          <span class="count">30 pages</span>
-        </nav>
-
-        <section class="hero" aria-labelledby="page-title">
-          <div>
-            <h1 id="page-title">AI data analysis guides, agents, and platform playbooks.</h1>
-            <p class="intro">
-              Browse the full pillar cluster: practical articles on ChatGPT data analysis, BI,
-              data agents, visualization, governance, warehouses, spreadsheets, and industry
-              analytics workflows.
-            </p>
-          </div>
-          <div class="hero-panel" aria-label="Content library summary">
-            <div class="nodes">
-              <div class="node"><b>30</b><span>Articles</span></div>
-              <div class="node"><b>AI</b><span>Agents</span></div>
-              <div class="node"><b>BI</b><span>Workflows</span></div>
-              <div class="node"><b>SQL</b><span>Analysis</span></div>
-              <div class="node"><b>2026</b><span>Guides</span></div>
-              <div class="node"><b>Data</b><span>Platforms</span></div>
-            </div>
-          </div>
-        </section>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:#0A0A0A;margin-bottom:12px">InfiniSynapse</div>
+        <p style="font-size:14px;color:#6B7280;max-width:300px;margin-bottom:16px;line-height:1.6">The AI data analyst for the enterprise. Connect sources, ask in plain English, and review analysis with evidence.</p>
+        <a href="https://app.infinisynapse.com/" class="cta-btn" style="padding:8px 20px;font-size:13px">Try Online</a>
       </div>
-    </header>
-
-    <div class="toolbar">
-      <div class="wrap">
-        <label>
-          <span style="position:absolute;left:-9999px;">Search articles</span>
-          <input
-            id="search"
-            class="search"
-            type="search"
-            placeholder="Search by topic, tool, workflow, or industry..."
-            autocomplete="off"
-          />
-        </label>
+      <div>
+        <h4>Product</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#features">Features</a>
+          <a href="https://infinisynapse.com/tools">Tools Market</a>
+          <a href="https://app.infinisynapse.com/">Try Online</a>
+          <a href="https://infinisynapse.com/download">Download</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/en/docs">Documentation</a>
+          <a href="https://infinisynapse.com/en/blog">Blog</a>
+          <a href="https://infinisynapse.com/Category">Category Hub</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <div class="footer-links">
+          <a href="https://infinisynapse.com/#contact">Contact</a>
+          <a href="https://infinisynapse.com/careers">Careers</a>
+        </div>
       </div>
     </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 InfiniSynapse. All rights reserved.</span>
+      <span>From question to insight, in seconds.</span>
+    </div>
+  </div>
+</footer>
 
-    <main class="wrap">
-      <section id="grid" class="grid" aria-label="Article links">
-        <a class="card" href="ai-assisted-query-generation-sql-python-social-science-data-analysis/" style="--accent:#2563eb" data-title="AI Query Generation for SQL and Python in Research" data-tags="ai sql python research social science query generation">
-          <span class="tag">Research</span>
-          <h2>AI Query Generation for SQL and Python in Research</h2>
-          <p>How AI-assisted SQL and Python query generation changes social science data analysis workflows.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
+<script>
+  const search = document.querySelector("#search");
+  const cards = [...document.querySelectorAll(".article-card")];
+  const empty = document.querySelector("#empty");
 
-        <a class="card" href="ai-data-governance/" style="--accent:#059669" data-title="AI Data Governance for Enterprise Analytics in 2026" data-tags="ai governance enterprise analytics audit risk compliance">
-          <span class="tag">Governance</span>
-          <h2>AI Data Governance for Enterprise Analytics in 2026</h2>
-          <p>Access controls, lineage, audit trails, model risk, and governance patterns for AI analytics.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
+  search.addEventListener("input", () => {
+    const query = search.value.trim().toLowerCase();
+    let visible = 0;
 
-        <a class="card" href="ai-database-agent-for-data-visualization/" style="--accent:#0891b2" data-title="AI Database Agent for Data Visualization: 2026 Guide" data-tags="ai database agent data visualization charts">
-          <span class="tag">Visualization</span>
-          <h2>AI Database Agent for Data Visualization: 2026 Guide</h2>
-          <p>How an AI database agent connects to data and generates charts as part of every answer.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
+    for (const card of cards) {
+      const haystack = [
+        card.dataset.text,
+        card.querySelector("h3")?.textContent,
+        card.querySelector("p")?.textContent,
+        card.querySelector(".kicker")?.textContent,
+      ].join(" ").toLowerCase();
 
-        <a class="card" href="ai-in-data-center-operations/" style="--accent:#d97706" data-title="AI in Data Center Operations: 2026 Practitioner Guide" data-tags="ai data center operations aiops dcim predictive maintenance cooling">
-          <span class="tag">Operations</span>
-          <h2>AI in Data Center Operations: 2026 Practitioner Guide</h2>
-          <p>Predictive maintenance, cooling optimization, capacity planning, anomaly detection, and AIOps.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
+      const match = !query || haystack.includes(query);
+      card.style.display = match ? "" : "none";
+      if (match) visible += 1;
+    }
 
-        <a class="card" href="ai-powered-crm-data-cleaning-deduplication-platforms/" style="--accent:#db2777" data-title="AI CRM Data Cleaning Platforms 2026: Honest Picks" data-tags="crm data cleaning deduplication salesforce hubspot ai">
-          <span class="tag">CRM</span>
-          <h2>AI CRM Data Cleaning Platforms 2026: Honest Picks</h2>
-          <p>Salesforce-native, HubSpot-native, third-party, and warehouse-side cleaning options.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="ai-to-clean-excel-data/" style="--accent:#2563eb" data-title="AI to Clean Excel Data: 2026 Methods and Tools" data-tags="excel data cleaning ai spreadsheet tools checklist">
-          <span class="tag">Spreadsheets</span>
-          <h2>AI to Clean Excel Data: 2026 Methods and Tools</h2>
-          <p>What AI handles well in Excel cleaning, what to verify, and an eight-step checklist.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="airtable-data-analysis/" style="--accent:#0891b2" data-title="Airtable Data Analysis: 2026 Methods, Tools, AI" data-tags="airtable data analysis api sync warehouse ai agents">
-          <span class="tag">Airtable</span>
-          <h2>Airtable Data Analysis: 2026 Methods, Tools, AI</h2>
-          <p>Native Airtable analysis, warehouse graduation points, API patterns, and AI agent workflows.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="alternatives-to-chatgpt-for-data-analysis/" style="--accent:#059669" data-title="Alternatives to ChatGPT for Data Analysis 2026 Guide" data-tags="chatgpt alternatives data analysis warehouse bi copilots agents">
-          <span class="tag">Alternatives</span>
-          <h2>Alternatives to ChatGPT for Data Analysis 2026 Guide</h2>
-          <p>Warehouse-connected agents, BI copilots, lakehouse tools, and selection criteria.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="best-agentic-analytics-for-data-driven-insights/" style="--accent:#db2777" data-title="Best Agentic Analytics for Data-Driven Insights 2026" data-tags="agentic analytics data driven insights tools comparison">
-          <span class="tag">Agentic Analytics</span>
-          <h2>Best Agentic Analytics for Data-Driven Insights 2026</h2>
-          <p>A comparison of agentic analytics platforms for teams that need data-driven answers.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="best-ai-data-visualization-tools/" style="--accent:#0891b2" data-title="Best AI Data Visualization Tools in 2026: Honest Picks" data-tags="ai data visualization tools charts bi dashboard">
-          <span class="tag">Visualization</span>
-          <h2>Best AI Data Visualization Tools in 2026: Honest Picks</h2>
-          <p>Chart generators, BI copilots, data agents, and how to pick by source and audience.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="business-intelligence-vs-data-science/" style="--accent:#2563eb" data-title="Business Intelligence vs Data Science: 2026 Guide" data-tags="business intelligence data science bi ml dashboards predictive analytics">
-          <span class="tag">BI vs DS</span>
-          <h2>Business Intelligence vs Data Science: 2026 Guide</h2>
-          <p>Where dashboards, agreed metrics, predictive modeling, and ML workflows each fit.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="chatgpt-data-analysis-limit/" style="--accent:#d97706" data-title="ChatGPT Data Analysis Limits in 2026: Where It Stops" data-tags="chatgpt data analysis limits file size warehouse memory">
-          <span class="tag">ChatGPT</span>
-          <h2>ChatGPT Data Analysis Limits in 2026: Where It Stops</h2>
-          <p>File caps, session memory, lack of warehouse access, and when teams move to data agents.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="chatgpt-for-data-analysis/" style="--accent:#059669" data-title="ChatGPT for Data Analysis: 2026 Practical Tutorial" data-tags="chatgpt data analysis tutorial csv excel prompts">
-          <span class="tag">Tutorial</span>
-          <h2>ChatGPT for Data Analysis: 2026 Practical Tutorial</h2>
-          <p>Upload files, run code, use prompt patterns, understand limits, and know when to switch.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="data-agent/" style="--accent:#db2777" data-title="Data Agent: Architecture, Use Cases, and Examples" data-tags="data agent architecture nl2sql ai structured data">
-          <span class="tag">Data Agents</span>
-          <h2>Data Agent: Architecture, Use Cases, and Examples</h2>
-          <p>What a data agent is, how it reasons over structured data, and how it differs from NL2SQL.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="data-analysis-glossary/" style="--accent:#2563eb" data-title="Data Analysis Glossary 2026: Terms Explained with Examples" data-tags="data analysis glossary sql statistics bi ai terms">
-          <span class="tag">Glossary</span>
-          <h2>Data Analysis Glossary 2026: Terms Explained with Examples</h2>
-          <p>Working terms across SQL, statistics, BI, engineering, and AI agents with examples.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="data-analysis-in-google-sheets/" style="--accent:#059669" data-title="Data Analysis in Google Sheets: 2026 Hands-On Guide" data-tags="google sheets data analysis formulas pivot tables bigquery gemini">
-          <span class="tag">Sheets</span>
-          <h2>Data Analysis in Google Sheets: 2026 Hands-On Guide</h2>
-          <p>Formulas, pivot tables, Apps Script, Connected Sheets, BigQuery, and AI-assisted analysis.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="data-analysis-in-logistics/" style="--accent:#d97706" data-title="Data Analysis in Logistics: 2026 Methods and AI" data-tags="logistics data analysis otif dwell time carrier tms wms">
-          <span class="tag">Logistics</span>
-          <h2>Data Analysis in Logistics: 2026 Methods and AI</h2>
-          <p>OTIF, dwell time, shipment cost, carrier scorecards, TMS, WMS, and AI data agents.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="data-integration-platforms-supporting-snowflake-bigquery-redshift/" style="--accent:#0891b2" data-title="Data Integration Tools: Snowflake, BigQuery, Redshift 2026" data-tags="data integration snowflake bigquery redshift fivetran airbyte stitch">
-          <span class="tag">Integration</span>
-          <h2>Data Integration Tools: Snowflake, BigQuery, Redshift 2026</h2>
-          <p>A buyer guide to ELT and integration platforms for major cloud data warehouses.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="data-science-for-product-managers/" style="--accent:#db2777" data-title="Data Science for Product Managers: 2026 Working Guide" data-tags="product managers data science funnel cohort ab testing sql">
-          <span class="tag">Product</span>
-          <h2>Data Science for Product Managers: 2026 Working Guide</h2>
-          <p>Funnel, cohort, A/B reading, opportunity sizing, SQL, and AI agent usage for PMs.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="data-science-in-supply-chain/" style="--accent:#d97706" data-title="Data Science in Supply Chain: 2026 Practitioner Guide" data-tags="supply chain data science forecasting inventory supplier risk route ai">
-          <span class="tag">Supply Chain</span>
-          <h2>Data Science in Supply Chain: 2026 Practitioner Guide</h2>
-          <p>Forecasting, inventory optimization, supplier risk, route AI, and the supply chain stack.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="databricks-assistant-vs-genie/" style="--accent:#2563eb" data-title="Databricks Assistant vs Genie: 2026 Comparison Guide" data-tags="databricks assistant genie comparison unity catalog ai bi">
-          <span class="tag">Databricks</span>
-          <h2>Databricks Assistant vs Genie: 2026 Comparison Guide</h2>
-          <p>How the two Databricks AI surfaces differ by audience, scope, governance, and use case.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="databricks-data-analytics-platform/" style="--accent:#0891b2" data-title="Databricks Data Analytics Platform: 2026 Review Guide" data-tags="databricks data analytics platform unity catalog sql warehouse delta lake">
-          <span class="tag">Lakehouse</span>
-          <h2>Databricks Data Analytics Platform: 2026 Review Guide</h2>
-          <p>Unity Catalog, SQL Warehouse, Delta Lake, AI/BI Genie, and the lakehouse analytics role.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="databricks-genie/" style="--accent:#059669" data-title="Databricks Genie: 2026 Guide and Honest Review" data-tags="databricks genie ai bi unity catalog rooms alternatives">
-          <span class="tag">Databricks</span>
-          <h2>Databricks Genie: 2026 Guide and Honest Review</h2>
-          <p>What AI/BI Genie does, how grounding works, where it shines, and where it falls short.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="ecommerce-data-analysis/" style="--accent:#db2777" data-title="Ecommerce Data Analysis: 2026 Methods, Tools, AI" data-tags="ecommerce data analysis rfm cohort retention funnel ai">
-          <span class="tag">Ecommerce</span>
-          <h2>Ecommerce Data Analysis: 2026 Methods, Tools, AI</h2>
-          <p>Sources, RFM segmentation, cohort retention, funnel diagnostics, and AI data agents.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="financial-services-data-analysis/" style="--accent:#059669" data-title="Financial Services Data Analysis: 2026 Methods, AI" data-tags="financial services data analysis regulation audit tooling ai agents">
-          <span class="tag">Finance</span>
-          <h2>Financial Services Data Analysis: 2026 Methods, AI</h2>
-          <p>Sources, regulation, recurring analyst questions, audit-grade tooling, and AI agents.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="google-analytics-bigquery-data-analysis-capabilities/" style="--accent:#d97706" data-title="Google Analytics + BigQuery: 2026 Data Analysis Guide" data-tags="google analytics bigquery ga4 data analysis export schema">
-          <span class="tag">GA4 + BigQuery</span>
-          <h2>Google Analytics + BigQuery: 2026 Data Analysis Guide</h2>
-          <p>What the export unlocks, schema basics, worked questions, and AI agents on top.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="julius-ai-data-analysis/" style="--accent:#2563eb" data-title="Julius AI Data Analysis: 2026 Review and Alternatives" data-tags="julius ai data analysis review alternatives spreadsheets">
-          <span class="tag">Review</span>
-          <h2>Julius AI Data Analysis: 2026 Review and Alternatives</h2>
-          <p>Where Julius works well on spreadsheets, where it stops, and when to switch tools.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="marketing-data-analysis/" style="--accent:#db2777" data-title="Marketing Data Analysis: 2026 Methods, Tools, and AI" data-tags="marketing data analysis attribution sources weekly questions ai agents">
-          <span class="tag">Marketing</span>
-          <h2>Marketing Data Analysis: 2026 Methods, Tools, and AI</h2>
-          <p>Sources, weekly questions, attribution choices, the tool ladder, and AI agent workflows.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="saas-data-platform/" style="--accent:#0891b2" data-title="SaaS Data Platform: 2026 Architecture and Stack" data-tags="saas data platform architecture elt warehouse dbt bi reverse etl">
-          <span class="tag">SaaS</span>
-          <h2>SaaS Data Platform: 2026 Architecture and Stack</h2>
-          <p>Sources, ELT, warehouse, dbt, BI, reverse ETL, AI agents, and SaaS metric schemas.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-
-        <a class="card" href="sql-for-data-analysis/" style="--accent:#059669" data-title="SQL for Data Analysis in 2026: Patterns + AI Workflow" data-tags="sql data analysis aggregation window functions ctes joins ai workflow">
-          <span class="tag">SQL</span>
-          <h2>SQL for Data Analysis in 2026: Patterns + AI Workflow</h2>
-          <p>Daily analyst query patterns: aggregation, window functions, CTEs, joins, and AI support.</p>
-          <span class="card-footer">Open guide <span class="arrow">-&gt;</span></span>
-        </a>
-      </section>
-
-      <p id="empty" class="empty">No matching pages found. Try a broader keyword.</p>
-    </main>
-
-    <footer>
-      <div class="wrap">
-        InfiniSynapse content hub. Each card links to the matching article folder.
-      </div>
-    </footer>
-
-    <script>
-      const search = document.querySelector("#search");
-      const cards = [...document.querySelectorAll(".card")];
-      const empty = document.querySelector("#empty");
-
-      search.addEventListener("input", () => {
-        const query = search.value.trim().toLowerCase();
-        let visible = 0;
-
-        for (const card of cards) {
-          const haystack = [
-            card.dataset.title,
-            card.dataset.tags,
-            card.querySelector("p")?.textContent,
-            card.querySelector(".tag")?.textContent,
-          ].join(" ").toLowerCase();
-
-          const match = !query || haystack.includes(query);
-          card.style.display = match ? "" : "none";
-          if (match) visible += 1;
-        }
-
-        empty.style.display = visible ? "none" : "block";
-      });
-    </script>
-  </body>
+    empty.style.display = visible ? "none" : "block";
+  });
+</script>
+</body>
 </html>
